@@ -45,17 +45,19 @@ std::string LocalizedString::getString()
 {
 	std::string localizedString = this->getStringByLanguage(this->overrideLanguage != LanguageType::NONE ? this->overrideLanguage : Localization::getLanguage());
 
-	int index = 1;
-
-	for (auto next : this->stringReplacementVariables)
+	// Reverse iterate to ensure that templates with more digits are processed first.
+	// For example, %s10 is processed before %s1. The reverse order would result in %s10 being treated as "{%s1}" + "0", which is wrong.
+	for (int index = int(this->stringReplacementVariables.size()); index >= 1; index--)
 	{
+		LocalizedString* next = stringReplacementVariables[index - 1];
+
 		if (next != nullptr)
 		{
-			localizedString = StrUtils::replaceAll(localizedString, "%s" + std::to_string(index++), next->getString());
+			localizedString = StrUtils::replaceAll(localizedString, "%s" + std::to_string(index), next->getString());
 		}
 		else
 		{
-			localizedString = StrUtils::replaceAll(localizedString, "%s" + std::to_string(index++), "");
+			localizedString = StrUtils::replaceAll(localizedString, "%s" + std::to_string(index), "");
 		}
 	}
 
@@ -64,24 +66,13 @@ std::string LocalizedString::getString()
 
 cocos2d::LanguageType LocalizedString::getOverrideLanguage()
 {
-	if (this->remappedLanguages.find(Localization::getLanguage()) != this->remappedLanguages.end())
-	{
-		return this->remappedLanguages[Localization::getLanguage()];
-	}
-
 	return this->overrideLanguage;
 }
 
-void LocalizedString::setOverrideLanguage(cocos2d::LanguageType overrideLanguage)
+LocalizedString* LocalizedString::setOverrideLanguage(cocos2d::LanguageType overrideLanguage)
 {
 	this->overrideLanguage = overrideLanguage;
-}
 
-LocalizedString* LocalizedString::setOverrideMap(std::map<cocos2d::LanguageType, cocos2d::LanguageType> remappedLanguages)
-{
-	this->remappedLanguages = remappedLanguages;
-
-	// Convenience
 	return this;
 }
 
@@ -90,10 +81,15 @@ LocalizedString* LocalizedString::setStringReplacementVariables(LocalizedString*
 	return this->setStringReplacementVariables(std::vector<LocalizedString*>({ stringReplacementVariables }));
 }
 
+std::vector<LocalizedString*> LocalizedString::getStringReplacementVariables()
+{
+	return this->stringReplacementVariables;
+}
+
 LocalizedString* LocalizedString::setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables)
 {
 	// Release old replacement varaibles
-	for (const auto& next : this->stringReplacementVariables)
+	for (LocalizedString* next : this->stringReplacementVariables)
 	{
 		if (next == nullptr)
 		{
@@ -126,7 +122,7 @@ LocalizedString* LocalizedString::setStringReplacementVariables(std::vector<Loca
 	this->stringReplacementVariables = stringReplacementVariables;
 
 	// Retain new replacement variables
-	for (auto next : this->stringReplacementVariables)
+	for (LocalizedString* next : this->stringReplacementVariables)
 	{
 		if (next == nullptr)
 		{
@@ -158,7 +154,7 @@ void LocalizedString::copyAttributesTo(LocalizedString* localizedString)
 
 	std::vector<LocalizedString*> stringReplacementVariables = std::vector<LocalizedString*>();
 
-	for (auto next : this->stringReplacementVariables)
+	for (LocalizedString* next : this->stringReplacementVariables)
 	{
 		stringReplacementVariables.push_back(next == nullptr ? nullptr : next->clone());
 	}

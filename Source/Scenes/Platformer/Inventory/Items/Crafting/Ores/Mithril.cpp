@@ -20,7 +20,7 @@ Mithril* Mithril::create()
 	return instance;
 }
 
-Mithril::Mithril() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 44 }}), ItemMeta(20000))
+Mithril::Mithril() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 8 * 4 }}), ItemMeta(20000))
 {
 }
 
@@ -40,7 +40,7 @@ LocalizedString* Mithril::getString()
 
 const std::string& Mithril::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_Mithril;
+	return ItemResources::Crafting_Smithing_T4_Mithril;
 }
 
 const std::string& Mithril::getIdentifier()

@@ -1,11 +1,11 @@
 {
-    "ar": "تشير الأقواس إلى أن %s1 هو مؤشر لمتغير. هذا يعني أن %s1 تتتبع موقع المتغير. بدلاً من إلغاء السجل ، يتم إلغاء البيانات.",
+    "ar": ".تشير الأقواس إلى أن %s1 هو مؤشر لمتغير. هذا يعني أن %s1 تتتبع موقع المتغير. بدلاً من إلغاء السجل ، يتم إلغاء البيانات",
     "bg": "Скобите показват, че %s1 е указател към променлива. Това означава, че %s1 проследява местоположението на променлива. Вместо отрицания регистър, данните се отричат.",
     "cs": "Sloupce označují, že %s1 je ukazatel na proměnnou. To znamená, že %s1 sleduje umístění proměnné. Namísto negování registru jsou data negována.",
     "da": "Bøjlerne angiver, at %s1 er en peger på en variabel. Dette betyder, at %s1 sporer placeringen af ​​en variabel. I stedet for at negere registret, er dataene negeret.",
     "de": "Die geschweiften Klammern geben an, dass %s1 ein Zeiger auf eine Variable ist. Dies bedeutet, dass %s1 die Position einer Variablen verfolgt. Anstatt das Register zu negieren, werden die Daten negiert.",
     "el": "Οι τιράντες δείχνουν ότι το %s1 είναι δείκτης σε μια μεταβλητή. Αυτό σημαίνει ότι το %s1 παρακολουθεί τη θέση μιας μεταβλητής. Αντί να απαγορεύσει το μητρώο, τα δεδομένα είναι ανενεργά.",
-    "en": "The braces indicate that %s1 is a pointer to a variable. This means that %s1 is tracking the location of a variable. Instead of negated the register, the data is negated.",
+    "en": "The braces indicate that %s1 is a pointer to a variable. This means that %s1 is tracking the location of a variable. Instead of negating the register, the data is negated.",
     "es": "Las llaves indican que %s1 es un puntero a una variable. Esto significa que %s1 está rastreando la ubicación de una variable. En lugar de negar el registro, los datos son negados.",
     "es-419": "Las llaves indican que %s1 es un puntero a una variable. Esto significa que %s1 está rastreando la ubicación de una variable. En lugar de negar el registro, los datos son negados.",
     "fi": "Olkaimet osoittavat, että %s1 on muuttujan osoitin. Tämä tarkoittaa, että %s1 seuraa muuttujan sijaintia. Rekisterin hylkäämisen sijaan tiedot hylätään.",

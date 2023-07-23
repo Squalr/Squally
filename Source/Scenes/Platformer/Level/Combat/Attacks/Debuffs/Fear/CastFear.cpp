@@ -29,7 +29,7 @@ CastFear* CastFear::create(float attackDuration, float recoverDuration, Priority
 }
 
 CastFear::CastFear(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Debuff, UIResources::Menus_Icons_SkullGlowRed, priority, AbilityType::Shadow, 0, 0, 11, attackDuration, recoverDuration)
+	: super(AttackType::Debuff, UIResources::Menus_Icons_Skull2, priority, AbilityType::Shadow, 0, 0, 11, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Curse1);
 
@@ -68,7 +68,7 @@ void CastFear::performAttack(PlatformerEntity* owner, std::vector<PlatformerEnti
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
@@ -91,8 +91,14 @@ bool CastFear::isWorthUsing(PlatformerEntity* caster, const std::vector<Platform
 
 	int uncastableCount = 0;
 
-	for (auto next : otherTeam)
+	for (PlatformerEntity* next : otherTeam)
 	{
+		if (!next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			uncastableCount++;
+			continue;
+		}
+		
 		if (CombatUtils::HasDuplicateCastOnLivingTarget(caster, next, [](PlatformerAttack* next) { return dynamic_cast<CastFear*>(next) != nullptr;  }))
 		{
 			uncastableCount++;

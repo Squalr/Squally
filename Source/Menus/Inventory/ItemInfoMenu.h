@@ -38,7 +38,7 @@ private:
 
 	cocos2d::LayerColor* backdrop = nullptr;
 	cocos2d::Sprite* itemWindow = nullptr;
-	LocalizedLabel* itemLabel = nullptr;
+	LocalizedLabel* titleLabel = nullptr;
 	ItemPreview* itemPreview = nullptr;
 	ClickableTextNode* takeItemButton = nullptr;
 	ClickableTextNode* returnButton = nullptr;

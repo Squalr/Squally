@@ -2,6 +2,7 @@
 
 #include "Engine/Components/GameComponent.h"
 
+class PlatformerEntity;
 class Portal;
 
 class IllusionBehavior : public GameComponent
@@ -22,6 +23,7 @@ private:
 	typedef GameComponent super;
 
 	Portal* portal = nullptr;
+	PlatformerEntity* entity = nullptr;
 	GameObject* object = nullptr;
 	std::string group;
 

@@ -84,7 +84,7 @@ void ReturnToQueenAgain::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void ReturnToQueenAgain::onActivate(bool isActiveThroughSkippable)
+void ReturnToQueenAgain::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->runCinematicSequence();
 
@@ -123,7 +123,7 @@ void ReturnToQueenAgain::runCinematicSequence()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_SaveTown_Return_A_CanWeLeave::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Left,
 				DialogueEvents::BuildPreviewNode(&this->guano, false),
 				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
@@ -138,7 +138,7 @@ void ReturnToQueenAgain::runCinematicSequence()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_SaveTown_Return_B_Yes::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->guano, false),
 				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)

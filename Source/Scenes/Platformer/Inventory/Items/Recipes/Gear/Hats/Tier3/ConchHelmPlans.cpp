@@ -38,8 +38,8 @@ std::vector<std::tuple<Item*, int>> ConchHelmPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Gold::create(), 2 },
+		{ StrongChitin::create(), 2 },
 	};
 }
 
@@ -60,7 +60,7 @@ const std::string& ConchHelmPlans::getIconResource()
 
 std::string ConchHelmPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_ConchHelm;
+	return ItemResources::Equipment_Gear_Hats_Tier3_ConchHelm;
 }
 
 const std::string& ConchHelmPlans::getIdentifier()

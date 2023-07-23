@@ -19,8 +19,7 @@ Shiftman* Shiftman::deserialize(ValueMap& properties)
 
 Shiftman::Shiftman(ValueMap& properties) : super::IsometricEntity(properties,
 	EntityResources::Squally_Animations,
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 	this->registerHackables();
 

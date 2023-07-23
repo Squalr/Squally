@@ -1,5 +1,5 @@
 {
-    "ar": "يتم تخزين حاصل في EAX/RAX، ويتم تخزين الباقي في EDX/RDX.",
+    "ar": ".RDX/EDX يتم تخزين حاصل في EAX/RAX، ويتم تخزين الباقي في",
     "bg": "Коефициентът се съхранява в EAX/RAX, а останалата част се съхранява в EDX/RDX.",
     "cs": "Podíl je uložen v EAX/RAX a zbytek je uložen v EDX/RDX.",
     "da": "Kvotienten gemmes i EAX/RAX, og resten gemmes i EDX/RDX.",

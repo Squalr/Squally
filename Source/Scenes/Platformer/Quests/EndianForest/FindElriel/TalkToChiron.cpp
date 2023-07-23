@@ -53,7 +53,7 @@ void TalkToChiron::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void TalkToChiron::onActivate(bool isActiveThroughSkippable)
+void TalkToChiron::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->runCinematicSequence();
 }

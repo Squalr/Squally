@@ -59,7 +59,7 @@ const std::string& MarineNecklaceRecipe::getIconResource()
 
 std::string MarineNecklaceRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Necklaces_MarineNecklace;
+	return ItemResources::Equipment_Gear_Necklaces__Deprecated_MarineNecklace;
 }
 
 const std::string& MarineNecklaceRecipe::getIdentifier()

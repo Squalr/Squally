@@ -100,8 +100,7 @@ void EntityDialogueBehavior::onLoad()
 		return true;
 	});
 
-	this->mainDialogueSet->addDialogueOption(DialogueOption::create(Strings::Platformer_Dialogue_Goodbye::create(), nullptr, false), 0.01f);
-
+	this->addDefaultGoodbyeOption();
 	this->scheduleUpdate();
 }
 
@@ -118,6 +117,11 @@ void EntityDialogueBehavior::update(float dt)
 
 	// Update on a loop -- this is to catch the case where dialogue options are added to a dialogue set, which isn't caught otherwise.
 	this->updateInteractable();
+}
+
+void EntityDialogueBehavior::addDefaultGoodbyeOption()
+{
+	this->mainDialogueSet->addDialogueOption(DialogueOption::create(Strings::Platformer_Dialogue_Goodbye::create(), nullptr, false), 0.01f);
 }
 
 SpeechBubble* EntityDialogueBehavior::getSpeechBubble()
@@ -162,6 +166,11 @@ void EntityDialogueBehavior::onInteract()
 		return;
 	}
 
+	for (std::function<void()>& next : this->interactCallbacks)
+	{
+		next();
+	}
+
 	this->progressDialogue();
 }
 
@@ -203,6 +212,11 @@ void EntityDialogueBehavior::removeDialogueSet(DialogueSet* dialogueSet)
 {
 	this->dialogueSets.erase(std::find(this->dialogueSets.begin(), this->dialogueSets.end(), dialogueSet));
 	this->dialogueSetNode->removeChild(dialogueSet);
+}
+
+void EntityDialogueBehavior::addInteractCallback(std::function<void()> interactCallback)
+{
+	this->interactCallbacks.push_back(interactCallback);
 }
 
 DialogueSet* EntityDialogueBehavior::getMainDialogueSet()
@@ -266,6 +280,7 @@ void EntityDialogueBehavior::showOptions()
 		"",
 		true,
 		false,
+		false,
 		callbacks
 	));
 }
@@ -322,7 +337,7 @@ SpeechBubble* EntityDialogueBehavior::buildSpeechBubble()
 
 	if (this->entity != nullptr)
 	{
-		Vec2 offset = this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 16.0f);
+		Vec2 offset = Vec2(0.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 16.0f);
 
 		instance->setPosition(offset);
 	}

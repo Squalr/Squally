@@ -16,10 +16,6 @@
         {
           "name": "BUILD_SHARED_LIBS",
           "value": "OFF"
-        },
-        {
-          "name": "CMAKE_TOOLCHAIN_FILE",
-          "value": "${workspaceRoot}/vcpkg/scripts/buildsystems/vcpkg.cmake"
         }
       ]
     },
@@ -39,10 +35,6 @@
         {
           "name": "BUILD_SHARED_LIBS",
           "value": "OFF"
-        },
-        {
-          "name": "CMAKE_TOOLCHAIN_FILE",
-          "value": "${workspaceRoot}/vcpkg/scripts/buildsystems/vcpkg.cmake"
         }
       ]
     },
@@ -62,10 +54,6 @@
         {
           "name": "BUILD_SHARED_LIBS",
           "value": "OFF"
-        },
-        {
-          "name": "CMAKE_TOOLCHAIN_FILE",
-          "value": "${workspaceRoot}/vcpkg/scripts/buildsystems/vcpkg.cmake"
         }
       ]
     }

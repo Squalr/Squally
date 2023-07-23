@@ -9,6 +9,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/Sound.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Events/NotificationEvents.h"
 
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
@@ -21,11 +22,14 @@
 
 using namespace cocos2d;
 
+const std::string CagedAnimal::PropertyIsMuseumDisplay = "is-museum-display";
+
 CagedAnimal::CagedAnimal(ValueMap& properties, std::string saveKey) : super(properties, 1)
 {
 	this->animalNode = Node::create();
 	this->shineFx = Sprite::create(ObjectResources::Collectables_Animals_CollectShine);
 	this->saveKey = saveKey;
+	this->isMuseumDisplay = GameUtils::getKeyOrDefault(this->properties, CagedAnimal::PropertyIsMuseumDisplay, Value(false)).asBool();
 
 	this->shineFx->setOpacity(0);
 
@@ -41,11 +45,23 @@ void CagedAnimal::onEnter()
 {
 	super::onEnter();
 
-	if (SaveManager::GetProfileDataOrDefault(this->saveKey, Value(false)).asBool())
+	this->alreadyCollected = SaveManager::GetProfileDataOrDefault(this->saveKey, Value(false)).asBool();
+
+	// If already collected, only show the animal if this is a museum display version
+	if (this->isMuseumDisplay)
 	{
-		this->alreadyCollected = true;
-		this->animalNode->setVisible(false);
-		this->shineFx->setVisible(false);
+		this->animalNode->setVisible(this->alreadyCollected);
+	}
+	else
+	{
+		this->animalNode->setVisible(!this->alreadyCollected);
+	}
+
+	if (this->isMuseumDisplay)
+	{
+		this->cageBottom->despawn();
+		this->cage->despawn();
+		this->cageTop->despawn();
 	}
 }
 

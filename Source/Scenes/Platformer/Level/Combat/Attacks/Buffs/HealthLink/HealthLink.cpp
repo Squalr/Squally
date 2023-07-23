@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
@@ -37,7 +39,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_UNDYING 1
+#define LOCAL_FUNC_ID_HEALTH_LINK 1
 
 const std::string HealthLink::HealthLinkIdentifier = "health-link";
 const float HealthLink::Duration = -1.0f;
@@ -91,7 +93,7 @@ void HealthLink::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_UNDYING,
+			LOCAL_FUNC_ID_HEALTH_LINK,
 			HackableCode::HackableCodeInfo(
 				HealthLink::HealthLinkIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_HealthLink_HealthLink::create(),
@@ -110,18 +112,21 @@ void HealthLink::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentShr::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentShrBy1::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentElaborate::create()) +
-						"shr edi, 1\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentHint::create())
-						
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentShr::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentShrBy1::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentElaborate::create()),
+							ConstantString::create("shr edi, 1\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentHint::create())
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentShr::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentShrBy1::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentElaborate::create()) +
-						"shr rdi, 1\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentHint::create())
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentShr::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentShrBy1::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentElaborate::create()),
+							ConstantString::create("shr rdi, 1\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentHint::create())
+						})
 					),
 				},
 				true
@@ -129,8 +134,7 @@ void HealthLink::registerHackables()
 		},
 	};
 
-	auto func = &HealthLink::applyHealthLink;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(HealthLink::applyHealthLink, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{
@@ -185,7 +189,7 @@ NO_OPTIMIZE void HealthLink::applyHealthLink()
 	ASM(push ZDI);
 	ASM_MOV_REG_VAR(edi, healthLinkDamageLocal);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_UNDYING);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HEALTH_LINK);
 	ASM(shr ZDI, 1);
 	ASM_NOP16();
 	HACKABLE_CODE_END();

@@ -80,7 +80,7 @@ void TalkToSarude::onLoad(QuestState questState)
 	}, TalkToSarude::QuestPortalTag);
 }
 
-void TalkToSarude::onActivate(bool isActiveThroughSkippable)
+void TalkToSarude::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->registerDialogue();
 }
@@ -116,7 +116,7 @@ void TalkToSarude::registerDialogue()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_A_CallForHelp::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->squally, false),
 				DialogueEvents::BuildPreviewNode(&this->sarude, true)
@@ -130,7 +130,7 @@ void TalkToSarude::registerDialogue()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Ellipses::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Left,
 				DialogueEvents::BuildPreviewNode(&this->squally, false),
 				DialogueEvents::BuildPreviewNode(&this->sarude, true),
@@ -145,50 +145,7 @@ void TalkToSarude::registerDialogue()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_B_DoYouRemember::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->squally, false),
-				DialogueEvents::BuildPreviewNode(&this->sarude, true)
-			),
-			[=]()
-			{
-			},
-			Voices::GetNextVoiceShort(),
-			false
-		));
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Ellipses::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->squally, false),
-				DialogueEvents::BuildPreviewNode(&this->sarude, true),
-				true
-			),
-			[=]()
-			{
-			},
-			"",
-			false
-		));
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_C_IThoughtNot::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->squally, false),
-				DialogueEvents::BuildPreviewNode(&this->sarude, true)
-			),
-			[=]()
-			{
-			},
-			Voices::GetNextVoiceShort(),
-			false
-		));
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_D_YouNeedTraining::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->squally, false),
 				DialogueEvents::BuildPreviewNode(&this->sarude, true)
@@ -200,9 +157,23 @@ void TalkToSarude::registerDialogue()
 			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_E_ToBeginYouMustLearnHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
+			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_D_OnlyYou::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->sarude, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceLong(),
+			false
+		));
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_E_YouNeedTraining::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->squally, false),
 				DialogueEvents::BuildPreviewNode(&this->sarude, true)
@@ -214,9 +185,9 @@ void TalkToSarude::registerDialogue()
 			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_F_HexusIsAGameWhere::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
+			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_F_ToBeginYouMustLearnHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->squally, false),
 				DialogueEvents::BuildPreviewNode(&this->sarude, true)
@@ -228,9 +199,9 @@ void TalkToSarude::registerDialogue()
 			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_G_WhoeverMastersHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
+			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_G_HexusIsAGameWhere::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->squally, false),
 				DialogueEvents::BuildPreviewNode(&this->sarude, true)
@@ -242,9 +213,23 @@ void TalkToSarude::registerDialogue()
 			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_H_PortalToGauntlet::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
+			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_H_WhoeverMastersHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->sarude, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceMedium(),
+			false
+		));
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_I_PortalToGauntlet::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->squally, false),
 				DialogueEvents::BuildPreviewNode(&this->sarude, true)
@@ -253,7 +238,7 @@ void TalkToSarude::registerDialogue()
 			{
 				this->complete();
 			},
-			Voices::GetNextVoiceMedium(),
+			Voices::GetNextVoiceLong(),
 			true
 		));
 	});

@@ -1,5 +1,5 @@
 {
-    "ar": "يتم التعامل مع سجلات EAX:EDX (32 بت) أو RAX:RDX (64 بت) كرقم كبير واحد، الأرباح. DIV يأخذ معامل واحد، القسمة.",
+    "ar": ".يتم التعامل مع سجلات EAX:EDX (32 بت) أو RAX:RDX (64 بت) كرقم كبير واحد، الأرباح. DIV يأخذ معامل واحد، القسمة",
     "bg": "Регистрите EAX:EDX (32-битов) или RAX:RDX (64-битов) се третират като един голям брой, дивидент. Div поема един операнд, делителът.",
     "cs": "Registry EAX:EDX (32-bit) nebo RAX:RDX (64-bit) jsou považovány za jedno velké číslo, dividenda. DIV má jeden operand, dělitel.",
     "da": "Registrene EAX:EDX (32-bit) eller RAX:RDX (64-bit) behandles som et stort tal, udbyttet. DIV tager en operand, divisoren.",

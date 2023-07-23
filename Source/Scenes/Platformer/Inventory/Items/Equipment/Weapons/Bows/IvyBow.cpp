@@ -21,11 +21,11 @@ IvyBow* IvyBow::create()
 	return instance;
 }
 
-IvyBow::IvyBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 24, 32, ItemStats(
+IvyBow::IvyBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), BOW_DAMAGE_MIN(5), BOW_DAMAGE_MAX(5), ItemStats(
 	// Health
-	0,
+	2,
 	// Mana
-	0,
+	5,
 	// Attack
 	0,
 	// Magic Attack
@@ -64,7 +64,7 @@ const std::string& IvyBow::getIdentifier()
 
 Vec2 IvyBow::getDisplayOffset()
 {
-	return Vec2(0.0f, -24.0f);
+	return Vec2(-10.0f, -66.0f);
 }
 
 Recipe* IvyBow::getRecipe()

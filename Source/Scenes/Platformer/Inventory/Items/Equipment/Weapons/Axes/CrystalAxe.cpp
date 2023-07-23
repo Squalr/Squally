@@ -21,11 +21,11 @@ CrystalAxe* CrystalAxe::create()
 	return instance;
 }
 
-CrystalAxe::CrystalAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 4, 7, ItemStats(
+CrystalAxe::CrystalAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), AXE_DAMAGE_MIN(8), AXE_DAMAGE_MAX(8), ItemStats(
 	// Health
-	0,
+	4,
 	// Mana
-	0,
+	4,
 	// Attack
 	0,
 	// Magic Attack
@@ -71,12 +71,12 @@ CSize CrystalAxe::getWeaponCollisionSize()
 Vec2 CrystalAxe::getWeaponCollisionOffset()
 {
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
-	return Vec2(0.0f, 212.0f);
+	return Vec2(-12.0f, 212.0f);
 }
 
 Vec2 CrystalAxe::getDisplayOffset()
 {
-	return Vec2(28.0f, -4.0f);
+	return Vec2(0.0f, -8.0f);
 }
 
 Recipe* CrystalAxe::getRecipe()

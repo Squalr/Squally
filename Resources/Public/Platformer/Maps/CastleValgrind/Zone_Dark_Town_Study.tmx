@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="40" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="845">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="IndoorHouse"/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="hide-mini-map" type="bool" value="true"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="carnival-dream"/>
+   <property name="rubber-band" type="int" value="11"/>
+   <property name="show-cracks" type="bool" value="false"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="96" name="wall bg -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="756" name="marble-dark" type="texture" x="1162" y="-182" width="1188" height="2000"/>
+ </objectgroup>
+ <objectgroup id="95" name="objects -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="826" name="Generic/LesserMoonDoorDark" type="decor" x="1603" y="552" width="310" height="492"/>
+ </objectgroup>
+ <objectgroup id="87" name="stairs -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="762" name="marble-dark" type="terrain" x="1313.85" y="1043.97" width="856.967" height="139.393">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="93" name="columns -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="773" name="marble-dark" type="terrain" x="1341.99" y="-561.325" width="91.2169" height="2000">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="774" name="marble-dark" type="terrain" x="2045.99" y="-569.325" width="91.2169" height="2000">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="86" name="stairs -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="761" name="marble-dark" type="terrain" x="1305.52" y="1068.3" width="856.967" height="139.393">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="92" name="columns -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="771" name="marble-dark" type="terrain" x="1339.99" y="-565.325" width="91.2169" height="2000">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="772" name="marble-dark" type="terrain" x="2049.99" y="-567.325" width="91.2169" height="2000">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="85" name="stairs -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="760" name="marble-dark" type="terrain" x="1315.18" y="1091.64" width="856.967" height="139.393">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="91" name="columns -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="769" name="marble-dark" type="terrain" x="1339.99" y="-557.325" width="91.2169" height="2000">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="770" name="marble-dark" type="terrain" x="2045.99" y="-571.325" width="91.2169" height="2000">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="84" name="stairs -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="759" name="marble-dark" type="terrain" x="1314.85" y="1115.3" width="856.967" height="139.393">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="90" name="columns -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="767" name="marble-dark" type="terrain" x="1337.99" y="-561.325" width="91.2169" height="2000">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="768" name="marble-dark" type="terrain" x="2041.99" y="-567.325" width="91.2169" height="2000">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="83" name="stairs -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="758" name="marble-dark" type="terrain" x="1312.18" y="1140.97" width="856.967" height="139.393">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="88" name="columns -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="765" name="marble-dark" type="terrain" x="1333.45" y="-560.477" width="91.2169" height="2000">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="766" name="marble-dark" type="terrain" x="2045.99" y="-569.325" width="91.2169" height="2000">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="82" name="stairs -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="757" name="marble-dark" type="terrain" x="1314.85" y="1167.64" width="856.967" height="139.393">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="16" name="Tiled bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="754" name="marble-dark" type="texture" x="-165.476" y="-52" width="1575.47" height="1364"/>
+  <object id="755" name="marble-dark" type="texture" x="2079.33" y="-46" width="3162.97" height="1364"/>
+ </objectgroup>
+ <objectgroup id="81" name="columns -0">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="763" name="marble-dark" type="terrain" x="1384.69" y="-557.325" width="51.823" height="2000">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="764" name="marble-dark" type="terrain" x="2033.69" y="-564.325" width="51.823" height="2000">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="76" name="decor bg2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="18" name="decor bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="828" name="Mines/CaveDoor4" type="decor" x="3954.96" y="808.394" width="333" height="385"/>
+ </objectgroup>
+ <objectgroup id="19" name="objects background">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="57" name="terrain 3">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="20" name="terrain 2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="753" name="marble-dark" type="terrain" x="-173.837" y="1195.09" width="5422.56" height="234.06"/>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="817" name="Generic/BookshelfEmptyDark1" type="decor" x="2582.78" y="588" width="727" height="608"/>
+  <object id="818" name="Generic/BookshelfEmptyDark1" type="decor" x="160.05" y="588" width="727" height="608"/>
+  <object id="819" name="Generic/BookshelfEmptyDark1" type="decor" x="3862" y="588" width="727" height="608">
+   <properties>
+    <property name="tag" value="secret-bookshelf"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="775" name="portal" type="object" x="1634.63" y="731.182" width="237.527" height="464.666">
+   <properties>
+    <property name="map" value="CastleValgrind/Zone_Dark_Town_Main"/>
+    <property name="transition" value="study"/>
+   </properties>
+  </object>
+  <object id="831" name="clock-door" type="object" x="3446.3" y="452.726" width="288" height="743">
+   <properties>
+    <property name="clock-style" value="haunted"/>
+    <property name="map" value="CastleValgrind/Town_Study"/>
+    <property name="quest" value=""/>
+    <property name="quest-line" value=""/>
+    <property name="transition" value="clock"/>
+   </properties>
+  </object>
+  <object id="836" name="portal" type="object" x="754.193" y="941.49" width="256" height="256">
+   <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="locked-text-key" value="none"/>
+    <property name="map" value="CastleValgrind/Town_Study"/>
+    <property name="transition" value="debug"/>
+   </properties>
+  </object>
+  <object id="838" name="objective-trigger" type="object" x="3204.11" y="-24.9112" width="700.878" height="1225.58">
+   <properties>
+    <property name="send-event" value="CV_EXPLORE_DARK_SIDE"/>
+   </properties>
+  </object>
+  <object id="839" name="portal" type="object" x="3989.98" y="936.607" width="256" height="256">
+   <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="locked-text-key" value="none"/>
+    <property name="map" value="CastleValgrind/Zone_2_0"/>
+    <property name="tag" value="secret-door"/>
+    <property name="transition" value="secret-door"/>
+   </properties>
+  </object>
+  <object id="841" name="arcane-book" type="object" x="4107.35" y="-580.854" width="128" height="128">
+   <properties>
+    <property name="quest" value="take-arcane-book"/>
+    <property name="quest-line" value="arcane-book"/>
+    <property name="reward-pool" value="arcane-book"/>
+    <property name="send-event" value="arcane-book-taken"/>
+   </properties>
+  </object>
+  <object id="842" name="caged-sheep" type="object" x="379.742" y="1084.07" width="196" height="112"/>
+  <object id="843" name="trigger" type="object" x="2569.56" y="-444.79" width="508.878" height="2353.58">
+   <properties>
+    <property name="send-event" value="meet-grim"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="835" name="mabel" type="entity" x="2837.84" y="1067.1" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,haunted,pacing"/>
+    <property name="other-world" type="bool" value="true"/>
+    <property name="quest" value="unhaunt-castle"/>
+    <property name="quest-line" value="cure-king"/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="844" name="grim" type="entity" x="2500" y="1068" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,face-squally"/>
+    <property name="quest" value="meet-grim"/>
+    <property name="quest-line" value="cure-king"/>
+    <property name="tag" value="cinematic-grim"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer" opacity="0.9">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.15"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="2248.72" y="1067.79" width="128" height="128">
+   <properties>
+    <property name="components" value="squally"/>
+   </properties>
+  </object>
+  <object id="779" name="spawn-wood-door" type="object" x="1686.93" y="1067.25" width="128" height="128">
+   <properties>
+    <property name="transition" value="study"/>
+   </properties>
+  </object>
+  <object id="833" name="spawn" type="object" x="3524.47" y="1065.97" width="128" height="128">
+   <properties>
+    <property name="transition" value="clock"/>
+   </properties>
+  </object>
+  <object id="840" name="spawn" type="object" x="4051.17" y="1068.02" width="128" height="128">
+   <properties>
+    <property name="transition" value="secret-door"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="77" name="decor +1">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+</map>

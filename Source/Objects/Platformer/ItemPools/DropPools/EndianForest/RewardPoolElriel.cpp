@@ -27,7 +27,7 @@ RewardPoolElriel::RewardPoolElriel(ValueMap& properties) : super(properties, Rew
 	{
 	})
 {
-	this->addItemToPool(ItemChance::create(GlowingPendant::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(TopazPendant::create(), ItemChance::Probability::Guaranteed));
 }
 
 RewardPoolElriel::~RewardPoolElriel()

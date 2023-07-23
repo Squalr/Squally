@@ -11,6 +11,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Objects/Platformer/Projectiles/Projectile.h"
+#include "Scenes/Platformer/Components/Entities/Abilities/EntityOutOfCombatAttackBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/SoundResources.h"
@@ -19,6 +20,8 @@
 using namespace cocos2d;
 
 const std::string AgroBehavior::MapKey = "agro";
+const std::string AgroBehavior::PropertyAgroRangeX = "agro-range-x";
+const std::string AgroBehavior::PropertyAgroRangeY = "agro-range-y";
 const float AgroBehavior::AgroRangeX = 720.0f;
 const float AgroBehavior::AgroRangeY = 512.0f;
 const float AgroBehavior::AgroRangeZ = 24.0f;
@@ -37,8 +40,8 @@ AgroBehavior::AgroBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->exclamation = Sprite::create(UIResources::Combat_Exclamation);
-	this->agroRangeX = AgroBehavior::AgroRangeX;
-	this->agroRangeY = AgroBehavior::AgroRangeY;
+	this->agroRangeX = GameUtils::getKeyOrDefault(owner->properties, AgroBehavior::PropertyAgroRangeX, Value(AgroBehavior::AgroRangeX)).asFloat();
+	this->agroRangeY = GameUtils::getKeyOrDefault(owner->properties, AgroBehavior::PropertyAgroRangeY, Value(AgroBehavior::AgroRangeY)).asFloat();
 	this->agroRangeZ = AgroBehavior::AgroRangeZ;
 	this->agroBeep = WorldSound::create(SoundResources::Platformer_Entities_Generic_AgroBeep2);
 
@@ -63,7 +66,7 @@ void AgroBehavior::initializePositions()
 
 	if (this->entity != nullptr)
 	{
-		Vec2 offset = this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 64.0f);
+		Vec2 offset = Vec2(0.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 64.0f);
 
 		this->exclamation->setPosition(offset);
 	}
@@ -128,6 +131,20 @@ void AgroBehavior::setAgroRangeY(float agroRange)
 	this->agroRangeY = agroRange;
 }
 
+bool AgroBehavior::isInMeleeRange(float meleeRange)
+{
+	Vec3 squallyPosition = GameUtils::getWorldCoords3D(this->squally);
+	Vec3 entityPosition = GameUtils::getWorldCoords3D(this->entity);
+
+	if (std::abs(squallyPosition.x - entityPosition.x) <= meleeRange &&
+		std::abs(squallyPosition.z - entityPosition.z) <= this->agroRangeZ)
+	{
+		return true;
+	}
+
+	return false;
+}
+
 void AgroBehavior::update(float dt)
 {
 	super::update(dt);
@@ -141,6 +158,23 @@ void AgroBehavior::update(float dt)
 	if (this->initCooldown > 0.0f)
 	{
 		this->initCooldown -= dt;
+		return;
+	}
+
+	bool isAttacking = false;
+
+	this->entity->getComponent<EntityOutOfCombatAttackBehavior>([&](EntityOutOfCombatAttackBehavior* behavior)
+	{
+		if (behavior->isAttacking())
+		{
+			this->entity->clearState(StateKeys::PatrolSourceX);
+			this->entity->clearState(StateKeys::PatrolDestinationX);
+			isAttacking = true;
+		}
+	});
+
+	if (isAttacking)
+	{
 		return;
 	}
 

@@ -8,6 +8,8 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
@@ -53,6 +55,8 @@ ArrowRain* ArrowRain::create(PlatformerEntity* caster, PlatformerEntity* target,
 
 ArrowRain::ArrowRain(PlatformerEntity* caster, PlatformerEntity* target, std::string arrowResource) : super(caster, target, true)
 {
+	this->impactSfxA = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitCrumple1);
+	this->impactSfxB = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitCrumple2);
 	this->arrowResource = arrowResource;
 
 	for (int index = 0; index < 8; index++)
@@ -68,6 +72,9 @@ ArrowRain::ArrowRain(PlatformerEntity* caster, PlatformerEntity* target, std::st
 
 		this->addChild(arrow);
 	}
+
+	this->addChild(this->impactSfxA);
+	this->addChild(this->impactSfxB);
 }
 
 ArrowRain::~ArrowRain()
@@ -119,17 +126,21 @@ void ArrowRain::registerHackables()
 				0.0f,
 				{
 					HackableCode::ReadOnlyScript(
-						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+							Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) +
-						"cmp eax, 1\n"
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())),
+							ConstantString::create("cmp eax, 1\n")
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
-						"cmp rax, 1\n"
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())),
+							ConstantString::create("cmp rax, 1\n")
+						})
 					),
 				},
 				true
@@ -137,8 +148,7 @@ void ArrowRain::registerHackables()
 		},
 	};
 
-	auto func = &ArrowRain::compareTeam;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
+	std::vector<HackableCode*> hackables = CREATE_HACKABLES(ArrowRain::compareTeam, codeInfoMap);
 
 	for (HackableCode* next : hackables)
 	{
@@ -227,6 +237,19 @@ void ArrowRain::damageOtherTeam()
 				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->caster, next->getEntity(), std::abs(ArrowRain::Damage), AbilityType::Passive, true));
 			}
 		}
+
+		static bool Alternate = false;
+
+		if (Alternate)
+		{
+			this->impactSfxA->play();
+		}
+		else
+		{
+			this->impactSfxB->play();
+		}
+
+		Alternate = !Alternate;
 	}));
 }
 

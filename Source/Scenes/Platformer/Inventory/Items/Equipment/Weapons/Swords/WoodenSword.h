@@ -7,6 +7,7 @@ class WoodenSword : public Sword
 public:
 	static WoodenSword* create();
 
+	std::string getWeaponImpactSound() override;
 	Item* clone() override;
 	LocalizedString* getString() override;
 	const std::string& getIconResource() override;

@@ -41,7 +41,7 @@ PartyMenu::PartyMenu()
 {
 	this->partyWindow = Sprite::create(UIResources::Menus_Generic_LargeMenu);
 	this->closeButton = ClickableNode::create(UIResources::Menus_PauseMenu_CloseButton, UIResources::Menus_PauseMenu_CloseButtonSelected);
-	this->partyLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Party_Party::create());
+	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Party_Party::create());
 	this->statsBarsNode = Node::create();
 	this->chooseTargetNode = Node::create();
 	this->chooseTargetFrame = Sprite::create(UIResources::Combat_ItemFrame);
@@ -102,8 +102,8 @@ PartyMenu::PartyMenu()
 		UIResources::Menus_Buttons_SmallGenericButton,
 		UIResources::Menus_Buttons_SmallGenericButtonSelected);
 
-	this->partyLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
-	this->partyLabel->enableGlow(Color4B::BLACK);
+	this->titleLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
+	this->titleLabel->enableGlow(Color4B::BLACK);
 	this->chooseTargetLabel->enableOutline(Color4B::BLACK, 2);
 	this->countLabel->enableOutline(Color4B::BLACK, 2);
 	this->countLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -115,7 +115,7 @@ PartyMenu::PartyMenu()
 	this->chooseTargetNode->addChild(this->countLabel);
 	this->chooseTargetNode->addChild(this->chooseTargetLabel);
 	this->addChild(this->partyWindow);
-	this->addChild(this->partyLabel);
+	this->addChild(this->titleLabel);
 	this->addChild(this->statsBarsNode);
 	this->addChild(this->closeButton);
 	this->addChild(this->stuckButton);
@@ -136,7 +136,7 @@ void PartyMenu::initializePositions()
 
 	this->partyWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->statsBarsNode->setPosition(Vec2(visibleSize.width / 2.0f - 460.0f, visibleSize.height / 2.0f + 128.0f));
-	this->partyLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
+	this->titleLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 580.0f, visibleSize.height / 2.0f + 368.0f));
 	this->stuckButton->setPosition(Vec2(visibleSize.width / 2.0f + 384.0f, visibleSize.height / 2.0f - 288.0f));
 	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 472.0f));
@@ -189,6 +189,11 @@ void PartyMenu::initializeListeners()
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_UP_ARROW, InputEvents::KeyCode::KEY_W }, [=](InputEvents::KeyboardEventArgs* args)
 	{
+		if (args == nullptr || args->isHandled())
+		{
+			return;
+		}
+
 		args->handle();
 		
 		this->trySelectPrevious();
@@ -196,6 +201,16 @@ void PartyMenu::initializeListeners()
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_LEFT_ARROW, InputEvents::KeyCode::KEY_A }, [=](InputEvents::KeyboardEventArgs* args)
 	{
+		if (args == nullptr || args->isHandled())
+		{
+			return;
+		}
+
+		if (this->isInSelectMode)
+		{
+			this->onCancelClick();
+		}
+
 		args->handle();
 		
 		this->trySelectPrevious();
@@ -203,6 +218,11 @@ void PartyMenu::initializeListeners()
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_RIGHT_ARROW, InputEvents::KeyCode::KEY_D }, [=](InputEvents::KeyboardEventArgs* args)
 	{
+		if (args == nullptr || args->isHandled())
+		{
+			return;
+		}
+
 		args->handle();
 		
 		this->trySelectNext();
@@ -210,6 +230,11 @@ void PartyMenu::initializeListeners()
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_DOWN_ARROW, InputEvents::KeyCode::KEY_S }, [=](InputEvents::KeyboardEventArgs* args)
 	{
+		if (args == nullptr || args->isHandled())
+		{
+			return;
+		}
+
 		args->handle();
 
 		this->trySelectNext();
@@ -217,6 +242,11 @@ void PartyMenu::initializeListeners()
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
+		if (args == nullptr || args->isHandled())
+		{
+			return;
+		}
+
 		if (!GameUtils::isVisible(this))
 		{
 			return;
@@ -229,6 +259,11 @@ void PartyMenu::initializeListeners()
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
+		if (args == nullptr || args->isHandled())
+		{
+			return;
+		}
+
 		if (GameUtils::getFocusedNode() != this)
 		{
 			return;
@@ -250,13 +285,14 @@ void PartyMenu::open()
 {
 	this->buildAllStats();
 
-	for (auto next : this->partyStatsBars)
+	for (StatsBars* next : this->partyStatsBars)
 	{
 		next->disableInteraction();
 		next->setClickCallback(nullptr);
 	}
 
 	// State for a normal open
+	this->isInSelectMode = false;
 	this->onSelect = nullptr;
 	this->onExit = nullptr;
 	this->cancelButton->setVisible(false);
@@ -272,7 +308,7 @@ void PartyMenu::openForSelection(std::string iconResource, int count, std::funct
 	this->countString->setString(std::to_string(count));
 	this->chooseTargetItemIcon->initWithFile(iconResource);
 
-	for (auto next : this->partyStatsBars)
+	for (StatsBars* next : this->partyStatsBars)
 	{
 		if (canSelect != nullptr && !canSelect(next->getStatsTarget()))
 		{
@@ -305,6 +341,7 @@ void PartyMenu::openForSelection(std::string iconResource, int count, std::funct
 	this->trySelectNext();
 
 	// State for a selection based open
+	this->isInSelectMode = true;
 	this->onSelect = onSelect;
 	this->onExit = onExit;
 	this->cancelButton->setVisible(true);

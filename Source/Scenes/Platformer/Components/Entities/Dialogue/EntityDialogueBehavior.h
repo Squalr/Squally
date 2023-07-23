@@ -19,11 +19,13 @@ class EntityDialogueBehavior : public GameComponent
 public:
 	static EntityDialogueBehavior* create(GameObject* owner);
 
+	void addDefaultGoodbyeOption();
 	void enqueuePretext(DialogueEvents::DialogueOpenArgs pretext);
 	void clearPretext();
 	void setActiveDialogueSet(DialogueSet* dialogueSet, bool showDialogue = true);
 	void addDialogueSet(DialogueSet* dialogueSet);
 	void removeDialogueSet(DialogueSet* dialogueSet);
+	void addInteractCallback(std::function<void()> interactCallback);
 	void enableInteraction();
 	void disableInteraction();
 	DialogueSet* getMainDialogueSet();
@@ -43,7 +45,7 @@ protected:
 
 private:
 	typedef GameComponent super;
-
+	
 	void onInteract();
 	void showOptions();
 	bool hasDialogueOptions();
@@ -51,6 +53,7 @@ private:
 	LocalizedString* getOptionString(int index, LocalizedString* optionText);
 	SpeechBubble* buildSpeechBubble();
 
+	std::vector<std::function<void()>> interactCallbacks;
 	PlatformerEntity* entity = nullptr;
 	Scrappy* scrappy = nullptr;
 	LazyNode<SpeechBubble>* speechBubble = nullptr;

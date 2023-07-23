@@ -29,8 +29,6 @@ protected:
 
 private:
 	typedef Buff super;
-
-	void incrementHeal();
 	
 	SmartAnimationSequenceNode* healEffect = nullptr;
 	WorldSound* impactSound = nullptr;

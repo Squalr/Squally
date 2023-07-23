@@ -21,11 +21,11 @@ VoidWand* VoidWand::create()
 	return instance;
 }
 
-VoidWand::VoidWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 24, 28, ItemStats(
+VoidWand::VoidWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), WAND_DAMAGE_MIN(9), WAND_DAMAGE_MAX(9), ItemStats(
 	// Health
 	0,
 	// Mana
-	0,
+	27,
 	// Attack
 	0,
 	// Magic Attack

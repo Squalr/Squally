@@ -20,7 +20,7 @@ Obsidian* Obsidian::create()
 	return instance;
 }
 
-Obsidian::Obsidian() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 94 }}), ItemMeta(20000))
+Obsidian::Obsidian() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 8 * 8 }}), ItemMeta(20000))
 {
 }
 
@@ -40,7 +40,7 @@ LocalizedString* Obsidian::getString()
 
 const std::string& Obsidian::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_Obsidian;
+	return ItemResources::Crafting_Smithing_T8_Obsidian;
 }
 
 const std::string& Obsidian::getIdentifier()

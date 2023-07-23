@@ -5,6 +5,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Sound/WorldSound.h"
+#include "Engine/Utils/CombatUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/CurseOfTheAncients/CurseOfTheAncients.h"
@@ -27,7 +28,7 @@ CastCurseOfTheAncients* CastCurseOfTheAncients::create(float attackDuration, flo
 }
 
 CastCurseOfTheAncients::CastCurseOfTheAncients(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Debuff, UIResources::Menus_Icons_RunePurple, priority, AbilityType::Physical, 0, 0, 5, attackDuration, recoverDuration)
+	: super(AttackType::Debuff, UIResources::Menus_Icons_RunePurple, priority, AbilityType::Shadow, 0, 0, 5, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 	
@@ -66,7 +67,7 @@ void CastCurseOfTheAncients::performAttack(PlatformerEntity* owner, std::vector<
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
@@ -83,9 +84,15 @@ bool CastCurseOfTheAncients::isWorthUsing(PlatformerEntity* caster, const std::v
 {
 	int uncastableCount = 0;
 
-	for (auto next : otherTeam)
+	for (PlatformerEntity* next : otherTeam)
 	{
 		if (!next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			uncastableCount++;
+			continue;
+		}
+		
+		if (CombatUtils::HasDuplicateCastOnLivingTarget(caster, next, [](PlatformerAttack* next) { return dynamic_cast<CastCurseOfTheAncients*>(next) != nullptr;  }))
 		{
 			uncastableCount++;
 			continue;
@@ -105,7 +112,7 @@ bool CastCurseOfTheAncients::isWorthUsing(PlatformerEntity* caster, const std::v
 
 float CastCurseOfTheAncients::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	float utility = target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) ? 1.0f : 0.0f;
+	float utility = CombatUtils::HasDuplicateCastOnLivingTarget(caster, target, [](PlatformerAttack* next) { return dynamic_cast<CastCurseOfTheAncients*>(next) != nullptr;  }) ? 0.0f : 1.0f;
 
 	target->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{

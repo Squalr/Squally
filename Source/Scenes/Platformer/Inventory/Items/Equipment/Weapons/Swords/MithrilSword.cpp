@@ -21,11 +21,11 @@ MithrilSword* MithrilSword::create()
 	return instance;
 }
 
-MithrilSword::MithrilSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 16, 24, ItemStats(
+MithrilSword::MithrilSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), SWORD_DAMAGE_MIN(5), SWORD_DAMAGE_MAX(5), ItemStats(
 	// Health
-	0,
+	3,
 	// Mana
-	0,
+	2,
 	// Attack
 	0,
 	// Magic Attack

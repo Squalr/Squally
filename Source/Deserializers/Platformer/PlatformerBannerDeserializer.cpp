@@ -50,15 +50,18 @@ PlatformerBannerDeserializer::PlatformerBannerDeserializer() : super()
 	// CV
 	this->deserializers["castle-valgrind"] = [=]() { return Strings::Platformer_MapNames_CastleValgrind_CastleValgrind::create(); };
 
-	// BP
-	this->deserializers["ballmer-peaks"] = [=]() { return Strings::Platformer_MapNames_BallmerPeaks_BallmerPeaks::create(); };
-
-	// DH
-	this->deserializers["daemons-hallow"] = [=]() { return Strings::Platformer_MapNames_DaemonsHallow_DaemonsHallow::create(); };
-
 	// LC
 	this->deserializers["lambda-crypts"] = [=]() { return Strings::Platformer_MapNames_LambdaCrypts_LambdaCrypts::create(); };
+	this->deserializers["grave-flower"] = [=]() { return Strings::Platformer_MapNames_LambdaCrypts_GraveFlower::create(); };
 	this->deserializers["valley-ash"] = [=]() { return Strings::Platformer_MapNames_LambdaCrypts_ValleyOfAsh::create(); };
+
+	// FF
+	this->deserializers["firewall-fissure"] = [=]() { return Strings::Platformer_MapNames_FirewallFissure_FirewallFissure::create(); };
+	this->deserializers["brimstone"] = [=]() { return Strings::Platformer_MapNames_FirewallFissure_Brimstone::create(); };
+
+	// BP
+	this->deserializers["ballmer-peaks"] = [=]() { return Strings::Platformer_MapNames_BallmerPeaks_BallmerPeaks::create(); };
+	this->deserializers["workshop"] = [=]() { return Strings::Platformer_MapNames_BallmerPeaks_Workshop::create(); };
 
 	// VS
 	this->deserializers["void-star"] = [=]() { return Strings::Platformer_MapNames_VoidStar_VoidStar::create(); };

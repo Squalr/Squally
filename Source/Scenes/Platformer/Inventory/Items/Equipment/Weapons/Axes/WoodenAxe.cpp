@@ -5,6 +5,7 @@
 #include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Axes/WoodenAxePlans.h"
 
 #include "Resources/ItemResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Strings.h"
 
@@ -21,9 +22,9 @@ WoodenAxe* WoodenAxe::create()
 	return instance;
 }
 
-WoodenAxe::WoodenAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 4, 7, ItemStats(
+WoodenAxe::WoodenAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), AXE_DAMAGE_MIN(1), AXE_DAMAGE_MAX(1), ItemStats(
 	// Health
-	0,
+	1,
 	// Mana
 	0,
 	// Attack
@@ -40,6 +41,11 @@ WoodenAxe::WoodenAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifie
 
 WoodenAxe::~WoodenAxe()
 {
+}
+
+std::string WoodenAxe::getWeaponImpactSound()
+{
+	return SoundResources::Platformer_Physical_Impact_HitWood1;
 }
 
 Item* WoodenAxe::clone()

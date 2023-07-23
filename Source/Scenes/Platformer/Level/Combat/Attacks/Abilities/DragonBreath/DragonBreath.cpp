@@ -48,7 +48,8 @@ PlatformerAttack* DragonBreath::cloneInternal()
 
 LocalizedString* DragonBreath::getString()
 {
-	return Strings::Platformer_Combat_Attacks_Slash::create();
+	// Not user facing
+	return Strings::TODO::create();
 }
 
 std::string DragonBreath::getAttackAnimation()
@@ -60,7 +61,7 @@ void DragonBreath::performAttack(PlatformerEntity* owner, std::vector<Platformer
 {
 	super::performAttack(owner, targets);
 	
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		SmartAnimationSequenceNode* fireBreath = SmartAnimationSequenceNode::create();
 		Fireball* fireball = Fireball::create(owner, next);

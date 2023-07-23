@@ -112,7 +112,7 @@ void NotificationHud::initializeListeners()
 		
 		if (args != nullptr)
 		{
-			this->showNotificationTakeover(args->title, args->description, args->soundResource);
+			this->showNotificationTakeover(args->title, args->description, args->soundResource, args->showBackground);
 		}
 	}));
 
@@ -209,10 +209,11 @@ void NotificationHud::onHackerModeDisable()
 	this->contentNode->setVisible(true);
 }
 
-void NotificationHud::showNotificationTakeover(LocalizedString* title, LocalizedString* description, std::string soundResource)
+void NotificationHud::showNotificationTakeover(LocalizedString* title, LocalizedString* description, std::string soundResource, bool showBackground)
 {
 	this->title->setLocalizedString(title);
 	this->description->setLocalizedString(description);
+	this->backdrop->setVisible(showBackground);
 	this->takeoverNode->setVisible(true);
 	this->notificationSound->setSoundResource(soundResource);
 	

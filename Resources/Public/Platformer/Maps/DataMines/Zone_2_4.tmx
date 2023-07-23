@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="24" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="89" nextobjectid="841">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="24" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="89" nextobjectid="843">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -7,12 +7,12 @@
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="heartbeat"/>
-   <property name="rubber-band" type="int" value="5"/>
+   <property name="rubber-band" type="int" value="10"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="58" name="tiled bg -8" visible="0">
+ <objectgroup id="58" name="tiled bg -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -45,6 +45,8 @@
   </properties>
   <object id="818" name="mines" type="terrain" x="1071.46" y="1896.67" width="758.413" height="412">
    <properties>
+    <property name="components" value="illusion-disabled"/>
+    <property name="illusion-group" value="A"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
@@ -75,6 +77,8 @@
   </properties>
   <object id="817" name="mines" type="terrain" x="978.13" y="1914" width="942.413" height="412">
    <properties>
+    <property name="components" value="illusion-disabled"/>
+    <property name="illusion-group" value="A"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
@@ -96,6 +100,8 @@
   </properties>
   <object id="811" name="mines" type="terrain" x="940.19" y="1927.94" width="1017.08" height="412">
    <properties>
+    <property name="components" value="illusion-disabled"/>
+    <property name="illusion-group" value="A"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
@@ -110,7 +116,12 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="840" name="Mines/WarpTower" type="decor" x="970.5" y="-316.5" width="979" height="2249"/>
+  <object id="840" name="Mines/WarpTower" type="decor" x="973.53" y="-301.348" width="979" height="2249">
+   <properties>
+    <property name="components" value="illusion-disabled"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="75" name="fireflies -5">
   <properties>
@@ -133,6 +144,8 @@
   </properties>
   <object id="816" name="mines" type="terrain" x="979.63" y="1937.17" width="942.413" height="412">
    <properties>
+    <property name="components" value="illusion-disabled"/>
+    <property name="illusion-group" value="A"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
@@ -158,6 +171,8 @@
   </properties>
   <object id="815" name="mines" type="terrain" x="1069.46" y="1947" width="758.413" height="412">
    <properties>
+    <property name="components" value="illusion-disabled"/>
+    <property name="illusion-group" value="A"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
@@ -188,6 +203,8 @@
   </properties>
   <object id="814" name="mines" type="terrain" x="1194.79" y="1957" width="503.747" height="412">
    <properties>
+    <property name="components" value="illusion-disabled"/>
+    <property name="illusion-group" value="A"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
@@ -213,6 +230,8 @@
   </properties>
   <object id="812" name="mines" type="terrain" x="1263.43" y="1965.98" width="371.747" height="412">
    <properties>
+    <property name="components" value="illusion-disabled"/>
+    <property name="illusion-group" value="A"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
@@ -271,8 +290,16 @@
   </object>
   <object id="819" name="portal" type="object" x="1322.3" y="1718.06" width="256" height="256">
    <properties>
-    <property name="map" value="DataMines/Mages_Warp"/>
-    <property name="transition" value="warp-room"/>
+    <property name="components" value="illusion-disabled"/>
+    <property name="illusion-group" value="A"/>
+    <property name="map" value="MagesGuild/Mages_Warp"/>
+    <property name="transition" value="dm"/>
+   </properties>
+  </object>
+  <object id="842" name="magic-wall-disabled" type="object" x="1136.21" y="1197.38" width="679.102" height="781">
+   <properties>
+    <property name="components" value="dispel-illusion-disabled"/>
+    <property name="illusion-group" value="A"/>
    </properties>
   </object>
  </objectgroup>
@@ -310,7 +337,7 @@
   </object>
   <object id="821" name="spawn" type="object" x="1386.67" y="1846.67" width="128" height="128">
    <properties>
-    <property name="transition" value="warp-room"/>
+    <property name="transition" value="dm"/>
    </properties>
   </object>
  </objectgroup>

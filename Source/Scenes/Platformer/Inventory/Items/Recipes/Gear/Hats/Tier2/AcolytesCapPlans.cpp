@@ -60,7 +60,7 @@ const std::string& AcolytesCapPlans::getIconResource()
 
 std::string AcolytesCapPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_AcolytesCap;
+	return ItemResources::Equipment_Gear_Hats_Tier2_AcolytesCap;
 }
 
 const std::string& AcolytesCapPlans::getIdentifier()

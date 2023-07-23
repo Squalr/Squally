@@ -8,6 +8,8 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
@@ -123,17 +125,21 @@ void FogOfWar::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShl::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShlBy1::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentElaborate::create()) +
-						"shl edx, 1\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentHint::create())
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShl::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShlBy1::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentElaborate::create()),
+							ConstantString::create("shl edx, 1\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentHint::create())
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShl::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShlBy1::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentElaborate::create()) +
-						"shl rdx, 1\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentHint::create())
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShl::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShlBy1::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentElaborate::create()),
+							ConstantString::create("shl rdx, 1\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentHint::create())
+						})
 					),
 				},
 				true
@@ -141,8 +147,7 @@ void FogOfWar::registerHackables()
 		},
 	};
 
-	auto func = &FogOfWar::increaseDamage;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
+	std::vector<HackableCode*> hackables = CREATE_HACKABLES(FogOfWar::increaseDamage, codeInfoMap);
 
 	for (HackableCode* next : hackables)
 	{

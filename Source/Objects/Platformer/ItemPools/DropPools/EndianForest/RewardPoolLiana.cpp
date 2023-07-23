@@ -27,10 +27,8 @@ RewardPoolLiana::RewardPoolLiana(ValueMap& properties) : super(properties, Rewar
 	{
 	})
 {
-	this->addItemToPool(ItemChance::create(WoodenSword::create(), ItemChance::Probability::VeryCommon));
-	this->addItemToPool(ItemChance::create(WoodenAxe::create(), ItemChance::Probability::VeryCommon));
-	this->addItemToPool(ItemChance::create(WoodenClub::create(), ItemChance::Probability::VeryCommon));
-	this->addItemToPool(ItemChance::create(WoodenWand::create(), ItemChance::Probability::VeryCommon));
+	this->addItemToPool(ItemChance::create(BucketHelm::create(), ItemChance::Probability::VeryCommon));
+	this->addItemToPool(ItemChance::create(OldShoe::create(), ItemChance::Probability::VeryCommon));
 }
 
 RewardPoolLiana::~RewardPoolLiana()

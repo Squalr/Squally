@@ -117,13 +117,16 @@
         "compare": "cpp",
         "stop_token": "cpp",
         "charconv": "cpp",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "csignal": "cpp",
+        "format": "cpp",
+        "coroutine": "cpp",
+        "any": "cpp"
     },
     "workbench.editor.enablePreviewFromQuickOpen": false,
-    "C_Cpp.configurationWarnings": "Disabled",
+    "C_Cpp.configurationWarnings": "disabled",
     "cmake.generator": "Ninja",
     "cmake.configureSettings": {
-        "CMAKE_TOOLCHAIN_FILE": "${workspaceRoot}/vcpkg/scripts/buildsystems/vcpkg.cmake",
         "BUILD_SHARED_LIBS": "OFF",
         "BUILD_EDITOR_SPINE": "OFF",
         "BUILD_EDITOR_COCOSTUDIO": "OFF",

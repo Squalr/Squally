@@ -18,7 +18,6 @@ public:
 	static const std::string EFFindElriel;
 	static const std::string EFSearchTemple;
 	static const std::string EFReturnToQueen;
-	static const std::string EFVisitMarcel;
 	static const std::string EFHeadNorth;
 	static const std::string EFAmbush;
 	static const std::string EFRepairRam;
@@ -46,4 +45,41 @@ public:
 	static const std::string DMReturnToPrincessDawn;
 	static const std::string DMObtainTrainTicket;
 	static const std::string DMRideTrainToCastleValgrind;
+
+	static const std::string CVEnterCastle;
+	static const std::string CVInvestigateCastle;
+	static const std::string CVTakeArcaneBook;
+	static const std::string CVExamineArcaneEnergy;
+	static const std::string CVRepairClock;
+	static const std::string CVEnterClock;
+	static const std::string CVExploreDarkSide;
+	static const std::string CVDefeatSpirits;
+	static const std::string CVReturnToMabel;
+	static const std::string CVExploreSecretTunnel;
+	static const std::string CVDefeatAgnes;
+	static const std::string CVEnterLambdaCrypts;
+
+	static const std::string LCSeekAmelia;
+	static const std::string LCTalkToNebea;
+	static const std::string LCReturnToElric;
+	static const std::string LCEnterLesserCrypt;
+	static const std::string LCExploreLesserCrypt;
+	static const std::string LCFindGems;
+	static const std::string LCEnterGreaterCrypt;
+	static const std::string LCExploreGreaterCrypt;
+	static const std::string LCCraftDemonHeart;
+	static const std::string LCOpenDemonPortal;
+
+	static const std::string FFExploreFirewallFissure;
+	static const std::string FFEnterTown;
+	static const std::string FFCraftBomb;
+	static const std::string FFDeliverBomb;
+	static const std::string FFLaunchBomb;
+	static const std::string FFFindAsmodeus;
+	static const std::string FFAscendVolcano;
+	
+	static const std::string VSExplore;
+	static const std::string VSExploreLab;
+	static const std::string VSDestroyPerceptron;
+	static const std::string VSDestroyReactorCore;
 };

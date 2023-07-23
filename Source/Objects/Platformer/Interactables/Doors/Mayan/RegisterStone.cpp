@@ -9,6 +9,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Objects/Platformer/Interactables/Doors/Mayan/MayanDoor.h"
@@ -55,6 +56,7 @@ RegisterStone::RegisterStone(ValueMap& properties) : super(properties, InteractO
 	this->pushInteract = InteractObject::create(InteractObject::InteractType::Input, CSize(100.0f, 118.0f), Vec2::ZERO, Strings::Platformer_Objects_Interaction_OperationPush::create(), InputEvents::KeyCode::KEY_C, Color3B(16, 23, 57));
 	this->fxGlow = Sprite::create(UIResources::HUD_EmblemGlow);
 	this->fxGlowTop = Sprite::create(UIResources::HUD_EmblemGlow);
+	this->pushSfx = WorldSound::create(SoundResources::Platformer_FX_Woosh_WooshWhispy2);
 
 	this->addTag(this->registerStr);
 	this->valueLabel->enableOutline(Color4B::BLACK, 2);
@@ -64,6 +66,7 @@ RegisterStone::RegisterStone(ValueMap& properties) : super(properties, InteractO
 	this->fxGlow->setOpacity(0);
 	this->fxGlowTop->setOpacity(0);
 	
+	this->addChild(this->pushSfx);
 	this->addChild(this->pushInteract);
 	this->addChild(this->registerStone);
 	this->addChild(this->fxGlow);
@@ -168,6 +171,7 @@ void RegisterStone::runAnimationOut()
 	
 	this->broadcastMapEvent(MayanDoor::MapEventLockInteraction, ValueMap());
 
+	this->pushSfx->play();
 	this->animatedLabel->runAction(Sequence::create(
 		MoveBy::create(Speed, Delta),
 		CallFunc::create([=]()

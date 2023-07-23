@@ -53,7 +53,7 @@ LocalizedString* ShamanTiara::getString()
 
 const std::string& ShamanTiara::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_ShamanTiara;
+	return ItemResources::Equipment_Gear_Hats__Deprecated_ShamanTiara;
 }
 
 const std::string& ShamanTiara::getIdentifier()

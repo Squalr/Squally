@@ -16,12 +16,14 @@ const std::string CombatEvents::EventSelectionChanged = "EVENT_COMBAT_SELECTION_
 const std::string CombatEvents::EventSelectCastTarget = "EVENT_COMBAT_SELECT_CAST_TARGET";
 const std::string CombatEvents::EventRequestAIAction = "EVENT_COMBAT_REQUEST_AI_ACTION";
 const std::string CombatEvents::EventRequestRetargetCorrection = "EVENT_COMBAT_REQUEST_RETARGET_CORRECTION";
+const std::string CombatEvents::EventRequestRetargetReevaluation = "EVENT_COMBAT_REQUEST_RETARGET_REEVALUATION";
 const std::string CombatEvents::EventRegisterTimelineEventGroup = "EVENT_REGISTER_TIMELINE_EVENT_GROUP";
 const std::string CombatEvents::EventBuffApplied = "EVENT_COMBAT_BUFF_APPLIED";
 const std::string CombatEvents::EventBuffRemoved = "EVENT_COMBAT_BUFF_REMOVED";
 const std::string CombatEvents::EventBuffTimeElapsed = "EVENT_COMBAT_BUFF_TIME_ELAPSED";
 const std::string CombatEvents::EventProjectileSpawned = "EVENT_PROJECTILE_SPAWNED";
 const std::string CombatEvents::EventEntityTimelineReset = "EVENT_COMBAT_TIMELINE_RESET";
+const std::string CombatEvents::EventRefreshTimeline = "EVENT_COMBAT_REFRESH_TIMELINE";
 const std::string CombatEvents::EventPauseTimeline = "EVENT_COMBAT_PAUSE_TIMELINE";
 const std::string CombatEvents::EventPauseTimelineCinematic = "EVENT_COMBAT_PAUSE_TIMELINE_CINEMATIC";
 const std::string CombatEvents::EventResumeTimeline = "EVENT_COMBAT_RESUME_TIMELINE";
@@ -135,11 +137,26 @@ void CombatEvents::TriggerRequestRetargetCorrection(AIRequestArgs args)
 	);
 }
 
+void CombatEvents::TriggerRequestRetargetReevalutation(AIRequestArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
+		CombatEvents::EventRequestRetargetReevaluation,
+		&args
+	);
+}
+
 void CombatEvents::TriggerRequestAIAction(AIRequestArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventRequestAIAction,
 		&args
+	);
+}
+
+void CombatEvents::TriggerRefreshTimeline()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
+		CombatEvents::EventRefreshTimeline
 	);
 }
 

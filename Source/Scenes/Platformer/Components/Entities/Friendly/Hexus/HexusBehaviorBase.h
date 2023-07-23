@@ -56,6 +56,7 @@ protected:
 	virtual LocalizedString* getCustomWinDialogue();
 	virtual LocalizedString* getCustomDrawDialogue();
 	virtual LocalizedString* getCustomLossDialogue();
+	void rebuildDialogue();
 	void runPostMatchDialogue(LocalizedString* dialogue);
 
 	PlatformerEntity* entity = nullptr;

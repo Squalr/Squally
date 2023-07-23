@@ -109,7 +109,7 @@ void ItemMenu::initializeListeners()
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		if (!this->isFocused || this->visibleItems.empty())
+		if (!this->isFocused || this->visibleItems.empty() || args->isHandled())
 		{
 			return;
 		}
@@ -124,7 +124,7 @@ void ItemMenu::initializeListeners()
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_RIGHT_ARROW, InputEvents::KeyCode::KEY_D, }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		if (!this->isFocused || this->visibleItems.empty())
+		if (!this->isFocused || this->visibleItems.empty() || args->isHandled())
 		{
 			return;
 		}
@@ -254,10 +254,19 @@ bool ItemMenu::hasFocus()
 {
 	return this->isFocused;
 }
+void ItemMenu::lock()
+{
+	this->isLocked = true;
+}
+
+void ItemMenu::unlock()
+{
+	this->isLocked = false;
+}
 
 void ItemMenu::scrollInventoryUp()
 {
-	if (!this->isFocused)
+	if (!this->isFocused || this->isLocked)
 	{
 		return;
 	}
@@ -269,7 +278,7 @@ void ItemMenu::scrollInventoryUp()
 
 void ItemMenu::scrollInventoryDown()
 {
-	if (!this->isFocused)
+	if (!this->isFocused || this->isLocked)
 	{
 		return;
 	}

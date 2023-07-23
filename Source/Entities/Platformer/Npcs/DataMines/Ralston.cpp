@@ -25,8 +25,7 @@ Ralston::Ralston(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_DataMines_Ralston_Animations,
 	EntityResources::Npcs_DataMines_Ralston_Emblem,
 	CSize(112.0f, 160.0f),
-	0.85f,
-	Vec2(0.0f, 0.0f))
+	0.85f)
 {
 }
 
@@ -36,7 +35,7 @@ Ralston::~Ralston()
 
 Vec2 Ralston::getDialogueOffset()
 {
-	return Vec2(0.0f, 0.0f);
+	return Vec2(0.0f, -32.0f);
 }
 
 LocalizedString* Ralston::getEntityName()

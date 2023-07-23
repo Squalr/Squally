@@ -21,11 +21,11 @@ BoneAxe* BoneAxe::create()
 	return instance;
 }
 
-BoneAxe::BoneAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 4, 7, ItemStats(
+BoneAxe::BoneAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), AXE_DAMAGE_MIN(6), AXE_DAMAGE_MAX(6), ItemStats(
 	// Health
-	0,
+	3,
 	// Mana
-	0,
+	3,
 	// Attack
 	0,
 	// Magic Attack
@@ -71,12 +71,12 @@ CSize BoneAxe::getWeaponCollisionSize()
 Vec2 BoneAxe::getWeaponCollisionOffset()
 {
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
-	return Vec2(0.0f, 212.0f);
+	return Vec2(-8.0f, 212.0f);
 }
 
 Vec2 BoneAxe::getDisplayOffset()
 {
-	return Vec2(28.0f, -4.0f);
+	return Vec2(0.0f, -8.0f);
 }
 
 Recipe* BoneAxe::getRecipe()

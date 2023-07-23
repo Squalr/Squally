@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="58" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="1699">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="58" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="1700">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -7,7 +7,7 @@
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="heartbeat"/>
-   <property name="rubber-band" type="int" value="5"/>
+   <property name="rubber-band" type="int" value="11"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
@@ -401,7 +401,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="57" name="objects back" visible="0">
+ <objectgroup id="57" name="objects back">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -434,7 +434,11 @@
     <property name="tag" value="cart-A"/>
    </properties>
   </object>
-  <object id="991" name="life-stone" type="object" x="2658.64" y="1222.44" width="146" height="423"/>
+  <object id="991" name="life-stone" type="object" x="2658.64" y="1222.44" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
   <object id="1647" name="register-stone" type="object" x="4829.65" y="1530.73" width="150" height="118">
    <properties>
     <property name="correct-value" type="int" value="8"/>
@@ -505,7 +509,7 @@
   </properties>
   <object id="1655" name="raka" type="entity" x="7008" y="1482.5" width="128" height="167">
    <properties>
-    <property name="components" value="raka,raka-hexus,friendly,pacing,pick-pocket"/>
+    <property name="components" value="raka,dm-t4-hexus,friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="dm-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
@@ -540,6 +544,11 @@
   <object id="1676" name="spawn" type="object" x="6760" y="1520" width="128" height="128">
    <properties>
     <property name="transition" value="reset"/>
+   </properties>
+  </object>
+  <object id="1699" name="spawn" type="object" x="2672.36" y="1511.76" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

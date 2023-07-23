@@ -11,7 +11,6 @@
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/Components/Entities/Collision/EntityJumpCollisionBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Collision/EntityGroundCollisionBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Collision/EntityCollisionBehaviorBase.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -23,6 +22,7 @@ using namespace cocos2d;
 const std::string EntityMovementBehavior::MapKey = "entity-movement";
 const float EntityMovementBehavior::DefaultWalkAcceleration = 4800.0f;
 const float EntityMovementBehavior::DefaultRunAcceleration = 5600.0f;
+const float EntityMovementBehavior::DefaultSprintAcceleration = 8000.0f;
 const Vec2 EntityMovementBehavior::DefaultSwimAcceleration = Vec2(8000.0f, 420.0f);
 const float EntityMovementBehavior::DefaultJumpVelocity = 7680.0f;
 
@@ -51,7 +51,7 @@ EntityMovementBehavior::EntityMovementBehavior(GameObject* owner) : super(owner)
 	{
 		this->jumpSound = WorldSound::create(this->entity->getJumpSound());
 
-		for (auto next : this->entity->getSwimSounds())
+		for (std::string& next : this->entity->getSwimSounds())
 		{
 			WorldSound* swimSound = WorldSound::create(next);
 
@@ -63,7 +63,7 @@ EntityMovementBehavior::EntityMovementBehavior(GameObject* owner) : super(owner)
 			this->addChild(swimSound);
 		}
 
-		for (auto next : this->entity->getWalkSounds())
+		for (std::string& next : this->entity->getWalkSounds())
 		{
 			WorldSound* walkSound = WorldSound::create(next);
 
@@ -93,11 +93,6 @@ void EntityMovementBehavior::onLoad()
 	this->entity->watchForComponent<EntityGroundCollisionBehavior>([=](EntityGroundCollisionBehavior* groundCollision)
 	{
 		this->groundCollision = groundCollision;
-	});
-
-	this->entity->watchForComponent<EntityJumpCollisionBehavior>([=](EntityJumpCollisionBehavior* jumpBehavior)
-	{
-		this->jumpBehavior = jumpBehavior;
 	});
 
 	this->scheduleUpdate();
@@ -151,7 +146,7 @@ void EntityMovementBehavior::update(float dt)
 
 	Vec2 velocity = this->getVelocity();
 
-	bool canJump = this->jumpBehavior == nullptr ? false : this->jumpBehavior->canJump();
+	bool canJump = this->groundCollision != nullptr && this->groundCollision->isOnGround();
 	PlatformerEntity::ControlState controlState = this->entity->getControlState();
 
 	switch (controlState)
@@ -330,7 +325,7 @@ void EntityMovementBehavior::setJumpVelocity(float jumpVelocity)
 
 void EntityMovementBehavior::cancelWaterSfx()
 {
-	for (auto next : this->swimSounds)
+	for (WorldSound* next : this->swimSounds)
 	{
 		next->stop();
 	}

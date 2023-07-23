@@ -21,11 +21,11 @@ GoldenAxe* GoldenAxe::create()
 	return instance;
 }
 
-GoldenAxe::GoldenAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 11, 15, ItemStats(
+GoldenAxe::GoldenAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), AXE_DAMAGE_MIN(4), AXE_DAMAGE_MAX(4), ItemStats(
 	// Health
-	4,
+	2,
 	// Mana
-	0,
+	2,
 	// Attack
 	0,
 	// Magic Attack
@@ -71,12 +71,12 @@ CSize GoldenAxe::getWeaponCollisionSize()
 Vec2 GoldenAxe::getWeaponCollisionOffset()
 {
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
-	return Vec2(0.0f, 212.0f);
+	return Vec2(-12.0f, 212.0f);
 }
 
 Vec2 GoldenAxe::getDisplayOffset()
 {
-	return Vec2(28.0f, -4.0f);
+	return Vec2(0.0f, -8.0f);
 }
 
 Recipe* GoldenAxe::getRecipe()

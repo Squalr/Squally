@@ -19,6 +19,11 @@
 #include "Scenes/Platformer/Level/Combat/Attacks/Abilities/EnvelopingWinds/CastEnvelopingWinds.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Abilities/LightningStrike/CastLightningStrike.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Abilities/Resurrection/CastResurrection.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Abilities/SuperHeat/CastSuperHeat.h"
+#include "Scenes/Platformer/Level/Combat/Buffs/Defend/CastDefend.h"
+#include "Scenes/Platformer/Level/Combat/Buffs/Discipline/CastDiscipline.h"
+#include "Scenes/Platformer/Level/Combat/Buffs/Thorns/CastThorns.h"
+#include "Scenes/Platformer/Level/Combat/Buffs/Vanish/CastVanish.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Axes/AxeCleave.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Axes/AxeSwing.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Bows/BowShoot.h"
@@ -83,6 +88,8 @@ void SquallyAttackBehavior::onDisable()
 
 void SquallyAttackBehavior::loadSpellBookAttacks(EntityAttackBehavior* attackBehavior)
 {
+	attackBehavior->registerDefensive(CastDefend::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Uncommon));
+
 	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookWater, Value(false)).asBool())
 	{
 		attackBehavior->registerAttack(CastCondensation::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Uncommon));
@@ -90,7 +97,8 @@ void SquallyAttackBehavior::loadSpellBookAttacks(EntityAttackBehavior* attackBeh
 
 	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookWind, Value(false)).asBool())
 	{
-		attackBehavior->registerAttack(CastEnvelopingWinds::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Uncommon));
+		// Bad ability, just remove
+		// attackBehavior->registerAttack(CastEnvelopingWinds::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Uncommon));
 	}
 
 	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookLightning, Value(false)).asBool())
@@ -105,7 +113,7 @@ void SquallyAttackBehavior::loadSpellBookAttacks(EntityAttackBehavior* attackBeh
 
 	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookNature, Value(false)).asBool())
 	{
-		
+		attackBehavior->registerDefensive(CastThorns::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Uncommon));
 	}
 
 	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookFrost, Value(false)).asBool())
@@ -115,17 +123,17 @@ void SquallyAttackBehavior::loadSpellBookAttacks(EntityAttackBehavior* attackBeh
 
 	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookFire, Value(false)).asBool())
 	{
-		
-	}
-
-	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookShadow, Value(false)).asBool())
-	{
-		
+		attackBehavior->registerAttack(CastSuperHeat::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Uncommon));
 	}
 
 	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookArcane, Value(false)).asBool())
 	{
-		
+		attackBehavior->registerDefensive(CastDiscipline::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Uncommon));
+	}
+
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookShadow, Value(false)).asBool())
+	{
+		attackBehavior->registerDefensive(CastVanish::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Uncommon));
 	}
 }
 

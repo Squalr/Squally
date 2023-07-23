@@ -54,7 +54,7 @@ Reflect* Reflect::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Reflect::Reflect(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_ShieldMagic, AbilityType::Arcane, BuffData(Reflect::Duration, Reflect::ReflectIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_ShieldHoly, AbilityType::Arcane, BuffData(Reflect::Duration, Reflect::ReflectIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
@@ -114,7 +114,7 @@ void Reflect::registerHackables()
 				Reflect::ReflectIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_Reflect_Reflect::create(),
 				HackableBase::HackBarColor::Blue,
-				UIResources::Menus_Icons_ShieldMagic,
+				UIResources::Menus_Icons_ShieldHoly,
 				LazyNode<HackablePreview>::create([=](){ return ReflectGenericPreview::create(); }),
 				{
 					{
@@ -135,26 +135,29 @@ void Reflect::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentShr::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentShrBy1::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentElaborate::create()) +
-						"shr esi, 1\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentReflect::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) +
-						"mov ebx, esi\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentHint::create()
-							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsi::create() }))
-						
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentShr::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentShrBy1::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentElaborate::create()),
+							ConstantString::create("shr esi, 1\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentReflect::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())),
+							ConstantString::create("mov ebx, esi\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentHint::create()
+								->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsi::create() }))
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentShr::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentShrBy1::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentElaborate::create()) +
-						"shr rsi, 1\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentReflect::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) +
-						"mov rbx, rsi\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentHint::create()
-							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRsi::create() }))
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentShr::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentShrBy1::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentElaborate::create()),
+							ConstantString::create("shr rsi, 1\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentReflect::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())),
+							ConstantString::create("mov rbx, rsi\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Reflect_CommentHint::create()
+								->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRsi::create() }))
+						})
 					),
 				},
 				true
@@ -162,8 +165,7 @@ void Reflect::registerHackables()
 		},
 	};
 
-	auto func = &Reflect::applyReflect;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Reflect::applyReflect, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

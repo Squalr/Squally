@@ -7,7 +7,7 @@
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="heartbeat"/>
-   <property name="rubber-band" type="int" value="5"/>
+   <property name="rubber-band" type="int" value="10"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
@@ -42,12 +42,7 @@
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1898" name="Mines/CaveTent1" type="decor" x="1231" y="1181" width="1090" height="562">
-   <properties>
-    <property name="components" value="illusion"/>
-    <property name="illusion-group" value="B"/>
-   </properties>
-  </object>
+  <object id="1898" name="Mines/CaveTent1" type="decor" x="1231" y="1181" width="1090" height="562"/>
  </objectgroup>
  <objectgroup id="68" name="terrain -6">
   <properties>
@@ -276,16 +271,8 @@
   </object>
   <object id="1894" name="portal" type="object" x="1673.91" y="1629.15" width="256" height="256">
    <properties>
-    <property name="components" value="illusion"/>
-    <property name="illusion-group" value="B"/>
     <property name="map" value="DataMines/Home_Burch"/>
     <property name="transition" value="tent"/>
-   </properties>
-  </object>
-  <object id="1895" name="magic-wall" type="object" x="1448.45" y="1106.5" width="679.102" height="781">
-   <properties>
-    <property name="components" value="dispel-illusion"/>
-    <property name="illusion-group" value="B"/>
    </properties>
   </object>
  </objectgroup>

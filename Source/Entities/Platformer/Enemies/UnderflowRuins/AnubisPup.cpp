@@ -25,8 +25,7 @@ AnubisPup::AnubisPup(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_UnderflowRuins_AnubisPup_Animations,
 	EntityResources::Enemies_UnderflowRuins_AnubisPup_Emblem,
 	CSize(128.0f, 186.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 

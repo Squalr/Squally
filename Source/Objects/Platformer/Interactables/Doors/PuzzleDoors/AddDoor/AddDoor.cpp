@@ -8,6 +8,8 @@
 
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/AddDoor/AddDoorPreview.h"
@@ -73,18 +75,24 @@ void AddDoor::registerHackables()
 				14.0f,
 				0.0f,
 				{
-					// The disassembler produces the equivalent imul 'zcx, zcx, 1', which is confusing to noobs, so we override that
 					HackableCode::ReadOnlyScript(Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
-					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd::create()) + 
-					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber::create()
-						->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
-					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentElaboration::create()) + 
-					"add ecx, 2",
-					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd::create()) + 
-					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber::create()
-						->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create())) + 
-					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentElaboration::create()) + 
-					"add rcx, 2"),
+						// x86
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd::create()),
+							COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())),
+							COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentElaboration::create()),
+							ConstantString::create("add ecx, 2")
+						})
+						, // x64
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd::create()),
+							COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create())),
+							COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_CommentElaboration::create()),
+							ConstantString::create("add rcx, 2")
+						})
+					),
 				},
 				true
 			)

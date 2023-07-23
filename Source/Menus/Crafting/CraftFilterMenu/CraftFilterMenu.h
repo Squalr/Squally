@@ -17,6 +17,8 @@ public:
 	
 	void focus();
 	void unfocus();
+	void lock();
+	void unlock();
 	void addFilter(CraftFilterEntry* entry);
 	CraftFilterEntry* getActiveFilter();
 
@@ -42,6 +44,7 @@ private:
 	cocos2d::Sprite* filterSelectionArrow = nullptr;
 	std::vector<CraftFilterEntry*> filters;
 
+	bool isLocked = false;
 	bool isFocused = true;
 	int filterSelectionIndex = 0;
 	std::function<void()> onFilterChange = nullptr;

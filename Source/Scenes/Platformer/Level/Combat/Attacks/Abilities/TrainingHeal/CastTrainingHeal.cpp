@@ -70,7 +70,7 @@ void CastTrainingHeal::performAttack(PlatformerEntity* owner, std::vector<Platfo
 
 	const int Ticks = 7;
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{

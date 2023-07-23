@@ -6,7 +6,6 @@
 #include "Deserializers/Platformer/PlatformerDecorDeserializer.h"
 #include "Deserializers/Platformer/PlatformerEntityDeserializer.h"
 #include "Deserializers/Platformer/PlatformerHideMiniMapDeserializer.h"
-#include "Deserializers/Platformer/PlatformerMiniMapRequiredItemDeserializer.h"
 #include "Deserializers/Platformer/PlatformerObjectDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
 #include "Deserializers/Platformer/PlatformerTerrainDeserializer.h"
@@ -115,7 +114,7 @@ bool PreviewMap::loadMap(std::string mapResource)
 	}
 
 	this->mapResource = mapResource;
-	this->map = GameMap::deserialize(this->mapResource, GameMap::parse(this->mapResource), this->layerDeserializers, true);
+	this->map = GameMap::deserialize(this->mapResource, GameMap::parse(this->mapResource), this->layerDeserializers, true, true);
 
 	CollisionObject::UniverseId = previousUniverseId;
 	

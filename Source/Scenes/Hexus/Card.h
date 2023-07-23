@@ -45,6 +45,7 @@ public:
 			ADD,
 			SUB,
 			NOT,
+			CLEAR,
 		};
 
 		OperationType operationType;
@@ -108,6 +109,7 @@ protected:
 private:
 	typedef SmartNode super;
 
+	void positionLabel();
 	void updateText();
 	void onMouseOver();
 	void onMouseOut();

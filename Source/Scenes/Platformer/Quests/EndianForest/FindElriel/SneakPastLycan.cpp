@@ -85,7 +85,7 @@ void SneakPastLycan::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void SneakPastLycan::onActivate(bool isActiveThroughSkippable)
+void SneakPastLycan::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

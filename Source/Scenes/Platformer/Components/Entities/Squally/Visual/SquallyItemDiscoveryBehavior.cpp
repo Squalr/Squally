@@ -34,8 +34,8 @@ SquallyItemDiscoveryBehavior::SquallyItemDiscoveryBehavior(GameObject* owner) : 
 {
 	this->squally = dynamic_cast<Squally*>(owner);
 	this->container = Node::create();
-	this->itemNode = Node::create();
-	this->glow = Sprite::create(ObjectResources::Collectables_Animals_CollectShine);
+	this->iconsNode = Node::create();
+	this->glowNode = Node::create();
 	this->discoverSound = Sound::create(SoundResources::Notifications_Reveal1);
 
 	this->container->setOpacity(0);
@@ -45,8 +45,8 @@ SquallyItemDiscoveryBehavior::SquallyItemDiscoveryBehavior(GameObject* owner) : 
 		this->invalidate();
 	}
 
-	this->container->addChild(this->glow);
-	this->container->addChild(this->itemNode);
+	this->container->addChild(this->glowNode);
+	this->container->addChild(this->iconsNode);
 	this->addChild(this->container);
 	this->addChild(this->discoverSound);
 }
@@ -63,9 +63,20 @@ void SquallyItemDiscoveryBehavior::onLoad()
 	{
 		PlatformerEvents::ItemDiscoveryArgs* args = static_cast<PlatformerEvents::ItemDiscoveryArgs*>(eventCustom->getData());
 
-		if (args != nullptr && args->item != nullptr)
+		if (args != nullptr)
 		{
-			this->discoverItem(args->item, args->cinematicHijack);
+			std::vector<Item*> items = { args->item };
+			this->discoverItems(items, args->cinematicHijack);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventDiscoverItems, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::ItemsDiscoveryArgs* args = static_cast<PlatformerEvents::ItemsDiscoveryArgs*>(eventCustom->getData());
+
+		if (args != nullptr)
+		{
+			this->discoverItems(args->items, args->cinematicHijack);
 		}
 	}));
 }
@@ -75,7 +86,7 @@ void SquallyItemDiscoveryBehavior::onDisable()
 	super::onDisable();
 }
 
-void SquallyItemDiscoveryBehavior::discoverItem(Item* item, bool cinematicHijack)
+void SquallyItemDiscoveryBehavior::discoverItems(std::vector<Item*> items, bool cinematicHijack)
 {
 	if (cinematicHijack)
 	{
@@ -83,17 +94,53 @@ void SquallyItemDiscoveryBehavior::discoverItem(Item* item, bool cinematicHijack
 	}
 
 	this->container->runAction(FadeTo::create(0.25f, 255));
-	this->glow->runAction(RotateBy::create(2.0f, 360.0f));
 	this->discoverSound->play();
 
-	this->itemNode->removeAllChildren();
-	this->itemNode->addChild(Sprite::create(item->getIconResource()));
+	int iconIndex = 0;
+	int itemCount = int(items.size());
+	float extraDelay = 0.5f * float(itemCount - 1); // If showing multiple items, add more delay so the user can process the information
+
+	for (int index = 0; index < itemCount; index++)
+	{
+		if (items[index] == nullptr)
+		{
+			continue;
+		}
+
+		Vec2 position = Vec2((float(index) - float(itemCount - 1) / 2.0f) * 88.0f, 0.0f);
+
+		// Create icon and glow if not already created
+		if (createdIcons <= iconIndex)
+		{
+			Sprite* glow = Sprite::create(ObjectResources::Collectables_Animals_CollectShine);
+			Sprite* icon = Sprite::create(items[iconIndex]->getIconResource());
+			
+			this->glows.push_back(glow);
+			this->icons.push_back(icon);
+			this->glowNode->addChild(glow);
+			this->iconsNode->addChild(icon);
+
+			createdIcons++;
+		}
+		else
+		{
+			// Otherwise update sprite
+			this->icons[iconIndex]->setTexture(items[iconIndex]->getIconResource());
+		}
+
+		// Position based on number of icons to show (generally only one)
+		this->glows[iconIndex]->setPosition(position);
+		this->icons[iconIndex]->setPosition(position);
+		this->glows[iconIndex]->runAction(RotateBy::create(2.0f + extraDelay, 360.0f + 90.0f * extraDelay));
+
+		iconIndex++;
+	}
 
 	this->squally->getAnimations()->clearAnimationPriority();
 	this->squally->getAnimations()->playAnimation("Discover", SmartAnimationNode::AnimationPlayMode::Repeat);
 
 	this->runAction(Sequence::create(
-		DelayTime::create(1.5f),
+		DelayTime::create(1.5f + extraDelay),
 		CallFunc::create([=]()
 		{
 			if (cinematicHijack)

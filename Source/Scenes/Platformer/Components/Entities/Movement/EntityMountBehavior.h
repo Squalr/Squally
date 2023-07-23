@@ -11,6 +11,7 @@ public:
 	static EntityMountBehavior* create(GameObject* owner);
 
 	bool mount(MountBase* mountTarget);
+	MountBase* getMountTarget() const;
 	bool dismount();
 	bool isMounted() const;
 

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="40" nextobjectid="586">
+ <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
+  <grid orientation="orthogonal" width="64" height="64"/>
+  <image source="../TileMap.png" width="1536" height="640"/>
+ </tileset>
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="WaterfallSky"/>
+   <property name="music" value="trick-or-treat"/>
+   <property name="show-cracks" type="bool" value="true"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="37" name="terrain bg">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="579" name="ruins-gray-dark" type="texture" x="-942.305" y="-458" width="4692.61" height="3884"/>
+ </objectgroup>
+ <objectgroup id="39" name="decor bg">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="580" name="torch" type="object" x="163" y="1091" width="42" height="130"/>
+  <object id="581" name="torch" type="object" x="764.091" y="991.848" width="42" height="130"/>
+  <object id="582" name="torch" type="object" x="1808.09" y="987.848" width="42" height="130"/>
+  <object id="583" name="torch" type="object" x="2339" y="1075" width="42" height="130"/>
+  <object id="584" name="torch" type="object" x="1315" y="967" width="42" height="130"/>
+ </objectgroup>
+ <objectgroup id="21" name="all entities and terrain (same layer for z sorting)">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+   <property name="z-sort" type="bool" value="true"/>
+  </properties>
+  <object id="518" name="combat-spawn" type="object" x="2119.21" y="1700.24" width="64" height="64">
+   <properties>
+    <property name="spawn-order" type="int" value="2"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="554" name="combat-spawn" type="object" x="1696.01" y="1581.05" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="-128"/>
+    <property name="spawn-order" type="int" value="0"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="555" name="combat-spawn" type="object" x="470.006" y="1690.61" width="64" height="64">
+   <properties>
+    <property name="spawn-order" type="int" value="0"/>
+    <property name="spawn-type" value="player"/>
+   </properties>
+  </object>
+  <object id="556" name="marble-dark" type="terrain" x="1450.36" y="1645.46">
+   <properties>
+    <property name="depth" type="float" value="-128"/>
+   </properties>
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
+  </object>
+  <object id="558" name="combat-spawn" type="object" x="725.61" y="1468.66" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="-256"/>
+    <property name="spawn-order" type="int" value="1"/>
+    <property name="spawn-type" value="player"/>
+   </properties>
+  </object>
+  <object id="559" name="combat-spawn" type="object" x="2136.28" y="1438.01" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="-256"/>
+    <property name="spawn-order" type="int" value="1"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="560" name="marble-dark" type="terrain" x="1897.84" y="1503.35">
+   <properties>
+    <property name="depth" type="float" value="-256"/>
+   </properties>
+   <polygon points="0,0 1238.38,-2.14915 1246.42,984.588 679.792,1194.93 31.6183,984.311 59.1489,701.504 26.8729,480.529 30.6854,236.363"/>
+  </object>
+  <object id="561" name="marble-dark" type="terrain" x="482" y="1534">
+   <properties>
+    <property name="depth" type="float" value="-256"/>
+   </properties>
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
+  </object>
+  <object id="576" name="cinematic-marker" type="object" x="1281.94" y="1180.98" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-center"/>
+   </properties>
+  </object>
+  <object id="577" name="cinematic-marker" type="object" x="1286.49" y="866.365" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-top"/>
+   </properties>
+  </object>
+  <object id="578" name="cinematic-marker" type="object" x="1277.15" y="1651.7" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-bottom"/>
+   </properties>
+  </object>
+  <object id="585" name="marble-dark" type="terrain" x="-187.696" y="1761.51" width="2895.27" height="1497.45">
+  </object>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="551" name="camera-focus" type="object" x="1255.58" y="1280.12" width="128" height="128">
+   <properties>
+    <property name="zoom" type="float" value="1.25"/>
+   </properties>
+  </object>
+  <object id="562" name="camera-target" type="object" x="920.606" y="1278" width="128" height="128">
+   <properties>
+    <property name="tag" value="player-camera-1"/>
+    <property name="zoom" type="float" value="1.1"/>
+   </properties>
+  </object>
+  <object id="563" name="camera-target" type="object" x="1770" y="1272" width="128" height="128">
+   <properties>
+    <property name="tag" value="enemy-camera-1"/>
+    <property name="zoom" type="float" value="1.05"/>
+   </properties>
+  </object>
+  <object id="564" name="camera-target" type="object" x="810" y="1398" width="128" height="128">
+   <properties>
+    <property name="tag" value="player-camera-0"/>
+    <property name="zoom" type="float" value="1.15"/>
+   </properties>
+  </object>
+  <object id="565" name="camera-target" type="object" x="1592" y="1342" width="128" height="128">
+   <properties>
+    <property name="tag" value="enemy-camera-0"/>
+    <property name="zoom" type="float" value="1.1"/>
+   </properties>
+  </object>
+  <object id="566" name="camera-target" type="object" x="1730" y="1442" width="128" height="128">
+   <properties>
+    <property name="tag" value="enemy-camera-2"/>
+    <property name="zoom" type="float" value="1.15"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="24" name="fireflies">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="decor_foreground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="26" name="rain">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="rain"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="27" name="decor +4">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="28" name="decor +8">
+  <properties>
+   <property name="depth" type="float" value="512"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+</map>

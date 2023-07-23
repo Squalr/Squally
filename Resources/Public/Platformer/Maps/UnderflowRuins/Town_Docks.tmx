@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="789">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="790">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="solace"/>
-   <property name="rubber-band" type="int" value="2"/>
+   <property name="music" value="the-gift"/>
+   <property name="rubber-band" type="int" value="5"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
@@ -140,7 +140,7 @@
   <object id="762" name="edge-portal" type="object" x="4407.98" y="-11.6374" width="199.918" height="2583.88">
    <properties>
     <property name="direction" value="right"/>
-    <property name="map" value="UnderflowRuins/Fishing_Village"/>
+    <property name="map" value="UnderflowRuins/Shoreline"/>
     <property name="transition" value="docks-back"/>
    </properties>
   </object>
@@ -149,7 +149,7 @@
   <object id="766" name="edge-portal" type="object" x="2.30076" y="952.845" width="199.918" height="1511.15">
    <properties>
     <property name="direction" value="left"/>
-    <property name="map" value="PerilousSea/Zone_UR_1_0"/>
+    <property name="map" value="PerilousSea/Zone_1_0"/>
     <property name="mini-map-hidden" type="bool" value="true"/>
     <property name="transition" value="left"/>
    </properties>
@@ -285,14 +285,6 @@
     <property name="transition" value="docks"/>
    </properties>
   </object>
-  <object id="768" name="edge-portal" type="object" x="0.041" y="1172.85" width="199.918" height="1127.4">
-   <properties>
-    <property name="direction" value="left"/>
-    <property name="map" value="PerilousSea/Zone_UR_1_0"/>
-    <property name="mini-map-hidden" type="bool" value="true"/>
-    <property name="transition" value="left"/>
-   </properties>
-  </object>
   <object id="772" name="solid" type="collision" x="783.349" y="-3.07497" width="126.878" height="2308.7">
    <properties>
     <property name="mini-map-visible" type="bool" value="true"/>
@@ -403,13 +395,13 @@
     <property name="transition" value="ship"/>
    </properties>
   </object>
-  <object id="769" name="spawn" type="object" x="442.061" y="1787.52" width="128" height="128">
+  <object id="769" name="spawn" type="object" x="1126.91" y="1551.16" width="128" height="128">
    <properties>
     <property name="transition" value="right"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="93" name="water">
+ <objectgroup id="93" name="water" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -419,7 +411,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="79" name="water +1">
+ <objectgroup id="79" name="water +1" visible="0">
   <properties>
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
@@ -430,7 +422,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="74" name="plank +1">
+ <objectgroup id="74" name="plank +1" visible="0">
   <properties>
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
@@ -441,7 +433,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="75" name="plank +2">
+ <objectgroup id="75" name="plank +2" visible="0">
   <properties>
    <property name="depth" type="float" value="128"/>
    <property name="type" value="objects"/>
@@ -452,7 +444,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="82" name="water +2">
+ <objectgroup id="82" name="water +2" visible="0">
   <properties>
    <property name="depth" type="float" value="128"/>
    <property name="type" value="objects"/>
@@ -501,7 +493,7 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="736" name="water" type="object" x="-97.8667" y="1846.95" width="4822.75" height="676.619">
+  <object id="736" name="water" type="object" x="-52.4122" y="1819.68" width="4822.75" height="676.619">
    <properties>
     <property name="disable-physics" type="bool" value="true"/>
    </properties>

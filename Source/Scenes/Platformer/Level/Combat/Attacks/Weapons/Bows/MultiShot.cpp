@@ -37,8 +37,8 @@ MultiShot::MultiShot(int damageMin, int damageMax, float attackDuration, float r
 		TargetingType::Multi
 	)
 {
-	this->slashSound = WorldSound::create(SoundResources::Platformer_Physical_Projectiles_WeaponThrow1);
-	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1);
+	this->slashSound = WorldSound::create(SoundResources::Platformer_Physical_Projectiles_Woosh1);
+	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft5);
 
 	this->setDamageMultiplier(MultiShot::DamageMultiplier);
 
@@ -83,7 +83,7 @@ void MultiShot::performAttack(PlatformerEntity* owner, std::vector<PlatformerEnt
 {
 	super::performAttack(owner, targets);
 	
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		this->doDamageOrHealing(owner, next);
 	}

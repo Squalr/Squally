@@ -21,11 +21,11 @@ DemonicSword* DemonicSword::create()
 	return instance;
 }
 
-DemonicSword::DemonicSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 11, 15, ItemStats(
+DemonicSword::DemonicSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), SWORD_DAMAGE_MIN(7), SWORD_DAMAGE_MAX(7), ItemStats(
 	// Health
-	0,
+	4,
 	// Mana
-	0,
+	3,
 	// Attack
 	0,
 	// Magic Attack

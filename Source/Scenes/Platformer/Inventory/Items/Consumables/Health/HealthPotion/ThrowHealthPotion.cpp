@@ -76,7 +76,7 @@ void ThrowHealthPotion::performAttack(PlatformerEntity* owner, std::vector<Platf
 {
 	super::performAttack(owner, targets);
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		ThrownObject* potion = ThrownObject::create(owner, next, false, this->getIconResource(), CSize(64.0f, 64.0f));
 		
@@ -103,6 +103,7 @@ void ThrowHealthPotion::performAttack(PlatformerEntity* owner, std::vector<Platf
 		{
 			if (owner == next)
 			{
+				// Self launch (aim above self)
 				potion->launchTowardsTarget3D(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
 			}
 			else

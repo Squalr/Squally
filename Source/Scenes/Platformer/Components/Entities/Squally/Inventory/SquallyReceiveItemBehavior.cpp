@@ -81,9 +81,9 @@ void SquallyReceiveItemBehavior::onLoad()
 		{
 			NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
 				args->messageOverride,
-				Strings::Common_Concat::create()->setStringReplacementVariables({
+				Strings::Common_ConcatBiDi::create()->setStringReplacementVariables({
 					args->currency->getString(),
-					Strings::Common_TimesConstant::create()->setStringReplacementVariables(ConstantString::create(std::to_string(args->currency->getCount())))
+					Strings::Common_TimesConstantBiDi::create()->setStringReplacementVariables(ConstantString::create(std::to_string(args->currency->getCount())))
 				}),
 				args->currency->getIconResource(),
 				SoundResources::Notifications_NotificationGood3,
@@ -107,7 +107,7 @@ void SquallyReceiveItemBehavior::onLoad()
 			{
 				std::vector<Currency*> currencies = args->pool->getRandomCurrencyFromPool();
 
-				for (auto currency : currencies)
+				for (Currency* currency : currencies)
 				{
 					if (currency == nullptr || currency->getCount() <= 0)
 					{
@@ -116,9 +116,9 @@ void SquallyReceiveItemBehavior::onLoad()
 
 					NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
 						args->messageOverride,
-						Strings::Common_Concat::create()->setStringReplacementVariables({
+						Strings::Common_ConcatBiDi::create()->setStringReplacementVariables({
 							currency->getString(),
-							Strings::Common_TimesConstant::create()->setStringReplacementVariables(ConstantString::create(std::to_string(currency->getCount())))
+							Strings::Common_TimesConstantBiDi::create()->setStringReplacementVariables(ConstantString::create(std::to_string(currency->getCount())))
 						}),
 						currency->getIconResource(),
 						SoundResources::Notifications_NotificationGood3,

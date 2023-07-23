@@ -98,8 +98,7 @@ void SquallySwimHackBehavior::registerHackables()
 		},
 	};
 
-	auto canSwimHackFunc = &SquallySwimHackBehavior::canSwimHack;
-	this->hackables = HackableCode::create((void*&)canSwimHackFunc, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(SquallySwimHackBehavior::canSwimHack, codeInfoMap);
 
 	for (HackableCode* next : hackables)
 	{

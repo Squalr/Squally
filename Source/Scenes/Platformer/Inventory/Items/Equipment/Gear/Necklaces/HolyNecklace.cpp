@@ -23,17 +23,17 @@ HolyNecklace* HolyNecklace::create()
 
 HolyNecklace::HolyNecklace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 15 }}), ItemStats(
 	// Health
-	2,
+	6,
 	// Mana
 	2,
 	// Attack
-	1,
+	0,
 	// Magic Attack
-	1,
+	0,
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.03f
 ))
 {
 }
@@ -54,7 +54,7 @@ LocalizedString* HolyNecklace::getString()
 
 const std::string& HolyNecklace::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Necklaces_HolyNecklace;
+	return ItemResources::Equipment_Gear_Necklaces_T6_HolyNecklace;
 }
 
 const std::string& HolyNecklace::getIdentifier()

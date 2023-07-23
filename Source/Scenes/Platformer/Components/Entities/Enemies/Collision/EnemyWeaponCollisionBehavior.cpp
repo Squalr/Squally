@@ -9,7 +9,8 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Entities/Platformer/PlatformerEntity.h"
+#include "Entities/Platformer/PlatformerEnemy.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Components/Entities/Collision/EntityWeaponCollisionBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
@@ -35,7 +36,7 @@ EnemyWeaponCollisionBehavior* EnemyWeaponCollisionBehavior::create(GameObject* o
 
 EnemyWeaponCollisionBehavior::EnemyWeaponCollisionBehavior(GameObject* owner) : super(owner)
 {
-	this->entity = dynamic_cast<PlatformerEntity*>(owner);
+	this->entity = dynamic_cast<PlatformerEnemy*>(owner);
 
 	if (this->entity == nullptr)
 	{
@@ -49,9 +50,11 @@ EnemyWeaponCollisionBehavior::~EnemyWeaponCollisionBehavior()
 
 void EnemyWeaponCollisionBehavior::onLoad()
 {
+	super::onLoad();
+	
 	this->defer([=]()
 	{
-		this->rebuildWeaponCollision((int)PlatformerCollisionType::EnemyWeapon);
+		this->rebuildWeaponCollision((int)PlatformerCollisionType::EnemyWeapon, true);
 	});
 }
 

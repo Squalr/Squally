@@ -81,7 +81,7 @@ void DefeatRhinoman::onLoad(QuestState questState)
 	}, ScreamingDoor::MapKey);
 }
 
-void DefeatRhinoman::onActivate(bool isActiveThroughSkippable)
+void DefeatRhinoman::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->rhinoman->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
 	{

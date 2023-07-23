@@ -3,7 +3,9 @@
 #include "Objects/Platformer/Interactables/Mounts/MountBase.h"
 
 class CollisionObject;
+class Drak;
 class SmartAnimationNode;
+class Squally;
 
 class VikingShip : public MountBase
 {
@@ -11,7 +13,7 @@ public:
 	static VikingShip* create(cocos2d::ValueMap& properties);
 
 	void mount(PlatformerEntity* interactingEntity) override;
-	void dismount() override;
+	void dismount(PlatformerEntity* entity) override;
 
 	static const std::string MapKey;
 
@@ -24,7 +26,7 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	
-	cocos2d::Vec2 getReparentPosition() override;
+	cocos2d::Vec2 getReparentPosition(PlatformerEntity* entity) override;
 
 private:
 	typedef MountBase super;
@@ -37,4 +39,6 @@ private:
 
 	CollisionObject* bottomCollision = nullptr;
 	SmartAnimationNode* ship = nullptr;
+	Drak* drak = nullptr;
+	Squally* squally = nullptr;
 };

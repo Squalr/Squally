@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="38" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="106" nextobjectid="963">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="38" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="106" nextobjectid="965">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
-   <property name="map-banner" value=""/>
-   <property name="music" value="solace"/>
+   <property name="map-banner" value="underflow-ruins"/>
+   <property name="music" value="the-gift"/>
    <property name="rubber-band" type="int" value="5"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
@@ -151,6 +151,7 @@
   </object>
   <object id="940" name="solid" type="collision" x="1320.26" y="6.622" width="126.878" height="3058.76">
    <properties>
+    <property name="components" value="gull-puzzle"/>
     <property name="mini-map-visible" type="bool" value="true"/>
    </properties>
   </object>
@@ -177,12 +178,21 @@
   <object id="953" name="gull" type="entity" x="1465.9" y="1771.24" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
+    <property name="send-event" value="gull-F"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
   <object id="954" name="gull" type="entity" x="1809.41" y="1774.42" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
+    <property name="send-event" value="gull-C"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="963" name="gull" type="entity" x="2198" y="1770" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="send-event" value="gull-I"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
@@ -199,10 +209,9 @@
     <property name="zoom" type="float" value="2"/>
    </properties>
   </object>
-  <object id="935" name="spawn" type="object" x="632.97" y="2081.45" width="128" height="128">
+  <object id="935" name="spawn" type="object" x="1464.97" y="1677.45" width="128" height="128">
    <properties>
     <property name="transition" value="docks-back"/>
-    <property name="zoom" type="float" value="2"/>
    </properties>
   </object>
   <object id="962" name="spawn" type="object" x="4464" y="1768" width="128" height="128">
@@ -211,7 +220,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="98" name="water -4">
+ <objectgroup id="98" name="water -4" visible="0">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -233,7 +242,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="97" name="water -3">
+ <objectgroup id="97" name="water -3" visible="0">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
@@ -255,7 +264,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="96" name="water -2">
+ <objectgroup id="96" name="water -2" visible="0">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
@@ -293,7 +302,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="95" name="water -1">
+ <objectgroup id="95" name="water -1" visible="0">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
@@ -315,7 +324,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="99" name="water bg">
+ <objectgroup id="99" name="water bg" visible="0">
   <properties>
    <property name="depth" type="float" value="0"/>
    <property name="type" value="objects"/>
@@ -331,7 +340,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="21" name="terrain">
+ <objectgroup id="21" name="terrain" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -380,33 +389,45 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="946" name="gull" type="entity" x="353.563" y="1898.98" width="128" height="128">
+  <object id="946" name="gull" type="entity" x="425.563" y="1897.65" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
+    <property name="send-event" value="gull-A"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
   <object id="947" name="gull" type="entity" x="293.297" y="1896.83" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
+    <property name="send-event" value="gull-D"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
   <object id="948" name="gull" type="entity" x="1182.23" y="1886.06" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
+    <property name="send-event" value="gull-E"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
   <object id="950" name="gull" type="entity" x="1653.61" y="1886.06" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
+    <property name="send-event" value="gull-B"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
   <object id="951" name="gull" type="entity" x="1860.24" y="1896.83" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
+    <property name="send-event" value="gull-H"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="964" name="gull" type="entity" x="826" y="1898" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="send-event" value="gull-G"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
@@ -421,9 +442,8 @@
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="894" name="gull" type="object" x="472.179" y="1891.31" width="128" height="128">
+  <object id="894" name="spawn" type="object" x="618.846" y="1892.64" width="128" height="128">
    <properties>
-    <property name="map-banner" value="underflow-ruins"/>
     <property name="transition" value="docks"/>
    </properties>
   </object>

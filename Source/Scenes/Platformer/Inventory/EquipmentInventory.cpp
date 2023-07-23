@@ -2,7 +2,10 @@
 
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Gear.h"
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Earrings/Earring.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Necklaces/Necklace.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Rings/Ring.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Offhands/Offhand.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
 
@@ -78,7 +81,7 @@ std::vector<Equipable*> EquipmentInventory::getEquipment()
 
 Weapon* EquipmentInventory::getWeapon()
 {
-	for (auto next : this->items)
+	for (Item* next : this->items)
 	{
 		if (dynamic_cast<Weapon*>(next) != nullptr)
 		{
@@ -91,7 +94,7 @@ Weapon* EquipmentInventory::getWeapon()
 
 Offhand* EquipmentInventory::getOffhand()
 {
-	for (auto next : this->items)
+	for (Item* next : this->items)
 	{
 		if (dynamic_cast<Offhand*>(next) != nullptr)
 		{
@@ -104,7 +107,7 @@ Offhand* EquipmentInventory::getOffhand()
 
 Hat* EquipmentInventory::getHat()
 {
-	for (auto next : this->items)
+	for (Item* next : this->items)
 	{
 		if (dynamic_cast<Hat*>(next) != nullptr)
 		{
@@ -115,11 +118,50 @@ Hat* EquipmentInventory::getHat()
 	return nullptr;
 }
 
+Ring* EquipmentInventory::getRing()
+{
+	for (Item* next : this->items)
+	{
+		if (dynamic_cast<Ring*>(next) != nullptr)
+		{
+			return dynamic_cast<Ring*>(next);
+		}
+	}
+
+	return nullptr;
+}
+
+Earring* EquipmentInventory::getEarring()
+{
+	for (Item* next : this->items)
+	{
+		if (dynamic_cast<Earring*>(next) != nullptr)
+		{
+			return dynamic_cast<Earring*>(next);
+		}
+	}
+
+	return nullptr;
+}
+
+Necklace* EquipmentInventory::getNecklace()
+{
+	for (Item* next : this->items)
+	{
+		if (dynamic_cast<Necklace*>(next) != nullptr)
+		{
+			return dynamic_cast<Necklace*>(next);
+		}
+	}
+
+	return nullptr;
+}
+
 std::vector<Gear*> EquipmentInventory::getGear()
 {
 	std::vector<Gear*> gear = std::vector<Gear*>();
 
-	for (auto next : this->items)
+	for (Item* next : this->items)
 	{
 		if (dynamic_cast<Gear*>(next) != nullptr)
 		{

@@ -25,8 +25,7 @@ Necron::Necron(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_Mages_Necron_Animations,
 	EntityResources::Npcs_Mages_Necron_Emblem,
 	CSize(112.0f, 192.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 

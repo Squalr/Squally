@@ -23,17 +23,17 @@ TopazPendant* TopazPendant::create()
 
 TopazPendant::TopazPendant() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 15 }}), ItemStats(
 	// Health
-	2,
+	1,
 	// Mana
-	2,
+	0,
 	// Attack
-	1,
+	0,
 	// Magic Attack
-	1,
+	0,
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.005f
 ))
 {
 }
@@ -54,7 +54,7 @@ LocalizedString* TopazPendant::getString()
 
 const std::string& TopazPendant::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Necklaces_TopazPendant;
+	return ItemResources::Equipment_Gear_Necklaces_T1_TopazPendant;
 }
 
 const std::string& TopazPendant::getIdentifier()

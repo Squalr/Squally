@@ -25,6 +25,7 @@ public:
 	void toggleChaseOnAgro(bool chaseOnAgro);
 	void setAgroRangeX(float agroRange);
 	void setAgroRangeY(float agroRange);
+	bool isInMeleeRange(float meleeRange);
 
 	static const std::string MapKey;
 
@@ -59,4 +60,7 @@ private:
 	static const float AgroRangeY;
 	static const float AgroRangeZ;
 	static const float EngageCooldownMax;
+
+	static const std::string PropertyAgroRangeX;
+	static const std::string PropertyAgroRangeY;
 };

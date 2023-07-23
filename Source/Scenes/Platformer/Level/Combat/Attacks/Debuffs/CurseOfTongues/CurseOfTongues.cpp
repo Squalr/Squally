@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantFloat.h"
@@ -34,7 +36,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_HASTE 1
+#define LOCAL_FUNC_ID_CURSE_OF_TONGUES 1
 
 const std::string CurseOfTongues::CurseOfTonguesIdentifier = "curse-of-tongues";
 
@@ -108,7 +110,7 @@ void CurseOfTongues::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_HASTE,
+			LOCAL_FUNC_ID_CURSE_OF_TONGUES,
 			HackableCode::HackableCodeInfo(
 				CurseOfTongues::CurseOfTonguesIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CurseOfTongues::create(),
@@ -117,12 +119,11 @@ void CurseOfTongues::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return CurseOfTonguesGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_RegisterEsi::create()
-							->setStringReplacementVariables({ ConstantFloat::create(CurseOfTongues::MinSpeed, 2), ConstantFloat::create(CurseOfTongues::MaxSpeed, 1) })
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_RegisterEsi::create(), true
 					},
 					{
 						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_RegisterXmm3::create()
-							->setStringReplacementVariables(ConstantFloat::create(CurseOfTongues::DefaultSpeed, 2))
+							->setStringReplacementVariables(ConstantFloat::create(CurseOfTongues::DefaultSpeed, 2)), true
 					}
 				},
 				int(HackFlags::None),
@@ -132,35 +133,38 @@ void CurseOfTongues::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_ReduceCurse::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed::create()
-							->setStringReplacementVariables({ ConstantFloat::create(CurseOfTongues::DefaultHackSpeed, 1), ConstantFloat::create(CurseOfTongues::DefaultSpeed, 2) })) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead::create()) + 
-						"mov dword ptr [esi], -0.5f\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed::create()
+								->setStringReplacementVariables({ ConstantFloat::create(CurseOfTongues::DefaultHackSpeed, 1), ConstantFloat::create(CurseOfTongues::DefaultSpeed, 2) })),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead::create()),
+							ConstantString::create("mov dword ptr [esi], -0.5f\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed::create()
-							->setStringReplacementVariables({ ConstantFloat::create(CurseOfTongues::DefaultHackSpeed, 1), ConstantFloat::create(CurseOfTongues::DefaultSpeed, 2) })) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead::create()) + 
-						"mov dword ptr [rsi], -0.5f\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed::create()
+								->setStringReplacementVariables({ ConstantFloat::create(CurseOfTongues::DefaultHackSpeed, 1), ConstantFloat::create(CurseOfTongues::DefaultSpeed, 2) })),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead::create()),
+							ConstantString::create("mov dword ptr [rsi], -0.5f\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+						})
 					)
 				}
 			)
 		},
 	};
 
-	auto func = &CurseOfTongues::applyCurseOfTongues;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(CurseOfTongues::applyCurseOfTongues, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{
@@ -191,21 +195,21 @@ NO_OPTIMIZE void CurseOfTongues::applyCurseOfTongues()
 	speedBonusPtr = &speedBonus;
 	incrementPtr = &increment;
 
-	ASM_PUSH_EFLAGS()
+	ASM_PUSH_EFLAGS();
 	ASM(push ZSI);
 	ASM(push ZBX);
 	ASM_MOV_REG_PTR(ZSI, speedBonusPtr);
 	ASM_MOV_REG_PTR(ZBX, incrementPtr);
 	ASM(movss xmm3, [ZBX]);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CURSE_OF_TONGUES);
 	ASM(movss [ZSI], xmm3);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
 	ASM(pop ZBX);
 	ASM(pop ZSI);
-	ASM_POP_EFLAGS()
+	ASM_POP_EFLAGS();
 
 	this->currentSpeed = this->currentSpeed + MathUtils::clamp(speedBonus, CurseOfTongues::MinSpeed, CurseOfTongues::MaxSpeed);
 

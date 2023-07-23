@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Scenes/Platformer/Inventory/Items/Recipes/Transmutes/TransmuteRecipe.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Potions/PotionRecipe.h"
 
-class IncrementHealthFlaskRecipe : public TransmuteRecipe
+class IncrementManaFlaskRecipe : public PotionRecipe
 {
 public:
-	static IncrementHealthFlaskRecipe* create();
+	static IncrementManaFlaskRecipe* create();
 
 	std::vector<Item*> craft() override;
 	Item* clone() override;
@@ -17,11 +17,11 @@ public:
 	static const std::string SaveKey;
 
 protected:
-	IncrementHealthFlaskRecipe();
-	virtual ~IncrementHealthFlaskRecipe();
+	IncrementManaFlaskRecipe();
+	virtual ~IncrementManaFlaskRecipe();
 	
 	std::vector<std::tuple<Item*, int>> getReagentsInternal() override;
 
 private:
-	typedef TransmuteRecipe super;
+	typedef PotionRecipe super;
 };

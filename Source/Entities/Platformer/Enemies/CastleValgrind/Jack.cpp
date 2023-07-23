@@ -24,9 +24,8 @@ Jack::Jack(ValueMap& properties) : super(properties,
 	Jack::MapKey,
 	EntityResources::Enemies_CastleValgrind_Jack_Animations,
 	EntityResources::Enemies_CastleValgrind_Jack_Emblem,
-	CSize(432.0f, 768.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	CSize(96.0f, 192.0f),
+	1.0f)
 {
 }
 

@@ -7,6 +7,7 @@ class MinMaxPool;
 class ChestBase : public InteractObject
 {
 public:
+	bool isOpen();
 
 protected:
 	ChestBase(cocos2d::ValueMap& properties, cocos2d::CSize interactSize);
@@ -28,8 +29,10 @@ protected:
 
 private:
 	typedef InteractObject super;
+	friend class MapLinkBehavior;
 
 	std::string chestOpenArgs;
+	bool isOpenValue = false;
 
 	static const std::string PropertyRewardPool;
 	static const std::string SaveKeyIsOpen;

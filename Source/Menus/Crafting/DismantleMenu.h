@@ -25,6 +25,7 @@ protected:
 	void initializePositions() override;
 	void onCraftStart() override;
 	void onCraftEnd(bool viaCancel) override;
+	float getCraftDuration() override;
 	LocalizedString* getCraftString() override;
 
 private:
@@ -35,4 +36,6 @@ private:
 	cocos2d::Sprite* smeltingPot = nullptr;
 	cocos2d::Sprite* icon = nullptr;
 	Sound* craftSound = nullptr;
+
+	static const float DismantleDuration;
 };

@@ -48,7 +48,7 @@ void LowerRope::onLoad(QuestState questState)
 	}, LowerRope::TagRope);
 }
 
-void LowerRope::onActivate(bool isActiveThroughSkippable)
+void LowerRope::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

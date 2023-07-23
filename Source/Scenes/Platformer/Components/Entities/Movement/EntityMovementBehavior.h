@@ -5,7 +5,6 @@
 
 class EntityCollisionBehaviorBase;
 class EntityGroundCollisionBehavior;
-class EntityJumpCollisionBehavior;
 class PlatformerEntity;
 class WorldSound;
 
@@ -25,6 +24,7 @@ public:
 	static const std::string MapKey;
 	static const float DefaultWalkAcceleration;
 	static const float DefaultRunAcceleration;
+	static const float DefaultSprintAcceleration;
 	static const cocos2d::Vec2 DefaultSwimAcceleration;
 	static const float DefaultJumpVelocity;
 
@@ -57,7 +57,6 @@ private:
 	
 	EntityCollisionBehaviorBase* entityCollision = nullptr;
 	EntityGroundCollisionBehavior* groundCollision = nullptr;
-	EntityJumpCollisionBehavior* jumpBehavior = nullptr;
 
 	int swimSoundIndex = 0;
 	int walkSoundIndex = 0;

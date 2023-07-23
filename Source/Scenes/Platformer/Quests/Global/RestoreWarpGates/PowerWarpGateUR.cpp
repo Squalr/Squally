@@ -2,16 +2,21 @@
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Dialogue/DialogueOption.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Objects/Platformer/Switches/Trigger.h"
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
+#include "Scenes/Platformer/Level/PlatformerMap.h"
 
 #include "Strings/Strings.h"
 
@@ -57,36 +62,16 @@ void PowerWarpGateUR::onLoad(QuestState questState)
 			this->portal->lock(false);
 		}
 	}
+	
+	PlatformerMap* map = GameUtils::GetFirstParentOfType<PlatformerMap>(this->owner);
 
-	if (questState != QuestState::Complete)
+	if (map != nullptr && map->getTransition() == "ur")
 	{
-		if (this->mage != nullptr)
-		{
-			this->mage->setOpacity(0);
-
-			this->listenForMapEventOnce(PowerWarpGateUR::MapKeyQuest, [=](ValueMap)
-			{
-				this->mage->runAction(FadeTo::create(0.5f, 255));
-				this->complete();
-			});
-		}
-
-		if (this->trigger != nullptr)
-		{
-			this->listenForMapEventOnce(PowerWarpGateUR::MapKeyQuest, [=](ValueMap)
-			{
-				this->complete();
-			});
-		}
-	}
-
-	if (this->mage != nullptr)
-	{
-		this->runCinematicSequence();
+		this->complete();
 	}
 }
 
-void PowerWarpGateUR::onActivate(bool isActiveThroughSkippable)
+void PowerWarpGateUR::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 
@@ -104,32 +89,4 @@ void PowerWarpGateUR::onSkipped()
 	{
 		this->portal->unlock(true);
 	}
-}
-
-void PowerWarpGateUR::runCinematicSequence()
-{
-	this->mage->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
-	{
-		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
-			Strings::Platformer_Quests_WarpGates_WhatIsThisPlace::create(),
-			[=]()
-			{
-				DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-					Strings::Platformer_Quests_WarpGates_WarpGateDiscovered::create(),
-					DialogueEvents::DialogueVisualArgs(
-						DialogueBox::DialogueDock::Bottom,
-						DialogueBox::DialogueAlignment::Right,
-						DialogueEvents::BuildPreviewNode(&this->squally, false),
-						DialogueEvents::BuildPreviewNode(&this->mage, true)
-					),
-					[=]()
-					{
-					},
-					Voices::GetNextVoiceLong(),
-					true
-				));
-			}),
-			0.5f
-		);
-	});
 }

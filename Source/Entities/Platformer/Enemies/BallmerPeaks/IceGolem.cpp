@@ -25,8 +25,7 @@ IceGolem::IceGolem(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_BallmerPeaks_IceGolem_Animations,
 	EntityResources::Enemies_BallmerPeaks_IceGolem_Emblem,
 	CSize(256.0f, 224.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 

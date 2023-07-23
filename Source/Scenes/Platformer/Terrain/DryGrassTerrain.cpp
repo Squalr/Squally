@@ -59,9 +59,9 @@ DryGrassTerrain::DryGrassTerrain(ValueMap& properties) : super(
 		// Right
 		Vec2::ZERO,
 		// TopLeft
-		Vec2::ZERO,
+		Vec2(0.0f, -12.0f),
 		// TopRight
-		Vec2::ZERO,
+		Vec2(0.0f, -21.0f),
 		// BottomLeft
 		Vec2::ZERO,
 		// BottomRight
@@ -73,7 +73,7 @@ DryGrassTerrain::DryGrassTerrain(ValueMap& properties) : super(
 		// TopConnectorConcaveDeep
 		Vec2(0.0f, 6.0f),
 		// TopConnectorConvex
-		Vec2(0.0f, -2.0f),
+		Vec2(0.0f, -16.0f),
 		// TopConnectorConvexDeep
 		Vec2(0.0f, -14.0f),
 		// BottomConnector

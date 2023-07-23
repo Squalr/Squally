@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
@@ -52,7 +54,7 @@ Fear* Fear::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Fear::Fear(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_SkullGlowRed, AbilityType::Shadow, BuffData(Fear::Duration, Fear::FearIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_Skull2, AbilityType::Shadow, BuffData(Fear::Duration, Fear::FearIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 
@@ -95,7 +97,7 @@ void Fear::registerHackables()
 				Fear::HackIdentifierFear,
 				Strings::Menus_Hacking_Abilities_Debuffs_Fear_Fear::create(),
 				HackableBase::HackBarColor::Red,
-				UIResources::Menus_Icons_SkullGlowRed,
+				UIResources::Menus_Icons_Skull2,
 				LazyNode<HackablePreview>::create([=](){ return FearGenericPreview::create(); }),
 				{
 					{
@@ -109,19 +111,22 @@ void Fear::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						"shr esi, 2\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Fear_Hint::create())
+						ConcatString::create({
+							ConstantString::create("shr esi, 2\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Fear_CommentHint::create())
+						})
 						, // x64
-						"shr rsi, 2\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Fear_Hint::create())
+						ConcatString::create({
+							ConstantString::create("shr rsi, 2\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Fear_CommentHint::create())
+						})
 					),
 				}
 			)
 		},
 	};
 
-	auto func = &Fear::applyFear;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Fear::applyFear, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

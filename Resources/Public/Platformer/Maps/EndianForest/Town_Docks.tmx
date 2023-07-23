@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="36" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="92" nextobjectid="786">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="110" nextobjectid="811">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -58,12 +58,211 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="72" name="water back">
+ <objectgroup id="93" name="terrain -14">
   <properties>
-   <property name="depth" type="float" value="-412"/>
+   <property name="depth" type="float" value="-896"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="724" name="water" type="object" x="-510.907" y="1494.51" width="5722.02" height="405.346">
+  <object id="789" name="blue-grass" type="terrain" x="353.091" y="597.091">
+   <polygon points="2330.14,-1651.77 2840.18,-1379.66 2833.07,-431.445 2798.27,72.3774 3764.8,82.8646 4656,-35.2916 5510.55,-8.03728 5658.38,-49.1401 6144.01,-45.179 7678.13,-23.451 7814.69,779.395 7633.48,1369.36 7541.06,1736.97 61.22,1704.73 -6.54789,295.393 46.2721,92.9397 155.468,-288.376 865.49,-459.922 1351.8,-0.690106 1582.57,-161.095 1747.66,-757.93 1941.17,-1483.74"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="101" name="decor -14">
+  <properties>
+   <property name="depth" type="float" value="-896"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="802" name="Forest/Flower9" type="decor" x="4443.53" y="508.167" width="199" height="133"/>
+ </objectgroup>
+ <objectgroup id="100" name="entities -14">
+  <properties>
+   <property name="depth" type="float" value="-896"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="799" name="ogre" type="entity" x="5005.7" y="426.909" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,soul,agro,melee,map-link"/>
+    <property name="drop-pool" value="ef-generic"/>
+    <property name="link-key" value="ef-zone2-enemy1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="98" name="terrain -13">
+  <properties>
+   <property name="depth" type="float" value="-832"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="797" name="wood" type="terrain" x="3151.83" y="681.75" width="347" height="356.5">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="109" name="water -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="810" name="water" type="object" x="-741.907" y="1373.84" width="6139.35" height="437.346">
+   <properties>
+    <property name="disable-physics" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="97" name="terrain -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="796" name="wood" type="terrain" x="3149.17" y="717.75" width="347" height="356.5">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="108" name="water -11">
+  <properties>
+   <property name="depth" type="float" value="-704"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="809" name="water" type="object" x="-713.907" y="1397.84" width="6084.35" height="437.346">
+   <properties>
+    <property name="disable-physics" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="95" name="terrain -11">
+  <properties>
+   <property name="depth" type="float" value="-704"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="792" name="blue-grass" type="terrain" x="2693.45" y="1660.61">
+   <polygon points="-334.518,-421.607 -678.307,-426.688 -1003.54,-720.376 -1414.66,-928.777 -1976.22,-927.197 -1955.1,-1366.39 -1717.4,-1609.52 -1487.78,-3098.19 -3791.44,-3130.95 -3797.53,303.88 -424.36,313.63 -284.619,-285.314"/>
+  </object>
+  <object id="795" name="wood" type="terrain" x="3149.17" y="755.083" width="347" height="356.5">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="96" name="objects -11">
+  <properties>
+   <property name="depth" type="float" value="-704"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="793" name="chest" type="object" x="884.485" y="602.667" width="128" height="128">
+   <properties>
+    <property name="components" value="map-link"/>
+    <property name="link-key" value="ef-zone2-chest1"/>
+    <property name="reward-pool" value="ef-generic"/>
+    <property name="send-event" value="ef-zone2-chest1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="107" name="water -10">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="808" name="water" type="object" x="-679.907" y="1420.51" width="6018.35" height="437.346">
+   <properties>
+    <property name="disable-physics" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="92" name="terrain -10">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="786" name="blue-grass" type="terrain" x="-826.829" y="1289.76">
+   <polygon points="-224,0 3208.29,-1.72542 3342.18,379.153 3304.45,745.643 3228.56,1463.99 3318.06,1951.82 3214.55,2279.23 3210.04,2895.52 -202.297,2826.16 -192.383,625.091"/>
+  </object>
+  <object id="787" name="blue-grass" type="terrain" x="2980.61" y="679.55">
+   <polygon points="1668.93,106.571 2351.58,331.579 3109.88,748.632 3141.48,1245.36 3153.06,2468.97 197.22,2468.73 167.3,108.373"/>
+  </object>
+  <object id="788" name="blue-grass" type="terrain" x="5872" y="-1040">
+   <polygon points="7973.06,5228.97 1086.01,5229.36 1091.93,2248 988.017,2034.56 890.323,1678.24 685.908,1488.48 1028.77,1490 1387.99,1707.11 2123.96,1706.74 2528.24,1795.49 3042,1792.75 3765.08,2199.7 4590.62,2775.09 5366.43,3518 6420.11,4130.83 7427.88,4323.35 7972.22,4315.4"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="99" name="decor -10">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="798" name="Forest/Flower10" type="decor" x="3612.26" y="667.864" width="199" height="133"/>
+  <object id="800" name="Forest/Flower10" type="decor" x="1419.14" y="1167.53" width="199" height="133"/>
+  <object id="801" name="Forest/Flower9" type="decor" x="1104.05" y="1174.75" width="199" height="133"/>
+ </objectgroup>
+ <objectgroup id="94" name="objects -10">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="790" name="edge-lantern-gate" type="object" x="-611.333" y="973.333" width="356" height="320">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="map" value="EndianForest/Town_Main"/>
+    <property name="map-banner" value="sullen-forest"/>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="791" name="life-stone" type="object" x="851.242" y="870.318" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
+  <object id="794" name="chest" type="object" x="3357.45" y="656" width="128" height="128">
+   <properties>
+    <property name="components" value="map-link"/>
+    <property name="link-key" value="ef-zone2-chest2"/>
+    <property name="reward-pool" value="ef-generic"/>
+    <property name="send-event" value="ef-zone2-chest2"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="106" name="water -9">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="807" name="water" type="object" x="-639.24" y="1454.51" width="5941.02" height="437.346">
+   <properties>
+    <property name="disable-physics" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="105" name="water -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="806" name="water" type="object" x="-600.907" y="1490.51" width="5868.02" height="437.346">
+   <properties>
+    <property name="disable-physics" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="72" name="water -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="724" name="water" type="object" x="-564.574" y="1520.51" width="5791.69" height="437.346">
+   <properties>
+    <property name="disable-physics" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="104" name="water -6">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="805" name="water" type="object" x="-523.232" y="1550.33" width="5714.35" height="458.11">
    <properties>
     <property name="disable-physics" type="bool" value="true"/>
    </properties>
@@ -75,14 +274,18 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="710" name="ship" type="object" x="1127.74" y="804.427" width="2375" height="1008"/>
+  <object id="710" name="ship" type="object" x="1127.74" y="804.427" width="2375" height="1008">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="71" name="water -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="722" name="water" type="object" x="-358.232" y="1577.33" width="5482.35" height="458.11">
+  <object id="722" name="water" type="object" x="-493.565" y="1577.33" width="5656.68" height="458.11">
    <properties>
     <property name="disable-physics" type="bool" value="true"/>
    </properties>
@@ -135,7 +338,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="721" name="water" type="object" x="-315.366" y="1604" width="5396.67" height="405.346">
+  <object id="721" name="water" type="object" x="-454.699" y="1604" width="5572" height="405.346">
    <properties>
     <property name="disable-physics" type="bool" value="true"/>
    </properties>
@@ -186,7 +389,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="741" name="water" type="object" x="-264.642" y="1650.93" width="5305.42" height="405.346">
+  <object id="741" name="water" type="object" x="-419.975" y="1650.93" width="5500.75" height="405.346">
    <properties>
     <property name="disable-physics" type="bool" value="true"/>
    </properties>
@@ -200,6 +403,17 @@
   <object id="753" name="ship-alt" type="terrain" x="2147.42" y="1631.17" width="414.5" height="363">
    <properties>
     <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="103" name="water -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="804" name="water" type="object" x="-357.309" y="1702.93" width="5402.09" height="405.346">
+   <properties>
+    <property name="disable-physics" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
@@ -255,10 +469,14 @@
     <property name="transition" value="docks"/>
    </properties>
   </object>
-  <object id="717" name="solid" type="collision" x="3891.32" y="914.15" width="126.878" height="778.756"/>
+  <object id="717" name="solid" type="collision" x="3891.32" y="-319.183" width="126.878" height="2012.09">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="785" name="portal" type="object" x="3059.88" y="1435.64" width="256" height="256">
    <properties>
-    <property name="map" value="PerilousSea/Ship_Main"/>
+    <property name="map" value="PerilousSea/Ship_Main_Forest"/>
     <property name="quest" value="board-charter-ship"/>
     <property name="quest-line" value="charter-ship"/>
     <property name="transition" value="charter-ship"/>
@@ -373,7 +591,7 @@
    <property name="depth" type="float" value="0"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="759" name="water" type="object" x="-2164.7" y="1768.93" width="8509" height="2181.35"/>
+  <object id="759" name="water" type="object" x="-274.7" y="1749.93" width="5248" height="403.35"/>
  </objectgroup>
  <objectgroup id="79" name="water +1">
   <properties>
@@ -483,7 +701,7 @@
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.25"/>
-    <property name="flip-x" type="bool" value="true"/>
+    <property name="flip-x" type="bool" value="false"/>
     <property name="tag" value="charter-ship"/>
    </properties>
   </object>

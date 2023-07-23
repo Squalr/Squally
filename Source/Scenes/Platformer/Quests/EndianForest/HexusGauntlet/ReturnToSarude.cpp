@@ -73,7 +73,7 @@ void ReturnToSarude::onLoad(QuestState questState)
 	}, ReturnToSarude::QuestPortalTag);
 }
 
-void ReturnToSarude::onActivate(bool isActiveThroughSkippable)
+void ReturnToSarude::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->defer([=]()
 	{

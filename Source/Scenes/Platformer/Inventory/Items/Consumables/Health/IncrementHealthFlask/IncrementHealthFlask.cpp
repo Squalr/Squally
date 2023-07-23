@@ -1,6 +1,8 @@
 #include "IncrementHealthFlask.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
+#include "Engine/Localization/ConstantString.h"
+#include "Engine/Localization/LocalizedString.h"
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
@@ -30,6 +32,8 @@ IncrementHealthFlask* IncrementHealthFlask::create()
 IncrementHealthFlask::IncrementHealthFlask() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(20, RubberBanding(3, 0.15f)), true)
 {
 	this->outOfCombatSound = Sound::create(SoundResources::Platformer_FX_Potions_PotionDrink2);
+
+	this->outOfCombatSound->toggleIgnorePause(true);
 
 	this->addChild(this->outOfCombatSound);
 }
@@ -66,6 +70,12 @@ bool IncrementHealthFlask::canUseOnTarget(PlatformerEntity* target)
 	});
 	
 	return canUse;
+}
+
+LocalizedString* IncrementHealthFlask::getDescription()
+{
+	return Strings::Items_Consumables_Health_IncrementHealthFlaskDescription::create()
+		->setStringReplacementVariables({ ConstantString::create(std::to_string(int(IncrementHealthFlask::HealTicks))), ConstantString::create(std::to_string(int(IncrementHealthFlask::HealTicks))) });
 }
 
 Item* IncrementHealthFlask::clone()

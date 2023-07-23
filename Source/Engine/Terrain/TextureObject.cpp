@@ -26,6 +26,7 @@
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Engine/Utils/RenderUtils.h"
+#include "Engine/Utils/StrUtils.h"
 
 #include "Resources/ShaderResources.h"
 
@@ -39,7 +40,11 @@ TextureObject::TextureObject(ValueMap& properties, TextureData terrainData) : su
 	this->terrainData = terrainData;
 	this->infillTexturesNode = Node::create();
 	this->boundsRect = CRect::ZERO;
-	this->terrainHoleTag = GameUtils::getKeyOrDefault(this->properties, TerrainHole::TerrainHoleTag, Value("")).asString();
+	this->terrainHoleTags = StrUtils::splitOn(
+		GameUtils::getKeyOrDefault(this->properties, TerrainHole::TerrainHoleTag, Value("")).asString(),
+		",",
+		false
+	);
 
 	this->addChild(this->infillTexturesNode);
 }
@@ -53,19 +58,19 @@ void TextureObject::onEnter()
 	super::onEnter();
 
 	bool isPolygon = GameUtils::keyExists(this->properties, GameObject::MapKeyPolyLinePoints) || GameUtils::keyExists(this->properties, GameObject::MapKeyPoints);
-	
-	if (!this->terrainHoleTag.empty())
+	Vec2 terrainCoords = GameUtils::getWorldCoords(GameUtils::GetFirstParentOfType<TerrainObject>(this), false);
+
+	for (const std::string terrainHoleTag : this->terrainHoleTags)
 	{
 		ObjectEvents::QueryObjects<TerrainHole>([&](TerrainHole* terrainHole)
 		{
 			Vec2 holeCoords = GameUtils::getWorldCoords(terrainHole, false);
-			Vec2 terrainCoords = GameUtils::getWorldCoords(GameUtils::GetFirstParentOfType<TerrainObject>(this), false);
 			
 			std::vector<Vec2> holePoints = terrainHole->getPolylinePoints();
 			AlgoUtils::offsetPoints(holePoints, holeCoords - terrainCoords);
 
 			this->holes.push_back(holePoints);
-		}, this->terrainHoleTag);
+		}, terrainHoleTag);
 	}
 
 	if (isPolygon || !this->holes.empty())

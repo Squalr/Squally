@@ -40,7 +40,6 @@
     <property name="flip-x" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="700" name="Generic/InsanityPoster5" type="decor" x="1430.45" y="325.182" width="298" height="330"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -63,7 +62,7 @@
   </properties>
   <object id="692" name="matu" type="entity" x="581.14" y="810.218" width="128" height="128">
    <properties>
-    <property name="components" value="matu-hexus,friendly,pick-pocket"/>
+    <property name="components" value="ef-t5-hexus,friendly,pick-pocket"/>
     <property name="pocket-pool" value="ef-generic"/>
    </properties>
   </object>

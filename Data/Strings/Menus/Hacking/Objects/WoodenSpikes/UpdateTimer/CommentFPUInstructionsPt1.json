@@ -1,5 +1,5 @@
 {
-    "ar": "تعمل التعليمات التي تبدأ بـ 'f' على الأرقام الكسرية (الفاصلة العائمة). يتضمن هذا تعليمات مثل 'fadd' ، 'fsub' ، 'fdiv' ، 'fmul' ، إلخ.",
+    "ar": ".تعمل التعليمات التي تبدأ بحرف 'f' على أرقام كسرية (الفاصلة العائمة). يتضمن ذلك تعليمات مثل 'fadd' و 'fsub' و 'fdiv' و 'fmul' وما إلى ذلك",
     "bg": "Инструкциите, които започват с „f“, работят на дробни числа (с плаваща запетая). Това включва инструкции като 'fadd', 'fsub', 'fdiv', 'fmul' и т.н.",
     "cs": "Pokyny začínající na 'f' pracují na zlomkových číslech (s pohyblivou řádovou čárkou). To zahrnuje pokyny jako „fadd“, „fsub“, „fdiv“, „fmul“ atd.",
     "da": "Instruktioner, der starter med 'f', fungerer på brøknummer (flydende punkt). Dette inkluderer instruktioner som 'fadd', 'fsub', 'fdiv', 'fmul' osv.",

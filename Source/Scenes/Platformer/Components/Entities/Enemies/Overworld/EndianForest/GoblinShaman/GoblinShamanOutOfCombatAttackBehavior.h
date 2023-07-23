@@ -3,8 +3,8 @@
 #include "Scenes/Platformer/Components/Entities/Enemies/Overworld/EnemyOutOfCombatAttackBehavior.h"
 
 class AgroBehavior;
+class PlatformerEnemy;
 class Projectile;
-class GoblinShaman;
 class SmartAnimationSequenceNode;
 class Weapon;
 
@@ -35,6 +35,6 @@ private:
 	float getProjectileLifetime() override;
 	
 	SmartAnimationSequenceNode* shadowBolt = nullptr;
-	GoblinShaman* goblinShaman = nullptr;
+	PlatformerEnemy* goblinShaman = nullptr;
 	AgroBehavior* agroBehavior = nullptr;
 };

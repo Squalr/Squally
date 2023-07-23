@@ -21,7 +21,7 @@ SpecialGreed* SpecialGreed::create()
 	return instance;
 }
 
-SpecialGreed::SpecialGreed() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 29 }}), ItemMeta(3, 3))
+SpecialGreed::SpecialGreed() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 13 }}), ItemMeta(3, 3))
 {
 }
 

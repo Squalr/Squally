@@ -59,7 +59,7 @@ const std::string& CrystalEarringsRecipe::getIconResource()
 
 std::string CrystalEarringsRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Earrings_CrystalEarrings;
+	return ItemResources::Equipment_Gear_Earrings_T7_CrystalEarrings;
 }
 
 const std::string& CrystalEarringsRecipe::getIdentifier()

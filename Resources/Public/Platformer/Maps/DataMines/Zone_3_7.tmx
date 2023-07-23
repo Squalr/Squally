@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="112" nextobjectid="1891">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="115" nextobjectid="1897">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -7,7 +7,7 @@
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="heartbeat"/>
-   <property name="rubber-band" type="int" value="5"/>
+   <property name="rubber-band" type="int" value="11"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
@@ -50,22 +50,9 @@
  <objectgroup id="102" name="objects -9">
   <properties>
    <property name="depth" type="float" value="-576"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1856" name="mine-cart-lootable" type="object" x="1142" y="1200" width="240" height="184">
-   <properties>
-    <property name="color" value="blue"/>
-    <property name="fill" value="diamond"/>
-    <property name="reward-pool" value="dm-diamond"/>
-   </properties>
-  </object>
-  <object id="1857" name="mine-cart-lootable" type="object" x="1560" y="1199" width="240" height="184">
-   <properties>
-    <property name="color" value="blue"/>
-    <property name="fill" value="diamond"/>
-    <property name="reward-pool" value="dm-diamond"/>
-   </properties>
-  </object>
   <object id="1859" name="mine-cart-lootable" type="object" x="2441" y="1199.5" width="240" height="184">
    <properties>
     <property name="color" value="blue"/>
@@ -83,11 +70,24 @@
   <object id="1861" name="mine-cart-lootable" type="object" x="630" y="1200" width="240" height="184">
    <properties>
     <property name="color" value="brown"/>
-    <property name="fill" value="gold"/>
-    <property name="reward-pool" value="dm-gold"/>
+    <property name="fill" value="coal"/>
+    <property name="reward-pool" value="dm-coal"/>
    </properties>
   </object>
-  <object id="1863" name="ship" type="object" x="-247.09" y="692.844" width="2375" height="1008"/>
+ </objectgroup>
+ <objectgroup id="114" name="objects -9 fg">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1896" name="ship" type="object" x="-128" y="692.844" width="2375" height="1008"/>
+ </objectgroup>
+ <objectgroup id="113" name="terrain -9 fg">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="type" value="objects"/>
+  </properties>
  </objectgroup>
  <objectgroup id="104" name="water -8">
   <properties>
@@ -95,6 +95,12 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1865" name="water" type="object" x="-1109.86" y="1491.12" width="5928.45" height="1306.04"/>
+ </objectgroup>
+ <objectgroup id="112" name="terrain -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
  </objectgroup>
  <objectgroup id="103" name="water -7">
   <properties>
@@ -200,7 +206,7 @@
   <object id="1847" name="Mines/Plank3" type="decor" x="160.51" y="1769.66" width="53" height="366"/>
   <object id="1848" name="Mines/Plank1" type="decor" x="430.67" y="1784.33" width="54" height="374"/>
  </objectgroup>
- <objectgroup id="98" name="rails -7">
+ <objectgroup id="98" name="rails -7" locked="1">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
@@ -210,6 +216,7 @@
  <objectgroup id="86" name="objects -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1735" name="solid" type="collision" x="319.21" y="353.818" width="165.091" height="1752.97"/>
@@ -221,7 +228,7 @@
     <property name="reward-pool" value="dm-coal"/>
    </properties>
   </object>
-  <object id="1852" name="mine-cart-lootable" type="object" x="500.17" y="1265" width="240" height="184">
+  <object id="1852" name="mine-cart-lootable" type="object" x="1250.84" y="1265" width="240" height="184">
    <properties>
     <property name="color" value="blue"/>
     <property name="fill" value="diamond"/>
@@ -235,7 +242,7 @@
     <property name="reward-pool" value="dm-gold"/>
    </properties>
   </object>
-  <object id="1887" name="portal" type="object" x="762.67" y="1189.64" width="256" height="256">
+  <object id="1887" name="portal" type="object" x="625.333" y="1194.98" width="256" height="256">
    <properties>
     <property name="map" value="PerilousSea/Ship_Main"/>
     <property name="quest" value="discover-charter-ship,board-charter-ship"/>
@@ -247,6 +254,7 @@
  <objectgroup id="85" name="entities -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
@@ -265,7 +273,7 @@
     <property name="to" value="bridge-front-B"/>
    </properties>
   </object>
-  <object id="1888" name="spawn" type="object" x="831.333" y="1319.33" width="128" height="128">
+  <object id="1888" name="spawn" type="object" x="694.003" y="1324.67" width="128" height="128">
    <properties>
     <property name="map-banner" value="data-cove"/>
     <property name="transition" value="charter-ship"/>
@@ -306,12 +314,14 @@
  <objectgroup id="92" name="objects -5 bg bg">
   <properties>
    <property name="depth" type="float" value="-320"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
  <objectgroup id="91" name="objects -5 bg">
   <properties>
    <property name="depth" type="float" value="-320"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
@@ -355,6 +365,7 @@
  <objectgroup id="63" name="objects -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
@@ -459,12 +470,14 @@
  <objectgroup id="83" name="objects -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
  <objectgroup id="96" name="objects -1 bg">
   <properties>
    <property name="depth" type="float" value="-64"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
@@ -520,14 +533,6 @@
    </properties>
   </object>
   <object id="1734" name="solid" type="collision" x="2026.79" y="553.818" width="274.182" height="1952.97"/>
-  <object id="1872" name="warp" type="object" x="2559.03" y="1388.36" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-front-B"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-back-B"/>
-   </properties>
-  </object>
   <object id="1890" name="help-totem-potions" type="object" x="3166" y="1410" width="248" height="248"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
@@ -556,6 +561,14 @@
    <properties>
     <property name="map-banner" value="data-cove"/>
     <property name="transition" value="tiger-right"/>
+   </properties>
+  </object>
+  <object id="1895" name="warp" type="object" x="2559.03" y="1388.36" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-front-B"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-back-B"/>
    </properties>
   </object>
  </objectgroup>

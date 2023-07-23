@@ -50,7 +50,10 @@ Item* TransmuteQuartzToEmerald::clone()
 
 LocalizedString* TransmuteQuartzToEmerald::getString()
 {
-	return Strings::Items_Crafting_Recipes_TransmuteQuartzToEmerald::create();
+	return Strings::Items_Crafting_Recipes_TransmuteGeneric::create()->setStringReplacementVariables({
+		Strings::Items_Crafting_Ore_Quartz::create(),
+		Strings::Items_Crafting_Ore_Emerald::create()
+	});
 }
 
 const std::string& TransmuteQuartzToEmerald::getIconResource()
@@ -60,7 +63,7 @@ const std::string& TransmuteQuartzToEmerald::getIconResource()
 
 std::string TransmuteQuartzToEmerald::getCraftedItemIconResource()
 {
-	return ItemResources::Crafting_Smithing_Emerald;
+	return ItemResources::Crafting_Smithing_T3_Emerald;
 }
 
 const std::string& TransmuteQuartzToEmerald::getIdentifier()

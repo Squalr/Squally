@@ -10,8 +10,8 @@
 using namespace cocos2d;
 
 const std::string ObsideanTerrain::MapKey = "obsidean";
-const Color4B ObsideanTerrain::FillColor = Color4B(11, 30, 39, 255);
-const Color4B ObsideanTerrain::MiniMapColor = Color4B(11, 30, 39, 255);
+const Color4B ObsideanTerrain::FillColor = Color4B(87, 15, 22, 255);
+const Color4B ObsideanTerrain::MiniMapColor = Color4B(87, 15, 22, 255);
 
 ObsideanTerrain* ObsideanTerrain::create(ValueMap& properties)
 {
@@ -51,7 +51,7 @@ ObsideanTerrain::ObsideanTerrain(ValueMap& properties) : super(
 		TerrainResources::Obsidean_Right,
 		TerrainResources::Obsidean_RightConnector,
 		// Top
-		Vec2::ZERO,
+		Vec2(0.0f, -16.0f),
 		// Bottom
 		Vec2::ZERO,
 		// Left
@@ -61,21 +61,21 @@ ObsideanTerrain::ObsideanTerrain(ValueMap& properties) : super(
 		// TopLeft
 		Vec2(-20.0f, 0.0f),
 		// TopRight
-		Vec2(20.0f, 4.0f),
+		Vec2(20.0f, 2.0f),
 		// BottomLeft
 		Vec2::ZERO,
 		// BottomRight
 		Vec2::ZERO,
 		// TopConnector
-		Vec2::ZERO,
+		Vec2(0.0f, 16.0f),
 		// TopConnectorConcave
-		Vec2(0.0f, 4.0f),
+		Vec2(0.0f, 16.0f),
 		// TopConnectorConcaveDeep
 		Vec2(0.0f, 6.0f),
 		// TopConnectorConvex
-		Vec2(0.0f, -2.0f),
+		Vec2(0.0f, 8.0f),
 		// TopConnectorConvexDeep
-		Vec2(0.0f, -14.0f),
+		Vec2(0.0f, -12.0f),
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor

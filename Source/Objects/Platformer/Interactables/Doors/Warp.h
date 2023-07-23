@@ -13,13 +13,15 @@ public:
 	static const std::string PropertyWarpTo;
 	static const std::string PropertyNoWarpCamera;
 	static const std::string PropertyRelayer;
+	static const std::string PropertySaveKey;
 
 protected:
 	Warp(cocos2d::ValueMap& properties);
 	virtual ~Warp();
 	
-	void update(float dt) override;
+	void onEnter() override;
 	void initializeListeners() override;
+	void update(float dt) override;
 	void loadMap() override;
 
 private:
@@ -29,6 +31,7 @@ private:
 
 	std::string from;
 	std::string to;
+	std::string saveKey;
 	bool warpCamera = false;
 	bool relayer = false;
 	float cooldown = 0.0f;

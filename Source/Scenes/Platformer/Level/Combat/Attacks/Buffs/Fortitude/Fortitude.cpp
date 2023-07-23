@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
@@ -39,7 +41,7 @@ using namespace cocos2d;
 const std::string Fortitude::FortitudeIdentifier = "fortitude";
 const std::string Fortitude::HackIdentifierFortitude = "fortitude";
 
-const int Fortitude::MaxMultiplier = 4;
+const int Fortitude::MaxMultiplier = 6;
 const int Fortitude::DamageReduction = 3; // Keep in sync with asm
 const float Fortitude::Duration = 16.0f;
 
@@ -127,21 +129,25 @@ void Fortitude::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(Fortitude::DamageReduction)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentIncreaseInstead::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentTryChanging::create()) + 
-						"sub ebx, 3\n"
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentRegister::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentDamageReduce::create()
+								->setStringReplacementVariables(ConstantString::create(std::to_string(Fortitude::DamageReduction)))),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentIncreaseInstead::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentTryChanging::create()),
+							ConstantString::create("sub ebx, 3\n")
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(Fortitude::DamageReduction)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentIncreaseInstead::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentTryChanging::create()) + 
-						"sub rbx, 3\n"
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentRegister::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentDamageReduce::create()
+								->setStringReplacementVariables(ConstantString::create(std::to_string(Fortitude::DamageReduction)))),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentIncreaseInstead::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentTryChanging::create()),
+							ConstantString::create("sub rbx, 3\n")
+						})
 					),
 				},
 				true
@@ -149,8 +155,7 @@ void Fortitude::registerHackables()
 		},
 	};
 
-	auto func = &Fortitude::applyFortitude;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Fortitude::applyFortitude, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

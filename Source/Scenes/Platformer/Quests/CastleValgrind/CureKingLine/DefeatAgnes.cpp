@@ -60,26 +60,35 @@ void DefeatAgnes::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void DefeatAgnes::onActivate(bool isActiveThroughSkippable)
+void DefeatAgnes::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
-	this->agnes->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
+	if (this->agnes != nullptr)
 	{
-		if (!value.asBool())
+		this->agnes->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
+		{
+			if (!value.asBool())
+			{
+				this->complete();
+			}
+		});
+
+		if (!this->agnes->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 		{
 			this->complete();
 		}
-	});
+	}
 
 	this->listenForMapEventOnce(DefeatAgnes::MapEventEngageAgnes, [=](ValueMap)
 	{
-		this->runCinematicSequencePt1();
+		if (this->agnes->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+		{
+			this->runCinematicSequencePt1();
+		}
 	});
 }
 
 void DefeatAgnes::onComplete()
 {
-	// TODO
-	// Objectives::SetCurrentObjective(ObjectiveKeys::UREnterTheMines);
 }
 
 void DefeatAgnes::onSkipped()
@@ -91,32 +100,39 @@ void DefeatAgnes::runCinematicSequencePt1()
 {
 	PlatformerEvents::TriggerCinematicHijack();
 
-	this->agnes->runAction(Sequence::create(
-		FadeTo::create(0.5f, 255),
-		DelayTime::create(0.75f),
-		CallFunc::create([=]()
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_CastleValgrind_CureKing_Agnes_A_Guests::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->agnes, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
+		),
+		[=]()
 		{
-			DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-				Strings::Menus_StoryMode::create(),
-				DialogueEvents::DialogueVisualArgs(
-					DialogueBox::DialogueDock::Bottom,
-					DialogueBox::DialogueAlignment::Left,
-					DialogueEvents::BuildPreviewNode(&this->agnes, false),
-					DialogueEvents::BuildPreviewNode(&this->squally, true)
-				),
-				[=]()
-				{
-					this->runCinematicSequencePt2();
-				},
-				Voices::GetNextVoiceMedium(Voices::VoiceType::Human),
-				false
-			));
-		}),
-		nullptr
+			this->runCinematicSequencePt2();
+		},
+		Voices::GetNextVoiceShort(Voices::VoiceType::Human),
+		false
 	));
 }
 
 void DefeatAgnes::runCinematicSequencePt2()
 {
-	PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(this->agnes, false));
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_CastleValgrind_CureKing_Agnes_B_StayingLong::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->agnes, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
+		),
+		[=]()
+		{
+			PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(this->agnes, false));
+		},
+		Voices::GetNextVoiceShort(Voices::VoiceType::Human),
+		false
+	));
+	
 }

@@ -14,7 +14,6 @@
 #include "Deserializers/Platformer/PlatformerDecorDeserializer.h"
 #include "Deserializers/Platformer/PlatformerEntityDeserializer.h"
 #include "Deserializers/Platformer/PlatformerHideMiniMapDeserializer.h"
-#include "Deserializers/Platformer/PlatformerMiniMapRequiredItemDeserializer.h"
 #include "Deserializers/Platformer/PlatformerObjectDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
 #include "Deserializers/Platformer/PlatformerRubberbandingDeserializer.h"
@@ -38,6 +37,8 @@
 #include "Engine/Maps/GameMap.h"
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Sound/Music.h"
+#include "Engine/Sound/MusicPlayer.h"
 #include "Engine/UI/HUD/FocusTakeOver.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
@@ -231,7 +232,7 @@ void CombatMap::initializeListeners()
 		{
 			if (args->playerVictory)
 			{
-				for (auto next : enemyData)
+				for (CombatMap::CombatData& next : enemyData)
 				{
 					GameObject::saveObjectState(next.identifier, EnemyHealthBehavior::SaveKeyIsDead, Value(true));
 				}
@@ -242,6 +243,13 @@ void CombatMap::initializeListeners()
 					DelayTime::create(2.25f),
 					CallFunc::create([=]()
 					{
+						Music* combatMusic = MusicPlayer::getInstance()->getCurrentSong();
+
+						if (combatMusic != nullptr)
+						{
+							combatMusic->stopAndFadeOut();
+						}
+
 						CombatEvents::TriggerGiveRewards();
 					}),
 					nullptr
@@ -249,6 +257,13 @@ void CombatMap::initializeListeners()
 			}
 			else
 			{
+				Music* combatMusic = MusicPlayer::getInstance()->getCurrentSong();
+				
+				if (combatMusic != nullptr)
+				{
+					combatMusic->stopAndFadeOut();
+				}
+
 				this->combatEndBackdrop->setOpacity(196);
 				this->defeatMenu->show();
 			}

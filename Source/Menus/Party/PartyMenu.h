@@ -27,8 +27,6 @@ public:
 	int getSelectionIndex();
 	void setSelectionIndex(int index);
 
-	static std::string UnstuckMap;
-
 protected:
 	PartyMenu();
 	virtual ~PartyMenu();
@@ -49,7 +47,7 @@ private:
 	void onReturnClick();
 
 	cocos2d::Sprite* partyWindow = nullptr;
-	LocalizedLabel* partyLabel = nullptr;
+	LocalizedLabel* titleLabel = nullptr;
 	cocos2d::Node* statsBarsNode = nullptr;
 	ClickableNode* closeButton = nullptr;
 	ClickableTextNode* cancelButton = nullptr;
@@ -67,6 +65,7 @@ private:
 	std::vector<StatsBars*> partyStatsBars;
 
 	int selectionIndex = 0;
+	bool isInSelectMode = false;
 
 	std::function<void(PlatformerEntity*)> onSelect = nullptr;
 	std::function<void()> onExit = nullptr;

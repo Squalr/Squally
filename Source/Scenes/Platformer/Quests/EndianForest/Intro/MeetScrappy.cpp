@@ -74,7 +74,7 @@ void MeetScrappy::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void MeetScrappy::onActivate(bool isActiveThroughSkippable)
+void MeetScrappy::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce(MeetScrappy::MapKeyQuest, [=](ValueMap args)
 	{
@@ -150,10 +150,11 @@ void MeetScrappy::runCinematicSequencePt2()
 	));
 }
 
+
 void MeetScrappy::runCinematicSequencePt3()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_EndianForest_Intro_C_GetYouPatched::create(),
+		Strings::Platformer_Quests_EndianForest_Intro_C_WhoYouAre::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
@@ -164,12 +165,51 @@ void MeetScrappy::runCinematicSequencePt3()
 		{
 			this->runCinematicSequencePt4();
 		},
-		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
+		Voices::GetNextVoiceQuestion(Voices::VoiceType::Droid),
 		false
 	));
 }
 
 void MeetScrappy::runCinematicSequencePt4()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Ellipses::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true),
+			true
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt5();
+		},
+		"",
+		false
+	));
+}
+
+void MeetScrappy::runCinematicSequencePt5()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_Intro_D_GetYouPatched::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt6();
+		},
+		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
+		false
+	));
+}
+
+void MeetScrappy::runCinematicSequencePt6()
 {
 	if (this->scrappy != nullptr)
 	{

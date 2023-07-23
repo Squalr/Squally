@@ -8,6 +8,9 @@
 #include "Menus/Crafting/CraftFilterMenu/CraftFilterEntry.h"
 #include "Menus/Crafting/CraftFilterMenu/CraftFilterMenu.h"
 #include "Menus/Crafting/CraftFilterMenu/Alchemy/AllAlchemyFilter.h"
+#include "Menus/Crafting/CraftFilterMenu/Alchemy/BombsFilter.h"
+#include "Menus/Crafting/CraftFilterMenu/Alchemy/PotionsFilter.h"
+#include "Menus/Crafting/CraftFilterMenu/Alchemy/TransmutesFilter.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -32,6 +35,9 @@ AlchemyMenu::AlchemyMenu() : super(Strings::Menus_Crafting_Crafting::create())
 	this->craftSound = Sound::create(SoundResources::Menus_Crafting_Alchemy);
 
 	this->filterMenu->addFilter(AllAlchemyFilter::create());
+	this->filterMenu->addFilter(PotionsFilter::create());
+	this->filterMenu->addFilter(BombsFilter::create());
+	this->filterMenu->addFilter(TransmutesFilter::create());
 
 	this->backDecorNode->addChild(this->anvil);
 	this->craftIconNode->addChild(this->icon);

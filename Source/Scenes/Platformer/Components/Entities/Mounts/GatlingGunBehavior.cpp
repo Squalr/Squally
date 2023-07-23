@@ -48,14 +48,11 @@ GatlingGunBehavior* GatlingGunBehavior::create(GameObject* owner)
 GatlingGunBehavior::GatlingGunBehavior(GameObject* owner) : super(owner)
 {
 	this->gatlingGun = dynamic_cast<GatlingGun*>(owner);
-	this->attackSound = WorldSound::create();
 
 	if (this->gatlingGun == nullptr)
 	{
 		this->invalidate();
 	}
-	
-	this->addChild(this->attackSound);
 }
 
 GatlingGunBehavior::~GatlingGunBehavior()
@@ -95,8 +92,6 @@ void GatlingGunBehavior::attack()
 		return;
 	}
 
-	std::string attackAnimation = this->getOutOfCombatAttackAnimation();
-	std::string soundResource = this->getOutOfCombatAttackSound();
 	float onset = this->getOutOfCombatAttackOnset();
 	float sustain = this->getOutOfCombatAttackSustain();
 	float cooldown = this->getOutOfCombatAttackCooldown();
@@ -104,15 +99,12 @@ void GatlingGunBehavior::attack()
 	this->isPerformingOutOfCombatAttack = true;
 
 	this->gatlingGun->getAnimations()->clearAnimationPriority();
-	this->gatlingGun->getAnimations()->playAnimation(attackAnimation, SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
+	this->gatlingGun->getAnimations()->playAnimation("Attack", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
 	
 	this->runAction(Sequence::create(
 		DelayTime::create(onset),
 		CallFunc::create([=]()
 		{
-			this->attackSound->setSoundResource(soundResource);
-			this->attackSound->play();
-
 			this->tryPerformShootProjectile();
 		}),
 		DelayTime::create(sustain),
@@ -123,17 +115,6 @@ void GatlingGunBehavior::attack()
 		}),
 		nullptr
 	));
-}
-
-std::string GatlingGunBehavior::getOutOfCombatAttackAnimation()
-{
-	return "Attack";
-}
-
-std::string GatlingGunBehavior::getOutOfCombatAttackSound()
-{
-	// TODO: This sfx sucks for this
-	return SoundResources::Platformer_FX_Explosions_Explosion1;
 }
 
 float GatlingGunBehavior::getOutOfCombatAttackOnset()
@@ -231,12 +212,26 @@ void GatlingGunBehavior::decorateProjectile(Projectile* projectile)
 
 		if (target != nullptr)
 		{
-			target->getComponent<KillingMachineHealthBehavior>([target](KillingMachineHealthBehavior* healthBehavior)
+			target->getComponent<KillingMachineHealthBehavior>([projectile, target](KillingMachineHealthBehavior* healthBehavior)
 			{
-				target->getComponent<KillingMachineDamageBehavior>([target, healthBehavior](KillingMachineDamageBehavior* damageBehavior)
+				if (!healthBehavior->isAlive())
+				{
+					return;
+				}
+
+				target->getComponent<KillingMachineDamageBehavior>([projectile, target, healthBehavior](KillingMachineDamageBehavior* damageBehavior)
 				{
 					int damage = damageBehavior->compare();
 					healthBehavior->addHealth(-damage);
+			
+					Shell* shell = static_cast<Shell*>(projectile);
+
+					if (shell != nullptr)
+					{
+						bool wasCrit = damage >= KillingMachineDamageBehavior::CritDamage;
+
+						shell->runImpactFX(wasCrit);
+					}
 				});
 			});
 		}

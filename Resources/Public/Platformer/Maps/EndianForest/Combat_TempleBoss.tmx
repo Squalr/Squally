@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="37" nextobjectid="592">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="37" nextobjectid="592">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -7,7 +7,7 @@
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="YellowSky"/>
-   <property name="music" value="trick-or-treat"/>
+   <property name="music" value="far-and-away"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
   </properties>
@@ -56,12 +56,11 @@
   </object>
   <object id="556" name="temple" type="terrain" x="1534.36" y="1311.46">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-128"/>
    </properties>
    <polygon points="0,0 519.718,1.85085 519.305,142.53 649.655,142.551 647.95,275.518 777.151,273.063 777.935,403.076 901.94,403.024 898.962,1197.8 -373.105,1200.31 -374.044,377.027 -247.91,376.915 -249.314,257.13 -116.669,255.415 -118.551,134.529 3.6594,132.54"/>
   </object>
-  <object id="558" name="combat-spawn" type="object" x="652.11" y="1565.16" width="64" height="64">
+  <object id="558" name="combat-spawn" type="object" x="652.11" y="1567.91" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-256"/>
     <property name="spawn-order" type="int" value="1"/>
@@ -70,25 +69,21 @@
   </object>
   <object id="571" name="temple" type="terrain" x="225.167" y="1710" width="501.333" height="1050.67">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-64"/>
    </properties>
   </object>
   <object id="572" name="temple" type="terrain" x="461.333" y="1631.66" width="501.333" height="1198.67">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-256"/>
    </properties>
   </object>
   <object id="573" name="temple" type="terrain" x="1454.82" y="1606.28" width="501.333" height="1050.67">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-64"/>
    </properties>
   </object>
   <object id="574" name="temple" type="terrain" x="1603.66" y="1707.63" width="501.333" height="1198.67">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="32"/>
    </properties>
   </object>

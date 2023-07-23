@@ -38,8 +38,8 @@ std::vector<std::tuple<Item*, int>> SteelBowPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 8 },
 		{ Iron::create(), 6 },
+		{ Wood::create(), 8 },
 		{ Coal::create(), 4 },
 	};
 }

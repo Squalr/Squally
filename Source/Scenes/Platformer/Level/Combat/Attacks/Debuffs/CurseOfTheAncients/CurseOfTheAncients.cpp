@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
@@ -53,7 +55,7 @@ CurseOfTheAncients* CurseOfTheAncients::create(PlatformerEntity* caster, Platfor
 }
 
 CurseOfTheAncients::CurseOfTheAncients(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_RunePurple, AbilityType::Physical, BuffData(CurseOfTheAncients::Duration, CurseOfTheAncients::CurseOfTheAncientsIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_RunePurple, AbilityType::Shadow, BuffData(CurseOfTheAncients::Duration, CurseOfTheAncients::CurseOfTheAncientsIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 
@@ -113,21 +115,31 @@ void CurseOfTheAncients::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov::create()
-							->setStringReplacementVariables({ Strings::Menus_Hacking_RegisterEbx::create(), Strings::Menus_Hacking_RegisterEax::create() })) + 
-						"push eax\n" +
-						"pop ebx\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentDamageSetToValue::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(CurseOfTheAncients::DamageDelt)))) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentIncreaseInstead::create())
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov::create()
+								->setStringReplacementVariables({ Strings::Menus_Hacking_RegisterEbx::create(), Strings::Menus_Hacking_RegisterEax::create() })), 
+							ConstantString::create("push eax\n"),
+							ConstantString::create("pop ebx\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentDamageSetToValue::create()
+								->setStringReplacementVariables(ConstantString::create(std::to_string(CurseOfTheAncients::DamageDelt)))),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentIncreaseInstead::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_RegisterEax::create())),
+							ConstantString::create("\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create())
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov::create()
-							->setStringReplacementVariables({ Strings::Menus_Hacking_RegisterRbx::create(), Strings::Menus_Hacking_RegisterRax::create() })) + 
-						"push rax\n" +
-						"pop rbx\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentDamageSetToValue::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(CurseOfTheAncients::DamageDelt)))) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentIncreaseInstead::create())
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov::create()
+								->setStringReplacementVariables({ Strings::Menus_Hacking_RegisterRbx::create(), Strings::Menus_Hacking_RegisterRax::create() })), 
+							ConstantString::create("push rax\n"),
+							ConstantString::create("pop rbx\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentDamageSetToValue::create()
+								->setStringReplacementVariables(ConstantString::create(std::to_string(CurseOfTheAncients::DamageDelt)))),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentIncreaseInstead::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_RegisterRax::create())),
+							ConstantString::create("\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create())
+						})
 					),
 				},
 				true
@@ -135,8 +147,7 @@ void CurseOfTheAncients::registerHackables()
 		},
 	};
 
-	auto func = &CurseOfTheAncients::applyCurseOfTheAncients;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(CurseOfTheAncients::applyCurseOfTheAncients, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

@@ -68,7 +68,7 @@ void CastCurseOfTongues::performAttack(PlatformerEntity* owner, std::vector<Plat
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
@@ -91,8 +91,14 @@ bool CastCurseOfTongues::isWorthUsing(PlatformerEntity* caster, const std::vecto
 
 	int uncastableCount = 0;
 
-	for (auto next : otherTeam)
+	for (PlatformerEntity* next : otherTeam)
 	{
+		if (!next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			uncastableCount++;
+			continue;
+		}
+		
 		if (CombatUtils::HasDuplicateCastOnLivingTarget(caster, next, [](PlatformerAttack* next) { return dynamic_cast<CastCurseOfTongues*>(next) != nullptr;  }))
 		{
 			uncastableCount++;

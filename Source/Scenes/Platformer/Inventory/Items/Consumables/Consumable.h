@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/Item.h"
 
+class LocalizedString;
 class PlatformerAttack;
 class PlatformerEntity;
 
@@ -10,6 +11,8 @@ class Consumable : public Item
 public:
 	PlatformerAttack* cloneAssociatedAttack(PlatformerEntity* entity);
 	PlatformerAttack* getAssociatedAttack(PlatformerEntity* entity);
+
+	virtual LocalizedString* getDescription();
 
 	virtual void useOutOfCombat(PlatformerEntity* target);
 	virtual bool canUseOnTarget(PlatformerEntity* target);

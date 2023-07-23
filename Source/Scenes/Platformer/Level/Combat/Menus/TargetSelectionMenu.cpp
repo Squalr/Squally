@@ -208,7 +208,7 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft, bool withMouseHitTest
 
 	std::vector<PlatformerEntity*> targetEntityGroup = std::vector<PlatformerEntity*>();
 
-	for (auto next : timelineRef->getEntries())
+	for (TimelineEntry* next : timelineRef->getEntries())
 	{
 		PlatformerEntity* entity = next->getEntity();
 

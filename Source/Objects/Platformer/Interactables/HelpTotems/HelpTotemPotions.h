@@ -13,6 +13,8 @@ protected:
 	HelpTotemPotions(cocos2d::ValueMap& properties);
 	virtual ~HelpTotemPotions();
 
+	void onInteract(PlatformerEntity* interactingEntity) override;
+	
 private:
 	typedef HelpTotem super;
 };

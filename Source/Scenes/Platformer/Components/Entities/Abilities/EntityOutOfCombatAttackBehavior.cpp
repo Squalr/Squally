@@ -95,8 +95,15 @@ void EntityOutOfCombatAttackBehavior::attack()
 
 	this->isPerformingOutOfCombatAttack = true;
 
+	this->isAnimatingAttack = true;
 	this->entity->getAnimations()->clearAnimationPriority();
-	this->entity->getAnimations()->playAnimation(attackAnimation, SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
+	this->entity->getAnimations()->playAnimation(attackAnimation, SmartAnimationNode::AnimationPlayMode::Callback, SmartAnimationNode::AnimParams(1.0f, 0.5f, true), [=]()
+	{
+		isAnimatingAttack = false;
+		this->entity->getAnimations()->clearAnimationPriority();
+		this->entity->getAnimations()->playAnimation();
+	});
+
 	this->entity->watchForComponent<EntityWeaponCollisionBehavior>([=](EntityWeaponCollisionBehavior* weaponBehavior)
 	{
 		this->runAction(Sequence::create(
@@ -301,4 +308,10 @@ Vec2 EntityOutOfCombatAttackBehavior::getProjectileSpawnOffset()
 float EntityOutOfCombatAttackBehavior::getProjectileLifetime()
 {
 	return 0.5f;
+}
+
+bool EntityOutOfCombatAttackBehavior::isAttacking()
+{
+	// Animation is a better indicator for use cases of this function
+	return this->isAnimatingAttack;
 }

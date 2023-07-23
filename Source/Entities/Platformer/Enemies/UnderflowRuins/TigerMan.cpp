@@ -25,8 +25,7 @@ TigerMan::TigerMan(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_UnderflowRuins_TigerMan_Animations,
 	EntityResources::Enemies_UnderflowRuins_TigerMan_Emblem,
 	CSize(256.0f, 308.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 
@@ -36,7 +35,7 @@ TigerMan::~TigerMan()
 
 Vec2 TigerMan::getDialogueOffset()
 {
-	return Vec2(0.0f, 0.0f);
+	return Vec2(0.0f, -64.0f);
 }
 
 LocalizedString* TigerMan::getEntityName()

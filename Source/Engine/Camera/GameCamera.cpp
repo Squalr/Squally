@@ -7,11 +7,13 @@
 #include "cocos/2d/CCDrawNode.h"
 #include "cocos/2d/CCNode.h"
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCInputEvents.h"
 #include "cocos/base/CCScheduler.h"
 
 #include "Engine/DeveloperMode/DeveloperModeController.h"
+#include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/GlobalDirector.h"
@@ -59,6 +61,7 @@ GameCamera::GameCamera()
 	this->debugScrollHitbox = ClickableNode::create();
 	this->hud->setLocalZOrder(9999);
 	this->hud->setVisible(false);
+	this->enableHackerModeEvents = true;
 
 	this->debugCameraLabelX->setStringReplacementVariables(this->debugCameraStringX);
 	this->debugCameraLabelY->setStringReplacementVariables(this->debugCameraStringY);
@@ -136,6 +139,8 @@ void GameCamera::initializeListeners()
 			this->setMapBounds(CRect(Vec2::ZERO, visibleSize));
 			this->resetCamera();
 			this->clearTargets();
+
+			this->getScheduler()->unschedule(GameCamera::SchedulerKeyCameraShake, this);
 		}
 	));
 
@@ -354,6 +359,12 @@ void GameCamera::shakeCamera(float magnitude, float shakesPerSecond, float durat
 
 	Director::getInstance()->getScheduler()->schedule([=](float dt)
 	{
+		if (this->hackermodeEnabled)
+		{
+			Camera::getDefaultCamera()->setRotation(0.0f);
+			return;
+		}
+
 		elapsed += dt;
 
 		if (++elapsedTicks < ticks)

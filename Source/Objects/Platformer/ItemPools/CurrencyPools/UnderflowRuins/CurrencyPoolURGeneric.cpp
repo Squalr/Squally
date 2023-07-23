@@ -22,7 +22,7 @@ CurrencyPoolURGeneric* CurrencyPoolURGeneric::create(ValueMap& properties)
 
 CurrencyPoolURGeneric::CurrencyPoolURGeneric(ValueMap& properties) : super(properties, CurrencyPoolURGeneric::PoolName)
 {
-	this->addCurrencyToPool(CurrencyPool::CurrencyData((Currency*)IOU::create(), 3, 5));
+	this->addCurrencyToPool(CurrencyPool::CurrencyData((Currency*)IOU::create(), 2 * 2, 2 * 4));
 }
 
 CurrencyPoolURGeneric::~CurrencyPoolURGeneric()

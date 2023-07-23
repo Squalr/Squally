@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="811">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="19" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="812">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="solace"/>
-   <property name="rubber-band" type="int" value="2"/>
+   <property name="music" value="lacrimosa"/>
+   <property name="rubber-band" type="int" value="14"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
   </properties>
@@ -88,7 +88,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="808" name="ruins-gray-dark" type="texture" x="-42" y="-70" width="2284" height="1264"/>
+  <object id="808" name="ruins-gray-dark" type="texture" x="-42" y="-70" width="2502.18" height="1264"/>
  </objectgroup>
  <objectgroup id="95" name="columns -0">
   <properties>
@@ -123,26 +123,26 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="769" name="Generic/Counter" type="decor" x="444.109" y="897.555" width="1080" height="167"/>
-  <object id="809" name="Ruins/ArchDoorGray1" type="decor" x="1809.14" y="609.697" width="235" height="452"/>
+  <object id="809" name="Ruins/ArchDoorGray1" type="decor" x="2061.14" y="608.697" width="235" height="452"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="807" name="ruins-gray-thick" type="terrain" x="-49.0288" y="1064.61" width="2290.3" height="234.06"/>
+  <object id="807" name="ruins-gray-thick" type="terrain" x="-49.0288" y="1064.61" width="2517.57" height="234.06"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="810" name="Generic/RedRug" type="decor" x="1766.73" y="1050.53" width="332" height="21"/>
+  <object id="810" name="Generic/RedRug" type="decor" x="2018.73" y="1049.53" width="332" height="21"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="694" name="portal" type="object" x="1809.59" y="689.741" width="237.527" height="375.411">
+  <object id="694" name="portal" type="object" x="2061.59" y="688.741" width="237.527" height="375.411">
    <properties>
     <property name="map" value="LambdaCrypts/Town_Main"/>
     <property name="transition" value="smith"/>
@@ -150,41 +150,42 @@
   </object>
   <object id="795" name="shop-item" type="object" x="682.67" y="198" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-minos"/>
+    <property name="pool" value="shop-pool-smith-t5"/>
    </properties>
   </object>
   <object id="796" name="shop-item" type="object" x="976" y="198" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-minos"/>
+    <property name="pool" value="shop-pool-smith-t5"/>
    </properties>
   </object>
   <object id="797" name="shop-item" type="object" x="1258" y="198" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-minos"/>
+    <property name="pool" value="shop-pool-smith-t5"/>
    </properties>
   </object>
   <object id="798" name="shop-item" type="object" x="683.53" y="482.246" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-minos"/>
+    <property name="pool" value="shop-pool-smith-t5"/>
    </properties>
   </object>
   <object id="799" name="shop-item" type="object" x="976" y="482.246" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-minos"/>
+    <property name="pool" value="shop-pool-smith-t5"/>
    </properties>
   </object>
   <object id="800" name="shop-item" type="object" x="1258" y="482.246" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-minos"/>
+    <property name="pool" value="shop-pool-smith-t5"/>
    </properties>
   </object>
-  <object id="801" name="shop-pool-azmus" type="object" x="1847.68" y="226.045" width="64" height="64"/>
+  <object id="801" name="shop-pool-smith-t5" type="object" x="2099.68" y="225.045" width="64" height="64"/>
   <object id="804" name="anvil" type="object" x="126.451" y="960.88" width="249" height="106">
    <properties>
     <property name="linked-tag" value="shopkeeper"/>
-    <property name="recipe-pool" value="smithing-pool-ur"/>
+    <property name="recipe-pool" value="smithing-pool-lc"/>
    </properties>
   </object>
+  <object id="811" name="smelting-pot" type="object" x="1560.51" y="896.99" width="170" height="167"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -202,12 +203,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="1916.32" y="934.96" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="2168.32" y="933.96" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="805" name="spawn-wood-door" type="object" x="1869.38" y="934.23" width="128" height="128">
+  <object id="805" name="spawn-wood-door" type="object" x="2121.38" y="933.23" width="128" height="128">
    <properties>
     <property name="transition" value="main"/>
    </properties>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Hackables/HackableObject.h"
+#include "Objects/Platformer/Interactables/Mounts/MountBase.h"
 
 namespace cocos2d
 {
@@ -14,7 +14,7 @@ class SmartAnimationSequenceNode;
 class Sound;
 class WorldSound;
 
-class SquallyShip : public HackableObject
+class SquallyShip : public MountBase
 {
 public:
 	static SquallyShip* create(cocos2d::ValueMap& properties);
@@ -27,24 +27,26 @@ protected:
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
+	void update(float dt) override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	cocos2d::Vec2 getButtonOffset() override;
-	void registerHackables() override;
+	cocos2d::Vec2 getReparentPosition(PlatformerEntity* entity) override;
 
 private:
-	typedef HackableObject super;
+	typedef MountBase super;
 
 	void runShipSequence();
 	void onCrash();
 
+	bool isFalling = false;
 	bool hasCrashed = false;
 	float flightTime = 0.0f;
+
+	Squally* squally = nullptr;
 
 	SmartAnimationSequenceNode* lightningStrike = nullptr;
 	cocos2d::Node* shipContainer = nullptr;
 	cocos2d::Sprite* ship = nullptr;
-	CollisionObject* shipCollision = nullptr;
 	SmartAnimationSequenceNode* smokeAnimation = nullptr;
 	SmartAnimationSequenceNode* shipFireAnimation = nullptr;
 	SmartAnimationSequenceNode* fireAnimation = nullptr;
@@ -60,4 +62,9 @@ private:
 	Sound* enterAtmosphereSound = nullptr;
 	Sound* crashSound = nullptr;
 	WorldSound* fireSound = nullptr;
+
+	Vec2 originalFollowSpeed;
+
+	static const float InteractCooldown;
+	static const cocos2d::Vec2 LaunchVelocity;
 };

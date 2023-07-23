@@ -8,7 +8,7 @@
    <property name="hide-mini-map" type="bool" value="true"/>
    <property name="map-banner" value=""/>
    <property name="music" value="heartbeat"/>
-   <property name="rubber-band" type="int" value="2"/>
+   <property name="rubber-band" type="int" value="8"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
   </properties>
@@ -151,35 +151,35 @@
   </object>
   <object id="795" name="shop-item" type="object" x="1066.67" y="198" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-griffin"/>
+    <property name="pool" value="shop-pool-alch-t2"/>
    </properties>
   </object>
   <object id="796" name="shop-item" type="object" x="1360" y="198" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-griffin"/>
+    <property name="pool" value="shop-pool-alch-t2"/>
    </properties>
   </object>
   <object id="797" name="shop-item" type="object" x="1642" y="198" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-griffin"/>
+    <property name="pool" value="shop-pool-alch-t2"/>
    </properties>
   </object>
   <object id="798" name="shop-item" type="object" x="1067.53" y="482.246" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-griffin"/>
+    <property name="pool" value="shop-pool-alch-t2"/>
    </properties>
   </object>
   <object id="799" name="shop-item" type="object" x="1360" y="482.246" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-griffin"/>
+    <property name="pool" value="shop-pool-alch-t2"/>
    </properties>
   </object>
   <object id="800" name="shop-item" type="object" x="1642" y="482.246" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-griffin"/>
+    <property name="pool" value="shop-pool-alch-t2"/>
    </properties>
   </object>
-  <object id="801" name="shop-pool-griffin" type="object" x="404.409" y="310.893" width="64" height="64"/>
+  <object id="801" name="shop-pool-alch-t2" type="object" x="404.409" y="310.893" width="64" height="64"/>
   <object id="886" name="alchemy-lab" type="object" x="1793.68" y="670.939" width="381" height="393">
    <properties>
     <property name="recipe-pool" value="alchemy-pool-dm"/>
@@ -202,7 +202,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="521.133" y="939.96" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="815.072" y="936.93" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>

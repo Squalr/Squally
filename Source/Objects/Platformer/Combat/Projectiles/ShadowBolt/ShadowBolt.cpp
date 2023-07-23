@@ -3,6 +3,7 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Localization/ConcatString.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
@@ -116,15 +117,19 @@ void ShadowBolt::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_StopShadowBolt::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_CommentSpeed::create()) + 
-						"mov dword ptr [eax], 0.0\n"
-						"movss xmm1, dword ptr [eax]\n\n"
-						"mulps xmm0, xmm1"
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_CommentSpeed::create()),
+							ConstantString::create("mov dword ptr [eax], 0.0f\n"),
+							ConstantString::create("movss xmm1, dword ptr [eax]\n\n"),
+							ConstantString::create("mulps xmm0, xmm1")
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_CommentSpeed::create()) + 
-						"mov dword ptr [rax], 0.0\n"
-						"movss xmm1, dword ptr [rax]\n\n"
-						"mulps xmm0, xmm1"
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_CommentSpeed::create()), 
+							ConstantString::create("mov dword ptr [rax], 0.0f\n"),
+							ConstantString::create("movss xmm1, dword ptr [rax]\n\n"),
+							ConstantString::create("mulps xmm0, xmm1")
+						})
 					)
 				}
 			)

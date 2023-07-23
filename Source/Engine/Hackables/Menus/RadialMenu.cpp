@@ -136,7 +136,7 @@ void RadialMenu::onHackableEdit(HackableBase* hackable)
 	if (dynamic_cast<HackActivatedAbility*>(hackable) != nullptr)
 	{
 		dynamic_cast<HackActivatedAbility*>(hackable)->activate();
-		HackableEvents::TriggerEditHackableBaseDone();
+		this->close();
 	}
 	else
 	{

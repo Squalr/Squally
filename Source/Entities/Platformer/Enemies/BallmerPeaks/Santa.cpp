@@ -25,8 +25,7 @@ Santa::Santa(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_BallmerPeaks_Santa_Animations,
 	EntityResources::Enemies_BallmerPeaks_Santa_Emblem,
 	CSize(420.0f, 452.0f),
-	0.9f,
-	Vec2(0.0f, 0.0f))
+	0.9f)
 {
 }
 

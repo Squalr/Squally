@@ -8,12 +8,14 @@
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Entities/Platformer/PlatformerEntities.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Strings.h"
 
@@ -44,6 +46,9 @@ Train::Train(cocos2d::ValueMap& properties) : super(properties, CSize(1083.0f, 9
 		int(PlatformerCollisionType::PassThrough),
 		CollisionObject::Properties(false, false)
 	);
+	this->idleSfx = WorldSound::create(SoundResources::Platformer_FX_Train_Idle);
+	this->motionSfx = WorldSound::create(SoundResources::Platformer_FX_Train_Moving);
+	this->isIdling = GameUtils::getKeyOrDefault(this->properties, Train::PropertyIsIdling, Value(true)).asBool();
 
 	std::string locomotiveSize = GameUtils::getKeyOrDefault(this->properties, Train::PropertyLocomotiveSize, Value("")).asString();
 	std::string colorStr = GameUtils::getKeyOrDefault(this->properties, Train::PropertyColor, Value("")).asString();
@@ -157,6 +162,8 @@ Train::Train(cocos2d::ValueMap& properties) : super(properties, CSize(1083.0f, 9
 
 	this->frontNode->addChild(this->bottomCollision);
 	this->frontNode->addChild(this->locomotive);
+	this->addChild(this->idleSfx);
+	this->addChild(this->motionSfx);
 }
 
 Train::~Train()
@@ -166,6 +173,11 @@ Train::~Train()
 void Train::onEnter()
 {
 	super::onEnter();
+	
+	if (this->isIdling)
+	{
+		this->idleSfx->play(true);
+	}
 
 	this->scheduleUpdate();
 }
@@ -185,7 +197,7 @@ void Train::initializeListeners()
 	this->interactCollision->whenCollidesWith({ (CollisionType)PlatformerCollisionType::CartStop }, [=](CollisionData collisionData)
 	{
 		this->reverse();
-		this->dismount();
+		this->dismountAll();
 		
 		return CollisionResult::CollideWithPhysics;
 	});
@@ -255,16 +267,17 @@ void Train::mount(PlatformerEntity* interactingEntity)
 	this->faceEntityTowardsDirection();
 
 	this->isMoving = true;
+	this->motionSfx->play(true);
 }
 
-void Train::dismount()
+void Train::dismount(PlatformerEntity* entity)
 {
-	super::dismount();
+	super::dismount(entity);
 	
 	this->isMoving = false;
 }
 
-Vec2 Train::getReparentPosition()
+Vec2 Train::getReparentPosition(PlatformerEntity* entity)
 {
 	return Vec2(0.0f, 1920.0f);
 }

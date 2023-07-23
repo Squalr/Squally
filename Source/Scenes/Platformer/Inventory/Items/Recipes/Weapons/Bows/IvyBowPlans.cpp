@@ -38,8 +38,11 @@ std::vector<std::tuple<Item*, int>> IvyBowPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 12 },
+		{ Sapphire::create(), 1 },
+		{ Mithril::create(), 5 },
 		{ Iron::create(), 2 },
+		{ Feather::create(), 2 },
+		{ Coal::create(), 4 },
 	};
 }
 

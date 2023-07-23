@@ -13,6 +13,7 @@
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Npcs/EndianForest/Elriel.h"
 #include "Entities/Platformer/Npcs/EndianForest/QueenLiana.h"
+#include "Entities/Platformer/Npcs/Mages/Marcel.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/ItemPools/DropPools/EndianForest/RewardPoolLiana.h"
@@ -98,7 +99,7 @@ void ReturnToQueen::onLoad(QuestState questState)
 	}
 }
 
-void ReturnToQueen::onActivate(bool isActiveThroughSkippable)
+void ReturnToQueen::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->runCinematicSequence();
 
@@ -110,8 +111,6 @@ void ReturnToQueen::onActivate(bool isActiveThroughSkippable)
 
 void ReturnToQueen::onComplete()
 {
-	Objectives::SetCurrentObjective(ObjectiveKeys::EFVisitMarcel);
-	
 	this->queenLiana->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 	{
 		questBehavior->disableAll();
@@ -132,11 +131,16 @@ void ReturnToQueen::runCinematicSequence()
 	
 	this->queenLiana->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
+		interactionBehavior->addInteractCallback([=]()
+		{
+			PlatformerEvents::TriggerHideMiniMap();
+		});
+
 		// Pre-text chain
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_L_WhereIsOurReward::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Left,
 				DialogueEvents::BuildPreviewNode(&this->guano, false),
 				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
@@ -152,7 +156,7 @@ void ReturnToQueen::runCinematicSequence()
 			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_M_ThankYou::create()
 				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->squally, false),
 				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
@@ -160,32 +164,16 @@ void ReturnToQueen::runCinematicSequence()
 			[=]()
 			{
 				PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(this->rewardPool));
-
 				this->complete();
 			},
-			Voices::GetNextVoiceShort(),
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_N_However::create(),
+			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_N_WhatTheHeck::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->squally, false),
-				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
-			),
-			[=]()
-			{
-			},
-			Voices::GetNextVoiceLong(),
-			false
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_O_WhatDoYouMean::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Left,
 				DialogueEvents::BuildPreviewNode(&this->guano, false),
 				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
@@ -198,72 +186,30 @@ void ReturnToQueen::runCinematicSequence()
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_P_MoreOrcs::create(),
+			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_O_WearItOfCourse::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->squally, false),
-				DialogueEvents::BuildPreviewNode(&this->elriel, true)
+				DialogueEvents::BuildPreviewNode(&this->guano, false),
+				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
 			),
 			[=]()
 			{
+				this->defer([=]()
+				{
+					this->broadcastMapEvent(Marcel::MapKey, ValueMap());
+					this->setPostText();
+				});
 			},
-			Voices::GetNextVoiceLong(),
+			Voices::GetNextVoiceMedium(),
 			false
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_Q_NoChoice::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->guano, false),
-				DialogueEvents::BuildPreviewNode(&this->elriel, true)
-			),
-			[=]()
-			{
-			},
-			Voices::GetNextVoiceMedium(),
-			true
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_R_Ships::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->guano, false),
-				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
-			),
-			[=]()
-			{
-			},
-			Voices::GetNextVoiceMedium(),
-			true
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_S_VisitShops::create()
-				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Marcel::create()),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->squally, false),
-				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
-			),
-			[=]()
-			{
-				this->setPostText();
-			},
-			Voices::GetNextVoiceMedium(),
-			true
 		));
 	});
 }
 
 void ReturnToQueen::setPostText()
 {
-	if (this->questLine->isComplete())
+	if (this->getQuestState() == QuestState::Complete)
 	{
 		return;
 	}
@@ -273,10 +219,9 @@ void ReturnToQueen::setPostText()
 		this->queenLiana->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_S_VisitShops::create()
-					->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Marcel::create()),
+				Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_Z_VisitShopsReminder::create(),
 				DialogueEvents::DialogueVisualArgs(
-					DialogueBox::DialogueDock::Bottom,
+					DialogueBox::DialogueDock::Top,
 					DialogueBox::DialogueAlignment::Left,
 					DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
 					DialogueEvents::BuildPreviewNode(&this->squally, true)

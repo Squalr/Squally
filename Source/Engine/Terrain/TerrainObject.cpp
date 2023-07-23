@@ -27,6 +27,7 @@
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Engine/Utils/RenderUtils.h"
+#include "Engine/Utils/StrUtils.h"
 #include "Engine/UI/SmartClippingNode.h"
 
 #include "Resources/ShaderResources.h"
@@ -51,7 +52,11 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->isInactive = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString() == CollisionObject::MapKeyCollisionTypeNone;
 	this->isFlipped = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipY, Value(false)).asBool();
 	this->enableHackerModeEvents = true;
-	this->terrainHoleTag = GameUtils::getKeyOrDefault(this->properties, TerrainHole::TerrainHoleTag, Value("")).asString();
+	this->terrainHoleTags = StrUtils::splitOn(
+		GameUtils::getKeyOrDefault(this->properties, TerrainHole::TerrainHoleTag, Value("")).asString(),
+		",",
+		false
+	);
 
 	this->addTag(TerrainObject::MapKey);
 
@@ -129,17 +134,18 @@ void TerrainObject::onEnterTransitionDidFinish()
 			return;
 		}
 		
-		if (!this->terrainHoleTag.empty())
+		Vec2 terrainCoords = GameUtils::getWorldCoords(this, false);
+		
+		for (const std::string terrainHoleTag : this->terrainHoleTags)
 		{
 			ObjectEvents::QueryObjects<TerrainHole>([&](TerrainHole* terrainHole)
 			{
 				Vec2 holeCoords = GameUtils::getWorldCoords(terrainHole, false);
-				Vec2 terrainCoords = GameUtils::getWorldCoords(this, false);
 				
 				std::vector<Vec2> holePoints = terrainHole->getPolylinePoints();
 				AlgoUtils::offsetPoints(holePoints, holeCoords - terrainCoords);
 				this->holes.push_back(holePoints);
-			}, this->terrainHoleTag);
+			}, terrainHoleTag);
 		}
 
 		this->segments = AlgoUtils::buildSegmentsFromPoints(this->polylinePoints);
@@ -399,7 +405,7 @@ void TerrainObject::buildCollision()
 		{
 			if (this->isTopCollisionFriendly(previousSegment, &segment, &nextSegment))
 			{
-				collisionObject = CollisionObject::create(shape, (CollisionType)EngineCollisionTypes::SolidRoof, CollisionObject::Properties(false, false));
+				collisionObject = CollisionObject::create(shape, (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
 			}
 		}
 		else
@@ -1063,11 +1069,12 @@ void TerrainObject::optimizationHideOffscreenTerrain()
 	}
 
 	// A little padding otherwise surface textures will pop into existence, as they can hang outside terrain bounds
-	static const CSize Padding = CSize(768.0f, 768.0f);
+	static const CSize Padding = CSize(1536.0f, 1536.0f);
+	static const Vec3 PaddingVec = Vec3(Padding.width, Padding.height, 0.0f);
 	static const CRect CameraRect = CRect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
 
 	this->updateCachedCoords();
-	CRect thisRect = GameUtils::getScreenBounds(this->cachedCoords, drawRect.size + Padding);
+	CRect thisRect = GameUtils::getScreenBounds(this->cachedCoords - PaddingVec / 2.0f, drawRect.size + Padding / 2.0f);
 
 	if (CameraRect.intersectsRect(thisRect))
 	{

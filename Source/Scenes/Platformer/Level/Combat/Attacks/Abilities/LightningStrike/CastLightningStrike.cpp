@@ -30,8 +30,8 @@ CastLightningStrike::CastLightningStrike(float attackDuration, float recoverDura
 		UIResources::Menus_Icons_Lightning,
 		priority,
 		AbilityType::Lightning,
-		12,
-		15,
+		22,
+		25,
 		11,
 		attackDuration,
 		recoverDuration,
@@ -78,13 +78,13 @@ void CastLightningStrike::performAttack(PlatformerEntity* owner, std::vector<Pla
 {
 	super::performAttack(owner, targets);
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
-		CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->owner, next, this->getRandomDamage(), this->abilityType));
-
 		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
 			entityBuffBehavior->applyBuff(LightningStrike::create(owner, next));
 		});
+
+		CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->owner, next, this->getRandomDamage(), this->abilityType));
 	}
 }

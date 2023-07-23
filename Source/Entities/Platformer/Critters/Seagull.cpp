@@ -26,8 +26,7 @@ Seagull::Seagull(ValueMap& properties) : super(properties,
 	EntityResources::Misc_EndianForest_Seagull_Animations,
 	EntityResources::Misc_EndianForest_Seagull_Emblem,
 	CSize(96.0f, 160.0f),
-	0.8f,
-	Vec2(0.0f, 0.0f))
+	0.8f)
 {
 	this->animationNode->setScaleX(-this->getScale());
 }

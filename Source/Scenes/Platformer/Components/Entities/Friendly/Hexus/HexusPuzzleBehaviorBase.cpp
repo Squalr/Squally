@@ -33,15 +33,7 @@ void HexusPuzzleBehaviorBase::onEnter()
 	this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Dialogue_Hexus_PuzzleForYouZalgo::create()->setOverrideMap(
-				{
-					{ LanguageType::KOREAN, LanguageType::ENGLISH },
-					{ LanguageType::JAPANESE, LanguageType::ENGLISH },
-					{ LanguageType::THAI, LanguageType::ENGLISH },
-					{ LanguageType::CHINESE_SIMPLIFIED, LanguageType::ENGLISH },
-					{ LanguageType::CHINESE_TRADITIONAL, LanguageType::ENGLISH },
-				}
-			),
+			Strings::Platformer_Dialogue_Hexus_PuzzleForYouZalgo::create()->setOverrideLanguage(LanguageType::ENGLISH),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,

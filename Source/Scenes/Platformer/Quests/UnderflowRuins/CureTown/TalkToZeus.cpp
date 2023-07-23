@@ -85,7 +85,7 @@ void TalkToZeus::onLoad(QuestState questState)
 	}
 }
 
-void TalkToZeus::onActivate(bool isActiveThroughSkippable)
+void TalkToZeus::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 
@@ -110,7 +110,7 @@ void TalkToZeus::onSkipped()
 void TalkToZeus::runCinematicSequencePt1()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_UnderflowRuins_CureTown_Zeus_A_WhoGoesThere::create(),
+		Strings::Platformer_Quests_UnderflowRuins_CureTown_Zeus_A_ExpectingYou::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
@@ -121,7 +121,7 @@ void TalkToZeus::runCinematicSequencePt1()
 		{
 			this->runCinematicSequencePt2();
 		},
-		Voices::GetNextVoiceMedium(),
+		Voices::GetNextVoiceShort(),
 		false
 	));
 }
@@ -149,7 +149,84 @@ void TalkToZeus::runCinematicSequencePt2()
 void TalkToZeus::runCinematicSequencePt3()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_UnderflowRuins_CureTown_Zeus_B_SayNoMore::create(),
+		Strings::Platformer_Quests_UnderflowRuins_CureTown_Zeus_B_TimeRunningShort::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->zeus, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt4();
+		},
+		Voices::GetNextVoiceMedium(),
+		false
+	));
+}
+
+void TalkToZeus::runCinematicSequencePt4()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_UnderflowRuins_CureTown_Zeus_C_TheSkyCrack::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->zeus, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt5();
+		},
+		Voices::GetNextVoiceMedium(),
+		false
+	));
+}
+
+void TalkToZeus::runCinematicSequencePt5()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_UnderflowRuins_CureTown_Zeus_D_EnoughTime::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->zeus, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt6();
+		},
+		Voices::GetNextVoiceMedium(),
+		false
+	));
+}
+
+void TalkToZeus::runCinematicSequencePt6()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_UnderflowRuins_CureTown_Zeus_E_StopIt::create()
+			->setStringReplacementVariables(Strings::Platformer_MapNames_BallmerPeaks_BallmerPeaks::create()),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->zeus, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt7();
+		},
+		Voices::GetNextVoiceMedium(),
+		false
+	));
+}
+
+void TalkToZeus::runCinematicSequencePt7()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_UnderflowRuins_CureTown_Zeus_F_TakeSpellbook::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
@@ -160,7 +237,7 @@ void TalkToZeus::runCinematicSequencePt3()
 		{
 			this->complete();
 		},
-		Voices::GetNextVoiceMedium(),
+		Voices::GetNextVoiceLong(),
 		true
 	));
 }

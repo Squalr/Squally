@@ -15,6 +15,8 @@ StateOverride* StateOverride::create(
 	bool enemyPassed,
 	std::vector<CardData*> playerDeck,
 	std::vector<CardData*> enemyDeck,
+	std::vector<CardData*> playerGraveyard,
+	std::vector<CardData*> enemyGraveyard,
 	std::vector<CardData*> playerHand,
 	std::vector<CardData*> enemyHand,
 	std::vector<CardData*> playerBinaryCards,
@@ -34,6 +36,8 @@ StateOverride* StateOverride::create(
 		enemyPassed,
 		playerDeck,
 		enemyDeck,
+		playerGraveyard,
+		enemyGraveyard,
 		playerHand,
 		enemyHand,
 		playerBinaryCards,
@@ -61,6 +65,8 @@ StateOverride::StateOverride(
 	bool enemyPassed,
 	std::vector<CardData*> playerDeck,
 	std::vector<CardData*> enemyDeck,
+	std::vector<CardData*> playerGraveyard,
+	std::vector<CardData*> enemyGraveyard,
 	std::vector<CardData*> playerHand,
 	std::vector<CardData*> enemyHand,
 	std::vector<CardData*> playerBinaryCards,
@@ -78,6 +84,8 @@ StateOverride::StateOverride(
 	this->enemyPassed = enemyPassed;
 	this->playerDeck = playerDeck;
 	this->enemyDeck = enemyDeck;
+	this->playerGraveyard = playerGraveyard;
+	this->enemyGraveyard = enemyGraveyard;
 	this->playerHand = playerHand;
 	this->enemyHand = enemyHand;
 	this->playerBinaryCards = playerBinaryCards;

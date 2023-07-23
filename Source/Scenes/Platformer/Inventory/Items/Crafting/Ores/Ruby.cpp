@@ -20,7 +20,7 @@ Ruby* Ruby::create()
 	return instance;
 }
 
-Ruby::Ruby() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 133 }}), ItemMeta(20000))
+Ruby::Ruby() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 12 * 6 }}), ItemMeta(20000))
 {
 }
 
@@ -40,7 +40,7 @@ LocalizedString* Ruby::getString()
 
 const std::string& Ruby::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_Ruby;
+	return ItemResources::Crafting_Smithing_T6_Ruby;
 }
 
 const std::string& Ruby::getIdentifier()

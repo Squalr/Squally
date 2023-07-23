@@ -75,6 +75,8 @@ ItemPreview::ItemPreview(bool showItemName, bool allowCardPreview)
 	this->itemName = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Constant::create());
 	this->cardString = ConstantString::create("--");
 	this->cardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, this->cardString);
+	this->consumableString = ConstantString::create("--");
+	this->consumableLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, this->consumableString, CSize(256.0f, 512.0f));
 	this->cardPreview = CardPreview::create();
 	
 	this->itemName->enableOutline(Color4B::BLACK, 2);
@@ -82,12 +84,16 @@ ItemPreview::ItemPreview(bool showItemName, bool allowCardPreview)
 	this->cardPreview->setVisible(false);
 	this->cardLabel->setVisible(false);
 	this->cardLabel->enableOutline(Color4B::BLACK, 3);
+	this->consumableLabel->setVisible(false);
+	this->consumableLabel->enableOutline(Color4B::BLACK, 3);
+	this->consumableLabel->setVerticalAlignment(TextVAlignment::TOP);
+	this->consumableLabel->setAnchorPoint(Vec2(0.5f, 1.0f));
 
-	this->equipHint->enableOutline(Color4B::BLACK, 2);
+	this->equipHint->enableOutline(Color4B::BLACK, 3);
 	this->equipHint->setAnchorPoint(Vec2(0.0f, 0.5f));
-	this->unequipHint->enableOutline(Color4B::BLACK, 2);
+	this->unequipHint->enableOutline(Color4B::BLACK, 3);
 	this->unequipHint->setAnchorPoint(Vec2(0.0f, 0.5f));
-	this->useHint->enableOutline(Color4B::BLACK, 2);
+	this->useHint->enableOutline(Color4B::BLACK, 3);
 	this->useHint->setAnchorPoint(Vec2(0.0f, 0.5f));
 
 	for (int index = 0; index < ItemPreview::MaxStatlines; index++)
@@ -112,8 +118,9 @@ ItemPreview::ItemPreview(bool showItemName, bool allowCardPreview)
 		this->addChild(statline);
 	}
 	
-	this->addChild(cardLabel);
-	this->addChild(cardPreview);
+	this->addChild(this->cardLabel);
+	this->addChild(this->consumableLabel);
+	this->addChild(this->cardPreview);
 
 	this->preview(EquipHintMode::None, nullptr);
 }
@@ -148,6 +155,7 @@ void ItemPreview::initializePositions()
 	}
 	
 	this->cardLabel->setPosition(Vec2(-6.0f, -72.0f));
+	this->consumableLabel->setPosition(Vec2(32.0f, -160.0f));
 }
 
 void ItemPreview::toggleShowItemName(bool showItemName)
@@ -221,6 +229,10 @@ void ItemPreview::preview(EquipHintMode equipHintMode, Item* item)
 	{
 		this->setGenericStatline(dynamic_cast<Equipable*>(item));
 	}
+	else if (dynamic_cast<Consumable*>(item) != nullptr)
+	{
+		this->setConsumableInfo(dynamic_cast<Consumable*>(item));
+	}
 }
 
 void ItemPreview::setGenericStatline(Equipable* equipable)
@@ -229,6 +241,7 @@ void ItemPreview::setGenericStatline(Equipable* equipable)
 
 	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Armor::create(); }, itemStats.armorBonus);
 	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Attack::create(); }, itemStats.attackBonus);
+	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_MagicAttack::create(); }, itemStats.magicAttackBonus);
 	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Health::create(); }, itemStats.healthBonus);
 	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Mana::create(); }, itemStats.manaBonus);
 	this->bindStatlineToNonZeroFloat([](){ return Strings::Menus_ItemPreview_Speed::create(); }, itemStats.speedBonus);
@@ -241,6 +254,7 @@ void ItemPreview::setWeaponStatline(Weapon* weapon)
 	this->bindStatlineToIntRange([](){ return Strings::Menus_ItemPreview_Damage::create(); }, weapon->getMinAttack(), weapon->getMaxAttack());
 	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Armor::create(); }, itemStats.armorBonus);
 	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Attack::create(); }, itemStats.attackBonus);
+	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_MagicAttack::create(); }, itemStats.magicAttackBonus);
 	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Health::create(); }, itemStats.healthBonus);
 	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Mana::create(); }, itemStats.manaBonus);
 	this->bindStatlineToNonZeroFloat([](){ return Strings::Menus_ItemPreview_Speed::create(); }, itemStats.speedBonus);
@@ -285,6 +299,20 @@ void ItemPreview::setHexusInfo(HexusCard* hexusCard)
 	}
 	
 	this->cardLabel->setVisible(true);
+}
+
+void ItemPreview::setConsumableInfo(Consumable* consumable)
+{
+	if (consumable != nullptr)
+	{
+		LocalizedString* description = consumable->getDescription();
+
+		if (description != nullptr)
+		{
+			this->consumableString->setString(description->getString());
+			this->consumableLabel->setVisible(true);
+		}
+	}
 }
 
 LocalizedLabel* ItemPreview::createStatline()
@@ -352,6 +380,7 @@ void ItemPreview::clearPreview()
 	this->previewNode->removeAllChildren();
 	this->cardLabel->setVisible(false);
 	this->cardPreview->setVisible(false);
+	this->consumableLabel->setVisible(false);
 
 	for (auto statline : this->statlines)
 	{

@@ -276,8 +276,7 @@ void EntityCollisionBehaviorBase::buildEntityCollision()
 		Color4F::TRANSPARENT_WHITE
 	);
 
-	Vec2 collisionOffset = this->entity->getCollisionOffset();
-	Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
+	Vec2 offset = Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
 
 	this->entityCollision->setPosition(offset);
 	this->entityCollision->setName("Entity collision");
@@ -305,8 +304,7 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 		Color4F::ORANGE
 	);
 
-	Vec2 collisionOffset = this->entity->getCollisionOffset();
-	Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
+	Vec2 offset = Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
 
 	this->movementCollision->setPosition(offset);
 	this->movementCollision->setName("Movement collision");
@@ -314,18 +312,24 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 	this->addChild(this->movementCollision);
 
 	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionData collisionData)
-	{	
-		return CollisionResult::CollideWithPhysics;
-	});
-	
-	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::SolidRoof }, [=](CollisionData collisionData)
 	{
-		if (this->movementCollision->getVelocity().y  > 0.0f)
+		float velocityY = this->getVelocity().y;
+
+		// Edge case to prevent sticky collisions with the roof, where the impact normal constantly zeros out velocity.
+		// At the time of writing this, this is the sole reason this head collision exists.
+		if (this->headCollision != nullptr
+			&& headCollision->hasHeadCollisionWith(collisionData.other)
+			/* && this->leftCollision != nullptr
+			&& this->rightCollision != nullptr
+			&& !this->rightCollision->hasCollisionWith(collisionData.other)
+			&& !this->leftCollision->hasCollisionWith(collisionData.other)*/
+			&& this->entity->controlState != PlatformerEntity::ControlState::Swimming
+			&& velocityY <= 0.0f)
 		{
-			return CollisionResult::CollideWithPhysics;
+			return CollisionResult::DoNothing;
 		}
 
-		return CollisionResult::DoNothing;
+		return CollisionResult::CollideWithPhysics;
 	});
 	
 	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionData collisionData)
@@ -449,24 +453,23 @@ void EntityCollisionBehaviorBase::buildWallDetectors()
 		CollisionObject::Properties(false, false)
 	);
 
-	this->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof }, [=](CollisionData collisionData)
+	this->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionData collisionData)
 	{	
 		return CollisionResult::DoNothing;
 	});
 
-	this->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof }, [=](CollisionData collisionData)
+	this->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionData collisionData)
 	{	
 		return CollisionResult::DoNothing;
 	});
 
-	Vec2 collisionOffset = this->entity->getCollisionOffset();
 	CSize entitySize = this->entity->getEntitySize();
 
 	// Padding
 	entitySize.width += 8.0f;
 
-	Vec2 offsetLeft = collisionOffset + Vec2(-entitySize.width / 2.0f + wallDetectorSize.width / 2.0f, entitySize.height / 2.0f);
-	Vec2 offsetRight = collisionOffset + Vec2(entitySize.width / 2.0f - wallDetectorSize.width / 2.0f, entitySize.height / 2.0f);
+	Vec2 offsetLeft = Vec2(-entitySize.width / 2.0f + wallDetectorSize.width / 2.0f, entitySize.height / 2.0f);
+	Vec2 offsetRight = Vec2(entitySize.width / 2.0f - wallDetectorSize.width / 2.0f, entitySize.height / 2.0f);
 
 	this->leftCollision->setPosition(offsetLeft);
 	this->rightCollision->setPosition(offsetRight);

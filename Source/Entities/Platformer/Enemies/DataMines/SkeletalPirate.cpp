@@ -25,8 +25,7 @@ SkeletalPirate::SkeletalPirate(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_DataMines_SkeletalPirate_Animations,
 	EntityResources::Enemies_DataMines_SkeletalPirate_Emblem,
 	CSize(112.0f, 228.0f),
-	0.8f,
-	Vec2(0.0f, 0.0f))
+	0.8f)
 {
 }
 

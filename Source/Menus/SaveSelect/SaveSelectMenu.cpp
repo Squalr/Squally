@@ -19,11 +19,13 @@
 #include "Engine/UI/SmartClippingNode.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/DataMines/Gecky.h"
+#include "Entities/Platformer/Helpers/CastleValgrind/Grim.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/MenuBackground.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/Gecky/GeckyEqBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Helpers/Grim/GrimEqBehavior.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/Collectables.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -261,6 +263,10 @@ Node* SaveSelectMenu::buildSaveGameContent(int profileId)
 		{
 			helperEq = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGeckyEq, Value(GeckyEqBehavior::DefaultLevel)).asInt();
 		}
+		else if (helperName == Grim::MapKey)
+		{
+			helperEq = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGrimEq, Value(GrimEqBehavior::DefaultLevel)).asInt();
+		}
 
 		ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
 			properties,
@@ -391,12 +397,13 @@ Node* SaveSelectMenu::buildEntityFrame(PlatformerEntity* entity, Vec2 offsetAdju
 Sprite* SaveSelectMenu::getBackgroundForCurrentSaveProfile()
 {
 	std::string currentMap = StrUtils::toLower(SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString());
+	const bool ignoreCase = true;
 
-	if (StrUtils::contains(currentMap, "underflowruins", true))
+	if (StrUtils::contains(currentMap, "underflowruins", ignoreCase))
 	{
 		return Sprite::create(HexusResources::Menus_HexusFrameUnderflowRuins);
 	}
-	else if (StrUtils::contains(currentMap, "datamines", true))
+	else if (StrUtils::contains(currentMap, "datamines", ignoreCase))
 	{
 		Sprite* background = Sprite::create(HexusResources::Menus_HexusFrameDataMines);
 
@@ -404,23 +411,23 @@ Sprite* SaveSelectMenu::getBackgroundForCurrentSaveProfile()
 
 		return background;
 	}
-	else if (StrUtils::contains(currentMap, "castlevalgrind", true))
+	else if (StrUtils::contains(currentMap, "castlevalgrind", ignoreCase))
 	{
 		return Sprite::create(HexusResources::Menus_HexusFrameCastleValgrind);
 	}
-	else if (StrUtils::contains(currentMap, "balmerPeaks", true))
+	else if (StrUtils::contains(currentMap, "balmerPeaks", ignoreCase))
 	{
 		return Sprite::create(HexusResources::Menus_HexusFrameBallmerPeaks);
 	}
-	else if (StrUtils::contains(currentMap, "daemonshallow", true))
+	else if (StrUtils::contains(currentMap, "firewallfissure", ignoreCase))
 	{
-		return Sprite::create(HexusResources::Menus_HexusFrameDaemonsHallow);
+		return Sprite::create(HexusResources::Menus_HexusFrameFirewallFissure);
 	}
-	else if (StrUtils::contains(currentMap, "lambdacrypts", true))
+	else if (StrUtils::contains(currentMap, "lambdacrypts", ignoreCase))
 	{
 		return Sprite::create(HexusResources::Menus_HexusFrameLambdaCrypts);
 	}
-	else if (StrUtils::contains(currentMap, "voidStar", true))
+	else if (StrUtils::contains(currentMap, "voidStar", ignoreCase))
 	{
 		return Sprite::create(HexusResources::Menus_HexusFrameVoidStar);
 	}

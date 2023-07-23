@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="38" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="960">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="DesertSky"/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value="perilous-sea"/>
+   <property name="music" value="the-gift"/>
+   <property name="rubber-band" type="int" value="5"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="80" name="desert bg 4">
+  <properties>
+   <property name="depth" type="float" value="-2560"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="897" name="Ruins/Background/DesertLayer4" type="decor" x="-4381.32" y="630.819" width="14981.3" height="318">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="78" name="desert bg 3">
+  <properties>
+   <property name="depth" type="float" value="-2432"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="895" name="Ruins/Background/DesertLayer3" type="decor" x="-4090.65" y="341.152" width="14229.3" height="1534">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="77" name="desert bg 2">
+  <properties>
+   <property name="depth" type="float" value="-2304"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="875" name="Ruins/Background/DesertLayer2" type="decor" x="-4084.47" y="895.212" width="14469.3" height="1519">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="15" name="desert bg 1">
+  <properties>
+   <property name="depth" type="float" value="-2176"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="876" name="Ruins/Background/DesertLayer1" type="decor" x="-4196.71" y="1215.09" width="14709.3" height="1090">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="16" name="desert bg 0">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="873" name="Ruins/Background/DesertLayer0" type="decor" x="-4104.44" y="1654" width="14517.6" height="1904">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="98" name="water -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="923" name="water" type="object" x="-1472.71" y="1981.33" width="7806.75" height="933.346">
+   <properties>
+    <property name="disable-physics" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="97" name="water -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="922" name="water" type="object" x="-1367.04" y="2004.99" width="7598.75" height="933.346">
+   <properties>
+    <property name="disable-physics" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="96" name="water -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="921" name="water" type="object" x="-1190.04" y="2031.99" width="7246.75" height="933.346">
+   <properties>
+    <property name="disable-physics" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="95" name="water -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="920" name="water" type="object" x="-1054.04" y="2063.99" width="6974.75" height="933.346">
+   <properties>
+    <property name="disable-physics" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="99" name="water bg">
+  <properties>
+   <property name="depth" type="float" value="0"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="924" name="water" type="object" x="-914.042" y="2106.66" width="6694.75" height="933.346">
+   <properties>
+    <property name="disable-physics" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="68" name="decor bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="956" name="caverns" type="terrain" x="2238.38" y="4676.85">
+   <polygon points="-2545.96,-207.264 -2681.46,-1113.2 -2372.6,-1738.93 -1459.13,-2300.04 -1119.83,-2538.34 -714.225,-2658.57 176.999,-2663.52 595.963,-2495.97 871.077,-2216.98 2140.8,-2024.98 3204.93,-1751.55 3178.65,-222.859 1083.06,-212.979"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="957" name="Generic/Lighthouse" type="decor" x="1537.83" y="-529.333" width="873" height="2547"/>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="952" name="edge-portal" type="object" x="4660.04" y="1625.03" width="199.918" height="1181.94">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="UnderflowRuins/Town_Docks"/>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="958" name="portal" type="object" x="1859.9" y="1638.96" width="237.527" height="375.411">
+   <properties>
+    <property name="map" value="PerilousSea/Home_Lighthouse"/>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="951" name="squally" type="entity" x="4304" y="2168" width="128" height="128">
+   <properties>
+    <property name="components" value="squally"/>
+   </properties>
+  </object>
+  <object id="953" name="spawn" type="object" x="4299.27" y="2367.76" width="128" height="128">
+   <properties>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="959" name="spawn" type="object" x="1916" y="1889.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="lighthouse"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="94" name="water">
+  <properties>
+   <property name="depth" type="float" value="0"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="919" name="water" type="object" x="-916.708" y="2144" width="6694.75" height="933.346">
+   <properties>
+    <property name="disable-physics" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="93" name="water +1" visible="0">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="918" name="water" type="object" x="-747.375" y="2185.33" width="6350.75" height="933.346">
+   <properties>
+    <property name="disable-physics" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="92" name="water +2" visible="0">
+  <properties>
+   <property name="depth" type="float" value="128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="917" name="water" type="object" x="-523.981" y="2223.75" width="5902.75" height="933.346">
+   <properties>
+    <property name="disable-physics" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="91" name="water +3" visible="0">
+  <properties>
+   <property name="depth" type="float" value="192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="916" name="water" type="object" x="-335.254" y="2265.08" width="5526.75" height="933.346">
+   <properties>
+    <property name="disable-physics" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="90" name="water +4">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="915" name="water" type="object" x="-144.345" y="2316.6" width="5142.75" height="933.346">
+   <properties>
+    <property name="disable-physics" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

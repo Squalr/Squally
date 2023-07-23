@@ -21,11 +21,11 @@ VoidAxe* VoidAxe::create()
 	return instance;
 }
 
-VoidAxe::VoidAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 11 }}), 4, 7, ItemStats(
+VoidAxe::VoidAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 11 }}), AXE_DAMAGE_MIN(9), AXE_DAMAGE_MAX(9), ItemStats(
 	// Health
-	0,
+	4,
 	// Mana
-	0,
+	5,
 	// Attack
 	0,
 	// Magic Attack
@@ -71,12 +71,12 @@ CSize VoidAxe::getWeaponCollisionSize()
 Vec2 VoidAxe::getWeaponCollisionOffset()
 {
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
-	return Vec2(0.0f, 212.0f);
+	return Vec2(-8.0f, 212.0f);
 }
 
 Vec2 VoidAxe::getDisplayOffset()
 {
-	return Vec2(28.0f, -4.0f);
+	return Vec2(0.0f, -8.0f);
 }
 
 Recipe* VoidAxe::getRecipe()

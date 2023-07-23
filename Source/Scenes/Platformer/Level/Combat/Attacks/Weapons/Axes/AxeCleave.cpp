@@ -38,7 +38,7 @@ AxeCleave::AxeCleave(int damageMin, int damageMax, float attackDuration, float r
 	)
 {
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Physical_Swings_SwingWeakHybrid3);
-	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1);
+	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitHeavy1);
 
 	this->setDamageMultiplier(AxeCleave::DamageMultiplier);
 
@@ -83,7 +83,7 @@ void AxeCleave::performAttack(PlatformerEntity* owner, std::vector<PlatformerEnt
 {
 	super::performAttack(owner, targets);
 	
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		this->doDamageOrHealing(owner, next);
 	}

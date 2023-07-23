@@ -18,10 +18,20 @@ AlchemyPoolTier4* AlchemyPoolTier4::create(SampleMethod sampleMethod, int min, i
 
 AlchemyPoolTier4::AlchemyPoolTier4(SampleMethod sampleMethod, int min, int max) : super(ValueMap(), "alchemy-pool-t4", sampleMethod, min, max)
 {
-	this->addItemToPool(ItemChance::create(DarkSeed::create(), ItemChance::Probability::Common));
-	this->addItemToPool(ItemChance::create(Clover::create(), ItemChance::Probability::Common));
-	this->addItemToPool(ItemChance::create(Honey::create(), ItemChance::Probability::Reasonable));
-	this->addItemToPool(ItemChance::create(Feather::create(), ItemChance::Probability::Reasonable));
+	this->addItemToPool(ItemChance::create(GoldWeed::create(), ItemChance::Probability::VeryCommon));
+	this->addItemToPool(ItemChance::create(RatTail::create(), ItemChance::Probability::VeryCommon));
+
+	// Phasing in
+	this->addItemToPool(ItemChance::create(BlackMushroom::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(Mandrake::create(), ItemChance::Probability::Rare));
+
+	// Phasing out
+	this->addItemToPool(ItemChance::create(DarkSeed::create(), ItemChance::Probability::Uncommon));
+	this->addItemToPool(ItemChance::create(SandRoot::create(), ItemChance::Probability::Uncommon));
+
+	// Bomb
+	this->addItemToPool(ItemChance::create(Pepper::create(), ItemChance::Probability::Common));
+	this->addItemToPool(ItemChance::create(Stinger::create(), ItemChance::Probability::Rare));
 }
 
 AlchemyPoolTier4::~AlchemyPoolTier4()

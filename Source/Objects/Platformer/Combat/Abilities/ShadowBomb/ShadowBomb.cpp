@@ -8,6 +8,8 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
@@ -103,9 +105,15 @@ void ShadowBomb::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						"and eax, 15\n"
+						ConcatString::create({
+							ConstantString::create("and eax, 15\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ShadowBomb_CommentHint::create())
+						})
 						, // x64
-						"and rax, 15\n"
+						ConcatString::create({
+							ConstantString::create("and rax, 15\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ShadowBomb_CommentHint::create())
+						})
 					),
 				},
 				true
@@ -113,8 +121,7 @@ void ShadowBomb::registerHackables()
 		},
 	};
 
-	auto func = &ShadowBomb::dealDamage;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
+	std::vector<HackableCode*> hackables = CREATE_HACKABLES(ShadowBomb::dealDamage, codeInfoMap);
 
 	for (HackableCode* next : hackables)
 	{

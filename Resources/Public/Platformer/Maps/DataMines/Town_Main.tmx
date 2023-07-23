@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="78" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="144" nextobjectid="1114">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="78" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="144" nextobjectid="1127">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -7,7 +7,7 @@
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="heartbeat"/>
-   <property name="rubber-band" type="int" value="5"/>
+   <property name="rubber-band" type="int" value="8"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
@@ -37,6 +37,7 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1116" name="Crypts/CryptDoor3" type="decor" x="3659.87" y="1630.75" width="561" height="722"/>
  </objectgroup>
  <objectgroup id="63" name="terrain -12">
   <properties>
@@ -44,7 +45,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="934" name="mines" type="terrain" x="8297.12" y="1745.98" width="2131.38" height="4372"/>
-  <object id="1064" name="mines" type="terrain" x="-99.54" y="2371.15" width="3792.51" height="1475.69"/>
+  <object id="1064" name="mines" type="terrain" x="-99.54" y="2371.15" width="4401.78" height="1475.69"/>
   <object id="1085" name="mines" type="terrain" x="5230.65" y="3471.17" width="1474.88" height="1197.46"/>
  </objectgroup>
  <objectgroup id="136" name="rails -12">
@@ -68,7 +69,7 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1069" name="mines" type="terrain" x="3695.73" y="-45.845" width="1497.34" height="3899.69"/>
+  <object id="1069" name="mines" type="terrain" x="4302.09" y="-45.845" width="890.976" height="3899.69"/>
  </objectgroup>
  <objectgroup id="91" name="decor -12">
   <properties>
@@ -142,6 +143,20 @@
   <object id="1112" name="spawn" type="object" x="2959.59" y="2241.9" width="128" height="128">
    <properties>
     <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="1118" name="spawn" type="object" x="3879.39" y="2242.42" width="128" height="128">
+   <properties>
+    <property name="transition" value="crypt-secret-entrance"/>
+   </properties>
+  </object>
+  <object id="1122" name="portal" type="object" x="3802" y="1842" width="256" height="512">
+   <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="item-required" value="crypt-key"/>
+    <property name="map" value="LambdaCrypts/Zone_4_2"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
+    <property name="transition" value="crypt-secret-entrance"/>
    </properties>
   </object>
  </objectgroup>
@@ -439,6 +454,7 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
+  <object id="1124" name="mines" type="terrain" x="8537.2" y="1547.73" width="229.08" height="3187.69"/>
  </objectgroup>
  <objectgroup id="131" name="objects -6">
   <properties>
@@ -460,7 +476,6 @@
     <property name="reward-pool" value="none"/>
    </properties>
   </object>
-  <object id="1056" name="mines" type="terrain" x="8537.2" y="1547.73" width="229.08" height="3187.69"/>
   <object id="1106" name="lever" type="object" x="7809.14" y="3404.59" width="177" height="205">
    <properties>
     <property name="components" value="repairable"/>
@@ -469,6 +484,13 @@
    </properties>
   </object>
   <object id="1109" name="help-totem-repair" type="object" x="7044" y="3362" width="248" height="248"/>
+  <object id="1123" name="caged-tiger" type="object" x="8013.97" y="2812.67" width="196" height="112"/>
+  <object id="1126" name="portal" type="object" x="5841" y="3440" width="256" height="192">
+   <properties>
+    <property name="map" value="DataMines/Home_Dawn"/>
+    <property name="transition" value="dawn"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="142" name="entities -6">
   <properties>
@@ -1032,6 +1054,7 @@
   <object id="1057" name="life-stone" type="object" x="6947" y="3540.5" width="146" height="423">
    <properties>
     <property name="components" value="z-fade"/>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
   <object id="1070" name="cinematic-marker" type="object" x="5712" y="1616" width="128" height="128">
@@ -1109,6 +1132,11 @@
    <properties>
     <property name="map-banner" value="drammol"/>
     <property name="transition" value="up"/>
+   </properties>
+  </object>
+  <object id="1125" name="spawn" type="object" x="6958" y="3830" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

@@ -25,15 +25,15 @@ EmeraldPendant::EmeraldPendant() : super(CurrencyInventory::create({{ IOU::getIO
 	// Health
 	3,
 	// Mana
-	3,
+	0,
 	// Attack
-	1,
+	0,
 	// Magic Attack
-	1,
+	0,
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.015f
 ))
 {
 }
@@ -54,7 +54,7 @@ LocalizedString* EmeraldPendant::getString()
 
 const std::string& EmeraldPendant::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Necklaces_EmeraldPendant;
+	return ItemResources::Equipment_Gear_Necklaces_T3_EmeraldPendant;
 }
 
 const std::string& EmeraldPendant::getIdentifier()

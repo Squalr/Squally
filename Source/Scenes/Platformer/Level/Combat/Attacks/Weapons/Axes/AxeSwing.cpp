@@ -34,7 +34,7 @@ AxeSwing::AxeSwing(int damageMin, int damageMax, float attackDuration, float rec
 	)
 {
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Physical_Swings_SwingWeakHybrid3);
-	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1);
+	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft5);
 
 	this->addChild(this->slashSound);
 	this->addChild(this->hitSound);
@@ -70,7 +70,7 @@ void AxeSwing::performAttack(PlatformerEntity* owner, std::vector<PlatformerEnti
 {
 	super::performAttack(owner, targets);
 	
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		this->doDamageOrHealing(owner, next);
 	}

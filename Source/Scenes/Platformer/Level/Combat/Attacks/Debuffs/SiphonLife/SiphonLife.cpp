@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
@@ -114,17 +116,21 @@ void SiphonLife::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentGain::create()) +
-						"inc edi\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentDrain::create()) +
-						"dec esi\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentReverse::create())
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentGain::create()),
+							ConstantString::create("inc edi\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentDrain::create()),
+							ConstantString::create("dec esi\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentReverse::create())
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentGain::create()) +
-						"inc rdi\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentDrain::create()) +
-						"dec rsi\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentReverse::create())
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentGain::create()),
+							ConstantString::create("inc rdi\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentDrain::create()),
+							ConstantString::create("dec rsi\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentReverse::create())
+						})
 					),
 				},
 				true
@@ -132,8 +138,7 @@ void SiphonLife::registerHackables()
 		},
 	};
 
-	auto restoreFunc = &SiphonLife::runRestoreTick;
-	this->hackables = HackableCode::create((void*&)restoreFunc, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(SiphonLife::runRestoreTick, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

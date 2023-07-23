@@ -21,19 +21,17 @@ SmithingPoolTier4::SmithingPoolTier4(SampleMethod sampleMethod, int min, int max
 	/**************
 	 Misc
 	**************/
+	this->addItemToPool(ItemChance::create(DarkWood::create(), ItemChance::Probability::Uncommon));
 	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Reasonable));
-
-	// Phasing out
-	this->addItemToPool(ItemChance::create(Wood::create(), ItemChance::Probability::Uncommon));
 
 	/**************
 	 Metals
 	**************/
-	this->addItemToPool(ItemChance::create(Gold::create(), ItemChance::Probability::Uncommon));
+	this->addItemToPool(ItemChance::create(Mithril::create(), ItemChance::Probability::Reasonable)); // Upped drop rate based on play-testing
 
 	// Phasing out
-	this->addItemToPool(ItemChance::create(Iron::create(), ItemChance::Probability::Rare));
-	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Epic));
+	this->addItemToPool(ItemChance::create(Gold::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(Iron::create(), ItemChance::Probability::Epic));
 
 	/**************
 	 Gems
@@ -42,7 +40,7 @@ SmithingPoolTier4::SmithingPoolTier4(SampleMethod sampleMethod, int min, int max
 
 	// Phasing out
 	this->addItemToPool(ItemChance::create(Emerald::create(), ItemChance::Probability::Legendary));
-	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::Artifact));
+	this->addItemToPool(ItemChance::create(Silver::create(), ItemChance::Probability::Artifact));
 }
 
 SmithingPoolTier4::~SmithingPoolTier4()

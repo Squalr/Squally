@@ -24,25 +24,17 @@ SmithingPoolTier8::SmithingPoolTier8(SampleMethod sampleMethod, int min, int max
 	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Reasonable));
 
 	// Phasing out
-	this->addItemToPool(ItemChance::create(Wood::create(), ItemChance::Probability::Uncommon));
+	this->addItemToPool(ItemChance::create(DarkWood::create(), ItemChance::Probability::Uncommon));
 
 	/**************
 	 Metals
 	**************/
-	this->addItemToPool(ItemChance::create(Gold::create(), ItemChance::Probability::Uncommon));
-
-	// Phasing out
-	this->addItemToPool(ItemChance::create(Iron::create(), ItemChance::Probability::Rare));
-	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Epic));
+	this->addItemToPool(ItemChance::create(Obsidian::create(), ItemChance::Probability::Uncommon));
 
 	/**************
 	 Gems
 	**************/
-	this->addItemToPool(ItemChance::create(Sapphire::create(), ItemChance::Probability::Rare));
-
-	// Phasing out
-	this->addItemToPool(ItemChance::create(Emerald::create(), ItemChance::Probability::Legendary));
-	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::Artifact));
+	this->addItemToPool(ItemChance::create(VoidCrystal::create(), ItemChance::Probability::Common));
 }
 
 SmithingPoolTier8::~SmithingPoolTier8()

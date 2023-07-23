@@ -4,10 +4,13 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/Npcs/Transition/Drak.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Entities/Platformer/PlatformerEntities.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
@@ -51,6 +54,16 @@ void VikingShip::onEnter()
 {
 	super::onEnter();
 
+	ObjectEvents::WatchForObject<Drak>(this, [=](Drak* drak)
+	{
+		this->drak = drak;
+	}, Drak::MapKey);
+
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
+	{
+		this->squally = squally;
+	}, Squally::MapKey);
+
 	this->scheduleUpdate();
 }
 
@@ -68,7 +81,7 @@ void VikingShip::initializeListeners()
 	this->interactCollision->whenCollidesWith({ (CollisionType)PlatformerCollisionType::CartStop }, [=](CollisionData collisionData)
 	{
 		this->reverse();
-		this->dismount();
+		this->dismountAll();
 		
 		return CollisionResult::CollideWithPhysics;
 	});
@@ -87,19 +100,31 @@ void VikingShip::mount(PlatformerEntity* interactingEntity)
 {
 	super::mount(interactingEntity);
 
+	// Also force Drak to mount. This should probably be a behavior, but it was easier to just bake this into the object.
+	super::mount(this->drak);
+
 	this->faceEntityTowardsDirection();
 
 	this->isMoving = true;
 }
 
-void VikingShip::dismount()
+void VikingShip::dismount(PlatformerEntity* entity)
 {
-	super::dismount();
+	super::dismount(entity);
 	
 	this->isMoving = false;
 }
 
-Vec2 VikingShip::getReparentPosition()
+Vec2 VikingShip::getReparentPosition(PlatformerEntity* entity)
 {
-	return Vec2(0.0f, -224.0f);
+	if (entity == this->drak)
+	{
+		return Vec2(-96.0f, -328.0f);
+	}
+	else if (entity == this->squally)
+	{
+		return Vec2(96.0f, -328.0f);
+	}
+
+	return Vec2(0.0f, -328.0f);
 }

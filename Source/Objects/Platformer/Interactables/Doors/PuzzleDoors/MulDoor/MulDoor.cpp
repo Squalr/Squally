@@ -8,6 +8,8 @@
 
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/MulDoor/MulDoorPreview.h"
@@ -75,16 +77,23 @@ void MulDoor::registerHackables()
 				{
 					// The disassembler produces the equivalent imul 'zcx, zcx, 1', which is confusing to noobs, so we override that
 					HackableCode::ReadOnlyScript(Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
-					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul::create()) + 
-					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentTopNumber::create()
-						->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
-					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentElaboration::create()) + 
-					"imul ecx, 1",
-					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul::create()) + 
-					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentTopNumber::create()
-						->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
-					COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentElaboration::create()) + 
-					"imul rcx, 1"),
+						// x86
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul::create()),
+							COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentTopNumber::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())),
+							COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentElaboration::create()),
+							ConstantString::create("imul ecx, 1")
+						})
+						, // x64
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul::create()),
+							COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentTopNumber::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create())),
+							COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentElaboration::create()),
+							ConstantString::create("imul rcx, 1")
+						})
+					),
 				},
 				true
 			)

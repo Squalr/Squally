@@ -25,8 +25,7 @@ Raven::Raven(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_CastleValgrind_Raven_Animations,
 	EntityResources::Npcs_CastleValgrind_Raven_Emblem,
 	CSize(112.0f, 160.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 

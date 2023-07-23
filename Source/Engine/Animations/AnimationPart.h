@@ -38,6 +38,7 @@ public:
 	void updateTrackedAttributes();
 
 	GLubyte getOpacity() const override;
+	cocos2d::CSize getSpriteSize();
 
 private:
 	typedef SmartNode super;

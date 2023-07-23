@@ -20,7 +20,7 @@
 using namespace cocos2d;
 using namespace cocos_experimental;
 
-const int SoundBase::InvalidSoundId = -1;;
+const int SoundBase::InvalidSoundId = -1;
 const std::string SoundBase::KeyScheduleFadeOutAudio = "SCHEDULE_KEY_FADE_OUT_AUDIO";
 
 SoundBase::SoundBase(ValueMap& properties, std::string soundResource) : super(properties)
@@ -37,6 +37,14 @@ void SoundBase::onEnter()
 	super::onEnter();
 
 	this->scheduleUpdate();
+}
+
+void SoundBase::pause()
+{
+	if (!this->ignorePause)
+	{
+		super::pause();
+	}
 }
 
 void SoundBase::update(float dt)
@@ -84,6 +92,16 @@ void SoundBase::update(float dt)
 	}
 }
 
+void SoundBase::allocSound()
+{
+	this->soundId = SoundPool::getInstance()->validateSoundId(this->getSoundChannel(), this->soundId, this->soundRef);
+	
+	if (this->soundRef == nullptr)
+	{
+		this->soundId = SoundPool::getInstance()->allocSound(this->getSoundChannel(), this->getSoundResource(), this->soundRef);
+	}
+}
+
 void SoundBase::play(bool repeat, float startDelay)
 {
 	if (this->soundResource.empty())
@@ -99,13 +117,7 @@ void SoundBase::play(bool repeat, float startDelay)
 		CallFunc::create([=]()
 		{
 			this->stop();
-
-			this->soundId = SoundPool::getInstance()->validateSoundId(soundId, soundRef);
-			
-			if (this->soundRef == nullptr)
-			{
-				this->soundId = SoundPool::getInstance()->allocSound(this->getSoundResource(), this->soundRef);
-			}
+			this->allocSound();
 			
 			if (this->soundRef != nullptr)
 			{
@@ -181,6 +193,11 @@ void SoundBase::stopAndFadeOut(std::function<void()> onFadeOutCallback, bool has
 	}
 }
 
+void SoundBase::toggleIgnorePause(bool ignorePause)
+{
+	this->ignorePause = ignorePause;
+}
+
 void SoundBase::setCustomMultiplier(float customMultiplier)
 {
 	this->customMultiplier = customMultiplier;
@@ -188,12 +205,22 @@ void SoundBase::setCustomMultiplier(float customMultiplier)
 
 void SoundBase::setSoundResource(std::string soundResource)
 {
-	this->soundResource = soundResource;
+	if (this->soundResource != soundResource)
+	{
+		// Invalidate existing sound
+		this->soundId = -1;
+		this->soundResource = soundResource;
+	}
 }
 
 std::string SoundBase::getSoundResource() const
 {
 	return this->soundResource;
+}
+
+SoundChannel SoundBase::getSoundChannel()
+{
+	return SoundChannel::Sound;
 }
 
 void SoundBase::updateVolume()

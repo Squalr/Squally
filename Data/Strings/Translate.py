@@ -2,6 +2,7 @@
 
 import argparse
 import base64
+from googletrans import Translator
 import json
 import os
 import re
@@ -12,13 +13,15 @@ from os import listdir
 from os import path
 from os.path import isfile, dirname, join, splitext, abspath, realpath, basename, relpath
 
+translator = Translator()
+
 def main():
     key_var_name = 'TRANSLATOR_TEXT_SUBSCRIPTION_KEY'
     if not key_var_name in os.environ:
         raise Exception('Please set/export the environment variable: {}'.format(key_var_name))
         
     languages = [
-        'ar',
+        'ar', # Supported removed due to cocos2d-x Arabic bugs (https://github.com/cocos2d/cocos2d-x/issues/15321), but leaving this in case we fix it
         'bg',
         'cs',
         'da',
@@ -105,6 +108,7 @@ def main():
                 translation = key['text']
                 
                 translation = translation.replace('\"', '\\\"')
+                translation = translation.replace('\\\"', '\'')
 
                 if (language == "zh-Hans"):
                     language = 'zh-CN'

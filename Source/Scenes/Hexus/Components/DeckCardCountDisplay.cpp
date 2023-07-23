@@ -30,20 +30,22 @@ DeckCardCountDisplay::DeckCardCountDisplay()
 	this->enemyDeckCardCountStr = ConstantString::create("0");
 	this->enemyDeckCardCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, this->enemyDeckCardCountStr);
 
-	this->playerDeckCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->playerDeckCardCountFrame->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->playerDeckCardCountFrame->setContentSize(CSize(48.0f, 32.0f));
-	this->playerDeckCardCountLabel->setAlignment(TextHAlignment::LEFT);
-	this->playerDeckCardCountLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->playerDeckCardCountLabel->setHorizontalAlignment(TextHAlignment::CENTER);
+	this->playerDeckCardCountLabel->setVerticalAlignment(TextVAlignment::CENTER);
+	this->playerDeckCardCountLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 
-	this->enemyDeckCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->enemyDeckCardCountFrame->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->enemyDeckCardCountFrame->setContentSize(CSize(48.0f, 32.0f));
-	this->enemyDeckCardCountLabel->setAlignment(TextHAlignment::LEFT);
-	this->enemyDeckCardCountLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->enemyDeckCardCountLabel->setHorizontalAlignment(TextHAlignment::CENTER);
+	this->enemyDeckCardCountLabel->setVerticalAlignment(TextVAlignment::CENTER);
+	this->enemyDeckCardCountLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 
 	this->addChild(this->playerDeckCardCountFrame);
-	this->addChild(this->playerDeckCardCountLabel);
+	this->playerDeckCardCountFrame->addChild(this->playerDeckCardCountLabel);
 	this->addChild(this->enemyDeckCardCountFrame);
-	this->addChild(this->enemyDeckCardCountLabel);
+	this->enemyDeckCardCountFrame->addChild(this->enemyDeckCardCountLabel);
 }
 
 DeckCardCountDisplay::~DeckCardCountDisplay()
@@ -57,10 +59,10 @@ void DeckCardCountDisplay::initializePositions()
 	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->playerDeckCardCountFrame->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::deckOffsetX - 24.0f, visibleSize.height / 2.0f - HexusConfig::deckOffsetY - HexusConfig::deckCardCountOffsetY - 32.0f);
-	this->playerDeckCardCountLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::deckOffsetX - 24.0f + 6.0f, visibleSize.height / 2.0f - HexusConfig::deckOffsetY - HexusConfig::deckCardCountOffsetY + 2.0f);
+	this->playerDeckCardCountLabel->setPosition(Vec2(8.0f, this->playerDeckCardCountFrame->getContentSize().height / 2.0f));
 
 	this->enemyDeckCardCountFrame->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::deckOffsetX - 24.0f, visibleSize.height / 2.0f + HexusConfig::deckOffsetY + HexusConfig::deckCardCountOffsetY);
-	this->enemyDeckCardCountLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::deckOffsetX - 24.0f + 6.0f, visibleSize.height / 2.0f + HexusConfig::deckOffsetY + HexusConfig::deckCardCountOffsetY + 32.0f + 2.0f);
+	this->enemyDeckCardCountLabel->setPosition(Vec2(8.0f, this->enemyDeckCardCountFrame->getContentSize().height / 2.0f));
 }
 
 void DeckCardCountDisplay::onBeforeStateChange(GameState* gameState)

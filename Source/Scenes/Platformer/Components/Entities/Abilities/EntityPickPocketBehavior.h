@@ -17,7 +17,7 @@ class EntityPickPocketBehavior : public GameComponent
 public:
 	static EntityPickPocketBehavior* create(GameObject* owner);
 	
-	bool canPickPocket();
+	bool canPickPocket(bool checkZ);
 	bool wasPickPocketed();
 
 	static const std::string MapKey;

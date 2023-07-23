@@ -8,6 +8,8 @@
 
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
@@ -119,10 +121,45 @@ void HeavenHug::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return HeavenHugSetSpeedPreview::create(); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEax::create() },
+					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEbx::create() },
 				},
 				int(HackFlags::None),
 				20.0f,
-				0.0f
+				0.0f,
+				{
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPush::create()), 
+							ConstantString::create("fld dword ptr [eax]\n"),
+							COMMENT(Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPop::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zbx))), 
+							ConstantString::create("fstp dword ptr [ebx]\n\n"),
+							COMMENT(Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentHint::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zbx))), 
+							ConstantString::create("\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()), 
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create())
+						})
+						, // x64
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPush::create()), 
+							ConstantString::create("fld dword ptr [rax]\n"),
+							COMMENT(Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPop::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zbx))), 
+							ConstantString::create("fstp dword ptr [rbx]\n\n"),
+							COMMENT(Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentHint::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zbx))), 
+							ConstantString::create("\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()), 
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create())
+						})
+					)
+				},
+				true
 			)
 		},
 	};
@@ -149,20 +186,25 @@ NO_OPTIMIZE float HeavenHug::getTravelHeight()
 	*travelDistPtr = this->travelDistance;
 	retVal = *travelDistPtr;
 
-	ASM(push ZAX)
+	ASM_PUSH_EFLAGS();
+	ASM(push ZAX);
+	ASM(push ZBX);
 
 	ASM_MOV_REG_PTR(ZAX, travelDistPtr);
+	ASM_MOV_REG_PTR(ZBX, travelDistPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_TRAVEL_HEIGHT);
-	ASM(fld dword ptr [ZAX])
+	ASM(fld dword ptr [ZAX]);
+	ASM(fstp dword ptr [ZBX]);
 	ASM_NOP12();
 	HACKABLE_CODE_END();
 
-	ASM(fstp dword ptr [ZAX])
-	ASM(mov ZAX, [ZAX])
+	ASM(mov ZAX, [ZAX]);
 	ASM_MOV_VAR_REG(retVal, eax);
 
-	ASM(pop ZAX)
+	ASM(pop ZBX);
+	ASM(pop ZAX);
+	ASM_POP_EFLAGS();
 
 	HACKABLES_STOP_SEARCH();
 

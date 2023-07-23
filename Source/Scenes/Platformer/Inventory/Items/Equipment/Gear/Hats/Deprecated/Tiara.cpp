@@ -53,7 +53,7 @@ LocalizedString* Tiara::getString()
 
 const std::string& Tiara::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_Tiara;
+	return ItemResources::Equipment_Gear_Hats__Deprecated_Tiara;
 }
 
 const std::string& Tiara::getIdentifier()

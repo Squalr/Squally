@@ -29,7 +29,6 @@ PlatformerEnemy::PlatformerEnemy(
 	std::string emblemResource,
 	CSize size, 
 	float scale,
-	Vec2 collisionOffset,
 	float hoverHeight)
 	: super(
 		properties,
@@ -38,7 +37,6 @@ PlatformerEnemy::PlatformerEnemy(
 		emblemResource,
 		size,
 		scale,
-		collisionOffset,
 		hoverHeight)
 {
 	this->battleMapResource = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::PropertyBattleMap, Value(MapResources::EndianForest_Combat_Intro)).asString();

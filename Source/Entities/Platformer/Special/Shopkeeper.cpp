@@ -27,8 +27,7 @@ Shopkeeper::Shopkeeper(ValueMap& properties) : super(properties,
 	EntityResources::Misc_Tutorials_Shopkeeper_Animations,
 	EntityResources::Misc_Tutorials_Shopkeeper_Emblem,
 	CSize(192.0f, 420.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 

@@ -67,7 +67,7 @@ void CastSiphonLife::performAttack(PlatformerEntity* owner, std::vector<Platform
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation("AttackCast");
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
@@ -84,9 +84,15 @@ bool CastSiphonLife::isWorthUsing(PlatformerEntity* caster, const std::vector<Pl
 {
 	int uncastableCount = 0;
 
-	for (auto next : otherTeam)
+	for (PlatformerEntity* next : otherTeam)
 	{
 		if (!next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			uncastableCount++;
+			continue;
+		}
+		
+		if (CombatUtils::HasDuplicateCastOnLivingTarget(caster, next, [](PlatformerAttack* next) { return dynamic_cast<CastSiphonLife*>(next) != nullptr;  }))
 		{
 			uncastableCount++;
 			continue;

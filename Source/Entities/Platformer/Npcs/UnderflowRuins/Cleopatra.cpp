@@ -25,8 +25,7 @@ Cleopatra::Cleopatra(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_UnderflowRuins_Cleopatra_Animations,
 	EntityResources::Npcs_UnderflowRuins_Cleopatra_Emblem,
 	CSize(112.0f, 256.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 

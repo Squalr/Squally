@@ -1,5 +1,5 @@
 {
-    "ar": "NOT هي عملية تحول كل البتات من رقم معين. كل 0 بت تصبح 1 ، وكل 1 بت تصبح 0.",
+    "ar": ".هي عملية تحول كل البتات من رقم معين. كل 0 بت تصبح 1 ، وكل 1 بت تصبح 0 NOT",
     "bg": "NOT е операция, която инвертира всички битове на даден номер. Всички 0 бита стават 1 и всички 1 бита стават 0.",
     "cs": "NOT je operace, která invertuje všechny bity daného čísla. Všechny 0 bity se stávají 1 a všechny 1 bity se stávají 0.",
     "da": "NOT er en operation, der omdanner alle bitene af et givet nummer. Alle 0 bit bliver 1, og alle 1 bit bliver 0.",

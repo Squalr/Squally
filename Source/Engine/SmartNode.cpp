@@ -67,7 +67,7 @@ void SmartNode::pause()
 {
 	super::pause();
 
-	for (const auto& next : this->listeners)
+	for (EventListenerCustom* next : this->listeners)
 	{
 		next->setPaused(true);
 	}
@@ -77,7 +77,7 @@ void SmartNode::resume()
 {
 	super::resume();
 
-	for (const auto& next : this->listeners)
+	for (EventListenerCustom* next : this->listeners)
 	{
 		next->setPaused(false);
 	}

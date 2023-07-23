@@ -17,6 +17,7 @@
 #include "Events/HelperEvents.h"
 #include "Events/NotificationEvents.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/Gecky/GeckyBehaviorGroup.h"
+#include "Scenes/Platformer/Components/Entities/Helpers/Grim/GrimBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/Guano/GuanoBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/GuanoPetrified/GuanoPetrifiedBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/Scrappy/ScrappyBehaviorGroup.h"
@@ -168,8 +169,14 @@ void HelperManagerBehavior::spawnHelper(std::string helperName, bool notify)
 	this->platformerEntityDeserializer->deserialize(&args);
 
 	this->entity->clearState(StateKeys::NotifyNewHelper);
-	this->entity->clearState(StateKeys::NewHelperSpawnX);
-	this->entity->clearState(StateKeys::NewHelperSpawnY);
+
+	// Hacky, but this keeps some state around to ensure that the new helper does not warp to Squally instantly when not desired
+	// Specific use case is Guano becoming unpetrified
+	this->defer([=]()
+	{
+		this->entity->clearState(StateKeys::NewHelperSpawnX);
+		this->entity->clearState(StateKeys::NewHelperSpawnY);
+	}, 2);
 }
 
 void HelperManagerBehavior::onDisable()
@@ -192,6 +199,7 @@ const std::string& HelperManagerBehavior::getHelperComponent(const std::string& 
 void HelperManagerBehavior::buildComponentMap()
 {
 	this->componentMap[Gecky::MapKey] = GeckyBehaviorGroup::MapKey;
+	this->componentMap[Grim::MapKey] = GrimBehaviorGroup::MapKey;
 	this->componentMap[Guano::MapKey] = GuanoBehaviorGroup::MapKey;
 	this->componentMap[GuanoPetrified::MapKey] = GuanoPetrifiedBehaviorGroup::MapKey;
 	this->componentMap[Snowman::MapKey] = GuanoBehaviorGroup::MapKey;

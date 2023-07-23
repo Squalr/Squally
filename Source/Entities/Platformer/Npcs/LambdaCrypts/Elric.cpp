@@ -25,8 +25,7 @@ Elric::Elric(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_LambdaCrypts_Elric_Animations,
 	EntityResources::Npcs_LambdaCrypts_Elric_Emblem,
 	CSize(112.0f, 160.0f),
-	1.05f,
-	Vec2(0.0f, 0.0f))
+	1.05f)
 {
 }
 

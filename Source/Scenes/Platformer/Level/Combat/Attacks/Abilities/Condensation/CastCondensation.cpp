@@ -62,8 +62,10 @@ LocalizedString* CastCondensation::getString()
 
 LocalizedString* CastCondensation::getDescription()
 {
-	return Strings::Platformer_Combat_Attacks_CondensationDescription::create()
-		->setStringReplacementVariables(ConstantString::create(std::to_string(int(CastCondensation::ManaGain))));
+	return Strings::Platformer_Combat_Attacks_CondensationDescription::create()->setStringReplacementVariables({
+		ConstantString::create(std::to_string(int(CastCondensation::ManaGain))),
+		ConstantString::create(std::to_string(int(Condensation::Ticks))),
+	});
 }
 
 std::string CastCondensation::getAttackAnimation()
@@ -82,7 +84,7 @@ void CastCondensation::performAttack(PlatformerEntity* owner, std::vector<Platfo
 {
 	super::performAttack(owner, targets);
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		CombatEvents::TriggerManaRestore(CombatEvents::ManaRestoreOrDrainArgs(next, this->owner, CastCondensation::ManaGain, this->abilityType));
 

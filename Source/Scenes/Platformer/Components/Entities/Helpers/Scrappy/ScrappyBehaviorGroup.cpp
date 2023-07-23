@@ -5,6 +5,7 @@
 #include "cocos/2d/CCActionInterval.h"
 
 #include "Engine/Maps/GameObject.h"
+#include "Scenes/Platformer/Components/Entities/Collision/EntityGroundCollisionBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/Scrappy/ScrappyMovementBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/Scrappy/ScrappyRopeCarryBehavior.h"
@@ -26,6 +27,7 @@ ScrappyBehaviorGroup::ScrappyBehaviorGroup(GameObject* owner) : super(owner, {
 	ScrappyMovementBehavior::create(owner),
 	ScrappyRopeCarryBehavior::create(owner),
 	EntityDialogueBehavior::create(owner),
+	EntityGroundCollisionBehavior::create(owner),
 	})
 {
 }

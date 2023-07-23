@@ -21,6 +21,7 @@ protected:
 	virtual ~Icicle();
 
 	void onEnter() override;
+	void initializeListeners() override;
 	void initializePositions() override;
 	void update(float) override;
 	cocos2d::Vec2 getButtonOffset() override;
@@ -30,7 +31,8 @@ protected:
 private:
 	typedef HackableObject super;
 
-	void applyGravity();
+	void applyGravity(float dt);
+	bool isFalling = false;
 
 	cocos2d::Sprite* sprite = nullptr;
 	CollisionObject* collision = nullptr;

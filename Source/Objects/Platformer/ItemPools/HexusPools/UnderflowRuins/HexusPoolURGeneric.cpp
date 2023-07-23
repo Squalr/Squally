@@ -3,7 +3,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Inventory/ItemChance.h"
-#include "Objects/Platformer/ItemPools/CurrencyPools/UnderflowRuins/CurrencyPoolURGeneric.h"
+#include "Objects/Platformer/ItemPools/CurrencyPools/UnderflowRuins/CurrencyPoolURHexus.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier2/AlchemyPoolTier2.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier2/CardPoolTier2.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier2/SmithingPoolTier2.h"
@@ -21,8 +21,8 @@ HexusPoolURGeneric* HexusPoolURGeneric::create(ValueMap& properties)
 	return instance;
 }
 
-HexusPoolURGeneric::HexusPoolURGeneric(ValueMap& properties) : super(properties, "hexus-pool-ur-generic", SampleMethod::Random, 1, 2,
-	{ AlchemyPoolTier2::create(SampleMethod::Random, 1, 1), SmithingPoolTier2::create(SampleMethod::Random, 1, 2) }, CurrencyPoolURGeneric::create(properties))
+HexusPoolURGeneric::HexusPoolURGeneric(ValueMap& properties) : super(properties, "hexus-pool-ur-generic", SampleMethod::Guarantee, 2, 2,
+	{ CardPoolTier2::create() }, CurrencyPoolURHexus::create(properties))
 {
 }
 

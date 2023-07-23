@@ -107,6 +107,11 @@ CodeWindow::CodeWindow(cocos2d::CSize windowSize)
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::H3
 	);
+	this->readOnlyWindowTitle = LocalizedLabel::create(
+		LocalizedLabel::FontStyle::Main,
+		LocalizedLabel::FontSize::H3,
+		nullptr
+	);
 	this->deleteButton = ClickableNode::create(UIResources::Menus_HackerModeMenu_TrashCan, UIResources::Menus_HackerModeMenu_TrashCanSelected);
 	this->copyButtonGlow = Sprite::create(UIResources::HUD_EmblemGlow);
 	this->copyButton = ClickableNode::create(UIResources::Menus_HackerModeMenu_Copy, UIResources::Menus_HackerModeMenu_CopySelected);
@@ -116,6 +121,7 @@ CodeWindow::CodeWindow(cocos2d::CSize windowSize)
 	this->deleteLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_DeleteScript::create());
 
 	this->windowTitle->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->readOnlyWindowTitle->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->displayedText->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->displayedText->setWrapMode(RichText::WrapMode::WRAP_PER_CHAR);
 	this->displayedText->ignoreContentAdaptWithSize(false);
@@ -136,6 +142,7 @@ CodeWindow::CodeWindow(cocos2d::CSize windowSize)
 	this->addChild(this->background);
 	this->addChild(this->titleBar);
 	this->addChild(this->windowTitle);
+	this->addChild(this->readOnlyWindowTitle);
 	this->addChild(this->contentPane);
 	this->addChild(this->deleteButton);
 	this->addChild(this->copyButtonGlow);
@@ -173,6 +180,7 @@ void CodeWindow::initializePositions()
 	this->background->setPosition(-windowSize.width / 2.0f, -windowSize.height / 2.0f);
 	this->titleBar->setPosition(-windowSize.width / 2.0f, windowSize.height / 2.0f);
 	this->windowTitle->setPosition(-windowSize.width / 2.0f + 8.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
+	this->readOnlyWindowTitle->setPosition(-windowSize.width / 2.0f + 8.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
 	this->deleteButton->setPosition(windowSize.width / 2.0f - 32.0f - 40.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
 	this->copyButtonGlow->setPosition(windowSize.width / 2.0f - 32.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
 	this->copyButton->setPosition(windowSize.width / 2.0f - 32.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
@@ -193,6 +201,14 @@ void CodeWindow::initializePositions()
 void CodeWindow::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addGlobalEventListener(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
+	{
+		if (this->script != nullptr && this->script->isReadOnly)
+		{
+			this->openScript(this->script);
+		}
+	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableBaseEdit, [=](EventCustom* args)
 	{
@@ -288,6 +304,8 @@ void CodeWindow::openScript(ScriptEntry* script)
 		this->background->setColor(Color3B(CodeWindow::ReadonlyWindowColor));
 		this->background->setOpacity(CodeWindow::ReadonlyWindowColor.a);
 		this->windowTitle->getHitbox()->disableInteraction();
+		this->windowTitle->setVisible(false);
+		this->readOnlyWindowTitle->setVisible(true);
 		this->editableText->getHitbox()->disableInteraction();
 		this->unfocus();
 	}
@@ -298,16 +316,28 @@ void CodeWindow::openScript(ScriptEntry* script)
 		this->background->setOpacity(CodeWindow::DefaultWindowColor.a);
 		this->deleteButton->setVisible(true);
 		this->windowTitle->getHitbox()->enableInteraction();
+		this->windowTitle->setVisible(true);
+		this->readOnlyWindowTitle->setVisible(false);
 		this->editableText->getHitbox()->enableInteraction();
 		this->focus();
 	}
 
-	std::string scriptText = script->getScript();
+	std::string scriptText;
+	
+	if (this->script != nullptr && this->script->getBoundLocalizedScript() != nullptr)
+	{
+		scriptText = this->script->getBoundLocalizedScript()->getString();
+	}
+	else
+	{
+		scriptText = script->getScript();
+	}
+	
 	LocalizedString* name = script->getName();
 
 	this->setText(scriptText);
 	this->constructTokenizedText(scriptText);
-	this->setWindowTitle(name == nullptr ? "" : name->getString());
+	this->setWindowTitle(name);
 	this->contentPane->updateScrollBounds();
 }
 
@@ -411,7 +441,7 @@ void CodeWindow::constructTokenizedText(std::string currentText)
 		textJoined.push_back(currentString);
 	}
 
-	for (auto text : textJoined)
+	for (std::string& text : textJoined)
 	{
 		std::vector<std::string> tokenStrings;
 
@@ -427,7 +457,7 @@ void CodeWindow::constructTokenizedText(std::string currentText)
 		}
 
 		// Iterate tokens
-		for (auto token : tokenStrings)
+		for (std::string& token : tokenStrings)
 		{
 			Color3B color = CodeWindow::DefaultColor;
 
@@ -467,9 +497,10 @@ void CodeWindow::constructTokenizedText(std::string currentText)
 	this->hasScriptChanges = true;
 }
 
-void CodeWindow::setWindowTitle(std::string windowTitle)
+void CodeWindow::setWindowTitle(LocalizedString* text)
 {
-	this->windowTitle->setString(windowTitle);
+	this->windowTitle->setString(text == nullptr ? "" : text->getString());
+	this->readOnlyWindowTitle->setLocalizedString(text == nullptr ? nullptr : text->clone());
 }
 
 void CodeWindow::insertNewline()

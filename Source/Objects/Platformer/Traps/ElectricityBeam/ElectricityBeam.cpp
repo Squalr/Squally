@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/Traps/ElectricityBeam/ElectricityBeamCountDownPreview.h"
 #include "Objects/Platformer/Traps/ElectricityBeam/ElectricityBeamGenericPreview.h"
@@ -16,6 +17,7 @@
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Strings.h"
@@ -45,9 +47,10 @@ ElectricityBeam::ElectricityBeam(ValueMap& properties) : super(properties)
 	this->isVertical = GameUtils::getKeyOrDefault(this->properties, ElectricityBeam::PropertyVertical, Value(false)).asBool();
 	this->isDisabled = GameUtils::getKeyOrDefault(this->properties, ElectricityBeam::PropertyDisabled, Value(false)).asBool();
 	this->disableSave = GameUtils::getKeyOrDefault(this->properties, ElectricityBeam::PropertyDisableSave, Value(false)).asBool();
+	this->electricitySfx = WorldSound::create(SoundResources::Platformer_Spells_ElectricZap1);
 
 	this->electricityAnimation = SmartAnimationSequenceNode::create();
-	this->electricityCollision = CollisionObject::create(CollisionObject::createBox(CSize(this->isVertical ? 64.0f : 468.0f, this->isVertical ? 468.0f : 64.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
+	this->electricityCollision = CollisionObject::create(CollisionObject::createBox(CSize(this->isVertical ? 96.0f : 468.0f, this->isVertical ? 468.0f : 96.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 	this->ballLeft = Sprite::create(ObjectResources::Traps_ElectricBeam_Ball);
 	this->ballRight = Sprite::create(ObjectResources::Traps_ElectricBeam_Ball);
 
@@ -58,6 +61,7 @@ ElectricityBeam::ElectricityBeam(ValueMap& properties) : super(properties)
 	this->addChild(this->electricityAnimation);
 	this->addChild(this->ballLeft);
 	this->addChild(this->ballRight);
+	this->addChild(this->electricitySfx);
 }
 
 ElectricityBeam::~ElectricityBeam()
@@ -128,6 +132,7 @@ void ElectricityBeam::update(float dt)
 			DelayTime::create(0.15f),
 			CallFunc::create([=]()
 			{
+				this->electricitySfx->play();
 				this->electricityCollision->setPhysicsFlagEnabled(true);
 			}),
 			DelayTime::create(0.35f),
@@ -161,7 +166,7 @@ void ElectricityBeam::registerHackables()
 				UIResources::Menus_Icons_Lightning,
 				LazyNode<HackablePreview>::create([=](){ return ElectricityBeamCountDownPreview::create(); }),
 				{
-					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_RegisterSt0::create() },
+					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_RegisterSt0::create(), true },
 				},
 				int(HackFlags::Lightning),
 				20.0f,

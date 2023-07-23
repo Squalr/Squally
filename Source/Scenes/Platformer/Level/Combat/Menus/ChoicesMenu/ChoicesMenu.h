@@ -4,6 +4,7 @@
 #include "Events/CombatEvents.h"
 
 class AttackMenu;
+class DefendMenu;
 class ItemsMenu;
 class PlatformerEntity;
 class RadialEntry;
@@ -39,6 +40,7 @@ private:
 
 	RadialScrollMenu* choicesMenu = nullptr;
 	AttackMenu* attackMenu = nullptr;
+	DefendMenu* defendMenu = nullptr;
 	ItemsMenu* itemsMenu = nullptr;
 
 	RadialEntry* itemsButton = nullptr;

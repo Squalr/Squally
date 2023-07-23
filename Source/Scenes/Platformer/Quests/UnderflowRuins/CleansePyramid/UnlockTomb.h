@@ -16,7 +16,7 @@ protected:
 	virtual ~UnlockTomb();
 
 	void onLoad(QuestState questState) override;
-	void onActivate(bool isActiveThroughSkippable) override;
+	void onActivate(bool isActiveThroughSkippable, bool isInitialActivation) override;
 	void onComplete() override;
 	void onSkipped() override;
 

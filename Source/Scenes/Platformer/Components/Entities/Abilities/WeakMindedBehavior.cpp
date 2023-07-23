@@ -50,7 +50,7 @@ void WeakMindedBehavior::onLoad()
 {
 	if (this->glowAnim != nullptr)
 	{
-		this->glowAnim->setPosition(this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f));
+		this->glowAnim->setPosition(Vec2(0.0f, this->entity->getEntitySize().height / 2.0f));
 	}
 	this->entity->registerHackAbility(HackActivatedAbility::create(
 		"weak-minded",

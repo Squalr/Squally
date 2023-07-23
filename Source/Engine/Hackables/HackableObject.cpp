@@ -88,16 +88,6 @@ void HackableObject::update(float dt)
 {
 	super::update(dt);
 
-	if (!this->hasRelocatedUI && !this->hackableList.empty())
-	{	
-		// Move the UI elements to the top-most layer. Deferred until now as an optimization, as TriggerBindObjectToUI is expensive
-		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->uiElementsButton));
-		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->uiElementsRain));
-		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->uiElementsProgressBars));
-
-		this->hasRelocatedUI = true;
-	}
-
 	this->updateTimeRemainingBars();
 }
 
@@ -153,6 +143,8 @@ void HackableObject::onHackerModeEnable()
 	{
 		this->hackButton->lazyGet()->setVisible(true);
 	}
+	
+	this->moveUIToTopLayer();
 }
 
 void HackableObject::onHackerModeDisable()
@@ -227,7 +219,7 @@ void HackableObject::updateTimeRemainingBars()
 	{
 		if (index < hackableCount)
 		{
-			auto next = this->trackedHackables[index];
+			HackableBase* next = this->trackedHackables[index];
 
 			this->timeRemainingBars[index]->setVisible(true);
 			this->timeRemainingIcons[index]->setVisible(true);
@@ -354,7 +346,7 @@ void HackableObject::registerCode(HackableCode* hackableCode, bool refreshCooldo
 		return;
 	}
 
-	for (auto next : this->codeList)
+	for (HackableCode* next : this->codeList)
 	{
 		if (next->getPointer() == hackableCode->getPointer())
 		{
@@ -527,4 +519,16 @@ HackButton* HackableObject::buildHackButton()
 	});
 
 	return instance;
+}
+
+void HackableObject::moveUIToTopLayer()
+{
+	if (!this->hasRelocatedUI && !this->hackableList.empty())
+	{
+		// Move the UI elements to the top-most layer. Deferred until now as an optimization, as TriggerBindObjectToUI is expensive
+		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->uiElementsButton));
+		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->uiElementsRain));
+		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->uiElementsProgressBars));
+		this->hasRelocatedUI = true;
+	}
 }

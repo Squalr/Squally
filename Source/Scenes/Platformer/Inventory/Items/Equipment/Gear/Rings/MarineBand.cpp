@@ -21,11 +21,12 @@ MarineBand* MarineBand::create()
 	return instance;
 }
 
-MarineBand::MarineBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 28 }}), ItemStats(
+// Tier 3
+MarineBand::MarineBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 45 }}), ItemStats(
 	// Health
-	2,
+	4,
 	// Mana
-	2,
+	6,
 	// Attack
 	0,
 	// Magic Attack
@@ -54,7 +55,7 @@ LocalizedString* MarineBand::getString()
 
 const std::string& MarineBand::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_MarineBand;
+	return ItemResources::Equipment_Gear_Rings_T4_MarineBand;
 }
 
 const std::string& MarineBand::getIdentifier()

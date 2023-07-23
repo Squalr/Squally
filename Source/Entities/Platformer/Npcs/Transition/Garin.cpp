@@ -25,8 +25,7 @@ Garin::Garin(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_Transition_Garin_Animations,
 	EntityResources::Npcs_Transition_Garin_Emblem,
 	CSize(112.0f, 160.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 

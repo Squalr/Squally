@@ -19,17 +19,19 @@ protected:
 	virtual ~SkyShipUnlocked();
 
 	void onLoad(QuestState questState) override;
-	void onActivate(bool isActiveThroughSkippable) override;
+	void onActivate(bool isActiveThroughSkippable, bool isInitialActivation) override;
 	void onComplete() override;
 	void onSkipped() override;
 
 private:
 	typedef QuestTask super;
 
+	void refreshDialogueOptions();
 	void runNoSequence();
 	void runYesSequence();
 
-	PlatformerEntity* owner = nullptr;
+	bool canBoard = false;
+	PlatformerEntity* entity = nullptr;
 	Squally* squally = nullptr;
 	Portal* portal = nullptr;
 	bool isReturnTrip = false;
@@ -37,4 +39,5 @@ private:
 	static const std::string PropertyIsReturnTrip;
 	static const std::string QuestTagShipPortal;
 	static const std::string QuestTagTempleAirship;
+	static const std::string QuestTagTempleAirshipBg;
 };

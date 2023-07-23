@@ -10,6 +10,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
+#include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Enemies/UnderflowRuins/Medusa.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
@@ -93,12 +94,14 @@ void FightMedusa::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void FightMedusa::onActivate(bool isActiveThroughSkippable)
+void FightMedusa::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 
 void FightMedusa::onComplete()
 {
+	int crackProgress = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCrackProgress, Value(1)).asInt();
+	SaveManager::SaveProfileData(SaveKeys::SaveKeyCrackProgress, Value(std::max(crackProgress, 1)));
 	this->runCinematicSequencePart2();
 }
 

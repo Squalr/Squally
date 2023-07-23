@@ -40,7 +40,7 @@ protected:
 	void onEnter() override;
 
 	TextureData terrainData;
-	std::string terrainHoleTag;
+	std::vector<std::string> terrainHoleTags;
 
 	cocos2d::CRect boundsRect;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;

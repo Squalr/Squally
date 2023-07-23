@@ -90,7 +90,7 @@ void TalkToElriel::onLoad(QuestState questState)
 	}, TalkToElriel::TagCutscenePortal);
 }
 
-void TalkToElriel::onActivate(bool isActiveThroughSkippable)
+void TalkToElriel::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce(TalkToElriel::MapEventElrielRescued, [=](ValueMap)
 	{

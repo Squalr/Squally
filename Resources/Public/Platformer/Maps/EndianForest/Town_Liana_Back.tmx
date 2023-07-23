@@ -228,7 +228,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="753" name="marble" type="terrain" x="-43.5152" y="1195.09" width="2686.3" height="234.06"/>
+  <object id="753" name="marble" type="terrain" x="-43.5152" y="1195.09" width="2686.3" height="447.697"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -249,19 +249,14 @@
    </properties>
   </object>
   <object id="776" name="caged-fox" type="object" x="1545.34" y="1083.09" width="196" height="112"/>
-  <object id="778" name="chest" type="object" x="2088.48" y="1068.78" width="128" height="128">
+  <object id="778" name="chest" type="object" x="1891.84" y="1063.92" width="128" height="128">
    <properties>
     <property name="reward-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="779" name="metal-chest" type="object" x="1867.21" y="1065.15" width="128" height="128">
+  <object id="779" name="metal-chest" type="object" x="2131.83" y="1065.15" width="128" height="128">
    <properties>
     <property name="reward-pool" value="ef-rare"/>
-   </properties>
-  </object>
-  <object id="780" name="metal-chest" type="object" x="2324" y="1066" width="128" height="128">
-   <properties>
-    <property name="reward-pool" value="ef-equipment"/>
    </properties>
   </object>
   <object id="781" name="spawn" type="object" x="2002" y="132" width="128" height="128">

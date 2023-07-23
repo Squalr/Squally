@@ -95,7 +95,7 @@ void TalkToOlive::onLoad(QuestState questState)
 	}
 }
 
-void TalkToOlive::onActivate(bool isActiveThroughSkippable)
+void TalkToOlive::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 
@@ -148,7 +148,8 @@ void TalkToOlive::runCinematicSequencePt2()
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
-			DialogueEvents::BuildPreviewNode(&this->olive, true)
+			DialogueEvents::BuildPreviewNode(&this->olive, true),
+			true
 		),
 		[=]()
 		{

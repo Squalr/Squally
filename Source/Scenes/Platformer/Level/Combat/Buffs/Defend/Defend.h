@@ -13,10 +13,12 @@ class PlatformerEntity;
 class Defend : public Buff
 {
 public:
-	static Defend* create(PlatformerEntity* caster);
+	static Defend* create(PlatformerEntity* caster, bool isDistractActiveParam);
+	
+	bool isDistractActive();
 
 protected:
-	Defend(PlatformerEntity* caster);
+	Defend(PlatformerEntity* caster, bool isDistractActiveParam);
 	virtual ~Defend();
 
 	void onEnter() override;
@@ -29,6 +31,7 @@ private:
 
 	void onDamageTakenOrCycle(bool isDamage);
 
+	bool isDistractActiveParam = false;
 	cocos2d::Sprite* defendEffect = nullptr;
 	int resetCount = 0;
 

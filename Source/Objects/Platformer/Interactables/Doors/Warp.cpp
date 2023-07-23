@@ -9,6 +9,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Maps/MapLayer.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -25,6 +26,7 @@ const std::string Warp::PropertyWarpFrom = "from";
 const std::string Warp::PropertyWarpTo = "to";
 const std::string Warp::PropertyNoWarpCamera = "no-warp-camera";
 const std::string Warp::PropertyRelayer = "relayer";
+const std::string Warp::PropertySaveKey = "save-key";
 const std::string Warp::EventWarpToPrefix = "EVENT_WARP_TO_";
 const float Warp::WarpCooldown = 0.5f;
 
@@ -50,6 +52,7 @@ Warp::Warp(ValueMap& properties) : super(
 	this->to = GameUtils::getKeyOrDefault(this->properties, Warp::PropertyWarpTo, Value("")).asString();
 	this->warpCamera = !GameUtils::getKeyOrDefault(this->properties, Warp::PropertyNoWarpCamera, Value(false)).asBool();
 	this->relayer = GameUtils::getKeyOrDefault(this->properties, Warp::PropertyRelayer, Value(false)).asBool();
+	this->saveKey = GameUtils::getKeyOrDefault(this->properties, Warp::PropertySaveKey, Value("")).asString();
 
 	this->setName("Warp from " + this->from + " to " + this->to);
 	this->setInteractType(InteractType::Input);
@@ -71,6 +74,19 @@ void Warp::update(float dt)
 		if (this->cooldown <= 0.0f)
 		{
 			this->enable();
+		}
+	}
+}
+
+void Warp::onEnter()
+{
+	super::onEnter();
+
+	if (!this->saveKey.empty())
+	{
+		if (!SaveManager::GetProfileDataOrDefault(this->saveKey, Value(false)).asBool())
+		{
+			this->lock(false);
 		}
 	}
 }

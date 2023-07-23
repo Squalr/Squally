@@ -21,11 +21,11 @@ VoidMace* VoidMace::create()
 	return instance;
 }
 
-VoidMace::VoidMace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 5 }}), 6, 8, ItemStats(
+VoidMace::VoidMace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 5 }}), MACE_DAMAGE_MIN(9), MACE_DAMAGE_MAX(9), ItemStats(
 	// Health
-	0,
+	2,
 	// Mana
-	0,
+	2,
 	// Attack
 	0,
 	// Magic Attack

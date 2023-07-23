@@ -18,6 +18,7 @@ protected:
 	virtual ~FadeHudBase();
 
 	void onEnter() override;
+	void pause() override;
 	void fillSeams();
 
 private:

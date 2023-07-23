@@ -1,5 +1,7 @@
 #include "KillingMachineHealthBehavior.h"
 
+#include "cocos/2d/CCAction.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
@@ -54,6 +56,19 @@ void KillingMachineHealthBehavior::onLoad()
 	this->statsBars->toggleManaBarVisibility(false);
 	this->statsBars->toggleEmblemVisibility(false);
 	this->statsBars->setStatsTarget(this->entity);
+
+	this->entity->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
+	{
+		if (!value.asBool())
+		{
+			this->entity->runAction(Sequence::create(
+				DelayTime::create(1.0f),
+				FadeTo::create(1.0f, 0),
+				nullptr
+			));
+			this->entity->despawn(2.5f);
+		}
+	});
 }
 
 void KillingMachineHealthBehavior::onDisable()

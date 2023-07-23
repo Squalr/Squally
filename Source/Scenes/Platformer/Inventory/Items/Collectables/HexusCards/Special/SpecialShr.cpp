@@ -21,7 +21,7 @@ SpecialShr* SpecialShr::create()
 	return instance;
 }
 
-SpecialShr::SpecialShr() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 13 }}), ItemMeta(3, 3))
+SpecialShr::SpecialShr() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 19 }}), ItemMeta(3, 3))
 {
 }
 

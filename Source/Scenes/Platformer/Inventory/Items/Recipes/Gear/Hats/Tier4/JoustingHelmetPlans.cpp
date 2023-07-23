@@ -38,8 +38,9 @@ std::vector<std::tuple<Item*, int>> JoustingHelmetPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Mithril::create(), 2 },
+		{ Iron::create(), 2 },
+		{ Coal::create(), 2 },
 	};
 }
 
@@ -60,7 +61,7 @@ const std::string& JoustingHelmetPlans::getIconResource()
 
 std::string JoustingHelmetPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_JoustingHelmet;
+	return ItemResources::Equipment_Gear_Hats_Tier4_JoustingHelmet;
 }
 
 const std::string& JoustingHelmetPlans::getIdentifier()

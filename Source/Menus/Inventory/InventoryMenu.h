@@ -27,7 +27,9 @@ public:
 	static InventoryMenu* create(LazyNode<PartyMenu>* partyMenu);
 
 	void open();
+	void openItemMenu();
 	void setReturnClickCallback(std::function<void()> returnClickCallback);
+	FilterMenu* getFilterMenu();
 
 protected:
 	InventoryMenu(LazyNode<PartyMenu>* partyMenu);

@@ -110,6 +110,27 @@ FilterEntry* FilterMenu::getActiveFilter()
 	return this->filters[this->filterSelectionIndex];
 }
 
+void FilterMenu::setActiveFilter(FilterEntry* filter)
+{
+	int previousIndex = this->filterSelectionIndex;
+	
+	for (int index = 0; index < int(this->filters.size()); index++)
+	{
+		if (this->filters[index] == filter)
+		{
+			this->filterSelectionIndex = index;
+			this->positionFilterText();
+
+			if (previousIndex != this->filterSelectionIndex && this->onFilterChange != nullptr)
+			{
+				this->onFilterChange();
+			}
+			
+			break;
+		}
+	}
+}
+
 void FilterMenu::scrollFilterUp()
 {
 	if (!this->isFocused)

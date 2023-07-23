@@ -80,7 +80,7 @@ void RescueIrmik::onLoad(QuestState questState)
 	}, RescueIrmik::TagCutscenePortal);
 }
 
-void RescueIrmik::onActivate(bool isActiveThroughSkippable)
+void RescueIrmik::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce(RescueIrmik::MapEventIrmikRescued, [=](ValueMap)
 	{

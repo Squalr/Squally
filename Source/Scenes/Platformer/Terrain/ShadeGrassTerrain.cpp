@@ -59,21 +59,21 @@ ShadeGrassTerrain::ShadeGrassTerrain(ValueMap& properties) : super(
 		// Right
 		Vec2::ZERO,
 		// TopLeft
-		Vec2::ZERO,
+		Vec2(0.0f, -12.0f),
 		// TopRight
-		Vec2::ZERO,
+		Vec2(0.0f, -16.0f),
 		// BottomLeft
 		Vec2::ZERO,
 		// BottomRight
 		Vec2::ZERO,
 		// TopConnector
-		Vec2::ZERO,
+		Vec2(0.0f, 6.0f),
 		// TopConnectorConcave
 		Vec2(0.0f, 4.0f),
 		// TopConnectorConcaveDeep
 		Vec2(0.0f, 6.0f),
 		// TopConnectorConvex
-		Vec2(0.0f, -2.0f),
+		Vec2(0.0f, -3.0f),
 		// TopConnectorConvexDeep
 		Vec2(0.0f, -14.0f),
 		// BottomConnector

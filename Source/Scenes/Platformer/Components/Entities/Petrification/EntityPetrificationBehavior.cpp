@@ -14,6 +14,7 @@
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -31,6 +32,7 @@
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/CureTown.h"
 #include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/CureTownLine.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
@@ -47,6 +49,7 @@ const std::string EntityPetrificationBehavior::SaveKeyCured = "SAVE_KEY_PETRIFIC
 const std::string EntityPetrificationBehavior::TagExit = "town-exit";
 const std::string EntityPetrificationBehavior::MapEventCured = "petrification-cured";
 const std::string EntityPetrificationBehavior::MapEventKeyOwnerId = "owner-id";
+const std::string EntityPetrificationBehavior::PropertyUseSaveKey = "petrification-use-save-key";
 
 EntityPetrificationBehavior* EntityPetrificationBehavior::create(GameObject* owner)
 {
@@ -180,6 +183,24 @@ void EntityPetrificationBehavior::onLoad()
 	
 	this->entity->getAnimations()->setVisible(false);
 	this->toggleQueryable(true);
+	
+	bool petrificationUseSaveKey = GameUtils::getKeyOrDefault(owner->properties, EntityPetrificationBehavior::PropertyUseSaveKey, Value(false)).asBool();
+
+	// Used to support showing petrified characters in the Warp Gate preview map
+	if (petrificationUseSaveKey)
+	{
+		bool thorCured = QuestTask::GetQuestSaveStateOrDefault(CureTownLine::MapKeyQuestLine, CureTown::MapKeyQuest, CureTown::SaveKeyThorCured, Value(false)).asBool();
+		bool athenaCured = QuestTask::GetQuestSaveStateOrDefault(CureTownLine::MapKeyQuestLine, CureTown::MapKeyQuest, CureTown::SaveKeyAthenaCured, Value(false)).asBool();
+
+		if (this->entity->getEntityKey() == "thor" && thorCured)
+		{
+			this->unpetrify();
+		}
+		else if (this->entity->getEntityKey() == "athena" && athenaCured)
+		{
+			this->unpetrify();
+		}
+	}
 }
 
 void EntityPetrificationBehavior::onDisable()
@@ -214,6 +235,14 @@ bool EntityPetrificationBehavior::tryCure()
 	else if (this->entity->getEntityKey() == "griffin")
 	{
 		QuestTask::SaveQuestSaveState(CureTownLine::MapKeyQuestLine, CureTown::MapKeyQuest, CureTown::SaveKeyGriffinCured, Value(true));
+	}
+	else if (this->entity->getEntityKey() == "thor")
+	{
+		QuestTask::SaveQuestSaveState(CureTownLine::MapKeyQuestLine, CureTown::MapKeyQuest, CureTown::SaveKeyThorCured, Value(true));
+	}
+	else if (this->entity->getEntityKey() == "athena")
+	{
+		QuestTask::SaveQuestSaveState(CureTownLine::MapKeyQuestLine, CureTown::MapKeyQuest, CureTown::SaveKeyAthenaCured, Value(true));
 	}
 
 	this->cureInteraction->disable();

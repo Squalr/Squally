@@ -2,6 +2,8 @@
 
 #include "base/CCValue.h"
 
+#include "Engine/Localization/ConstantString.h"
+#include "Engine/Localization/LocalizedString.h"
 #include "Engine/Save/SaveManager.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
@@ -24,7 +26,14 @@ LocalizedString* Objectives::GetObjectiveString()
 		return Objectives::ObjectiveMap[objectiveKey].createFunc();
 	}
 
-	return nullptr;
+	// Absense of a key should return nullptr so the caller knows not to create a UI element
+	if (objectiveKey == "")
+	{
+		return nullptr;
+	}
+
+	// Default to the missing key so that we know to add it
+	return ConstantString::create(objectiveKey);
 }
 
 std::string Objectives::GetCurrentObjective()
@@ -50,6 +59,21 @@ void Objectives::SetCurrentObjective(std::string objectiveKey)
 	{
 		int currentPriority = Objectives::ObjectiveMap[currentObjectiveKey].priority;
 		int newPriority = Objectives::ObjectiveMap[objectiveKey].priority;
+
+		// Fail safe unlocks for testing / backwards compatibility
+		if (newPriority >= 100)
+		{
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyQuickPotionUnlocked, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGuanoFound, Value(true));
+		}
+		if (newPriority >= 300)
+		{
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyFound, Value(true));
+		}
+		if (newPriority >= 400)
+		{
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGrimFound, Value(true));
+		}
 
 		// Prevent setting objective if the new objective has a lower prio
 		if (newPriority < currentPriority)
@@ -90,7 +114,6 @@ void Objectives::InitMap()
 	Objectives::ObjectiveMap[ObjectiveKeys::EFFindElriel] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_FindElriel::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::EFSearchTemple] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_SearchTemple::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::EFReturnToQueen] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_ReturnToQueen::create()->setStringReplacementVariables(Strings::Platformer_MapNames_EndianForest_Elbridge::create()); }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::EFVisitMarcel] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_VisitMarcel::create()->setStringReplacementVariables({ Strings::Platformer_Entities_Names_Npcs_EndianForest_Marcel::create(), Strings::Platformer_MapNames_EndianForest_Elbridge::create() }); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::EFHeadNorth] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_HeadNorth::create(); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::EFAmbush] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_Ambush::create(); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::EFRepairRam] = Objective([](){ return Strings::Platformer_Objectives_EndianForest_EF_RepairRam::create(); }, priority++);
@@ -126,4 +149,57 @@ void Objectives::InitMap()
 	Objectives::ObjectiveMap[ObjectiveKeys::DMRideTrainToCastleValgrind] = Objective([](){ return Strings::Platformer_Objectives_DataMines_DM_RideTrainToCastleValgrind::create()->setStringReplacementVariables(Strings::Platformer_MapNames_CastleValgrind_CastleValgrind::create()); }, priority++);
 
 	priority = 300;
+
+	// CV
+	Objectives::ObjectiveMap[ObjectiveKeys::CVEnterCastle] = Objective([](){ return Strings::Platformer_Objectives_CastleValgrind_CV_EnterCastle::create()->setStringReplacementVariables(Strings::Platformer_MapNames_CastleValgrind_CastleValgrind::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::CVInvestigateCastle] = Objective([](){ return Strings::Platformer_Objectives_CastleValgrind_CV_InvestigateCastle::create()->setStringReplacementVariables(Strings::Platformer_MapNames_CastleValgrind_CastleValgrind::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::CVTakeArcaneBook] =  Objective([](){ return Strings::Platformer_Objectives_CastleValgrind_CV_TakeArcaneBook::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::CVExamineArcaneEnergy] = Objective([](){ return Strings::Platformer_Objectives_CastleValgrind_CV_ExamineArcaneEnergy::create()->setStringReplacementVariables(Strings::Platformer_MapNames_CastleValgrind_CastleValgrind::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::CVRepairClock] = Objective([](){ return Strings::Platformer_Objectives_CastleValgrind_CV_RepairClock::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::CVEnterClock] =  Objective([](){ return Strings::Platformer_Objectives_CastleValgrind_CV_EnterClock::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::CVExploreDarkSide] =  Objective([](){ return Strings::Platformer_Objectives_CastleValgrind_CV_ExploreDarkSide::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::CVDefeatSpirits] =  Objective([](){ return Strings::Platformer_Objectives_CastleValgrind_CV_DefeatSpirits::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Helpers_CastleValgrind_Grim::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::CVReturnToMabel] =  Objective([](){ return Strings::Platformer_Objectives_CastleValgrind_CV_ReturnToMabel::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_CastleValgrind_Mabel::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::CVExploreSecretTunnel] =  Objective([](){ return Strings::Platformer_Objectives_CastleValgrind_CV_ExploreSecretTunnel::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::CVDefeatAgnes] =  Objective([](){ return Strings::Platformer_Objectives_CastleValgrind_CV_DefeatAgnes::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Enemies_CastleValgrind_Agnes::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::CVEnterLambdaCrypts] =  Objective([](){ return Strings::Platformer_Objectives_CastleValgrind_CV_EnterLambdaCrypts::create()->setStringReplacementVariables({ Strings::Platformer_MapNames_LambdaCrypts_LambdaCrypts::create(), Strings::Platformer_MapNames_CastleValgrind_CastleValgrind::create()}); }, priority++);
+
+	priority = 400;
+
+	// LC
+	Objectives::ObjectiveMap[ObjectiveKeys::LCSeekAmelia] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_SeekAmelia::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_Amelia::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::LCTalkToNebea] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_TalkToNebea::create()->setStringReplacementVariables({ Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_PrincessNebea::create(), Strings::Platformer_MapNames_LambdaCrypts_GraveFlower::create(), Strings::Platformer_MapNames_LambdaCrypts_LambdaCrypts::create() }); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::LCReturnToElric] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_ReturnToElric::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_Elric::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::LCEnterLesserCrypt] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_EnterLesserCrypt::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::LCExploreLesserCrypt] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_ExploreLesserCrypt::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::LCFindGems] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_FindGems::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::LCEnterGreaterCrypt] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_EnterGreaterCrypt::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::LCExploreGreaterCrypt] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_ExploreGreaterCrypt::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::LCCraftDemonHeart] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_CraftDemonHeart::create()->setStringReplacementVariables({ Strings::Platformer_MapNames_DataMines_Drammol::create(), Strings::Platformer_MapNames_DataMines_DataMines::create(), Strings::Items_Misc_Keys_DemonHeart::create() }); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::LCOpenDemonPortal] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_OpenDemonPortal::create()->setStringReplacementVariables(Strings::Platformer_MapNames_DataMines_DataMines::create()); }, priority++);
+
+	priority = 500;
+
+	// FF
+	Objectives::ObjectiveMap[ObjectiveKeys::FFExploreFirewallFissure] =  Objective([](){ return Strings::Platformer_Objectives_FirewallFissure_FF_Explore::create()->setStringReplacementVariables(Strings::Platformer_MapNames_FirewallFissure_FirewallFissure::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::FFEnterTown] =  Objective([](){ return Strings::Platformer_Objectives_FirewallFissure_FF_EnterTown::create()->setStringReplacementVariables({ Strings::Platformer_MapNames_FirewallFissure_Brimstone::create(), Strings::Platformer_MapNames_FirewallFissure_FirewallFissure::create()}); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::FFCraftBomb] =  Objective([](){ return Strings::Platformer_Objectives_FirewallFissure_FF_CraftBomb::create()->setStringReplacementVariables({ Strings::Items_Misc_Keys_HeliumBomb::create(), Strings::Platformer_MapNames_FirewallFissure_Brimstone::create() }); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::FFDeliverBomb] =  Objective([](){ return Strings::Platformer_Objectives_FirewallFissure_FF_DeliverBomb::create()->setStringReplacementVariables(Strings::Platformer_MapNames_FirewallFissure_Brimstone::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::FFLaunchBomb] =  Objective([](){ return Strings::Platformer_Objectives_FirewallFissure_FF_LaunchBomb::create()->setStringReplacementVariables(Strings::Platformer_MapNames_FirewallFissure_FirewallFissure::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::FFFindAsmodeus] =  Objective([](){ return Strings::Platformer_Objectives_FirewallFissure_FF_FindAsmodeus::create()->setStringReplacementVariables({ Strings::Platformer_Entities_Names_Enemies_FirewallFissure_Asmodeus::create(), Strings::Platformer_MapNames_FirewallFissure_FirewallFissure::create()}); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::FFAscendVolcano] =  Objective([](){ return Strings::Platformer_Objectives_FirewallFissure_FF_AscendVolcano::create(); }, priority++);
+	
+	priority = 600;
+
+	// BP
+	// Objectives::ObjectiveMap[ObjectiveKeys::TODO] =  Objective([](){ return Strings::TODO::create(); }, priority++);
+	
+	priority = 700;
+
+	// VS
+	Objectives::ObjectiveMap[ObjectiveKeys::VSExplore] =  Objective([](){ return Strings::Platformer_Objectives_VoidStar_VS_Explore::create()->setStringReplacementVariables(Strings::Platformer_MapNames_VoidStar_VoidStar::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::VSExploreLab] =  Objective([](){ return Strings::Platformer_Objectives_VoidStar_VS_ExploreTheLab::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::VSDestroyPerceptron] =  Objective([](){ return Strings::Platformer_Objectives_VoidStar_VS_DestroyPerceptron::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Enemies_VoidStar_Perceptron::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::VSDestroyReactorCore] =  Objective([](){ return Strings::Platformer_Objectives_VoidStar_VS_DestroyReactor::create(); }, priority++);
+	
 }

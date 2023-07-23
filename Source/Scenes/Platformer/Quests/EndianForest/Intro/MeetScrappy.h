@@ -19,7 +19,7 @@ protected:
 	virtual ~MeetScrappy();
 
 	void onLoad(QuestState questState) override;
-	void onActivate(bool isActiveThroughSkippable) override;
+	void onActivate(bool isActiveThroughSkippable, bool isInitialActivation) override;
 	void onComplete() override;
 	void onSkipped() override;
 
@@ -30,6 +30,9 @@ private:
 	void runCinematicSequencePt2();
 	void runCinematicSequencePt3();
 	void runCinematicSequencePt4();
+	void runCinematicSequencePt5();
+	void runCinematicSequencePt6();
+	void runCinematicSequencePt7();
 
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;

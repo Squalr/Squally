@@ -5,6 +5,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/UIResources.h"
@@ -33,4 +34,11 @@ HelpTotemPotions::HelpTotemPotions(ValueMap& properties) : super(properties)
 
 HelpTotemPotions::~HelpTotemPotions()
 {
+}
+
+void HelpTotemPotions::onInteract(PlatformerEntity* interactingEntity)
+{
+	super::onInteract(interactingEntity);
+
+	PlatformerEvents::TriggerUnlockQuickPotion();
 }

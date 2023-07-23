@@ -23,17 +23,17 @@ CopperHelm* CopperHelm::create()
 
 CopperHelm::CopperHelm() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 15 }}), ItemStats(
 	// Health
-	3,
+	WARRIOR_HP(2),
 	// Mana
-	0,
+	WARRIOR_MP(2),
 	// Attack
-	2,
+	WARRIOR_ATTACK(2),
 	// Magic Attack
-	0,
+	WARRIOR_MAGIC_ATTACK(2),
 	// Armor
-	3,
+	WARRIOR_ARMOR(2),
 	// Speed
-	0.05f
+	WARRIOR_SPEED(2)
 ))
 {
 }
@@ -54,7 +54,7 @@ LocalizedString* CopperHelm::getString()
 
 const std::string& CopperHelm::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_CopperHelm;
+	return ItemResources::Equipment_Gear_Hats_Tier2_CopperHelm;
 }
 
 const std::string& CopperHelm::getIdentifier()

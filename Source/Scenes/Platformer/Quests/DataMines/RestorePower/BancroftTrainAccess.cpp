@@ -11,22 +11,26 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Dialogue/DialogueOption.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Inventory/Inventory.h"
 #include "Engine/Quests/QuestLine.h"
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Npcs/DataMines/Bancroft.h"
+#include "Entities/Platformer/Npcs/DataMines/Mildred.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Objects/Platformer/Interactables/Doors/Warp.h"
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/DataMines/LetterForThePrincess.h"
+#include "Scenes/Platformer/Inventory/Items/Misc/Keys/CastleValgrind/CryptKey.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -74,6 +78,18 @@ void BancroftTrainAccess::onLoad(QuestState questState)
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
+
+		// Nested due to squally inventory dependency
+		ObjectEvents::WatchForObject<Mildred>(this, [=](Mildred* mildred)
+		{
+			this->mildred = mildred;
+
+			// Wait for inventory to load
+			this->defer([=]()
+			{
+				this->setMildredText();
+			}, 1);
+		}, Mildred::MapKey);
 	}, Squally::MapKey);
 
 	ObjectEvents::WatchForObject<Bancroft>(this, [=](Bancroft* bancroft)
@@ -110,7 +126,7 @@ void BancroftTrainAccess::onLoad(QuestState questState)
 	}
 }
 
-void BancroftTrainAccess::onActivate(bool isActiveThroughSkippable)
+void BancroftTrainAccess::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 
@@ -128,6 +144,63 @@ void BancroftTrainAccess::onComplete()
 void BancroftTrainAccess::onSkipped()
 {
 	this->removeAllListeners();
+}
+
+void BancroftTrainAccess::setMildredText()
+{
+	if (this->mildred == nullptr)
+	{
+		return;
+	}
+	this->mildred->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	{
+		this->squally->watchForComponent<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		{
+			// Having the crypt key is a good proxy for "has cleared Castle Valgrind"
+			if (entityInventoryBehavior->getInventory()->hasItemOfType<CryptKey>())
+			{
+				interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+					Strings::Platformer_Quests_DataMines_RestorePower_Mildred_S_BraveHero::create(),
+					DialogueEvents::DialogueVisualArgs(
+						DialogueBox::DialogueDock::Bottom,
+						DialogueBox::DialogueAlignment::Right,
+						DialogueEvents::BuildPreviewNode(&this->squally, false),
+						DialogueEvents::BuildPreviewNode(&this->mildred, true)
+					),
+					[=]()
+					{
+						this->defer([=]()
+						{
+							this->setMildredText();
+						});
+					},
+					Voices::GetNextVoiceLong(),
+					true
+				));
+			}
+			else
+			{
+				interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+					Strings::Platformer_Quests_DataMines_RestorePower_Mildred_A_CastleHaunted::create(),
+					DialogueEvents::DialogueVisualArgs(
+						DialogueBox::DialogueDock::Bottom,
+						DialogueBox::DialogueAlignment::Right,
+						DialogueEvents::BuildPreviewNode(&this->squally, false),
+						DialogueEvents::BuildPreviewNode(&this->mildred, true)
+					),
+					[=]()
+					{
+						this->defer([=]()
+						{
+							this->setMildredText();
+						});
+					},
+					Voices::GetNextVoiceLong(),
+					true
+				));
+			}
+		});
+	});
 }
 
 void BancroftTrainAccess::runCinematicSequenceAccessBlockedPt1()

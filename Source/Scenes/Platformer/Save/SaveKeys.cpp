@@ -1,9 +1,10 @@
 #include "SaveKeys.h"
 
+const std::string SaveKeys::SaveKeySquallyCrashed = "SAVE_KEY_SQUALLY_CRASHED";
 const std::string SaveKeys::SaveKeyMap = "SAVE_KEY_MAP";
+const std::string SaveKeys::SaveKeyQuickWarpReturnMap = "SAVE_KEY_QUICK_WARP_RETURN_MAP";
 const std::string SaveKeys::SaveKeyCharterShipReturnMap = "SAVE_KEY_CHARTER_SHIP_RETURN_MAP";
 const std::string SaveKeys::SaveKeyCurrentObjective = "SAVE_KEY_CURRENT_OBJECTIVE";
-const std::string SaveKeys::SaveKeyEventTriggeredPrefix = "SAVE_KEY_EVENT_TRIGGERED_";
 const std::string SaveKeys::SaveKeySquallyRuneCooldowns = "SAVE_KEY_SQUALLY_RUNE_COOLDOWNS";
 const std::string SaveKeys::SaveKeySquallyHealth = "SAVE_KEY_SQUALLY_HEALTH";
 const std::string SaveKeys::SaveKeySquallyMana = "SAVE_KEY_SQUALLY_MANA";
@@ -17,9 +18,12 @@ const std::string SaveKeys::SaveKeySquallyPositionY = "SAVE_KEY_SQUALLY_POSITION
 const std::string SaveKeys::SaveKeySquallyPositionZ = "SAVE_KEY_SQUALLY_POSITION_Z";
 const std::string SaveKeys::SaveKeySquallyLayerId = "SAVE_KEY_SQUALLY_LAYER_ID";
 
+const std::string SaveKeys::SaveKeyQuickPotionUnlocked = "SAVE_KEY_QUICK_POTION_UNLOCKED";
+
 const std::string SaveKeys::SaveKeyScrappyFound = "SAVE_KEY_Scrappy_FOUND"; // Don't fix casing, backwards compat
 const std::string SaveKeys::SaveKeyGuanoFound = "SAVE_KEY_GUANO_FOUND";
 const std::string SaveKeys::SaveKeyGeckyFound = "SAVE_KEY_GECKY_FOUND";
+const std::string SaveKeys::SaveKeyGrimFound = "SAVE_KEY_GRIM_FOUND";
 
 const std::string SaveKeys::SaveKeyHelperName = "SAVE_KEY_HELPER_NAME";
 const std::string SaveKeys::SaveKeyHelperHeath = "SAVE_KEY_HELPER_HEALTH";
@@ -37,12 +41,27 @@ const std::string SaveKeys::SaveKeyGeckyMana = "SAVE_KEY_GECKY_MANA";
 const std::string SaveKeys::SaveKeyGeckyEq = "SAVE_KEY_GECKY_EQ";
 const std::string SaveKeys::SaveKeyGeckyEqExperience = "SAVE_KEY_GECKY_EQ_EXPERIENCE";
 
+const std::string SaveKeys::SaveKeyGrimHealth = "SAVE_KEY_GRIM_HEALTH";
+const std::string SaveKeys::SaveKeyGrimMana = "SAVE_KEY_GRIM_MANA";
+const std::string SaveKeys::SaveKeyGrimEq = "SAVE_KEY_GRIM_EQ";
+const std::string SaveKeys::SaveKeyGrimEqExperience = "SAVE_KEY_GRIM_EQ_EXPERIENCE";
+
 const std::string SaveKeys::SaveKeyRespawnMap = "SAVE_KEY_RESPAWN_MAP";
-const std::string SaveKeys::SaveKeyRespawnObjectId = "SAVE_KEY_RESPAWN_OBJECT_ID";
+const std::string SaveKeys::SaveKeySpawnOverride = "SAVE_KEY_SPAWN_OVERRIDE";
 
 const std::string SaveKeys::SaveKeyLevelRubberband = "SAVE_KEY_LEVEL_RUBBERBAND";
 const std::string SaveKeys::SaveKeyLevelHideMiniMap = "SAVE_KEY_HIDE_MINIMAP";
-const std::string SaveKeys::SaveKeyLevelMiniMapRequiredItem = "SAVE_KEY_MINIMAP_REQUIRED_ITEM";
+
+const std::string SaveKeys::SaveKeyTalkedToAra = "SAVE_KEY_TALKED_TO_ARA";
+const std::string SaveKeys::SaveKeyArcaneHint = "SAVE_KEY_ARCANE_HINT";
+
+const std::string SaveKeys::SaveKeyClockMinutes = "SAVE_KEY_CLOCK_SECONDS";
+const std::string SaveKeys::SaveKeyClockHours = "SAVE_KEY_CLOCK_HOURS";
+const std::string SaveKeys::SaveKeyClockTimes = "SAVE_KEY_CLOCK_TIMES";
+
+const std::string SaveKeys::SaveKeyViewCrackSmall = "SAVE_KEY_VIEW_CRACK_SMALL";
+const std::string SaveKeys::SaveKeyViewCrackMedium = "SAVE_KEY_VIEW_CRACK_MEDIUM";
+const std::string SaveKeys::SaveKeyViewCrackLarge = "SAVE_KEY_VIEW_CRACK_LARGE";
 
 const std::string SaveKeys::SaveKeySpellBookArcane = "SAVE_KEY_SPELLBOOK_ARCANE";
 const std::string SaveKeys::SaveKeySpellBookFire = "SAVE_KEY_SPELLBOOK_FIRE";
@@ -104,3 +123,23 @@ const std::string SaveKeys::SaveKeyCollectableAnimalWolf = "SAVE_KEY_ANIMAL_WOLF
 const std::string SaveKeys::SaveKeyCollectableAnimalWorm = "SAVE_KEY_ANIMAL_WORM";
 const std::string SaveKeys::SaveKeyCollectableAnimalYeti = "SAVE_KEY_ANIMAL_YETI";
 const std::string SaveKeys::SaveKeyCollectableAnimalZebra = "SAVE_KEY_ANIMAL_ZEBRA";
+const std::string SaveKeys::SaveKeyLastSelectedScriptIndexPrefix = "SAVE_KEY_SCRIPT_INDEX_";
+const std::string SaveKeys::SaveKeyScriptPrefix = ""; // "SAVE_KEY_SCRIPT_"; // Prefix is left empty for backwards compatibility, although it would be more correct to have one
+
+const std::string SaveKeys::SaveKeyItemAGiven = "MUSEUM_A_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyItemBGiven = "MUSEUM_B_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyItemCGiven = "MUSEUM_C_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyItemDGiven = "MUSEUM_D_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyItemEGiven = "MUSEUM_E_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyItemFGiven = "MUSEUM_F_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyItemGGiven = "MUSEUM_G_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyItemHGiven = "MUSEUM_H_ITEM_GIVEN";
+	
+const std::string SaveKeys::SaveKeyItemEE1Given = "EE_1_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyItemEE2Given = "EE_2_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyItemEE3Given = "EE_3_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyItemEE4Given = "EE_4_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyItemEE5Given = "EE_5_ITEM_GIVEN";
+
+const std::string SaveKeys::SaveKeyAsterItemGiven = "ASTER_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyLycanItemGiven = "LYCAN_ITEM_GIVEN";

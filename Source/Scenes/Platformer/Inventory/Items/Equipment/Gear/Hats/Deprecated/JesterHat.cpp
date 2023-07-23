@@ -53,7 +53,7 @@ LocalizedString* JesterHat::getString()
 
 const std::string& JesterHat::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_JesterHat;
+	return ItemResources::Equipment_Gear_Hats__Deprecated_JesterHat;
 }
 
 const std::string& JesterHat::getIdentifier()

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="66" height="40" tilewidth="128" tileheight="128" infinite="0" nextlayerid="89" nextobjectid="1028">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="66" height="40" tilewidth="128" tileheight="128" infinite="0" nextlayerid="89" nextobjectid="1042">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="solace"/>
-   <property name="rubber-band" type="int" value="2"/>
+   <property name="music" value="little-footsteps"/>
+   <property name="rubber-band" type="int" value="21"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
@@ -119,8 +119,8 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
     <property name="battle-tag" value="group-c"/>
-    <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="components" value="enemy,soul,agro,melee"/>
+    <property name="drop-pool" value="bp-generic"/>
    </properties>
   </object>
   <object id="1006" name="penguin-grunt" type="entity" x="4688.79" y="3013.78" width="128" height="128">
@@ -350,7 +350,11 @@
     <property name="chest-pool" value="bp-generic"/>
    </properties>
   </object>
-  <object id="986" name="life-stone" type="object" x="3251" y="3362.5" width="146" height="423"/>
+  <object id="986" name="life-stone" type="object" x="3251" y="3362.5" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
   <object id="988" name="edge-portal" type="object" x="8240.04" y="3355.57" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="right"/>
@@ -365,6 +369,11 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
+  <object id="1031" name="icicle" type="object" x="5554.99" y="2632.56" width="52" height="150" rotation="359.849"/>
+  <object id="1032" name="icicle" type="object" x="5523.75" y="2633.48" width="30.5125" height="88.0169" rotation="359.972"/>
+  <object id="1033" name="icicle" type="object" x="5607.73" y="2632.17" width="52" height="150" rotation="359.849"/>
+  <object id="1034" name="icicle" type="object" x="5660.89" y="2631.99" width="30.5125" height="88.0169" rotation="359.972"/>
+  <object id="1035" name="icicle" type="object" x="5570.64" y="2632.82" width="30.5125" height="88.0169" rotation="359.972"/>
  </objectgroup>
  <objectgroup id="86" name="objects fg">
   <properties>
@@ -387,8 +396,8 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
     <property name="battle-tag" value="group-b"/>
-    <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="components" value="enemy,soul,agro,melee"/>
+    <property name="drop-pool" value="bp-generic"/>
    </properties>
   </object>
   <object id="980" name="penguin-warrior" type="entity" x="4177.27" y="3386.83" width="128" height="128">
@@ -444,6 +453,16 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
+  <object id="1030" name="squally" type="entity" x="8094.67" y="3869.33" width="128" height="128">
+   <properties>
+    <property name="components" value="squally"/>
+   </properties>
+  </object>
+  <object id="1041" name="spawn" type="object" x="3262.91" y="3660.73" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="27" name="terrain foreground">
   <properties>
@@ -491,16 +510,11 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="995" name="Forest/Foreground/ForegroundTree1" type="decor" x="7833.68" y="3864.63" width="242" height="738"/>
-  <object id="994" name="Forest/Foreground/ForegroundTree2" type="decor" x="7547.39" y="3930.86" width="270" height="748"/>
-  <object id="993" name="Forest/Foreground/ForegroundTree2" type="decor" x="7239.14" y="3892.03" width="270" height="748"/>
-  <object id="992" name="Forest/Foreground/ForegroundTree1" type="decor" x="6945.52" y="4034.84" width="242" height="738"/>
  </objectgroup>
  <objectgroup id="33" name="decor +8">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="996" name="Forest/Foreground/ForegroundTree1" type="decor" x="8169.48" y="3901.2" width="242" height="738"/>
  </objectgroup>
 </map>

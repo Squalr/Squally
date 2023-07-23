@@ -39,6 +39,7 @@ protected:
 	void update(float dt) override;
 	virtual void onCraftStart() = 0;
 	virtual void onCraftEnd(bool viaCancel) = 0;
+	virtual float getCraftDuration();
 	virtual LocalizedString* getCraftString();
 	void startCraft();
 	void craftItem();
@@ -83,5 +84,5 @@ private:
 
 	std::function<void()> returnClickCallback = nullptr;
 
-	static const float CraftDuration;
+	static const float DefaultCraftDuration;
 };

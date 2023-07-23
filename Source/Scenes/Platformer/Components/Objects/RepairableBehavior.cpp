@@ -88,6 +88,8 @@ void RepairableBehavior::onLoad()
 
 	this->defer([=]()
 	{
+		this->updateIconVisibility();
+
 		if (this->interactObject->getComponent<ObjectSelectionBehavior>() == nullptr)
 		{
 			this->interactObject->attachComponent(ObjectSelectionBehavior::create(this->interactObject));
@@ -101,7 +103,7 @@ void RepairableBehavior::onLoad()
 			selectionBehavior->setClickModifier(InputEvents::KeyCode::KEY_SHIFT);
 			selectionBehavior->setClickableCallback([=]()
 			{
-				return this->canRepair();
+				return this->canRepair(true);
 			});
 			selectionBehavior->setObjectClickCallbacks([=]()
 			{
@@ -109,7 +111,7 @@ void RepairableBehavior::onLoad()
 			},
 			[=]()
 			{
-				if (this->currentHelperName == Gecky::MapKey && this->canRepair())
+				if (this->currentHelperName == Gecky::MapKey && this->canRepair(true))
 				{
 					CursorSets::SetActiveCursorSet(CursorSets::Repair);
 				}
@@ -125,12 +127,12 @@ void RepairableBehavior::onLoad()
 	{
 		this->squally = squally;
 		this->currentHelperName = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString();
-		this->repairIcon->setVisible(this->canRepair());
+		this->updateIconVisibility();
 
 		this->squally->listenForStateWrite(StateKeys::CurrentHelper, [=](Value value)
 		{
 			this->currentHelperName = value.asString();
-			this->repairIcon->setVisible(this->canRepair());
+			this->updateIconVisibility();
 		});
 	}, Squally::MapKey);
 
@@ -144,7 +146,7 @@ void RepairableBehavior::onDisable()
 
 void RepairableBehavior::attemptRepair()
 {
-	if (this->canRepair())
+	if (this->canRepair(true))
 	{
 		HelperEvents::TriggerRequestRepair(HelperEvents::RequestRepairArgs(
 			this->interactObject,
@@ -158,9 +160,26 @@ void RepairableBehavior::attemptRepair()
 	}
 }
 
-bool RepairableBehavior::canRepair()
+bool RepairableBehavior::canRepair(bool checkZ)
 {
-	return this->interactObject != nullptr && this->currentHelperName == Gecky::MapKey && !this->wasRepaired();
+	bool isHelperZAligned = true;
+
+	if (checkZ)
+	{
+		ObjectEvents::QueryObjects<PlatformerHelper>([&](PlatformerHelper* helper)
+		{
+			if (std::abs(GameUtils::getDepth(helper) - GameUtils::getDepth(interactObject)) > 16.0f)
+			{
+				isHelperZAligned = false;
+			}
+		}, Squally::TeamTag);
+	}
+
+	return this->interactObject != nullptr
+		&& !this->isInvalidated()
+		&& isHelperZAligned
+		&& this->currentHelperName == Gecky::MapKey
+		&& !this->wasRepaired();
 }
 
 bool RepairableBehavior::wasRepaired()
@@ -182,10 +201,10 @@ void RepairableBehavior::onRepaired()
 
 void RepairableBehavior::updateIconVisibility()
 {
-	this->repairIcon->setVisible(this->canRepair());
-	this->iconGlow->setVisible(this->canRepair());
+	this->repairIcon->setVisible(this->canRepair(false));
+	this->iconGlow->setVisible(this->canRepair(false));
 
-	if (this->canRepair())
+	if (this->canRepair(false))
 	{
 		this->smokeParticles->start();
 	}
@@ -210,7 +229,7 @@ void RepairableBehavior::refreshCursorState()
 			{
 				selection->getOwner()->getComponent<RepairableBehavior>([](RepairableBehavior* pickPocketBehavior)
 				{
-					if (pickPocketBehavior->canRepair())
+					if (pickPocketBehavior->canRepair(true))
 					{
 						CursorSets::SetActiveCursorSet(CursorSets::Repair);
 					}

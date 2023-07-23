@@ -21,11 +21,11 @@ BoneWand* BoneWand::create()
 	return instance;
 }
 
-BoneWand::BoneWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 16, 20, ItemStats(
+BoneWand::BoneWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), WAND_DAMAGE_MIN(6), WAND_DAMAGE_MAX(6), ItemStats(
 	// Health
 	0,
 	// Mana
-	0,
+	18,
 	// Attack
 	0,
 	// Magic Attack

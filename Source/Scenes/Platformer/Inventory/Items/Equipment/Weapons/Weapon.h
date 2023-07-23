@@ -2,6 +2,9 @@
 
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 
+// ceil(sqrt(tier) * (tier + 1)) => 4, 6, 9, 13, 17, 21, 25, 29, 37
+#define BASE_SCALING(tier) (int)std::ceil(std::sqrt((float)tier + 1.0f) * ((float)tier + 2.0f)) - 1
+
 class Weapon : public Equipable
 {
 public:

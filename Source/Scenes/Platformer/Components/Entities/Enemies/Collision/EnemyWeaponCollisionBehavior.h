@@ -2,7 +2,7 @@
 
 #include "Scenes/Platformer/Components/Entities/Collision/EntityWeaponCollisionBehavior.h"
 
-class PlatformerEntity;
+class PlatformerEnemy;
 
 class EnemyWeaponCollisionBehavior : public EntityWeaponCollisionBehavior
 {
@@ -21,5 +21,5 @@ protected:
 private:
 	typedef EntityWeaponCollisionBehavior super;
 	
-	PlatformerEntity* entity = nullptr;
+	PlatformerEnemy* entity = nullptr;
 };

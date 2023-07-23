@@ -55,7 +55,7 @@ protected:
 private:
 	typedef SmartNode super;
 
-	void setWindowTitle(std::string windowTitle);
+	void setWindowTitle(LocalizedString* text);
 	void insertText(LocalizedString* text, cocos2d::Color3B color);
 	void insertNewline();
 	void clearText();
@@ -65,6 +65,7 @@ private:
 	cocos2d::LayerColor* background = nullptr;
 	cocos2d::LayerColor* titleBar = nullptr;
 	InputText* windowTitle = nullptr;
+	LocalizedLabel* readOnlyWindowTitle = nullptr;
 	ClickableNode* deleteButton = nullptr;
 	cocos2d::Sprite* copyButtonGlow = nullptr;
 	ClickableNode* copyButton = nullptr;

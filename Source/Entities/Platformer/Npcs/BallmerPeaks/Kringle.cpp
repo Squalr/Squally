@@ -25,8 +25,7 @@ Kringle::Kringle(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_BallmerPeaks_Kringle_Animations,
 	EntityResources::Npcs_BallmerPeaks_Kringle_Emblem,
 	CSize(112.0f, 160.0f),
-	0.85f,
-	Vec2(0.0f, 0.0f))
+	0.85f)
 {
 }
 

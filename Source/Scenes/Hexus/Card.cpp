@@ -4,10 +4,13 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/Events/LocalizationEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
+#include "Engine/Localization/Localization.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/HackUtils.h"
@@ -123,7 +126,7 @@ Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard, bool rel
 	this->overflowLabel->setOpacity(0);
 	this->underflowLabel->setOpacity(0);
 
-	this->cardLabel->setAlignment(TextHAlignment::CENTER);
+	this->cardLabel->setHorizontalAlignment(TextHAlignment::CENTER);
 	this->cardLabel->setAnchorPoint(Vec2(0.5f, 1.0f));
 	this->cardLabel->enableOutline(Color4B::BLACK, 6);
 
@@ -190,9 +193,7 @@ void Card::initializePositions()
 {
 	super::initializePositions();
 
-	CSize visibleSize = Director::getInstance()->getVisibleSize();
-
-	this->cardLabel->setPosition(Vec2(0.0f, -88.0f));
+	this->positionLabel();
 }
 
 void Card::initializeListeners()
@@ -202,6 +203,37 @@ void Card::initializeListeners()
 	this->cardSelect->setMouseOverCallback([=](InputEvents::MouseEventArgs* args){ this->onMouseOver(); });
 	this->cardSelect->setMouseOutCallback([=](InputEvents::MouseEventArgs* args){ this->onMouseOut(); });
 	this->cardSelect->setMouseClickCallback([=](InputEvents::MouseEventArgs* args){ this->onMouseClick(); });
+	
+	this->addGlobalEventListener(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
+	{
+		this->positionLabel();
+	}));
+}
+
+void Card::positionLabel()
+{
+	switch (Localization::getLanguage())
+	{
+		// CJK has vertically longer text with more padding, so needs more offset
+		case LanguageType::CHINESE_SIMPLIFIED:
+		case LanguageType::CHINESE_TRADITIONAL:
+		case LanguageType::JAPANESE:
+		case LanguageType::KOREAN:
+		{
+			this->cardLabel->setPosition(Vec2(0.0f, -72.0f));
+			break;
+		}
+		case LanguageType::THAI:
+		{
+			this->cardLabel->setPosition(Vec2(0.0f, -78.0f));
+			break;
+		}
+		default:
+		{
+			this->cardLabel->setPosition(Vec2(0.0f, -86.0f));
+			break;
+		}
+	}
 }
 
 void Card::addOperation(Operation operation)
@@ -289,6 +321,10 @@ Card::Operation Card::toOperation(unsigned int immediate)
 		case CardData::CardType::Special_NOT:
 		{
 			return Operation(Operation::OperationType::NOT);
+		}
+		case CardData::CardType::Special_CLEAR:
+		{
+			return Operation(Operation::OperationType::CLEAR);
 		}
 		default:
 		{
@@ -379,6 +415,11 @@ int Card::applyOperation(int attack, Operation operation)
 		case Operation::OperationType::NOT:
 		{
 			attack ^= 0b1111;
+			break;
+		}
+		case Operation::OperationType::CLEAR:
+		{
+			attack = this->getOriginalAttack();
 			break;
 		}
 		case Operation::OperationType::ADD:
@@ -635,6 +676,8 @@ CardEffects::CardEffect Card::getCorrespondingCardEffect()
 		case CardData::CardType::Special_MOV:
 		case CardData::CardType::Special_RETURN_TO_HAND:
 		case CardData::CardType::Special_STEAL:
+		case CardData::CardType::Special_POP:
+		case CardData::CardType::Special_CLEAR:
 		{
 			return CardEffects::CardEffect::DustPoof;
 		}
@@ -659,7 +702,7 @@ CardEffects::CardEffect Card::getCorrespondingCardEffect()
 			return CardEffects::CardEffect::StarHit;
 		}
 		case CardData::CardType::Special_NOT:
-		case CardData::CardType::Special_KILL:
+		case CardData::CardType::Special_PUSH:
 		{
 			return CardEffects::CardEffect::Bite;
 		}

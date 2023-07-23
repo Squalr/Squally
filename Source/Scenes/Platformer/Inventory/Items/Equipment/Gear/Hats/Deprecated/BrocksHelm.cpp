@@ -53,7 +53,7 @@ LocalizedString* BrocksHelm::getString()
 
 const std::string& BrocksHelm::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_BrocksHelm;
+	return ItemResources::Equipment_Gear_Hats__Deprecated_BrocksHelm;
 }
 
 const std::string& BrocksHelm::getIdentifier()

@@ -10,6 +10,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
@@ -17,8 +18,11 @@
 #include "Events/PlatformerEvents.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Objects/Platformer/Interactables/Doors/Mayan/RegisterStone.h"
+#include "Objects/Platformer/Interactables/Doors/Mayan/StoneStack.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
+#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -106,11 +110,9 @@ void MayanDoor::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 	
-	if (this->isLocked)
-	{
-		this->discoverStones();
-	}
-	else
+	this->discoverStones();
+
+	if (!this->isLocked)
 	{
 		this->broadcastMapEvent(MayanDoor::MapEventLockInteraction, ValueMap());
 	}
@@ -162,35 +164,75 @@ void MayanDoor::initializeListeners()
 
 void MayanDoor::discoverStones()
 {
+	bool isUnlocked = this->loadObjectStateOrDefault(MayanDoor::SaveKeyUnlocked, Value(!this->isLocked)).asBool();
+
 	ObjectEvents::QueryObject<RegisterStone>([=](RegisterStone* stone)
 	{
 		this->registerStones.push_back(stone);
+
+		if (isUnlocked)
+		{
+			stone->setValue(stone->getCorrectValue());
+		}
 	}, "eax");
 
 	ObjectEvents::QueryObject<RegisterStone>([=](RegisterStone* stone)
 	{
 		this->registerStones.push_back(stone);
+
+		if (isUnlocked)
+		{
+			stone->setValue(stone->getCorrectValue());
+		}
 	}, "ebx");
 
 	ObjectEvents::QueryObject<RegisterStone>([=](RegisterStone* stone)
 	{
 		this->registerStones.push_back(stone);
+
+		if (isUnlocked)
+		{
+			stone->setValue(stone->getCorrectValue());
+		}
 	}, "ecx");
 
 	ObjectEvents::QueryObject<RegisterStone>([=](RegisterStone* stone)
 	{
 		this->registerStones.push_back(stone);
+
+		if (isUnlocked)
+		{
+			stone->setValue(stone->getCorrectValue());
+		}
 	}, "edx");
 
 	ObjectEvents::QueryObject<RegisterStone>([=](RegisterStone* stone)
 	{
 		this->registerStones.push_back(stone);
+
+		if (isUnlocked)
+		{
+			stone->setValue(stone->getCorrectValue());
+		}
 	}, "edi");
 
 	ObjectEvents::QueryObject<RegisterStone>([=](RegisterStone* stone)
 	{
 		this->registerStones.push_back(stone);
+
+		if (isUnlocked)
+		{
+			stone->setValue(stone->getCorrectValue());
+		}
 	}, "esi");
+
+	ObjectEvents::QueryObject<StoneStack>([=](StoneStack* stoneStack)
+	{
+		if (isUnlocked)
+		{
+			stoneStack->setVisible(false);
+		}
+	});
 }
 
 void MayanDoor::tryUnlock()
@@ -203,12 +245,13 @@ void MayanDoor::tryUnlock()
 	this->broadcastMapEvent(MayanDoor::MapEventLockInteraction, ValueMap());
 
 	int index = 0;
-	std::vector<int> combination = std::vector<int>();
 	bool willUnlock = true;
 
-	for (auto next : this->registerStones)
+	this->combination.clear();
+
+	for (RegisterStone* next : this->registerStones)
 	{
-		combination.push_back(next->getValue());
+		this->combination.push_back(next->getValue());
 
 		willUnlock &= (next->getValue() == next->getCorrectValue());
 	}
@@ -223,7 +266,7 @@ void MayanDoor::tryUnlock()
 	std::vector<float> rotations = std::vector<float>();
 	std::vector<float> delays = std::vector<float>();
 
-	for (auto next : combination)
+	for (int next : this->combination)
 	{
 		rotations.push_back(getRotation(next));
 	}
@@ -243,7 +286,7 @@ void MayanDoor::tryUnlock()
 	// Return to 0 at the end
 	combination.push_back(0);
 
-	for (auto next : combination)
+	for (int next : combination)
 	{
 		delays.push_back(getDist(previousIndex, next) * RotationSpeedPerUnit);
 		previousIndex = next;
@@ -296,6 +339,15 @@ void MayanDoor::tryUnlock()
 		}
 		else
 		{
+			if (this->combination == this->combinationSecret)
+			{
+				if (!SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyItemEE1Given, Value(false)).asBool())
+				{
+					PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ PirateHat::create() }));
+					SaveManager::SaveProfileData(SaveKeys::SaveKeyItemEE1Given, Value(true));
+				}
+			}
+
 			this->broadcastMapEvent(MayanDoor::MapEventResetPuzzle, ValueMap());
 		}
 	}));

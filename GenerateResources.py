@@ -36,6 +36,15 @@ def main():
 		'.bmp',
 		'.tif',
 	), "Platformer/Backgrounds", False)
+	
+	# CutsceneResources
+	createResourceFile("CutsceneResources", (
+		'.scml',
+		'.png',
+		'.jpg',
+		'.bmp',
+		'.tif',
+	), "Platformer/Cutscenes", False)
 
 	# DecorResources
 	createResourceFile("DecorResources", (

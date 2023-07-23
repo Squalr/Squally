@@ -232,6 +232,8 @@ void BirdBehavior::onHit(EntityCollisionBehaviorBase* collisionBehavior)
 	{
 		this->entity->getAnimations()->playAnimation("Fly", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
 	});
+
+	this->entity->broadcastMapEvent(this->entity->getSendEvent(), ValueMap());
 }
 
 void BirdBehavior::moveBeak(float duration)

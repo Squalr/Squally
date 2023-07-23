@@ -21,11 +21,12 @@ DarkHeartBand* DarkHeartBand::create()
 	return instance;
 }
 
-DarkHeartBand::DarkHeartBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 28 }}), ItemStats(
+// Tier 8
+DarkHeartBand::DarkHeartBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 95 }}), ItemStats(
 	// Health
-	2,
+	8,
 	// Mana
-	2,
+	10,
 	// Attack
 	0,
 	// Magic Attack
@@ -54,7 +55,7 @@ LocalizedString* DarkHeartBand::getString()
 
 const std::string& DarkHeartBand::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_DarkHeartBand;
+	return ItemResources::Equipment_Gear_Rings_T8_DarkHeartBand;
 }
 
 const std::string& DarkHeartBand::getIdentifier()

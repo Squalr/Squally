@@ -59,7 +59,7 @@ const std::string& ShellBandRecipe::getIconResource()
 
 std::string ShellBandRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_ShellBand;
+	return ItemResources::Equipment_Gear_Rings_T2_ShellBand;
 }
 
 const std::string& ShellBandRecipe::getIdentifier()

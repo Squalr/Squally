@@ -53,16 +53,18 @@
 #include "Scenes/Hexus/CardData/Special/CardAbsorb.h"
 #include "Scenes/Hexus/CardData/Special/CardAddition.h"
 #include "Scenes/Hexus/CardData/Special/CardBonusMoves.h"
+#include "Scenes/Hexus/CardData/Special/CardClear.h"
 #include "Scenes/Hexus/CardData/Special/CardFlip1.h"
 #include "Scenes/Hexus/CardData/Special/CardFlip2.h"
 #include "Scenes/Hexus/CardData/Special/CardFlip3.h"
 #include "Scenes/Hexus/CardData/Special/CardFlip4.h"
 #include "Scenes/Hexus/CardData/Special/CardGreed.h"
 #include "Scenes/Hexus/CardData/Special/CardInverse.h"
-#include "Scenes/Hexus/CardData/Special/CardKill.h"
 #include "Scenes/Hexus/CardData/Special/CardLogicalAnd.h"
 #include "Scenes/Hexus/CardData/Special/CardLogicalOr.h"
 #include "Scenes/Hexus/CardData/Special/CardLogicalXor.h"
+#include "Scenes/Hexus/CardData/Special/CardPop.h"
+#include "Scenes/Hexus/CardData/Special/CardPush.h"
 #include "Scenes/Hexus/CardData/Special/CardMov.h"
 #include "Scenes/Hexus/CardData/Special/CardPeek.h"
 #include "Scenes/Hexus/CardData/Special/CardReturnToHand.h"
@@ -149,6 +151,7 @@ CardList::CardList()
 	this->cardListByName[CardKeys::Flip3] = new CardFlip3();
 	this->cardListByName[CardKeys::Flip4] = new CardFlip4();
 	this->cardListByName[CardKeys::Inverse] = new CardInverse();
+	this->cardListByName[CardKeys::Clear] = new CardClear();
 	this->cardListByName[CardKeys::LogicalAnd] = new CardLogicalAnd();
 	this->cardListByName[CardKeys::LogicalOr] = new CardLogicalOr();
 	this->cardListByName[CardKeys::LogicalXor] = new CardLogicalXor();
@@ -162,7 +165,8 @@ CardList::CardList()
 	this->cardListByName[CardKeys::Absorb] = new CardAbsorb();
 	this->cardListByName[CardKeys::BonusMoves] = new CardBonusMoves();
 	this->cardListByName[CardKeys::Greed] = new CardGreed();
-	this->cardListByName[CardKeys::Kill] = new CardKill();
+	this->cardListByName[CardKeys::Push] = new CardPush();
+	this->cardListByName[CardKeys::Pop] = new CardPop();
 	this->cardListByName[CardKeys::Peek] = new CardPeek();
 	this->cardListByName[CardKeys::ReturnToHand] = new CardReturnToHand();
 	this->cardListByName[CardKeys::Steal] = new CardSteal();

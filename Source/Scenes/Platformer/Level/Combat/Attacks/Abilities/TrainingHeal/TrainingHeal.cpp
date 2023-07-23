@@ -120,8 +120,7 @@ void TrainingHeal::registerHackables()
 		},
 	};
 
-	auto restoreFunc = &TrainingHeal::runRestoreTick;
-	this->hackables = HackableCode::create((void*&)restoreFunc, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(TrainingHeal::runRestoreTick, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{
@@ -172,19 +171,19 @@ NO_OPTIMIZE void TrainingHeal::runRestoreTick()
 	ASM(mov ZDI, 0)
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RESTORE);
-	ASM(add ZDI, 256);
+	ASM(add ZDI, 255);
 	HACKABLE_CODE_END();
 
 	ASM_MOV_VAR_REG(incrementAmount, edi);
 
 	ASM(pop ZDI);
 
-	incrementAmount = MathUtils::clamp(incrementAmount, -256, 256);
+	incrementAmount = MathUtils::clamp(incrementAmount, -255, 255);
 
 	this->healSound->play();
 
-	bool overflowedMin = incrementAmount == -256;
-	bool overflowedMax = incrementAmount == 256;
+	bool overflowedMin = incrementAmount == -255;
+	bool overflowedMax = incrementAmount == 255;
 
 	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->owner, this->owner, incrementAmount, this->abilityType, false, overflowedMin, overflowedMax));
 

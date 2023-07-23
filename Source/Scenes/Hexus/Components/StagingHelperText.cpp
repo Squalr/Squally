@@ -137,13 +137,14 @@ void StagingHelperText::updateSelectionStatus(GameState* gameState)
 			case CardData::CardType::Special_ADD:
 			case CardData::CardType::Special_SUB:
 			case CardData::CardType::Special_NOT:
+			case CardData::CardType::Special_CLEAR:
 			case CardData::CardType::Special_ROL:
 			case CardData::CardType::Special_ROR:
 			{
 				this->selectionLabel->setLocalizedString(Strings::Hexus_Actions_ChooseSourceCard::create());
 				break;
 			}
-			case CardData::CardType::Special_KILL:
+			case CardData::CardType::Special_PUSH:
 			case CardData::CardType::Special_RETURN_TO_HAND:
 			case CardData::CardType::Special_STEAL:
 			{
@@ -169,6 +170,7 @@ void StagingHelperText::updateSelectionStatus(GameState* gameState)
 			case CardData::CardType::Special_GREED:
 			case CardData::CardType::Special_BONUS_MOVES:
 			case CardData::CardType::Special_PEEK:
+			case CardData::CardType::Special_POP:
 			{
 				// TODO: This is new -- these should just be a confirm/deny useage message since they have no targets
 				// this->selectionLabel->setLocalizedString(Strings::Hexus_Actions_ChooseRow::create());

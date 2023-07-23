@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
@@ -56,7 +58,7 @@ Fury* Fury::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Fury::Fury(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Piggy, AbilityType::Physical, BuffData(Fury::Duration, Fury::FuryIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_SwordGlowRed, AbilityType::Physical, BuffData(Fury::Duration, Fury::FuryIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
@@ -112,7 +114,7 @@ void Fury::registerHackables()
 				Fury::FuryIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_Fury_Fury::create(),
 				HackableBase::HackBarColor::Green,
-				UIResources::Menus_Icons_Piggy,
+				UIResources::Menus_Icons_SwordGlowRed,
 				LazyNode<HackablePreview>::create([=](){ return FuryGenericPreview::create(); }),
 				{
 					{
@@ -132,19 +134,23 @@ void Fury::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_HintLea::create()) + 
-						"lea eax, [eax + ebx + 4]\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_HintLeaDamage::create()
-							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax))) + 
-						"add dword ptr [eax], 20\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_HintDontWorry::create())
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_CommentHintLea::create()),
+							ConstantString::create("lea eax, [eax + ebx + 4]\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_CommentHintLeaDamage::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax))),
+							ConstantString::create("add dword ptr [eax], 20\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_CommentHintDontWorry::create())
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_HintLea::create()) + 
-						"lea rax, [rax + rbx + 4]\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_HintLeaDamage::create()
-							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax))) + 
-						"add dword ptr [rax], 20\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_HintDontWorry::create())
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_CommentHintLea::create()),
+							ConstantString::create("lea rax, [rax + rbx + 4]\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_CommentHintLeaDamage::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax))),
+							ConstantString::create("add dword ptr [rax], 20\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_CommentHintDontWorry::create())
+						})
 					),
 				},
 				true
@@ -152,8 +158,7 @@ void Fury::registerHackables()
 		},
 	};
 
-	auto func = &Fury::applyFury;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Fury::applyFury, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

@@ -23,17 +23,17 @@ GoldenDungHelm* GoldenDungHelm::create()
 
 GoldenDungHelm::GoldenDungHelm() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemStats(
 	// Health
-	0,
+	WARRIOR_HP(3),
 	// Mana
-	0,
+	WARRIOR_MP(3),
 	// Attack
-	0,
+	WARRIOR_ATTACK(3),
 	// Magic Attack
-	0,
+	WARRIOR_MAGIC_ATTACK(3),
 	// Armor
-	0,
+	WARRIOR_ARMOR(3),
 	// Speed
-	0.05f
+	WARRIOR_SPEED(3)
 ))
 {
 }
@@ -54,7 +54,7 @@ LocalizedString* GoldenDungHelm::getString()
 
 const std::string& GoldenDungHelm::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_GoldenDungHelm;
+	return ItemResources::Equipment_Gear_Hats_Tier3_GoldenDungHelm;
 }
 
 const std::string& GoldenDungHelm::getIdentifier()

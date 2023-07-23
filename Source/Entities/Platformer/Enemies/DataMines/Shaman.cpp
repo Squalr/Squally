@@ -25,8 +25,7 @@ Shaman::Shaman(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_DataMines_Shaman_Animations,
 	EntityResources::Enemies_DataMines_Shaman_Emblem,
 	CSize(256.0f, 288.0f),
-	0.78f,
-	Vec2(0.0f, 0.0f))
+	0.78f)
 {
 }
 

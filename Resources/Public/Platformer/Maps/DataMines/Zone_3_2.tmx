@@ -7,7 +7,7 @@
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="heartbeat"/>
-   <property name="rubber-band" type="int" value="5"/>
+   <property name="rubber-band" type="int" value="11"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
@@ -409,32 +409,32 @@
    </properties>
   </object>
   <object id="1757" name="kill" type="collision" x="-59.8733" y="3106" width="6861.08" height="268"/>
-  <object id="1761" name="trigger" type="object" x="2071.67" y="2088.31" width="1113.63" height="1852.12">
+  <object id="1761" name="trigger" type="object" x="1720.15" y="2085.28" width="1113.63" height="1852.12">
    <properties>
     <property name="send-event" value="4"/>
    </properties>
   </object>
-  <object id="1762" name="trigger" type="object" x="2295.18" y="2089.94" width="1113.63" height="1852.12">
+  <object id="1762" name="trigger" type="object" x="1943.66" y="2086.91" width="1113.63" height="1852.12">
    <properties>
     <property name="send-event" value="5"/>
    </properties>
   </object>
-  <object id="1763" name="trigger" type="object" x="2522.88" y="2088.42" width="1113.63" height="1852.12">
+  <object id="1763" name="trigger" type="object" x="2171.36" y="2085.39" width="1113.63" height="1852.12">
    <properties>
     <property name="send-event" value="6"/>
    </properties>
   </object>
-  <object id="1764" name="trigger" type="object" x="2764.76" y="2084.73" width="1113.63" height="1852.12">
+  <object id="1764" name="trigger" type="object" x="2413.24" y="2081.7" width="1113.63" height="1852.12">
    <properties>
     <property name="send-event" value="7"/>
    </properties>
   </object>
-  <object id="1765" name="trigger" type="object" x="2986.46" y="2084.12" width="1113.63" height="1852.12">
+  <object id="1765" name="trigger" type="object" x="2634.94" y="2081.09" width="1113.63" height="1852.12">
    <properties>
     <property name="send-event" value="8"/>
    </properties>
   </object>
-  <object id="1766" name="trigger" type="object" x="3213" y="2081.91" width="1113.63" height="1852.12">
+  <object id="1766" name="trigger" type="object" x="2861.48" y="2078.88" width="1113.63" height="1852.12">
    <properties>
     <property name="send-event" value="9"/>
    </properties>

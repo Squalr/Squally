@@ -12,6 +12,8 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
+#include "Objects/Platformer/Interactables/Mounts/MountBase.h"
+#include "Scenes/Platformer/Components/Entities/Movement/EntityMountBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Movement/EntityMovementBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Squally/Movement/SquallyMovementBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -24,9 +26,9 @@ const std::string HelperFollowMovementBehavior::MapKey = "follow-movement";
 const std::string HelperFollowMovementBehavior::MapEventMoveToRest = "helper-move-to-rest";
 const std::string HelperFollowMovementBehavior::MapEventStopRest = "helper-stop-rest";
 const float HelperFollowMovementBehavior::StopFollowRangeX = 128.0f;
-const float HelperFollowMovementBehavior::TryJumpRangeY = 160.0f;
-const float HelperFollowMovementBehavior::ResetRangeX = 2048.0f;
-const float HelperFollowMovementBehavior::ResetRangeY = 1024.0f;
+const float HelperFollowMovementBehavior::TryJumpRangeY = 180.0f;
+const float HelperFollowMovementBehavior::ResetRangeX = 1536.0f;
+const float HelperFollowMovementBehavior::ResetRangeY = 768.0f;
 
 HelperFollowMovementBehavior* HelperFollowMovementBehavior::create(GameObject* owner)
 {
@@ -100,7 +102,10 @@ void HelperFollowMovementBehavior::onLoad()
 
 	this->defer([=]()
 	{
-		this->warpToSqually();
+		if (this->squally != nullptr && !this->squally->hasRuntimeState(StateKeys::NewHelperSpawnX) && !this->squally->hasRuntimeState(StateKeys::NewHelperSpawnY))
+		{
+			this->warpToSqually();
+		}
 	});
 }
 
@@ -134,13 +139,23 @@ void HelperFollowMovementBehavior::update(float dt)
 
 	Vec3 squallyPosition = GameUtils::getWorldCoords3D(this->squally);
 	Vec3 entityPosition = GameUtils::getWorldCoords3D(this->entity);
-
+	
 	if (std::abs(squallyPosition.x - entityPosition.x) >= HelperFollowMovementBehavior::ResetRangeX ||
 		std::abs(squallyPosition.y - entityPosition.y) >= HelperFollowMovementBehavior::ResetRangeY)
 	{
 		this->warpToSqually();
 		return;
 	}
+	
+	squally->getComponent<EntityMountBehavior>([&](EntityMountBehavior* squallyMountBehavior)
+	{
+		if (squallyMountBehavior->isMounted()
+			&& squallyMountBehavior->getMountTarget() != nullptr
+			&& !squallyMountBehavior->getMountTarget()->isTargetMounted(this->entity))
+		{
+			squallyMountBehavior->getMountTarget()->mount(this->entity);
+		}
+	});
 
 	if (std::abs(squallyPosition.x - entityPosition.x) >= HelperFollowMovementBehavior::StopFollowRangeX)
 	{

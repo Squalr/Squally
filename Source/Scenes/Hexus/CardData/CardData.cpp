@@ -89,6 +89,14 @@ LocalizedString* CardData::getCardTypeString()
 		{
 			return Strings::Hexus_Cards_Abbreviations_NOT::create();
 		}
+		case CardData::CardType::Special_CLEAR:
+		{
+			return Strings::Common_Empty::create();
+		}
+		case CardData::CardType::Special_PEEK:
+		{
+			return Strings::Hexus_Cards_Abbreviations_Peek::create();
+		}
 		case CardData::CardType::Special_FLIP1:
 		{
 			return Strings::Hexus_Cards_Abbreviations_FLIP1::create();
@@ -113,14 +121,20 @@ LocalizedString* CardData::getCardTypeString()
 		{
 			return Strings::Hexus_Cards_Abbreviations_SUB::create();
 		}
+		case CardData::CardType::Special_PUSH:
+		{
+			return Strings::Hexus_Cards_Abbreviations_PUSH::create();
+		}
+		case CardData::CardType::Special_POP:
+		{
+			return Strings::Hexus_Cards_Abbreviations_POP::create();
+		}
 		case CardData::CardType::Special_SUDDEN_DEATH:
 		case CardData::CardType::Special_GREED:
 		case CardData::CardType::Special_ABSORB:
-		case CardData::CardType::Special_KILL:
 		case CardData::CardType::Special_RETURN_TO_HAND:
 		case CardData::CardType::Special_STEAL:
 		case CardData::CardType::Special_BONUS_MOVES:
-		case CardData::CardType::Special_PEEK:
 		{
 			return Strings::Common_Empty::create();
 		}
@@ -175,6 +189,10 @@ LocalizedString* CardData::getCardOperationString()
 		{
 			return Strings::Hexus_Cards_Abbreviations_NOT::create();
 		}
+		case CardData::CardType::Special_CLEAR:
+		{
+			return Strings::Common_Empty::create();
+		}
 		case CardData::CardType::Special_ADD:
 		{
 			return Strings::Hexus_Cards_Abbreviations_ADD::create();
@@ -189,7 +207,8 @@ LocalizedString* CardData::getCardOperationString()
 		case CardData::CardType::Special_SUDDEN_DEATH:
 		case CardData::CardType::Special_GREED:
 		case CardData::CardType::Special_ABSORB:
-		case CardData::CardType::Special_KILL:
+		case CardData::CardType::Special_PUSH:
+		case CardData::CardType::Special_POP:
 		case CardData::CardType::Special_RETURN_TO_HAND:
 		case CardData::CardType::Special_STEAL:
 		case CardData::CardType::Special_BONUS_MOVES:
@@ -309,11 +328,13 @@ unsigned int CardData::getIntrinsicImmediate()
 		case CardData::CardType::Special_OR:
 		case CardData::CardType::Special_XOR:
 		case CardData::CardType::Special_NOT:
+		case CardData::CardType::Special_CLEAR:
 		case CardData::CardType::Special_ADD:
 		case CardData::CardType::Special_SUB:
 		case CardData::CardType::Special_GREED:
 		case CardData::CardType::Special_ABSORB:
-		case CardData::CardType::Special_KILL:
+		case CardData::CardType::Special_PUSH:
+		case CardData::CardType::Special_POP:
 		case CardData::CardType::Special_RETURN_TO_HAND:
 		case CardData::CardType::Special_STEAL:
 		case CardData::CardType::Special_PEEK:

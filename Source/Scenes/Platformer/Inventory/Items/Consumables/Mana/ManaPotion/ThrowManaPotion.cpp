@@ -74,7 +74,7 @@ void ThrowManaPotion::performAttack(PlatformerEntity* owner, std::vector<Platfor
 {
 	super::performAttack(owner, targets);
 	
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		ThrownObject* potion = ThrownObject::create(owner, next, false, ItemResources::Consumables_Potions_ManaPotion, CSize(64.0f, 64.0f));
 		
@@ -100,6 +100,7 @@ void ThrowManaPotion::performAttack(PlatformerEntity* owner, std::vector<Platfor
 		{
 			if (owner == next)
 			{
+				// Self launch (aim above self)
 				potion->launchTowardsTarget3D(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
 			}
 			else

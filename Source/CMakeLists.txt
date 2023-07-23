@@ -1,4 +1,5 @@
-# Copyright 2019 Squalr
+# Copyright 2023 Squalr. Inc.
+
 cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 
 # Squally executable
@@ -18,10 +19,12 @@ add_executable(${PROJECT_NAME}
 # Fetches and compiles SFML from source in a cross-platform way. Technology is great sometimes.
 include(FetchContent)
 set(BUILD_SHARED_LIBS OFF)
+
+# SFML
 FetchContent_Declare(
- SFML
- GIT_REPOSITORY https://github.com/SFML/SFML.git
- GIT_TAG 2.5.1
+    SFML
+    GIT_REPOSITORY https://github.com/SFML/SFML.git
+    GIT_TAG 2.5.1
 )
 FetchContent_MakeAvailable(SFML)
 
@@ -49,26 +52,21 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 target_include_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_BINARY_DIR}/Generated
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${GLEW_INCLUDE_DIRS}
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
+    ${OPENGL_gl_LIBRARY}
+    
     # sfml-graphics
     sfml-audio
     # sfml-window
     # sfml-system
-
-    # vcpkg resources
-    tinyxml2::tinyxml2
 
     # internal dependencies
     cocos2d::cocos2d
     spriter2dx::spriter2dx
     SteamWorks::API
     breakpad::client
-
-    ${OPENGL_gl_LIBRARY}
-    ${GLEW_LIBRARIES}
 
     # platform dependencies
     $<$<PLATFORM_ID:Windows>:iphlpapi>
@@ -158,13 +156,33 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
         $<TARGET_FILE_DIR:${PROJECT_NAME}>
 )
 
-# Copy game resources. On windows this is stupidly slow, so please manually call CopyResources.py instead.
-if(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
-    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-            "${PROJECT_SOURCE_DIR}/Resources"
-            $<$<PLATFORM_ID:Linux>:$<TARGET_FILE_DIR:${PROJECT_NAME}>/Resources>
-            $<$<PLATFORM_ID:Darwin>:$<TARGET_FILE_DIR:${PROJECT_NAME}>/../Resources>
-            $<$<PLATFORM_ID:Windows>:$<TARGET_FILE_DIR:${PROJECT_NAME}>/Resources>
-    )
+# Windows DLLs
+if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+    if(CMAKE_BUILD_TYPE MATCHES Debug)
+        add_custom_command(TARGET Squally POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${PROJECT_SOURCE_DIR}/build/_deps/zlib-build/zlibd.dll"
+            "${PROJECT_SOURCE_DIR}/build/bin/")
+    else()
+        add_custom_command(TARGET Squally POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${PROJECT_SOURCE_DIR}/build/_deps/zlib-build/zlib.dll"
+            "${PROJECT_SOURCE_DIR}/build/bin/")
+    endif()
+    add_custom_command(TARGET Squally POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${PROJECT_SOURCE_DIR}/build/_deps/sfml-src/extlibs/bin/x86/openal32.dll"
+        "${PROJECT_SOURCE_DIR}/build/bin/")
 endif()
+
+# Copy game resources. On windows this is stupidly slow, so please manually call CopyResources.py instead.
+# I guess this also became slow on OSX, just commenting this out.
+# if(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+#     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+#         COMMAND ${CMAKE_COMMAND} -E copy_directory
+#             "${PROJECT_SOURCE_DIR}/Resources"
+#             $<$<PLATFORM_ID:Linux>:$<TARGET_FILE_DIR:${PROJECT_NAME}>/Resources>
+#             $<$<PLATFORM_ID:Darwin>:$<TARGET_FILE_DIR:${PROJECT_NAME}>/../Resources>
+#             $<$<PLATFORM_ID:Windows>:$<TARGET_FILE_DIR:${PROJECT_NAME}>/Resources>
+#     )
+# endif()

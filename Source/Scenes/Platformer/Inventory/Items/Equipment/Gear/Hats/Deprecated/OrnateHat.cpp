@@ -53,7 +53,7 @@ LocalizedString* OrnateHat::getString()
 
 const std::string& OrnateHat::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_OrnateHat;
+	return ItemResources::Equipment_Gear_Hats__Deprecated_OrnateHat;
 }
 
 const std::string& OrnateHat::getIdentifier()

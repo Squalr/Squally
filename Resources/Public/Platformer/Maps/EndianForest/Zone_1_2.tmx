@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="80" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="787">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="80" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="789">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -170,7 +170,11 @@
    </properties>
   </object>
   <object id="764" name="iou" type="object" x="1624.5" y="2076.5" width="87" height="87"/>
-  <object id="771" name="life-stone" type="object" x="6555" y="1272.5" width="146" height="423"/>
+  <object id="771" name="life-stone" type="object" x="6555" y="1272.5" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
   <object id="777" name="trigger" type="object" x="7619.51" y="2141.88" width="195.164" height="877.51">
    <properties>
     <property name="quest" value="spot-orc-grunt"/>
@@ -207,7 +211,7 @@
    <properties>
     <property name="battle-behavior" value="increment-health-tutorial,player-first-strike"/>
     <property name="battle-map" value="EndianForest/Combat_Intro"/>
-    <property name="components" value="enemy,pacing,agro"/>
+    <property name="components" value="enemy,soul,pacing,agro,melee"/>
     <property name="drop-pool" value="ef-weak"/>
     <property name="send-event" value="event-door-open"/>
    </properties>
@@ -245,6 +249,11 @@
   <object id="782" name="spawn" type="object" x="375.89" y="2028.47" width="128" height="128">
    <properties>
     <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="788" name="spawn" type="object" x="6566" y="1560" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

@@ -1,6 +1,8 @@
 #include "ManaPotion.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
+#include "Engine/Localization/ConstantString.h"
+#include "Engine/Localization/LocalizedString.h"
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
@@ -30,6 +32,8 @@ ManaPotion* ManaPotion::create()
 ManaPotion::ManaPotion() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 17 }}), ItemMeta(20, RubberBanding(3, 0.15f)), true)
 {
 	this->outOfCombatSound = Sound::create(SoundResources::Platformer_FX_Potions_PotionDrink2);
+
+	this->outOfCombatSound->toggleIgnorePause(true);
 
 	this->addChild(this->outOfCombatSound);
 }
@@ -66,6 +70,12 @@ bool ManaPotion::canUseOnTarget(PlatformerEntity* target)
 	});
 	
 	return canUse;
+}
+
+LocalizedString* ManaPotion::getDescription()
+{
+	return Strings::Items_Consumables_Mana_ManaPotionDescription::create()
+		->setStringReplacementVariables(ConstantString::create(std::to_string(int(ManaPotion::RestorePercentage * 100.0f))));
 }
 
 Item* ManaPotion::clone()

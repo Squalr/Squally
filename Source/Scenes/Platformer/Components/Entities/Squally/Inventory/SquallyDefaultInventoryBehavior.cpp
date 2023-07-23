@@ -68,33 +68,47 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 	{
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHasGivenDefaultItems, Value(true));
 
-		// Because the save key was patched in later, we need this code here until.... let's say June 2020
-		// Alternatively, we can add logic to detect exceeding the max unique on cards, as those are the only items given
-		if (!entityInventoryBehavior->getInventory()->getItems().empty() || !entityInventoryBehavior->getEquipmentInventory()->getItems().empty())
-		{
-			return;
-		}
-
 		// It is safe to add items to the player's inventory here for testing purposes, without fear of accidentally shipping this code live
 		if (DeveloperModeController::IsDeveloperBuild && SquallyDefaultInventoryBehavior::GiveDeveloperItems)
 		{
+			entityInventoryBehavior->getInventory()->forceInsert(CryptKey::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(WoodenBow::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(BucketHelm::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(SantaHat::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(WoodenClub::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(WoodenAxe::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(CrystalBow::create(), false);
-			entityInventoryBehavior->getEquipmentInventory()->forceInsert(WoodenSword::create(), false);
+			entityInventoryBehavior->getEquipmentInventory()->forceInsert(GoldenAxe::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(WoodenWand::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(QuartzWand::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(MagesGuildPrisonKey::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(HeartBand::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(DarkHeartBand::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(AshenBlade::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(PirateHat::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(TheGoldenEagle::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(TigersBane::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(WarlocksHeaddress::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(RoyalCrown::create(), false);
+			
+			entityInventoryBehavior->getInventory()->forceInsert(HeartOfFire::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(HeartOfShadow::create(), false);
+
+			entityInventoryBehavior->getInventory()->forceInsert(SuperiorManaFlask::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(IncrementManaFlask::create(), false);
+
+			// Quest testing
+			entityInventoryBehavior->getInventory()->forceInsert(HeliumBomb::create(), false);
 
 			for (int index = 0; index < 7; index++)
 			{
 				entityInventoryBehavior->getInventory()->forceInsert(HealthPotion::create(), false);
 				entityInventoryBehavior->getInventory()->forceInsert(ManaPotion::create(), false);
+			}
+
+			for (int index = 0; index < 3; index++)
+			{
+				entityInventoryBehavior->getInventory()->forceInsert(SmallBomb::create(), false);
 			}
 			
 			for (int index = 0; index < 20; index++)
@@ -123,6 +137,7 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 			});
 		}
 
+		// Starting hexus deck
 		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Binary0::create(), false);
 		entityInventoryBehavior->getInventory()->forceInsert(Binary0::create(), false);
 		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Binary1::create(), false);

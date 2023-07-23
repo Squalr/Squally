@@ -92,6 +92,16 @@ StateOverride* TutorialDBehavior::getStateOverride()
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
 		},
+		// Player graveyard
+		std::vector<CardData*>
+		{
+			
+		},
+		// Enemy graveyard
+		std::vector<CardData*>
+		{
+			
+		},
 		// Player hand
 		std::vector<CardData*>
 		{

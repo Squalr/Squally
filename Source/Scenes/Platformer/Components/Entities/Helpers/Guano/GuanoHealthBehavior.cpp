@@ -13,6 +13,7 @@
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/Components/Entities/Helpers/Guano/GuanoEqBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
@@ -58,14 +59,18 @@ void GuanoHealthBehavior::onLoad()
 	
 	this->guano->watchForComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{
+		// Hacky fix -- this data needs to be available to calculate max HP properly. Solving the data race would be a difficult refactor, not worth it.
+		this->guano->setState(StateKeys::Eq, SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGuanoEq, Value(1)));
+		this->guano->setState(StateKeys::EqExperience, SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGuanoEqExperience, Value(0)));
+
 		int health = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGuanoHealth, Value(healthBehavior->getMaxHealth())).asInt();
 
 		healthBehavior->setHealth(health);
-	});
 
-	this->guano->listenForStateWrite(StateKeys::Health, [=](Value value)
-	{
-		this->saveState();
+		this->guano->listenForStateWrite(StateKeys::Health, [=](Value value)
+		{
+			this->saveState();
+		});
 	});
 }
 
@@ -76,5 +81,7 @@ void GuanoHealthBehavior::onDisable()
 
 void GuanoHealthBehavior::saveState()
 {
-	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGuanoHealth, this->guano->getRuntimeStateOrDefault(StateKeys::Health, Value(0)));
+	Value newHealth = this->guano->getRuntimeStateOrDefault(StateKeys::Health, Value(0));
+
+	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGuanoHealth, newHealth);
 }

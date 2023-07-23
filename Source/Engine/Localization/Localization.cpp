@@ -45,6 +45,12 @@ LanguageType Localization::getLanguage()
 
 void Localization::setLanguage(LanguageType languageType)
 {
+	if (languageType == LanguageType::ARABIC)
+	{
+		// Support for arabic removed due to poor cocos2d-x support https://github.com/cocos2d/cocos2d-x/issues/15321
+		languageType = LanguageType::ENGLISH;
+	}
+	
 	ConfigManager::setLanguage(Localization::languageTypeToLanguageCode(languageType));
 	ConfigManager::save();
 
@@ -61,6 +67,12 @@ LanguageType Localization::getNativeLanguage()
 
 	// Steam not available -- use system language
 	return Application::getInstance()->getCurrentLanguage();
+}
+
+bool Localization::isCurrentLanguageLeftToRight()
+{
+	// Arabic is the only right to left language supported currently
+	return Localization::getLanguage() != LanguageType::ARABIC;
 }
 
 std::string Localization::getLanguageCode()

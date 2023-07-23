@@ -21,11 +21,11 @@ MithrilAxe* MithrilAxe::create()
 	return instance;
 }
 
-MithrilAxe::MithrilAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 4, 7, ItemStats(
+MithrilAxe::MithrilAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), AXE_DAMAGE_MIN(5), AXE_DAMAGE_MAX(5), ItemStats(
 	// Health
-	0,
+	2,
 	// Mana
-	0,
+	3,
 	// Attack
 	0,
 	// Magic Attack
@@ -65,18 +65,18 @@ const std::string& MithrilAxe::getIdentifier()
 CSize MithrilAxe::getWeaponCollisionSize()
 {
 	// As expected: Weapon width, height
-	return CSize(112.0f, 96.0f);
+	return CSize(96.0f, 96.0f);
 }
 
 Vec2 MithrilAxe::getWeaponCollisionOffset()
 {
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
-	return Vec2(0.0f, 212.0f);
+	return Vec2(-12.0f, 202.0f);
 }
 
 Vec2 MithrilAxe::getDisplayOffset()
 {
-	return Vec2(28.0f, -4.0f);
+	return Vec2(0.0f, -8.0f);
 }
 
 Recipe* MithrilAxe::getRecipe()

@@ -23,17 +23,17 @@ AquaMarineNecklace* AquaMarineNecklace::create()
 
 AquaMarineNecklace::AquaMarineNecklace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 63 }}), ItemStats(
 	// Health
-	3,
+	2,
 	// Mana
-	3,
+	0,
 	// Attack
-	1,
+	0,
 	// Magic Attack
-	1,
+	0,
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.01f
 ))
 {
 }
@@ -54,7 +54,7 @@ LocalizedString* AquaMarineNecklace::getString()
 
 const std::string& AquaMarineNecklace::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Necklaces_AquaMarineNecklace;
+	return ItemResources::Equipment_Gear_Necklaces_T2_AquaMarineNecklace;
 }
 
 const std::string& AquaMarineNecklace::getIdentifier()

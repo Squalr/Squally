@@ -2,11 +2,16 @@
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Objects/Platformer/Switches/Trigger.h"
+#include "Scenes/Platformer/Level/PlatformerMap.h"
 
 #include "Strings/Strings.h"
 
@@ -47,31 +52,16 @@ void PowerWarpGateBP::onLoad(QuestState questState)
 			this->portal->lock(false);
 		}
 	}
+	
+	PlatformerMap* map = GameUtils::GetFirstParentOfType<PlatformerMap>(this->owner);
 
-	if (questState != QuestState::Complete)
+	if (map != nullptr && map->getTransition() == "bp")
 	{
-		if (this->mage != nullptr)
-		{
-			this->mage->setOpacity(0);
-
-			this->listenForMapEventOnce(PowerWarpGateBP::MapKeyQuest, [=](ValueMap)
-			{
-				this->mage->runAction(FadeTo::create(0.5f, 255));
-				this->complete();
-			});
-		}
-
-		if (this->trigger != nullptr)
-		{
-			this->listenForMapEventOnce(PowerWarpGateBP::MapKeyQuest, [=](ValueMap)
-			{
-				this->complete();
-			});
-		}
+		this->complete();
 	}
 }
 
-void PowerWarpGateBP::onActivate(bool isActiveThroughSkippable)
+void PowerWarpGateBP::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

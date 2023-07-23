@@ -13,6 +13,7 @@
 #include "Entities/Platformer/Helpers/DataMines/Gecky.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/Components/Entities/Helpers/Gecky/GeckyEqBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
@@ -58,14 +59,18 @@ void GeckyHealthBehavior::onLoad()
 	
 	this->gecky->watchForComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{
+		// Hacky fix -- this data needs to be available to calculate max HP properly. Solving the data race would be a difficult refactor, not worth it.
+		this->gecky->setState(StateKeys::Eq, SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGeckyEq, Value(GeckyEqBehavior::DefaultLevel)));
+		this->gecky->setState(StateKeys::EqExperience, SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGeckyEqExperience, Value(0)));
+
 		int health = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGeckyHealth, Value(healthBehavior->getMaxHealth())).asInt();
 
 		healthBehavior->setHealth(health);
-	});
 
-	this->gecky->listenForStateWrite(StateKeys::Health, [=](Value value)
-	{
-		this->saveState();
+		this->gecky->listenForStateWrite(StateKeys::Health, [=](Value value)
+		{
+			this->saveState();
+		});
 	});
 }
 

@@ -37,6 +37,7 @@ PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerE
 	this->deserializers[TrainingDummy::MapKey] = [=](ValueMap properties) { return (GameObject*)TrainingDummy::deserialize(properties); };
 	
 	// Npcs, helpers, and enemies
+	this->deserializers[Boron::MapKey] = [=](ValueMap properties) { return (GameObject*)Boron::deserialize(properties); };
 	this->deserializers[Cryogen::MapKey] = [=](ValueMap properties) { return (GameObject*)Cryogen::deserialize(properties); };
 	this->deserializers[FrostFiend::MapKey] = [=](ValueMap properties) { return (GameObject*)FrostFiend::deserialize(properties); };
 	this->deserializers[GoblinElf::MapKey] = [=](ValueMap properties) { return (GameObject*)GoblinElf::deserialize(properties); };
@@ -236,14 +237,13 @@ PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerE
 	this->deserializers[Assassin::MapKey] = [=](ValueMap properties) { return (GameObject*)Assassin::deserialize(properties); };
 	this->deserializers[BoneKnight::MapKey] = [=](ValueMap properties) { return (GameObject*)BoneKnight::deserialize(properties); };
 	this->deserializers[DarkTiger::MapKey] = [=](ValueMap properties) { return (GameObject*)DarkTiger::deserialize(properties); };
-	this->deserializers[EvilEye::MapKey] = [=](ValueMap properties) { return (GameObject*)EvilEye::deserialize(properties); };
+	this->deserializers[Perceptron::MapKey] = [=](ValueMap properties) { return (GameObject*)Perceptron::deserialize(properties); };
 	this->deserializers[Exterminator::MapKey] = [=](ValueMap properties) { return (GameObject*)Exterminator::deserialize(properties); };
 	this->deserializers[Gargoyle::MapKey] = [=](ValueMap properties) { return (GameObject*)Gargoyle::deserialize(properties); };
 	this->deserializers[Shade::MapKey] = [=](ValueMap properties) { return (GameObject*)Shade::deserialize(properties); };
 	this->deserializers[DemonArcher::MapKey] = [=](ValueMap properties) { return (GameObject*)DemonArcher::deserialize(properties); };
 	this->deserializers[VoidDemon::MapKey] = [=](ValueMap properties) { return (GameObject*)VoidDemon::deserialize(properties); };
 	this->deserializers[Warlock::MapKey] = [=](ValueMap properties) { return (GameObject*)Warlock::deserialize(properties); };
-	this->deserializers[Professor::MapKey] = [=](ValueMap properties) { return (GameObject*)Professor::deserialize(properties); };
 	this->deserializers[Robot::MapKey] = [=](ValueMap properties) { return (GameObject*)Robot::deserialize(properties); };
 	this->deserializers[Atreus::MapKey] = [=](ValueMap properties) { return (GameObject*)Atreus::deserialize(properties); };
 	this->deserializers[Bancroft::MapKey] = [=](ValueMap properties) { return (GameObject*)Bancroft::deserialize(properties); };

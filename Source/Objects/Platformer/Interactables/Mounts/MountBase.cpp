@@ -34,11 +34,13 @@ const std::string MountBase::PropertySpeed = "speed";
 MountBase::MountBase(ValueMap& properties, CSize size, bool updateXOnly) : super(properties, InteractObject::InteractType::Input, size)
 {
 	this->updateXOnly = updateXOnly;
+	this->rootNode = Node::create();
 	this->reparentNode = Node::create();
 	this->frontNode = Node::create();
 	
-	this->addChild(this->reparentNode);
-	this->addChild(this->frontNode);
+	this->rootNode->addChild(this->reparentNode);
+	this->rootNode->addChild(this->frontNode);
+	this->addChild(this->rootNode);
 }
 
 MountBase::~MountBase()
@@ -50,7 +52,7 @@ Node* MountBase::getReparentNode()
 	return this->reparentNode;
 }
 
-Vec2 MountBase::getReparentPosition()
+Vec2 MountBase::getReparentPosition(PlatformerEntity* entity)
 {
 	return Vec2::ZERO;
 }
@@ -68,14 +70,16 @@ void MountBase::initializeListeners()
 
 	this->interactCollision->whenCollidesWith({ (CollisionType)PlatformerCollisionType::Damage }, [=](CollisionData collisionData)
 	{
-		if (this->mountedEntity != nullptr)
+		for (PlatformerEntity* mountedEntity : this->mountedEntities)
 		{
-			this->mountedEntity->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+			if (mountedEntity != nullptr)
 			{
-				healthBehavior->setHealth(0, true);
-			});
+				mountedEntity->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+				{
+					healthBehavior->setHealth(0, true);
+				});
+			}
 		}
-
 		return CollisionResult::DoNothing;
 	});
 }
@@ -103,7 +107,7 @@ void MountBase::onInteract(PlatformerEntity* interactingEntity)
 	
 void MountBase::mount(PlatformerEntity* interactingEntity)
 {
-	if (this->mountedEntity != nullptr && interactingEntity == nullptr)
+	if (interactingEntity == nullptr || this->mountedEntities.find(interactingEntity) != this->mountedEntities.end())
 	{
 		return;
 	}
@@ -118,58 +122,75 @@ void MountBase::mount(PlatformerEntity* interactingEntity)
 		if (entityMountBehavior->mount(this))
 		{
 			this->setInteractType(InteractObject::InteractType::None);
-			this->mountedEntity = interactingEntity;
+			this->mountedEntities.insert(interactingEntity);
 
 			this->setToMountPosition();
 		}
 	});
 }
 
-void MountBase::dismount()
+void MountBase::dismount(PlatformerEntity* entity)
 {
-	if (this->mountedEntity == nullptr)
+	if (this->mountedEntities.find(entity) == this->mountedEntities.end())
 	{
 		return;
 	}
 
-	this->mountedEntity->watchForComponent<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* entityCollisionBehavior)
+	entity->watchForComponent<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* entityCollisionBehavior)
 	{
 		entityCollisionBehavior->setMountPhysics(false);
 	});
 
-	this->mountedEntity->watchForComponent<EntityMountBehavior>([=](EntityMountBehavior* entityMountBehavior)
+	entity->watchForComponent<EntityMountBehavior>([=](EntityMountBehavior* entityMountBehavior)
 	{
 		if (entityMountBehavior->dismount())
 		{
-			this->mountedEntity = nullptr;
+			this->mountedEntities.erase(entity);
 			this->setInteractType(InteractObject::InteractType::Input);
 		}
 	});
 }
 
+void MountBase::dismountAll()
+{
+	std::set<PlatformerEntity*> mountedEntitesCopy = this->mountedEntities;
+
+	for (PlatformerEntity* mountedEntity : mountedEntitesCopy)
+	{
+		this->dismount(mountedEntity);
+	}
+}
+
 bool MountBase::isMounted() const
 {
-	return this->mountedEntity != nullptr;
+	return this->mountedEntities.size() > 0;
+}
+
+bool MountBase::isTargetMounted(PlatformerEntity* entity) const
+{
+	return this->mountedEntities.find(entity) != this->mountedEntities.end();
 }
 
 void MountBase::setToMountPositionX()
 {
-	if (this->mountedEntity == nullptr)
+	for (PlatformerEntity* mountedEntity : this->mountedEntities)
 	{
-		return;
+		if (mountedEntity == nullptr)
+		{
+			mountedEntity->setPositionX(this->getReparentPosition(mountedEntity).x);
+		}
 	}
-
-	this->mountedEntity->setPositionX(this->getReparentPosition().x);
 }
 
 void MountBase::setToMountPosition()
 {
-	if (this->mountedEntity == nullptr)
+	for (PlatformerEntity* mountedEntity : this->mountedEntities)
 	{
-		return;
+		if (mountedEntity != nullptr)
+		{
+			mountedEntity->setPosition(this->getReparentPosition(mountedEntity));
+		}
 	}
-
-	this->mountedEntity->setPosition(this->getReparentPosition());
 }
 
 void MountBase::moveMount(float dt)
@@ -197,27 +218,28 @@ void MountBase::moveMount(float dt)
 
 void MountBase::faceEntityTowardsDirection()
 {
-	if (this->mountedEntity == nullptr)
+	for (PlatformerEntity* mountedEntity : this->mountedEntities)
 	{
-		return;
-	}
-
-	switch(this->mountDirection)
-	{
-		case MountDirection::Left:
+		if (mountedEntity != nullptr)
 		{
-			this->mountedEntity->getAnimations()->setFlippedX(true);
-			break;
-		}
-		case MountDirection::Right:
-		{
-			this->mountedEntity->getAnimations()->setFlippedX(false);
-			break;
-		}
-		case MountDirection::None:
-		default:
-		{
-			break;
+			switch(this->mountDirection)
+			{
+				case MountDirection::Left:
+				{
+					mountedEntity->getAnimations()->setFlippedX(true);
+					break;
+				}
+				case MountDirection::Right:
+				{
+					mountedEntity->getAnimations()->setFlippedX(false);
+					break;
+				}
+				case MountDirection::None:
+				default:
+				{
+					break;
+				}
+			}
 		}
 	}
 }

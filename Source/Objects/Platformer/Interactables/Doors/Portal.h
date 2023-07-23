@@ -12,6 +12,7 @@ public:
 	static Portal* create(cocos2d::ValueMap& properties);
 	
 	void setMapFile(std::string mapFile);
+	void setTransiton(std::string transition);
 	virtual void loadMap();
 
 	static const std::string MapKey;

@@ -97,14 +97,31 @@ void BridgeBehavior::onLoad()
 	this->originalPosition = this->object->getPosition();
 	this->object->setPositionY(this->originalPosition.y + this->bridgeDelta);
 
-	this->object->listenForMapEventOnce(this->group, [=](ValueMap args)
+	this->object->listenForMapEvent(this->group, [=](ValueMap args)
 	{
-		float delayPrev = this->bridgeSpeed * float(this->bridgeIndex) - this->bridgeSpeed / 2.0f;
-		float delay = this->bridgeSpeed * float(this->bridgeIndex + 1) - this->bridgeSpeed / 2.0f;
+		this->raiseBridge(false);
+	});
+}
 
+void BridgeBehavior::onDisable()
+{
+	super::onDisable();
+}
+
+void BridgeBehavior::raiseBridge(bool isInit)
+{
+	float delayPrev = this->bridgeSpeed * float(this->bridgeIndex) - this->bridgeSpeed / 2.0f;
+	float delay = this->bridgeSpeed * float(this->bridgeIndex + 1) - this->bridgeSpeed / 2.0f;
+
+	if (!isInit)
+	{
 		this->object->saveObjectState(BridgeBehavior::SaveKeyRaised, Value(true));
-		this->object->runAction(MoveTo::create(delay, originalPosition));
+	}
 
+	this->object->runAction(MoveTo::create(isInit ? 0.0f : delay, originalPosition));
+
+	if (!isInit)
+	{
 		switch(this->audioMode)
 		{
 			case AudioMode::Pre:
@@ -139,10 +156,5 @@ void BridgeBehavior::onLoad()
 				break;
 			}
 		}
-	});
-}
-
-void BridgeBehavior::onDisable()
-{
-	super::onDisable();
+	}
 }

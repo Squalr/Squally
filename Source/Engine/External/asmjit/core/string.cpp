@@ -1,28 +1,24 @@
-// [AsmJit]
-// Machine Code Generation for C++.
+// This file is part of AsmJit project <https://asmjit.com>
 //
-// [License]
-// Zlib - See LICENSE.md file in the package.
+// See asmjit.h or LICENSE.md for license and copyright information
+// SPDX-License-Identifier: Zlib
 
-#define ASMJIT_EXPORTS
-
+#include "../core/api-build_p.h"
 #include "../core/string.h"
 #include "../core/support.h"
 
 ASMJIT_BEGIN_NAMESPACE
 
-// ============================================================================
-// [asmjit::String - Globals]
-// ============================================================================
+// String - Globals
+// ================
 
-static const char String_baseN[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+static const char String_baseN[] = "0123456789ABCDEF";
 
 constexpr size_t kMinAllocSize = 64;
-constexpr size_t kMaxAllocSize = std::numeric_limits<size_t>::max() - Globals::kGrowThreshold;
+constexpr size_t kMaxAllocSize = SIZE_MAX - Globals::kGrowThreshold;
 
-// ============================================================================
-// [asmjit::String]
-// ============================================================================
+// String - Clear & Reset
+// ======================
 
 Error String::reset() noexcept {
   if (_type == kTypeLarge)
@@ -33,7 +29,7 @@ Error String::reset() noexcept {
 }
 
 Error String::clear() noexcept {
-  if (isLarge()) {
+  if (isLargeOrExternal()) {
     _large.size = 0;
     _large.data[0] = '\0';
   }
@@ -44,12 +40,15 @@ Error String::clear() noexcept {
   return kErrorOk;
 }
 
-char* String::prepare(uint32_t op, size_t size) noexcept {
+// String - Prepare
+// ================
+
+char* String::prepare(ModifyOp op, size_t size) noexcept {
   char* curData;
   size_t curSize;
   size_t curCapacity;
 
-  if (isLarge()) {
+  if (isLargeOrExternal()) {
     curData = this->_large.data;
     curSize = this->_large.size;
     curCapacity = this->_large.capacity;
@@ -60,7 +59,7 @@ char* String::prepare(uint32_t op, size_t size) noexcept {
     curCapacity = kSSOCapacity;
   }
 
-  if (op == kOpAssign) {
+  if (op == ModifyOp::kAssign) {
     if (size > curCapacity) {
       // Prevent arithmetic overflow.
       if (ASMJIT_UNLIKELY(size >= kMaxAllocSize))
@@ -134,14 +133,17 @@ char* String::prepare(uint32_t op, size_t size) noexcept {
   }
 }
 
-Error String::assignString(const char* data, size_t size) noexcept {
+// String - Assign
+// ===============
+
+Error String::assign(const char* data, size_t size) noexcept {
   char* dst = nullptr;
 
   // Null terminated string without `size` specified.
   if (size == SIZE_MAX)
     size = data ? strlen(data) : size_t(0);
 
-  if (isLarge()) {
+  if (isLargeOrExternal()) {
     if (size <= _large.capacity) {
       dst = _large.data;
       _large.size = size;
@@ -155,7 +157,7 @@ Error String::assignString(const char* data, size_t size) noexcept {
       if (ASMJIT_UNLIKELY(!dst))
         return DebugUtils::errored(kErrorOutOfMemory);
 
-      if (!isExternal())
+      if (_type == kTypeLarge)
         ::free(_large.data);
 
       _large.type = kTypeLarge;
@@ -194,11 +196,10 @@ Error String::assignString(const char* data, size_t size) noexcept {
   return kErrorOk;
 }
 
-// ============================================================================
-// [asmjit::String - Operations]
-// ============================================================================
+// String - Operations
+// ===================
 
-Error String::_opString(uint32_t op, const char* str, size_t size) noexcept {
+Error String::_opString(ModifyOp op, const char* str, size_t size) noexcept {
   if (size == SIZE_MAX)
     size = str ? strlen(str) : size_t(0);
 
@@ -206,26 +207,29 @@ Error String::_opString(uint32_t op, const char* str, size_t size) noexcept {
     return kErrorOk;
 
   char* p = prepare(op, size);
-  if (!p) return DebugUtils::errored(kErrorOutOfMemory);
+  if (!p)
+    return DebugUtils::errored(kErrorOutOfMemory);
 
   memcpy(p, str, size);
   return kErrorOk;
 }
 
-Error String::_opChar(uint32_t op, char c) noexcept {
+Error String::_opChar(ModifyOp op, char c) noexcept {
   char* p = prepare(op, 1);
-  if (!p) return DebugUtils::errored(kErrorOutOfMemory);
+  if (!p)
+    return DebugUtils::errored(kErrorOutOfMemory);
 
   *p = c;
   return kErrorOk;
 }
 
-Error String::_opChars(uint32_t op, char c, size_t n) noexcept {
+Error String::_opChars(ModifyOp op, char c, size_t n) noexcept {
   if (!n)
     return kErrorOk;
 
   char* p = prepare(op, n);
-  if (!p) return DebugUtils::errored(kErrorOutOfMemory);
+  if (!p)
+    return DebugUtils::errored(kErrorOutOfMemory);
 
   memset(p, c, n);
   return kErrorOk;
@@ -236,8 +240,8 @@ Error String::padEnd(size_t n, char c) noexcept {
   return n > size ? appendChars(c, n - size) : kErrorOk;
 }
 
-Error String::_opNumber(uint32_t op, uint64_t i, uint32_t base, size_t width, uint32_t flags) noexcept {
-  if (base < 2 || base > 36)
+Error String::_opNumber(ModifyOp op, uint64_t i, uint32_t base, size_t width, StringFormatFlags flags) noexcept {
+  if (base == 0)
     base = 10;
 
   char buf[128];
@@ -246,40 +250,63 @@ Error String::_opNumber(uint32_t op, uint64_t i, uint32_t base, size_t width, ui
   uint64_t orig = i;
   char sign = '\0';
 
-  // --------------------------------------------------------------------------
-  // [Sign]
-  // --------------------------------------------------------------------------
+  // Format Sign
+  // -----------
 
-  if ((flags & kFormatSigned) != 0 && int64_t(i) < 0) {
+  if (Support::test(flags, StringFormatFlags::kSigned) && int64_t(i) < 0) {
     i = uint64_t(-int64_t(i));
     sign = '-';
   }
-  else if ((flags & kFormatShowSign) != 0) {
+  else if (Support::test(flags, StringFormatFlags::kShowSign)) {
     sign = '+';
   }
-  else if ((flags & kFormatShowSpace) != 0) {
+  else if (Support::test(flags, StringFormatFlags::kShowSpace)) {
     sign = ' ';
   }
 
-  // --------------------------------------------------------------------------
-  // [Number]
-  // --------------------------------------------------------------------------
+  // Format Number
+  // -------------
 
-  do {
-    uint64_t d = i / base;
-    uint64_t r = i % base;
+  switch (base) {
+    case 2:
+    case 8:
+    case 16: {
+      uint32_t shift = Support::ctz(base);
+      uint32_t mask = base - 1;
 
-    *--p = String_baseN[r];
-    i = d;
-  } while (i);
+      do {
+        uint64_t d = i >> shift;
+        size_t r = size_t(i & mask);
+
+        *--p = String_baseN[r];
+        i = d;
+      } while (i);
+
+      break;
+    }
+
+    case 10: {
+      do {
+        uint64_t d = i / 10;
+        uint64_t r = i % 10;
+
+        *--p = char(uint32_t('0') + uint32_t(r));
+        i = d;
+      } while (i);
+
+      break;
+    }
+
+    default:
+      return DebugUtils::errored(kErrorInvalidArgument);
+  }
 
   size_t numberSize = (size_t)(buf + ASMJIT_ARRAY_SIZE(buf) - p);
 
-  // --------------------------------------------------------------------------
-  // [Alternate Form]
-  // --------------------------------------------------------------------------
+  // Alternate Form
+  // --------------
 
-  if ((flags & kFormatAlternate) != 0) {
+  if (Support::test(flags, StringFormatFlags::kAlternate)) {
     if (base == 8) {
       if (orig != 0)
         *--p = '0';
@@ -290,9 +317,8 @@ Error String::_opNumber(uint32_t op, uint64_t i, uint32_t base, size_t width, ui
     }
   }
 
-  // --------------------------------------------------------------------------
-  // [Width]
-  // --------------------------------------------------------------------------
+  // String Width
+  // ------------
 
   if (sign != 0)
     *--p = sign;
@@ -305,9 +331,8 @@ Error String::_opNumber(uint32_t op, uint64_t i, uint32_t base, size_t width, ui
   else
     width -= numberSize;
 
-  // --------------------------------------------------------------------------
-  // Write]
-  // --------------------------------------------------------------------------
+  // Finalize
+  // --------
 
   size_t prefixSize = (size_t)(buf + ASMJIT_ARRAY_SIZE(buf) - p) - numberSize;
   char* data = prepare(op, prefixSize + width + numberSize);
@@ -325,7 +350,7 @@ Error String::_opNumber(uint32_t op, uint64_t i, uint32_t base, size_t width, ui
   return kErrorOk;
 }
 
-Error String::_opHex(uint32_t op, const void* data, size_t size, char separator) noexcept {
+Error String::_opHex(ModifyOp op, const void* data, size_t size, char separator) noexcept {
   char* dst;
   const uint8_t* src = static_cast<const uint8_t*>(data);
 
@@ -333,7 +358,7 @@ Error String::_opHex(uint32_t op, const void* data, size_t size, char separator)
     return kErrorOk;
 
   if (separator) {
-    if (ASMJIT_UNLIKELY(size >= std::numeric_limits<size_t>::max() / 3))
+    if (ASMJIT_UNLIKELY(size >= SIZE_MAX / 3))
       return DebugUtils::errored(kErrorOutOfMemory);
 
     dst = prepare(op, size * 3 - 1);
@@ -353,7 +378,7 @@ Error String::_opHex(uint32_t op, const void* data, size_t size, char separator)
     }
   }
   else {
-    if (ASMJIT_UNLIKELY(size >= std::numeric_limits<size_t>::max() / 2))
+    if (ASMJIT_UNLIKELY(size >= SIZE_MAX / 2))
       return DebugUtils::errored(kErrorOutOfMemory);
 
     dst = prepare(op, size * 2);
@@ -369,7 +394,7 @@ Error String::_opHex(uint32_t op, const void* data, size_t size, char separator)
   return kErrorOk;
 }
 
-Error String::_opFormat(uint32_t op, const char* fmt, ...) noexcept {
+Error String::_opFormat(ModifyOp op, const char* fmt, ...) noexcept {
   Error err;
   va_list ap;
 
@@ -380,13 +405,16 @@ Error String::_opFormat(uint32_t op, const char* fmt, ...) noexcept {
   return err;
 }
 
-Error String::_opVFormat(uint32_t op, const char* fmt, va_list ap) noexcept {
-  size_t startAt = (op == kOpAssign) ? size_t(0) : size();
+Error String::_opVFormat(ModifyOp op, const char* fmt, va_list ap) noexcept {
+  size_t startAt = (op == ModifyOp::kAssign) ? size_t(0) : size();
   size_t remainingCapacity = capacity() - startAt;
 
   char buf[1024];
   int fmtResult;
   size_t outputSize;
+
+  va_list apCopy;
+  va_copy(apCopy, ap);
 
   if (remainingCapacity >= 128) {
     fmtResult = vsnprintf(data() + startAt, remainingCapacity, fmt, ap);
@@ -412,14 +440,14 @@ Error String::_opVFormat(uint32_t op, const char* fmt, va_list ap) noexcept {
   if (ASMJIT_UNLIKELY(!p))
     return DebugUtils::errored(kErrorOutOfMemory);
 
-  fmtResult = vsnprintf(p, outputSize + 1, fmt, ap);
+  fmtResult = vsnprintf(p, outputSize + 1, fmt, apCopy);
   ASMJIT_ASSERT(size_t(fmtResult) == outputSize);
 
   return kErrorOk;
 }
 
 Error String::truncate(size_t newSize) noexcept {
-  if (isLarge()) {
+  if (isLargeOrExternal()) {
     if (newSize < _large.size) {
       _large.data[newSize] = '\0';
       _large.size = newSize;
@@ -456,73 +484,75 @@ bool String::eq(const char* other, size_t size) const noexcept {
   }
 }
 
-// ============================================================================
-// [asmjit::Support - Unit]
-// ============================================================================
+// String - Tests
+// ==============
 
 #if defined(ASMJIT_TEST)
-UNIT(asmjit_core_string) {
+UNIT(core_string) {
   String s;
 
-  EXPECT(s.isLarge() == false);
-  EXPECT(s.isExternal() == false);
+  EXPECT_FALSE(s.isLargeOrExternal());
+  EXPECT_FALSE(s.isExternal());
 
-  EXPECT(s.assignChar('a') == kErrorOk);
-  EXPECT(s.size() == 1);
-  EXPECT(s.capacity() == String::kSSOCapacity);
-  EXPECT(s.data()[0] == 'a');
-  EXPECT(s.data()[1] == '\0');
-  EXPECT(s.eq("a") == true);
-  EXPECT(s.eq("a", 1) == true);
+  EXPECT_EQ(s.assign('a'), kErrorOk);
+  EXPECT_EQ(s.size(), 1u);
+  EXPECT_EQ(s.capacity(), String::kSSOCapacity);
+  EXPECT_EQ(s.data()[0], 'a');
+  EXPECT_EQ(s.data()[1], '\0');
+  EXPECT_TRUE(s.eq("a"));
+  EXPECT_TRUE(s.eq("a", 1));
 
-  EXPECT(s.assignChars('b', 4) == kErrorOk);
-  EXPECT(s.size() == 4);
-  EXPECT(s.capacity() == String::kSSOCapacity);
-  EXPECT(s.data()[0] == 'b');
-  EXPECT(s.data()[1] == 'b');
-  EXPECT(s.data()[2] == 'b');
-  EXPECT(s.data()[3] == 'b');
-  EXPECT(s.data()[4] == '\0');
-  EXPECT(s.eq("bbbb") == true);
-  EXPECT(s.eq("bbbb", 4) == true);
+  EXPECT_EQ(s.assignChars('b', 4), kErrorOk);
+  EXPECT_EQ(s.size(), 4u);
+  EXPECT_EQ(s.capacity(), String::kSSOCapacity);
+  EXPECT_EQ(s.data()[0], 'b');
+  EXPECT_EQ(s.data()[1], 'b');
+  EXPECT_EQ(s.data()[2], 'b');
+  EXPECT_EQ(s.data()[3], 'b');
+  EXPECT_EQ(s.data()[4], '\0');
+  EXPECT_TRUE(s.eq("bbbb"));
+  EXPECT_TRUE(s.eq("bbbb", 4));
 
-  EXPECT(s.assignString("abc") == kErrorOk);
-  EXPECT(s.size() == 3);
-  EXPECT(s.capacity() == String::kSSOCapacity);
-  EXPECT(s.data()[0] == 'a');
-  EXPECT(s.data()[1] == 'b');
-  EXPECT(s.data()[2] == 'c');
-  EXPECT(s.data()[3] == '\0');
-  EXPECT(s.eq("abc") == true);
-  EXPECT(s.eq("abc", 3) == true);
+  EXPECT_EQ(s.assign("abc"), kErrorOk);
+  EXPECT_EQ(s.size(), 3u);
+  EXPECT_EQ(s.capacity(), String::kSSOCapacity);
+  EXPECT_EQ(s.data()[0], 'a');
+  EXPECT_EQ(s.data()[1], 'b');
+  EXPECT_EQ(s.data()[2], 'c');
+  EXPECT_EQ(s.data()[3], '\0');
+  EXPECT_TRUE(s.eq("abc"));
+  EXPECT_TRUE(s.eq("abc", 3));
 
   const char* large = "Large string that will not fit into SSO buffer";
-  EXPECT(s.assignString(large) == kErrorOk);
-  EXPECT(s.isLarge() == true);
-  EXPECT(s.size() == strlen(large));
-  EXPECT(s.capacity() > String::kSSOCapacity);
-  EXPECT(s.eq(large) == true);
-  EXPECT(s.eq(large, strlen(large)) == true);
+  EXPECT_EQ(s.assign(large), kErrorOk);
+  EXPECT_TRUE(s.isLargeOrExternal());
+  EXPECT_EQ(s.size(), strlen(large));
+  EXPECT_GT(s.capacity(), String::kSSOCapacity);
+  EXPECT_TRUE(s.eq(large));
+  EXPECT_TRUE(s.eq(large, strlen(large)));
 
   const char* additional = " (additional content)";
-  EXPECT(s.isLarge() == true);
-  EXPECT(s.appendString(additional) == kErrorOk);
-  EXPECT(s.size() == strlen(large) + strlen(additional));
+  EXPECT_TRUE(s.isLargeOrExternal());
+  EXPECT_EQ(s.append(additional), kErrorOk);
+  EXPECT_EQ(s.size(), strlen(large) + strlen(additional));
 
-  EXPECT(s.clear() == kErrorOk);
-  EXPECT(s.size() == 0);
-  EXPECT(s.empty() == true);
-  EXPECT(s.data()[0] == '\0');
-  EXPECT(s.isLarge() == true); // Clear should never release the memory.
+  EXPECT_EQ(s.clear(), kErrorOk);
+  EXPECT_EQ(s.size(), 0u);
+  EXPECT_TRUE(s.empty());
+  EXPECT_EQ(s.data()[0], '\0');
+  EXPECT_TRUE(s.isLargeOrExternal()); // Clear should never release the memory.
 
-  EXPECT(s.appendUInt(1234) == kErrorOk);
-  EXPECT(s.eq("1234") == true);
+  EXPECT_EQ(s.appendUInt(1234), kErrorOk);
+  EXPECT_TRUE(s.eq("1234"));
+
+  EXPECT_EQ(s.assignUInt(0xFFFF, 16, 0, StringFormatFlags::kAlternate), kErrorOk);
+  EXPECT_TRUE(s.eq("0xFFFF"));
 
   StringTmp<64> sTmp;
-  EXPECT(sTmp.isLarge());
-  EXPECT(sTmp.isExternal());
-  EXPECT(sTmp.appendChars(' ', 1000) == kErrorOk);
-  EXPECT(!sTmp.isExternal());
+  EXPECT_TRUE(sTmp.isLargeOrExternal());
+  EXPECT_TRUE(sTmp.isExternal());
+  EXPECT_EQ(sTmp.appendChars(' ', 1000), kErrorOk);
+  EXPECT_FALSE(sTmp.isExternal());
 }
 #endif
 

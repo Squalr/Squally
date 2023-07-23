@@ -22,6 +22,7 @@
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 
+#include "Resources/EntityResources.h"
 #include "Resources/UIResources.h"
 #include "Resources/SoundResources.h"
 
@@ -38,12 +39,12 @@ PlatformerEntity::PlatformerEntity(
 	std::string emblemResource,
 	CSize size,
 	float scale, 
-	Vec2 collisionOffset,
 	float hoverHeight
 	) : super(properties)
 {
 	this->floatNode = Node::create();
 	this->belowAnimationNode = Node::create();
+	this->dropShadow = Sprite::create(EntityResources::DropShadow);
 	this->animationNode = SmartAnimationNode::create(scmlResource);
 	this->entityScale = scale * GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyScale, Value(1.0f)).asFloat();
 	this->animationResource = scmlResource;
@@ -51,7 +52,6 @@ PlatformerEntity::PlatformerEntity(
 	this->entityName = entityName;
 	this->state = GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::PropertyState, Value("")).asString();
 	this->battleBehavior = entityName + "-combat," + GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::PropertyBattleBehavior, Value("")).asString();
-	this->entityCollisionOffset = this->entityScale * collisionOffset;
 	this->entitySize = size * this->entityScale;
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
 
@@ -63,7 +63,10 @@ PlatformerEntity::PlatformerEntity(
 	this->controlState = ControlState::Normal;
 	this->controlStateOverride = ControlState::None;
 
-	this->hackButtonOffset = Vec2(this->entityCollisionOffset.x, this->entityCollisionOffset.y + this->entitySize.height);
+	this->hackButtonOffset = Vec2(0.0f, this->entitySize.height);
+
+	this->dropShadow->setAnchorPoint(Vec2(0.5f, 0.5f));
+	this->dropShadow->setOpacity(0);
 
 	this->animationNode->setScale(this->entityScale);
 	this->animationNode->playAnimation();
@@ -78,6 +81,7 @@ PlatformerEntity::PlatformerEntity(
 		this->setRotation(180.0f);
 	}
 
+	this->addChild(this->dropShadow);
 	this->floatNode->addChild(this->belowAnimationNode);
 	this->floatNode->addChild(this->animationNode);
 	this->addChild(this->platformerEntityDeserializer);
@@ -162,6 +166,11 @@ Node* PlatformerEntity::getFloatNode()
 	return this->floatNode;
 }
 
+cocos2d::Sprite* PlatformerEntity::getDropShadow()
+{
+	return this->dropShadow;
+}
+
 SmartAnimationNode* PlatformerEntity::getAnimations()
 {
 	return this->animationNode;
@@ -172,17 +181,11 @@ CSize PlatformerEntity::getEntitySize()
 	return this->entitySize;
 }
 
-Vec2 PlatformerEntity::getCollisionOffset()
-{
-	return this->entityCollisionOffset;
-}
-
 Vec2 PlatformerEntity::getEntityCenterPoint()
 {
-	Vec2 collisionOffset = this->isFlippedY() ? Vec2(this->getCollisionOffset().x, -this->getCollisionOffset().y) : this->getCollisionOffset();
-	Vec2 center = this->isFlippedY() ? Vec2(0.0f, this->getEntitySize().height / 2.0f) : Vec2(0.0f, this->getEntitySize().height / 2.0f);
+	float centerPoint = this->getEntitySize().height / 2.0f;
 
-	return collisionOffset + center;
+	return Vec2(0.0f, centerPoint);
 }
 
 Vec2 PlatformerEntity::getEntityTopPoint()
@@ -203,12 +206,16 @@ Vec2 PlatformerEntity::getEntityBottomPoint()
 
 Vec2 PlatformerEntity::getEntityTopPointRelative()
 {
-	return Vec2(0.0f, (this->isFlippedY() ? -this->getEntitySize().height / 2.0f : this->getEntitySize().height / 2.0f));
+	float topPoint = this->getEntitySize().height / 2.0f;
+
+	return Vec2(0.0f, this->isFlippedY() ? -topPoint : topPoint);
 }
 
 Vec2 PlatformerEntity::getEntityBottomPointRelative()
 {
-	return Vec2(0.0f, (this->isFlippedY() ? this->getEntitySize().height / 2.0f + this->getHoverHeight() : (-this->getEntitySize().height / 2.0f - this->getHoverHeight())));
+	float bottomPoint = -this->getEntitySize().height / 2.0f - this->getHoverHeight();
+
+	return Vec2(0.0f, this->isFlippedY() ? -bottomPoint : bottomPoint);
 }
 
 float PlatformerEntity::getHoverHeight()

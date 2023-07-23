@@ -25,8 +25,7 @@ Viper::Viper(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_LambdaCrypts_Viper_Animations,
 	EntityResources::Npcs_LambdaCrypts_Viper_Emblem,
 	CSize(112.0f, 160.0f),
-	0.85f,
-	Vec2(0.0f, 0.0f))
+	0.85f)
 {
 }
 

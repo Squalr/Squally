@@ -20,7 +20,7 @@ Emerald* Emerald::create()
 	return instance;
 }
 
-Emerald::Emerald() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 48 }}), ItemMeta(20000))
+Emerald::Emerald() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 12 * 3 }}), ItemMeta(20000))
 {
 }
 
@@ -40,7 +40,7 @@ LocalizedString* Emerald::getString()
 
 const std::string& Emerald::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_Emerald;
+	return ItemResources::Crafting_Smithing_T3_Emerald;
 }
 
 const std::string& Emerald::getIdentifier()

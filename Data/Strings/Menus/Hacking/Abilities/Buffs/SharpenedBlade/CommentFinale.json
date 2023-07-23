@@ -1,5 +1,5 @@
 {
-    "ar": "في هذا المثال، هذه العملية فقط تنفيذ 'mov' إذا '%s1' أقل من أو يساوي '%s2'",
+    "ar": ".'%s2' في هذا المثال، هذه العملية فقط تنفيذ 'mov' إذا '%s1' أقل من أو يساوي",
     "bg": "В този пример тази операция изпълнява само 'mov', ако '%s1' е по-малко или равно на '%s2'",
     "cs": "V tomto příkladu tato operace provádí pouze 'mov', pokud '%s1' je menší nebo rovno '%s2'",
     "da": "I dette eksempel udfører denne handling KUN et 'mov', hvis '%s1' er mindre end eller lig med '%s2'",

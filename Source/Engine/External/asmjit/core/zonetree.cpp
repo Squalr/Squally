@@ -1,20 +1,17 @@
-// [AsmJit]
-// Machine Code Generation for C++.
+// This file is part of AsmJit project <https://asmjit.com>
 //
-// [License]
-// Zlib - See LICENSE.md file in the package.
+// See asmjit.h or LICENSE.md for license and copyright information
+// SPDX-License-Identifier: Zlib
 
-#define ASMJIT_EXPORTS
-
+#include "../core/api-build_p.h"
 #include "../core/support.h"
 #include "../core/zone.h"
 #include "../core/zonetree.h"
 
 ASMJIT_BEGIN_NAMESPACE
 
-// ============================================================================
-// [asmjit::ZoneTree - Unit]
-// ============================================================================
+// ZoneTreeBase - Tests
+// ====================
 
 #if defined(ASMJIT_TEST)
 template<typename NodeT>
@@ -22,7 +19,7 @@ struct ZoneRBUnit {
   typedef ZoneTree<NodeT> Tree;
 
   static void verifyTree(Tree& tree) noexcept {
-    EXPECT(checkHeight(static_cast<NodeT*>(tree._root)) > 0);
+    EXPECT_GT(checkHeight(static_cast<NodeT*>(tree._root)), 0);
   }
 
   // Check whether the Red-Black tree is valid.
@@ -33,17 +30,16 @@ struct ZoneRBUnit {
     NodeT* rn = node->right();
 
     // Invalid tree.
-    EXPECT(ln == nullptr || *ln < *node);
-    EXPECT(rn == nullptr || *rn > *node);
+    EXPECT_TRUE(ln == nullptr || *ln < *node);
+    EXPECT_TRUE(rn == nullptr || *rn > *node);
 
     // Red violation.
-    EXPECT(!node->isRed() ||
-          (!ZoneTreeNode::_isValidRed(ln) && !ZoneTreeNode::_isValidRed(rn)));
+    EXPECT_TRUE(!node->isRed() || (!ZoneTreeNode::_isValidRed(ln) && !ZoneTreeNode::_isValidRed(rn)));
 
     // Black violation.
     int lh = checkHeight(ln);
     int rh = checkHeight(rn);
-    EXPECT(!lh || !rh || lh == rh);
+    EXPECT_TRUE(!lh || !rh || lh == rh);
 
     // Only count black links.
     return (lh && rh) ? lh + !node->isRed() : 0;
@@ -66,7 +62,7 @@ public:
   uint32_t _key;
 };
 
-UNIT(asmjit_zone_rbtree) {
+UNIT(zone_rbtree) {
   uint32_t kCount = BrokenAPI::hasArg("--quick") ? 1000 : 10000;
 
   Zone zone(4096);
@@ -86,8 +82,8 @@ UNIT(asmjit_zone_rbtree) {
 
     for (key = 0; key < count; key++) {
       node = rbTree.get(key);
-      EXPECT(node != nullptr);
-      EXPECT(node->_key == key);
+      EXPECT_NOT_NULL(node);
+      EXPECT_EQ(node->_key, key);
     }
 
     node = rbTree.get(--count);
@@ -95,7 +91,7 @@ UNIT(asmjit_zone_rbtree) {
     ZoneRBUnit<MyRBNode>::verifyTree(rbTree);
   } while (count);
 
-  EXPECT(rbTree.empty());
+  EXPECT_TRUE(rbTree.empty());
 }
 #endif
 

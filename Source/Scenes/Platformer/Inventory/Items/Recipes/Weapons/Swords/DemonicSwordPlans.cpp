@@ -38,9 +38,10 @@ std::vector<std::tuple<Item*, int>> DemonicSwordPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Iron::create(), 8 },
+		{ Ruby::create(), 1 },
+		{ Sulfur::create(), 4},
+		{ Iron::create(), 4 },
 		{ Coal::create(), 4 },
-		{ Gold::create(), 2 },
 	};
 }
 

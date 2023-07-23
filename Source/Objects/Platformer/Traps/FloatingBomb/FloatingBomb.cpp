@@ -35,12 +35,7 @@ FloatingBomb* FloatingBomb::create(ValueMap& properties)
 FloatingBomb::FloatingBomb(ValueMap& properties) : super(properties)
 {
 	this->bomb = Sprite::create(ObjectResources::Traps_FloatingBomb_FloatingBomb);
-	this->bombCollision = CollisionObject::create(CollisionObject::createCircle(128.0f), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(true, true));
-
-	this->bombCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionData collisionData)
-	{
-		return CollisionResult::DoNothing;
-	});
+	this->bombCollision = CollisionObject::create(CollisionObject::createCircle(128.0f), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(true, true));
 
 	this->bombCollision->addChild(this->bomb);
 	this->addChild(this->bombCollision);
@@ -75,4 +70,9 @@ Vec2 FloatingBomb::getButtonOffset()
 void FloatingBomb::registerHackables()
 {
 	super::registerHackables();
+}
+
+CollisionObject* FloatingBomb::getCollision() const
+{
+	return this->bombCollision;
 }

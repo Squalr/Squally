@@ -21,11 +21,11 @@ DemonicAxe* DemonicAxe::create()
 	return instance;
 }
 
-DemonicAxe::DemonicAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 4, 7, ItemStats(
+DemonicAxe::DemonicAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), AXE_DAMAGE_MIN(7), AXE_DAMAGE_MAX(7), ItemStats(
 	// Health
-	0,
+	3,
 	// Mana
-	0,
+	4,
 	// Attack
 	0,
 	// Magic Attack
@@ -71,12 +71,12 @@ CSize DemonicAxe::getWeaponCollisionSize()
 Vec2 DemonicAxe::getWeaponCollisionOffset()
 {
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
-	return Vec2(0.0f, 212.0f);
+	return Vec2(-12.0f, 212.0f);
 }
 
 Vec2 DemonicAxe::getDisplayOffset()
 {
-	return Vec2(28.0f, -4.0f);
+	return Vec2(0.0f, -8.0f);
 }
 
 Recipe* DemonicAxe::getRecipe()

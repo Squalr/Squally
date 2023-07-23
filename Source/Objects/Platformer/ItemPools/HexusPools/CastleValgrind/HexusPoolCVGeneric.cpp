@@ -3,7 +3,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Inventory/ItemChance.h"
-#include "Objects/Platformer/ItemPools/CurrencyPools/CastleValgrind/CurrencyPoolCVGeneric.h"
+#include "Objects/Platformer/ItemPools/CurrencyPools/CastleValgrind/CurrencyPoolCVHexus.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier4/AlchemyPoolTier4.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier4/CardPoolTier4.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier4/SmithingPoolTier4.h"
@@ -21,8 +21,8 @@ HexusPoolCVGeneric* HexusPoolCVGeneric::create(ValueMap& properties)
 	return instance;
 }
 
-HexusPoolCVGeneric::HexusPoolCVGeneric(ValueMap& properties) : super(properties, "hexus-pool-cv-generic", SampleMethod::Random, 1, 2,
-	{ AlchemyPoolTier4::create(SampleMethod::Random, 1, 1), SmithingPoolTier4::create(SampleMethod::Random, 1, 2) }, CurrencyPoolCVGeneric::create(properties))
+HexusPoolCVGeneric::HexusPoolCVGeneric(ValueMap& properties) : super(properties, "hexus-pool-cv-generic", SampleMethod::Guarantee, 2, 2,
+	{ CardPoolTier4::create() }, CurrencyPoolCVHexus::create(properties))
 {
 }
 

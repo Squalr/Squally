@@ -127,7 +127,8 @@ void PlatformerDialogueBox::initializeListeners()
 				sound->play();
 			}
 
-			this->runDialogue(args->dialogue, args->visualArgs.dialogueDock, args->visualArgs.dialogueAlignment, args->onDialogueClose, args->allowSpace, args->unhijack);
+			this->runDialogue(args->dialogue, args->visualArgs.dialogueDock, args->visualArgs.dialogueAlignment,
+				args->onDialogueClose, args->allowSpace, args->unhijack, args->allowHackerMode);
 		}
 	}));
 
@@ -165,9 +166,12 @@ void PlatformerDialogueBox::initializeListeners()
 		{
 			args->handle();
 
-			// Allow tab-cancel dialogue into hacker mode
-			this->hideDialogue();
-			HackableEvents::TriggerForceUseHackerMode();
+			// Some dialogues can be interrupted with hacker mode
+			if (this->allowHackerMode)
+			{
+				this->hideDialogue();
+				HackableEvents::TriggerForceUseHackerMode();
+			}
 		}
 	});
 
@@ -253,7 +257,7 @@ void PlatformerDialogueBox::initializeListeners()
 	});
 }
 
-void PlatformerDialogueBox::runDialogue(LocalizedString* localizedString, DialogueDock dialogueDock, DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose, bool allowSpace, bool unhijack)
+void PlatformerDialogueBox::runDialogue(LocalizedString* localizedString, DialogueDock dialogueDock, DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose, bool allowSpace, bool unhijack, bool allowHackerMode)
 {
 	this->spaceToContinueLabel->runAction(FadeTo::create(0.25f, 0));
 
@@ -261,6 +265,7 @@ void PlatformerDialogueBox::runDialogue(LocalizedString* localizedString, Dialog
 
 	this->allowSpace = allowSpace;
 	this->unhijack = unhijack;
+	this->allowHackerMode = allowHackerMode;
 
 	PlatformerEvents::TriggerCinematicHijack();
 	this->isDialogueFocused = true;

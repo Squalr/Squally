@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="82" height="40" tilewidth="128" tileheight="128" infinite="0" nextlayerid="89" nextobjectid="1009">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="82" height="40" tilewidth="128" tileheight="128" infinite="0" nextlayerid="89" nextobjectid="1010">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="solace"/>
-   <property name="rubber-band" type="int" value="2"/>
+   <property name="music" value="little-footsteps"/>
+   <property name="rubber-band" type="int" value="23"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
@@ -286,7 +286,6 @@
     <property name="chest-pool" value="bp-generic"/>
    </properties>
   </object>
-  <object id="986" name="life-stone" type="object" x="1843" y="4024.5" width="146" height="423"/>
   <object id="988" name="edge-portal" type="object" x="4.041" y="3799.57" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="left"/>
@@ -294,7 +293,11 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="1003" name="life-stone" type="object" x="1939" y="3588.5" width="146" height="423"/>
+  <object id="1003" name="life-stone" type="object" x="1939" y="3588.5" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
   <object id="1006" name="edge-portal" type="object" x="10294.3" y="117.756" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="right"/>
@@ -324,8 +327,8 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
     <property name="battle-tag" value="group-c"/>
-    <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="components" value="enemy,soul,agro,melee"/>
+    <property name="drop-pool" value="bp-generic"/>
    </properties>
   </object>
   <object id="929" name="penguin-grunt" type="entity" x="7665.27" y="1596.57" width="128" height="128">
@@ -340,8 +343,8 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
     <property name="battle-tag" value="group-b"/>
-    <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="components" value="enemy,soul,agro,melee"/>
+    <property name="drop-pool" value="bp-generic"/>
    </properties>
   </object>
   <object id="980" name="penguin-warrior" type="entity" x="7261.27" y="1582.83" width="128" height="128">
@@ -400,6 +403,11 @@
   <object id="1008" name="spawn" type="object" x="9845.09" y="629.939" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="1009" name="spawn" type="object" x="1947.52" y="3883.27" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

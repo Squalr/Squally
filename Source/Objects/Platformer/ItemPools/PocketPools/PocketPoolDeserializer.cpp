@@ -31,6 +31,21 @@ PocketPoolDeserializer::PocketPoolDeserializer() : super(PocketPoolDeserializer:
 
 	// DM
 	this->deserializers[PocketPoolDMGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)PocketPoolDMGeneric::create(properties); };
+
+	// CV
+	this->deserializers[PocketPoolCVGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)PocketPoolCVGeneric::create(properties); };
+
+	// LC
+	this->deserializers[PocketPoolLCGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)PocketPoolLCGeneric::create(properties); };
+
+	// FF
+	this->deserializers[PocketPoolFFGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)PocketPoolFFGeneric::create(properties); };
+
+	// BP
+	this->deserializers[PocketPoolBPGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)PocketPoolBPGeneric::create(properties); };
+
+	// VS
+	this->deserializers[PocketPoolVSGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)PocketPoolVSGeneric::create(properties); };
 }
 
 PocketPoolDeserializer::~PocketPoolDeserializer()

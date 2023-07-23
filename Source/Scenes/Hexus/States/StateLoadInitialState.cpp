@@ -65,11 +65,21 @@ void StateLoadInitialState::loadStateOverrides(GameState* gameState, StateOverri
 	gameState->enemyLosses = stateOverride->enemyLosses;
 
 	gameState->showChallengeBanner = stateOverride->showChallengeBanner;
+	
+	gameState->selectedHandCard = nullptr;
+	gameState->selectedDestinationCard = nullptr;
+	gameState->selectedRow = nullptr;
+	gameState->selectedSourceCard = nullptr;
 
 	// Load player cards
 	for (CardData* next : stateOverride->playerHand)
 	{
 		gameState->playerHand->insertCard(Card::create(Card::CardStyle::Earth, next, true), 0.0f);
+	}
+
+	for (CardData* next : stateOverride->playerGraveyard)
+	{
+		gameState->playerGraveyard->insertCardBottom(Card::create(Card::CardStyle::Earth, next, true), true, 0.0f);
 	}
 
 	for (CardData* next : stateOverride->playerDeck)
@@ -96,6 +106,11 @@ void StateLoadInitialState::loadStateOverrides(GameState* gameState, StateOverri
 	for (CardData* next : stateOverride->enemyHand)
 	{
 		gameState->enemyHand->insertCard(Card::create(Card::CardStyle::Shadow, next, false), 0.0f);
+	}
+
+	for (CardData* next : stateOverride->enemyGraveyard)
+	{
+		gameState->enemyGraveyard->insertCardBottom(Card::create(Card::CardStyle::Shadow, next, false), true, 0.0f);
 	}
 
 	for (CardData* next : stateOverride->enemyDeck)

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="24" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="124" nextobjectid="971">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="24" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="124" nextobjectid="979">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="heartbeat"/>
+   <property name="music" value="artrium"/>
    <property name="rubber-band" type="int" value="7"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
@@ -113,19 +113,13 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="16" name="tiled bg">
+ <objectgroup id="16" name="tiled bg -1 (z tricks)">
   <properties>
+   <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="935" name="ruins-gray-dark" type="terrain" x="1406" y="-488" width="796" height="4472">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="936" name="ruins-gray-dark" type="terrain" x="-94" y="2690" width="1500" height="1294">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
+  <object id="978" name="ruins-gray-dark" type="texture" x="3154.42" y="2778.91">
+   <polygon points="-946.536,-3153.3 -942.434,-3.67482 -941.214,1005.05 -3354.46,1000.75 -3359.18,-96.4887 -1775.02,-95.0888 -1763.15,-3158.45"/>
   </object>
  </objectgroup>
  <objectgroup id="18" name="decor background 2">
@@ -160,7 +154,7 @@
   <object id="940" name="ruins-gray-thick" type="terrain" x="2197.03" y="327.94" width="1469.93" height="248.12"/>
   <object id="941" name="ruins-gray-thick" type="terrain" x="2193.03" y="1027.94" width="1469.93" height="248.12"/>
   <object id="942" name="ruins-gray-thick" type="terrain" x="2193.03" y="1795.94" width="1469.93" height="248.12"/>
-  <object id="968" name="ruins-gray-thick" type="terrain" x="2201.16" y="3536.18" width="1479.93" height="666.787"/>
+  <object id="977" name="ruins-gray-thick" type="terrain" x="2273.61" y="3538.61" width="1522.35" height="666.787"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -236,7 +230,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="113" name="water fg">
+ <objectgroup id="113" name="water fg" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -255,10 +249,12 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="919" name="ruins-gray-thick" type="terrain" x="-66.965" y="2599.33" width="1605.93" height="260.726"/>
-  <object id="920" name="ruins-gray-thick" type="terrain" x="2057.03" y="-120.06" width="245.93" height="3656.12"/>
-  <object id="921" name="ruins-gray-thick" type="terrain" x="1275.03" y="-126.06" width="261.93" height="2725.45"/>
-  <object id="922" name="ruins-gray-thick" type="terrain" x="-107.63" y="3537.82" width="2306.9" height="664.12"/>
+  <object id="972" name="ruins-gray-thick" type="terrain" x="2480" y="2596">
+   <polygon points="-944.536,-2721.3 -947.751,263.108 -3111.07,261.234 -3110.7,0.481 -1202.87,-1.21 -1204.15,-2720.45"/>
+  </object>
+  <object id="976" name="ruins-gray-thick" type="terrain" x="3284.79" y="3540">
+   <polygon points="-948.536,-3645.3 -942.434,-3.67482 -937.214,717.045 -3350.46,712.749 -3355.91,4.481 -1202.87,-1.21 -1208.15,-3644.45"/>
+  </object>
  </objectgroup>
  <objectgroup id="77" name="decor +1">
   <properties>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="43" nextobjectid="589">
+ <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
+  <grid orientation="orthogonal" width="64" height="64"/>
+  <image source="../TileMap.png" width="1536" height="640"/>
+ </tileset>
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value=""/>
+   <property name="music" value="perseverance"/>
+   <property name="show-cracks" type="bool" value="false"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="38" name="bg -512">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="40" name="bg -420">
+  <properties>
+   <property name="depth" type="float" value="-420"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="41" name="bg -312">
+  <properties>
+   <property name="depth" type="float" value="-312"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="42" name="bg -256">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="586" name="ship-dark" type="texture" x="-320.63" y="-110.213" width="3412.68" height="3211.39"/>
+ </objectgroup>
+ <objectgroup id="21" name="all entities and terrain (same layer for z sorting)">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+   <property name="z-sort" type="bool" value="true"/>
+  </properties>
+  <object id="518" name="combat-spawn" type="object" x="2131.75" y="1675.15" width="64" height="64">
+   <properties>
+    <property name="spawn-order" type="int" value="2"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="554" name="combat-spawn" type="object" x="1689.34" y="1570.05" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="-128"/>
+    <property name="spawn-order" type="int" value="0"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="555" name="combat-spawn" type="object" x="831.445" y="1670.73" width="64" height="64">
+   <properties>
+    <property name="spawn-order" type="int" value="0"/>
+    <property name="spawn-type" value="player"/>
+   </properties>
+  </object>
+  <object id="558" name="combat-spawn" type="object" x="690.307" y="1498.96" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="-128"/>
+    <property name="spawn-order" type="int" value="1"/>
+    <property name="spawn-type" value="player"/>
+   </properties>
+  </object>
+  <object id="559" name="combat-spawn" type="object" x="2187.61" y="1437.01" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="-256"/>
+    <property name="spawn-order" type="int" value="1"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="579" name="cinematic-marker" type="object" x="1281.94" y="1247.64" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-center"/>
+   </properties>
+  </object>
+  <object id="580" name="cinematic-marker" type="object" x="1286.49" y="933.032" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-top"/>
+   </properties>
+  </object>
+  <object id="581" name="cinematic-marker" type="object" x="1277.15" y="1718.36" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-bottom"/>
+   </properties>
+  </object>
+  <object id="583" name="ship-alt" type="terrain" x="1490.62" y="1637.73" width="1504.86" height="1248.38">
+   <properties>
+    <property name="depth" type="float" value="-128"/>
+   </properties>
+  </object>
+  <object id="584" name="ship-alt" type="terrain" x="-188.793" y="1736.42" width="2895.77" height="1248.38"/>
+  <object id="587" name="ship-alt" type="terrain" x="213.576" y="1566.18">
+   <properties>
+    <property name="depth" type="float" value="-128"/>
+   </properties>
+   <polygon points="296.457,-1.77231 747.051,-2.14915 744.545,1011.8 -393.918,998.93 -393.839,-381.398 -83.9421,-382.684 -84.623,-285.255 44.7856,-286.358 43.2355,-196.004 170.078,-195.429 169.676,-99.7852 296.091,-100.556"/>
+  </object>
+  <object id="588" name="ship-alt" type="terrain" x="2395.33" y="1508">
+   <properties>
+    <property name="depth" type="float" value="-256"/>
+   </properties>
+   <polygon points="-391.543,-3.77231 18.6674,-3.18752 18.6653,-89.7078 145.147,-91.7858 144.926,-175.934 273.823,-177.078 273.162,-269.811 378.618,-269.247 381.055,-355.616 744.882,-355.627 744.545,1011.8 -391.918,1008.93"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="551" name="camera-focus" type="object" x="1255.58" y="1280.12" width="128" height="128">
+   <properties>
+    <property name="zoom" type="float" value="1.25"/>
+   </properties>
+  </object>
+  <object id="562" name="camera-target" type="object" x="920.606" y="1278" width="128" height="128">
+   <properties>
+    <property name="tag" value="player-camera-1"/>
+    <property name="zoom" type="float" value="1.1"/>
+   </properties>
+  </object>
+  <object id="563" name="camera-target" type="object" x="1770" y="1272" width="128" height="128">
+   <properties>
+    <property name="tag" value="enemy-camera-1"/>
+    <property name="zoom" type="float" value="1.05"/>
+   </properties>
+  </object>
+  <object id="564" name="camera-target" type="object" x="810" y="1398" width="128" height="128">
+   <properties>
+    <property name="tag" value="player-camera-0"/>
+    <property name="zoom" type="float" value="1.15"/>
+   </properties>
+  </object>
+  <object id="565" name="camera-target" type="object" x="1592" y="1342" width="128" height="128">
+   <properties>
+    <property name="tag" value="enemy-camera-0"/>
+    <property name="zoom" type="float" value="1.1"/>
+   </properties>
+  </object>
+  <object id="566" name="camera-target" type="object" x="1730" y="1442" width="128" height="128">
+   <properties>
+    <property name="tag" value="enemy-camera-2"/>
+    <property name="zoom" type="float" value="1.15"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="37" name="decor +n">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+</map>

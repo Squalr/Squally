@@ -21,11 +21,11 @@ BoneHammer* BoneHammer::create()
 	return instance;
 }
 
-BoneHammer::BoneHammer() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 48, 56, ItemStats(
+BoneHammer::BoneHammer() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), MACE_DAMAGE_MIN(6), MACE_DAMAGE_MAX(6), ItemStats(
 	// Health
-	0,
+	2,
 	// Mana
-	0,
+	1,
 	// Attack
 	0,
 	// Magic Attack

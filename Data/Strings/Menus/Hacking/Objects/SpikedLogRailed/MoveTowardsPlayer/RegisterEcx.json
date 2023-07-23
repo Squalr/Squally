@@ -1,5 +1,5 @@
 {
-    "ar": "قيمة تشير إلى ما إذا كان هذا الملائمة الخشبية المسننة مقلوبة أم لا. 1 = عادي ، -1 = مقلوب.",
+    "ar": ".قيمة تشير إلى ما إذا كان هذا الملائمة الخشبية المسننة مقلوبة أم لا. 1 = عادي ، -1 = مقلوب",
     "bg": "Стойност, показваща дали този капан за шпайкове е обърнат. 1 = нормално, -1 = обърнато.",
     "cs": "Hodnota označující, zda je tato přesahová vrstva protokolu se špičatými hroty invertována. 1 = normální, -1 = obrácené.",
     "da": "En værdi, der angiver, om denne spidsede logfælde er inverteret. 1 = normal, -1 = omvendt.",

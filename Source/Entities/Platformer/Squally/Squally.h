@@ -21,6 +21,7 @@ public:
 
 	static const std::string MapKey;
 	static const std::string TeamTag;
+	static const float HoverHeight;
 
 protected:
 	Squally(cocos2d::ValueMap& properties);

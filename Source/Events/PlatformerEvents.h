@@ -14,6 +14,8 @@ class MinMaxPool;
 class PlatformerEntity;
 class PlatformerEnemy;
 
+enum class Cutscene;
+
 class PlatformerEvents
 {
 public:
@@ -37,7 +39,13 @@ public:
 	static const std::string EventOpenSmithing;
 	static const std::string EventOpenDismantle;
 	static const std::string EventOpenItemInfo;
+	static const std::string EventOpenQuickPotion;
+	static const std::string EventUnlockQuickPotion;
+	static const std::string EventUnlockQuickWarp;
+	static const std::string EventUnlockQuickSwap;
+	static const std::string EventOpenQuickSwap;
 	static const std::string EventDiscoverItem;
+	static const std::string EventDiscoverItems;
 	static const std::string EventGiveItemsFromPool;
 	static const std::string EventGiveItems;
 	static const std::string EventGiveCurrenciesFromPool;
@@ -55,6 +63,7 @@ public:
 	static const std::string EventFadeOut;
 	static const std::string EventObjectiveChanged;
 	static const std::string EventUnstuck;
+	static const std::string EventPlayCutscene;
 
 	struct TransitionArgs
 	{
@@ -191,6 +200,15 @@ public:
 			: item(item), cinematicHijack(cinematicHijack) { }
 	};
 
+	struct ItemsDiscoveryArgs
+	{
+		std::vector<Item*> items;
+		bool cinematicHijack = false;
+
+		ItemsDiscoveryArgs(std::vector<Item*> items, bool cinematicHijack = true)
+			: items(items), cinematicHijack(cinematicHijack) { }
+	};
+
 	struct GiveCurrenciesFromPoolArgs
 	{
 		CurrencyPool* pool = nullptr;
@@ -227,9 +245,17 @@ public:
 
 	struct SaveRespawnArgs
 	{
-		std::string objectIdentifier;
+		std::string spawnIdentifier;
 
-		SaveRespawnArgs(std::string objectIdentifier) : objectIdentifier(objectIdentifier) { }
+		SaveRespawnArgs(std::string spawnIdentifier) : spawnIdentifier(spawnIdentifier) { }
+	};
+
+	struct CutsceneArgs
+	{
+		Cutscene cutscene;
+		bool primeCache = false;
+
+		CutsceneArgs(Cutscene cutscene, bool primeCache) : cutscene(cutscene), primeCache(primeCache) { }
 	};
 
 	static void TriggerSquallySpawned();
@@ -252,9 +278,15 @@ public:
 	static void TriggerOpenSmithing(CraftingOpenArgs args);
 	static void TriggerOpenDismantle(CraftingOpenArgs args);
 	static void TriggerOpenItemInfo(ItemInfoArgs args);
+	static void TriggerOpenQuickPotion();
+	static void TriggerUnlockQuickPotion();
+	static void TriggerUnlockQuickWarp();
+	static void TriggerUnlockQuickSwap();
+	static void TriggerOpenQuickSwap();
 	static void TriggerGiveItemsFromPool(GiveItemsFromPoolArgs args);
 	static void TriggerGiveItems(GiveItemsArgs args);
 	static void TriggerDiscoverItem(ItemDiscoveryArgs args);
+	static void TriggerDiscoverItems(ItemsDiscoveryArgs args);
 	static void TriggerGiveCurrenciesFromPool(GiveCurrenciesFromPoolArgs args);
 	static void TriggerGiveCurrency(GiveCurrencyArgs args);
 	static void TriggerAllowPause();
@@ -270,4 +302,5 @@ public:
 	static void TriggerFadeOut();
 	static void TriggerObjectiveChanged();
 	static void TriggerUnstuck();
+	static void TriggerPlayCutscene(CutsceneArgs args);
 };

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="107" nextobjectid="977">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="111" nextobjectid="1016">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="hide-mini-map" type="bool" value="false"/>
-   <property name="map-banner" value=""/>
+   <property name="map-banner" value="castle-valgrind"/>
    <property name="music" value="two-steps"/>
-   <property name="rubber-band" type="int" value="2"/>
+   <property name="rubber-band" type="int" value="11"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
   </properties>
@@ -19,6 +19,13 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="756" name="castle" type="texture" x="-566" y="-598" width="7940" height="3446"/>
+ </objectgroup>
+ <objectgroup id="108" name="decor -6 bg">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1001" name="Generic/MoonDoor" type="decor" x="2741.97" y="654.122" width="648" height="667"/>
  </objectgroup>
  <objectgroup id="87" name="stairs -6">
   <properties>
@@ -57,7 +64,6 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="890" name="Generic/MoonDoor" type="decor" x="2741.97" y="654.122" width="648" height="667"/>
   <object id="898" name="Generic/BlueRug" type="decor" x="3860.67" y="1309.83" width="332" height="21"/>
   <object id="899" name="Generic/BlueRug" type="decor" x="1962.33" y="1310.5" width="332" height="21"/>
   <object id="955" name="Castle/Window1" type="decor" x="1668.65" y="303.409" width="293" height="575"/>
@@ -79,10 +85,14 @@
   <object id="746" name="Castle/CastleGate" type="decor" x="2822.81" y="1987.31" width="412" height="699"/>
   <object id="976" name="portal" type="object" x="2950.24" y="935.295" width="237.527" height="375.411">
    <properties>
-    <property name="map" value="CastleValgrind/Throne_Room"/>
+    <property name="map" value="CastleValgrind/Town_Throne_Room"/>
+    <property name="quest" value="locked-throne-room"/>
+    <property name="quest-line" value="cure-king"/>
     <property name="transition" value="throne-room"/>
    </properties>
   </object>
+  <object id="980" name="torch" type="object" x="2798.99" y="889.646" width="42" height="130"/>
+  <object id="981" name="torch" type="object" x="3268.48" y="881.555" width="42" height="130"/>
  </objectgroup>
  <objectgroup id="101" name="player_layer -6">
   <properties>
@@ -274,6 +284,19 @@
   </object>
   <object id="861" name="marble" type="terrain" x="1264.31" y="1355.39" width="3600" height="234.06"/>
  </objectgroup>
+ <objectgroup id="107" name="entities -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="999" name="skeletal-baron" type="entity" x="3133.33" y="1227.33" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,haunted"/>
+    <property name="haunted-key" value="skeletal-baron"/>
+    <property name="other-world" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="91" name="columns -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
@@ -381,16 +404,8 @@
     <property name="components" value="z-fade"/>
    </properties>
   </object>
-  <object id="946" name="Generic/RedRug" type="decor" x="1458" y="1364.83" width="332" height="21">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
-  <object id="947" name="Generic/RedRug" type="decor" x="4372.67" y="1364.83" width="332" height="21">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
+  <object id="946" name="Generic/RedRug" type="decor" x="1458" y="1364.83" width="332" height="21"/>
+  <object id="947" name="Generic/RedRug" type="decor" x="4372.67" y="1364.83" width="332" height="21"/>
  </objectgroup>
  <objectgroup id="106" name="objects -3">
   <properties>
@@ -412,23 +427,27 @@
   <object id="951" name="solid" type="collision" x="4594.24" y="-778.675" width="204.194" height="2360.26"/>
   <object id="952" name="solid" type="collision" x="1349.9" y="-856.13" width="204.194" height="2360.26"/>
  </objectgroup>
+ <objectgroup id="110" name="objects -3 fg">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1015" name="trigger" type="object" x="2311.5" y="281.09" width="1557" height="1097.82">
+   <properties>
+    <property name="send-event" value="leon"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="100" name="entities -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="902" name="tyracius" type="entity" x="2940" y="1232.85" width="128" height="128">
+  <object id="902" name="leon" type="entity" x="2955.5" y="1247.85" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
-    <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
-    <property name="travel-distance" type="float" value="192"/>
-   </properties>
-  </object>
-  <object id="903" name="zana" type="entity" x="3642.67" y="1249.82" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="cv-t3-hexus,friendly,haunted,pacing,pick-pocket"/>
+    <property name="haunted-key" value="skeletal-baron"/>
+    <property name="other-world" type="bool" value="false"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
@@ -645,7 +664,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="754" name="castle" type="texture" x="948.788" y="1510.18" width="1738.18" height="1356"/>
+  <object id="754" name="castle" type="texture" x="956.788" y="1508.18" width="1738.18" height="1356"/>
   <object id="755" name="castle" type="texture" x="3359.33" y="1490" width="1831.94" height="1364"/>
   <object id="840" name="castle" type="texture" x="-1430.85" y="-154.606" width="1710.18" height="3012"/>
   <object id="841" name="castle" type="texture" x="5878.91" y="-716.303" width="1033.94" height="3604"/>
@@ -716,6 +735,8 @@
   <object id="954" name="Castle/Window1" type="decor" x="4609.5" y="2022.5" width="293" height="575"/>
   <object id="963" name="Castle/KnightSuit1" type="decor" x="4124.38" y="2171.98" width="327" height="553"/>
   <object id="964" name="Castle/KnightSuit1" type="decor" x="1703.17" y="2171.98" width="327" height="553"/>
+  <object id="982" name="Generic/LesserMoonDoor" type="decor" x="4765.19" y="944.62" width="310" height="492"/>
+  <object id="983" name="Generic/LesserMoonDoor" type="decor" x="1085.19" y="940.62" width="310" height="492"/>
  </objectgroup>
  <objectgroup id="19" name="objects background">
   <properties>
@@ -744,8 +765,6 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="484" name="Generic/LesserMoonDoor" type="decor" x="4765.19" y="944.62" width="310" height="492"/>
-  <object id="844" name="Generic/LesserMoonDoor" type="decor" x="1085.19" y="940.62" width="310" height="492"/>
   <object id="893" name="Generic/BlueRug" type="decor" x="2450.67" y="1429.71" width="332" height="21"/>
   <object id="895" name="Generic/BlueRug" type="decor" x="3354" y="1425.5" width="332" height="21"/>
   <object id="945" name="Generic/SignBar" type="decor" x="1102.5" y="625.5" width="252" height="265"/>
@@ -757,7 +776,7 @@
   </properties>
   <object id="694" name="portal" type="object" x="4795.16" y="985.189" width="237.527" height="464.666">
    <properties>
-    <property name="map" value="CastleValgrind/Study"/>
+    <property name="map" value="CastleValgrind/Town_Study"/>
     <property name="transition" value="study"/>
    </properties>
   </object>
@@ -769,8 +788,68 @@
   </object>
   <object id="775" name="portal" type="object" x="2914.63" y="2267.18" width="237.527" height="464.666">
    <properties>
-    <property name="map" value="CastleValgrind/Zone_1_1"/>
+    <property name="map" value="CastleValgrind/Zone_1_3"/>
     <property name="transition" value="castle-main"/>
+   </properties>
+  </object>
+  <object id="977" name="hexus-shrine" type="object" x="3733.84" y="2468.73" width="155" height="260">
+   <properties>
+    <property name="entity-tag" value="hexus-reanimated-fighter"/>
+   </properties>
+  </object>
+  <object id="1002" name="portal" type="object" x="2259.72" y="2478.59" width="256" height="256">
+   <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="locked-text-key" value="none"/>
+    <property name="map" value="CastleValgrind/Zone_Dark_Town_Main"/>
+    <property name="transition" value="debug"/>
+   </properties>
+  </object>
+  <object id="1003" name="portal" type="object" x="4110.2" y="2475.75" width="256" height="256">
+   <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="locked-text-key" value="none"/>
+    <property name="map" value="CastleValgrind/Zone_Dark_Town_Main"/>
+    <property name="transition" value="debug"/>
+   </properties>
+  </object>
+  <object id="1004" name="portal" type="object" x="4175.58" y="1179.56" width="256" height="256">
+   <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="locked-text-key" value="none"/>
+    <property name="map" value="CastleValgrind/Zone_Dark_Town_Main"/>
+    <property name="transition" value="debug"/>
+   </properties>
+  </object>
+  <object id="1006" name="objective-trigger" type="object" x="2572.89" y="1509.15" width="919.06" height="1225.58">
+   <properties>
+    <property name="send-event" value="CV_INVESTIGATE_CASTLE"/>
+   </properties>
+  </object>
+  <object id="1009" name="life-stone" type="object" x="2144.33" y="2308.5" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
+  <object id="1010" name="life-stone" type="object" x="4754.27" y="2306.68" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn-2"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="109" name="objects fg">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1013" name="trigger" type="object" x="1076.59" y="1650" width="1482.7" height="1097.82">
+   <properties>
+    <property name="send-event" value="gaunt"/>
+   </properties>
+  </object>
+  <object id="1014" name="trigger" type="object" x="3494.77" y="1640.91" width="1555.42" height="1097.82">
+   <properties>
+    <property name="send-event" value="atreus"/>
    </properties>
   </object>
  </objectgroup>
@@ -784,31 +863,52 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="782" name="gaunt" type="entity" x="2115.67" y="2602" width="128" height="128">
+  <object id="782" name="gaunt" type="entity" x="1813" y="2602" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="cv-t2-hexus,friendly,haunted,pacing,pick-pocket"/>
+    <property name="haunted-key" value="wraith"/>
+    <property name="other-world" type="bool" value="false"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="786" name="leroy" type="entity" x="2775" y="1307.67" width="128" height="128">
+  <object id="791" name="atreus" type="entity" x="4185.55" y="2599.61" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="friendly,haunted,pacing,pick-pocket"/>
+    <property name="haunted-key" value="reaper"/>
+    <property name="other-world" type="bool" value="false"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="791" name="rogas" type="entity" x="4476.46" y="2602.64" width="128" height="128">
+  <object id="979" name="reanimated-fighter" type="entity" x="3749.77" y="3542.99" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
-    <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
-    <property name="travel-distance" type="float" value="192"/>
+    <property name="components" value="friendly,disarmed,cv-puzzle-B"/>
+    <property name="tag" value="hexus-reanimated-fighter"/>
+   </properties>
+  </object>
+  <object id="998" name="wraith" type="entity" x="1390.66" y="2601.33" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,haunted"/>
+    <property name="haunted-key" value="wraith"/>
+    <property name="other-world" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1000" name="reaper" type="entity" x="4403.94" y="2600.67" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,haunted"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="haunted-key" value="reaper"/>
+    <property name="other-world" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1012" name="spawn" type="object" x="4759.85" y="2599.42" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn-2"/>
    </properties>
   </object>
  </objectgroup>
@@ -817,7 +917,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="3141.28" y="2603.66" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="3272.46" y="2603.66" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>
@@ -884,6 +984,11 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="warp-3-B"/>
+   </properties>
+  </object>
+  <object id="1011" name="spawn" type="object" x="2153.33" y="2602.67" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

@@ -25,8 +25,7 @@ Gargoyle::Gargoyle(ValueMap& properties) : super(properties,
 	EntityResources::Enemies__Deprecated_Gargoyle_Animations,
 	EntityResources::Enemies__Deprecated_Gargoyle_Emblem,
 	CSize(256.0f, 256.0f),
-	0.9f,
-	Vec2(-32.0f, 0.0f))
+	0.9f)
 {
 }
 

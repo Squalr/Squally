@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="26" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="167" nextobjectid="1101">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="26" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="167" nextobjectid="1102">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="heartbeat"/>
-   <property name="rubber-band" type="int" value="7"/>
+   <property name="music" value="the-gift"/>
+   <property name="rubber-band" type="int" value="6"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
@@ -61,56 +61,96 @@
    <property name="depth" type="float" value="-1536"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1096" name="caverns" type="terrain" x="1197.15" y="1716.48" width="1163.63" height="1640"/>
+  <object id="1096" name="caverns" type="terrain" x="1197.15" y="1716.48" width="1163.63" height="1640">
+   <properties>
+    <property name="components" value="illusion-disabled"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="155" name="decor -24">
   <properties>
    <property name="depth" type="float" value="-1536"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1086" name="Ruins/WarpTower" type="decor" x="1327.5" y="-512.5" width="979" height="2249"/>
+  <object id="1086" name="Ruins/WarpTower" type="decor" x="1327.5" y="-512.5" width="979" height="2249">
+   <properties>
+    <property name="components" value="illusion-disabled"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="164" name="bridge -21">
   <properties>
    <property name="depth" type="float" value="-1344"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1095" name="caverns" type="terrain" x="1478.85" y="1701.33" width="635.63" height="1640"/>
+  <object id="1095" name="caverns" type="terrain" x="1478.85" y="1701.33" width="635.63" height="1640">
+   <properties>
+    <property name="components" value="illusion-disabled"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="163" name="bridge -18">
   <properties>
    <property name="depth" type="float" value="-1152"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1094" name="caverns" type="terrain" x="1477.52" y="1682.67" width="635.63" height="1640"/>
+  <object id="1094" name="caverns" type="terrain" x="1477.52" y="1682.67" width="635.63" height="1640">
+   <properties>
+    <property name="components" value="illusion-disabled"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="162" name="bridge -15">
   <properties>
    <property name="depth" type="float" value="-960"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1093" name="caverns" type="terrain" x="1477.52" y="1661.33" width="635.63" height="1640"/>
+  <object id="1093" name="caverns" type="terrain" x="1477.52" y="1661.33" width="635.63" height="1640">
+   <properties>
+    <property name="components" value="illusion-disabled"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="161" name="bridge -12">
   <properties>
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1092" name="caverns" type="terrain" x="1477.52" y="1640" width="635.63" height="1640"/>
+  <object id="1092" name="caverns" type="terrain" x="1477.52" y="1640" width="635.63" height="1640">
+   <properties>
+    <property name="components" value="illusion-disabled"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="160" name="bridge -9">
   <properties>
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1091" name="caverns" type="terrain" x="1478.85" y="1616" width="635.63" height="1640"/>
+  <object id="1091" name="caverns" type="terrain" x="1478.85" y="1616" width="635.63" height="1640">
+   <properties>
+    <property name="components" value="illusion-disabled"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="159" name="bridge -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1090" name="caverns" type="terrain" x="1478.18" y="1589.33" width="635.63" height="1640"/>
+  <object id="1090" name="caverns" type="terrain" x="1478.18" y="1589.33" width="635.63" height="1640">
+   <properties>
+    <property name="components" value="illusion-disabled"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="153" name="texture -4">
   <properties>
@@ -128,7 +168,12 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1089" name="caverns" type="terrain" x="1476.85" y="1567.33" width="635.63" height="1640"/>
+  <object id="1089" name="caverns" type="terrain" x="1476.85" y="1567.33" width="635.63" height="1640">
+   <properties>
+    <property name="components" value="illusion-disabled"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="151" name="decor -0.5">
   <properties>
@@ -145,6 +190,8 @@
   <object id="1087" name="caverns" type="terrain" x="1476.18" y="1544" width="635.63" height="1640">
    <properties>
     <property name="collision" value="none"/>
+    <property name="components" value="illusion-disabled"/>
+    <property name="illusion-group" value="A"/>
    </properties>
   </object>
  </objectgroup>
@@ -152,11 +199,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1043" name="caverns" type="terrain" x="288.269" y="1560" width="2745.55" height="1528">
-   <properties>
-    <property name="rubber-band" type="int" value="6"/>
-   </properties>
-  </object>
+  <object id="1043" name="caverns" type="terrain" x="288.269" y="1560" width="2745.55" height="1528"/>
  </objectgroup>
  <objectgroup id="152" name="terrain fg">
   <properties>
@@ -196,8 +239,16 @@
   </object>
   <object id="1097" name="portal" type="object" x="1684.12" y="1305.82" width="256" height="256">
    <properties>
-    <property name="map" value="UnderflowRuins/Mages_Warp"/>
-    <property name="transition" value="warp-room"/>
+    <property name="components" value="illusion-disabled"/>
+    <property name="illusion-group" value="A"/>
+    <property name="map" value="MagesGuild/Mages_Warp"/>
+    <property name="transition" value="ur"/>
+   </properties>
+  </object>
+  <object id="1101" name="magic-wall-disabled" type="object" x="1461.54" y="777.985" width="679.102" height="781">
+   <properties>
+    <property name="components" value="dispel-illusion-disabled"/>
+    <property name="illusion-group" value="A"/>
    </properties>
   </object>
  </objectgroup>
@@ -224,7 +275,7 @@
   </object>
   <object id="1070" name="spawn" type="object" x="1742.67" y="1433.27" width="128" height="128">
    <properties>
-    <property name="transition" value="warp-room"/>
+    <property name="transition" value="ur"/>
    </properties>
   </object>
   <object id="1072" name="spawn" type="object" x="2828" y="1434" width="128" height="128">

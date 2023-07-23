@@ -20,7 +20,7 @@ WarpGateLC* WarpGateLC::create(ValueMap& properties)
 
 WarpGateLC::WarpGateLC(ValueMap& properties) : super(properties)
 {
-	PreviewMap* map = PreviewMap::create(MapResources::WarpGatePreviewMaps_EndianForest);
+	PreviewMap* map = PreviewMap::create(MapResources::WarpGatePreviewMaps_LambdaCrypts);
 
 	map->setPositionX(-map->getMapSize().width / 2.0f);
 	map->setPositionY(-map->getMapSize().height / 2.0f);

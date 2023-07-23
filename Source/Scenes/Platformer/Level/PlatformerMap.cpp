@@ -13,7 +13,6 @@
 #include "Deserializers/Platformer/PlatformerDecorDeserializer.h"
 #include "Deserializers/Platformer/PlatformerEntityDeserializer.h"
 #include "Deserializers/Platformer/PlatformerHideMiniMapDeserializer.h"
-#include "Deserializers/Platformer/PlatformerMiniMapRequiredItemDeserializer.h"
 #include "Deserializers/Platformer/PlatformerObjectDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
 #include "Deserializers/Platformer/PlatformerRubberbandingDeserializer.h"
@@ -56,10 +55,15 @@
 #include "Menus/Crafting/BlacksmithingMenu.h"
 #include "Menus/Crafting/DismantleMenu.h"
 #include "Menus/CursorSets.h"
+#include "Menus/Cutscenes/CutscenesMenu.h"
+#include "Menus/Inventory/FilterMenu/ConsumablesFilter.h"
+#include "Menus/Inventory/FilterMenu/FilterEntry.h"
+#include "Menus/Inventory/FilterMenu/FilterMenu.h"
 #include "Menus/Inventory/InventoryMenu.h"
 #include "Menus/Inventory/ItemInfoMenu.h"
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/Party/PartyMenu.h"
+#include "Menus/Party/QuickSwapMenu.h"
 #include "Menus/Pause/PlatformerPauseMenu.h"
 #include "Scenes/Cipher/Cipher.h"
 #include "Scenes/Hexus/HelpMenus/HelpMenu.h"
@@ -105,10 +109,12 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true)
 	this->lexiconMenu = LazyNode<Lexicon>::create(CC_CALLBACK_0(PlatformerMap::buildLexicon, this));
 	this->cardsMenu = LazyNode<CardsMenu>::create(CC_CALLBACK_0(PlatformerMap::buildCardsMenu, this));
 	this->partyMenu = LazyNode<PartyMenu>::create(CC_CALLBACK_0(PlatformerMap::buildPartyMenu, this));
+	this->quickSwapMenu = LazyNode<QuickSwapMenu>::create(CC_CALLBACK_0(PlatformerMap::buildQuickSwapMenu, this));
 	this->alchemyMenu = LazyNode<AlchemyMenu>::create(CC_CALLBACK_0(PlatformerMap::buildAlchemyMenu, this));
 	this->blacksmithingMenu = LazyNode<BlacksmithingMenu>::create(CC_CALLBACK_0(PlatformerMap::buildBlacksmithingMenu, this));
 	this->dismantleMenu = LazyNode<DismantleMenu>::create(CC_CALLBACK_0(PlatformerMap::buildDismantleMenu, this));
 	this->inventoryMenu = LazyNode<InventoryMenu>::create(CC_CALLBACK_0(PlatformerMap::buildInventoryMenu, this));
+	this->cutscenesMenu = LazyNode<CutscenesMenu>::create(CC_CALLBACK_0(PlatformerMap::buildCutscenesMenu, this));
 	this->canPause = true;
 	this->miniMap = MiniMap::create();
 
@@ -122,7 +128,6 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true)
 				PlatformerBannerDeserializer::create(),
 				PlatformerRubberbandingDeserializer::create(),
 				PlatformerHideMiniMapDeserializer::create(),
-				PlatformerMiniMapRequiredItemDeserializer::create(),
 			}),
 			ObjectLayerDeserializer::create({
 				{ CollisionDeserializer::MapKeyTypeCollision, CollisionDeserializer::create({ (PropertyDeserializer*)PlatformerComponentDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() }) },
@@ -156,6 +161,8 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true)
 	this->topMenuHud->addChild(this->lexiconMenu);
 	this->topMenuHud->addChild(this->inventoryMenu);
 	this->topMenuHud->addChild(this->partyMenu);
+	this->topMenuHud->addChild(this->quickSwapMenu);
+	this->topMenuHud->addChild(this->cutscenesMenu);
 	this->confirmationMenuHud->addChild(this->confirmationHud);
 }
 
@@ -262,6 +269,30 @@ void PlatformerMap::initializeListeners()
 		}
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventOpenQuickPotion, [=](EventCustom* eventCustom)
+	{
+		FilterMenu* filterMenu = this->inventoryMenu->lazyGet()->getFilterMenu();
+
+		filterMenu->getFilterByClass<ConsumablesFilter>([filterMenu](ConsumablesFilter* consumablesFilter)
+		{
+			filterMenu->setActiveFilter(consumablesFilter);
+		});
+
+		this->autoClosePauseMenu = true;
+		this->openPauseMenu(this);
+		this->inventoryMenu->lazyGet()->open();
+		this->inventoryMenu->lazyGet()->openItemMenu();
+		this->inventoryMenu->lazyGet()->setVisible(true);
+		GameUtils::focus(this->inventoryMenu->lazyGet());
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventOpenQuickSwap, [=](EventCustom* eventCustom)
+	{
+		this->quickSwapMenu->lazyGet()->open();
+		this->quickSwapMenu->lazyGet()->setVisible(true);
+		GameUtils::focus(this->quickSwapMenu->lazyGet());
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventOpenAlchemy, [=](EventCustom* eventCustom)
 	{
 		PlatformerEvents::CraftingOpenArgs* args = static_cast<PlatformerEvents::CraftingOpenArgs*>(eventCustom->getData());
@@ -316,7 +347,7 @@ void PlatformerMap::initializeListeners()
 			SaveManager::BatchSaveProfileData(
 				{
 					{ SaveKeys::SaveKeyRespawnMap, Value(this->mapResource) },
-					{ SaveKeys::SaveKeyRespawnObjectId, Value(args->objectIdentifier) },
+					{ SaveKeys::SaveKeySpawnOverride, Value(args->spawnIdentifier) },
 				}
 			);
 		}
@@ -436,11 +467,43 @@ void PlatformerMap::initializeListeners()
 		}
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventPlayCutscene, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::CutsceneArgs* args = static_cast<PlatformerEvents::CutsceneArgs*>(eventCustom->getData());
+
+		if (args != nullptr)
+		{
+			if (args->primeCache)
+			{
+				this->cutscenesMenu->lazyGet()->primeCache(args->cutscene);
+			}
+			else
+			{
+				this->cutscenesMenu->lazyGet()->open(args->cutscene);
+				this->cutscenesMenu->lazyGet()->setVisible(true);
+				
+				// For credits, simply do a cinematic hijack (no pause). Other cutscenes cause a pause.
+				if (args->cutscene == Cutscene::Credits)
+				{
+					PlatformerEvents::TriggerCinematicHijack();
+					this->fadeHud->runAnim(FadeHud::FadeHudType::Tv);
+				}
+				else
+				{
+					GameUtils::focus(this->cutscenesMenu->lazyGet());
+					GameUtils::resume(this->notificationHud);
+					GameUtils::resume(this->confirmationHud);
+				}
+			}
+		}
+	}));
+
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!this->canPause
 			|| (this->platformerPauseMenu->isBuilt() && GameUtils::isFocused(this->platformerPauseMenu->lazyGet()))
 			|| (this->partyMenu->isBuilt() && GameUtils::isFocused(this->partyMenu->lazyGet()))
+			|| (this->quickSwapMenu->isBuilt() && GameUtils::isFocused(this->quickSwapMenu->lazyGet()))
 			|| (this->optionsMenu->isBuilt() && GameUtils::isFocused(this->optionsMenu->lazyGet()))
 			|| (this->codeHud->isBuilt() && GameUtils::isFocused(this->codeHud->lazyGet()))
 			|| (this->radialMenu->isBuilt() && GameUtils::isFocused(this->radialMenu->lazyGet()))
@@ -500,7 +563,7 @@ bool PlatformerMap::loadMapFromTmx(std::string mapResource, cocos_experimental::
 	{
 		mapResource = MapResources::EndianForest_Town_Main;
 	}
-	else if (StrUtils::contains(mapResource, "DaemonsHallow", true))
+	else if (StrUtils::contains(mapResource, "FirewallFissure", true))
 	{
 		mapResource = MapResources::EndianForest_Town_Main;
 	}
@@ -546,13 +609,18 @@ void PlatformerMap::openPauseMenu(cocos2d::Node* refocusTarget)
 	});
 }
 
+std::string& PlatformerMap::getTransition()
+{
+	return this->transition;
+}
+
 void PlatformerMap::warpSquallyToRespawn()
 {
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
-		std::string savedObjectId = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyRespawnObjectId, Value("error-no-object-id")).asString();
+		std::string spawnTransition = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpawnOverride, Value("error-no-object-id")).asString();
 
-		PlatformerEvents::TriggerWarpObjectToObjectId(PlatformerEvents::WarpObjectToObjectIdArgs(squally, savedObjectId));
+		PlatformerEvents::TriggerSpawnToTransitionLocation(PlatformerEvents::TransitionArgs(spawnTransition));
 	}, Squally::MapKey);
 }
 
@@ -729,6 +797,19 @@ PartyMenu* PlatformerMap::buildPartyMenu()
 	return instance;
 }
 
+QuickSwapMenu* PlatformerMap::buildQuickSwapMenu()
+{
+	QuickSwapMenu* instance = QuickSwapMenu::create();
+
+	instance->setReturnClickCallback([=]()
+	{
+		instance->setVisible(false);
+		GameUtils::focus(this);
+	});
+
+	return instance;
+}
+
 InventoryMenu* PlatformerMap::buildInventoryMenu()
 {
 	InventoryMenu* instance = InventoryMenu::create(this->partyMenu);
@@ -738,6 +819,12 @@ InventoryMenu* PlatformerMap::buildInventoryMenu()
 		this->platformerPauseMenu->lazyGet()->setVisible(true);
 		instance->setVisible(false);
 		GameUtils::focus(this->platformerPauseMenu->lazyGet());
+
+		if (this->autoClosePauseMenu)
+		{
+			this->autoClosePauseMenu = false;
+			this->platformerPauseMenu->lazyGet()->close();
+		}
 	});
 
 	return instance;
@@ -842,6 +929,19 @@ PlatformerPauseMenu* PlatformerMap::buildPlatformerPauseMenu()
 		this->lexiconMenu->lazyGet()->setVisible(true);
 		this->lexiconMenu->lazyGet()->open();
 		GameUtils::focus(this->lexiconMenu->lazyGet());
+	});
+
+	return instance;
+}
+
+CutscenesMenu* PlatformerMap::buildCutscenesMenu()
+{
+	CutscenesMenu* instance = CutscenesMenu::create();
+	
+	instance->setReturnClickCallback([=]()
+	{
+		instance->setVisible(false);
+		GameUtils::focus(this);
 	});
 
 	return instance;

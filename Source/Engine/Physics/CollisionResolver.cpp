@@ -636,12 +636,15 @@ Vec2 CollisionResolver::applyCorrection(CollisionObject* objectA, CollisionObjec
 	}
 	else
 	{
-		// If X disabled, this makes for better horizontal movement, but enabled is more realistic. Might need a compromise/toggleability
-		// objectA->velocity.x *= impactNormal.y;
-		// objectB->velocity.x *= impactNormal.y;
+		// x and y are intentionally inverted here.
+		Vec2 dampingMultiplier = Vec2(impactNormal.y, impactNormal.x);
 
-		objectA->velocity.y *= impactNormal.x;
-		objectB->velocity.y *= impactNormal.x;
+		// If X disabled, this makes for better horizontal movement, but enabled is more realistic. Might need a compromise/toggleability
+		// objectA->velocity.x *= dampingMultiplier.x;
+		// objectB->velocity.x *= dampingMultiplier.x;
+
+		objectA->velocity.y *= dampingMultiplier.y;
+		objectB->velocity.y *= dampingMultiplier.y;
 
 		objectA->setThisOrBindPosition(objectA->getThisOrBindPosition() + ((objectA->collisionProperties.isDynamic) ? correction3d : Vec3::ZERO));
 		objectB->setThisOrBindPosition(objectB->getThisOrBindPosition() + ((objectB->collisionProperties.isDynamic) ? correction3d : Vec3::ZERO));

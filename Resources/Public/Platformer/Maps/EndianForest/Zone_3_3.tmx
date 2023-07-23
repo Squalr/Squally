@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="68" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="815">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="68" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="817">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -59,7 +59,7 @@
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="-839.09,-11523.6 -808.687,-7661.01 3091.04,-7649.65 3098.99,-9388 1674.96,-9384 1670.88,-11513.9"/>
+   <polygon points="-839.09,-11523.6 -920.421,-9497.37 -808.687,-7661.01 3091.04,-7649.65 3159.6,-9357.7 3014.12,-9388.13 1756.78,-9390.06 1674.42,-9664.01 1655.43,-10091.3 1671.01,-10409.5 1670.88,-11513.9"/>
   </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
@@ -92,7 +92,11 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="623" name="life-stone" type="object" x="6511.94" y="1086.19" width="146" height="423"/>
+  <object id="623" name="life-stone" type="object" x="6511.94" y="1086.19" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
   <object id="707" name="edge-portal" type="object" x="-4" y="2956.57" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="left"/>
@@ -202,90 +206,90 @@
   </object>
   <object id="786" name="orc-grunt" type="entity" x="6812" y="2404" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,soul,agro,melee"/>
     <property name="drop-pool" value="empty"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="787" name="ogre" type="entity" x="6657.21" y="2402.67" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,soul,agro,melee"/>
     <property name="drop-pool" value="empty"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="788" name="cyclops" type="entity" x="6987.52" y="2408.73" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,soul,agro,melee"/>
     <property name="drop-pool" value="empty"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="789" name="troll" type="entity" x="7067.58" y="2406.67" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,soul,agro,melee"/>
     <property name="drop-pool" value="empty"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="790" name="orc-grunt" type="entity" x="6586" y="2406" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,soul,agro,melee"/>
     <property name="drop-pool" value="empty"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="791" name="orc-bomber" type="entity" x="6488" y="2404" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,soul,agro,melee"/>
     <property name="drop-pool" value="empty"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="792" name="orc-warrior" type="entity" x="6912" y="2408" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro,mainhand-throw"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,soul,agro,mainhand-throw"/>
     <property name="drop-pool" value="empty"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="793" name="orc-swordsman" type="entity" x="6744" y="2406" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,soul,agro,melee"/>
     <property name="drop-pool" value="empty"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="796" name="gorgon" type="entity" x="5970.67" y="2400" width="128" height="128">
    <properties>
-    <property name="components" value="enemy"/>
     <property name="battle-behavior" value="ram-weakened"/>
     <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy"/>
     <property name="drop-pool" value="ef-gorgon"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="quest" value="fight-gorgon"/>
@@ -299,16 +303,16 @@
   </object>
   <object id="807" name="orc-bomber" type="entity" x="5736" y="1928" width="128" height="128">
    <properties>
-    <property name="components" value="ally"/>
     <property name="battle-behavior" value="ram-weakened"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
   <object id="808" name="orc-bomber" type="entity" x="5956" y="1926" width="128" height="128">
    <properties>
-    <property name="components" value="ally"/>
     <property name="battle-behavior" value="ram-weakened"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
  </objectgroup>
@@ -336,6 +340,16 @@
   <object id="811" name="spawn" type="object" x="8246.85" y="2428.87" width="128" height="128">
    <properties>
     <property name="transition" value="left-bottom"/>
+   </properties>
+  </object>
+  <object id="815" name="spawn" type="object" x="6524" y="1378" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
+  <object id="816" name="spawn" type="object" x="5272" y="2398.67" width="128" height="128">
+   <properties>
+    <property name="transition" value="mage-portal"/>
    </properties>
   </object>
  </objectgroup>

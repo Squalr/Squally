@@ -73,7 +73,7 @@ HexusStoreMenu::HexusStoreMenu()
 	this->goldLabel->setStringReplacementVariables(this->goldString);
 	this->goldLabel->enableOutline(Color4B::BLACK, 3);
 	this->goldLabel->setPosition(Vec2(-32.0f, 0.0f));
-	this->goldLabel->setAlignment(TextHAlignment::LEFT);
+	this->goldLabel->setHorizontalAlignment(TextHAlignment::LEFT);
 	this->goldLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 
 	ValueMap properties = ValueMap();

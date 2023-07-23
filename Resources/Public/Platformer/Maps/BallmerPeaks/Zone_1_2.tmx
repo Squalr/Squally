@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="72" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="937">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="72" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="940">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="solace"/>
-   <property name="rubber-band" type="int" value="2"/>
+   <property name="music" value="little-footsteps"/>
+   <property name="rubber-band" type="int" value="21"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
@@ -36,7 +36,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="15" name="WaterfallRocks" visible="0">
+ <objectgroup id="15" name="WaterfallRocks">
   <properties>
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
@@ -47,7 +47,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="16" name="WaterfallGround" visible="0">
+ <objectgroup id="16" name="WaterfallGround">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -138,7 +138,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="87" name="objects -4 fg" visible="0">
+ <objectgroup id="87" name="objects -4 fg">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -155,8 +155,8 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="components" value="enemy,soul,agro,melee"/>
+    <property name="drop-pool" value="bp-generic"/>
    </properties>
   </object>
   <object id="857" name="penguin-grunt" type="entity" x="3480.14" y="5335.22" width="128" height="128">
@@ -171,8 +171,8 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
     <property name="battle-tag" value="group-b"/>
-    <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="components" value="enemy,soul,agro,melee"/>
+    <property name="drop-pool" value="bp-generic"/>
    </properties>
   </object>
   <object id="927" name="penguin-warrior" type="entity" x="2966.79" y="3229.79" width="128" height="128">
@@ -200,7 +200,12 @@
   </object>
   <object id="925" name="spawn" type="object" x="8568" y="3084" width="128" height="128">
    <properties>
-    <property name="transition" value="sky-tower"/>
+    <property name="transition" value="left-top"/>
+   </properties>
+  </object>
+  <object id="938" name="spawn" type="object" x="8732" y="5412" width="128" height="128">
+   <properties>
+    <property name="transition" value="left-bottom"/>
    </properties>
   </object>
  </objectgroup>
@@ -364,7 +369,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="58" name="terrain -1" visible="0">
+ <objectgroup id="58" name="terrain -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
@@ -436,13 +441,12 @@
    <polygon points="5223.19,4515.02 3857.18,4530.09 2813.38,4917.54 1380.92,4948.15 688.694,4930.85 710.777,4663.81 1353.3,4645.72 2119.77,4546.74 2961.94,4236.89 3801.49,3966.47 4175.75,3966.09 4679.44,3767.61 5229.64,3768.74"/>
   </object>
  </objectgroup>
- <objectgroup id="22" name="decor midground" visible="0">
+ <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="729" name="Forest/Flower10" type="decor" x="2045.74" y="6275.64" width="199" height="133"/>
   <object id="834" name="Forest/Flower9" type="decor" x="1730.65" y="6282.86" width="199" height="133"/>
-  <object id="888" name="Generic/SkyTower" type="decor" x="-590.799" y="3222.68" width="2395" height="3180"/>
  </objectgroup>
  <objectgroup id="60" name="terrain +1">
   <properties>
@@ -454,7 +458,11 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="823" name="life-stone" type="object" x="7279.66" y="5500.37" width="146" height="423"/>
+  <object id="823" name="life-stone" type="object" x="7279.66" y="5500.37" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
   <object id="880" name="life-stone" type="object" x="1255" y="5974.5" width="146" height="423"/>
   <object id="889" name="help-totem-cold-water" type="object" x="3091.47" y="6141.64" width="248" height="248"/>
   <object id="921" name="edge-portal" type="object" x="4152.04" y="1839.57" width="199.918" height="640.851">
@@ -510,8 +518,8 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
     <property name="battle-tag" value="group-c"/>
-    <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="components" value="enemy,soul,agro,melee"/>
+    <property name="drop-pool" value="bp-generic"/>
    </properties>
   </object>
   <object id="929" name="frost-fiend" type="entity" x="3051.94" y="2277.78" width="128" height="128">
@@ -559,6 +567,11 @@
   <object id="922" name="spawn" type="object" x="3892" y="2344" width="128" height="128">
    <properties>
     <property name="transition" value="sky-tower"/>
+   </properties>
+  </object>
+  <object id="939" name="spawn" type="object" x="7286" y="5794" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

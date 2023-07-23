@@ -13,6 +13,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Helpers/BallmerPeaks/Snowman.h"
+#include "Entities/Platformer/Helpers/CastleValgrind/Grim.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/DataMines/Gecky.h"
 #include "Entities/Platformer/Helpers/UnderflowRuins/GuanoPetrified.h"
@@ -52,7 +53,10 @@ DeveloperScene::DeveloperScene()
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
+		mapList.push_back(this->buildDebugButton("Warp Room", MapResources::MagesGuild_Mages_Warp));
+		mapList.push_back(this->buildDebugButton("Museum", MapResources::MagesGuild_Museum));
 		mapList.push_back(this->buildDebugButton("DBG Cages", MapResources::Dev_Cages));
+		mapList.push_back(this->buildDebugButton("DBG Cutscenes", MapResources::Dev_Cracks));
 		mapList.push_back(this->buildDebugButton("DBG Cipher", MapResources::Dev_Cipher));
 		mapList.push_back(this->buildDebugButton("DBG Quests", MapResources::Dev_Quests));
 		mapList.push_back(this->buildDebugButton("DBG Warp Depth", MapResources::Dev_WarpDepth));
@@ -69,52 +73,135 @@ DeveloperScene::DeveloperScene()
 	}
 
 	/*
-	- * Can get stuck on roof of maps (see UR 3_1)
-	- Infinity symbol in hexus does not localize to arabic (and maybe others)
-	- Text navigation in editable assembly text is broken for arabic
-	- Pacing behavior is broken for portal maps
-	- Techncially Squally respawns on object layer upon death, although usually this is not noticeable
-	- Chapter transitions can be more special
-	- Fix Squally default ability in combat. Sometimes it's a non-punch ability (ie bubbles) (edit: can't repro?)
-	- Sometimes hackable icon is below entity (rare)
-	- Evil Eye chase scenes, cracks in simulation for story
-	- Finish Tier4+ pools. Deprecate "Crafting pools" ch4+
-	- Mounts should apply to helpers so they aren't awkwardly lagging behind
-	- Squally auto crouch in mine carts
-	- Hexus:
-		- Rematch dialog does not load unless map is reloaded
-		- Add a "Stack" pile, and PUSH/POP cards. PUSH = Move any card (even enemy) to stack. POP = Overwrite card attack
-			- Move 'cards to play/draw' indicators to the left side. Shift graveyard down, stack above it.
-		- Win a hexus puzzle, next one will show massive row score deltas
-		- Leave button stuck visible after losing a puzzle
-		- Enemy should pre-calc the best play when player has passed (hard)
-	- Camera harsh leaving camera targets (which?)
-	- Icons on title screen buttons (at least options, to reduce pains of wrong language selection)
-	- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Bars
-	- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
-	- Mages guild accessible from all maps, but use the return portal. This incentivizes other travel (sky masters, boats)
-		- Destroy all warp maps as a result (?) can still keep the zone portals for the return location
-	- Maybe hard code some rewards. It'd be nice to get SHL from the puzzle where you learn it.
-	- Seagulls should blink
-	- Sky masters
-		- Find Finch to get to BP
-		- Find Irmik to get to BP peaks
-	- Kill 2nd sky tower map?
-	- Mystery crash / ensures when waiting on victory screen (matrix letters task func)
-	- No interrupt if damage attack modified to heal
-	- Eliminate 'collisionOffset' parameter entirely
-	- Helpers
-		- Abilities unlocked at certain levels
-		- Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
-	- Necron hitbox wrong in Mages guild (inconsistent?)
-	- "Quick-potion" capabilities
-	- Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities)
+	- 5x EE:
+		- * Mayan Door (000/666)		=> Pirate Hat (Special: Bonus Drop Rates)
+		- * Clock 069/420		 		=> Warlock's Headdress (Special: Longer Hack Durations -- ie swim)
+		- * Perilous Sea (tri m/l/r)	=> The Golden Eagle (Special: Higher Jump)
+		- * Sky Tower (tri l/r/m)		=> Tiger's Bane (Special: Faster Movement)
+		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
-	- Just get a few top down replacement maps in. Should be able to do this fairly seamlessly.
-		- Invisible helpers. Some way to pull helpers into combat
-	- 3Q Perspective
-	- Reinstate Cipher with asm or something
-	- Reinstate ball roll game? It wasn't really fixable
+	- General:
+		- v Homes for:
+			- Emerald necklace (DM - Krampus drop? idk)
+			- Ruby necklace (FF)
+		- v scrolling down passed end in script editor cycles back to top
+		- v FF Asmodeus crowd should animate
+		- v FF enemy shadows wrong in 1st combat map
+		- v FF give demon grunt (scalding blade user) an add potion?
+		- v FF/DM(?) overworld archer attack SetPosition doesn't actually do anything as far as I can tell (see Demon Archer)
+		- v FF blood boil PFX are also yellow...
+		- v FF melt ability yellow => red PFX
+		- v FF maybe move mage tower to 1_x area eh?
+		- v LC terrain connectors in 3_x maps are offset baddly (which map?)
+		- v LC blue gem map feels empty. Traps?
+		- v LC zombie grasp hint is just the answer...
+		- v LC enchantment buff color wrong (yellow)
+		- v LC Daze script too long / needs hint
+		- v LC move 3_x critter from side room to layer with skeletal knight (theres big empty space to left)
+		- v Make LC final 4_x maps less bad.
+		- v LC change dialogue for npc outside of crypts if has key
+		- v CV some indicator of remaining souls
+		- v CV 2_x maps feels unfinished
+		- v CV diseased pfx color not yellow
+		- v CV Mabel should look at Perceptron the entire patrol, or cower until he is gone
+		- v CV smelting pot broken in haunted map? seems weird. Actually I think a bug on deactivated behavior.
+		- v CV make hats craftable, figure out something else for Ara
+		- v DM show collision on ship map mini-map
+		- v DM binary puzzle area is shitty imo
+		- v support for default dialogue at top of screen (see Aphrodite, Hera, Horus, Burch, Dawn, Amelia)
+		- v UR chest at end of UR should give DM pool items maybe
+		- v UR guano still cursed scrappy wasn't loaded for dialogue
+		- v broken blade shouldn't have pfx I think
+		- v UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
+		- v UR town could use another mg/fg warp. Maybe where lifstone is
+		- v EF hot potato icon should be hot potato
+		- v EF first Marcel dialogue can show empty characters
+		- v Maybe HP pots in combat should self-target initally?
+		- v Maybe interact with helper to revive after holy spellbook?
+		- v Can probably use Silver for more craft recipes
+		- v Maybe some storyline for introducing powers
+			- v Some hack abilities like "warp to this location" could be cool. Would need to be a specific landmark available in hack mode.
+				- In fact, can use this as a way to force escaping the ship.
+		- v Could scrap hack button, and instead show [1] button keys (ideally with art), and sort them by distance to squally
+			- v could click OR press the button to activate
+		- v Wand energy bolt literally does an attack anim and nothing
+		- v quick swap FX
+		- v quick warp FX
+		- v maybe stat deltas on equipment in craft menu
+		- v Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
+			- v If we keep them -- EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
+		- v Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)
+		- v Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)
+		- v More transmutes (perhaps custom UI to show a transmute wheel)
+			- v or just scrap transmutes, and add the ability to sell shit
+		- v Crash reports probably are broken (switch to new SendGrid)
+		- v Should add some sort of archery mini-game with jump shots or something in some town. Maybe FF.
+		- v EF Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
+		- v Hexus:
+			- v Can pass after auto-victory or loss (try it in a puzzle)
+			- v Can sneak in last-stand after placing your turn cards
+			- v Leave button stuck visible after losing a puzzle
+			- v Enemy should pre-calc the best play when player has passed (hard, wontfix?)
+			- v It'd be nice to get SHL from the puzzle where you learn it. I guess just tailored pools or something. May scrap this.
+		
+	- Localization / Scripting:
+		- * Lexicon is largely incomplete
+			- * Fill out descriptions without samples first
+		- add examples are half broken (highlighting)
+		- push example doesn't refresh highlighting on click
+		- * Arrow keys in large scripts should auto-scroll if cursor goes out of visible text range
+		- * Multi-line comments in scripts can cause line counter to become disrupted
+		- * Should really expand scripting text editor
+			- * Support click-to-place cursor
+		- v User-made script titles can go TOFU upon language change. Wontfix? Save original language, and reset to current if the user clears the title?
+		- v If ever re-instating Arabic, Ctrl+F all "ar": "! and "ar": ". strings to find places where punctuation was messed up and fix them
+		- v If ever re-instating Arabic, probably force English for scripting. Mixing RTL and LTR language is awful. Or use Arabic romanization.
+	
+	- * BP Zone
+		- * Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
+		- * 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
+		- * 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
+		- * 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
+		- * Needs hexus battles
+		- * Tune hexus battle special cards
+		- * Needs animals
+		- * Needs enemy scripting according to notes on which instructions this zone covers
+		- * Frost SpellBook (?? / ??)
+		- * BP, somewhere				=> Frost Axe unused item
+		
+	- Large asset updates:
+		- v Enemy anims for getting hit
+		- v Enemy death sounds
+		- v Enemy anims for combat begin (temporarily pausing timeline)
+		- v Enemy combat begin sounds
+		- v SFX pass
+			- v All defend variants
+		- v Unique icons for all spells
+		- v More passes on music. Probably need more overworld. Far and Away / Sunset once I get access.
+
+	- Very Low prio:
+		- v Fix terrain connectors
+			- v Frost
+			- v Marble [Dark too]
+			- v Jungle [Dark too]
+		- v Camera harsh leaving camera targets (see FF cinematic)
+		- v (Maybe) Chapter transitions can be more special 
+		- v Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
+			- v Tiki anims still broken (bad Spriter implementation strikes again)
+			- v Train anims broken (for same reason)
+		- v Missing squally breath bubbles
+	
+	- New Content:
+		- v A few 3Q Perspective maps
+			- Invisible helpers. Some way to pull helpers into combat
+		- v Cipher:
+			* Reinstate? What's the new play? Asm? Macro magic to avoid emulation (store state to a struct after each instruction).
+				- Probably like Hexus puzzles, with preset C++ classes rather than map-property defined.
+		- v P-Trace:
+			- Reinstate? What's the new play? Can this be that circuit game I was thinking? Maybe can flip circuit switches to incentivize using brain
+			- isometric squally, and some form of strategy element that isn't prone to trial-and-error.
+				- Another play is to make these actual "maps" that you can pass through.
+			- Could make a mini-game in towns? Inns? Where? Maybe just one machine in a zone of my choosing? (I kinda prefer DM or CV)
 	*/
 
 	// CHAPTER 1 - Mov/add/sub/inc/dec/div/mul + AND Puzzle
@@ -123,14 +210,13 @@ DeveloperScene::DeveloperScene()
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
-		mapList.push_back(this->buildDebugButton("Warp Room (EF)", MapResources::EndianForest_Mages_Warp));
 		mapList.push_back(this->buildDebugButton("Boat EF => UR", MapResources::EndianForest_Ship_Main));
 		mapList.push_back(this->buildDebugButton("Docks (EF)", MapResources::EndianForest_Town_Docks));
 		mapList.push_back(this->buildDebugButton("Elbridge", MapResources::EndianForest_Town_Main));
 		mapList.push_back(this->buildDebugButton("Inn (EF)", MapResources::EndianForest_Town_Inn));
 		mapList.push_back(this->buildDebugButton("Smith (EF)", MapResources::EndianForest_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Alch (EF)", MapResources::EndianForest_Town_Alch));
-		mapList.push_back(this->buildDebugButton("Balmer's Peak", MapResources::BallmerPeaks_Town_Main));
+		mapList.push_back(this->buildDebugButton("Gramps (EF)", MapResources::EndianForest_Home_Gramps));
 		mapList.push_back(this->buildDebugButton("Liana Back (EF)", MapResources::EndianForest_Town_Liana_Back));
 		mapList.push_back(this->buildDebugButton("Liana (EF)", MapResources::EndianForest_Town_Liana));
 		mapList.push_back(this->buildDebugButton("Ara (EF)", MapResources::EndianForest_Home_Ara));
@@ -158,14 +244,14 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone 1_2 (EF)", MapResources::EndianForest_Zone_1_2));
 		mapList.push_back(this->buildDebugButton("Zone 1_1 (EF)", MapResources::EndianForest_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone 1_0 (EF)", MapResources::EndianForest_Zone_1_0));
-		mapList.push_back(this->buildDebugButton("Guano's Cell", MapResources::EndianForest_Home_Guano));
-		mapList.push_back(this->buildDebugButton("Mage's Prison", MapResources::EndianForest_Mages_Prison));
-		mapList.push_back(this->buildDebugButton("Mage's Guild",MapResources::EndianForest_Mages_Guild));
-		mapList.push_back(this->buildDebugButton("Mage's Gauntlet", MapResources::EndianForest_Mages_Gauntlet_Entrance));
-		mapList.push_back(this->buildDebugButton("Mage's Gauntlet #1", MapResources::EndianForest_Mages_Gauntlet_1));
-		mapList.push_back(this->buildDebugButton("Mage's Gauntlet #2", MapResources::EndianForest_Mages_Gauntlet_2));
-		mapList.push_back(this->buildDebugButton("Mage's Gauntlet #3", MapResources::EndianForest_Mages_Gauntlet_3));
-		mapList.push_back(this->buildDebugButton("Mage's Gauntlet #4", MapResources::EndianForest_Mages_Gauntlet_4));
+		mapList.push_back(this->buildDebugButton("Guano's Cell", MapResources::MagesGuild_Home_Guano));
+		mapList.push_back(this->buildDebugButton("Mage's Prison", MapResources::MagesGuild_Mages_Prison));
+		mapList.push_back(this->buildDebugButton("Mage's Guild",MapResources::MagesGuild_Mages_Guild));
+		mapList.push_back(this->buildDebugButton("Mage's Gauntlet", MapResources::MagesGuild_Mages_Gauntlet_Entrance));
+		mapList.push_back(this->buildDebugButton("Mage's Gauntlet #1", MapResources::MagesGuild_Mages_Gauntlet_1));
+		mapList.push_back(this->buildDebugButton("Mage's Gauntlet #2", MapResources::MagesGuild_Mages_Gauntlet_2));
+		mapList.push_back(this->buildDebugButton("Mage's Gauntlet #3", MapResources::MagesGuild_Mages_Gauntlet_3));
+		mapList.push_back(this->buildDebugButton("Mage's Gauntlet #4", MapResources::MagesGuild_Mages_Gauntlet_4));
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 
@@ -178,9 +264,13 @@ DeveloperScene::DeveloperScene()
 		// - F	=> 3_0 (Ogre)
 		// - G	=> 3_1 (Cyclops)
 
-		// TODO:
-		// Overworld attacks (Troll / Cyclops swing)
-		// Troll Strength ability seems additive rather than absolute damage
+		// Puzzles:
+		// A				EF	2_0		orc-grunt
+		// B				EF	2_2		
+		// C				EF	2_4
+		// D				EF	2_6
+		// E				EF	3_0
+		// F				EF	3_1
 	}
 
 	// CHAPTER 2 - Compare/CMOV/Neg/SHL/SHR + OR Puzzle
@@ -189,7 +279,6 @@ DeveloperScene::DeveloperScene()
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
-		mapList.push_back(this->buildDebugButton("Warp Room (UR)", MapResources::UnderflowRuins_Mages_Warp));
 		mapList.push_back(this->buildDebugButton("Cleopatra (UR)", MapResources::UnderflowRuins_Home_Cleopatra));
 		mapList.push_back(this->buildDebugButton("Zone_3_8 (UR) Pyramid Boss vv", MapResources::UnderflowRuins_Zone_3_8));
 		mapList.push_back(this->buildDebugButton("Zone_3_7 (UR) Pyramid -->", MapResources::UnderflowRuins_Zone_3_7));
@@ -208,6 +297,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_2_2 (UR) Pass", MapResources::UnderflowRuins_Zone_2_2));
 		mapList.push_back(this->buildDebugButton("Zone_2_1 (UR) Puzzle", MapResources::UnderflowRuins_Zone_2_1));
 		mapList.push_back(this->buildDebugButton("Zone_2_0 (UR) Entrance", MapResources::UnderflowRuins_Zone_2_0));
+		mapList.push_back(this->buildDebugButton("Well (UR) DEV", MapResources::UnderflowRuins_Town_Well_Dev));
 		mapList.push_back(this->buildDebugButton("Well (UR)", MapResources::UnderflowRuins_Town_Well));
 		mapList.push_back(this->buildDebugButton("Hera (UR)", MapResources::UnderflowRuins_Home_Hera));
 		mapList.push_back(this->buildDebugButton("Smith (UR)", MapResources::UnderflowRuins_Town_Smith));
@@ -216,7 +306,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Alch (DEV) (UR)", MapResources::UnderflowRuins_Town_Alch_Questless));
 		mapList.push_back(this->buildDebugButton("Town (UR)", MapResources::UnderflowRuins_Town_Main));
 		mapList.push_back(this->buildDebugButton("Zone_1_5 (UR)", MapResources::UnderflowRuins_Zone_1_5));
-		mapList.push_back(this->buildDebugButton("Zone_1_4 (UR)", MapResources::UnderflowRuins_Zone_1_4));
+		mapList.push_back(this->buildDebugButton("Zone_1_4 (UR) Gauntlet", MapResources::UnderflowRuins_Zone_1_4));
 		mapList.push_back(this->buildDebugButton("Zone_1_3 (UR)", MapResources::UnderflowRuins_Zone_1_3));
 		mapList.push_back(this->buildDebugButton("Zone_1_2 (UR)", MapResources::UnderflowRuins_Zone_1_2));
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (UR)", MapResources::UnderflowRuins_Zone_1_1));
@@ -224,6 +314,12 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Aphrodite (UR)", MapResources::UnderflowRuins_Home_Aphrodite));
 		mapList.push_back(this->buildDebugButton("Shoreline (UR)", MapResources::UnderflowRuins_Shoreline));
 		mapList.push_back(this->buildDebugButton("Docks (UR)", MapResources::UnderflowRuins_Town_Docks));
+		mapList.push_back(this->buildDebugButton("PS Lighthouse Top (UR)", MapResources::PerilousSea_Home_Lighthouse_Top));
+		mapList.push_back(this->buildDebugButton("PS Lighthouse (UR)", MapResources::PerilousSea_Home_Lighthouse));
+		mapList.push_back(this->buildDebugButton("PS (UR)", MapResources::PerilousSea_Zone_1_0));
+
+		// Traps:
+		// - Reinstate water gun if we want it
 
 		// Hexus Puzzles:
 		// - A	=> 1_0 (Lioness)
@@ -232,14 +328,6 @@ DeveloperScene::DeveloperScene()
 		// - D	=> 2_3 (Minotaur)
 		// - E	=> 3_3 (Mummy Warrior)
 		// - F	=> 3_6 (Anubis Pup)
-		// - G	=> 3_7 (Mummy Priest)
-
-		// ================== TODO ================== 
-		// Add aura for undying that makes the effect obvious
-		// Guano warps to Squally on unpetrification, which looks like trash
-		// Reinstate water gun if we want it
-		// Show the electricity ON/OFF in Lions Cistern water visually somehow
-		// Overworld attacks
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
@@ -250,13 +338,13 @@ DeveloperScene::DeveloperScene()
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
-		mapList.push_back(this->buildDebugButton("Warp Room (DM)", MapResources::DataMines_Mages_Warp));
 		mapList.push_back(this->buildDebugButton("Alch (DM)", MapResources::DataMines_Town_Alch));
 		mapList.push_back(this->buildDebugButton("Inn (DM)", MapResources::DataMines_Town_Inn));
 		mapList.push_back(this->buildDebugButton("Smith (DM)", MapResources::DataMines_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Town (DM)", MapResources::DataMines_Town_Main));
 		mapList.push_back(this->buildDebugButton("Town Train (DM)", MapResources::DataMines_Town_Train));
 		mapList.push_back(this->buildDebugButton("Home Dawn (DM)", MapResources::DataMines_Home_Dawn));
+		mapList.push_back(this->buildDebugButton("Home Cypress (DM)", MapResources::DataMines_Home_Cypress));
 		mapList.push_back(this->buildDebugButton("Home Godiva (DM)", MapResources::DataMines_Home_Godiva));
 		mapList.push_back(this->buildDebugButton("Home Burch (DM)", MapResources::DataMines_Home_Burch));
 		mapList.push_back(this->buildDebugButton("Ship Main (PS)", MapResources::PerilousSea_Ship_Main));
@@ -282,18 +370,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (DM)", MapResources::DataMines_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DM)", MapResources::DataMines_Zone_1_0));
 
-		// ================== TODO ==================
-		// Maybe hint to use 'or' on shadow bomb
-		// Earth golem cast anim kinda shit
-		// Earth elem cast anim shit
-		// Double check green light defaults on DM xor puzzle
-		// Boat combat map for Krampus fight
-		// Rhinoman hovers off platform when dead in fight
-		// Train SFX
-		// Terrain in tent map has wrong corner connectors
-		// Tiki anims still broken (bad Spriter implementation strikes again)
-		// Train anims broken (for same reason)
-		// Nature spellbook, even if just for an ability? What ability?
+		// * Traps: Missing Nature trap(s): ??
 
 		// Hexus puzzles:
 		// - A	=> 1_x (Tiki)
@@ -302,7 +379,6 @@ DeveloperScene::DeveloperScene()
 		// - D	=> 2_5 (Earth Golem)
 		// - E	=> 3_1 (Skeletal Warrior)
 		// - F	=> 3_4 (Skeletal Pirate)
-		// - G	=> 3_6 (Skeletal Necromancer)
 		
 		/*
 		X Tiki Golem			=> X 1_1 Push/Pop const buff (call of the ancients - outgoing AND incoming damage)
@@ -315,7 +391,7 @@ DeveloperScene::DeveloperScene()
 		X Skeletal Archer		=> X 3_1 PUSH / POP REG (MULTISHOT debuff - curse of the ancients - damage dealt)
 		X Skeletal Warrior		=> X 3_0 PUSH [REG PTR + offset] / POP [REG PTR + offset] (blessing of the ancients - outgoing damage)
 		X Skeletal Necromancer 	=> X 3_0 PUSH const / POP [REG PTR] (pact of the ancients - health link)
-		- [B] Krampus			=> O 3_3 LEA
+		X [B] Krampus			=> X 3_3 LEA
 
 		X Olive			Zone 1_1 (H_1)
 		X Bonnie		Town_Inn (H_2) (non-vendor)
@@ -346,64 +422,64 @@ DeveloperScene::DeveloperScene()
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
-		mapList.push_back(this->buildDebugButton("Warp Room (CV)", MapResources::CastleValgrind_Mages_Warp));
+		mapList.push_back(this->buildDebugButton("DARK DEBUG (CV)", MapResources::CastleValgrind_Zone_Dark_Debug));
 		mapList.push_back(this->buildDebugButton("Alch (CV)", MapResources::CastleValgrind_Town_Alch));
 		mapList.push_back(this->buildDebugButton("Inn (CV)", MapResources::CastleValgrind_Town_Inn));
 		mapList.push_back(this->buildDebugButton("Smith (CV)", MapResources::CastleValgrind_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Town (CV)", MapResources::CastleValgrind_Town_Main));
 		mapList.push_back(this->buildDebugButton("Town Train (CV)", MapResources::CastleValgrind_Town_Train));
-		mapList.push_back(this->buildDebugButton("Study Dark (CV)", MapResources::CastleValgrind_Study_Dark));
-		mapList.push_back(this->buildDebugButton("Study (CV)", MapResources::CastleValgrind_Study));
-		mapList.push_back(this->buildDebugButton("Zone_2_3 (CV)", MapResources::CastleValgrind_Zone_2_3));
-		mapList.push_back(this->buildDebugButton("Zone_2_2 (CV)", MapResources::CastleValgrind_Zone_2_2));
+		mapList.push_back(this->buildDebugButton("Throne Room (CV)", MapResources::CastleValgrind_Town_Throne_Room));
+		mapList.push_back(this->buildDebugButton("Study (CV)", MapResources::CastleValgrind_Town_Study));
+		mapList.push_back(this->buildDebugButton("[Dark] Alch (CV)", MapResources::CastleValgrind_Zone_Dark_Town_Alch));
+		mapList.push_back(this->buildDebugButton("[Dark] Inn (CV)", MapResources::CastleValgrind_Zone_Dark_Town_Inn));
+		mapList.push_back(this->buildDebugButton("[Dark] Smith (CV)", MapResources::CastleValgrind_Zone_Dark_Town_Smith));
+		mapList.push_back(this->buildDebugButton("[Dark] Town (CV)", MapResources::CastleValgrind_Zone_Dark_Town_Main));
+		mapList.push_back(this->buildDebugButton("[Dark] Study Dark (CV)", MapResources::CastleValgrind_Zone_Dark_Town_Study));
+		mapList.push_back(this->buildDebugButton("Zone_2_1_a (CV)", MapResources::CastleValgrind_Zone_2_1_a));
 		mapList.push_back(this->buildDebugButton("Zone_2_1 (CV)", MapResources::CastleValgrind_Zone_2_1));
+		mapList.push_back(this->buildDebugButton("Zone_2_0_a (CV)", MapResources::CastleValgrind_Zone_2_0_a));
 		mapList.push_back(this->buildDebugButton("Zone_2_0 (CV)", MapResources::CastleValgrind_Zone_2_0));
 		mapList.push_back(this->buildDebugButton("Zone_1_2 (CV)", MapResources::CastleValgrind_Zone_1_2));
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (CV)", MapResources::CastleValgrind_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (CV)", MapResources::CastleValgrind_Zone_1_0));
 
 		// ================== TODO ==================
-		// Traps: Organ gun, cannon, catapult, ballista, heaven hug
-		// Create train map, move train out of Zone 1_0 (or integrate it better)
-		// Finish maps and corresponding "dark" maps (alternatively a game flag that is toggled to load in the correct layers)
-		// Puzzles in dark maps can influence objects in normal maps. Typical inverse world puzzles.
-		// Another gauntlet with SET(x) instructions instead of CMOV(x)? This could fit outside and be zombie invasion themed.
-		// WIP flow:
-		// 	- Clock to go to dark side
-		// 	- Study default locked
-		// 	- Key is in the bar or something (maybe the barkeep has a hint about this)
-		// 	- Secret room behind throne room (dark side only, helps make shit easier for me) leading to 2_x zones
-		// Needs hexus battles
-		// Needs hexus puzzles
+		// Traps: Organ gun, cannon, catapult, ballista, heaven hug (FPU acceptable, given that jmps are pretty much done)
 
 		/*
 		See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.
-		- Barbarian				1_x		=> jmp 			--
-		- Thug					1_x		=> J[E]CXZ		%[E]CX = 0
-		- ReanimatedFighter		1_x		=> J[N]E/Z		ZF
-		- WereWolf				dark	=> J[N]P[E]		PF		// Odd or even! PF = 0 odd. All combinations valid except JNPE
-		- Wraith				dark	=> J[N]S		SF		// Sign flag set if the FIRST operand is negative. Can be used to block negative damage.
-		- Reaper				dark	=> J[N]O		OF
-		- Vampiress				dark	=> J[N]G[E]		ZF/SF/OF
-		- VampireLord			dark	=> J[N]L[E]		ZF/SF/OF
-		- Abomination			2_x		=> J[N]B[E]		ZF/OF
-		- SkeletalBaron			2_x		=> J[N]A[E]		ZF/OF
-		- Jack					2_x		=> J[N]C		CF		// Immortality. Copy undying logic, but include a subtract.
-		- [B] Agnes				2_x 	=> 
-		
+		X Thug					1_x		=> jmp 			--			Heavy blade
+		X Barbarian				1_x		=> jle			ZF/SF/OF	Defensive Stance
+		X ReanimatedFighter		1_x		=> jg			ZF/SF/OF	Diseased
+		X Wraith				dark	=> jne			ZF/SF/OF	Manifest <Spirit, invert rabies as damage buff>
+		X Abomination			dark	=> jnz			ZF/SF/OF	<Radiation, RNG per tick to do -5 dmg or something>
+		X Reaper				dark	=> je			ZF/SF/OF	<AngelFigurine, immortality>
+		X Vampiress				dark	=> jz			ZF/SF/OF	Leech <SwordGlowBlue, RNG mana steal?>
+		X VampireLord			dark	=> jl			ZF/SF/OF	Vampirism <SkullAndCrossbones, HP Steal>
+		X SkeletalBaron			dark	=> js			SF			Parry <ShieldAdorned, convert damage to zero>
+		X WereWolf				2_x		=> jge			ZF/SF/OF	Rabies <Fangs, speed drain>
+		X Jack					2_x		=> jns			SF			<Stab, Bloodletting RNG Per Tick>
+		X [B] Agnes				dark_t	=> jecxz		%ecx == 0	Bat Swarm <Bats, Bat Swarm RNG per tick to attack>
+
+		// Hexus puzzles:
+		// - A	=> 1_1 (Thug)
+		// - B	=> Town_Main (Reanimated Fighter)
+		// - C	=> Town_Study (Reaper)
+		// - D	=> 2_0_a (Wraith)
+		// - E	=> 2_1 (Abomination)
+		// - F	=> Town_Throne (Skeletal Baron)
+
 		- Garin					=> Town_Train
-		- Mabel					=> Study (H_1)
-		- Gaunt					=> Main (H_2)
-		- Rogas					=> Main (H_3)
-		- Tyracius				=> Main (H_4)
-		- Zana					=> Main_Dark (H_5)
-		- Atreus				=> Main (H_6)
-		- Illia					=> Main (H_7)
-		- Leon					=> Main (H_8)
+		- Zana					=> 1_2 (X H_1)
+		- Gaunt					=> Main (X H_2)
+		- Leon					=> Main (X H_3)
+		- Atreus				=> Main
+		- Mabel					=> Study (X H_5)
+		- Illia					=> Main
+		- Tyracius				=> 2_x (X H_6)
 		- Princess Opal			=> Town_Throne
-		- Leroy					=> ?
-		- King Redsong			=> Dark_Town_Throne
-		- King Redsong Slime	=> Town_Throne
+		- [Slime] King Redsong	=> [Dark_]Town_Throne
+		- Rogas					=> Town_Inn (X H_4)
 		- Leopold				=> Town_Alch
 		- Raven					=> Town_Inn
 		- Thurstan				=> Town_Smith
@@ -420,146 +496,167 @@ DeveloperScene::DeveloperScene()
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
-		mapList.push_back(this->buildDebugButton("Warp Room (LC)", MapResources::LambdaCrypts_Mages_Warp));
 		mapList.push_back(this->buildDebugButton("Alch (LC)", MapResources::LambdaCrypts_Town_Alch));
 		mapList.push_back(this->buildDebugButton("Inn (LC)", MapResources::LambdaCrypts_Town_Inn));
 		mapList.push_back(this->buildDebugButton("Smith (LC)", MapResources::LambdaCrypts_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Town (LC)", MapResources::LambdaCrypts_Town_Main));
+		mapList.push_back(this->buildDebugButton("Church (LC)", MapResources::LambdaCrypts_Town_Church));
 		mapList.push_back(this->buildDebugButton("Zone_4_1 (LC)", MapResources::LambdaCrypts_Zone_4_1));
+		mapList.push_back(this->buildDebugButton("Zone_4_0_a (LC)", MapResources::LambdaCrypts_Zone_4_0_a));
 		mapList.push_back(this->buildDebugButton("Zone_4_0 (LC)", MapResources::LambdaCrypts_Zone_4_0));
+		mapList.push_back(this->buildDebugButton("Zone_3_3 (LC)", MapResources::LambdaCrypts_Zone_3_3));
+		mapList.push_back(this->buildDebugButton("Zone_3_2 (LC)", MapResources::LambdaCrypts_Zone_3_2));
 		mapList.push_back(this->buildDebugButton("Zone_3_1 (LC)", MapResources::LambdaCrypts_Zone_3_1));
 		mapList.push_back(this->buildDebugButton("Zone_3_0 (LC)", MapResources::LambdaCrypts_Zone_3_0));
-		mapList.push_back(this->buildDebugButton("Zone_2_2 (LC)", MapResources::LambdaCrypts_Zone_2_2));
-		mapList.push_back(this->buildDebugButton("Zone_2_1 (LC)", MapResources::LambdaCrypts_Zone_2_1));
-		mapList.push_back(this->buildDebugButton("Zone_2_0_a (LC)", MapResources::LambdaCrypts_Zone_2_0_a));
+		mapList.push_back(this->buildDebugButton("Zone_3_Dev (LC)", MapResources::LambdaCrypts_Zone_3_0_Dev));
 		mapList.push_back(this->buildDebugButton("Zone_2_0 (LC)", MapResources::LambdaCrypts_Zone_2_0));
+		mapList.push_back(this->buildDebugButton("Zone_1_2 (LC)", MapResources::LambdaCrypts_Zone_1_2));
+		mapList.push_back(this->buildDebugButton("Zone_1_1_a (LC)", MapResources::LambdaCrypts_Zone_1_1_a));
+		mapList.push_back(this->buildDebugButton("Zone_1_1 (LC)", MapResources::LambdaCrypts_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (LC)", MapResources::LambdaCrypts_Zone_1_0));
 
 		// ================== TODO ================== 
 		// Traps: floating bombs, guillotine, spiked pendulum, spiked rotators
-		// Needs enemy scripting according to notes on which instructions this zone covers
-		// Needs hexus puzzles
-		// 3x more enemies than is standard, which makes this harder
-		// 3 crypts that need to be cleared. Can either be "orderless" or force linearity with keys.
-		//	- town key (rusty?), bone key, demon key, This helps force a progression of 1_x => town => 2_x => 3x		
-		// 1_x overworld enemies (zombie, pig, undead)
-		// 2_x assassin, fiend, mystic (left crypt / hole)
-			// TODO: Maybe redo this as a dirt environment, to differentiate it from crypts and break up LC repetativeness
-		// 3_x warlock, hunter, knight (right crypt, unlock w/ bone)
-		// 4_x cleaver, knight, priestess (central crypt, unlock w/ demon)
-		// Dual boss with King Zul and Lazarus. Give Lazarus a rez or self rez?
 
 		/*
-		- Abomination			=>  
-		- Assassin				=>  
-		- BoneFiend				=>  
-		- BoneKnight				=>  
-		- Hunter				=>  
-		- ZombieElric			=>  
-		- ReanimatedPig			=>  
-		- Mystic				=>  
-		- Zombie				=>  
-		- Undead				=>  
-		- SkeletalPriestess		=>  
-		- SkeletalKnight		=>  
-		- SkeletalCleaver		=>  
-		- [B] Lazarus			=> 
-		- [B] KingZul			=>  
+		X Assassin				=>  1_x <ThrowingStar,		fiadd> 		=> Focus / add to damage
+		X BoneFiend				=>  1_x <AxeGlowPurp,		fdiv>  		=> CursedSwings debuff / reduce damage by 75% or something (int)
+		X Mystic				=>  1_x <VoodooZombie,		fimul> 		=> Hex / speed decrease
+		X ReanimatedPig			=>  2_x <Piggy,				fisub> 		=> Thick Hide / dmg decrease
+		X Zombie				=>  2_x <ZombieGrasp,		fild/fistp> => Zombie Grasp / raw damage dealt debuff
+		X Undead				=>  2_x <DeadGrasp,			fabs>		=> Dead Grasp / convert damage to healing
+		X Zombie Elric			=> 	2_x 								=> Recycle (ZombieGrasp)
+		X BoneKnight			=>  3_x <ShieldGlowOrange,	fidiv> 		=> Shield Wall / constant 25% damage recv
+		X Warlock				=>  3_x <WandSkeleton,		fmul/frndint> 	=> Enchantment / 50% damage increase (rounded)
+		X Hunter				=>  3_x <PoisonSpears,		ja>  		=> PoisonedArrows - either radiation or diseased copy
+		X [B] Lazarus			=>	3_x <Tombstone, 		fcmove> 	=> UnholyProtection (rename) / undying effect
+		X [B] Lazarus			=>	3_x <GhostBolts,		fchs> 		=> Ghostbolts / reflectable spell (Copy FireBall I guess?) but make 1 per teammate (ie 2 lol)
+		X SkeletalPriestess		=>  4_x <Book,				jbe> 		=> Spell of Binding - Speed Decrease
+		X SkeletalKnight		=>  4_x <SwordGlowPurp,		jae>  		=> CursedBlade - Reduce damage
+		X SkeletalCleaver		=>  4_x <SwordGlowYel,		jb> 		=> UnholyBlade - Damage to healing
+		X [B] KingZul			=>  4_x <Daze,			fcmovbe> 		=> Daze / chance to do less damage (use cool daze FX)
 
+		Avail for traps:
+		- SpellBind
+		- SpellCast
+		- WandCrystal
+		- fldpi + fsqrt + fcos/fsin/fptan/fpatan on launcher direction (can also use sqrt for distance based damage or something)
+		- fldpi/fldz/fld1
+		- other fcmov{cc}
+
+		// Hexus puzzles:
+		// - A	=> 1_1 (Bone fiend)
+		// - B	=> 2_0 (zombie)
+		// - C	=> Town_Main (Undead)
+		// - D	=> Town_Church (Reanimated Pig)
+		// - E	=> 3_0 (Bone Knight)
+		// - F	=> 4_0_a (Skeletal Priestess)
+		
+		- Ursula				=> 1_x (H1)
+		- Thion					=> Town_Main (H2)
+		- Viper					=> Town_Inn (H3)
 		- Amelia				=> Town_Church
 		- Azmus					=> Town_Smith
-		- Elric					=> ? Town_Home
 		- Garrick				=> Town_Inn
-		- Johann				=> ? Crypts
-		- Princess Nebea		=> ? Town_Home
-		- Roger					=> Town_Main
-		- Thion					=> Town_Main
-		- Ursula				=> Town_Main
+		- Johann				=> Town_Church (H4)
+		- Princess Nebea		=> Town_Church
+		- Zelina				=> 3_x (H5)
+		- Roger					=> 4_x (H6)
 		- Vesuvius				=> Town_Alch
-		- Viper					=> Town_Main
-		- Zelina				=> Town_Main
+		- [Zombie] Elric		=> 2_x
 		*/
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
-	// CHAPTER 6 - XMM*
+	// CHAPTER 6 - XMM* / More Jumps / Misc
 	{
-		ClickableTextNode* titleButton = this->buildTitleButton("Daemons' Hallow");
+		ClickableTextNode* titleButton = this->buildTitleButton("Firewall Fissure");
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
-		mapList.push_back(this->buildDebugButton("Warp Room (DH)", MapResources::DaemonsHallow_Mages_Warp));
-		mapList.push_back(this->buildDebugButton("Town Main (DH)", MapResources::DaemonsHallow_Town_Main));
-		mapList.push_back(this->buildDebugButton("Alch (DH)", MapResources::DaemonsHallow_Town_Alch));
-		mapList.push_back(this->buildDebugButton("Inn (DH)", MapResources::DaemonsHallow_Town_Inn));
-		mapList.push_back(this->buildDebugButton("Smith (DH)", MapResources::DaemonsHallow_Town_Smith));
-		mapList.push_back(this->buildDebugButton("Zone_3_1 (DH)", MapResources::DaemonsHallow_Zone_3_1));
-		mapList.push_back(this->buildDebugButton("Zone_3_0 (DH)", MapResources::DaemonsHallow_Zone_3_0));
-		mapList.push_back(this->buildDebugButton("Zone_2_3 (DH)", MapResources::DaemonsHallow_Zone_2_3));
-		mapList.push_back(this->buildDebugButton("Zone_2_2 (DH)", MapResources::DaemonsHallow_Zone_2_2));
-		mapList.push_back(this->buildDebugButton("Zone_2_1 (DH)", MapResources::DaemonsHallow_Zone_2_1));
-		mapList.push_back(this->buildDebugButton("Zone_2_0 (DH)", MapResources::DaemonsHallow_Zone_2_0));
-		mapList.push_back(this->buildDebugButton("Zone_1_4 (DH)", MapResources::DaemonsHallow_Zone_1_4));
-		mapList.push_back(this->buildDebugButton("Zone_1_3 (DH)", MapResources::DaemonsHallow_Zone_1_3));
-		mapList.push_back(this->buildDebugButton("Zone_1_2 (DH)", MapResources::DaemonsHallow_Zone_1_2));
-		mapList.push_back(this->buildDebugButton("Zone_1_1 (DH)", MapResources::DaemonsHallow_Zone_1_1));
-		mapList.push_back(this->buildDebugButton("Zone_1_0_a (DH)", MapResources::DaemonsHallow_Zone_1_0_a));
-		mapList.push_back(this->buildDebugButton("Zone_1_0 (DH)", MapResources::DaemonsHallow_Zone_1_0));
+		mapList.push_back(this->buildDebugButton("Town Main (FF)", MapResources::FirewallFissure_Town_Main));
+		mapList.push_back(this->buildDebugButton("Alch (FF)", MapResources::FirewallFissure_Town_Alch));
+		mapList.push_back(this->buildDebugButton("Inn (FF)", MapResources::FirewallFissure_Town_Inn));
+		mapList.push_back(this->buildDebugButton("Smith (FF)", MapResources::FirewallFissure_Town_Smith));
+		mapList.push_back(this->buildDebugButton("Home Mittens (FF)", MapResources::FirewallFissure_Town_Home1));
+		mapList.push_back(this->buildDebugButton("Home Hades (FF)", MapResources::FirewallFissure_Town_Home2));
+		mapList.push_back(this->buildDebugButton("Zone_3_4 (FF)", MapResources::FirewallFissure_Zone_3_4));
+		mapList.push_back(this->buildDebugButton("Zone_3_3 (FF) Azmodeus", MapResources::FirewallFissure_Zone_3_3));
+		mapList.push_back(this->buildDebugButton("Zone_3_2 (FF)", MapResources::FirewallFissure_Zone_3_2));
+		mapList.push_back(this->buildDebugButton("Zone_3_1_Dev (FF)", MapResources::FirewallFissure_Zone_3_Dev));
+		mapList.push_back(this->buildDebugButton("Zone_3_1 (FF)", MapResources::FirewallFissure_Zone_3_1));
+		mapList.push_back(this->buildDebugButton("Zone_3_0 (FF)", MapResources::FirewallFissure_Zone_3_0));
+		mapList.push_back(this->buildDebugButton("Zone_2_3 (FF) Lava Escape", MapResources::FirewallFissure_Zone_2_3));
+		mapList.push_back(this->buildDebugButton("Zone_2_2 (FF)", MapResources::FirewallFissure_Zone_2_2));
+		mapList.push_back(this->buildDebugButton("Zone_2_1 (FF)", MapResources::FirewallFissure_Zone_2_1));
+		mapList.push_back(this->buildDebugButton("Zone_2_0 (FF)", MapResources::FirewallFissure_Zone_2_0));
+		mapList.push_back(this->buildDebugButton("Zone_1_0_a (FF)", MapResources::FirewallFissure_Zone_1_0_a));
+		mapList.push_back(this->buildDebugButton("Zone_1_0 (FF)", MapResources::FirewallFissure_Zone_1_0));
 
 		// ================== TODO ================== 
 		// Traps: Fire bird, fire launcher, TNT barrel, mortar
-		// Hexus puzzles
-		// Hexus fights
-		// 1_x should be the initial overworld + caves (Dragon, Ghost, Elemental, Golem)
-		// 2_x should be more caves connecting town to the 3_x maps (Shaman, Swordsman, Rogue)
-		// 3_x is all overworld (Tiger, Warrior, Grunt, Archer)
 
 		/*
 		Surface:
-		- DemonRogue			=>  1_X
-		- DemonShaman			=>  1_X
-		- DemonSwordsman		=>  1_X
+			X DemonRogue			=>  1_X		<SkullGlowRed, 		movss> 	=> BloodBoil / Fixed damage debuff
+			X DemonShaman			=>  1_X		<BookSpellsFire,	addss> 	=> Cauterize / Self Heal Tick
+			X DemonSwordsman		=>  1_X		<AxeGlowRed,		mulss> 	=> Scalding Blade / Damage+
 		Caves:
-		- DemonDragon			=>  2_X
-		- DemonGhost			=>  2_X
-		- FireElemental			=>  2_X
-		- LavaGolem				=>  2_X
+			X LavaGolem				=>  2_X		<Fire,			rdrand> 		=> Enflame / Burn Tick
+			X DemonDragon			=>  2_X		<Bone,			divss> 			=> Calcify / Defense+ 
+			X DemonGhost			=>  2_X		<SkullLavaEyes,	xchg>		 	=> Inner Fire / Siphon HP tick
+			X FireElemental			=>  2_X		<FireBolts,		cmpss/comiss> 	=> Fire Rain / AoE damage
 		Surface 2?
-		- DemonArcher			=>  3_X
-		- DemonGrunt			=>  3_X
-		- DemonWarrior			=>  3_X
-		- FireTiger				=>  3_X
-		- [B] Asmodeus			=> 	4_X
-		
+			X DemonArcher			=>  3_X		<CrossBow,			call/ret>	=> Arrow Volley / team compare damage
+			X DemonGrunt			=>  3_X		<DaggerGlowYellow,	sete> 		=> Seeking Blade / Damage+ based on rng
+			X DemonWarrior			=>  3_X		<FlamingScroll,		setne> 		=> Melt / Damage- based on RNG
+			X FireTiger				=>  3_X		<Chains,			bswap> 		=> Entwined / Health Link
+			X [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		subss>		=> Lava Axe / Giant axe that falls counter-clockwise, redirectable
+
+		Avail for traps:
+		- Dice
+		- Candle
+		- SkullAndCrossbones
+		- Skull2
+		- SpellFire
+		- SunShield
+
 		-----------------
 		
-		- Ash				=> 1_x (H)
-		- Hades				=> 2_x (H)
-		- Cindra			=> 3_x (barricade)(H?)
-		- Scaldor			=> 3_x (barricade)(H?)
-		- Magnus			=> 3_x (barricade)(H?)
-		- Mittens			=> 2_x (H)
-		- Celeste			=> 3_x (barricade)(H?)
-		- Lucifer			=> Town (H)
-		- Brine				=> Town_Main (Exterior) (H)
-		- Queen Elise		=> Town_Main
-		- Pan				=> Alch
-		- Ragnis			=> Smith
-		- Thatcher			=> Inn
+		// Hexus puzzles:
+		// - A	=> 1_1 (xyz)
+		// - B	=> 1_1 (xyz)
+		// - C	=> 1_1 (xyz)
+		// - D	=> 1_1 (xyz)
+		// - E	=> 1_1 (xyz)
+		// - F	=> 1_1 (xyz)
+
+		X Ash			=> 1_x (H1)
+		X Lucifer		=> 2_x (H2)
+		X Brine			=> Town_Main (Exterior) (H3)
+		X Hades			=> Town_Main (H4)
+		X Mittens		=> Town_Main
+		X Celeste		=> Town_Main
+		X Cindra		=> Town_Main
+		X Scaldor		=> 3_x (barricade) (H5)
+		X Magnus		=> 3_x (barricade) (H6)
+		X Queen Elise	=> Town_Main
+		X Pan			=> Alch
+		X Ragnis		=> Smith
+		X Thatcher		=> Inn
 		- Finch			? Zone 2_x Flight Master -- Start flight master quest?
 		*/
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
-	// CHAPTER 7 - Jumps/More compares
+	// CHAPTER 7 - SET (really? What a waste)
 	{
 		ClickableTextNode* titleButton = this->buildTitleButton("Ballmer Peaks");
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
-		mapList.push_back(this->buildDebugButton("Warp Room (BP)", MapResources::BallmerPeaks_Mages_Warp));
 		mapList.push_back(this->buildDebugButton("Alch (BP)", MapResources::BallmerPeaks_Town_Alch));
 		mapList.push_back(this->buildDebugButton("Inn (BP)", MapResources::BallmerPeaks_Town_Inn));
 		mapList.push_back(this->buildDebugButton("Smith (BP)", MapResources::BallmerPeaks_Town_Smith));
@@ -577,24 +674,23 @@ DeveloperScene::DeveloperScene()
 
 		// ================== TODO ================== 
 		// Traps: Icicle, bear trap (?), { cannon or catapult or portal } (to VS)
-		// Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
-		// 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
-		// 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
-		// 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
 
 		/*
-		- PenguinGrunt		1_x		=> jmp 			--
-		- PenguinWarrior	1_x		=> J[E]CXZ		%[E]CX = 0
-		- Viking			1_x		=> J[N]E/Z		ZF
-		- IceGolem			2_x		=> J[N]P[E]		PF		// Odd or even! PF = 0 odd. All combinations valid except JNPE
-		- Yeti				2_x		=> J[N]S		SF		// Sign flag set if the FIRST operand is negative. Can be used to block negative damage.
-		- WaterElemental	2_x		=> J[N]O		OF
-		- FrostFiend		2_x 	=> J[N]G[E]		ZF/SF/OF
-		- GoblinElf			3_x		=> J[N]L[E]		ZF/SF/OF
-		- ToySoldierGoblin	3_x		=> J[N]B[E]		ZF/OF
-		- SnowFiend			3_x		=> J[N]A[E]		ZF/OF
-		- [B?] Santa		3_x		=> J[N]C		CF		// Immortality. Copy undying logic, but include a subtract.
-		- [B] Cryogen		3_x 	=> 
+		ASM Reference (General instructions) https://docs.oracle.com/cd/E26502_01/html/E28388/ennbz.html#eoizv
+		ASM Reference (AVX instructions) https://docs.oracle.com/cd/E36784_01/html/E36859/gntbd.html
+
+		- PenguinGrunt		1_x		=> <Feather, 		setge> // Speed?
+		- PenguinWarrior	1_x		=> <AxeGlowBlue, 	setl> 
+		- Viking			1_x		=> <Anchor, 		setle> 
+		- IceGolem			2_x		=> <Diamond, 		setg> // Immortality. Copy undying logic, but include a subtract.
+		- Yeti				2_x		=> <AxeMoon?, 		setng> 
+		- WaterElemental	2_x		=> <SpellImpactBlue, 	setnge>
+		- FrostFiend		2_x 	=> <Blizzard, 			setnl> 
+		- GoblinElf			3_x		=> <AxeGlowGreen, 		setnle> 
+		- ToySoldierGoblin	3_x		=> <ChristmasPresent, 	setns> // Non-negative
+		- SnowFiend			3_x		=> <Snowflake, 			setnz> // Non-zero
+		- [B?] Santa		3_x		=> <Gift, 				sets> // Negative // RNG?
+		- [B] Cryogen		3_x 	=> <SwordsLight, 		setz> // Zero
 
 		- Aspen
 		- Bodom
@@ -612,29 +708,32 @@ DeveloperScene::DeveloperScene()
 		X Irmik => SkyMaster
 		*/
 
-		// Needs enemy scripting according to notes on which instructions this zone covers
-		// Needs hexus puzzles
-
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
-	// CHAPTER 8 - bswap? lol. Could retrofit Setz instructions, maybe build out this zone after all.
+	// CHAPTER 8 - Call/Ret?
 	{
 		ClickableTextNode* titleButton = this->buildTitleButton("Void Star");
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
-		mapList.push_back(this->buildDebugButton("Warp Room (VS)", MapResources::VoidStar_Mages_Warp));
 		mapList.push_back(this->buildDebugButton("Alch (VS)", MapResources::VoidStar_Town_Alch));
 		mapList.push_back(this->buildDebugButton("Smith (VS)", MapResources::VoidStar_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Town (VS)", MapResources::VoidStar_Town_Main));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (VS)", MapResources::VoidStar_Zone_1_0));
-
-		// ================== TODO ================== 
-		// Likely just 1-2 interim maps before boss. Keep this zone really short.
+		mapList.push_back(this->buildDebugButton("Zone_1_1 (VS)", MapResources::VoidStar_Zone_1_1));
+		mapList.push_back(this->buildDebugButton("Zone_1_2 (VS)", MapResources::VoidStar_Zone_1_2));
 		// Traps: Laser
-		// Needs enemy scripting according to notes on which instructions this zone covers
-		// Needs hexus puzzles
+
+		/*
+		Enemies
+		- Exterminator				=>  
+		- Void Demon				=>  
+		- [B] Perceptron			=>  
+
+		Available icons:
+		- ShovelGlowGreen
+		*/
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
@@ -645,30 +744,10 @@ DeveloperScene::DeveloperScene()
 	- EF => CV (blimp 2) - Finch
 	- CV => BP (blimp 3) - Irmik
 	- CV => LC (train) - Garin
-	- DM => DH (viking ship or smth) - Drak
+	- DM => FF (viking ship or smth) - Drak
 	- BP => BP (viking ship or smth) - <Any>
 
-	- Exterminator			=>  
-	- VoidDemon				=>  
-
-	Deprecated:
-	- Gargoyle				=>  
-	- LightningGolem		=>  
-	- Shade					=>  
-
-	- VS - LOOP / CALL / RET
-		- [B] EvilEye			=>  
-
 	======================
-
-	Puzzles:
-	A				EF	2_0		orc-grunt
-	B				EF	2_2		
-	C				EF	2_4_a
-	D				EF	2_4
-	E				EF	2_6
-	F				EF	3_0
-	G				EF	3_1
 
 	Level order / Mage
 	EF		//	Fraya? Mabel?
@@ -676,7 +755,7 @@ DeveloperScene::DeveloperScene()
 	DM		//	Cypress
 	CV		//	Merlin
 	BP		//	Aster
-	DH		//	Igneus
+	FF		//	Igneus
 	LC		//	Necron
 	VS		//	Marcel
 
@@ -684,39 +763,21 @@ DeveloperScene::DeveloperScene()
 
 	------------------------
 
-	Lioness			Zone 1_x
-	LionMan			Zone 1_x
-	Tigress			Zone 1_x
-	TigerMan		Zone 1_x
+	X Lioness			Zone 1_x
+	X LionMan			Zone 1_x
+	X Tigress			Zone 1_x
+	X TigerMan		Zone 1_x
 
-	Medusa			Zone 2_x
-	Mermaid			Zone 2_x
-	Minotaur		Zone 2_x
+	X Medusa			Zone 2_x
+	X Mermaid			Zone 2_x
+	X Minotaur		Zone 2_x
 
-	Anubis pup		Zone 3_x
-	Anubis warrior	Zone 3_x
-	Mummy priest	Zone 3_x
-	Mummy warrior	Zone 3_x
+	X Anubis pup		Zone 3_x
+	X Anubis warrior	Zone 3_x
+	X Mummy priest	Zone 3_x
+	X Mummy warrior	Zone 3_x
 
-	Osiris			Zone 3_x (boss)
-
-	Omit these:
-	Alder			_dupe_
-	Cypress			_dupe_ Zone x_x (spellbook)
-	Sarude			_dupe_
-
-	====== SPELLBOOKS ======
-
-	Water - EF
-	Wind - EF
-	Lightning - UR
-	Holy - UR
-	Nature - Mines?
-	<none in castle>
-	Fire - Daemons
-	Frost - Ballmer
-	Shadow - Crypts
-	Arcane - Void?
+	X Osiris			Zone 3_x (boss)
 
 	===== Animals ====
 
@@ -743,7 +804,7 @@ DeveloperScene::DeveloperScene()
 	// DM
 	X Bat			DM	Inn upstairs
 	X Bird			DM	1_1_a
-	X Turtle			DM	2_0
+	X Turtle		DM	2_0
 	X Raccoon		DM	2_3
 	X Rhino			DM	3_x
 	X Sheep			DM	Home Godiva
@@ -754,12 +815,30 @@ DeveloperScene::DeveloperScene()
 
 	// CV
 	X Beaver		CV Inn upstairs
-	Pig				CV
-	Hedgehog		CV 
-	Horse			CV 
-	Koala			CV 
-	Panda			CV 
-	Parrot			CV 
+	X Pig			CV Dark Inn Upstairs
+	X Hedgehog		CV 
+	X Horse			CV 
+	X Koala			CV 
+	X Panda			CV 
+	X Parrot		CV 
+
+	// LC
+	X Bull			LC Inn upstairs
+	X Chicken		LC 2_2
+	X Lion			LC Church upstairs
+	X MountainLion	LC 2_0
+	X Tiger			LC 3_2
+	X Wolf			LC 4_0_a
+	X Worm			LC 1_1_a
+
+	// FF
+	X Bee			FF 1_x
+	X Ladybug		FF 1_x
+	X Dinosaur		FF 2_x
+	X Lizard		FF 2_x
+	X Snake			FF 3_x
+	X Crocodile		FF 3_x
+	X Tucan			FF Inn upstairs
 
 	// BP
 	Blowfish		BP	??
@@ -770,29 +849,8 @@ DeveloperScene::DeveloperScene()
 	Yeti			BP	??
 	Goat			BP	Town
 
-	// DH
-	X Bee			DH 1_x
-	Crocodile		DH 1_x
-	Dinosaur		DH 2_x
-	Ladybug			DH 2_x
-	Lizard			DH 3_x
-	Snake			DH 3_x
-	Tucan			DH Town
-
-	// LC
-	X Bull			LC Inn upstairs
-	Chicken			LC 2_2
-	Lion
-	MountainLion
-	Tiger
-	Wolf
-	Worm
-
 	Spell ideas:
-	- Call of the Dead (skele's attacking from portal under target) - https://www.gamedevmarket.net/asset/skeleton-warrior-mega-game-sprite-pack/
-	- Bat attack AoE (Ch4)
 	- Hot potato health decrease
-	- Blind (details tbd)
 
 	WOOD		- T0 - EF
 	COPPER		- T1 - EF
@@ -800,7 +858,7 @@ DeveloperScene::DeveloperScene()
 	GOLD		- T3 - DM
 	MITHRIL		- T4 - DM
 	CRYSTAL		- T5 - BP
-	DEMONIC		- T6 - DH
+	DEMONIC		- T6 - FF
 	BONE		- T7 - LC
 	VOID		- T8 - VS
 
@@ -861,15 +919,14 @@ DeveloperScene::DeveloperScene()
 	Witch		-> T1.5
 	Wooden		-> T1
 
-
-	Archers		-> T6
 	Bone		-> T8
-	Frost		-> T5
 	Hunters		-> T1
 	Composite	-> T2
-	Ivory		-> T7
 	Olympus		-> T3
 	War			-> T4
+	Frost		-> T5
+	Archers		-> T6
+	Ivory		-> T7
 
 	// Gems
 	Quartz		- T2
@@ -886,7 +943,7 @@ DeveloperScene::DeveloperScene()
 	Gold		- T3		DM	
 	Mithril		- T5		CV
 	Crystal		- T4		BP
-	Sulf		- T6		DH
+	Sulf		- T6		FF
 	Bone		- T7		LC
 	Obsidian	- T8		VS
 
@@ -1027,6 +1084,8 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 			SaveManager::DeleteAllProfileData(UNUSED_SAVE_PROFILE);
 			SaveManager::SetActiveSaveProfile(UNUSED_SAVE_PROFILE);
 
+			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyQuickPotionUnlocked, Value(true));
+
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookArcane, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookFire, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookFrost, Value(true));
@@ -1037,12 +1096,18 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 			
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyFound, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGuanoFound, Value(true));
-			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Gecky::MapKey));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyFound, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGrimFound, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(GuanoPetrified::MapKey));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Gecky::MapKey));
+			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Grim::MapKey));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
+
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyEq, Value(8));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyEq, Value(7));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGrimEq, Value(10));
 			
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyRespawnMap, Value(mapResource));
 

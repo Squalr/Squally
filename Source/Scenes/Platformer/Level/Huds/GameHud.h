@@ -9,8 +9,12 @@ namespace cocos2d
 
 class CinematicIndicator;
 class CurrencyDisplay;
+class HelpArrow;
 class ObjectiveDisplay;
 class PlatformerDialogueBox;
+class QuickPotion;
+class QuickSwap;
+class QuickWarp;
 class StatsBars;
 
 class GameHud : public Hud
@@ -25,15 +29,33 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onHackerModeEnable() override;
+	void onHackerModeDisable() override;
 	void update(float dt) override;
 
 private:
 	typedef Hud super;
 
+	void refreshButtonVisibility();
+
+	enum class HelpArrowTarget
+	{
+		QuickPotion,
+		QuickWarp,
+		QuickSwap,
+	};
+
 	cocos2d::LayerColor* flashLayer = nullptr;
 	CurrencyDisplay* currencyDisplay = nullptr;
+	QuickPotion* quickPotion = nullptr;
+	QuickWarp* quickWarp = nullptr;
+	QuickSwap* quickSwap = nullptr;
+	cocos2d::LayerColor* backdrop = nullptr;
+	HelpArrow* helpArrow = nullptr;
 	ObjectiveDisplay* objectiveDisplay = nullptr;
 	StatsBars* statsBars = nullptr;
 	CinematicIndicator* cinematicIndicator = nullptr;
 	PlatformerDialogueBox* dialogueBox = nullptr;
+
+	HelpArrowTarget helpArrowTarget = HelpArrowTarget::QuickPotion;
 };

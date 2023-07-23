@@ -25,8 +25,7 @@ Igneus::Igneus(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_Mages_Igneus_Animations,
 	EntityResources::Npcs_Mages_Igneus_Emblem,
 	CSize(112.0f, 160.0f),
-	1.05f,
-	Vec2(0.0f, 0.0f))
+	1.05f)
 {
 }
 
@@ -41,5 +40,5 @@ Vec2 Igneus::getDialogueOffset()
 
 LocalizedString* Igneus::getEntityName()
 {
-	return Strings::Platformer_Entities_Names_Npcs_DaemonsHallow_Igneus::create();
+	return Strings::Platformer_Entities_Names_Npcs_FirewallFissure_Igneus::create();
 }

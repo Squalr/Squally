@@ -22,6 +22,7 @@
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Strings.h"
@@ -71,6 +72,19 @@ ShopItem::ShopItem(ValueMap& properties) : super(properties)
 
 ShopItem::~ShopItem()
 {
+}
+
+void ShopItem::onEnter()
+{
+	super::onEnter();
+
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
+	{
+		squally->watchForComponent<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		{
+			this->playerCurrencyInventory = entityInventoryBehavior->getCurrencyInventory();
+		});
+	}, Squally::MapKey);
 }
 
 void ShopItem::onEnterTransitionDidFinish()
@@ -123,20 +137,31 @@ void ShopItem::initializeListeners()
 			return;
 		}
 
-		NotificationEvents::TriggerConfirmation(NotificationEvents::ConfirmationArgs(
-			Strings::Platformer_Dialogue_Shopkeepers_DoYouWantToBuy::create()
-				->setStringReplacementVariables(this->item->getString()),
-			[=]()
-			{
-				this->sellItem();
-				
-				return false;
-			},
-			[=]()
-			{
-				return false;
-			}
-		));
+		if (this->canSellItem())
+		{
+			NotificationEvents::TriggerConfirmation(NotificationEvents::ConfirmationArgs(
+				Strings::Platformer_Dialogue_Shopkeepers_DoYouWantToBuy::create()
+					->setStringReplacementVariables(this->item->getString()),
+				[=]()
+				{
+					this->sellItem();
+					
+					return false;
+				},
+				[=]()
+				{
+					return false;
+				}
+			));
+		}
+		else
+		{
+			NotificationEvents::TriggerNotificationTakeover(NotificationEvents::NotificationTakeoverArgs(
+				Strings::Platformer_Dialogue_Shopkeepers_InsufficientFundsTitle::create(),
+				Strings::Platformer_Dialogue_Shopkeepers_InsufficientFundsDescription::create(),
+				SoundResources::Menus_Error1
+			));
+		}
 	});
 }
 
@@ -150,33 +175,32 @@ void ShopItem::deactivate()
 	this->activationNode->setVisible(false);
 }
 
+bool ShopItem::canSellItem()
+{
+	if (!this->available || this->playerCurrencyInventory == nullptr)
+	{
+		return false;
+	}
+
+	int playerCurrency = this->playerCurrencyInventory->getCurrencyCount(IOU::getIOUIdentifier());
+
+	return this->itemCost >= 0 && playerCurrency >= this->itemCost;
+}
+
 void ShopItem::sellItem()
 {
-	if (!this->available)
+	if (!this->canSellItem())
 	{
 		return;
 	}
 
-	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
+	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ this->item->clone() }));
+	playerCurrencyInventory->removeCurrency(IOU::getIOUIdentifier(), this->itemCost);
+
+	if (dynamic_cast<HexusCard*>(this->item) != nullptr)
 	{
-		squally->watchForComponent<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
-		{
-			CurrencyInventory* playerCurrencyInventory = entityInventoryBehavior->getCurrencyInventory();
-
-			int playerCurrency = playerCurrencyInventory->getCurrencyCount(IOU::getIOUIdentifier());
-			
-			if (this->itemCost >= 0 && playerCurrency >= this->itemCost)
-			{
-				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ this->item->clone() }));
-				playerCurrencyInventory->removeCurrency(IOU::getIOUIdentifier(), this->itemCost);
-
-				if (dynamic_cast<HexusCard*>(this->item) != nullptr)
-				{
-					this->removeShopItem();
-				}
-			}
-		});
-	}, Squally::MapKey);
+		this->removeShopItem();
+	}
 }
 
 void ShopItem::removeShopItem()

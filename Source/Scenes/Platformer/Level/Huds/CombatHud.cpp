@@ -67,13 +67,13 @@ void CombatHud::initializeListeners()
 
 		if (args != nullptr)
 		{
-			for (auto next : this->playerPartyStatsBars)
+			for (StatsBars* next : this->playerPartyStatsBars)
 			{
 				next->setSelected(next->getStatsTarget() == args->target);
 				next->getStatsTargetAsTimelineEntry()->setSelected(next->getStatsTarget() == args->target);
 			}
 
-			for (auto next : this->enemyPartyStatsBars)
+			for (StatsBars* next : this->enemyPartyStatsBars)
 			{
 				next->setSelected(next->getStatsTarget() == args->target);
 				next->getStatsTargetAsTimelineEntry()->setSelected(next->getStatsTarget() == args->target);
@@ -83,13 +83,13 @@ void CombatHud::initializeListeners()
 	
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventResumeTimeline, [=](EventCustom* eventCustom)
 	{
-		for (auto next : this->playerPartyStatsBars)
+		for (StatsBars* next : this->playerPartyStatsBars)
 		{
 			next->setSelected(false);
 			next->getStatsTargetAsTimelineEntry()->setSelected(false);
 		}
 
-		for (auto next : this->enemyPartyStatsBars)
+		for (StatsBars* next : this->enemyPartyStatsBars)
 		{
 			next->setSelected(false);
 			next->getStatsTargetAsTimelineEntry()->setSelected(false);
@@ -104,7 +104,7 @@ void CombatHud::bindStatsBars(std::vector<TimelineEntry*> friendlyEntries, std::
 	this->playerPartyStatsBars.clear();
 	this->enemyPartyStatsBars.clear();
 
-	for (auto next : friendlyEntries)
+	for (TimelineEntry* next : friendlyEntries)
 	{
 		StatsBars* statsBars = StatsBars::create();
 		
@@ -115,7 +115,7 @@ void CombatHud::bindStatsBars(std::vector<TimelineEntry*> friendlyEntries, std::
 		this->playerPartyStatsNode->addChild(statsBars);
 	}
 
-	for (auto next : enemyEntries)
+	for (TimelineEntry* next : enemyEntries)
 	{
 		StatsBars* statsBars = StatsBars::create();
 		
@@ -126,6 +126,8 @@ void CombatHud::bindStatsBars(std::vector<TimelineEntry*> friendlyEntries, std::
 		this->enemyPartyStatsNode->addChild(statsBars);
 	}
 
+	// Pascale triangle ordering for deciding where enemy stats bars should appear. Doesn't generally matter since generally there are
+	// only 3 stats bars, but a few places in the game can have more (ie Gorgon & Orthrus fight)
 	static const std::vector<int> PascaleTriangleX = { 0, 1, 0, 2, 1, 0, /*3,*/ 2, 1, 0, /* 4, 3, */ 2, 1, 0 };
 	static const std::vector<int> PascaleTriangleY = { 0, 0, 1, 0, 1, 2, /*0,*/ 1, 2, 3, /* 0, 1, */ 2, 3, 4 };
 	const float SpacingX = 364.0f;

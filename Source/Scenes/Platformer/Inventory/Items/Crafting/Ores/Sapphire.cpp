@@ -20,7 +20,7 @@ Sapphire* Sapphire::create()
 	return instance;
 }
 
-Sapphire::Sapphire() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 68 }}), ItemMeta(20000))
+Sapphire::Sapphire() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 12 * 4 }}), ItemMeta(20000))
 {
 }
 
@@ -40,7 +40,7 @@ LocalizedString* Sapphire::getString()
 
 const std::string& Sapphire::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_Sapphire;
+	return ItemResources::Crafting_Smithing_T4_Sapphire;
 }
 
 const std::string& Sapphire::getIdentifier()

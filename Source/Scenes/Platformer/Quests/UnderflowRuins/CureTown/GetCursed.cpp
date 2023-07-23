@@ -99,7 +99,7 @@ void GetCursed::onLoad(QuestState questState)
 	});
 }
 
-void GetCursed::onActivate(bool isActiveThroughSkippable)
+void GetCursed::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

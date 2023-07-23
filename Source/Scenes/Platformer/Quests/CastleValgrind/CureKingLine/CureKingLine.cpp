@@ -1,8 +1,15 @@
 #include "CureKingLine.h"
 
 #include "Engine/Quests/QuestTask.h"
+#include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/CryptGuard.h"
 #include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/DefeatAgnes.h"
-#include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/TalkToPrincessOpal.h"
+#include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/MeetGrim.h"
+#include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/OutsideThroneRoom.h"
+#include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/RevealMabel.h"
+#include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/TalkToKingRedsong.h"
+#include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/TalkToMabel.h"
+#include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/LockedThroneRoom.h"
+#include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/UnhauntCastle.h"
 
 using namespace cocos2d;
 
@@ -19,8 +26,15 @@ CureKingLine* CureKingLine::create()
 
 CureKingLine::CureKingLine() : super(CureKingLine::MapKeyQuestLine,
 	{
-		QuestData(TalkToPrincessOpal::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToPrincessOpal::create(owner, questLine); }),
+		QuestData(CryptGuard::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return CryptGuard::create(owner, questLine); }),
+		QuestData(RevealMabel::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return RevealMabel::create(owner, questLine); }),
+		QuestData(TalkToMabel::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToMabel::create(owner, questLine); }),
+		QuestData(MeetGrim::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return MeetGrim::create(owner, questLine); }),
+		QuestData(UnhauntCastle::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return UnhauntCastle::create(owner, questLine); }),
+		QuestData(LockedThroneRoom::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return LockedThroneRoom::create(owner, questLine); }),
+		QuestData(OutsideThroneRoom::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return OutsideThroneRoom::create(owner, questLine); }),
 		QuestData(DefeatAgnes::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return DefeatAgnes::create(owner, questLine); }),
+		QuestData(TalkToKingRedsong::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return TalkToKingRedsong::create(owner, questLine); }),
 	})
 {
 }

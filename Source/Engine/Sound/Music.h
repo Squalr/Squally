@@ -11,7 +11,7 @@ public:
 	
 	void unfreeze() override;
 	void pushTrack(float delay = 0.5f);
-	void popTrack();
+	void popTrack(bool unpauseNext = true);
 
 	LocalizedString* cloneMusicName() const;
 	LocalizedString* cloneArtistName() const;
@@ -23,6 +23,7 @@ protected:
 	void initializeListeners() override;
 	void pause() override;
 	void play(bool repeat = true, float startDelay = 0.0f) override;
+	SoundChannel getSoundChannel() override;
 	float getConfigVolume() override;
 
 private:

@@ -15,6 +15,8 @@ class FloatingBomb : public HackableObject
 public:
 	static FloatingBomb* create(cocos2d::ValueMap& properties);
 
+	CollisionObject* getCollision() const;
+
 	static const std::string MapKey;
 
 protected:

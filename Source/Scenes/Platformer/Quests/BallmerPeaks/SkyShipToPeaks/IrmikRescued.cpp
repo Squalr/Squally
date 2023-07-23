@@ -111,7 +111,7 @@ void IrmikRescued::onLoad(QuestState questState)
 	}
 }
 
-void IrmikRescued::onActivate(bool isActiveThroughSkippable)
+void IrmikRescued::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

@@ -25,8 +25,7 @@ TikiGolem::TikiGolem(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_DataMines_TikiGolem_Animations,
 	EntityResources::Enemies_DataMines_TikiGolem_Emblem,
 	CSize(284.0f, 256.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 
@@ -36,7 +35,7 @@ TikiGolem::~TikiGolem()
 
 Vec2 TikiGolem::getDialogueOffset()
 {
-	return Vec2(-32.0f, -128.0f);
+	return Vec2(-32.0f, -32.0f);
 }
 
 LocalizedString* TikiGolem::getEntityName()

@@ -21,7 +21,7 @@ SpecialXor* SpecialXor::create()
 	return instance;
 }
 
-SpecialXor::SpecialXor() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 37 }}), ItemMeta(3, 3))
+SpecialXor::SpecialXor() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 18 }}), ItemMeta(3, 3))
 {
 }
 

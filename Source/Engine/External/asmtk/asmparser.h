@@ -26,6 +26,7 @@ public:
   AsmTokenizer _tokenizer;
 
   size_t _currentCommandOffset;
+  uint32_t _currentGlobalLabelId;
   bool _endOfInput;
 
   UnknownSymbolHandler _unknownSymbolHandler;
@@ -67,7 +68,7 @@ public:
   inline bool isEndOfInput() const noexcept { return _endOfInput; }
   inline size_t currentCommandOffset() const noexcept { return _currentCommandOffset; }
 
-  ASMTK_API uint32_t nextToken(AsmToken* token, uint32_t flags = 0) noexcept;
+  ASMTK_API AsmTokenType nextToken(AsmToken* token, ParseFlags flags = ParseFlags::kNone) noexcept;
   ASMTK_API void putTokenBack(AsmToken* token) noexcept;
 
   //! \}

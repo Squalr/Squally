@@ -80,6 +80,14 @@ void MusicPlayer::pushTrack(Music* music, float delay)
 	}
 }
 
+void MusicPlayer::popTrack(bool unpauseNext)
+{
+	if (this->currentSong != nullptr)
+	{
+		this->currentSong->popTrack(unpauseNext);
+	}
+}
+
 void MusicPlayer::removeTrack(std::string musicResource, bool unpauseNext)
 {
 	if (musicResource.empty() || this->currentSong == nullptr)
@@ -105,4 +113,9 @@ void MusicPlayer::removeTrack(std::string musicResource, bool unpauseNext)
 			this->currentSong->unfreeze();
 		}
 	}
+}
+
+Music* MusicPlayer::getCurrentSong()
+{
+	return this->currentSong;
 }

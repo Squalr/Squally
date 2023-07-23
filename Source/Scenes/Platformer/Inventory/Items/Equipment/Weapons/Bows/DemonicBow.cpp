@@ -21,11 +21,11 @@ DemonicBow* DemonicBow::create()
 	return instance;
 }
 
-DemonicBow::DemonicBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 16, 24, ItemStats(
+DemonicBow::DemonicBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), BOW_DAMAGE_MIN(7), BOW_DAMAGE_MAX(7), ItemStats(
 	// Health
-	0,
+	2,
 	// Mana
-	0,
+	7,
 	// Attack
 	0,
 	// Magic Attack
@@ -64,7 +64,7 @@ const std::string& DemonicBow::getIdentifier()
 
 Vec2 DemonicBow::getDisplayOffset()
 {
-	return Vec2(0.0f, -24.0f);
+	return Vec2(-10.0f, -66.0f);
 }
 
 Recipe* DemonicBow::getRecipe()

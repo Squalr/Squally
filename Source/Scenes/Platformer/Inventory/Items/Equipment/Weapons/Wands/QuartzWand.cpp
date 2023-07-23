@@ -21,11 +21,11 @@ QuartzWand* QuartzWand::create()
 	return instance;
 }
 
-QuartzWand::QuartzWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 5, 6, ItemStats(
+QuartzWand::QuartzWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), WAND_DAMAGE_MIN(2), WAND_DAMAGE_MAX(2), ItemStats(
 	// Health
 	0,
 	// Mana
-	8,
+	6,
 	// Attack
 	0,
 	// Magic Attack

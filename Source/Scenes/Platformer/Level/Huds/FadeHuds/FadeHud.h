@@ -10,6 +10,7 @@ namespace cocos2d
 template <class T> class LazyNode;
 class NormalFadeHud;
 class TriangleFadeHud;
+class TvFadeHud;
 
 class FadeHud : public Hud
 {
@@ -20,6 +21,7 @@ public:
 	{
 		Normal,
 		Triangles,
+		Tv,
 	};
 
 	void runAnim(FadeHud::FadeHudType fadeHudType);
@@ -30,11 +32,14 @@ public:
 protected:
 	FadeHud();
 	virtual ~FadeHud();
+	
+	void pause() override;
 
 private:
 	typedef Hud super;
 
 	LazyNode<NormalFadeHud>* normalFadeHud = nullptr;
 	LazyNode<TriangleFadeHud>* triangleFadeHud = nullptr;
+	LazyNode<TvFadeHud>* tvFadeHud = nullptr;
 	cocos2d::DrawNode* resetScreen = nullptr;
 };

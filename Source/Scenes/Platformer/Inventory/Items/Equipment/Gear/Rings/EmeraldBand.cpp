@@ -21,11 +21,12 @@ EmeraldBand* EmeraldBand::create()
 	return instance;
 }
 
-EmeraldBand::EmeraldBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 28 }}), ItemStats(
+// Tier 3
+EmeraldBand::EmeraldBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 55 }}), ItemStats(
 	// Health
-	2,
+	3,
 	// Mana
-	2,
+	5,
 	// Attack
 	0,
 	// Magic Attack
@@ -54,7 +55,7 @@ LocalizedString* EmeraldBand::getString()
 
 const std::string& EmeraldBand::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_EmeraldBand;
+	return ItemResources::Equipment_Gear_Rings_T3_EmeraldBand;
 }
 
 const std::string& EmeraldBand::getIdentifier()

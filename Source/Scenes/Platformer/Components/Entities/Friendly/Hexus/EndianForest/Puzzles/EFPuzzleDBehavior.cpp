@@ -79,9 +79,20 @@ StateOverride* EFPuzzleDBehavior::getStateOverride()
 		{
 			
 		},
+		// Player graveyard
+		std::vector<CardData*>
+		{
+			
+		},
+		// Enemy graveyard
+		std::vector<CardData*>
+		{
+			
+		},
 		// Player hand
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 		},
 		// Enemy hand
@@ -96,8 +107,8 @@ StateOverride* EFPuzzleDBehavior::getStateOverride()
 		// Player decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
 		},
 		// Player hex cards
 		std::vector<CardData*>
@@ -107,7 +118,7 @@ StateOverride* EFPuzzleDBehavior::getStateOverride()
 		// Enemy binary cards
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>

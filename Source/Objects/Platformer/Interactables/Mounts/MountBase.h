@@ -16,8 +16,10 @@ public:
 
 	cocos2d::Node* getReparentNode();
 	virtual void mount(PlatformerEntity* interactingEntity);
-	virtual void dismount();
+	virtual void dismount(PlatformerEntity* entity);
+	void dismountAll();
 	bool isMounted() const;
+	bool isTargetMounted(PlatformerEntity* entity) const;
 	void setMountDirection(MountDirection mountDirection);
 	void reverse();
 	void parseDirection();
@@ -30,7 +32,7 @@ protected:
 	void initializeListeners() override;
 	void update(float dt) override;
 	void onInteract(PlatformerEntity* interactingEntity) override;
-	virtual cocos2d::Vec2 getReparentPosition();
+	virtual cocos2d::Vec2 getReparentPosition(PlatformerEntity* entity);
 	
 	void setToMountPositionX();
 	void setToMountPosition();
@@ -38,8 +40,9 @@ protected:
 	void faceEntityTowardsDirection();
 	void moveMount(float dt);
 	
+	cocos2d::Node* rootNode = nullptr;
 	cocos2d::Node* frontNode = nullptr;
-	PlatformerEntity* mountedEntity = nullptr;
+	std::set<PlatformerEntity*> mountedEntities;
 	MountDirection mountDirection = MountDirection::Left;
 	float mountSpeed = 0.0f;
 	bool isMoving = false;

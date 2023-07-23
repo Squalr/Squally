@@ -123,6 +123,11 @@ void Timeline::initializeListeners()
 		CombatEvents::TriggerResumeTimeline();
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventRefreshTimeline, [=](EventCustom* eventCustom)
+	{
+		this->refreshTimelinePositions();
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventEntityTimelineReset, [=](EventCustom* eventCustom)
 	{
 		this->refreshTimelinePositions();
@@ -178,31 +183,6 @@ void Timeline::initializeListeners()
 		if (args != nullptr)
 		{
 			this->timelineEntryAwaitingUserAction = args->entry;
-
-			switch (args->currentMenu)
-			{
-				case CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect:
-				{
-					if (this->timelineEntryAwaitingUserAction != nullptr)
-					{
-						this->timelineEntryAwaitingUserAction->defend();
-						this->timelineEntryAwaitingUserAction->stageCast(nullptr);
-						this->timelineEntryAwaitingUserAction->stageTargets({ });
-					}
-					
-					this->defer([=]()
-					{
-						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
-						CombatEvents::TriggerResumeTimeline();
-					});
-
-					break;
-				}
-				default:
-				{
-					break;
-				}
-			}
 		}
 	}));
 }

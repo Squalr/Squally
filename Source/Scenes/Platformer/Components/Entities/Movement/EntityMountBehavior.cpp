@@ -58,6 +58,11 @@ bool EntityMountBehavior::mount(MountBase* mountTarget)
 	return true;
 }
 
+MountBase* EntityMountBehavior::getMountTarget() const
+{
+	return this->mountTarget;
+}
+
 bool EntityMountBehavior::dismount()
 {
 	if (this->entity == nullptr || this->mountTarget == nullptr)

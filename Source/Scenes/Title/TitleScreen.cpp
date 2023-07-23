@@ -63,20 +63,23 @@ TitleScreen::TitleScreen()
 	const Color4B ShadowColor = Color4B::BLACK;
 	const Color3B HighlightColor = Color3B::YELLOW;
 	const Color4B GlowColor = Color4B::ORANGE;
+	const CSize ButtonSize = CSize(224.0f, 78.0f);
+	const Vec2 LabelOffset = Vec2(24.0f, 0.0f);
+	const float IconOffset = -112.0f;
 
-	LocalizedLabel*	storyModeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_StoryMode::create());
+	LocalizedLabel*	storyModeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_StoryMode::create(), ButtonSize, TextHAlignment::LEFT);
 	LocalizedLabel*	storyModeLabelSelected = storyModeLabel->clone();
 
-	LocalizedLabel*	tutorialsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_HackingTutorials::create());
+	LocalizedLabel*	tutorialsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_HackingTutorials::create(), ButtonSize, TextHAlignment::LEFT);
 	LocalizedLabel*	tutorialsLabelSelected = tutorialsLabel->clone();
 
-	LocalizedLabel*	optionsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Options_Options::create());
+	LocalizedLabel*	optionsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Options_Options::create(), ButtonSize, TextHAlignment::LEFT);
 	LocalizedLabel*	optionsLabelSelected = optionsLabel->clone();
 
-	LocalizedLabel*	exitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Exit::create());
+	LocalizedLabel*	exitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Exit::create(), ButtonSize, TextHAlignment::LEFT);
 	LocalizedLabel*	exitLabelSelected = exitLabel->clone();
 
-	LocalizedLabel*	debugLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Developer_DeveloperMenu::create());
+	LocalizedLabel*	debugLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Developer_DeveloperMenu::create(), ButtonSize, TextHAlignment::LEFT);
 	LocalizedLabel*	debugLabelSelected = debugLabel->clone();
 
 	storyModeLabel->setColor(TextColor);
@@ -148,6 +151,31 @@ TitleScreen::TitleScreen()
 	this->tutorialsButton->setClickSound(SoundResources::Menus_ButtonClick5);
 	this->optionsButton->setClickSound(SoundResources::Menus_ButtonClick5);
 	this->exitButton->setClickSound(SoundResources::Menus_ButtonClick5);
+	this->debugButton->setClickSound(SoundResources::Menus_ButtonClick5);
+
+	this->storyModeButton->setTextOffset(LabelOffset);
+	this->tutorialsButton->setTextOffset(LabelOffset);
+	this->optionsButton->setTextOffset(LabelOffset);
+	this->exitButton->setTextOffset(LabelOffset);
+	this->debugButton->setTextOffset(LabelOffset);
+
+	Sprite* storyModeIcon = Sprite::create(UIResources::Menus_OptionsMenu_IconStory);
+	Sprite* tutorialsIcon = Sprite::create(UIResources::Menus_OptionsMenu_IconLightbulb);
+	Sprite* optionsIcon = Sprite::create(UIResources::Menus_OptionsMenu_IconCogs);
+	Sprite* exitIcon = Sprite::create(UIResources::Menus_OptionsMenu_IconExit);
+	Sprite* debugIcon = Sprite::create(UIResources::Menus_OptionsMenu_IconTools);
+
+	storyModeIcon->setPositionX(IconOffset);
+	tutorialsIcon->setPositionX(IconOffset);
+	optionsIcon->setPositionX(IconOffset);
+	exitIcon->setPositionX(IconOffset);
+	debugIcon->setPositionX(IconOffset);
+
+	this->storyModeButton->addChild(storyModeIcon);
+	this->tutorialsButton->addChild(tutorialsIcon);
+	this->optionsButton->addChild(optionsIcon);
+	this->exitButton->addChild(exitIcon);
+	this->debugButton->addChild(debugIcon);
 
 	if (!DeveloperModeController::IsDeveloperBuild)
 	{

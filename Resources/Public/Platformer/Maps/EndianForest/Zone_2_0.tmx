@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="87" nextobjectid="892">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="87" nextobjectid="898">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -75,7 +75,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="846" name="blue-grass" type="terrain" x="1020" y="1824">
-   <polygon points="2330.14,-1651.77 2840.18,-1379.66 2833.07,-431.445 2798.27,72.3774 3764.8,82.8646 4656,-35.2916 5510.55,-8.03728 6144.01,-45.179 7678.13,-23.451 7814.69,779.395 7633.48,1369.36 7541.06,1736.97 61.22,1704.73 -6.54789,295.393 46.2721,92.9397 155.468,-288.376 865.49,-459.922 1351.8,-0.690106 1582.57,-161.095 1747.66,-757.93 1941.17,-1483.74"/>
+   <polygon points="2330.14,-1651.77 2840.18,-1379.66 2833.07,-431.445 2798.27,72.3774 3764.8,82.8646 4656,-35.2916 5510.55,-8.03728 5658.38,-49.1401 6144.01,-45.179 7678.13,-23.451 7814.69,779.395 7633.48,1369.36 7541.06,1736.97 61.22,1704.73 -6.54789,295.393 46.2721,92.9397 155.468,-288.376 865.49,-459.922 1351.8,-0.690106 1582.57,-161.095 1747.66,-757.93 1941.17,-1483.74"/>
   </object>
  </objectgroup>
  <objectgroup id="82" name="decor -4">
@@ -90,29 +90,35 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="853" name="lever" type="object" x="7592.47" y="1578.83" width="177" height="205">
+  <object id="853" name="lever" type="object" x="8376.47" y="1590.83" width="177" height="205">
    <properties>
     <property name="send-event" value="bridge-group-A"/>
    </properties>
   </object>
-  <object id="873" name="solid" type="collision" x="8683.48" y="-256.155" width="97.0303" height="2072.31"/>
+  <object id="873" name="solid" type="collision" x="8683.48" y="-256.155" width="97.0303" height="2072.31">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="874" name="solid" type="collision" x="1075.73" y="-66.458" width="97.0303" height="2072.31"/>
+  <object id="896" name="help-totem-potions" type="object" x="6912" y="1536" width="248" height="248"/>
  </objectgroup>
  <objectgroup id="81" name="entities -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="856" name="ogre" type="entity" x="6207.21" y="1668.21" width="128" height="128">
+  <object id="856" name="ogre" type="entity" x="5671.21" y="1656.21" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,agro"/>
+    <property name="components" value="enemy,soul,agro,melee,map-link"/>
     <property name="drop-pool" value="ef-generic"/>
+    <property name="link-key" value="ef-zone2-enemy1"/>
    </properties>
   </object>
-  <object id="857" name="orc-grunt" type="entity" x="6208.79" y="1399.78" width="128" height="128">
+  <object id="857" name="orc-grunt" type="entity" x="5672.79" y="1387.78" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
@@ -135,7 +141,7 @@
     <property name="to" value="bridge-front-B"/>
    </properties>
   </object>
-  <object id="879" name="warp" type="object" x="8096" y="1538" width="256" height="256">
+  <object id="879" name="warp" type="object" x="7914.67" y="1538" width="256" height="256">
    <properties>
     <property name="from" value="bridge-back-C"/>
     <property name="listen-event" value="bridge-group-A"/>
@@ -151,7 +157,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="859" name="wood" type="terrain" x="8046.83" y="1819.14" width="347" height="356.5">
+  <object id="859" name="wood" type="terrain" x="7865.5" y="1819.14" width="347" height="356.5">
    <properties>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="0"/>
@@ -170,7 +176,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="860" name="wood" type="terrain" x="8048.83" y="1848.14" width="347" height="356.5">
+  <object id="860" name="wood" type="terrain" x="7867.5" y="1848.14" width="347" height="356.5">
    <properties>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="1"/>
@@ -198,7 +204,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="861" name="wood" type="terrain" x="8050.83" y="1878.14" width="347" height="356.5">
+  <object id="861" name="wood" type="terrain" x="7869.5" y="1878.14" width="347" height="356.5">
    <properties>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="2"/>
@@ -257,7 +263,7 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="862" name="wood" type="terrain" x="8050.83" y="1908.14" width="347" height="356.5">
+  <object id="862" name="wood" type="terrain" x="7869.5" y="1908.14" width="347" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -274,7 +280,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="826" name="blue-grass" type="terrain" x="3220" y="2972">
-   <polygon points="-334.518,-421.607 -678.307,-426.688 -1003.54,-720.376 -1414.66,-928.777 -1976.22,-927.197 -1955.1,-1366.39 -1717.4,-1609.52 -1487.78,-3098.19 -3295.44,-3114.95 -3301.53,319.88 -424.36,313.63 -284.619,-285.314"/>
+   <polygon points="-334.518,-421.607 -678.307,-426.688 -1003.54,-720.376 -1414.66,-928.777 -1976.22,-927.197 -1955.1,-1366.39 -1717.4,-1609.52 -1487.78,-3098.19 -2404.08,-3379.8 -3295.44,-3114.95 -3466.12,-1491.98 -3301.53,319.88 -424.36,313.63 -284.619,-285.314"/>
   </object>
  </objectgroup>
  <objectgroup id="85" name="objects -1">
@@ -285,13 +291,10 @@
   <object id="885" name="solid" type="collision" x="2880.49" y="482.416" width="97.0303" height="2072.31"/>
   <object id="891" name="chest" type="object" x="1457.98" y="1916.47" width="128" height="128">
    <properties>
-    <property name="data-type" value="decimal"/>
-    <property name="event" value="open-cipher"/>
-    <property name="inputs" value="27,143,88,62"/>
+    <property name="components" value="map-link"/>
+    <property name="link-key" value="ef-zone2-chest1"/>
     <property name="reward-pool" value="ef-generic"/>
-    <property name="rule" value="{i}-3"/>
-    <property name="tokens" value="+,1,-,3"/>
-    <property name="tutorial" value="extra-tokens"/>
+    <property name="send-event" value="ef-zone2-chest1"/>
    </properties>
   </object>
  </objectgroup>
@@ -380,13 +383,10 @@
   <object id="687" name="pendulum-blade" type="object" x="4428.65" y="4410.44" width="42.4242" height="220.97"/>
   <object id="778" name="chest" type="object" x="3738.73" y="1922.06" width="128" height="128">
    <properties>
-    <property name="data-type" value="decimal"/>
-    <property name="event" value="open-cipher"/>
-    <property name="inputs" value="27,143,88,62"/>
+    <property name="components" value="map-link"/>
+    <property name="link-key" value="ef-zone2-chest2"/>
     <property name="reward-pool" value="ef-generic"/>
-    <property name="rule" value="{i}-3"/>
-    <property name="tokens" value="+,1,-,3"/>
-    <property name="tutorial" value="extra-tokens"/>
+    <property name="send-event" value="ef-zone2-chest2"/>
    </properties>
   </object>
   <object id="780" name="edge-lantern-gate" type="object" x="-18.2424" y="2243.64" width="356" height="320">
@@ -422,13 +422,21 @@
     <property name="transition" value="right_alt"/>
    </properties>
   </object>
-  <object id="823" name="life-stone" type="object" x="4871.36" y="1627.53" width="146" height="423"/>
+  <object id="823" name="life-stone" type="object" x="4871.36" y="1627.53" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn-2"/>
+   </properties>
+  </object>
   <object id="824" name="solid-npc" type="collision" x="11585.5" y="1967.08" width="121.03" height="777.836"/>
   <object id="825" name="solid-npc" type="collision" x="12597.5" y="1967.08" width="121.03" height="777.836"/>
-  <object id="880" name="life-stone" type="object" x="1255" y="2134.5" width="146" height="423"/>
-  <object id="890" name="hexus-shrine" type="object" x="12060.5" y="2336" width="155" height="260">
+  <object id="880" name="life-stone" type="object" x="1255" y="2134.5" width="146" height="423">
    <properties>
-    <property name="entity-tag" value="hexus-orc-grunt"/>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
+  <object id="897" name="crack" type="object" x="11867.8" y="1403.5" width="525" height="1193">
+   <properties>
+    <property name="crack-size" value="small"/>
    </properties>
   </object>
  </objectgroup>
@@ -453,7 +461,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
     <property name="battle-tag" value="group-b"/>
-    <property name="components" value="enemy,agro,mainhand-throw"/>
+    <property name="components" value="enemy,soul,agro,mainhand-throw"/>
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
@@ -503,7 +511,7 @@
     <property name="zoom" type="float" value="1"/>
    </properties>
   </object>
-  <object id="877" name="warp" type="object" x="8095.94" y="1672.91" width="256" height="256">
+  <object id="877" name="warp" type="object" x="7914.61" y="1672.91" width="256" height="256">
    <properties>
     <property name="from" value="bridge-front-C"/>
     <property name="listen-event" value="bridge-group-A"/>
@@ -520,6 +528,16 @@
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-back-F"/>
     <property name="zoom" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="892" name="spawn" type="object" x="1272" y="2422.67" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
+  <object id="893" name="spawn" type="object" x="4882.67" y="1917.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn-2"/>
    </properties>
   </object>
  </objectgroup>

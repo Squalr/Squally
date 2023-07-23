@@ -5,6 +5,7 @@
 class Bard;
 class CollisionObject;
 class Chiron;
+class Mara;
 class Portal;
 class Squally;
 class QuestLine;
@@ -22,7 +23,7 @@ protected:
 	
 	void onEnter() override;
 	void onLoad(QuestState questState) override;
-	void onActivate(bool isActiveThroughSkippable) override;
+	void onActivate(bool isActiveThroughSkippable, bool isInitialActivation) override;
 	void onComplete() override;
 	void onSkipped() override;
 	void update(float dt) override;
@@ -32,8 +33,10 @@ private:
 
 	void attachChironBehavior();
 	void attachBardBehavior();
+	void attachMaraBehavior();
 
 	Bard* bard = nullptr;
+	Mara* mara = nullptr;
 	Chiron* chiron = nullptr;
 	Squally* squally = nullptr;
 	CollisionObject* chironCollision = nullptr;

@@ -50,7 +50,7 @@ void SpotOrcGrunt::onLoad(QuestState questState)
 	}, Scrappy::MapKey);
 }
 
-void SpotOrcGrunt::onActivate(bool isActiveThroughSkippable)
+void SpotOrcGrunt::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce(SpotOrcGrunt::MapKeyQuest, [=](ValueMap args)
 	{
@@ -78,7 +78,7 @@ void SpotOrcGrunt::runCinematicSequence()
 			{
 				this->scrappy->getComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 				{
-					interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_F_OrcGruntSpotted::create(), Voices::GetNextVoiceMedium(Voices::VoiceType::Droid), 4.0f, [=]()
+					interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_V_OrcGruntSpotted::create(), Voices::GetNextVoiceMedium(Voices::VoiceType::Droid), 4.0f, [=]()
 					{
 						interactionBehavior->getSpeechBubble()->hideDialogue();
 					});

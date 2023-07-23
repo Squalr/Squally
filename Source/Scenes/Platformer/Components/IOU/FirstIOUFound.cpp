@@ -49,7 +49,7 @@ void FirstIOUFound::onLoad()
 	this->iou->onCollected([=]()
 	{
 		NotificationEvents::TriggerNotificationTakeover(NotificationEvents::NotificationTakeoverArgs(
-			Strings::Platformer_Cutscenes_IOU_FoundIOU::create(),
+			Strings::Platformer_Cutscenes_IOU_FoundIOU::create()->setStringReplacementVariables(Strings::Items_Currency_IOU::create()),
 			Strings::Platformer_Cutscenes_IOU_IOUDescription::create(),
 			SoundResources::Notifications_NotificationGood1
 		));

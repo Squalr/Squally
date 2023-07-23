@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="766">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="768">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -225,7 +225,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="719" name="water" type="object" x="985.5" y="2069.32" width="3317" height="2085.35">
+  <object id="719" name="water" type="object" x="1861.5" y="2069.32" width="3189" height="2085.35">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -256,9 +256,9 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="667" name="dark-grass" type="terrain" x="6727.16" y="4770.75">
-   <polygon points="-2627.65,-2739.26 305.553,-2711.27 1536.13,-2739.7 1542.8,-659.749 -6862.03,-658.69 -6810.77,-2714.44 -5503.05,-2737.6 -5015.36,-1385.84 -4288.81,-1156.38 -3881.51,-1153.24 -3131.26,-1389.27"/>
+   <polygon points="-1819.65,-2739.26 305.553,-2711.27 1536.13,-2739.7 1542.8,-659.749 -6862.03,-658.69 -6810.77,-2714.44 -4695.05,-2737.6 -4207.36,-1385.84 -3480.81,-1156.38 -3073.51,-1153.24 -2323.26,-1389.27"/>
   </object>
-  <object id="715" name="dark-grass" type="terrain" x="2321.06" y="4748">
+  <object id="715" name="dark-grass" type="terrain" x="3145.06" y="4756">
    <polygon points="-564.707,-2723.26 -419.141,-1979.27 334.93,-1709.84 1060.54,-1976.28 1187.07,-2731.7"/>
   </object>
  </objectgroup>
@@ -267,8 +267,8 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="500" name="Forest/Flower10" type="decor" x="7478.08" y="1940.57" width="199" height="133"/>
-  <object id="741" name="Forest/Flower11" type="decor" x="4400" y="1932" width="92" height="116"/>
-  <object id="742" name="Forest/Flower9" type="decor" x="2284.5" y="1899.5" width="199" height="133"/>
+  <object id="741" name="Forest/Flower11" type="decor" x="5152" y="1928" width="92" height="116"/>
+  <object id="742" name="Forest/Flower9" type="decor" x="3108.5" y="1907.5" width="199" height="133"/>
  </objectgroup>
  <objectgroup id="57" name="objects back">
   <properties>
@@ -281,7 +281,11 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="623" name="life-stone" type="object" x="6745.94" y="1642.25" width="146" height="423"/>
+  <object id="623" name="life-stone" type="object" x="6745.94" y="1642.25" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
   <object id="641" name="edge-portal" type="object" x="7713.18" y="1413.65" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="right"/>
@@ -302,7 +306,7 @@
     <property name="transition" value="hut"/>
    </properties>
   </object>
-  <object id="739" name="chest" type="object" x="2576" y="3488" width="128" height="128">
+  <object id="739" name="chest" type="object" x="3392" y="3484" width="128" height="128">
    <properties>
     <property name="data-type" value="decimal"/>
     <property name="inputs" value="255,252,253,0"/>
@@ -312,7 +316,7 @@
     <property name="tutorial" value="overflow"/>
    </properties>
   </object>
-  <object id="765" name="help-totem-potions" type="object" x="4596" y="1792" width="248" height="248"/>
+  <object id="767" name="help-totem-potions" type="object" x="972" y="1800" width="248" height="248"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -324,7 +328,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="692" name="orc-bomber" type="entity" x="2533.82" y="1892.34" width="128" height="128">
+  <object id="692" name="orc-bomber" type="entity" x="3357.82" y="1900.34" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
@@ -333,7 +337,7 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="693" name="orc-bomber" type="entity" x="2535.4" y="1647.91" width="128" height="128">
+  <object id="693" name="orc-bomber" type="entity" x="3359.4" y="1655.91" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
@@ -364,6 +368,11 @@
   <object id="738" name="spawn" type="object" x="5820" y="1920" width="128" height="128">
    <properties>
     <property name="transition" value="hut"/>
+   </properties>
+  </object>
+  <object id="766" name="spawn" type="object" x="6756" y="1930" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

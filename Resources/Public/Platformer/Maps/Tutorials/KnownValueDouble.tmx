@@ -27,7 +27,7 @@
   </properties>
   <object id="894" name="cryogen" type="entity" x="1231.64" y="920" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,face-squally,squalr-known-double"/>
+    <property name="components" value="enemy,soul,face-squally,squalr-known-double"/>
    </properties>
   </object>
  </objectgroup>

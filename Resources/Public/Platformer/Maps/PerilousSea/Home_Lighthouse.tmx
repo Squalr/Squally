@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="18" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="949">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="IndoorHouse"/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="hide-mini-map" type="bool" value="false"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="the-gift"/>
+   <property name="rubber-band" type="int" value="13"/>
+   <property name="show-cracks" type="bool" value="false"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="96" name="wall bg -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="756" name="ruins-gray-dark" type="texture" x="-515.484" y="-385.002" width="4652.18" height="4825.63"/>
+ </objectgroup>
+ <objectgroup id="98" name="terrain -6 fg">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="946" name="wood" type="terrain" x="-398.571" y="-121.375" width="1378.96" height="1286.2">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="99" name="terrain -6 fg fg">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="102" name="decor mg -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="944" name="Generic/WoodDoor" type="decor" x="393.803" y="748.333" width="273" height="370"/>
+ </objectgroup>
+ <objectgroup id="101" name="terrain -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="913" name="wood" type="terrain" x="1732.97" y="2044.33" width="491.08" height="112"/>
+  <object id="914" name="wood" type="terrain" x="1462.1" y="1918.32" width="420" height="112"/>
+  <object id="915" name="wood" type="terrain" x="1371.87" y="1786.95" width="420" height="112"/>
+  <object id="916" name="wood" type="terrain" x="1270.98" y="1652.05" width="420" height="112"/>
+  <object id="917" name="wood" type="terrain" x="1155.26" y="1517.15" width="420" height="112"/>
+  <object id="918" name="wood" type="terrain" x="1015.79" y="1387.44" width="420" height="112"/>
+  <object id="920" name="wood" type="terrain" x="-50.3242" y="1117.85" width="1155.52" height="112"/>
+  <object id="941" name="wood" type="terrain" x="863.03" y="1252.48" width="420" height="112"/>
+ </objectgroup>
+ <objectgroup id="95" name="objects -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="943" name="portal" type="object" x="399.273" y="859.879" width="256" height="256">
+   <properties>
+    <property name="map" value="PerilousSea/Home_Lighthouse_Top"/>
+    <property name="transition" value="lighthouse-top"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="100" name="entities -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="97" name="player_layer -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="896" name="warp" type="object" x="1887.26" y="1786.17" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-back-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-front-A"/>
+   </properties>
+  </object>
+  <object id="942" name="spawn-wood-door" type="object" x="460.242" y="987.515" width="128" height="128">
+   <properties>
+    <property name="transition" value="lighthouse-top"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="93" name="columns -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="86" name="terrain -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="832" name="wood" type="terrain" x="1956.14" y="2172.32" width="420" height="139.393">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="92" name="columns -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="85" name="terrain -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="831" name="wood" type="terrain" x="2068.14" y="2340.33" width="420" height="139.393">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="91" name="columns -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="84" name="terrain -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="830" name="wood" type="terrain" x="2070.81" y="2507.99" width="420" height="139.393">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="90" name="columns -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="83" name="terrain -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="829" name="wood" type="terrain" x="2006.81" y="2670.99" width="420" height="139.393">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="88" name="columns -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="82" name="terrain -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="828" name="wood" type="terrain" x="1926.14" y="2824.33" width="420" height="139.393">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="16" name="Tiled bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="81" name="columns -0">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="76" name="decor bg2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="18" name="decor bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="19" name="objects background">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="57" name="terrain 3">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="20" name="terrain 2" visible="0">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="939" name="wood" type="terrain" x="-204.425" y="2147.69" width="1084.85" height="1840.62">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="87" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="762" name="wood" type="terrain" x="-69.541" y="3970.81" width="2984.85" height="704.622"/>
+  <object id="834" name="wood" type="terrain" x="751.03" y="3862.5" width="420" height="112"/>
+  <object id="840" name="wood" type="terrain" x="880.8" y="3737.13" width="420" height="112"/>
+  <object id="841" name="wood" type="terrain" x="1009.91" y="3610.23" width="420" height="112"/>
+  <object id="842" name="wood" type="terrain" x="1136.19" y="3483.33" width="420" height="112"/>
+  <object id="843" name="wood" type="terrain" x="1266.72" y="3355.62" width="420" height="112"/>
+  <object id="844" name="wood" type="terrain" x="1393" y="3225.68" width="420" height="112"/>
+  <object id="845" name="wood" type="terrain" x="1521.3" y="3097.97" width="420" height="112"/>
+  <object id="847" name="wood" type="terrain" x="1776.69" y="2976.39" width="438.384" height="112"/>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="940" name="Generic/LighthouseDoor" type="decor" x="277.652" y="3561.33" width="267" height="408"/>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="775" name="portal" type="object" x="285.233" y="3716.06" width="256" height="256">
+   <properties>
+    <property name="map" value="PerilousSea/Zone_1_0"/>
+    <property name="transition" value="lighthouse"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer" opacity="0.9">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="575.8" y="3843.14" width="128" height="128">
+   <properties>
+    <property name="components" value="squally"/>
+   </properties>
+  </object>
+  <object id="779" name="spawn" type="object" x="342.797" y="3841.54" width="128" height="128">
+   <properties>
+    <property name="transition" value="lighthouse"/>
+   </properties>
+  </object>
+  <object id="893" name="warp" type="object" x="1896.46" y="2721.92" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-front-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-back-A"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="77" name="decor +1">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+</map>

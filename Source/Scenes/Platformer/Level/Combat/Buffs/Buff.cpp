@@ -64,7 +64,10 @@ void Buff::initializePositions()
 {
 	super::initializePositions();
 	
-	this->iconContainer->setPositionY(this->owner->getEntitySize().height / 2.0f + 32.0f);
+	if (this->owner != nullptr)
+	{
+		this->iconContainer->setPositionY(this->owner->getEntitySize().height / 2.0f + 32.0f);
+	}
 }
 
 void Buff::initializeListeners()
@@ -213,6 +216,11 @@ void Buff::onTimelineReset(CombatEvents::TimelineResetArgs* timelineReset)
 {
 }
 
+void Buff::toggleCanRemoveBuff(bool canRemove)
+{
+	this->wasRemoved = !canRemove;
+}
+
 void Buff::unregisterHackables()
 {
 	if (this->owner == nullptr)
@@ -236,11 +244,11 @@ void Buff::setRemoveBuffCallback(std::function<void()> removeBuffCallback)
 	this->removeBuffCallback = removeBuffCallback;
 }
 
-void Buff::removeBuff()
+bool Buff::removeBuff()
 {
 	if (this->wasRemoved)
 	{
-		return;
+		return false;
 	}
 	
 	this->wasRemoved = true;
@@ -251,6 +259,8 @@ void Buff::removeBuff()
 	{
 		this->removeBuffCallback();
 	}
+
+	return true;
 }
 
 void Buff::registerClippyOnto(std::string identifier, std::function<Clippy*()> clippyFunc)

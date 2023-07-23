@@ -80,3 +80,8 @@ void Trigger::initializeListeners()
 void Trigger::onCollide()
 {
 }
+
+CollisionObject* Trigger::getCollision()
+{
+	return this->triggerCollision;
+}

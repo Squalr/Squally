@@ -20,7 +20,7 @@ Bone* Bone::create()
 	return instance;
 }
 
-Bone::Bone() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 57 }}), ItemMeta(20000))
+Bone::Bone() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 8 * 5 }}), ItemMeta(20000))
 {
 }
 
@@ -40,7 +40,7 @@ LocalizedString* Bone::getString()
 
 const std::string& Bone::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_Bone;
+	return ItemResources::Crafting_Smithing_T5_Bone;
 }
 
 const std::string& Bone::getIdentifier()

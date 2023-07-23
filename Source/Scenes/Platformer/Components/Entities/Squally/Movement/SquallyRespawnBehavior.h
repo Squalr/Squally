@@ -28,5 +28,6 @@ private:
 
 	bool isRespawning = false;
 	bool fullMapReload = false;
+	bool respawnLocked = false;
 	Squally* squally = nullptr;
 };

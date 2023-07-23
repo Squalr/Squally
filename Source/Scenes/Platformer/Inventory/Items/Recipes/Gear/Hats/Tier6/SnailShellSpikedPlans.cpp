@@ -38,8 +38,10 @@ std::vector<std::tuple<Item*, int>> SnailShellSpikedPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Sulfur::create(), 2 },
+		{ Stinger::create(), 2 },
+		{ BlackBlood::create(), 1 },
+		{ StrongChitin::create(), 1 },
 	};
 }
 
@@ -60,7 +62,7 @@ const std::string& SnailShellSpikedPlans::getIconResource()
 
 std::string SnailShellSpikedPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_SnailShellSpiked;
+	return ItemResources::Equipment_Gear_Hats_Tier6_SnailShellSpiked;
 }
 
 const std::string& SnailShellSpikedPlans::getIdentifier()

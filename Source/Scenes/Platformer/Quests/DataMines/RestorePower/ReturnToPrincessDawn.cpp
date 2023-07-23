@@ -86,7 +86,7 @@ void ReturnToPrincessDawn::onLoad(QuestState questState)
 	}
 }
 
-void ReturnToPrincessDawn::onActivate(bool isActiveThroughSkippable)
+void ReturnToPrincessDawn::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 
@@ -132,6 +132,21 @@ void ReturnToPrincessDawn::runCinematicSequencePt1()
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_DataMines_RestorePower_PrincessDawn_R_TakeTrainTicket::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->princessDawn, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceLong(),
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_DataMines_RestorePower_PrincessDawn_S_DontForgetBlacksmith::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,

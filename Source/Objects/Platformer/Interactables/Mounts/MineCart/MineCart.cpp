@@ -4,6 +4,7 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Physics/CollisionObject.h"
@@ -14,6 +15,7 @@
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Strings.h"
@@ -33,7 +35,7 @@ MineCart* MineCart::create(cocos2d::ValueMap& properties)
 	return instance;
 }
 
-MineCart::MineCart(cocos2d::ValueMap& properties) : super(properties, CSize(240.0f, 184.0f))
+MineCart::MineCart(cocos2d::ValueMap& properties) : super(properties, CSize(240.0f, 184.0f), false)
 {
 	this->parseColor();
 	this->parseDirection();
@@ -46,11 +48,13 @@ MineCart::MineCart(cocos2d::ValueMap& properties) : super(properties, CSize(240.
 		int(PlatformerCollisionType::PassThrough),
 		CollisionObject::Properties(false, false)
 	);
+	this->cartSfx = WorldSound::create(SoundResources::Platformer_Objects_Minecart_Wheels);
 
 	this->frontNode->addChild(this->bottomCollision);
 	this->frontNode->addChild(this->body);
 	this->frontNode->addChild(this->wheelFront);
 	this->frontNode->addChild(this->wheelBack);
+	this->frontNode->addChild(this->cartSfx);
 }
 
 MineCart::~MineCart()
@@ -77,11 +81,10 @@ void MineCart::initializeListeners()
 {
 	super::initializeListeners();
 	
-
 	this->interactCollision->whenCollidesWith({ (CollisionType)PlatformerCollisionType::CartStop }, [=](CollisionData collisionData)
 	{
 		this->reverse();
-		this->dismount();
+		this->dismountAll();
 		
 		return CollisionResult::CollideWithPhysics;
 	});
@@ -92,8 +95,32 @@ void MineCart::update(float dt)
 	super::update(dt);
 
 	this->updateCanMove();
+
+	if (!this->isMoving || !this->canMoveOverride)
+	{
+		this->cartSfx->stop();
+	}
+	else if (!this->cartSfx->isPlaying())
+	{
+		this->cartSfx->play(true);
+	}
+
 	this->moveMount(dt);
 	this->faceEntityTowardsDirection();
+}
+
+void MineCart::onHackerModeEnable()
+{
+	super::onHackerModeEnable();
+
+	this->cartSfx->stop();
+}
+
+void MineCart::pause()
+{
+	super::pause();
+
+	this->cartSfx->stop();
 }
 
 Vec2 MineCart::getButtonOffset()
@@ -125,8 +152,7 @@ void MineCart::registerHackables()
 		},
 	};
 
-	auto func = &MineCart::updateCanMove;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
+	std::vector<HackableCode*> hackables = CREATE_HACKABLES(MineCart::updateCanMove, codeInfoMap);
 
 	for (HackableCode* next : hackables)
 	{
@@ -148,9 +174,9 @@ void MineCart::mount(PlatformerEntity* interactingEntity)
 	this->isMoving = true;
 }
 
-void MineCart::dismount()
+void MineCart::dismount(PlatformerEntity* entity)
 {
-	super::dismount();
+	super::dismount(entity);
 	
 	this->isMoving = false;
 }
@@ -188,9 +214,9 @@ NO_OPTIMIZE void MineCart::updateCanMove()
 }
 END_NO_OPTIMIZE
 
-Vec2 MineCart::getReparentPosition()
+Vec2 MineCart::getReparentPosition(PlatformerEntity* entity)
 {
-	return Vec2(0.0f, 128.0f);
+	return Vec2(0.0f, 32.0f);
 }
 
 void MineCart::parseColor()

@@ -27,7 +27,13 @@ const std::string PlatformerEvents::EventOpenAlchemy = "EVENT_OPEN_ALCHEMY";
 const std::string PlatformerEvents::EventOpenSmithing = "EVENT_OPEN_SMITHING";
 const std::string PlatformerEvents::EventOpenDismantle = "EVENT_OPEN_Dismantle";
 const std::string PlatformerEvents::EventOpenItemInfo = "EVENT_OPEN_ITEM_INFO";
+const std::string PlatformerEvents::EventOpenQuickPotion = "EVENT_OPEN_QUICK_POTION";
+const std::string PlatformerEvents::EventUnlockQuickPotion = "EVENT_UNLOCK_QUICK_POTION";
+const std::string PlatformerEvents::EventUnlockQuickWarp = "EVENT_UNLOCK_QUICK_WARP";
+const std::string PlatformerEvents::EventUnlockQuickSwap = "EVENT_UNLOCK_QUICK_SWAP";
+const std::string PlatformerEvents::EventOpenQuickSwap = "EVENT_OPEN_QUICK_SWAP";
 const std::string PlatformerEvents::EventDiscoverItem = "EVENT_DISCOVER_ITEM";
+const std::string PlatformerEvents::EventDiscoverItems = "EVENT_DISCOVER_ITEMS";
 const std::string PlatformerEvents::EventGiveItems = "EVENT_GIVE_ITEM";
 const std::string PlatformerEvents::EventGiveItemsFromPool = "EVENT_GIVE_ITEMS_FROM_POOL";
 const std::string PlatformerEvents::EventGiveCurrency = "EVENT_GIVE_CURRENCY";
@@ -45,6 +51,7 @@ const std::string PlatformerEvents::EventLoadRespawn = "EVENT_LOAD_RESPAWN";
 const std::string PlatformerEvents::EventFadeOut = "EVENT_FADE_OUT";
 const std::string PlatformerEvents::EventObjectiveChanged = "EVENT_OBJECTIVE_CHANGED";
 const std::string PlatformerEvents::EventUnstuck = "EVENT_UNSTUCK";
+const std::string PlatformerEvents::EventPlayCutscene = "EVENT_PLAY_CUTSCENE";
 
 void PlatformerEvents::TriggerSquallySpawned()
 {
@@ -207,6 +214,41 @@ void PlatformerEvents::TriggerOpenItemInfo(ItemInfoArgs args)
 	);
 }
 
+void PlatformerEvents::TriggerOpenQuickPotion()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
+		PlatformerEvents::EventOpenQuickPotion
+	);
+}
+
+void PlatformerEvents::TriggerUnlockQuickPotion()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
+		PlatformerEvents::EventUnlockQuickPotion
+	);
+}
+
+void PlatformerEvents::TriggerUnlockQuickWarp()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
+		PlatformerEvents::EventUnlockQuickWarp
+	);
+}
+
+void PlatformerEvents::TriggerUnlockQuickSwap()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
+		PlatformerEvents::EventUnlockQuickSwap
+	);
+}
+
+void PlatformerEvents::TriggerOpenQuickSwap()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
+		PlatformerEvents::EventOpenQuickSwap
+	);
+}
+
 void PlatformerEvents::TriggerGiveItemsFromPool(GiveItemsFromPoolArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchEvent(
@@ -227,6 +269,14 @@ void PlatformerEvents::TriggerDiscoverItem(ItemDiscoveryArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventDiscoverItem,
+		&args
+	);
+}
+
+void PlatformerEvents::TriggerDiscoverItems(ItemsDiscoveryArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
+		PlatformerEvents::EventDiscoverItems,
 		&args
 	);
 }
@@ -338,5 +388,13 @@ void PlatformerEvents::TriggerUnstuck()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventUnstuck
+	);
+}
+
+void PlatformerEvents::TriggerPlayCutscene(CutsceneArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
+		PlatformerEvents::EventPlayCutscene,
+		&args
 	);
 }

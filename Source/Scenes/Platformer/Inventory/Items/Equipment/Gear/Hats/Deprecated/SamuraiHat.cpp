@@ -53,7 +53,7 @@ LocalizedString* SamuraiHat::getString()
 
 const std::string& SamuraiHat::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_SamuraiHat;
+	return ItemResources::Equipment_Gear_Hats__Deprecated_SamuraiHat;
 }
 
 const std::string& SamuraiHat::getIdentifier()

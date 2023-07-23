@@ -30,6 +30,10 @@ public:
 	cocos2d::EventListenerCustom* whenKeyReleasedHackerMode(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(cocos2d::InputEvents::KeyboardEventArgs*)> callback, bool requireVisible = true);
 	cocos2d::EventListenerCustom* whenScrollUp(std::function<void(cocos2d::InputEvents::MouseEventArgs*)> callback, bool requireVisible = true);
 	cocos2d::EventListenerCustom* whenScrollDown(std::function<void(cocos2d::InputEvents::MouseEventArgs*)> callback, bool requireVisible = true);
+	virtual void removeAllListeners();
+	virtual void removeNonGlobalListeners();
+	void defer(std::function<void()> task, int ticks = 1);
+	void scheduleEvery(std::function<void()> task, float seconds);
 
 protected:
 	SmartNode();
@@ -49,10 +53,6 @@ protected:
 	bool isDeveloperModeEnabled();
 	virtual void initializePositions();
 	virtual void initializeListeners();
-	virtual void removeAllListeners();
-	virtual void removeNonGlobalListeners();
-	void defer(std::function<void()> task, int ticks = 1);
-	void scheduleEvery(std::function<void()> task, float seconds);
 
 	bool hackermodeEnabled = false;
 	bool enableHackerModeEvents = false;

@@ -17,6 +17,8 @@ public:
 	static const std::string SaveKeyCuredCount;
 	static const std::string SaveKeyAjaxCured;
 	static const std::string SaveKeyGriffinCured;
+	static const std::string SaveKeyThorCured;
+	static const std::string SaveKeyAthenaCured;
 	static const int MaxCuredCount;
 
 protected:
@@ -24,7 +26,7 @@ protected:
 	virtual ~CureTown();
 
 	void onLoad(QuestState questState) override;
-	void onActivate(bool isActiveThroughSkippable) override;
+	void onActivate(bool isActiveThroughSkippable, bool isInitialActivation) override;
 	void onComplete() override;
 	void onSkipped() override;
 

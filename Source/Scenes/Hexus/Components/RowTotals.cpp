@@ -125,14 +125,14 @@ RowTotals::RowTotals()
 		this->playerHexCardTotal,
 	});
 
-	for (auto next : deltaLabels)
+	for (LocalizedLabel* next : deltaLabels)
 	{
 		allLabels.push_back(next);
 		next->setTextColor(Color4B::YELLOW);
 		next->setOpacity(0);
 	}
 
-	for (auto next : allLabels)
+	for (LocalizedLabel* next : allLabels)
 	{
 		next->enableOutline(Color4B::BLACK, 3);
 		next->setAnchorPoint(Vec2(0.5f, 0.5f));
@@ -152,7 +152,7 @@ RowTotals::RowTotals()
 	this->playerDecimalTotalSocket->addChild(this->playerDecimalCardTotal);
 	this->playerHexTotalSocket->addChild(this->playerHexCardTotal);
 
-	for (auto next : deltaLabels)
+	for (LocalizedLabel* next : deltaLabels)
 	{
 		this->addChild(next);
 	}
@@ -242,6 +242,12 @@ void RowTotals::onAfterAnyStateChange(GameState* gameState)
 		case GameState::StateType::Tutorial:
 		{
 			this->readNewTotals(gameState, false);
+			break;
+		}
+		case GameState::StateType::Neutral:
+		{
+			bool isNormalGame = gameState->opponentData == nullptr;
+			this->readNewTotals(gameState, isNormalGame);
 			break;
 		}
 		default:

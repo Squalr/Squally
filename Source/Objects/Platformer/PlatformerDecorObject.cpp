@@ -67,14 +67,14 @@ void PlatformerDecorObject::onHackerModeEnable()
 {
 	super::onHackerModeEnable();
 
-	this->setVisible(false);
+	this->sprite->setVisible(false);
 }
 
 void PlatformerDecorObject::onHackerModeDisable()
 {
 	super::onHackerModeDisable();
 
-	this->setVisible(true);
+	this->sprite->setVisible(true);
 }
 
 void PlatformerDecorObject::runBounce()
@@ -115,7 +115,9 @@ void PlatformerDecorObject::optimizationHideOffscreenDecor()
 {
 	static const CSize Padding = CSize(0.0f, 0.0f);
 	static const CRect CameraRect = CRect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
-	CRect thisRect = GameUtils::getScreenBounds(this, Padding);
+
+	// Add extra self content size as a small hack. Rotated objects get culled improperly, so this hacks around that by increasing buffer a bit.
+	CRect thisRect = GameUtils::getScreenBounds(this, Padding + this->getContentSize() * 2.0f);
 
 	if (CameraRect.intersectsRect(thisRect))
 	{

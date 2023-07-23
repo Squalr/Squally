@@ -9,6 +9,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Engine/Utils/StrUtils.h"
@@ -37,6 +38,8 @@ StoneStack::StoneStack(ValueMap& properties) : super(properties)
 	this->valueStones = std::vector<cocos2d::Sprite*>();
 	this->values = std::vector<int>();
 	this->valueStrings = std::vector<ConstantString*>();
+	this->popSfx = WorldSound::create(SoundResources::Platformer_FX_Woosh_WooshWhispy1);
+	
 	std::vector<std::string> values = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, StoneStack::PropertyValues, Value("")).asString(), ", ", false);
 
 	for (int index = 0; index < StoneStack::MaxStackSize; index++)
@@ -81,6 +84,7 @@ StoneStack::StoneStack(ValueMap& properties) : super(properties)
 	}
 
 	this->addChild(this->animatedStone);
+	this->addChild(this->popSfx);
 }
 
 StoneStack::~StoneStack()
@@ -273,6 +277,7 @@ void StoneStack::pop(bool unlockInteraction, std::function<void(int)> callback)
 
 	this->broadcastMapEvent(MayanDoor::MapEventLockInteraction, ValueMap());
 
+	this->popSfx->play();
 	this->animatedStone->setVisible(true);
 	this->animatedStone->setPosition(stonePosition);
 	this->animatedStone->runAction(Sequence::create(

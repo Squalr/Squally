@@ -20,6 +20,7 @@ public:
 	void unlock(bool animate = true) override;
 
 	static const std::string MapKey;
+	static const std::string PropertySaveKey;
 
 protected:
 	Portcullus(cocos2d::ValueMap& properties);
@@ -39,4 +40,5 @@ private:
 
 	static const float DoorOpenDelta;
 	static const std::string UnlockedSaveKey;
+	std::string saveKey;
 };

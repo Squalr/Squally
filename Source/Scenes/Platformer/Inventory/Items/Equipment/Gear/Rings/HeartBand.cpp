@@ -21,11 +21,12 @@ HeartBand* HeartBand::create()
 	return instance;
 }
 
-HeartBand::HeartBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 28 }}), ItemStats(
+// Tier 6
+HeartBand::HeartBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 75 }}), ItemStats(
 	// Health
-	2,
+	6,
 	// Mana
-	2,
+	8,
 	// Attack
 	0,
 	// Magic Attack
@@ -54,7 +55,7 @@ LocalizedString* HeartBand::getString()
 
 const std::string& HeartBand::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_HeartBand;
+	return ItemResources::Equipment_Gear_Rings_T6_HeartBand;
 }
 
 const std::string& HeartBand::getIdentifier()

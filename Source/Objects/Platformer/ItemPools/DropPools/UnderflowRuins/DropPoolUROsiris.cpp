@@ -8,7 +8,6 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/ItemPools/CurrencyPools/UnderflowRuins/CurrencyPoolURGeneric.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier2/AlchemyPoolTier2.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier2/CardPoolTier2.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier2/SmithingPoolTier2.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier2/PotionPoolTier2.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
@@ -30,7 +29,6 @@ DropPoolUROsiris* DropPoolUROsiris::create(ValueMap& properties)
 
 DropPoolUROsiris::DropPoolUROsiris(ValueMap& properties) : super(properties, DropPoolUROsiris::PoolName, SampleMethod::Unbounded, 1, 2, CurrencyPoolURGeneric::create(properties),
 	{
-		CardPoolTier2::create(SampleMethod::Random, 0, 1),
 		PotionPoolTier2::create(SampleMethod::Random, 0, 1)
 	})
 {

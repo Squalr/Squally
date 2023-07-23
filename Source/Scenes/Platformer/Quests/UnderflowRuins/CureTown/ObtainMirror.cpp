@@ -83,7 +83,7 @@ void ObtainMirror::onLoad(QuestState questState)
 	}, Guano::MapKey);
 }
 
-void ObtainMirror::onActivate(bool isActiveThroughSkippable)
+void ObtainMirror::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce(this->owner->getListenEvent(), [=](ValueMap args)
 	{
@@ -102,9 +102,8 @@ void ObtainMirror::onSkipped()
 void ObtainMirror::runCinematicSequencePt1()
 {
 	// IMPORTANT: Add a redundant save now to prevent a timing issue where the user pauses and quits in the middle of this cinematic.
-	SaveManager::SaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
-
 	Objectives::SetCurrentObjective(ObjectiveKeys::URCureTownspeople);
+	SaveManager::SaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
 	
 	if (this->inventory == nullptr)
 	{
@@ -138,7 +137,7 @@ void ObtainMirror::runCinematicSequencePt2()
 		ropedMovementBehavior->detach();
 	});
 
-	GuanoUnpetrifySoundBehavior* unpetrifySfxBehavior = GuanoUnpetrifySoundBehavior::create(this->guano);
+	GuanoUnpetrifySoundBehavior* unpetrifySfxBehavior = GuanoUnpetrifySoundBehavior::create(this->guanoPetrified);
 
 	this->guanoPetrified->attachComponent(unpetrifySfxBehavior);
 

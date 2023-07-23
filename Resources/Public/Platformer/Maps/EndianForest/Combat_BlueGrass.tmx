@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="575">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="575">
  <properties>
   <property name="show-cracks" type="bool" value="true"/>
  </properties>
@@ -10,7 +10,7 @@
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
-   <property name="music" value="trick-or-treat"/>
+   <property name="music" value="perseverance"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
@@ -95,12 +95,9 @@
    </properties>
   </object>
   <object id="553" name="blue-grass" type="terrain" x="1836.17" y="1782.68">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
-  <object id="554" name="combat-spawn" type="object" x="1696.01" y="1581.05" width="64" height="64">
+  <object id="554" name="combat-spawn" type="object" x="1697.34" y="1579.72" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-128"/>
     <property name="spawn-order" type="int" value="0"/>
@@ -115,15 +112,11 @@
   </object>
   <object id="556" name="blue-grass" type="terrain" x="1450.36" y="1645.46">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-128"/>
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
   <object id="557" name="blue-grass" type="terrain" x="260.91" y="1731.43">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
   <object id="558" name="combat-spawn" type="object" x="725.61" y="1468.66" width="64" height="64">
@@ -142,14 +135,12 @@
   </object>
   <object id="560" name="blue-grass" type="terrain" x="1897.84" y="1503.35">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-256"/>
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
   <object id="561" name="blue-grass" type="terrain" x="482" y="1534">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-256"/>
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>

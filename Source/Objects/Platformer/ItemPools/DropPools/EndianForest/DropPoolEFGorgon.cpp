@@ -8,7 +8,6 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/ItemPools/CurrencyPools/EndianForest/CurrencyPoolEFGeneric.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier1/AlchemyPoolTier1.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier1/CardPoolTier1.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier1/SmithingPoolTier1.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier1/PotionPoolTier1.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
@@ -30,7 +29,6 @@ DropPoolEFGorgon* DropPoolEFGorgon::create(ValueMap& properties)
 
 DropPoolEFGorgon::DropPoolEFGorgon(ValueMap& properties) : super(properties, DropPoolEFGorgon::PoolName, SampleMethod::Unbounded, 1, 2, CurrencyPoolEFGeneric::create(properties),
 	{
-		CardPoolTier1::create(SampleMethod::Random, 0, 1),
 		PotionPoolTier1::create(SampleMethod::Random, 0, 1)
 	})
 {

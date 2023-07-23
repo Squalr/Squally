@@ -58,7 +58,7 @@ void TownArrival::onLoad(QuestState questState)
 	}, Scrappy::MapKey);
 }
 
-void TownArrival::onActivate(bool isActiveThroughSkippable)
+void TownArrival::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce(TownArrival::MapKeyQuest, [=](ValueMap args)
 	{

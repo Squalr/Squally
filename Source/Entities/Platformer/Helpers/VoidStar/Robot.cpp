@@ -24,9 +24,8 @@ Robot::Robot(ValueMap& properties) : super(properties,
 	Robot::MapKey,
 	EntityResources::Helpers_VoidStar_Robot_Animations,
 	EntityResources::Helpers_VoidStar_Robot_Emblem,
-	CSize(224.0f, 440.0f),
-	0.3f,
-	Vec2(0.0f, 0.0f))
+	CSize(64.0f, 128.0f),
+	1.0f)
 {
 }
 

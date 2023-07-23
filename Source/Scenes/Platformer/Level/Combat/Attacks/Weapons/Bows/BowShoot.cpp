@@ -33,8 +33,8 @@ BowShoot::BowShoot(int damageMin, int damageMax, float attackDuration, float rec
 		recoverDuration
 	)
 {
-	this->slashSound = WorldSound::create(SoundResources::Platformer_Physical_Projectiles_WeaponThrow1);
-	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1);
+	this->slashSound = WorldSound::create(SoundResources::Platformer_Physical_Projectiles_Woosh1);
+	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft5);
 
 	this->addChild(this->slashSound);
 	this->addChild(this->hitSound);
@@ -71,7 +71,7 @@ void BowShoot::performAttack(PlatformerEntity* owner, std::vector<PlatformerEnti
 {
 	super::performAttack(owner, targets);
 	
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		this->doDamageOrHealing(owner, next);
 	}

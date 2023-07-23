@@ -20,7 +20,7 @@ VoidCrystal* VoidCrystal::create()
 	return instance;
 }
 
-VoidCrystal::VoidCrystal() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 212 }}), ItemMeta(20000))
+VoidCrystal::VoidCrystal() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 12 * 8 }}), ItemMeta(20000))
 {
 }
 
@@ -40,7 +40,7 @@ LocalizedString* VoidCrystal::getString()
 
 const std::string& VoidCrystal::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_VoidCrystal;
+	return ItemResources::Crafting_Smithing_T8_VoidCrystal;
 }
 
 const std::string& VoidCrystal::getIdentifier()

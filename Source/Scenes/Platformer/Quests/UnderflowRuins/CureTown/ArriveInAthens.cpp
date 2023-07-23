@@ -76,7 +76,7 @@ void ArriveInAthens::onLoad(QuestState questState)
 	}
 }
 
-void ArriveInAthens::onActivate(bool isActiveThroughSkippable)
+void ArriveInAthens::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

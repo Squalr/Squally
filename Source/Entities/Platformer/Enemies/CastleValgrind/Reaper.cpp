@@ -24,9 +24,8 @@ Reaper::Reaper(ValueMap& properties) : super(properties,
 	Reaper::MapKey,
 	EntityResources::Enemies_CastleValgrind_Reaper_Animations,
 	EntityResources::Enemies_CastleValgrind_Reaper_Emblem,
-	CSize(196.0f, 512.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	CSize(196.0f, 442.0f),
+	1.0f)
 {
 }
 
@@ -36,7 +35,7 @@ Reaper::~Reaper()
 
 Vec2 Reaper::getDialogueOffset()
 {
-	return Vec2(-16.0f, -288.0f);
+	return Vec2(-16.0f, -64.0f);
 }
 
 LocalizedString* Reaper::getEntityName()

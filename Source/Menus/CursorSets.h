@@ -11,6 +11,7 @@ public:
 		Globe = Mouse::SET_ID_TRANSLATION_CURSOR,
 		PickPocket = 2,
 		Repair = 3,
+		SoulHarvest = 4,
 	};
 
 	static void RegisterCursorSets();

@@ -23,17 +23,17 @@
 
 using namespace cocos2d;
 
-CastShadowBolt* CastShadowBolt::create(float attackDuration, float recoverDuration, Priority priority)
+CastShadowBolt* CastShadowBolt::create(float attackDuration, float recoverDuration, Priority priority, int damageMin, int damageMax)
 {
-	CastShadowBolt* instance = new CastShadowBolt(attackDuration, recoverDuration, priority);
+	CastShadowBolt* instance = new CastShadowBolt(attackDuration, recoverDuration, priority, damageMin, damageMax);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CastShadowBolt::CastShadowBolt(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Damage, UIResources::Menus_Icons_SpellImpactPurple, priority, AbilityType::Shadow, 4, 6, 9, attackDuration, recoverDuration)
+CastShadowBolt::CastShadowBolt(float attackDuration, float recoverDuration, Priority priority, int damageMin, int damageMax)
+	: super(AttackType::Damage, UIResources::Menus_Icons_SpellImpactPurple, priority, AbilityType::Shadow, damageMin, damageMax, 9, attackDuration, recoverDuration)
 {
 }
 
@@ -60,7 +60,7 @@ void CastShadowBolt::performAttack(PlatformerEntity* owner, std::vector<Platform
 {
 	super::performAttack(owner, targets);
 	
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		SmartAnimationSequenceNode* launchFx = SmartAnimationSequenceNode::create();
 		ShadowBolt* shadowBolt = ShadowBolt::create(owner, next);

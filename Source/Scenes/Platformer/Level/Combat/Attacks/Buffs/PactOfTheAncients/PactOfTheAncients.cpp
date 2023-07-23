@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
@@ -101,7 +103,7 @@ void PactOfTheAncients::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return PactOfTheAncientsGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_RegisterEdx::create(),
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_RegisterEdx::create(), true
 					},
 				},
 				int(HackFlags::None),
@@ -111,11 +113,21 @@ void PactOfTheAncients::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						"push 5\n"
-						"pop dword ptr [edx]\n"
+						ConcatString::create({
+							ConstantString::create("push 5\n"),
+							ConstantString::create("pop dword ptr [edx]\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentHint::create()),
+							ConstantString::create("\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create())
+						})
 						, // x64
-						"push 5\n"
-						"pop qword ptr [rdx]\n"
+						ConcatString::create({
+							ConstantString::create("push 5\n"),
+							ConstantString::create("pop qword ptr [rdx]\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentHint::create()),
+							ConstantString::create("\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create())
+						})
 					),
 				},
 				true
@@ -123,8 +135,7 @@ void PactOfTheAncients::registerHackables()
 		},
 	};
 
-	auto func = &PactOfTheAncients::applyPactOfTheAncients;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(PactOfTheAncients::applyPactOfTheAncients, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

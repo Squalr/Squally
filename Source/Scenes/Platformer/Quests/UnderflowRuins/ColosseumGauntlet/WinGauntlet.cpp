@@ -129,7 +129,7 @@ void WinGauntlet::onLoad(QuestState questState)
 	}, GatlingGun::MapKey);
 }
 
-void WinGauntlet::onActivate(bool isActiveThroughSkippable)
+void WinGauntlet::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce(WinGauntlet::MapEventBeginGauntlet, [=](ValueMap)
 	{
@@ -293,8 +293,9 @@ void WinGauntlet::runCinematicSequencePt7()
 {
 	if (this->gatlingGun != nullptr && this->squally != nullptr)
 	{
+		this->gatlingGun->stopGauntletTrack();
 		this->gatlingGun->disable();
-		this->gatlingGun->dismount();
+		this->gatlingGun->dismountAll();
 		PlatformerEvents::TriggerCinematicRestore();
 	}
 

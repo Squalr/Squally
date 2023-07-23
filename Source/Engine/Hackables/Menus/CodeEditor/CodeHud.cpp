@@ -39,7 +39,7 @@ using namespace cocos2d::ui;
 const float CodeHud::CompileDelayMaxSeconds = 0.1f;
 const float CodeHud::LineNumberMargin = 32.0f;
 const CSize CodeHud::StatusSize = CSize(420.0f, 1080.0f);
-const CSize CodeHud::FunctionSize = CSize(840.0f, 640.0f);
+const CSize CodeHud::FunctionSize = CSize(912.0f, 800.0f);
 const Color4B CodeHud::SubtextColor = Color4B(66, 166, 166, 255);
 const Color4B CodeHud::HeaderColor = Color4B(188, 188, 64, 255);
 const Color4B CodeHud::ErrorColor = Color4B(196, 82, 82, 255);
@@ -355,11 +355,18 @@ void CodeHud::buildRegisterWindow()
 		
 		if (registerHint.isPointer)
 		{
-			registerString = Strings::Common_PlusPointerOffset::create()->setStringReplacementVariables(
+			if (registerHint.pointerOffset == 0)
 			{
-				HackableCode::registerToLocalizedString(registerHint.reg),
-				ConstantString::create(std::to_string(registerHint.pointerOffset))
-			});
+				registerString = Strings::Common_Pointer::create()->setStringReplacementVariables(HackableCode::registerToLocalizedString(registerHint.reg));
+			}
+			else
+			{
+				registerString = Strings::Common_PlusPointerOffset::create()->setStringReplacementVariables(
+				{
+					HackableCode::registerToLocalizedString(registerHint.reg),
+					ConstantString::create(std::to_string(registerHint.pointerOffset))
+				});
+			}
 		}
 		else
 		{

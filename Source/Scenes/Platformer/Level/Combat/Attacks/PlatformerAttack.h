@@ -18,6 +18,7 @@ public:
 		Buff,
 		Debuff,
 		Resurrection,
+		Defensive,
 	};
 
 	enum class TargetingType
@@ -53,7 +54,7 @@ public:
 	TargetingType getTargetingType();
 	virtual void onAttackTelegraphBegin();
 	virtual void doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target);
-	virtual void performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets) = 0;
+	virtual void performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets);
 
 	/*
 		Determines if an ability is even worth using -- if it has any utility at all.

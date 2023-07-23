@@ -133,7 +133,7 @@ GameObject::GameObject(const ValueMap& properties) : super()
 			polygonPointsRaw = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyPoints, Value(ValueVector())).asValueVector();
 		}
 		
-		for (auto next : polygonPointsRaw)
+		for (Value& next : polygonPointsRaw)
 		{
 			ValueMap point = next.asValueMap();
 

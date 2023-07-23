@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const Color4F DialogueBox::PanelColor = Color4F(Color4B(189, 215, 221, 196));
+const Color4F DialogueBox::PanelColor = Color4F(Color4B(189, 215, 221, 224));
 const Color4F DialogueBox::PanelEdgeColor = Color4F(Color4B(47, 71, 78, 196));
 const Color4B DialogueBox::PanelTextColor = Color4B(47, 71, 78, 255);
 const float DialogueBox::PanelBorderSize = 3.0f;

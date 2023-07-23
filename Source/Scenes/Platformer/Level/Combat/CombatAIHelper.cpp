@@ -10,9 +10,14 @@
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityAttackBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
+#include "Scenes/Platformer/Level/Combat/Buffs/Defend/Defend.h"
+#include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
+#include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
+#include "Scenes/Platformer/Level/Combat/TimelineEventGroup.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 using namespace cocos2d;
@@ -69,6 +74,27 @@ void CombatAIHelper::initializeListeners()
 		if (args != nullptr)
 		{
 			this->performRetargetCorrections(args->attackingEntry);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventRequestRetargetReevaluation, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::AIRequestArgs* args = static_cast<CombatEvents::AIRequestArgs*>(eventCustom->getData());
+
+		if (args != nullptr && args->attackingEntry != nullptr)
+		{
+			// Clear existing targets, as they are invalid if we have gotten this far
+			this->selectedTargets.clear();
+			
+			// Use AI to auto-choose attack and entity. Start by just trying to re-target.
+			this->selectTargets(args->attackingEntry);
+			
+			if (!this->selectedTargets.empty())
+			{
+				// Retarget successful
+				args->attackingEntry->stageTargets(this->selectedTargets);
+				return;
+			}
 		}
 	}));
 }
@@ -235,7 +261,7 @@ void CombatAIHelper::selectTargetSingle(TimelineEntry* attackingEntry)
 		case PlatformerAttack::AttackType::Healing:
 		case PlatformerAttack::AttackType::Resurrection:
 		{
-			for (auto next : sameTeam)
+			for (PlatformerEntity* next : sameTeam)
 			{
 				float utility = this->selectedAttack->getUseUtility(caster, next, sameTeam, otherTeam);
 
@@ -252,9 +278,21 @@ void CombatAIHelper::selectTargetSingle(TimelineEntry* attackingEntry)
 		case PlatformerAttack::AttackType::Damage:
 		case PlatformerAttack::AttackType::Debuff:
 		{
-			for (auto next : otherTeam)
+			for (PlatformerEntity* next : otherTeam)
 			{
 				float utility = this->selectedAttack->getUseUtility(caster, next, sameTeam, otherTeam);
+
+				// If the entity is using distract, increase the utility
+				next->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* buffBehavior)
+				{
+					buffBehavior->getBuff<Defend>([&](Defend* defend)
+					{
+						if (defend->isDistractActive())
+						{
+							utility *= 2.0f;
+						}
+					});
+				});
 
 				if (utility > bestUtility)
 				{
@@ -302,7 +340,7 @@ void CombatAIHelper::selectTargetsMulti(TimelineEntry* attackingEntry)
 		case PlatformerAttack::AttackType::Damage:
 		case PlatformerAttack::AttackType::Debuff:
 		{
-			for (auto next : otherTeam)
+			for (PlatformerEntity* next : otherTeam)
 			{
 				this->selectedTargets.push_back(next);
 			}
@@ -332,7 +370,7 @@ void CombatAIHelper::selectTargetsAll(TimelineEntry* attackingEntry)
 		this->selectedTargets.push_back(next);
 	}
 	
-	for (auto next : otherTeam)
+	for (PlatformerEntity* next : otherTeam)
 	{
 		this->selectedTargets.push_back(next);
 	}
@@ -349,9 +387,10 @@ void CombatAIHelper::selectAttack(TimelineEntry* attackingEntry)
 	}
 
 	std::vector<PlatformerAttack*> attackList = attackingEntry->isPlayerEntry() ? attackBehavior->getNoCostAttacks() : attackBehavior->getAvailableAttacks();
+	std::vector<PlatformerAttack*> defensivesList = attackingEntry->isPlayerEntry() ? attackBehavior->getNoCostDefensives() : attackBehavior->getAvailableDefensives();
 	std::vector<Consumable*> consumablesList = attackingEntry->isPlayerEntry() ? std::vector<Consumable*>() : attackBehavior->getAvailableConsumables();
 	
-	for (auto next : consumablesList)
+	for (Consumable* next : consumablesList)
 	{
 		attackList.push_back(next->getAssociatedAttack(attackingEntity));
 	}
@@ -366,7 +405,15 @@ void CombatAIHelper::selectAttack(TimelineEntry* attackingEntry)
 		return !next->isWorthUsing(attackingEntity, sameTeam, otherTeam);
 	}), attackList.end());
 
-	// Prioritize resurrection > healing > damage
+	// Filter usable defensives
+	defensivesList.erase(std::remove_if(defensivesList.begin(), defensivesList.end(),
+		[=](PlatformerAttack* next)
+	{
+		return !next->isWorthUsing(attackingEntity, sameTeam, otherTeam);
+	}), defensivesList.end());
+
+	// Prioritize defensive > resurrection > healing > damage
+	this->trySelectDefensiveSkill(attackingEntry, defensivesList);
 	this->trySelectResurrectionSkill(attackingEntry, attackList);
 	this->trySelectHealingSkill(attackingEntry, attackList);
 	this->trySelectDamageSkill(attackingEntry, attackList);
@@ -385,9 +432,65 @@ void CombatAIHelper::shuffleEntities()
 	std::shuffle(this->enemyEntities.begin(), this->enemyEntities.end(), g2);
 }
 
+void CombatAIHelper::trySelectDefensiveSkill(TimelineEntry* attackingEntry, const std::vector<PlatformerAttack*>& attackList)
+{
+	if (attackingEntry == nullptr || this->selectedAttack != nullptr)
+	{
+		return;
+	}
+
+	const std::vector<PlatformerEntity*>& otherTeam = !attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
+	bool isWorthDefending = false;
+
+	// Iterate the enemy team to search for casts targeting ourselves
+	for (PlatformerEntity* next : otherTeam)
+	{
+		CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([&](Timeline* timeline)
+		{
+			TimelineEntry* casterEntry = timeline->getAssociatedEntry(next);
+			
+			// Check if the enemy is casting an ability that does direct damage
+			if (casterEntry == nullptr
+				|| casterEntry->getStagedCast() == nullptr
+				|| casterEntry->getStagedCast()->getAttackType() != PlatformerAttack::AttackType::Damage)
+			{
+				return;
+			}
+
+			// Check if we are the target of that direct damage
+			for (PlatformerEntity* nextTarget : casterEntry->getStagedTargets())
+			{
+				if (nextTarget == attackingEntry->getEntity())
+				{
+					isWorthDefending = true;
+					break;
+				}
+			}
+		}));
+
+		// Early exit if we are being attacked
+		if (isWorthDefending)
+		{
+			break;
+		}
+	}
+
+	if (!isWorthDefending)
+	{
+		return;
+	}
+
+	ProbabilityMap attackProbabilities = this->buildCumulativeProbabilityMap(attackList, [=](PlatformerAttack* attack)
+	{
+		return attack->getAttackType() == PlatformerAttack::AttackType::Defensive;
+	});
+
+	this->selectedAttack = attackProbabilities.getRandomAttack();
+}
+
 void CombatAIHelper::trySelectResurrectionSkill(TimelineEntry* attackingEntry, const std::vector<PlatformerAttack*>& attackList)
 {
-	if (this->selectedAttack != nullptr)
+	if (attackingEntry == nullptr || this->selectedAttack != nullptr)
 	{
 		return;
 	}
@@ -402,7 +505,7 @@ void CombatAIHelper::trySelectResurrectionSkill(TimelineEntry* attackingEntry, c
 
 void CombatAIHelper::trySelectHealingSkill(TimelineEntry* attackingEntry, const std::vector<PlatformerAttack*>& attackList)
 {
-	if (this->selectedAttack != nullptr)
+	if (attackingEntry == nullptr || this->selectedAttack != nullptr)
 	{
 		return;
 	}
@@ -417,7 +520,7 @@ void CombatAIHelper::trySelectHealingSkill(TimelineEntry* attackingEntry, const 
 
 void CombatAIHelper::trySelectDamageSkill(TimelineEntry* attackingEntry, const std::vector<PlatformerAttack*>& attackList)
 {
-	if (this->selectedAttack != nullptr)
+	if (attackingEntry == nullptr || this->selectedAttack != nullptr)
 	{
 		return;
 	}

@@ -83,8 +83,8 @@ void DispelIllusionBehavior::registerHackables()
 		[=]()
 		{
 		},
-		int(HackFlags::None),
-		0.0f,
+		int(HackFlags::Arcane),
+		0.01f,
 		HackableBase::HackBarColor::Purple,
 		UIResources::Menus_Icons_Eye,
 		Strings::Menus_Hacking_Abilities_DispelIllusion::create(),
@@ -98,6 +98,8 @@ void DispelIllusionBehavior::onDispelActivated()
 	this->object->saveObjectState(DispelIllusionBehavior::SaveKeyDispelled, Value(true));
 
 	PlatformerEvents::TriggerDispelIllusion(PlatformerEvents::DispelIllusionArgs(this->group));
+
+	this->object->broadcastMapEvent(this->object->getSendEvent(), ValueMap());
 
 	if (this->object != nullptr)
 	{

@@ -54,8 +54,6 @@ EntityPickPocketBehavior::EntityPickPocketBehavior(GameObject* owner) : super(ow
 		this->invalidate();
 	}
 
-	this->pickPocketIcon->setVisible(false);
-
 	this->addChild(this->pocketPoolDeserializer);
 	this->addChild(this->pickPocketIcon);
 }
@@ -75,6 +73,8 @@ void EntityPickPocketBehavior::onLoad()
 {
 	this->defer([=]()
 	{
+		this->updateIconVisibility();
+		
 		if (this->entity->getComponent<EntitySelectionBehavior>() == nullptr)
 		{
 			this->entity->attachComponent(EntitySelectionBehavior::create(this->entity));
@@ -90,7 +90,7 @@ void EntityPickPocketBehavior::onLoad()
 			selectionBehavior->setClickModifier(InputEvents::KeyCode::KEY_SHIFT);
 			selectionBehavior->setClickableCallback([=]()
 			{
-				return this->canPickPocket();
+				return this->canPickPocket(true);
 			});
 			selectionBehavior->setEntityClickCallbacks([=]()
 			{
@@ -98,7 +98,7 @@ void EntityPickPocketBehavior::onLoad()
 			},
 			[=]()
 			{
-				if (this->currentHelperName == Guano::MapKey && this->canPickPocket())
+				if (this->currentHelperName == Guano::MapKey && this->canPickPocket(true))
 				{
 					CursorSets::SetActiveCursorSet(CursorSets::PickPocket);
 				}
@@ -108,18 +108,20 @@ void EntityPickPocketBehavior::onLoad()
 				CursorSets::SetActiveCursorSet(CursorSets::Default);
 			});
 		});
+
+		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->pickPocketIcon));
 	});
 	
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 		this->currentHelperName = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString();
-		this->pickPocketIcon->setVisible(this->canPickPocket());
+		this->updateIconVisibility();
 
 		this->squally->listenForStateWrite(StateKeys::CurrentHelper, [=](Value value)
 		{
 			this->currentHelperName = value.asString();
-			this->pickPocketIcon->setVisible(this->canPickPocket());
+			this->updateIconVisibility();
 		});
 	}, Squally::MapKey);
 
@@ -150,11 +152,13 @@ void EntityPickPocketBehavior::onLoad()
 void EntityPickPocketBehavior::onDisable()
 {
 	super::onDisable();
+
+	this->updateIconVisibility();
 }
 
 void EntityPickPocketBehavior::attemptPickPocket()
 {
-	if (this->canPickPocket())
+	if (this->canPickPocket(true))
 	{
 		HelperEvents::TriggerRequestPickPocket(HelperEvents::RequestPickPocketArgs(
 			this->entity,
@@ -168,9 +172,27 @@ void EntityPickPocketBehavior::attemptPickPocket()
 	}
 }
 
-bool EntityPickPocketBehavior::canPickPocket()
+bool EntityPickPocketBehavior::canPickPocket(bool checkZ)
 {
-	return this->entity != nullptr && this->currentHelperName == Guano::MapKey && this->entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) && !this->wasPickPocketed();
+	bool isHelperZAligned = true;
+
+	if (checkZ)
+	{
+		ObjectEvents::QueryObjects<PlatformerHelper>([&](PlatformerHelper* helper)
+		{
+			if (std::abs(GameUtils::getDepth(helper) - GameUtils::getDepth(entity)) > 16.0f)
+			{
+				isHelperZAligned = false;
+			}
+		}, Squally::TeamTag);
+	}
+
+	return this->entity != nullptr 
+		&& !this->isInvalidated()
+		&& this->currentHelperName == Guano::MapKey
+		&& isHelperZAligned
+		&& this->entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true)
+		&& !this->wasPickPocketed();
 }
 
 bool EntityPickPocketBehavior::wasPickPocketed()
@@ -192,7 +214,7 @@ void EntityPickPocketBehavior::onPickPocketed()
 
 void EntityPickPocketBehavior::updateIconVisibility()
 {
-	this->pickPocketIcon->setVisible(this->canPickPocket());
+	this->pickPocketIcon->setVisible(this->canPickPocket(false));
 }
 
 void EntityPickPocketBehavior::refreshCursorState()
@@ -210,7 +232,7 @@ void EntityPickPocketBehavior::refreshCursorState()
 			{
 				selection->getOwner()->getComponent<EntityPickPocketBehavior>([](EntityPickPocketBehavior* pickPocketBehavior)
 				{
-					if (pickPocketBehavior->canPickPocket())
+					if (pickPocketBehavior->canPickPocket(true))
 					{
 						CursorSets::SetActiveCursorSet(CursorSets::PickPocket);
 					}

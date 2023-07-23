@@ -21,6 +21,8 @@ protected:
 private:
 	typedef GameComponent super;
 
+	void raiseBridge(bool isInit);
+
 	enum class AudioMode
 	{
 		None,

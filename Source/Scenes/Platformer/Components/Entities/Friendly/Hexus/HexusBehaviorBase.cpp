@@ -47,7 +47,7 @@ HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, std::string voiceResourc
 
 	Sprite* cardGlow = Sprite::create(UIResources::HUD_EmblemGlow);
 	Sprite* overheadSprite = Sprite::create(ItemResources::Collectables_Cards_CardSpecial);
-	Sprite* overheadSpriteDefeated = Sprite::create("");
+	Sprite* overheadSpriteDefeated = Sprite::create(ItemResources::Collectables_Cards_CardSpecialGrey);
 
 	if (this->dialogueChoiceOverride != nullptr)
 	{
@@ -100,7 +100,7 @@ void HexusBehaviorBase::initializePositions()
 
 		if (this->entity != nullptr)
 		{
-			Vec2 offset = this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 96.0f);
+			Vec2 offset = Vec2(0.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 96.0f);
 
 			this->iconNode->setPosition(offset);
 		}
@@ -172,49 +172,7 @@ void HexusBehaviorBase::onLoad()
 	}
 
 	this->addChild(this->rewardPool);
-
-	if (this->entity != nullptr)
-	{
-		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
-		{
-			if (this->dialogueChoiceOverride != nullptr)
-			{
-				this->hexusOption = interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
-					this->dialogueChoiceOverride->clone(),
-					[=]()
-					{
-						HexusEvents::TriggerOpenHexus(HexusEvents::HexusOpenArgs(this->createOpponentData()));
-					}),
-					0.5f
-				);
-			}
-			else
-			{
-				if (this->getWins() <= 0)
-				{
-					this->hexusOption = interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
-						Strings::Platformer_Dialogue_Hexus_HowAboutARoundOfHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
-						[=]()
-						{
-							HexusEvents::TriggerOpenHexus(HexusEvents::HexusOpenArgs(this->createOpponentData()));
-						}),
-						0.5f
-					);
-				}
-				else
-				{
-					this->hexusOption = interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
-						Strings::Platformer_Dialogue_Hexus_HowAboutARematch::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
-						[=]()
-						{
-							HexusEvents::TriggerOpenHexus(HexusEvents::HexusOpenArgs(this->createOpponentData()));
-						}),
-						0.5f
-					);
-				}
-			}
-		});
-	}
+	this->rebuildDialogue();
 }
 
 void HexusBehaviorBase::onDisable()
@@ -240,6 +198,56 @@ void HexusBehaviorBase::giveItems()
 	}
 }
 
+void HexusBehaviorBase::rebuildDialogue()
+{
+	if (this->entity == nullptr)
+	{
+		return;
+	}
+
+	this->iconNode->setVisible(true);
+
+	this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	{
+		if (this->dialogueChoiceOverride != nullptr)
+		{
+			this->hexusOption = interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
+				this->dialogueChoiceOverride->clone(),
+				[=]()
+				{
+					HexusEvents::TriggerOpenHexus(HexusEvents::HexusOpenArgs(this->createOpponentData()));
+				}),
+				0.5f
+			);
+		}
+		else
+		{
+			if (this->getWins() <= 0)
+			{
+				this->hexusOption = interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
+					Strings::Platformer_Dialogue_Hexus_HowAboutARoundOfHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
+					[=]()
+					{
+						HexusEvents::TriggerOpenHexus(HexusEvents::HexusOpenArgs(this->createOpponentData()));
+					}),
+					0.5f
+				);
+			}
+			else
+			{
+				this->hexusOption = interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
+					Strings::Platformer_Dialogue_Hexus_HowAboutARematch::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
+					[=]()
+					{
+						HexusEvents::TriggerOpenHexus(HexusEvents::HexusOpenArgs(this->createOpponentData()));
+					}),
+					0.5f
+				);
+			}
+		}
+	});
+}
+
 void HexusBehaviorBase::removeFromDialogue()
 {
 	if (this->entity != nullptr)
@@ -247,6 +255,7 @@ void HexusBehaviorBase::removeFromDialogue()
 		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->getMainDialogueSet()->removeDialogueOption(this->hexusOption);
+			this->iconNode->setVisible(false);
 		});
 	}
 }
@@ -255,8 +264,6 @@ void HexusBehaviorBase::onWin()
 {
 	static int DialogueOptionCount = 2;
 	static int DialogueIndex = RandomHelper::random_int(0, DialogueOptionCount);
-
-	this->iconNode->setVisible(false);
 
 	LocalizedString* dialogue = this->getCustomWinDialogue();
 
@@ -283,8 +290,10 @@ void HexusBehaviorBase::onWin()
 	}
 
 	this->addWin();
+	this->removeFromDialogue();
+	this->rebuildDialogue();
 
-	for (auto callback : this->winCallbacks)
+	for (std::function<void()>& callback : this->winCallbacks)
 	{
 		callback();
 	}

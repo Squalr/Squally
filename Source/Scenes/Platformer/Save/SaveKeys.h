@@ -5,10 +5,11 @@
 class SaveKeys
 {
 public:
+	static const std::string SaveKeySquallyCrashed;
 	static const std::string SaveKeyMap;
+	static const std::string SaveKeyQuickWarpReturnMap;
 	static const std::string SaveKeyCharterShipReturnMap;
 	static const std::string SaveKeyCurrentObjective;
-	static const std::string SaveKeyEventTriggeredPrefix;
 	static const std::string SaveKeySquallyRuneCooldowns;
 	static const std::string SaveKeySquallyHealth;
 	static const std::string SaveKeySquallyMana;
@@ -21,10 +22,16 @@ public:
 	static const std::string SaveKeySquallyInventory;
 	static const std::string SaveKeySquallyEquipment;
 	static const std::string SaveKeySquallyCurrencyInventory;
+	
+	static const std::string SaveKeyLastSelectedScriptIndexPrefix;
+	static const std::string SaveKeyScriptPrefix;
+
+	static const std::string SaveKeyQuickPotionUnlocked;
 
 	static const std::string SaveKeyScrappyFound;
 	static const std::string SaveKeyGuanoFound;
 	static const std::string SaveKeyGeckyFound;
+	static const std::string SaveKeyGrimFound;
 
 	static const std::string SaveKeyHelperName;
 	static const std::string SaveKeyHelperHeath;
@@ -32,22 +39,37 @@ public:
 	static const std::string SaveKeyHasGivenDefaultItems;
 	static const std::string SaveKeyCrackProgress;
 
-	static const std::string SaveKeyGeckyHealth;
-	static const std::string SaveKeyGeckyMana;
-	static const std::string SaveKeyGeckyEq;
-	static const std::string SaveKeyGeckyEqExperience;
-
 	static const std::string SaveKeyGuanoHealth;
 	static const std::string SaveKeyGuanoMana;
 	static const std::string SaveKeyGuanoEq;
 	static const std::string SaveKeyGuanoEqExperience;
 
+	static const std::string SaveKeyGeckyHealth;
+	static const std::string SaveKeyGeckyMana;
+	static const std::string SaveKeyGeckyEq;
+	static const std::string SaveKeyGeckyEqExperience;
+
+	static const std::string SaveKeyGrimHealth;
+	static const std::string SaveKeyGrimMana;
+	static const std::string SaveKeyGrimEq;
+	static const std::string SaveKeyGrimEqExperience;
+
 	static const std::string SaveKeyRespawnMap;
-	static const std::string SaveKeyRespawnObjectId;
+	static const std::string SaveKeySpawnOverride;
 
 	static const std::string SaveKeyLevelRubberband;
 	static const std::string SaveKeyLevelHideMiniMap;
-	static const std::string SaveKeyLevelMiniMapRequiredItem;
+
+	static const std::string SaveKeyTalkedToAra;
+	static const std::string SaveKeyArcaneHint;
+
+	static const std::string SaveKeyClockMinutes;
+	static const std::string SaveKeyClockHours;
+	static const std::string SaveKeyClockTimes;
+
+	static const std::string SaveKeyViewCrackSmall;
+	static const std::string SaveKeyViewCrackMedium;
+	static const std::string SaveKeyViewCrackLarge;
 	
 	static const std::string SaveKeySpellBookArcane;
 	static const std::string SaveKeySpellBookFire;
@@ -109,4 +131,22 @@ public:
 	static const std::string SaveKeyCollectableAnimalWorm;
 	static const std::string SaveKeyCollectableAnimalYeti;
 	static const std::string SaveKeyCollectableAnimalZebra;
+	
+	static const std::string SaveKeyItemAGiven;
+	static const std::string SaveKeyItemBGiven;
+	static const std::string SaveKeyItemCGiven;
+	static const std::string SaveKeyItemDGiven;
+	static const std::string SaveKeyItemEGiven;
+	static const std::string SaveKeyItemFGiven;
+	static const std::string SaveKeyItemGGiven;
+	static const std::string SaveKeyItemHGiven;
+	
+	static const std::string SaveKeyItemEE1Given;
+	static const std::string SaveKeyItemEE2Given;
+	static const std::string SaveKeyItemEE3Given;
+	static const std::string SaveKeyItemEE4Given;
+	static const std::string SaveKeyItemEE5Given;
+
+	static const std::string SaveKeyAsterItemGiven;
+	static const std::string SaveKeyLycanItemGiven;
 };

@@ -5,6 +5,7 @@
 class Gecky;
 class Guano;
 class Bancroft;
+class Mildred;
 class QuestLine;
 class Scrappy;
 class Squally;
@@ -22,12 +23,14 @@ protected:
 	virtual ~BancroftTrainAccess();
 
 	void onLoad(QuestState questState) override;
-	void onActivate(bool isActiveThroughSkippable) override;
+	void onActivate(bool isActiveThroughSkippable, bool isInitialActivation) override;
 	void onComplete() override;
 	void onSkipped() override;
 
 private:
 	typedef QuestTask super;
+
+	void setMildredText();
 
 	void runCinematicSequenceAccessBlockedPt1();
 	void runCinematicSequenceAccessBlockedPt2();
@@ -41,6 +44,7 @@ private:
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 	Bancroft* bancroft = nullptr;
+	Mildred* mildred = nullptr;
 	Warp* warp = nullptr;
 
 	static const std::string TagTrainWarp;

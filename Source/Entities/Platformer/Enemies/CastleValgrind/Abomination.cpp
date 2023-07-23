@@ -25,8 +25,7 @@ Abomination::Abomination(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_CastleValgrind_Abomination_Animations,
 	EntityResources::Enemies_CastleValgrind_Abomination_Emblem,
 	CSize(296.0f, 356.0f),
-	0.6f,
-	Vec2(0.0f, 0.0f))
+	0.6f)
 {
 }
 

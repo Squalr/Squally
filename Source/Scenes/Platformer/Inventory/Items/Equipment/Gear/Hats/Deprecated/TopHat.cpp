@@ -53,7 +53,7 @@ LocalizedString* TopHat::getString()
 
 const std::string& TopHat::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_TopHat;
+	return ItemResources::Equipment_Gear_Hats__Deprecated_TopHat;
 }
 
 const std::string& TopHat::getIdentifier()

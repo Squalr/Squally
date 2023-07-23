@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class CollisionObject;
+class WorldSound;
 
 class Stalactite : public GameObject
 {
@@ -34,4 +35,6 @@ private:
 
 	cocos2d::Sprite* sprite = nullptr;
 	CollisionObject* collision = nullptr;
+	WorldSound* rumbleSound = nullptr;
+	WorldSound* fallSound = nullptr;
 };

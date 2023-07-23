@@ -7,7 +7,7 @@
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="heartbeat"/>
-   <property name="rubber-band" type="int" value="5"/>
+   <property name="rubber-band" type="int" value="11"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
@@ -255,14 +255,13 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="804" name="edge-portal-disabled" type="object" x="0.83426" y="1170.85" width="199.918" height="488.002">
+  <object id="804" name="edge-portal" type="object" x="0.83426" y="1170.85" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="left"/>
     <property name="map" value="CastleValgrind/Zone_1_0"/>
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="855" name="help-totem-end-of-demo" type="object" x="823.454" y="1414.42" width="248" height="248"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -274,11 +273,11 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="847" name="garin" type="entity" x="2232.15" y="1533.79" width="128" height="128">
+  <object id="847" name="garin" type="entity" x="1842.15" y="1531.79" width="128" height="128">
    <properties>
-    <property name="components" value="garin-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="garin,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="cv-generic"/>
-    <property name="travel-distance" type="float" value="192"/>
+    <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
  </objectgroup>
@@ -306,7 +305,7 @@
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="854" name="spawn" type="object" x="1633.25" y="1564.44" width="128" height="128">
+  <object id="854" name="spawn" type="object" x="1599.25" y="1534.44" width="128" height="128">
    <properties>
     <property name="transition" value="train"/>
    </properties>

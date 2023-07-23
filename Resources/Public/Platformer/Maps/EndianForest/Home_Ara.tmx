@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="18" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="764">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="18" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="764">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -154,14 +154,9 @@
     <property name="transition" value="home"/>
    </properties>
   </object>
-  <object id="758" name="chest" type="object" x="352.606" y="1066.3" width="128" height="128">
+  <object id="759" name="metal-chest" type="object" x="469.575" y="1066.67" width="128" height="128">
    <properties>
-    <property name="reward-pool" value="ef-ram-wheel"/>
-   </properties>
-  </object>
-  <object id="759" name="metal-chest" type="object" x="145.333" y="1066.67" width="128" height="128">
-   <properties>
-    <property name="reward-pool" value="ef-rare"/>
+    <property name="reward-pool" value="ef-ara"/>
    </properties>
   </object>
  </objectgroup>
@@ -172,7 +167,7 @@
   </properties>
   <object id="692" name="ara" type="entity" x="1099.92" y="1064.74" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pacing,ara,ara-hexus,pick-pocket"/>
+    <property name="components" value="friendly,pacing,ara,ef-t6-hexus,pick-pocket"/>
     <property name="pocket-pool" value="ef-generic"/>
    </properties>
   </object>

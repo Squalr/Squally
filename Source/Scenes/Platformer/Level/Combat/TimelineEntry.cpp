@@ -21,6 +21,7 @@
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/Buff.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/Defend/Defend.h"
+#include "Scenes/Platformer/Level/Combat/Buffs/Discipline/Discipline.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityCombatBehaviorBase.h"
@@ -95,7 +96,7 @@ void TimelineEntry::onEnter()
 	this->currentCast = nullptr;
 	this->targets = std::vector<PlatformerEntity*>();
 	this->targetsAsEntries = std::vector<TimelineEntry*>();
-	this->isCasting = false;
+	this->castState = CastState::Ready;
 	this->orphanedAttackCache->removeAllChildren();
 	this->skull->setVisible(false);
 
@@ -132,16 +133,6 @@ void TimelineEntry::initializePositions()
 void TimelineEntry::initializeListeners()
 {
 	super::initializeListeners();
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCastBlocked, [=](EventCustom* eventCustom)
-	{
-		CombatEvents::CastBlockedArgs* args = static_cast<CombatEvents::CastBlockedArgs*>(eventCustom->getData());
-
-		if (args != nullptr && args->target == this->entity)
-		{
-			this->isBlocking = true;
-		}
-	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDamage, [=](EventCustom* eventCustom)
 	{
@@ -392,7 +383,7 @@ void TimelineEntry::applyHealing(CombatEvents::DamageOrHealingArgs* args)
 		// Iterate buffs sequentially, as they are ordered by priority
 		caster->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
-			for (auto next : entityBuffBehavior->getBuffs())
+			for (Buff* next : entityBuffBehavior->getBuffs())
 			{
 				if (args.caster == next->owner)
 				{
@@ -402,7 +393,7 @@ void TimelineEntry::applyHealing(CombatEvents::DamageOrHealingArgs* args)
 
 			CombatEvents::DamageOrHealingArgs postArgs = CombatEvents::DamageOrHealingArgs(caster, target, healing, abilityType);
 
-			for (auto next : entityBuffBehavior->getBuffs())
+			for (Buff* next : entityBuffBehavior->getBuffs())
 			{
 				if (args.caster == next->owner)
 				{
@@ -424,7 +415,7 @@ void TimelineEntry::applyHealing(CombatEvents::DamageOrHealingArgs* args)
 		// Iterate buffs sequentially, as they are ordered by priority
 		target->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
-			for (auto next : entityBuffBehavior->getBuffs())
+			for (Buff* next : entityBuffBehavior->getBuffs())
 			{
 				if (args.target == next->owner)
 				{
@@ -434,7 +425,7 @@ void TimelineEntry::applyHealing(CombatEvents::DamageOrHealingArgs* args)
 
 			CombatEvents::DamageOrHealingArgs postArgs = CombatEvents::DamageOrHealingArgs(caster, target, healing, abilityType);
 
-			for (auto next : entityBuffBehavior->getBuffs())
+			for (Buff* next : entityBuffBehavior->getBuffs())
 			{
 				if (args.target == next->owner)
 				{
@@ -497,7 +488,7 @@ void TimelineEntry::stageTargets(std::vector<PlatformerEntity*> targets)
 {
 	this->targets.clear();
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		if (next == nullptr)
 		{
@@ -522,10 +513,21 @@ void TimelineEntry::stageCast(PlatformerAttack* attack)
 
 	if (attack != nullptr)
 	{
-		this->isCasting = true;
+		this->castState = CastState::AttackStaged;
 	}
 
 	this->currentCast = attack;
+
+	// Instant cast defensive skills
+	if (this->currentCast != nullptr && this->currentCast->getAttackType() == PlatformerAttack::AttackType::Defensive)
+	{
+		CombatEvents::TriggerPauseTimeline();
+
+		this->targets.clear();
+		this->targets.push_back(this->entity);
+		this->castState = CastState::DefensiveCasted;
+		this->performCast();
+	}
 }
 
 std::vector<PlatformerEntity*> TimelineEntry::getStagedTargets()
@@ -536,21 +538,6 @@ std::vector<PlatformerEntity*> TimelineEntry::getStagedTargets()
 PlatformerAttack* TimelineEntry::getStagedCast()
 {
 	return this->currentCast;
-}
-
-void TimelineEntry::defend()
-{
-	if (this->getEntity() == nullptr)
-	{
-		return;
-	}
-
-	this->isCasting = true;
-	
-	this->getEntity()->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
-	{
-		entityBuffBehavior->applyBuff(Defend::create(this->getEntity()));
-	});
 }
 
 float TimelineEntry::getProgress()
@@ -581,10 +568,11 @@ void TimelineEntry::addTimeWithoutActions(float dt)
 
 	this->setProgress(this->progress + (dt * (speed + this->interruptBonus) * TimelineEntry::BaseSpeedMultiplier));
 
-	if (this->isCasting && speed < 0.0f && this->progress < TimelineEntry::CastPercentage)
+	// If time has moved the entity backwards, revert any staged casts
+	if (this->castState != CastState::Ready && speed < 0.0f && this->progress < TimelineEntry::CastPercentage)
 	{
 		this->stageCast(nullptr);
-		this->isCasting = false;
+		this->castState = CastState::Ready;
 	}
 }
 
@@ -597,7 +585,7 @@ void TimelineEntry::addTime(float dt)
 void TimelineEntry::tryPerformActions()
 {
 	// Cast started
-	if (this->progress >= TimelineEntry::CastPercentage && !this->isCasting && !this->isPacifist())
+	if (this->progress >= TimelineEntry::CastPercentage && this->castState == CastState::Ready && !this->isPacifist())
 	{
 		CombatEvents::TriggerInterruptTimeline();
 
@@ -628,7 +616,7 @@ void TimelineEntry::tryPerformActions()
 		
 		CombatEvents::TriggerInterruptTimeline();
 
-		if (this->entity != nullptr && this->currentCast != nullptr && !this->targets.empty())
+		if (this->castState == CastState::AttackStaged && this->entity != nullptr && this->currentCast != nullptr && !this->targets.empty())
 		{
 			CombatEvents::TriggerPauseTimeline();
 
@@ -639,18 +627,34 @@ void TimelineEntry::tryPerformActions()
 			this->resetTimeline();
 		}
 	}
-	else if (this->progress < TimelineEntry::CastPercentage)
+	else if (this->progress < TimelineEntry::CastPercentage && this->castState != CastState::Ready)
 	{
 		// This is necessary if the entity drifts backwards due to a debuff (thus casting is canceled)
-		this->isCasting = false;
+		this->stageCast(nullptr);
+		this->castState = CastState::Ready;
 	}
 }
 
+// This is called at 1.0f progress for attacks, but can be called at 0.75f progress for defensives
 void TimelineEntry::performCast()
 {
-	CombatEvents::TriggerRequestRetargetCorrection(CombatEvents::AIRequestArgs(this));
-
 	this->cameraFocusEntry();
+
+	switch(this->castState)
+	{
+		case CastState::AttackStaged:
+		{
+			CombatEvents::TriggerRequestRetargetCorrection(CombatEvents::AIRequestArgs(this));
+			this->castState = CastState::Casting;
+			break;
+		}
+		default:
+		{
+			break;
+		}
+	}
+
+	CastState originalCastState = this->castState;
 
 	this->runAction(Sequence::create(
 		DelayTime::create(1.0f),
@@ -659,12 +663,12 @@ void TimelineEntry::performCast()
 			if (this->targets.empty() || this->entity == nullptr || this->currentCast == nullptr)
 			{
 				this->resetTimeline();
+				CombatEvents::TriggerResumeTimeline();
 				return;
 			}
 
 			this->entity->getAnimations()->clearAnimationPriority();
 			this->entity->getAnimations()->playAnimation(this->currentCast->getAttackAnimation(), SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
-			this->isCasting = false;
 
 			this->currentCast->execute(
 				this->entity,
@@ -679,8 +683,26 @@ void TimelineEntry::performCast()
 				},
 				[=]()
 				{
-					this->stageCast(nullptr);
-					this->resetTimeline();
+					switch(originalCastState)
+					{
+						case CastState::DefensiveCasted:
+						{
+							this->stageCast(nullptr);
+							break;
+						}
+						case CastState::AttackStaged:
+						{
+							this->castState = CastState::WaitingForReset;
+							this->stageCast(nullptr);
+							this->resetTimeline();
+							break;
+						}
+						default:
+						{
+							break;
+						}
+					}
+
 					CombatEvents::TriggerResumeTimeline();
 				}
 			);
@@ -701,32 +723,50 @@ void TimelineEntry::cameraFocusEntry()
 
 void TimelineEntry::tryInterrupt()
 {
-	if (!this->isBlocking && !this->isCasting)
+	if (this->castState == CastState::Ready)
 	{
 		return;
 	}
 	
-	if (this->isBlocking && this->isCasting)
-	{
-		this->setProgress(this->progress / 2.0f);
-		this->interruptBonus = 0.1f;
-	}
-	else if (this->isBlocking && !this->isCasting)
-	{
-		// No interrupt when not casting. This is just a carry-over block.
-		return;
-	}
-	else if (this->isCasting)
+	if (this->castState == CastState::AttackStaged)
 	{
 		CombatEvents::TriggerCastInterrupt(CombatEvents::CastInterruptArgs(this->entity));
 
-		this->setProgress(this->progress / 4.0f);
+		this->setProgress(this->progress / 2.0f);
 		this->interruptBonus = 0.1f;
+
+		CombatEvents::TriggerRefreshTimeline();
+		
+		this->castState = CastState::Ready;
+		this->stageCast(nullptr);
 	}
-	
-	this->stageCast(nullptr);
-	this->isCasting = false;
-	this->isBlocking = false;
+	else if (this->castState == CastState::DefensiveCasted)
+	{
+		bool hasDiscipline = false;
+
+		// Discipline is the only buff that allows ignoring interrupts, so we're just hacking in this one edge case
+		this->entity->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* buffBehavior)
+		{
+			buffBehavior->getBuff<Discipline>([&](Buff*)
+			{
+				hasDiscipline = true;
+			});
+		});
+
+		if (!hasDiscipline)
+		{
+			// Not required, since defend abilities will trigger block instead
+			// CombatEvents::TriggerCastInterrupt(CombatEvents::CastInterruptArgs(this->entity));
+
+			this->setProgress(this->progress / 4.0f);
+			this->interruptBonus = 0.1f;
+
+			CombatEvents::TriggerRefreshTimeline();
+
+			this->castState = CastState::Ready;
+			this->stageCast(nullptr);
+		}
+	}
 
 	CombatEvents::TriggerEntityTimelineReset(CombatEvents::TimelineResetArgs(this->getEntity(), true));
 }
@@ -735,8 +775,9 @@ void TimelineEntry::resetTimeline()
 {
 	this->progress = std::fmod(this->progress, 1.0f);
 	this->interruptBonus = 0.0f;
-	this->isCasting = false;
-	this->isBlocking = false;
+	this->targets.clear();
+	this->castState = CastState::Ready;
+	this->stageCast(nullptr);
 
 	CombatEvents::TriggerEntityTimelineReset(CombatEvents::TimelineResetArgs(this->getEntity(), false));
 }
@@ -756,7 +797,7 @@ void TimelineEntry::clearBuffTargets()
 {
 	this->overlayCircle->setOpacity(0);
 
-	for (auto next : this->targetIcons)
+	for (Sprite* next : this->targetIcons)
 	{
 		next->setVisible(false);
 	}
@@ -766,7 +807,7 @@ void TimelineEntry::addBuffTarget(std::string iconResource)
 {
 	this->overlayCircle->setOpacity(128);
 
-	for (auto next : this->targetIcons)
+	for (Sprite* next : this->targetIcons)
 	{
 		if (!next->isVisible())
 		{

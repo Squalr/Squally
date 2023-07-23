@@ -23,17 +23,17 @@ AmethystNecklace* AmethystNecklace::create()
 
 AmethystNecklace::AmethystNecklace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 63 }}), ItemStats(
 	// Health
-	3,
+	7,
 	// Mana
 	3,
 	// Attack
-	1,
+	0,
 	// Magic Attack
-	1,
+	0,
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.035f
 ))
 {
 }
@@ -54,7 +54,7 @@ LocalizedString* AmethystNecklace::getString()
 
 const std::string& AmethystNecklace::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Necklaces_AmethystNecklace;
+	return ItemResources::Equipment_Gear_Necklaces_T7_AmethystNecklace;
 }
 
 const std::string& AmethystNecklace::getIdentifier()

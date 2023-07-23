@@ -1,5 +1,5 @@
 {
-    "ar": "eax: %s1",
+    "ar": "%s1 :eax",
     "bg": "eax: %s1",
     "cs": "eax: %s1",
     "da": "eax: %s1",

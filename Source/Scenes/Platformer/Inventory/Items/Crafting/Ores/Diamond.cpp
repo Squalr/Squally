@@ -20,7 +20,7 @@ Diamond* Diamond::create()
 	return instance;
 }
 
-Diamond::Diamond() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 91 }}), ItemMeta(20000))
+Diamond::Diamond() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 12 * 5 }}), ItemMeta(20000))
 {
 }
 
@@ -40,7 +40,7 @@ LocalizedString* Diamond::getString()
 
 const std::string& Diamond::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_Diamond;
+	return ItemResources::Crafting_Smithing_T5_Diamond;
 }
 
 const std::string& Diamond::getIdentifier()

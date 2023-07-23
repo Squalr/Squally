@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="114" nextobjectid="819">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="IndoorHouse"/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="carnival-dream"/>
+   <property name="rubber-band" type="int" value="11"/>
+   <property name="show-cracks" type="bool" value="false"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="106" name="wood -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="99" name="stairs -5 (4)">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="98" name="stairs -5 (3)">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="97" name="stairs -5 (2)">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="111" name="columns -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="107" name="stairs -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="110" name="columns -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="84" name="stairs -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="109" name="columns -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="83" name="stairs -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="108" name="columns -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="82" name="stairs -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="16" name="tiled bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="808" name="ruins-gray-dark" type="texture" x="-42" y="-70" width="2284" height="1264"/>
+ </objectgroup>
+ <objectgroup id="95" name="columns -0">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="18" name="decor background 2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="770" name="Generic/Shelf1" type="decor" x="422.601" y="114.954" width="1135" height="753"/>
+ </objectgroup>
+ <objectgroup id="19" name="objects background">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="101" name="entities background">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="814" name="thurstan" type="entity" x="1059" y="858.5" width="128" height="167">
+   <properties>
+    <property name="components" value="haunted,shopkeeper"/>
+    <property name="haunted-key" value="vampire-lord"/>
+    <property name="other-world" type="bool" value="true"/>
+    <property name="tag" value="shopkeeper"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="102" name="decor background">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="769" name="Generic/Counter" type="decor" x="444.109" y="897.555" width="1080" height="167"/>
+  <object id="811" name="Generic/LesserMoonDoorDark" type="decor" x="1762.03" y="575.288" width="310" height="492"/>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="807" name="marble-dark" type="terrain" x="-49.0288" y="1064.61" width="2290.3" height="234.06"/>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="810" name="Generic/RedRugDark" type="decor" x="1766.73" y="1050.53" width="332" height="21"/>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="694" name="portal" type="object" x="1809.59" y="689.741" width="237.527" height="375.411">
+   <properties>
+    <property name="map" value="CastleValgrind/Zone_Dark_Town_Main"/>
+    <property name="transition" value="smith"/>
+   </properties>
+  </object>
+  <object id="804" name="anvil" type="object" x="126.451" y="960.88" width="249" height="106">
+   <properties>
+    <property name="linked-tag" value="shopkeeper"/>
+    <property name="recipe-pool" value="smithing-pool-cv"/>
+   </properties>
+  </object>
+  <object id="815" name="portal" type="object" x="423.34" y="813.374" width="256" height="256">
+   <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="locked-text-key" value="none"/>
+    <property name="map" value="CastleValgrind/Town_Smith"/>
+    <property name="transition" value="debug"/>
+   </properties>
+  </object>
+  <object id="818" name="smelting-pot" type="object" x="1443" y="897.5" width="170" height="167">
+   <properties>
+    <property name="components" value="haunted-link"/>
+    <property name="linked-tag" value="vampire-lord"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="113" name="objects fg" visible="0">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="816" name="trigger" type="object" x="-24.4995" y="-34.91" width="1947.48" height="1097.82">
+   <properties>
+    <property name="send-event" value="thurstan"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="812" name="vampire-lord" type="entity" x="908.473" y="937.211" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="CastleValgrind/Combat_Castle"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,soul,haunted,agro,melee"/>
+    <property name="drop-pool" value="cv-generic"/>
+    <property name="haunted-key" value="vampire-lord"/>
+    <property name="other-world" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="813" name="vampire-lord" type="entity" x="915.633" y="548.476" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="1916.32" y="934.96" width="128" height="128">
+   <properties>
+    <property name="components" value="squally"/>
+   </properties>
+  </object>
+  <object id="805" name="spawn-wood-door" type="object" x="1869.38" y="934.23" width="128" height="128">
+   <properties>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="77" name="decor +1">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+</map>

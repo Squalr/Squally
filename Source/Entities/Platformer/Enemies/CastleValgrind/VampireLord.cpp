@@ -25,8 +25,7 @@ VampireLord::VampireLord(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_CastleValgrind_VampireLord_Animations,
 	EntityResources::Enemies_CastleValgrind_VampireLord_Emblem,
 	CSize(240.0f, 312.0f),
-	0.9f,
-	Vec2(0.0f, 0.0f))
+	0.9f)
 {
 }
 
@@ -36,7 +35,7 @@ VampireLord::~VampireLord()
 
 Vec2 VampireLord::getDialogueOffset()
 {
-	return Vec2(-32.0f, -160.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* VampireLord::getEntityName()

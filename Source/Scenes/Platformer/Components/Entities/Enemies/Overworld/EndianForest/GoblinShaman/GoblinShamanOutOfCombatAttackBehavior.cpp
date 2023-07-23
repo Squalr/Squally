@@ -34,7 +34,7 @@ GoblinShamanOutOfCombatAttackBehavior* GoblinShamanOutOfCombatAttackBehavior::cr
 
 GoblinShamanOutOfCombatAttackBehavior::GoblinShamanOutOfCombatAttackBehavior(GameObject* owner) : super(owner)
 {
-	this->goblinShaman = dynamic_cast<GoblinShaman*>(owner);
+	this->goblinShaman = dynamic_cast<PlatformerEnemy*>(owner);
 	this->shadowBolt = SmartAnimationSequenceNode::create();
 
 	if (this->goblinShaman == nullptr)

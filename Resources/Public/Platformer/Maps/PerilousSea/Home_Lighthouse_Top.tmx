@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="95" nextobjectid="820">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="DesertSky"/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="the-gift"/>
+   <property name="rubber-band" type="int" value="2"/>
+   <property name="show-cracks" type="bool" value="true"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="8" name="decor -2304">
+  <properties>
+   <property name="depth" type="float" value="-2304"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="9" name="decor -2048">
+  <properties>
+   <property name="depth" type="float" value="-2048"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="7" name="decor -1792">
+  <properties>
+   <property name="depth" type="float" value="-1792"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="14" name="decor -768">
+  <properties>
+   <property name="depth" type="float" value="-1024"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="85" name="rocks-bg">
+  <properties>
+   <property name="depth" type="float" value="-3200"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="818" name="Ruins/Background/DesertLayer3" type="decor" x="-6186.65" y="1297" width="14229.3" height="1534">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="15" name="rocks">
+  <properties>
+   <property name="depth" type="float" value="-2560"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="819" name="Ruins/Background/DesertLayer2" type="decor" x="-6202.65" y="1808.5" width="14469.3" height="1519">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="19" name="ship layer">
+  <properties>
+   <property name="depth" type="float" value="-312"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="65" name="plank -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="88" name="objects -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="87" name="entities -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="20" name="plank -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="68" name="plank -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="90" name="objects -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="89" name="entities -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="69" name="plank -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="64" name="terrain bg bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="817" name="ruins-gray-dark" type="terrain" x="3958.07" y="938.404">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="-3805.08,386.579 -3357.01,-727.502 -2531.75,-728.56 -2093.14,387.279 -2022.57,1099.73 -3925.49,1093.47"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="84" name="objects midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="92" name="decor bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="794" name="Generic/WoodDoor" type="decor" x="878.652" y="819.879" width="273" height="370"/>
+ </objectgroup>
+ <objectgroup id="91" name="terrain bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="801" name="ship-alt" type="terrain" x="4267.42" y="913.095">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+   <polygon points="-4174.7,416.057 -3691.88,-739.926 -2786.46,-741.065 -2296.47,416.81 -2219.04,1183.59 -4306.81,1176.85"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="93" name="terrain fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="94" name="holes" visible="0">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="805" name="terrain-hole" type="object" x="3489.57" y="876.794">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+   <polygon points="-3152.27,315.445 -2787.7,-560.995 -2104.02,-561.859 -1734.04,316.016"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="789" name="portal" type="object" x="887.152" y="922.061" width="256" height="256">
+   <properties>
+    <property name="map" value="PerilousSea/Home_Lighthouse"/>
+    <property name="transition" value="lighthouse-top"/>
+   </properties>
+  </object>
+  <object id="807" name="solid" type="collision" x="-101.44" y="1184.62" width="2258.88" height="1078.76"/>
+  <object id="809" name="solid" type="collision" x="188.621" y="160.62" width="246.88" height="1078.76"/>
+  <object id="810" name="solid" type="collision" x="232.56" y="66.923" width="1762.88" height="248.457"/>
+  <object id="812" name="solid" type="collision" x="1667.47" y="166.681" width="210.516" height="1078.76"/>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="760" name="gull" type="entity" x="1351.39" y="1062.79" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="761" name="gull" type="entity" x="1170.06" y="1061.45" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="762" name="gull" type="entity" x="1524.72" y="1059.46" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="765" name="gull" type="entity" x="542.063" y="1064.06" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="766" name="gull" type="entity" x="663.764" y="1056.66" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="667.093" y="1050.67" width="128" height="128">
+   <properties>
+    <property name="components" value="squally,lighthouse"/>
+   </properties>
+  </object>
+  <object id="709" name="spawn-wood-door" type="object" x="945.596" y="1050.72" width="128" height="128">
+   <properties>
+    <property name="transition" value="lighthouse-top"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="74" name="plank +1">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="75" name="plank +2">
+  <properties>
+   <property name="depth" type="float" value="128"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="76" name="plank +3">
+  <properties>
+   <property name="depth" type="float" value="192"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="77" name="plank +4">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="78" name="plank +5">
+  <properties>
+   <property name="depth" type="float" value="320"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="28" name="fireflies">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="31" name="rain">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="rain"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="32" name="decor +4">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="33" name="decor +8">
+  <properties>
+   <property name="depth" type="float" value="512"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+</map>

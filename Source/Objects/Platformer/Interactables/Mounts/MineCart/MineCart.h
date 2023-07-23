@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class CollisionObject;
+class WorldSound;
 
 class MineCart : public MountBase
 {
@@ -15,7 +16,7 @@ public:
 	static MineCart* create(cocos2d::ValueMap& properties);
 
 	void mount(PlatformerEntity* interactingEntity) override;
-	void dismount() override;
+	void dismount(PlatformerEntity* entity) override;
 
 	static const std::string MapKey;
 
@@ -25,6 +26,8 @@ protected:
 
 	void onEnter() override;
 	void update(float dt) override;
+	void onHackerModeEnable() override;
+	void pause() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
@@ -32,7 +35,7 @@ protected:
 	void registerHackables() override;
 	HackablePreview* createDefaultPreview() override;
 	
-	cocos2d::Vec2 getReparentPosition() override;
+	cocos2d::Vec2 getReparentPosition(PlatformerEntity* entity) override;
 
 private:
 	typedef MountBase super;
@@ -51,6 +54,7 @@ private:
 	cocos2d::Sprite* body = nullptr;
 	cocos2d::Sprite* wheelFront = nullptr;
 	cocos2d::Sprite* wheelBack = nullptr;
+	WorldSound* cartSfx = nullptr;
 
 	static const std::string PropertyColor;
 };

@@ -1,5 +1,9 @@
 #include "EntityBuffBehavior.h"
 
+#include <algorithm>
+#include <iterator>
+#include <set>
+
 #include "cocos/base/CCValue.h"
 
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -136,16 +140,25 @@ void EntityBuffBehavior::removeBuffsById(std::string buffId)
 
 void EntityBuffBehavior::removeAllBuffs()
 {
-	std::vector<Buff*> buffsCopy = this->buffs;
+	std::set<Buff*> buffsSet = std::set<Buff*>(this->buffs.begin(), this->buffs.end());
+	std::set<Buff*> removedBuffs = std::set<Buff*>();
 
-	for (Buff* next : buffsCopy)
+	for (Buff* next : buffsSet)
 	{
-		next->removeBuff();
+		if (next->removeBuff())
+		{
+			removedBuffs.insert(next);
+			this->buffNode->removeChild(next);
+		}
 	}
 
-	// Shouldnt be needed, added as safety
+	// Retain any buffs that could not be removed
 	this->buffs.clear();
-	this->buffNode->removeAllChildren();
+	std::set_difference(
+		buffsSet.begin(), buffsSet.end(),
+		removedBuffs.begin(), removedBuffs.end(),
+		std::back_inserter(this->buffs)
+	);
 }
 
 void EntityBuffBehavior::repositionBuffIcons()

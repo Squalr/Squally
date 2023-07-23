@@ -4,6 +4,7 @@
 
 class CollisionObject;
 class SmartAnimationNode;
+class WorldSound;
 
 enum class LocomotiveSize
 {
@@ -25,7 +26,7 @@ public:
 	static Train* create(cocos2d::ValueMap& properties);
 
 	void mount(PlatformerEntity* interactingEntity) override;
-	void dismount() override;
+	void dismount(PlatformerEntity* entity) override;
 
 	static const std::string MapKey;
 
@@ -38,7 +39,7 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	
-	cocos2d::Vec2 getReparentPosition() override;
+	cocos2d::Vec2 getReparentPosition(PlatformerEntity* entity) override;
 
 private:
 	typedef MountBase super;
@@ -54,6 +55,8 @@ private:
 	CollisionObject* bottomCollision = nullptr;
 	SmartAnimationNode* locomotive = nullptr;
 	std::vector<std::tuple<SmartAnimationNode*, float>> segments;
+	WorldSound* idleSfx = nullptr;
+	WorldSound* motionSfx = nullptr;
 
 	bool isIdling = false;
 	TrainColor color;

@@ -66,7 +66,7 @@ void CurseOfTonguesTutorialBehavior::onLoad()
 		{
 			args->buff->registerClippyOnto(CurseOfTongues::CurseOfTonguesIdentifier, [=]
 			{
-				return ScrappyClippy::create(Strings::Menus_Hacking_ClippyHelp_Abilities_CurseOfTongues_CurseOfTonguesScriptCopy::create()
+				return ScrappyClippy::create(Strings::Menus_Hacking_ClippyHelp_Abilities_CurseOfTongues_ClippyCurseOfTonguesScriptCopy::create()
 					->setStringReplacementVariables(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_ReduceCurse::create()));
 			});
 		}

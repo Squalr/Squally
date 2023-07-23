@@ -114,6 +114,7 @@ bool GlassDisplayItem::tryOpen()
 		"",
 		true,
 		false,
+		false,
 		{
 			[=]()
 			{

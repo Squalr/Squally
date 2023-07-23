@@ -114,12 +114,15 @@ void PlatformerAttack::execute(PlatformerEntity* owner, std::vector<PlatformerEn
 	{
 		manaBehavior->setMana(manaBehavior->getMana() - this->getSpecialCost());
 	});
-
+	
 	this->runAction(Sequence::create(
 		DelayTime::create(this->getAttackDuration()),
 		CallFunc::create([=]()
 		{
-			onCastComplete();
+			if (onCastComplete != nullptr)
+			{
+				onCastComplete();
+			}
 			
 			// Damage/healing is applied at this stage. For projectiles, they are spawned here.
 			this->performAttack(owner, targets);
@@ -128,7 +131,10 @@ void PlatformerAttack::execute(PlatformerEntity* owner, std::vector<PlatformerEn
 		DelayTime::create(this->getRecoverDuration()),
 		CallFunc::create([=]()
 		{
-			onRecoverComplete();
+			if (onRecoverComplete != nullptr)
+			{
+				onRecoverComplete();
+			}
 
 			this->onAttackEnd();
 		}),

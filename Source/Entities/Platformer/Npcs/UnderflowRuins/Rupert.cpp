@@ -25,8 +25,7 @@ Rupert::Rupert(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_UnderflowRuins_Rupert_Animations,
 	EntityResources::Npcs_UnderflowRuins_Rupert_Emblem,
 	CSize(112.0f, 160.0f),
-	0.85f,
-	Vec2(0.0f, 0.0f))
+	0.85f)
 {
 }
 

@@ -48,7 +48,7 @@ void KillTheTroll::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void KillTheTroll::onActivate(bool isActiveThroughSkippable)
+void KillTheTroll::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->troll->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
 	{

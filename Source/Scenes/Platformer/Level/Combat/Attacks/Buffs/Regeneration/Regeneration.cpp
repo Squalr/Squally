@@ -112,8 +112,7 @@ void Regeneration::registerHackables()
 		},
 	};
 
-	auto restoreFunc = &Regeneration::runRestoreTick;
-	this->hackables = HackableCode::create((void*&)restoreFunc, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Regeneration::runRestoreTick, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

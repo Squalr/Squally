@@ -14,6 +14,3 @@
 [submodule "external/spriterplusplus"]
 	path = external/spriterplusplus
 	url = git@github.com:Squalr/SpriterPlusPlus
-[submodule "vcpkg"]
-	path = vcpkg
-	url = git@github.com:Squalr/vcpkg.git

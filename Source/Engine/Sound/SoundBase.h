@@ -7,15 +7,19 @@ namespace sf
 	class Sound;
 }
 
+enum class SoundChannel;
+
 class SoundBase : public GameObject
 {
 public:
+	virtual void allocSound();
 	virtual void play(bool repeat = false, float startDelay = 0.0f);
 	virtual void unfreeze(); // careful, unpause is a cocos function
 	bool isPlaying();
 	virtual void freeze(); // careful, pause is a cocos function
 	virtual void stop();
 	virtual void stopAndFadeOut(std::function<void()> onFadeOutCallback = nullptr, bool hasPriority = false);
+	void toggleIgnorePause(bool ignorePause);
 
 	void setCustomMultiplier(float customMultiplier);
 	virtual void setSoundResource(std::string soundResource);
@@ -28,7 +32,9 @@ protected:
 	virtual ~SoundBase();
 
 	void onEnter() override;
+	void pause() override;
 	void update(float dt) override;
+	virtual SoundChannel getSoundChannel();
 	virtual float getConfigVolume() = 0;
 	void updateVolume();
 	void setVolumeOverride(float volume);
@@ -42,13 +48,14 @@ protected:
 	bool enableCameraDistanceFade = false;
 	bool hasVolumeOverride = false;
 	bool isFading = false;
-	bool destroyOnFadeOut = false;
 	std::function<void()> onFadeOutCallback = nullptr;
 	sf::Sound* soundRef = nullptr;
 	int soundId = -1;
 	
 private:
 	typedef GameObject super;
+
+	bool ignorePause = false;
 
 	static const std::string KeyScheduleFadeOutAudio;
 };

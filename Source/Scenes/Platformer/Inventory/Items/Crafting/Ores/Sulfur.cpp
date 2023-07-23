@@ -20,7 +20,7 @@ Sulfur* Sulfur::create()
 	return instance;
 }
 
-Sulfur::Sulfur() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 144 }}), ItemMeta(20000))
+Sulfur::Sulfur() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 8 * 6 }}), ItemMeta(20000))
 {
 }
 
@@ -40,7 +40,7 @@ LocalizedString* Sulfur::getString()
 
 const std::string& Sulfur::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_Sulfur;
+	return ItemResources::Crafting_Smithing_T6_Sulfur;
 }
 
 const std::string& Sulfur::getIdentifier()

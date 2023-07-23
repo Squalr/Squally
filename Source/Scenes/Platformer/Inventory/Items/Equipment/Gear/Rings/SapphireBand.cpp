@@ -21,6 +21,7 @@ SapphireBand* SapphireBand::create()
 	return instance;
 }
 
+// Tier 0
 SapphireBand::SapphireBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 15 }}), ItemStats(
 	// Health
 	0,
@@ -54,7 +55,7 @@ LocalizedString* SapphireBand::getString()
 
 const std::string& SapphireBand::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_SapphireBand;
+	return ItemResources::Equipment_Gear_Rings_T0_SapphireBand;
 }
 
 const std::string& SapphireBand::getIdentifier()

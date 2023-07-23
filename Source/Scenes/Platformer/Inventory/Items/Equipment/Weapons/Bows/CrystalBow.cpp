@@ -21,11 +21,11 @@ CrystalBow* CrystalBow::create()
 	return instance;
 }
 
-CrystalBow::CrystalBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 32, 40, ItemStats(
+CrystalBow::CrystalBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), BOW_DAMAGE_MIN(8), BOW_DAMAGE_MAX(8), ItemStats(
 	// Health
-	0,
+	3,
 	// Mana
-	0,
+	8,
 	// Attack
 	0,
 	// Magic Attack

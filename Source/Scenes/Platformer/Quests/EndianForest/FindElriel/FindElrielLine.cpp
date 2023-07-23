@@ -10,6 +10,7 @@
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/TalkToChiron.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/TownArrival.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/TownExitBlocked.h"
+#include "Scenes/Platformer/Quests/EndianForest/FindElriel/WindSpellbook.h"
 
 using namespace cocos2d;
 
@@ -34,6 +35,7 @@ FindElrielLine::FindElrielLine() : super(FindElrielLine::MapKeyQuestLine, {
 	QuestData(TalkToElriel::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return TalkToElriel::create(owner, questLine); }),
 	QuestData(BossExitUnlocked::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return BossExitUnlocked::create(owner, questLine); }),
 	QuestData(ReturnToQueen::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return ReturnToQueen::create(owner, questLine); }),
+	QuestData(WindSpellbook::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return WindSpellbook::create(owner, questLine); }),
 })
 {
 }

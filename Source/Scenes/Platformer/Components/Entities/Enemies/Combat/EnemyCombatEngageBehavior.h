@@ -10,6 +10,8 @@ class EnemyCombatEngageBehavior : public GameComponent
 public:
 	static EnemyCombatEngageBehavior* create(GameObject* owner);
 
+	void engageEnemy(bool firstStrike);
+	
 	static const std::string MapKey;
 
 protected:
@@ -23,7 +25,6 @@ private:
 	typedef GameComponent super;
 
 	void stopAllEntityActions();
-	void engageEnemy(bool firstStrike);
 
 	bool canEngage = true;
 

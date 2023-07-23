@@ -8,7 +8,7 @@
    <property name="hide-mini-map" type="bool" value="true"/>
    <property name="map-banner" value=""/>
    <property name="music" value="heartbeat"/>
-   <property name="rubber-band" type="int" value="2"/>
+   <property name="rubber-band" type="int" value="8"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
   </properties>
@@ -100,7 +100,7 @@
     <property name="transition" value="godiva-top"/>
    </properties>
   </object>
-  <object id="846" name="caged-sheep" type="object" x="1402.8" y="880.066" width="196" height="112"/>
+  <object id="846" name="caged-panda" type="object" x="1402.8" y="880.066" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -114,7 +114,7 @@
   </properties>
   <object id="810" name="godiva" type="entity" x="658.183" y="1833.33" width="128" height="128">
    <properties>
-    <property name="components" value="godiva-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="dm-t6-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="dm-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>

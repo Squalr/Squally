@@ -45,7 +45,7 @@ void EntityHeadCollisionBehavior::onLoad()
 {
 	this->defer([=]()
 	{
-		// this->buildHeadCollisionDetector();
+		this->buildHeadCollisionDetector();
 		this->toggleQueryable(true);
 	});
 }
@@ -69,7 +69,7 @@ bool EntityHeadCollisionBehavior::hasHeadCollisionWith(CollisionObject* collison
 
 	Node* currentCollisionGroup = collisonObject->getParent();
 
-	for (auto next : this->headCollision->getCurrentCollisions())
+	for (CollisionObject* next : this->headCollision->getCurrentCollisions())
 	{
 		if (next->getParent() != currentCollisionGroup)
 		{
@@ -77,7 +77,7 @@ bool EntityHeadCollisionBehavior::hasHeadCollisionWith(CollisionObject* collison
 		}
 
 		if (next->hasCollisionType(CollisionType(PlatformerCollisionType::PassThrough))
-			|| next->hasCollisionType(CollisionType(PlatformerCollisionType::SolidRoof)))
+			|| next->hasCollisionType(CollisionType(PlatformerCollisionType::Solid)))
 		{
 			return true;
 		}
@@ -109,7 +109,7 @@ void EntityHeadCollisionBehavior::buildHeadCollisionDetector()
 	
 	this->addChild(this->headCollision);
 
-	this->headCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::SolidRoof }, [=](CollisionData collisionData)
+	this->headCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Solid }, [=](CollisionData collisionData)
 	{
 		return CollisionResult::DoNothing;
 	});

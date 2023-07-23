@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="828">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="24" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="828">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -8,7 +8,7 @@
    <property name="hide-mini-map" type="bool" value="true"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
-   <property name="rubber-band" type="int" value="2"/>
+   <property name="rubber-band" type="int" value="5"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
   </properties>
@@ -126,7 +126,7 @@
   </properties>
   <object id="810" name="hera" type="entity" x="1486.91" y="937.333" width="128" height="128">
    <properties>
-    <property name="components" value="hera-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="ur-t2-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="quest" value="talk-to-hera,cure-town"/>
     <property name="quest-line" value="cure-town"/>

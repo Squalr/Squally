@@ -2,6 +2,7 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
@@ -27,6 +28,15 @@ EnemyOutOfCombatAttackBehavior::~EnemyOutOfCombatAttackBehavior()
 {
 }
 
+void EnemyOutOfCombatAttackBehavior::onEnter()
+{
+	super::onEnter();
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
+	{
+		this->squally = squally;
+	}, Squally::MapKey);
+}
+
 void EnemyOutOfCombatAttackBehavior::decorateProjectile(Projectile* projectile)
 {
 	super::decorateProjectile(projectile);
@@ -36,22 +46,23 @@ void EnemyOutOfCombatAttackBehavior::decorateProjectile(Projectile* projectile)
 		return;
 	}
 	
-	projectile->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionData collisionData)
+	projectile->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Helper }, [=](CollisionData collisionData)
 	{
 		if (!this->enemy->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
 			return CollisionResult::DoNothing;
 		}
 
-		Squally* squally = GameUtils::GetFirstParentOfType<Squally>(collisionData.other);
+		PlatformerEntity* entity = GameUtils::GetFirstParentOfType<PlatformerEntity>(collisionData.other);
 
-		if (squally != nullptr && squally->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
+		if (this->squally != nullptr && this->squally->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true)
+			&& entity != nullptr && entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
 			// Encountered enemy w/o first-strike
 			PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(this->enemy, false));
-		}
 
-		projectile->runImpactFX();
+			projectile->runImpactFX();
+		}
 
 		return CollisionResult::DoNothing;
 	});

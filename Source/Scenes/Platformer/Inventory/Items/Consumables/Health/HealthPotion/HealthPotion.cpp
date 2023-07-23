@@ -1,6 +1,8 @@
 #include "HealthPotion.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
+#include "Engine/Localization/ConstantString.h"
+#include "Engine/Localization/LocalizedString.h"
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
@@ -16,7 +18,7 @@
 using namespace cocos2d;
 
 const std::string HealthPotion::SaveKey = "health-potion";
-const float HealthPotion::HealPercentage = 0.75f;
+const float HealthPotion::HealPercentage = 0.6f;
 
 HealthPotion* HealthPotion::create()
 {
@@ -30,6 +32,8 @@ HealthPotion* HealthPotion::create()
 HealthPotion::HealthPotion() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 14 }}), ItemMeta(20, RubberBanding(3, 0.15f)), true)
 {
 	this->outOfCombatSound = Sound::create(SoundResources::Platformer_FX_Potions_PotionDrink2);
+
+	this->outOfCombatSound->toggleIgnorePause(true);
 
 	this->addChild(this->outOfCombatSound);
 }
@@ -66,6 +70,12 @@ bool HealthPotion::canUseOnTarget(PlatformerEntity* target)
 	});
 	
 	return canUse;
+}
+
+LocalizedString* HealthPotion::getDescription()
+{
+	return Strings::Items_Consumables_Health_HealthPotionDescription::create()
+		->setStringReplacementVariables(ConstantString::create(std::to_string(int(HealthPotion::HealPercentage * 100.0f))));
 }
 
 Item* HealthPotion::clone()

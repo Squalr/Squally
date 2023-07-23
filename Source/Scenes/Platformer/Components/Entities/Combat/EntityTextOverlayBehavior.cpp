@@ -146,11 +146,11 @@ void EntityTextOverlayBehavior::runHealthDelta(int delta, bool zeroAsGreen, bool
 
 	if (overflowMin)
 	{
-		deltaString = Strings::Common_ConcatSpaced::create()->setStringReplacementVariables({ deltaString, Strings::Platformer_Combat_Max::create() });
+		deltaString = Strings::Common_ConcatSpacedBiDi::create()->setStringReplacementVariables({ deltaString, Strings::Platformer_Combat_Max::create() });
 	}
 	else if (overflowMax)
 	{
-		deltaString = Strings::Common_ConcatSpaced::create()->setStringReplacementVariables({ deltaString, Strings::Platformer_Combat_Max::create() });
+		deltaString = Strings::Common_ConcatSpacedBiDi::create()->setStringReplacementVariables({ deltaString, Strings::Platformer_Combat_Max::create() });
 	}
 
 	LocalizedLabel* deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, deltaString);
@@ -168,11 +168,11 @@ void EntityTextOverlayBehavior::runManaDelta(int delta, bool zeroAsBlue, bool ov
 
 	if (overflowMin)
 	{
-		deltaString = Strings::Common_ConcatSpaced::create()->setStringReplacementVariables({ deltaString, Strings::Platformer_Combat_Max::create() });
+		deltaString = Strings::Common_ConcatSpacedBiDi::create()->setStringReplacementVariables({ deltaString, Strings::Platformer_Combat_Max::create() });
 	}
 	else if (overflowMax)
 	{
-		deltaString = Strings::Common_ConcatSpaced::create()->setStringReplacementVariables({ deltaString, Strings::Platformer_Combat_Max::create() });
+		deltaString = Strings::Common_ConcatSpacedBiDi::create()->setStringReplacementVariables({ deltaString, Strings::Platformer_Combat_Max::create() });
 	}
 
 	LocalizedLabel* deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, deltaString);

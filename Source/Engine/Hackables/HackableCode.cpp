@@ -6,6 +6,7 @@
 
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Hackables/GlobalHackAttributeContainer.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Engine/Utils/LogUtils.h"
@@ -91,12 +92,12 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, HackableCodeInfo hack
 
 		this->readOnlyScripts.push_back(ReadOnlyScript(
 			Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
-			script,
-			script
+			ConstantString::create(script),
+			ConstantString::create(script)
 		));
 	}
 
-	for (auto script : hackableCodeInfo.readOnlyScripts)
+	for (HackableCode::ReadOnlyScript& script : hackableCodeInfo.readOnlyScripts)
 	{
 		this->readOnlyScripts.push_back(script);
 	}
@@ -107,13 +108,23 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, HackableCodeInfo hack
 		this->originalAssemblyString = (is32Bit) ? this->readOnlyScripts.front().scriptx86 : this->readOnlyScripts.front().scriptx64;
 	}
 	
-	this->assemblyString = this->originalAssemblyString;
+	this->assemblyString = this->originalAssemblyString == nullptr ? "" : this->originalAssemblyString->getString();
 
-	for (auto script : this->readOnlyScripts)
+	for (HackableCode::ReadOnlyScript& script : this->readOnlyScripts)
 	{
 		if (script.title != nullptr)
 		{
 			this->addChild(script.title);
+		}
+
+		if (script.scriptx86 != nullptr)
+		{
+			this->addChild(script.scriptx86);
+		}
+
+		if (script.scriptx64 != nullptr)
+		{
+			this->addChild(script.scriptx64);
 		}
 	}
 }
@@ -149,7 +160,7 @@ std::string HackableCode::getAssemblyString()
 	return this->assemblyString;
 }
 
-std::string HackableCode::getOriginalAssemblyString()
+LocalizedString* HackableCode::getOriginalAssemblyString()
 {
 	return this->originalAssemblyString;
 }
@@ -173,7 +184,10 @@ bool HackableCode::applyCustomCode(std::string newAssembly)
 		return false;
 	}
 
-	HackUtils::CompileResult compileResult = HackUtils::assemble(this->assemblyString, this->codePointer);
+	// Remove comments to improve compilation speeds
+	std::string simplifiedAssembly = HackableCode::removeComments(this->assemblyString);
+
+	HackUtils::CompileResult compileResult = HackUtils::assemble(simplifiedAssembly, this->codePointer);
 
 	// Sanity check that the code compiles -- there isn't any reason it shouldn't
 	if (compileResult.hasError || compileResult.byteCount > this->originalCodeLength)
@@ -489,4 +503,30 @@ HackableCode::MarkerMap& HackableCode::parseHackableMarkers(void* functionStart,
 	HackableCode::HackableCodeCache[functionStart] = extractedMarkers;
 
 	return HackableCode::HackableCodeCache[functionStart];
+}
+
+std::string HackableCode::removeComments(const std::string& code)
+{
+    std::string result;
+    result.reserve(code.size());
+
+    bool inComment = false;
+    for (size_t i = 0; i < code.size(); ++i)
+	{
+        if (!inComment && i + 1 < code.size() && code[i] == '/' && code[i + 1] == '/')
+		{
+            inComment = true;
+            i++; // Skip the second '/'
+        }
+		else if (inComment && code[i] == '\n')
+		{
+            inComment = false;
+        }
+		else if (!inComment)
+		{
+            result.push_back(code[i]);
+        }
+    }
+
+    return result;
 }

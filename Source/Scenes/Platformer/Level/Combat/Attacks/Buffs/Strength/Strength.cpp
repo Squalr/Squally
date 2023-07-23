@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
@@ -43,9 +45,6 @@ const int Strength::MaxMultiplier = 2;
 const int Strength::DamageIncrease = 3; // Keep in sync with asm
 const float Strength::Duration = 12.0f;
 
-// Static to prevent GCC optimization issues
-volatile int Strength::currentDamageDealt = 0;
-
 Strength* Strength::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	Strength* instance = new Strength(caster, target);
@@ -60,7 +59,6 @@ Strength::Strength(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
-	this->currentDamageDealt = 0;
 
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
@@ -126,19 +124,23 @@ void Strength::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDamageIncrease::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(Strength::DamageIncrease)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDecreaseInstead::create()) + 
-						"add ecx, 3\n"
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentRegister::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDamageIncrease::create()
+								->setStringReplacementVariables(ConstantString::create(std::to_string(Strength::DamageIncrease)))),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDecreaseInstead::create()),
+							ConstantString::create("add ecx, 3\n")
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDamageIncrease::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(Strength::DamageIncrease)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDecreaseInstead::create()) + 
-						"add rcx, 3\n"
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentRegister::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create())),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDamageIncrease::create()
+								->setStringReplacementVariables(ConstantString::create(std::to_string(Strength::DamageIncrease)))),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDecreaseInstead::create()),
+							ConstantString::create("add rcx, 3\n")
+						})
 					),
 				},
 				true
@@ -146,8 +148,7 @@ void Strength::registerHackables()
 		},
 	};
 
-	auto func = &Strength::applyStrength;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Strength::applyStrength, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{
@@ -159,20 +160,23 @@ void Strength::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* 
 {
 	super::onBeforeDamageDealt(damageOrHealing);
 
-	this->currentDamageDealt = damageOrHealing->damageOrHealingValue;
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
 
 	this->applyStrength();
 
-	(*damageOrHealing->damageOrHealingMin) = -std::abs(damageOrHealing->damageOrHealingValue * Strength::MinMultiplier);
-	(*damageOrHealing->damageOrHealingMax) = std::abs(damageOrHealing->damageOrHealingValue * Strength::MaxMultiplier);
-	(*damageOrHealing->damageOrHealing) = this->currentDamageDealt;
+	int min = -std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Strength::MinMultiplier);
+	int max = std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Strength::MaxMultiplier);
+
+	*damageOrHealing->damageOrHealing = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
+	*damageOrHealing->damageOrHealingMin = min;
+	*damageOrHealing->damageOrHealingMax = max;
 }
 
 NO_OPTIMIZE void Strength::applyStrength()
 {
 	static volatile int currentDamageDealtLocal = 0;
 
-	currentDamageDealtLocal = this->currentDamageDealt;
+	currentDamageDealtLocal = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
 
 	ASM_PUSH_EFLAGS()
 	ASM(push ZCX);
@@ -188,7 +192,7 @@ NO_OPTIMIZE void Strength::applyStrength()
 	ASM(pop ZCX);
 	ASM_POP_EFLAGS()
 
-	this->currentDamageDealt = currentDamageDealtLocal;
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
 
 	HACKABLES_STOP_SEARCH();
 }

@@ -5,6 +5,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Sound/WorldSound.h"
+#include "Engine/Utils/CombatUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/ManaDrain/ManaDrain.h"
@@ -66,7 +67,7 @@ void CastManaDrain::performAttack(PlatformerEntity* owner, std::vector<Platforme
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
@@ -83,9 +84,15 @@ bool CastManaDrain::isWorthUsing(PlatformerEntity* caster, const std::vector<Pla
 {
 	int uncastableCount = 0;
 
-	for (auto next : otherTeam)
+	for (PlatformerEntity* next : otherTeam)
 	{
 		if (!next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			uncastableCount++;
+			continue;
+		}
+		
+		if (CombatUtils::HasDuplicateCastOnLivingTarget(caster, next, [](PlatformerAttack* next) { return dynamic_cast<CastManaDrain*>(next) != nullptr;  }))
 		{
 			uncastableCount++;
 			continue;
@@ -109,7 +116,7 @@ float CastManaDrain::getUseUtility(PlatformerEntity* caster, PlatformerEntity* t
 	bool isPacifist = target->getRuntimeStateOrDefaultBool(StateKeys::IsPacifist, false);
 	float mana = float(target->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0));
 	float maxMana = float(target->getRuntimeStateOrDefaultInt(StateKeys::MaxMana, 0));
-	float utility = (!isAlive || isPacifist) ? 0.0f : (mana / (maxMana <= 0.0f ? 1.0f : maxMana));
+	float utility = (!isAlive || isPacifist) ? -1.0f : (mana / (maxMana <= 0.0f ? 1.0f : maxMana));
 
 	target->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{

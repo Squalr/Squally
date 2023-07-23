@@ -28,7 +28,7 @@ void DiscoverCharterShip::onLoad(QuestState questState)
 	this->complete();
 }
 
-void DiscoverCharterShip::onActivate(bool isActiveThroughSkippable)
+void DiscoverCharterShip::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

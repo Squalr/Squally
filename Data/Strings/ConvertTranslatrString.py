@@ -46,6 +46,7 @@ def main():
 			
 			if (key['locale'] == "pt"):
 				resultDict["pt-BR"] = key['string']
+            
 		print
 		print(json.dumps(resultDict, indent=4, ensure_ascii=False))
 		print

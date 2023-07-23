@@ -18,6 +18,22 @@ public:
 	void focus();
 	void unfocus();
 	FilterEntry* getActiveFilter();
+	void setActiveFilter(FilterEntry* filter);
+
+	template <class T>
+	void getFilterByClass(std::function<void(T*)> onFound)
+	{
+		if (onFound != nullptr)
+		{
+			for (FilterEntry* next : this->filters)
+			{
+				if (dynamic_cast<T*>(next) != nullptr)
+				{
+					onFound(dynamic_cast<T*>(next));
+				}
+			}
+		}
+	}
 
 protected:
 	FilterMenu(std::function<void()> onFilterChange);

@@ -26,6 +26,8 @@ Music* Music::clone()
 		this->musicName != nullptr ? this->musicName->clone() : nullptr,
 		this->artistName != nullptr ? this->artistName->clone() : nullptr);
 
+	clone->soundId = this->soundId;
+	clone->soundRef = this->soundRef;
 	clone->autorelease();
 
 	return clone;
@@ -98,9 +100,14 @@ void Music::pushTrack(float delay)
 	MusicPlayer::getInstance()->pushTrack(this, delay);
 }
 
-void Music::popTrack()
+void Music::popTrack(bool unpauseNext)
 {
-	MusicPlayer::getInstance()->removeTrack(this->getSoundResource());
+	MusicPlayer::getInstance()->removeTrack(this->getSoundResource(), unpauseNext);
+}
+
+SoundChannel Music::getSoundChannel()
+{
+	return SoundChannel::Music;
 }
 
 float Music::getConfigVolume()
@@ -110,12 +117,7 @@ float Music::getConfigVolume()
 
 void Music::play(bool repeat, float startDelay)
 {
-	this->soundId = SoundPool::getInstance()->validateSoundId(soundId, soundRef);
-
-	if (this->soundRef == nullptr)
-	{
-		this->soundId = SoundPool::getInstance()->allocSound(this->getSoundResource(), this->soundRef);
-	}
+	this->allocSound();
 	
 	if (this->soundRef == nullptr)
 	{
@@ -130,7 +132,19 @@ void Music::play(bool repeat, float startDelay)
 		{
 			this->stop();
 			super::play(repeat, startDelay);
-			SoundEvents::TriggerMusicPlayed(SoundEvents::MusicPlayedArgs(this));
+
+			// Delay a frame to ensure that music overlay is created
+			this->defer([=]()
+			{
+				this->runAction(Sequence::create(
+					DelayTime::create(startDelay),
+					CallFunc::create([=]()
+					{
+						SoundEvents::TriggerMusicPlayed(SoundEvents::MusicPlayedArgs(this));
+					}),
+					nullptr
+				));
+			});
 			break;
 		}
 		case sf::SoundSource::Status::Paused:

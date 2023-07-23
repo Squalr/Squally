@@ -70,7 +70,7 @@ void TalkToMages::onLoad(QuestState questState)
 	}, Sarude::MapKey);
 }
 
-void TalkToMages::onActivate(bool isActiveThroughSkippable)
+void TalkToMages::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce(TalkToMages::MapKeyQuest, [=](ValueMap args)
 	{

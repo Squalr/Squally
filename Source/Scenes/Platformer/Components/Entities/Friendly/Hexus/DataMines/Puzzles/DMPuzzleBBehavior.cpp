@@ -58,6 +58,9 @@ std::vector<CardData*> DMPuzzleBBehavior::generateDeck()
 
 StateOverride* DMPuzzleBBehavior::getStateOverride()
 {
+	/*
+	SHL the 0110, OR it onto the dec 3
+	*/
 	return StateOverride::create(
 		// Player losses
 		1,
@@ -75,6 +78,16 @@ StateOverride* DMPuzzleBBehavior::getStateOverride()
 			
 		},
 		// Enemy deck
+		std::vector<CardData*>
+		{
+			
+		},
+		// Player graveyard
+		std::vector<CardData*>
+		{
+			
+		},
+		// Enemy graveyard
 		std::vector<CardData*>
 		{
 			

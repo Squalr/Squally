@@ -53,5 +53,5 @@ std::string Weapon::getWeaponAttackSound()
 
 std::string Weapon::getWeaponImpactSound()
 {
-	return SoundResources::Platformer_Physical_Impact_Hit1;
+	return SoundResources::Platformer_Physical_Impact_HitSoft1;
 }

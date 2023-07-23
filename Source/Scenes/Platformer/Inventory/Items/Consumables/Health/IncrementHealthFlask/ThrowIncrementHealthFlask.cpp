@@ -55,7 +55,7 @@ LocalizedString* ThrowIncrementHealthFlask::getString()
 
 LocalizedString* ThrowIncrementHealthFlask::getDescription()
 {
-	return Strings::Items_Consumables_Health_HealthPotionDescription::create()
+	return Strings::Items_Consumables_Health_IncrementHealthFlaskDescription::create()
 		->setStringReplacementVariables({ ConstantString::create(std::to_string(int(IncrementHealthFlask::HealTicks))), ConstantString::create(std::to_string(int(IncrementHealthFlask::HealTicks))) });
 }
 
@@ -94,7 +94,7 @@ void ThrowIncrementHealthFlask::performAttack(PlatformerEntity* owner, std::vect
 {
 	super::performAttack(owner, targets);
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		ThrownObject* potion = ThrownObject::create(owner, next, false, ItemResources::Consumables_Potions_HealthFlaskIncrement, CSize(64.0f, 64.0f));
 		
@@ -121,6 +121,7 @@ void ThrowIncrementHealthFlask::performAttack(PlatformerEntity* owner, std::vect
 		{
 			if (owner == next)
 			{
+				// Self launch (aim above self)
 				potion->launchTowardsTarget3D(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
 			}
 			else

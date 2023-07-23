@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
@@ -32,7 +34,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_RESTORE 1
+#define LOCAL_FUNC_ID_REJUVINATION 1
 
 const std::string Rejuvination::RejuvinationIdentifier = "rejuvination";
 const float Rejuvination::TimeBetweenTicks = 1.0f;
@@ -95,7 +97,7 @@ void Rejuvination::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_RESTORE,
+			LOCAL_FUNC_ID_REJUVINATION,
 			HackableCode::HackableCodeInfo(
 				Rejuvination::RejuvinationIdentifier,
 				Strings::Menus_Hacking_Abilities_Abilities_Rejuvination_Rejuvination::create(),
@@ -112,11 +114,15 @@ void Rejuvination::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						"rol edx, 1\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Rejuvination_Hint::create())
+						ConcatString::create({
+							ConstantString::create("rol edx, 1\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Rejuvination_CommentHint::create())
+						})
 						, // x64
-						"rol rdx, 1\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Rejuvination_Hint::create())
+						ConcatString::create({
+							ConstantString::create("rol rdx, 1\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Rejuvination_CommentHint::create())
+						})
 					),
 				},
 				true
@@ -124,8 +130,7 @@ void Rejuvination::registerHackables()
 		},
 	};
 
-	auto restoreFunc = &Rejuvination::runRestoreTick;
-	this->hackables = HackableCode::create((void*&)restoreFunc, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Rejuvination::runRestoreTick, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{
@@ -185,7 +190,7 @@ NO_OPTIMIZE void Rejuvination::runRestoreTick()
 
 	ASM_MOV_REG_VAR(edx, health);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RESTORE);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_REJUVINATION);
 	ASM(rol ZDX, 1);
 	HACKABLE_CODE_END();
 

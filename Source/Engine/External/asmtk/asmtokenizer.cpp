@@ -14,6 +14,18 @@ namespace asmtk {
 // [asmtk::CharKind / CharMap]
 // ============================================================================
 
+//! Flags used during tokenization.
+enum StateFlags : uint32_t {
+  //! Parsed '.' prefix.
+  kStateDotPrefix = 0x10000000u,
+  //! Parsed '$' prefix.
+  kStateDollarPrefix = 0x20000000u,
+  //! Parsed number prefix [0b|0x].
+  kStateNumberPrefix = 0x40000000u,
+  //! Parsed number suffix [b|o|q|h].
+  kStateNumberSuffix = 0x80000000u
+};
+
 enum CharKind : uint32_t {
   // Digit [0-9], HEX [A-F] and the remaining ASCII [G-Z].
   kChar0x0, kChar0x1, kChar0x2, kChar0x3, kChar0x4, kChar0x5, kChar0x6, kChar0x7,
@@ -23,6 +35,7 @@ enum CharKind : uint32_t {
   kCharAxW, kCharAxX, kCharAxY, kCharAxZ,
 
   kCharUnd, // Underscore
+  kCharDot, // Dot
   kCharSym, // Special characters that can be considered a symbol [$@_].
   kCharUsd, // Dollar sign.
   kCharDsh, // Dash.
@@ -39,7 +52,7 @@ static const uint8_t CharMap[] = {
   C(Inv), C(Inv), C(Inv), C(Inv), C(Inv), C(Inv), C(Inv), C(Inv), // 016-023 ........ | All invalid.
   C(Inv), C(Inv), C(Inv), C(Inv), C(Inv), C(Inv), C(Inv), C(Inv), // 024-031 ........ | All invalid.
   C(Spc), C(Pcn), C(Pcn), C(Pcn), C(Usd), C(Pcn), C(Pcn), C(Pcn), // 032-039  !"#$%&' |
-  C(Pcn), C(Pcn), C(Pcn), C(Pcn), C(Pcn), C(Dsh), C(Pcn), C(Pcn), // 040-047 ()*+,-./ |
+  C(Pcn), C(Pcn), C(Pcn), C(Pcn), C(Pcn), C(Dsh), C(Dot), C(Pcn), // 040-047 ()*+,-./ |
   C(0x0), C(0x1), C(0x2), C(0x3), C(0x4), C(0x5), C(0x6), C(0x7), // 048-055 01234567 |
   C(0x8), C(0x9), C(Pcn), C(Pcn), C(Pcn), C(Pcn), C(Pcn), C(Pcn), // 056-063 89:;<=>? |
   C(Sym), C(0xA), C(0xB), C(0xC), C(0xD), C(0xE), C(0xF), C(AxG), // 064-071 @ABCDEFG |
@@ -74,45 +87,54 @@ static const uint8_t CharMap[] = {
 // ============================================================================
 
 AsmTokenizer::AsmTokenizer() noexcept
-  : _input(NULL),
-    _end(NULL),
-    _cur(NULL),
+  : _input(nullptr),
+    _end(nullptr),
+    _cur(nullptr),
     _stodctx() {}
 
 AsmTokenizer::~AsmTokenizer() noexcept {}
 
-uint32_t AsmTokenizer::next(AsmToken* token, uint32_t flags) noexcept {
+AsmTokenType AsmTokenizer::next(AsmToken* token, ParseFlags parseFlags) noexcept {
   const uint8_t* cur = _cur;
   const uint8_t* end = _end;
 
   // Skip spaces.
   const uint8_t* start = cur;
   if (cur == end)
-    return token->setData(AsmToken::kEnd, start, cur);
+    return token->setData(AsmTokenType::kEnd, start, cur);
 
   uint32_t c = cur[0];
   uint32_t m = CharMap[c];
+  uint32_t stateFlags = 0;
+  bool isComment = false;
 
-  // --------------------------------------------------------------------------
-  // [Whitespaces]
-  // --------------------------------------------------------------------------
+  // Skip Whitespaces
+  // ----------------
 
   if (m == kCharSpc) {
     do {
       cur++;
-      if (c == '\n') goto NL;
-      if (cur == end) goto End;
+      if (c == '\n')
+        goto NL;
+
+      if (cur == end)
+        goto End;
 
       c = cur[0];
       m = CharMap[c];
     } while (m == kCharSpc);
   }
 
-  // --------------------------------------------------------------------------
-  // [Comment]
-  // --------------------------------------------------------------------------
+  // Skip Comment
+  // ------------
 
-  if (c == ';') {
+  if (c == ';')
+    isComment = true;
+
+  if (c == '/' && size_t(end - cur) >= 2 && cur[1] == '/')
+    isComment = true;
+
+  if (isComment) {
     for (;;) {
       if (++cur == end)
         goto End;
@@ -125,37 +147,35 @@ uint32_t AsmTokenizer::next(AsmToken* token, uint32_t flags) noexcept {
   // The beginning of the token.
   start = cur;
 
-  // --------------------------------------------------------------------------
-  // [Prefixes]
-  // --------------------------------------------------------------------------
+  // Parse Prefixes
+  // --------------
 
   if (c == '$') {
     if (++cur == end) {
       _cur = cur;
-      return token->setData(AsmToken::kSym, start, cur);
+      return token->setData(AsmTokenType::kSym, start, cur);
     }
 
-    flags |= kStateDollarPrefix;
+    stateFlags |= kStateDollarPrefix;
     c = cur[0];
     m = CharMap[c];
   }
   else if (c == '.') {
     if (++cur == end) {
       _cur = cur;
-      return token->setData(AsmToken::kInvalid, start, cur);
+      return token->setData(AsmTokenType::kInvalid, start, cur);
     }
 
-    flags |= kStateDotPrefix;
+    stateFlags |= kStateDotPrefix;
     c = cur[0];
     m = CharMap[c];
   }
 
-  // --------------------------------------------------------------------------
-  // [Number]
-  // --------------------------------------------------------------------------
+  // Parse Number
+  // ------------
 
   // Only parse numbers if we are not forced to always parse numbers as symbols.
-  if (!(flags & (kParseSymbol | kStateDotPrefix))) {
+  if (!asmjit::Support::test(parseFlags, ParseFlags::kParseSymbol) && (stateFlags & kStateDotPrefix) == 0) {
     // The number either starts with [0..9], which could contain an optional
     // [0x|0b] prefixes, or $[0-9], which is a hexadecimal prefix as well.
     if (m <= kChar0x9) {
@@ -165,27 +185,27 @@ uint32_t AsmTokenizer::next(AsmToken* token, uint32_t flags) noexcept {
 
       if (++cur == end) {
         _cur = cur;
-        token->u64 = val;
-        return token->setData(AsmToken::kU64, start, cur);
+        token->_u64 = val;
+        return token->setData(AsmTokenType::kU64, start, cur);
       }
 
       // Parse a binary or hexadecimal number prefixed by [$|0x|0b].
       c = cur[0];
       m = CharMap[c];
 
-      if (val == 0 || (flags & kStateDollarPrefix) != 0) {
-        if (flags & kStateDollarPrefix) {
+      if (val == 0 || (stateFlags & kStateDollarPrefix) != 0) {
+        if (stateFlags & kStateDollarPrefix) {
           // Hexadecimal number.
           base = 16;
           shift = 4;
-          flags |= kStateNumberPrefix;
+          stateFlags |= kStateNumberPrefix;
         }
         else {
           // Parse 'b' or 'x'.
           if (m == kChar0xB || m == kCharAxX) {
             base = 16;
             shift = 4;
-            flags |= kStateNumberPrefix;
+            stateFlags |= kStateNumberPrefix;
 
             if (m == kChar0xB) {
               base = 2;
@@ -222,8 +242,8 @@ uint32_t AsmTokenizer::next(AsmToken* token, uint32_t flags) noexcept {
           goto Invalid;
 
         _cur = cur;
-        token->u64 = val;
-        return token->setData(AsmToken::kU64, start, cur);
+        token->_u64 = val;
+        return token->setData(AsmTokenType::kU64, start, cur);
       }
 
       // Parse a decimal number or prepare for parsing a binary/octal/hexadecimal
@@ -258,7 +278,7 @@ ParseDigits:
 
               base = 2;
               shift = 1;
-              flags |= kStateNumberSuffix;
+              stateFlags |= kStateNumberSuffix;
             }
             else {
 ParseHex:
@@ -282,14 +302,14 @@ ParseHex:
             shift = 4;
 
             cur++;
-            flags |= kStateNumberSuffix;
+            stateFlags |= kStateNumberSuffix;
           }
           else if (m == kCharAxO || m == kCharAxQ) {
             base = 8;
             shift = 3;
 
             cur++;
-            flags |= kStateNumberSuffix;
+            stateFlags |= kStateNumberSuffix;
           }
           else {
             goto Invalid;
@@ -309,7 +329,7 @@ ParseHex:
 
         if (base != 10) {
           const uint8_t* altCur = start;
-          const uint8_t* altEnd = cur - ((flags & kStateNumberSuffix) != 0);
+          const uint8_t* altEnd = cur - ((stateFlags & kStateNumberSuffix) != 0);
 
           val = 0;
           while (altCur != altEnd) {
@@ -320,14 +340,13 @@ ParseHex:
       }
 
       _cur = cur;
-      token->u64 = val;
-      return token->setData(AsmToken::kU64, start, cur);
+      token->_u64 = val;
+      return token->setData(AsmTokenType::kU64, start, cur);
     }
   }
 
-  // --------------------------------------------------------------------------
-  // [Symbol]
-  // --------------------------------------------------------------------------
+  // Parse Symbol
+  // ------------
 
   // Parse '??xxx' as used by Windows ABI for mangled C++ symbols.
   if (c == '?' && (size_t)(end - cur) > 2 && cur[1] == '?' && CharMap[cur[2]] <= kCharUsd) {
@@ -336,7 +355,7 @@ ParseHex:
   }
 
   if (m <= kCharUsd) {
-    uint32_t mSymMax = (flags & kParseDashes) ? kCharDsh : kCharUsd;
+    uint32_t mSymMax = asmjit::Support::test(parseFlags, ParseFlags::kIncludeDashes) ? kCharDsh : kCharUsd;
 
     while (++cur != end) {
       c = cur[0];
@@ -349,28 +368,27 @@ ParseHex:
     }
 
     _cur = cur;
-    return token->setData(AsmToken::kSym, start, cur);
+    return token->setData(AsmTokenType::kSym, start, cur);
   }
 
-  // --------------------------------------------------------------------------
-  // [Parse Punctuation]
-  // --------------------------------------------------------------------------
+  // Parse Punctuation
+  // -----------------
 
   if (m <= kCharPcn) {
-    uint32_t type = AsmToken::kOther;
+    AsmTokenType type = AsmTokenType::kOther;
     switch (c) {
-      case '{': type = AsmToken::kLCurl   ; break;
-      case '}': type = AsmToken::kRCurl   ; break;
-      case '[': type = AsmToken::kLBracket; break;
-      case ']': type = AsmToken::kRBracket; break;
-      case '(': type = AsmToken::kLParen  ; break;
-      case ')': type = AsmToken::kRParen  ; break;
-      case '+': type = AsmToken::kAdd     ; break;
-      case '-': type = AsmToken::kSub     ; break;
-      case '*': type = AsmToken::kMul     ; break;
-      case '/': type = AsmToken::kDiv     ; break;
-      case ',': type = AsmToken::kComma   ; break;
-      case ':': type = AsmToken::kColon   ; break;
+      case '{': type = AsmTokenType::kLCurl   ; break;
+      case '}': type = AsmTokenType::kRCurl   ; break;
+      case '[': type = AsmTokenType::kLBracket; break;
+      case ']': type = AsmTokenType::kRBracket; break;
+      case '(': type = AsmTokenType::kLParen  ; break;
+      case ')': type = AsmTokenType::kRParen  ; break;
+      case '+': type = AsmTokenType::kAdd     ; break;
+      case '-': type = AsmTokenType::kSub     ; break;
+      case '*': type = AsmTokenType::kMul     ; break;
+      case '/': type = AsmTokenType::kDiv     ; break;
+      case ',': type = AsmTokenType::kComma   ; break;
+      case ':': type = AsmTokenType::kColon   ; break;
     }
     _cur = ++cur;
     return token->setData(type, start, cur);
@@ -378,15 +396,15 @@ ParseHex:
 
 Invalid:
   _cur = cur;
-  return token->setData(AsmToken::kInvalid, start, cur);
+  return token->setData(AsmTokenType::kInvalid, start, cur);
 
 NL:
   _cur = cur;
-  return token->setData(AsmToken::kNL, start, cur);
+  return token->setData(AsmTokenType::kNL, start, cur);
 
 End:
   _cur = cur;
-  return token->setData(AsmToken::kEnd, start, cur);
+  return token->setData(AsmTokenType::kEnd, start, cur);
 }
 
 } // {asmtk}

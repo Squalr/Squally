@@ -189,9 +189,9 @@ void CollisionObject::runPhysics(float dt)
 		return;
 	}
 
-	for (auto collisionType : this->collidesWithTypes)
+	for (CollisionType collisionType : this->collidesWithTypes)
 	{
-		for (auto collisionObject : CollisionObject::CollisionObjects[collisionType])
+		for (CollisionObject* collisionObject : CollisionObject::CollisionObjects[collisionType])
 		{
 			if (collisionObject->isDespawned())
 			{
@@ -207,7 +207,7 @@ void CollisionObject::runPhysics(float dt)
 				if (this->previousCollisions->find(collisionObject) == this->previousCollisions->end())
 				{
 					// Run new collision events
-					for (auto event : this->collisionStartEvents[collisionType])
+					for (CollisionEvent& event : this->collisionStartEvents[collisionType])
 					{
 						CollisionResult nextResult = event.collisionEvent(CollisionData(collisionObject, dt));
 
@@ -217,7 +217,7 @@ void CollisionObject::runPhysics(float dt)
 				else
 				{
 					// Run collision-sustain events
-					for (auto event : this->collisionSustainEvents[collisionType])
+					for (CollisionEvent& event : this->collisionSustainEvents[collisionType])
 					{
 						CollisionResult nextResult = event.collisionEvent(CollisionData(collisionObject, dt));
 
@@ -231,13 +231,13 @@ void CollisionObject::runPhysics(float dt)
 	}
 
 	// Run collision end events
-	for (auto collisionObject : *this->previousCollisions)
+	for (CollisionObject* collisionObject : *this->previousCollisions)
 	{
 		if (this->currentCollisions->find(collisionObject) == this->currentCollisions->end())
 		{
-			for (auto collisionType : collisionObject->getCollisionTypes())
+			for (CollisionType collisionType : collisionObject->getCollisionTypes())
 			{
-				for (auto event : this->collisionEndEvents[collisionType])
+				for (CollisionEvent& event : this->collisionEndEvents[collisionType])
 				{
 					event.collisionEvent(CollisionData(collisionObject, dt));
 				}
@@ -360,6 +360,16 @@ void CollisionObject::setVerticalDampening(float verticalDampening)
 	this->verticalDampening = MathUtils::clamp(verticalDampening, 0.0f, 1.0f);
 }
 
+float CollisionObject::getHorizontalDampening()
+{
+	return this->horizontalDampening;
+}
+
+float CollisionObject::getVerticalDampening()
+{
+	return this->verticalDampening;
+}
+
 const std::vector<cocos2d::Vec2>& CollisionObject::getPoints()
 {
 	return this->points;
@@ -409,7 +419,7 @@ bool CollisionObject::hasCollisionWith(CollisionObject* collisonObject)
 {
 	Node* currentCollisionGroup = collisonObject->getParent();
 
-	for (auto next : this->getCurrentCollisions())
+	for (CollisionObject* next : this->getCurrentCollisions())
 	{
 		if (next->getParent() != currentCollisionGroup)
 		{
@@ -441,7 +451,7 @@ bool CollisionObject::isCollidingWithSingleGroup()
 
 	Node* parent = nullptr;
 
-	for (auto next : *this->currentCollisions)
+	for (CollisionObject* next : *this->currentCollisions)
 	{
 		if (parent == nullptr)
 		{
@@ -509,7 +519,7 @@ void CollisionObject::unbind()
 
 void CollisionObject::whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)
 {
-	for (auto collisionType : collisionTypes)
+	for (CollisionType collisionType : collisionTypes)
 	{
 		this->collidesWithTypes.insert(collisionType);
 		this->collisionStartEvents[collisionType].push_back(CollisionEvent(onCollision));
@@ -518,7 +528,7 @@ void CollisionObject::whenCollidesWith(std::vector<CollisionType> collisionTypes
 
 void CollisionObject::whileCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)
 {
-	for (auto collisionType : collisionTypes)
+	for (CollisionType collisionType : collisionTypes)
 	{
 		this->collidesWithTypes.insert(collisionType);
 		this->collisionSustainEvents[collisionType].push_back(CollisionEvent(onCollision));
@@ -527,7 +537,7 @@ void CollisionObject::whileCollidesWith(std::vector<CollisionType> collisionType
 
 void CollisionObject::ifCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)
 {
-	for (auto collisionType : collisionTypes)
+	for (CollisionType collisionType : collisionTypes)
 	{
 		this->collidesWithTypes.insert(collisionType);
 		this->collisionStartEvents[collisionType].push_back(CollisionEvent(onCollision));
@@ -537,7 +547,7 @@ void CollisionObject::ifCollidesWith(std::vector<CollisionType> collisionTypes, 
 
 void CollisionObject::whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd)
 {
-	for (auto collisionType : collisionTypes)
+	for (CollisionType collisionType : collisionTypes)
 	{
 		this->collidesWithTypes.insert(collisionType);
 		this->collisionEndEvents[collisionType].push_back(CollisionEvent(onCollisionEnd));
@@ -547,6 +557,22 @@ void CollisionObject::whenStopsCollidingWith(std::vector<CollisionType> collisio
 unsigned int CollisionObject::getUniverseId()
 {
 	return this->universeId;
+}
+
+
+const std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>& CollisionObject::getSegmentsRotated()
+{
+	return this->segmentsRotated;
+}
+
+cocos2d::Vec2 CollisionObject::getCachedWorldCoords()
+{
+	return this->cachedWorldCoords;
+}
+
+cocos2d::Vec3 CollisionObject::getCachedWorldCoords3D()
+{
+	return this->cachedWorldCoords3D;
 }
 
 std::vector<Vec2> CollisionObject::createCircle(float radius, int segments)
@@ -564,6 +590,22 @@ std::vector<Vec2> CollisionObject::createCircle(float radius, int segments)
 	}
 
 	return points;
+}
+
+std::vector<cocos2d::Vec2> CollisionObject::createSegmentX(float width)
+{
+	return std::vector<Vec2>({
+		Vec2(-width / 2.0f, 0.0f),
+		Vec2(width / 2.0f, 0.0f),
+	});
+}
+
+std::vector<cocos2d::Vec2> CollisionObject::createSegmentY(float height)
+{
+	return std::vector<Vec2>({
+		Vec2(0.0f, -height / 2.0f),
+		Vec2(0.0f, height / 2.0f),
+	});
 }
 
 std::vector<Vec2> CollisionObject::createBox(CSize size)
@@ -637,7 +679,7 @@ CollisionShape CollisionObject::determineShape()
 		int sameY = 0;
 		Vec2 prior = this->points.back();
 
-		for (auto point : this->points)
+		for (Vec2& point : this->points)
 		{
 			sameX += (point.x == prior.x ? 1 : 0);
 			sameY += (point.y == prior.y ? 1 : 0);
@@ -762,7 +804,7 @@ void CollisionObject::drawDebugConnectors()
 	const Vec2 cameraPos = GameCamera::getInstance()->getCameraPosition();
 	const Vec2 offset = cameraPos - HalfScreenSize;
 
-	for (auto next : this->pointsRotated)
+	for (Vec2& next : this->pointsRotated)
 	{
 		// Compute edge verticies in world coords
 		const Vec3 sourcePoint = this->cachedWorldCoords3D + Vec3(next.x, next.y, -this->collisionDepth);
@@ -803,7 +845,7 @@ void CollisionObject::RegisterCollisionObject(CollisionObject* collisionObject)
 		return;
 	}
 
-	for (auto next : collisionObject->collisionTypes)
+	for (CollisionType next : collisionObject->collisionTypes)
 	{
 		CollisionObject::CollisionObjects[next].push_back(collisionObject);
 	}
@@ -816,7 +858,7 @@ void CollisionObject::UnregisterCollisionObject(CollisionObject* collisionObject
 		return;
 	}
 
-	for (auto next : collisionObject->collisionTypes)
+	for (CollisionType next : collisionObject->collisionTypes)
 	{
 		CollisionObject::CollisionObjects[next].erase(
 			std::remove(

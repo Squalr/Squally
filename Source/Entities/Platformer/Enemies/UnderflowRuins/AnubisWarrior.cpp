@@ -25,8 +25,7 @@ AnubisWarrior::AnubisWarrior(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_UnderflowRuins_AnubisWarrior_Animations,
 	EntityResources::Enemies_UnderflowRuins_AnubisWarrior_Emblem,
 	CSize(256.0f, 292.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 

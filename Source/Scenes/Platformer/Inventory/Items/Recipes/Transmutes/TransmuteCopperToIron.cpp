@@ -50,7 +50,10 @@ Item* TransmuteCopperToIron::clone()
 
 LocalizedString* TransmuteCopperToIron::getString()
 {
-	return Strings::Items_Crafting_Recipes_TransmuteCopperToIron::create();
+	return Strings::Items_Crafting_Recipes_TransmuteGeneric::create()->setStringReplacementVariables({
+		Strings::Items_Crafting_Ore_Copper::create(),
+		Strings::Items_Crafting_Ore_Iron::create()
+	});
 }
 
 const std::string& TransmuteCopperToIron::getIconResource()
@@ -60,7 +63,7 @@ const std::string& TransmuteCopperToIron::getIconResource()
 
 std::string TransmuteCopperToIron::getCraftedItemIconResource()
 {
-	return ItemResources::Crafting_Smithing_Iron;
+	return ItemResources::Crafting_Smithing_T2_Iron;
 }
 
 const std::string& TransmuteCopperToIron::getIdentifier()

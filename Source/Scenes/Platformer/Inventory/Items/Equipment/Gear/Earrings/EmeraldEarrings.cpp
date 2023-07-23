@@ -25,7 +25,7 @@ EmeraldEarrings::EmeraldEarrings() : super(CurrencyInventory::create({{ IOU::get
 	// Health
 	0,
 	// Mana
-	2,
+	3,
 	// Attack
 	0,
 	// Magic Attack
@@ -33,7 +33,7 @@ EmeraldEarrings::EmeraldEarrings() : super(CurrencyInventory::create({{ IOU::get
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.015f
 ))
 {
 }
@@ -54,7 +54,7 @@ LocalizedString* EmeraldEarrings::getString()
 
 const std::string& EmeraldEarrings::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Earrings_EmeraldEarrings;
+	return ItemResources::Equipment_Gear_Earrings_T3_EmeraldEarrings;
 }
 
 const std::string& EmeraldEarrings::getIdentifier()

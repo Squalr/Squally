@@ -38,8 +38,8 @@ std::vector<std::tuple<Item*, int>> LeatherCapPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Mithril::create(), 2 },
+		{ RatTail::create(), 3 },
 	};
 }
 
@@ -60,7 +60,7 @@ const std::string& LeatherCapPlans::getIconResource()
 
 std::string LeatherCapPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_LeatherCap;
+	return ItemResources::Equipment_Gear_Hats_Tier4_LeatherCap;
 }
 
 const std::string& LeatherCapPlans::getIdentifier()

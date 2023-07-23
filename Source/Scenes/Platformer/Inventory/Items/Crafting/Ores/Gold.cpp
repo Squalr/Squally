@@ -20,7 +20,7 @@ Gold* Gold::create()
 	return instance;
 }
 
-Gold::Gold() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 28 }}), ItemMeta(20000))
+Gold::Gold() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 8 * 3 }}), ItemMeta(20000))
 {
 }
 
@@ -40,7 +40,7 @@ LocalizedString* Gold::getString()
 
 const std::string& Gold::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_Gold;
+	return ItemResources::Crafting_Smithing_T3_Gold;
 }
 
 const std::string& Gold::getIdentifier()

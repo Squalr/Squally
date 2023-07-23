@@ -71,7 +71,7 @@ void ItemsMenu::buildItemList(TimelineEntry* entry)
 
 		std::map<std::string, std::tuple<int, PlatformerAttack*>> consumablesMap = std::map<std::string, std::tuple<int, PlatformerAttack*>>();
 		
-		for (auto consumable : attackBehavior->getAvailableConsumables())
+		for (Consumable* consumable : attackBehavior->getAvailableConsumables())
 		{
 			const std::string identifier = consumable->getIdentifier();
 
@@ -85,7 +85,7 @@ void ItemsMenu::buildItemList(TimelineEntry* entry)
 			}
 		}
 
-		for (auto next : consumablesMap)
+		for (const auto& next : consumablesMap)
 		{
 			this->hasItemsInList = true;
 
@@ -95,7 +95,7 @@ void ItemsMenu::buildItemList(TimelineEntry* entry)
 			LocalizedString* countString = Strings::Common_Brackets::create()
 				->setStringReplacementVariables(Strings::Common_TimesConstant::create()
 				->setStringReplacementVariables(ConstantString::create(std::to_string(count))));
-			LocalizedString* menuString = Strings::Common_ConcatSpaced::create()->setStringReplacementVariables({ attack->getString(), countString });
+			LocalizedString* menuString = Strings::Common_ConcatSpacedBiDi::create()->setStringReplacementVariables({ attack->getString(), countString });
 			LocalizedString* description = attack->getDescription();
 
 			this->addEntry(menuString, { description }, attack->getIconResource(), UIResources::Combat_ItemsCircle, [=]()

@@ -25,8 +25,7 @@ DarkTiger::DarkTiger(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_UnderflowRuins_DarkTiger_Animations,
 	EntityResources::Enemies_UnderflowRuins_DarkTiger_Emblem,
 	CSize(256.0f, 248.0f),
-	0.9f,
-	Vec2(0.0f, 0.0f))
+	0.9f)
 {
 }
 

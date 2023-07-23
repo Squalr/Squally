@@ -105,7 +105,7 @@ void SailForRuins::onLoad(QuestState questState)
 	}, Blackbeard::MapKey);
 }
 
-void SailForRuins::onActivate(bool isActiveThroughSkippable)
+void SailForRuins::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

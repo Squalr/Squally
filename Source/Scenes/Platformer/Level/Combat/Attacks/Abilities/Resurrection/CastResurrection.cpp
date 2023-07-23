@@ -76,7 +76,7 @@ void CastResurrection::performAttack(PlatformerEntity* owner, std::vector<Platfo
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
@@ -96,7 +96,7 @@ void CastResurrection::onCleanup()
 
 bool CastResurrection::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	for (auto next : sameTeam)
+	for (PlatformerEntity* next : sameTeam)
 	{
 		if (!next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{

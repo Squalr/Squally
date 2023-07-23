@@ -3,7 +3,7 @@
 #include "Engine/Quests/QuestTask.h"
 #include "Scenes/Platformer/Quests/Global/RestoreWarpGates/PowerWarpGateBP.h"
 #include "Scenes/Platformer/Quests/Global/RestoreWarpGates/PowerWarpGateCV.h"
-#include "Scenes/Platformer/Quests/Global/RestoreWarpGates/PowerWarpGateDH.h"
+#include "Scenes/Platformer/Quests/Global/RestoreWarpGates/PowerWarpGateFF.h"
 #include "Scenes/Platformer/Quests/Global/RestoreWarpGates/PowerWarpGateDM.h"
 #include "Scenes/Platformer/Quests/Global/RestoreWarpGates/PowerWarpGateEF.h"
 #include "Scenes/Platformer/Quests/Global/RestoreWarpGates/PowerWarpGateLC.h"
@@ -28,9 +28,9 @@ RestoreWarpGatesLine::RestoreWarpGatesLine() : super(RestoreWarpGatesLine::MapKe
 	QuestData(PowerWarpGateUR::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return PowerWarpGateUR::create(owner, questLine); }),
 	QuestData(PowerWarpGateDM::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return PowerWarpGateDM::create(owner, questLine); }),
 	QuestData(PowerWarpGateCV::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return PowerWarpGateCV::create(owner, questLine); }),
-	QuestData(PowerWarpGateBP::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return PowerWarpGateBP::create(owner, questLine); }),
-	QuestData(PowerWarpGateDH::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return PowerWarpGateDH::create(owner, questLine); }),
 	QuestData(PowerWarpGateLC::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return PowerWarpGateLC::create(owner, questLine); }),
+	QuestData(PowerWarpGateFF::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return PowerWarpGateFF::create(owner, questLine); }),
+	QuestData(PowerWarpGateBP::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return PowerWarpGateBP::create(owner, questLine); }),
 	QuestData(PowerWarpGateVS::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return PowerWarpGateVS::create(owner, questLine); }),
 })
 {

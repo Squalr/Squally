@@ -71,7 +71,7 @@ void ChatWithGuano::onLoad(QuestState questState)
 	}, MulDoor::MapKey);
 }
 
-void ChatWithGuano::onActivate(bool isActiveThroughSkippable)
+void ChatWithGuano::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	if (this->mulDoor != nullptr)
 	{

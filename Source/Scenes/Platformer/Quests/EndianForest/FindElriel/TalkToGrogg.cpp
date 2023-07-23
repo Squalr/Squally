@@ -17,9 +17,11 @@
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Combat/AgroBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Enemies/Combat/EnemyCombatEngageBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Overworld/EndianForest/KingGrogg/GroggOutOfCombatAttackBehavior.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/SoundResources.h"
 
@@ -64,7 +66,34 @@ void TalkToGrogg::onLoad(QuestState questState)
 		
 		this->kingGrogg->watchForComponent<AgroBehavior>([&](AgroBehavior* agroBehavior)
 		{
-			agroBehavior->disable();
+			if (questState != QuestState::Complete)
+			{
+				agroBehavior->disable();
+			}
+			
+			agroBehavior->toggleWarnOnAgro(false);
+		});
+
+		if (this->kingGrogg->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+		{
+			this->kingGrogg->listenForStateWrite(StateKeys::IsAlive, [=](Value isAlive)
+			{
+				if (!isAlive.asBool())
+				{
+					this->complete();
+				}
+			});
+		}
+
+		this->listenForMapEventOnce("force-combat", [=](ValueMap args)
+		{
+			if (this->kingGrogg->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			{
+				this->kingGrogg->getComponent<EnemyCombatEngageBehavior>([&](EnemyCombatEngageBehavior* engageBehavior)
+				{
+					engageBehavior->engageEnemy(false);
+				});
+			}
 		});
 	}, KingGrogg::MapKey);
 
@@ -74,11 +103,14 @@ void TalkToGrogg::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void TalkToGrogg::onActivate(bool isActiveThroughSkippable)
+void TalkToGrogg::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce(TalkToGrogg::MapKeyQuest, [=](ValueMap args)
 	{
-		this->runCinematicSequencePart1();
+		if (this->getQuestState() != QuestState::Complete)
+		{
+			this->runCinematicSequencePart1();
+		}
 	});
 }
 
@@ -93,10 +125,12 @@ void TalkToGrogg::onSkipped()
 
 void TalkToGrogg::runCinematicSequencePart1()
 {
+	PlatformerEvents::TriggerHideMiniMap();
+
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_FindElriel_Grogg_A_WhoDares::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
 			DialogueEvents::BuildPreviewNode(&this->kingGrogg, true)
@@ -115,7 +149,7 @@ void TalkToGrogg::runCinematicSequencePart2()
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_FindElriel_Grogg_B_RescueElf::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
 			DialogueEvents::BuildPreviewNode(&this->kingGrogg, true)
@@ -134,7 +168,7 @@ void TalkToGrogg::runCinematicSequencePart3()
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_FindElriel_Grogg_C_SpreadForcesThin::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
 			DialogueEvents::BuildPreviewNode(&this->kingGrogg, true)
@@ -153,7 +187,7 @@ void TalkToGrogg::runCinematicSequencePart4()
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_FindElriel_Grogg_D_MarchesTowards::create()->setStringReplacementVariables(Strings::Platformer_MapNames_EndianForest_Elbridge::create()),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
 			DialogueEvents::BuildPreviewNode(&this->kingGrogg, true)
@@ -161,6 +195,7 @@ void TalkToGrogg::runCinematicSequencePart4()
 		[=]()
 		{
 			this->complete();
+			PlatformerEvents::TriggerShowMiniMap();
 			
 			this->kingGrogg->watchForComponent<GroggOutOfCombatAttackBehavior>([&](GroggOutOfCombatAttackBehavior* combatBehavior)
 			{
@@ -170,7 +205,6 @@ void TalkToGrogg::runCinematicSequencePart4()
 			this->kingGrogg->watchForComponent<AgroBehavior>([&](AgroBehavior* agroBehavior)
 			{
 				agroBehavior->enable();
-				agroBehavior->toggleWarnOnAgro(false);
 				agroBehavior->setAgroRangeX(65535.0f);
 				agroBehavior->setAgroRangeY(65535.0f);
 			});

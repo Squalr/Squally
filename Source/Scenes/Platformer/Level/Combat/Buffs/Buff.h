@@ -38,7 +38,7 @@ public:
 	float getRemainingDuration();
 	BuffData getBuffData();
 	void setRemoveBuffCallback(std::function<void()> removeBuffCallback);
-	void removeBuff();
+	bool removeBuff();
 	void registerClippyOnto(std::string identifier, std::function<Clippy*()> clippyFunc);
 
 protected:
@@ -62,6 +62,7 @@ protected:
 	virtual void onAfterHealingTaken(CombatEvents::DamageOrHealingArgs* damageOrHealing);
 	virtual void onAfterHealingDealt(CombatEvents::DamageOrHealingArgs* damageOrHealing);
 	virtual void onTimelineReset(CombatEvents::TimelineResetArgs* timelineReset);
+	void toggleCanRemoveBuff(bool canRemove);
 
 	BuffData buffData;
 	PlatformerEntity* caster = nullptr;

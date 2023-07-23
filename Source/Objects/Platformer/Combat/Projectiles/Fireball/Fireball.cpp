@@ -3,6 +3,8 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
@@ -114,29 +116,44 @@ void Fireball::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_StopFireball::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_CommentXmmLoading::create()->
-							setStringReplacementVariables(Strings::Common_Brackets::create()->
-							setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_CommentAlterSpeed::create()) + 
-						"mov dword ptr [eax], 0.0f\n"
-						"movss xmm1, dword ptr [eax]\n\n"
-						"mulps xmm0, xmm1"
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_CommentXmmLoading::create()->
+								setStringReplacementVariables(Strings::Common_Brackets::create()->
+								setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_CommentAlterSpeed::create()),
+							ConstantString::create("mov dword ptr [eax], 0.0f\n"),
+							ConstantString::create("movss xmm1, dword ptr [eax]\n"),
+							ConstantString::create("mulps xmm0, xmm1\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_CommentXmmLoading::create()->
-							setStringReplacementVariables(Strings::Common_Brackets::create()->
-							setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_CommentAlterSpeed::create()) + 
-						"mov dword ptr [rax], 0.0f\n"
-						"movss xmm1, dword ptr [rax]\n\n"
-						"mulps xmm0, xmm1"
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_CommentXmmLoading::create()->
+								setStringReplacementVariables(Strings::Common_Brackets::create()->
+								setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_CommentAlterSpeed::create()),
+							ConstantString::create("mov dword ptr [rax], 0.0f\n"),
+							ConstantString::create("movss xmm1, dword ptr [rax]\n"),
+							ConstantString::create("mulps xmm0, xmm1\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+						})
 					)
 				}
 			)
 		},
 	};
 
-	auto func = &Fireball::setFireballSpeed;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
+	std::vector<HackableCode*> hackables = CREATE_HACKABLES(Fireball::setFireballSpeed, codeInfoMap);
 
 	for (HackableCode* next : hackables)
 	{
@@ -162,8 +179,10 @@ NO_OPTIMIZE void Fireball::setFireballSpeed()
 	speedMultiplierPtr = &speedMultiplier;
 	speedMultiplierTempPtr = &speedMultiplierTemp;
 
-	// Initialize xmm0 and xmm1
+	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
+
+	// Initialize xmm0 and xmm1
 	ASM_MOV_REG_PTR(ZAX, speedMultiplierPtr);
 	ASM(movss xmm0, dword ptr [ZAX]);
 	ASM_MOV_REG_PTR(ZAX, speedMultiplierTempPtr);
@@ -177,7 +196,9 @@ NO_OPTIMIZE void Fireball::setFireballSpeed()
 
 	ASM_MOV_REG_PTR(ZAX, speedMultiplierPtr);
 	ASM(movss dword ptr [ZAX], xmm0);
+	
 	ASM(pop ZAX);
+	ASM_POP_EFLAGS();
 
 	this->setSpeedMultiplier(Vec3(speedMultiplier, speedMultiplier, speedMultiplier));
 

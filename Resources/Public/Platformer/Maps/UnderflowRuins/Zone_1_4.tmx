@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="59" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1283">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="59" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="110" nextobjectid="1286">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="heartbeat"/>
-   <property name="rubber-band" type="int" value="8"/>
+   <property name="music" value="the-gift"/>
+   <property name="rubber-band" type="int" value="6"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
   </properties>
@@ -17,7 +17,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="988" name="temple" type="terrain" x="-1330.82" y="-1558" width="10190.7" height="5588">
+  <object id="988" name="temple" type="terrain" x="-1336.15" y="-1558" width="10190.7" height="5588">
    <properties>
     <property name="hole-tag" value="hole-A"/>
    </properties>
@@ -545,13 +545,12 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="1251" name="life-stone" type="object" x="931.16" y="978.34" width="146" height="423"/>
-  <object id="1253" name="gatling-gun" type="object" x="2245.73" y="1680.77" width="1117" height="414">
+  <object id="1251" name="life-stone" type="object" x="931.16" y="978.34" width="146" height="423">
    <properties>
-    <property name="components" value="gatling-gun"/>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
-  <object id="1261" name="trigger" type="object" x="4262.31" y="-420.174" width="136.939" height="1860.56">
+  <object id="1261" name="trigger" type="object" x="4262.31" y="-420.174" width="136.939" height="2112.07">
    <properties>
     <property name="send-event" value="talk-to-cleopatra"/>
    </properties>
@@ -570,7 +569,7 @@
   </object>
   <object id="1269" name="cinematic-marker" type="object" x="2077.84" y="1299.18" width="128" height="128">
    <properties>
-    <property name="tag" value="guard-destination"/>
+    <property name="tag" value="guard-arrive"/>
    </properties>
   </object>
   <object id="1270" name="cinematic-marker" type="object" x="2535.01" y="1958.81" width="128" height="128">
@@ -584,6 +583,11 @@
    </properties>
   </object>
   <object id="1282" name="caged-squid" type="object" x="6164" y="1982" width="196" height="112"/>
+  <object id="1284" name="cinematic-marker" type="object" x="1852" y="1307.88" width="128" height="128">
+   <properties>
+    <property name="tag" value="guard-leave"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="71" name="decor">
   <properties>
@@ -662,6 +666,17 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup id="109" name="objects fg">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1285" name="gatling-gun" type="object" x="2245.73" y="1680.77" width="1117" height="414">
+   <properties>
+    <property name="components" value="gatling-gun"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
@@ -681,6 +696,11 @@
   <object id="1212" name="spawn" type="object" x="6896.21" y="1266.04" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="1283" name="spawn" type="object" x="944" y="1269.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

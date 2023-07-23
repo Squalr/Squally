@@ -59,7 +59,7 @@ const std::string& HolyNecklaceRecipe::getIconResource()
 
 std::string HolyNecklaceRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Necklaces_HolyNecklace;
+	return ItemResources::Equipment_Gear_Necklaces_T6_HolyNecklace;
 }
 
 const std::string& HolyNecklaceRecipe::getIdentifier()

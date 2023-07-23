@@ -20,7 +20,7 @@ Crystal* Crystal::create()
 	return instance;
 }
 
-Crystal::Crystal() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 16 }}), ItemMeta(20000))
+Crystal::Crystal() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 8 * 7 }}), ItemMeta(20000))
 {
 }
 
@@ -40,7 +40,7 @@ LocalizedString* Crystal::getString()
 
 const std::string& Crystal::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_Crystal;
+	return ItemResources::Crafting_Smithing_T7_Crystal;
 }
 
 const std::string& Crystal::getIdentifier()

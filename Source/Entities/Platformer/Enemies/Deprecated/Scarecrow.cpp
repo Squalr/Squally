@@ -25,8 +25,7 @@ Scarecrow::Scarecrow(ValueMap& properties) : super(properties,
 	EntityResources::Enemies__Deprecated_Scarecrow_Animations,
 	EntityResources::Enemies__Deprecated_Scarecrow_Emblem,
 	CSize(196.0f, 512.0f),
-	0.8f,
-	Vec2(0.0f, 0.0f))
+	0.8f)
 {
 }
 

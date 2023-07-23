@@ -44,14 +44,16 @@ You will also need the following software to compile the project:
 - [Ninja](https://github.com/ninja-build/ninja/wiki/Pre-built-Ninja-packages)
 - Python 2.7.x or 3.x -- all scripts should be compatible with either version.
 
+- Mac Software:
+    - brew install cmake
+    - brew install ninja
+    - brew install freeglut
+
 Squally is comprised of several subrepos, including:
 - Cocos2d-x
 - Spriter2d-x / SpriterPlusPlus
 - Breakpad / AFNetworking
-- Vcpkg
 - SquallyResources*
-
-Additional dependencies are managed using vcpkg.
 
 **Important:** We do not have the legal rights to distribute the art/sound in Squally. To get a copy of the `Resources/Private` folder, copy it from a purchased copy of the game. See the section below for details.
 

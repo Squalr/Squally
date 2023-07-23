@@ -8,6 +8,7 @@
 #include "Engine/Events/SaveEvents.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Localization/ConcatString.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Save/SaveManager.h"
@@ -127,7 +128,7 @@ void KillingMachineDamageBehavior::onLoad()
 	std::string icon = "";
 	std::string functionIdentifier = "";
 	KillingMachineDamageBehavior::MachineAsmConstants machineAsmConstants;
-	std::string commandComment = "";
+	LocalizedString* commandComment = nullptr;
 	bool defaultAndCritReversed = false;
 	bool probabilityReversed = false;
 	bool setHintVariables = false;
@@ -141,13 +142,14 @@ void KillingMachineDamageBehavior::onLoad()
 			functionId = LOCAL_FUNC_ID_COMPARE_TEAM_1;
 			functionIdentifier = KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare1;
 			icon = UIResources::Menus_Icons_Tools;
-			auto func = &KillingMachineDamageBehavior::compareDamage1;
-			functionPtr = (void*&)func;
+			functionPtr = []() { auto func = &KillingMachineDamageBehavior::compareDamage1; return (void*&)func; }();
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[1];
-			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovl::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentL::create());
+			commandComment = ConcatString::create({
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovl::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentL::create())
+			});
 			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintGeneric::create();
 			break;
 		}
@@ -156,13 +158,14 @@ void KillingMachineDamageBehavior::onLoad()
 			functionId = LOCAL_FUNC_ID_COMPARE_TEAM_2;
 			functionIdentifier = KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare2;
 			icon = UIResources::Menus_Icons_RobotArm;
-			auto func = &KillingMachineDamageBehavior::compareDamage2;
-			functionPtr = (void*&)func;
+			functionPtr = []() { auto func = &KillingMachineDamageBehavior::compareDamage2; return (void*&)func; }();
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[2];
-			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovle::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentLe::create());
+			commandComment = ConcatString::create({
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create())
+			});
 			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintGeneric::create();
 			break;
 		}
@@ -171,13 +174,14 @@ void KillingMachineDamageBehavior::onLoad()
 			functionId = LOCAL_FUNC_ID_COMPARE_TEAM_3;
 			functionIdentifier = KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare3;
 			icon = UIResources::Menus_Icons_Pickaxe;
-			auto func = &KillingMachineDamageBehavior::compareDamage3;
-			functionPtr = (void*&)func;
+			functionPtr = []() { auto func = &KillingMachineDamageBehavior::compareDamage3; return (void*&)func; }();
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[3];
-			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmove::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentE::create());
+			commandComment = ConcatString::create({
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmove::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create())
+			});
 			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintCmove::create();
 			setHintVariables = true;
 			break;
@@ -187,13 +191,14 @@ void KillingMachineDamageBehavior::onLoad()
 			functionId = LOCAL_FUNC_ID_COMPARE_TEAM_4;
 			functionIdentifier = KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare4;
 			icon = UIResources::Menus_Icons_Hammer;
-			auto func = &KillingMachineDamageBehavior::compareDamage4;
-			functionPtr = (void*&)func;
+			functionPtr = []() { auto func = &KillingMachineDamageBehavior::compareDamage4; return (void*&)func; }();
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[4];
-			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovne::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentNe::create());
+			commandComment = ConcatString::create({
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovne::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentNe::create())
+			});
 			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintCmovne::create();
 			setHintVariables = true;
 			defaultAndCritReversed = true;
@@ -204,13 +209,14 @@ void KillingMachineDamageBehavior::onLoad()
 			functionId = LOCAL_FUNC_ID_COMPARE_TEAM_5;
 			functionIdentifier = KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare5;
 			icon = UIResources::Menus_Icons_HammerSmithing;
-			auto func = &KillingMachineDamageBehavior::compareDamage5;
-			functionPtr = (void*&)func;
+			functionPtr = []() { auto func = &KillingMachineDamageBehavior::compareDamage5; return (void*&)func; }();
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[5];
-			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovg::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentG::create());
+			commandComment = ConcatString::create({
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovg::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentG::create())
+			});
 			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintGeneric::create();
 			probabilityReversed = true;
 			break;
@@ -220,22 +226,23 @@ void KillingMachineDamageBehavior::onLoad()
 			functionId = LOCAL_FUNC_ID_COMPARE_TEAM_6;
 			functionIdentifier = KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare6;
 			icon = UIResources::Menus_Icons_GearBroken;
-			auto func = &KillingMachineDamageBehavior::compareDamage6;
-			functionPtr = (void*&)func;
+			functionPtr = []() { auto func = &KillingMachineDamageBehavior::compareDamage6; return (void*&)func; }();
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[6];
-			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovge::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentGe::create());
+			commandComment = ConcatString::create({
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovge::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentGe::create())
+			});
 			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintGeneric::create();
 			probabilityReversed = true;
 			break;
 		}
 	}
 
-	const std::string& command = machineAsmConstants.command;
+	LocalizedString* command = ConstantString::create(machineAsmConstants.command);
 	const int probabilityConstantPercent = probabilityReversed ? (100 - machineAsmConstants.probabilityConstant) : machineAsmConstants.probabilityConstant;
-	const std::string probabilityConstantStr = std::to_string(machineAsmConstants.probabilityConstant);
+	LocalizedString* probabilityConstantStr = ConstantString::create(std::to_string(machineAsmConstants.probabilityConstant));
 	const std::string probabilityConstantPercentStr = std::to_string(probabilityConstantPercent);
 	const std::string probabilityConstantPercentReverseStr = std::to_string(100 - probabilityConstantPercent);
 
@@ -306,19 +313,31 @@ void KillingMachineDamageBehavior::onLoad()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentCompare::create()) +
-						"cmp eax, " + probabilityConstantStr + "\n\n" +
-						COMMENT(critChanceComment) +
-						command + " edi, esi\n\n" + 
-						commandComment + "\n"  +
-						COMMENT(hintStr)
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentCompare::create()),
+							ConstantString::create("cmp eax, "),
+							probabilityConstantStr,
+							ConstantString::create("\n\n"),
+							COMMENT(critChanceComment),
+							command,
+							ConstantString::create(" edi, esi\n\n"),
+							commandComment,
+							ConstantString::create("\n"),
+							COMMENT(hintStr)
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentCompare::create()) +
-						"cmp eax, " + probabilityConstantStr + "\n\n" + // eax usage intentional
-						COMMENT(critChanceComment->clone()) +
-						command + " rdi, rsi\n\n" + 
-						commandComment + "\n"  +
-						COMMENT(hintStr->clone())
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentCompare::create()),
+							ConstantString::create("cmp eax, "), // eax usage intentional
+							probabilityConstantStr->clone(),
+							ConstantString::create("\n\n"),
+							COMMENT(critChanceComment->clone()),
+							command->clone(),
+							ConstantString::create(" rdi, rsi\n\n"),
+							commandComment->clone(),
+							ConstantString::create("\n"),
+							COMMENT(hintStr->clone())
+						})
 					),
 				},
 				true

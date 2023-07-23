@@ -24,7 +24,7 @@ SwordSlash::SwordSlash(int damageMin, int damageMax, float attackDuration, float
 	: super(AttackType::Damage, UIResources::Menus_Icons_SwordSlash, priority, AbilityType::Physical, damageMin, damageMax, 0, attackDuration, recoverDuration)
 {
 	this->swordSlashSound = WorldSound::create(SoundResources::Platformer_Physical_Swings_SwingBlade1);
-	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1);
+	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitHeavy1);
 
 	this->addChild(this->swordSlashSound);
 	this->addChild(this->hitSound);
@@ -60,7 +60,7 @@ void SwordSlash::performAttack(PlatformerEntity* owner, std::vector<PlatformerEn
 {
 	super::performAttack(owner, targets);
 	
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		this->doDamageOrHealing(owner, next);
 	}

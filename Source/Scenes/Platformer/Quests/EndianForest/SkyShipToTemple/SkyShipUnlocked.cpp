@@ -34,6 +34,7 @@ const std::string SkyShipUnlocked::MapKeyQuest = "sky-ship-unlocked";
 const std::string SkyShipUnlocked::QuestTagShipPortal = "sky-ship-portal-temple";
 const std::string SkyShipUnlocked::PropertyIsReturnTrip = "is-return-trip";
 const std::string SkyShipUnlocked::QuestTagTempleAirship = "temple-airship";
+const std::string SkyShipUnlocked::QuestTagTempleAirshipBg = "temple-airship-bg";
 
 SkyShipUnlocked* SkyShipUnlocked::create(GameObject* owner, QuestLine* questLine)
 {
@@ -46,11 +47,11 @@ SkyShipUnlocked* SkyShipUnlocked::create(GameObject* owner, QuestLine* questLine
 
 SkyShipUnlocked::SkyShipUnlocked(GameObject* owner, QuestLine* questLine) : super(owner, questLine, SkyShipUnlocked::MapKeyQuest, false)
 {
-	this->owner = dynamic_cast<PlatformerEntity*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
-	if (this->owner != nullptr)
+	if (this->entity != nullptr)
 	{
-		this->isReturnTrip = GameUtils::getKeyOrDefault(this->owner->properties, SkyShipUnlocked::PropertyIsReturnTrip, Value(false)).asBool();
+		this->isReturnTrip = GameUtils::getKeyOrDefault(this->entity->properties, SkyShipUnlocked::PropertyIsReturnTrip, Value(false)).asBool();
 	}
 }
 
@@ -72,6 +73,13 @@ void SkyShipUnlocked::onLoad(QuestState questState)
 			airship->despawn();
 		}, SkyShipUnlocked::QuestTagTempleAirship);
 	}
+	else
+	{
+		ObjectEvents::WatchForObject<Airship>(this, [=](Airship* airship)
+		{
+			airship->despawn();
+		}, SkyShipUnlocked::QuestTagTempleAirshipBg);
+	}
 
 	ObjectEvents::WatchForObject<Portal>(this, [=](Portal* portal)
 	{
@@ -88,56 +96,29 @@ void SkyShipUnlocked::onLoad(QuestState questState)
 		}
 
 	}, SkyShipUnlocked::QuestTagShipPortal);
+	
+	this->canBoard = questState != QuestState::None;
 
-	if (this->owner != nullptr)
+	if (this->entity != nullptr)
 	{
 		if (questState == QuestState::None && this->isReturnTrip)
 		{
-			this->owner->despawn();
+			this->entity->despawn();
 		}
 		else
 		{
-			this->owner->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+			this->refreshDialogueOptions();
+
+			// Seagull puzzle support
+			this->listenForMapEvent("refresh-dialogue", [=](ValueMap)
 			{
-				LocalizedString* text = nullptr;
-
-				if (this->isReturnTrip)
-				{
-					text = Strings::Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTown::create();
-				}
-				else
-				{
-					text = Strings::Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTemple::create();
-				}
-
-				interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
-					text,
-					[=]()
-					{
-						switch(questState)
-						{
-							case QuestState::Active:
-							case QuestState::ActiveThroughSkippable:
-							case QuestState::Complete:
-							{
-								this->runYesSequence();
-								break;
-							}
-							case QuestState::None:
-							{
-								this->runNoSequence();
-								break;
-							}
-						}
-					}),
-					0.5f
-				);
+				this->refreshDialogueOptions();
 			});
 		}
 	}
 }
 
-void SkyShipUnlocked::onActivate(bool isActiveThroughSkippable)
+void SkyShipUnlocked::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 
@@ -147,6 +128,41 @@ void SkyShipUnlocked::onComplete()
 
 void SkyShipUnlocked::onSkipped()
 {
+}
+
+void SkyShipUnlocked::refreshDialogueOptions()
+{
+	this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	{
+		LocalizedString* text = nullptr;
+
+		if (this->isReturnTrip)
+		{
+			text = Strings::Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTown::create();
+		}
+		else
+		{
+			text = Strings::Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTemple::create();
+		}
+
+		interactionBehavior->getMainDialogueSet()->removeAllDialogueOptions();
+		interactionBehavior->addDefaultGoodbyeOption();
+		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
+			text,
+			[=]()
+			{
+				if (this->canBoard)
+				{
+					this->runYesSequence();
+				}
+				else
+				{
+					this->runNoSequence();
+				}
+			}),
+			0.5f
+		);
+	});
 }
 
 void SkyShipUnlocked::runNoSequence()

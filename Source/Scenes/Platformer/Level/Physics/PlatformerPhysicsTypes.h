@@ -37,40 +37,38 @@ enum class PlatformerCollisionType
 	// Entities
 	Entity				= 1 << 1,
 	Player				= 1 << 2,
-	Enemy				= 1 << 3,
-	EntityMovement		= 1 << 4,
-	PlayerMovement		= 1 << 5,
-	EnemyMovement		= 1 << 6,
+	Helper				= 1 << 3,
+	Enemy				= 1 << 4,
+	EntityMovement		= 1 << 5,
+	PlayerMovement		= 1 << 6,
+	EnemyMovement		= 1 << 7,
 	// Weapons
-	EntityWeapon		= 1 << 7,
-	PlayerWeapon		= 1 << 8,
-	EnemyWeapon			= 1 << 9,
+	EntityWeapon		= 1 << 8,
+	PlayerWeapon		= 1 << 9,
+	EnemyWeapon			= 1 << 10,
 	// Entity augmentation
-	GroundDetector		= 1 << 10,
-	JumpDetector		= 1 << 11,
+	GroundDetector		= 1 << 11,
 	HeadDetector		= 1 << 12,
 	WallDetector		= 1 << 13,
 	Hover				= 1 << 14,
-	// PlayerHover		= 1 << 15, // Disabled, as Hover covers this. No other entity hovers yet.
-	Force				= 1 << 16,
+	Force				= 1 << 15,
 	// Triggers & Walls
-	Trigger				= 1 << 17,
-	SolidPlayerOnly		= 1 << 18,
-	SolidNpcOnly		= 1 << 19,
+	Trigger				= 1 << 16,
+	SolidPlayerOnly		= 1 << 17,
+	SolidNpcOnly		= 1 << 18,
 	// Environment
-	Water				= 1 << 20,
-	Damage				= 1 << 21,
+	Water				= 1 << 19,
+	Damage				= 1 << 20,
 	// Objects
-	Breakable			= 1 << 22,
-	Collectable			= 1 << 23,
-	Cinematic			= 1 << 24,
-	CartStop			= 1 << 25,
+	Breakable			= 1 << 21,
+	Collectable			= 1 << 22,
+	Cinematic			= 1 << 23,
+	CartStop			= 1 << 24,
 	
 	// WARNING: Max is 27  due to 28-31 reserved by engine
 	
 	// Engine (keep in sync with EngineCollisionTypes)
 	KillPlane			= (int)EngineCollisionTypes::KillPlane,
 	Solid				= (int)EngineCollisionTypes::Solid,
-	SolidRoof			= (int)EngineCollisionTypes::SolidRoof,
 	PassThrough			= (int)EngineCollisionTypes::PassThrough,
 };

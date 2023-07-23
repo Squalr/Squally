@@ -1,5 +1,5 @@
 {
-    "ar": "تشير الأقواس إلى أن %s1 هو مؤشر لمتغير. هذا يعني أن %s1 تتتبع موقع المتغير. بدلاً من تقليل السجل ، يتم تقليل البيانات.",
+    "ar": ".تشير الأقواس إلى أن %s1 هو مؤشر لمتغير. هذا يعني أن %s1 تتتبع موقع المتغير. بدلاً من تقليل السجل ، يتم تقليل البيانات",
     "bg": "Скобите показват, че %s1 е указател към променлива. Това означава, че %s1 проследява местоположението на променлива. Вместо намаляване на регистъра, данните се намаляват.",
     "cs": "Sloupce označují, že %s1 je ukazatel na proměnnou. To znamená, že %s1 sleduje umístění proměnné. Namísto snížení registru se data sníží.",
     "da": "Bøjlerne angiver, at %s1 er en peger på en variabel. Dette betyder, at %s1 sporer placeringen af ​​en variabel. I stedet for at nedsætte registret, er dataene dekrementeret.",

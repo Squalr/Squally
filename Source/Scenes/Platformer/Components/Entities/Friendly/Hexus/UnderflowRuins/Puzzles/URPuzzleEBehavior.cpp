@@ -79,11 +79,21 @@ StateOverride* URPuzzleEBehavior::getStateOverride()
 		{
 			
 		},
+		// Player graveyard
+		std::vector<CardData*>
+		{
+			
+		},
+		// Enemy graveyard
+		std::vector<CardData*>
+		{
+			
+		},
 		// Player hand
 		std::vector<CardData*>
 		{
 			CardList::getInstance()->cardListByName.at(CardKeys::Steal),
-			CardList::getInstance()->cardListByName.at(CardKeys::Kill),
+			CardList::getInstance()->cardListByName.at(CardKeys::Push),
 			CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
 		},
 		// Enemy hand

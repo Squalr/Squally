@@ -19,9 +19,10 @@ protected:
 	void onDisable() override;
 	void setWeaponCollisionSize(cocos2d::CSize weaponCollisionSize);
 	void setWeaponCollisionOffset(cocos2d::Vec2 weaponCollisionOffset);
-	void rebuildWeaponCollision(int collisionType);
+	void rebuildWeaponCollision(int collisionType, bool buildOffhand);
 
-	CollisionObject* weaponCollision = nullptr;
+	CollisionObject* mainhandWeaponCollision = nullptr;
+	CollisionObject* offhandWeaponCollision = nullptr;
 
 private:
 	typedef GameComponent super;
@@ -30,6 +31,7 @@ private:
 
 	cocos2d::CSize weaponCollisionSize;
 	cocos2d::Vec2 weaponCollisionOffset;
+	bool useExplicitWeaponSize = false;
 
 	static const cocos2d::CSize DefaultWeaponSize;
 };

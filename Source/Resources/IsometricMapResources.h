@@ -7,7 +7,6 @@
 namespace IsometricMapResources
 {
 	extern const std::string BallmerPeaks_Map0;
-	extern const std::string DaemonsHallow_Map0;
 	extern const std::string EndianForest_Map1;
 	extern const std::string EndianForest_Map10;
 	extern const std::string EndianForest_Map11;
@@ -32,6 +31,7 @@ namespace IsometricMapResources
 	extern const std::string EndianForest_Map8;
 	extern const std::string EndianForest_Map9;
 	extern const std::string EndianForest_MapEmpty;
+	extern const std::string FirewallFissure_Map0;
 	extern const std::string LevelSelectMap;
 	extern const std::string Overworld;
 	extern const std::string Sanctum;

@@ -8,7 +8,7 @@
    <property name="hide-mini-map" type="bool" value="true"/>
    <property name="map-banner" value=""/>
    <property name="music" value="heartbeat"/>
-   <property name="rubber-band" type="int" value="2"/>
+   <property name="rubber-band" type="int" value="8"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
   </properties>
@@ -81,6 +81,7 @@
   <object id="840" name="metal-chest" type="object" x="417.362" y="934.52" width="128" height="128">
    <properties>
     <property name="reward-pool" value="dm-rare"/>
+    <property name="send-event" value="chest-opened"/>
    </properties>
   </object>
  </objectgroup>
@@ -96,7 +97,7 @@
   </properties>
   <object id="810" name="burch" type="entity" x="1442.11" y="939.909" width="128" height="128">
    <properties>
-    <property name="components" value="burch-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="burch,dm-t3-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="dm-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>

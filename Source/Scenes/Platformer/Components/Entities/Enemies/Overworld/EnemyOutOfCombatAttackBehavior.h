@@ -4,6 +4,7 @@
 
 class PlatformerEnemy;
 class Projectile;
+class Squally;
 
 class EnemyOutOfCombatAttackBehavior : public EntityOutOfCombatAttackBehavior
 {
@@ -13,10 +14,12 @@ protected:
 	EnemyOutOfCombatAttackBehavior(GameObject* owner);
 	virtual ~EnemyOutOfCombatAttackBehavior();
 
+	void onEnter() override;
 	void decorateProjectile(Projectile* projectile) override;
 
 private:
 	typedef EntityOutOfCombatAttackBehavior super;
 
 	PlatformerEnemy* enemy = nullptr;
+	Squally* squally = nullptr;
 };

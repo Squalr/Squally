@@ -188,6 +188,22 @@ void ScriptEntry::initializeListeners()
 	});
 }
 
+void ScriptEntry::bindToLocalizedScript(LocalizedString* localizedScript)
+{
+	if (this->boundScript != nullptr)
+	{
+		this->removeChild(this->boundScript);
+	}
+	
+	this->boundScript = localizedScript;
+	this->addChild(this->boundScript);
+}
+
+LocalizedString* ScriptEntry::getBoundLocalizedScript()
+{
+	return this->boundScript;
+}
+
 void ScriptEntry::toggleSelected(bool isSelected)
 {
 	const float Margin = 16.0f;

@@ -7,6 +7,7 @@ class WoodenClub : public Mace
 public:
 	static WoodenClub* create();
 
+	std::string getWeaponImpactSound() override;
 	Item* clone() override;
 	LocalizedString* getString() override;
 	const std::string& getIconResource() override;

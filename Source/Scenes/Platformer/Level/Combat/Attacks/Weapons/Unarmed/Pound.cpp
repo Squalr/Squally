@@ -36,7 +36,7 @@ Pound::Pound(int damageMin, int damageMax, float attackDuration, float recoverDu
 		recoverDuration
 	)
 {
-	this->punchSound = WorldSound::create(SoundResources::Platformer_Physical_Punches_Punch7);
+	this->punchSound = WorldSound::create(SoundResources::Platformer_Physical_Punches_Punch1);
 
 	this->setDamageMultiplier(Pound::DamageMultiplier);
 
@@ -79,7 +79,7 @@ void Pound::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*
 {
 	super::performAttack(owner, targets);
 	
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		this->doDamageOrHealing(owner, next);
 	}

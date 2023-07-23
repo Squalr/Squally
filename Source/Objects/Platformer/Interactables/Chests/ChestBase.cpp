@@ -104,8 +104,14 @@ void ChestBase::unlockAndGiveItems()
 	PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(this->chestPool));
 }
 
+bool ChestBase::isOpen()
+{
+	return this->isOpenValue;
+}
+
 void ChestBase::open(bool doSave)
 {
+	this->isOpenValue = true;
 	this->chestOpen->setVisible(true);
 	this->chestClosed->setVisible(false);
 
@@ -120,6 +126,7 @@ void ChestBase::open(bool doSave)
 
 void ChestBase::close()
 {
+	this->isOpenValue = false;
 	this->chestOpen->setVisible(false);
 	this->chestClosed->setVisible(true);
 

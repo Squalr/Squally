@@ -21,11 +21,11 @@ BoneBow* BoneBow::create()
 	return instance;
 }
 
-BoneBow::BoneBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 48, 56, ItemStats(
+BoneBow::BoneBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), BOW_DAMAGE_MIN(6), BOW_DAMAGE_MAX(6), ItemStats(
 	// Health
-	0,
+	2,
 	// Mana
-	0,
+	6,
 	// Attack
 	0,
 	// Magic Attack
@@ -64,7 +64,7 @@ const std::string& BoneBow::getIdentifier()
 
 Vec2 BoneBow::getDisplayOffset()
 {
-	return Vec2(0.0f, -24.0f);
+	return Vec2(-10.0f, -66.0f);
 }
 
 Recipe* BoneBow::getRecipe()

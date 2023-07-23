@@ -11,6 +11,7 @@
 #include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
+#include "Engine/Localization/ConcatString.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
@@ -110,18 +111,35 @@ void Blind::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return BlindGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Blind_RegisterEsi::create(),
+						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_Blind_RegisterEsi::create(),
 					},
 				},
 				int(HackFlags::None),
 				this->getRemainingDuration(),
-				0.0f
+				0.0f,
+				{
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Blind_CommentXor::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_RegisterEdi::create())),
+							ConstantString::create("xor edi, edi\n"),
+						})
+						, // x64
+						ConcatString::create({
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Blind_CommentXor::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_RegisterRdi::create())),
+							ConstantString::create("xor rdi, rdi\n"),
+						})
+					),
+				},
+				true
 			)
 		},
 	};
 
-	auto func = &Blind::applyBlind;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Blind::applyBlind, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

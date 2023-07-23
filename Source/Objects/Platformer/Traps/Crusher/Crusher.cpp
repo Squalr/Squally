@@ -7,6 +7,8 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Optimization/LazyNode.h"
@@ -165,15 +167,19 @@ void Crusher::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						"and ecx, eax\n"
-						"and ecx, ebx\n\n" + 
-						COMMENT(Strings::Menus_Hacking_Objects_Crusher_DetectPlayer_Hint::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create()))
+						ConcatString::create({
+							ConstantString::create("and ecx, eax\n"),
+							ConstantString::create("and ecx, ebx\n\n"),
+							COMMENT(Strings::Menus_Hacking_Objects_Crusher_DetectPlayer_CommentHint::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create()))
+						})
 						, // x64
-						"and rcx, rax\n"
-						"and rcx, rbx\n\n" + 
-						COMMENT(Strings::Menus_Hacking_Objects_Crusher_DetectPlayer_Hint::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create()))
+						ConcatString::create({
+							ConstantString::create("and rcx, rax\n"),
+							ConstantString::create("and rcx, rbx\n\n"),
+							COMMENT(Strings::Menus_Hacking_Objects_Crusher_DetectPlayer_CommentHint::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create()))
+						})
 					)
 				},
 				true

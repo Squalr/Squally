@@ -36,6 +36,11 @@ PlatformerAttack* Consumable::getAssociatedAttack(PlatformerEntity* entity)
 	return attack;
 }
 
+LocalizedString* Consumable::getDescription()
+{
+	return nullptr;
+}
+
 void Consumable::useOutOfCombat(PlatformerEntity* target)
 {
 }

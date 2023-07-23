@@ -23,9 +23,9 @@ public:
 	std::string getAnimationResource();
 	std::string getEmblemResource();
 	cocos2d::Node* getFloatNode();
+	cocos2d::Sprite* getDropShadow();
 	SmartAnimationNode* getAnimations();
 	cocos2d::CSize getEntitySize();
-	cocos2d::Vec2 getCollisionOffset();
 	cocos2d::Vec2 getEntityCenterPoint();
 	cocos2d::Vec2 getEntityTopPoint();
 	cocos2d::Vec2 getEntityBottomPoint();
@@ -59,7 +59,6 @@ protected:
 		std::string emblemResource,
 		cocos2d::CSize size,
 		float scale,
-		cocos2d::Vec2 collisionOffset,
 		float hoverHeight = 0.0f);
 	virtual ~PlatformerEntity();
 	
@@ -73,6 +72,7 @@ protected:
 
 	cocos2d::Node* floatNode = nullptr;
 	cocos2d::Node* belowAnimationNode = nullptr;
+	cocos2d::Sprite* dropShadow = nullptr;
 	SmartAnimationNode* animationNode = nullptr;
 
 	static const std::string PropertyState;
@@ -83,7 +83,6 @@ private:
 	void optimizationHideOffscreenEntity();
 	
 	float entityScale = 1.0f;
-	cocos2d::Vec2 entityCollisionOffset;
 	cocos2d::CSize entitySize;
 	float hoverHeight = 0.0f;
 	std::string entityName;

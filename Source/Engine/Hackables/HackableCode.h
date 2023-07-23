@@ -16,8 +16,10 @@
 #define QUOTE(str) #str
 #define EXPAND_AND_QUOTE(str) QUOTE(str)
 
-#define COMMENT(str) Strings::Common_ConstantNewline::create()->setStringReplacementVariables( \
-	Strings::Common_Comment::create()->setStringReplacementVariables(str))->getString()
+#define COMMENT(str) Strings::Common_Comment::create()->setStringReplacementVariables(str)
+
+#define CREATE_HACKABLES(funcName, codeInfoMap) HackableCode::create([]() { auto func = &funcName; return (void*&)func; }(), codeInfoMap);
+
 
 #if (_WIN64 || (__GNUC__ && (__x86_64__ || __ppc64__)))
 	#define ASM_PUSH_EFLAGS() \
@@ -187,11 +189,11 @@ public:
 	struct ReadOnlyScript
 	{
 		LocalizedString* title = nullptr;
-		std::string scriptx86;
-		std::string scriptx64;
+		LocalizedString* scriptx86 = nullptr;
+		LocalizedString* scriptx64 = nullptr;
 
 		ReadOnlyScript() { }
-		ReadOnlyScript(LocalizedString* title, std::string scriptx86, std::string scriptx64) : title(title), scriptx86(scriptx86), scriptx64(scriptx64) { }
+		ReadOnlyScript(LocalizedString* title, LocalizedString* scriptx86, LocalizedString* scriptx64) : title(title), scriptx86(scriptx86), scriptx64(scriptx64) { }
 	};
 
 	struct RegisterHintInfo
@@ -249,7 +251,7 @@ public:
 	HackableCode* clone(CodeInfoMap& hackableCodeInfoMap);
 	std::vector<ReadOnlyScript> getReadOnlyScripts();
 	std::string getAssemblyString();
-	std::string getOriginalAssemblyString();
+	LocalizedString* getOriginalAssemblyString();
 	void* getPointer() override;
 	int getOriginalLength();
 	bool applyCustomCode(std::string newAssembly);
@@ -275,9 +277,10 @@ private:
 
 	static std::vector<HackableCode*> parseHackables(void* functionStart, CodeInfoMap& hackableCodeInfoMap);
 	static MarkerMap& parseHackableMarkers(void* functionStart, CodeInfoMap& hackableCodeInfoMap);
+	static std::string removeComments(const std::string& code);
 
 	std::string assemblyString;
-	std::string originalAssemblyString;
+	LocalizedString* originalAssemblyString;
 	void* codePointer = nullptr;
 	void* codeEndPointer = nullptr;
 	HackableCodeInfo hackableCodeInfo;

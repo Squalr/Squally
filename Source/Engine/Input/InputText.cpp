@@ -2,6 +2,7 @@
 
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/Events/LocalizationEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -55,6 +56,7 @@ void InputText::onEnter()
 	});
 
 	this->initializePositions();
+	this->initializeListeners();
 }
 
 void InputText::initializePositions()
@@ -66,6 +68,14 @@ void InputText::initializePositions()
 	this->hitBox->setPosition(offset);
 
 	this->initCoords = this->getPosition();
+}
+
+void InputText::initializeListeners()
+{
+	this->labelText->addGlobalEventListener(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
+	{
+		this->onLocaleChange();
+	}));
 }
 
 cocos2d::CSize InputText::resize()
@@ -89,6 +99,28 @@ void InputText::update(float dt)
 		{
 			this->stringChangeCallback(this->stringCache);
 		}
+	}
+}
+
+void InputText::onLocaleChange()
+{
+	// Save some state we wish to keep
+	int outlineSize = int(this->getOutlineSize());
+	Color4B outlineColor = Color4B(_effectColorF);
+	
+	this->initWithTTF(
+		this->getString(),
+		this->getFont(),
+		this->getFontSize(),
+		this->getDimensions(), 
+		this->getHorizontalAlignment(),
+		this->getVerticalAlignment()
+	);
+
+	// Restore that state
+	if (outlineSize > 0)
+	{
+		super::enableOutline(outlineColor, outlineSize);
 	}
 }
 
