@@ -9,11 +9,6 @@
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalDirector.h"
-#include "Engine/Input/ClickableNode.h"
-#include "Engine/Input/ClickableTextNode.h"
-#include "Engine/Localization/ConstantString.h"
-#include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Hackables/Menus/Clippy.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Lexicon.h"
 #include "Engine/Hackables/Menus/CodeEditor/CodeWindow.h"
@@ -23,6 +18,11 @@
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/CodeEditor/CodeWindow.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Input/ClickableNode.h"
+#include "Engine/Input/ClickableTextNode.h"
+#include "Engine/Localization/ConstantString.h"
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Engine/Utils/StrUtils.h"
@@ -351,29 +351,54 @@ void CodeHud::buildRegisterWindow()
 
 	for (const HackableCode::RegisterHintInfo& registerHint : this->activeHackableCode->registerHints)
 	{
-		LocalizedString* registerString = nullptr;
+		LocalizedString* registerAndDataTypeString = Strings::Common_ConcatParenthesis::create();
+		LocalizedString* registerString = HackableCode::registerToLocalizedString(registerHint.reg);
+		LocalizedString* fullRegisterString = nullptr;
+		LocalizedString* dataTypeString = nullptr;
+
+		switch(registerHint.hackableDataType)
+		{
+			default:
+			case HackableDataType::Int32:
+			{
+				dataTypeString = ConstantString::create("integer");
+				break;
+			}
+			case HackableDataType::Float:
+			{
+				dataTypeString = ConstantString::create("float");
+				break;
+			}
+			case HackableDataType::Bool:
+			{
+				dataTypeString = ConstantString::create("boolean");
+				break;
+			}
+		}
 		
 		if (registerHint.isPointer)
 		{
 			if (registerHint.pointerOffset == 0)
 			{
-				registerString = Strings::Common_Pointer::create()->setStringReplacementVariables(HackableCode::registerToLocalizedString(registerHint.reg));
+				fullRegisterString = Strings::Common_Pointer::create()->setStringReplacementVariables(registerString);
 			}
 			else
 			{
-				registerString = Strings::Common_PlusPointerOffset::create()->setStringReplacementVariables(
+				fullRegisterString = Strings::Common_PlusPointerOffset::create()->setStringReplacementVariables(
 				{
-					HackableCode::registerToLocalizedString(registerHint.reg),
+					registerString,
 					ConstantString::create(std::to_string(registerHint.pointerOffset))
 				});
 			}
 		}
 		else
 		{
-			registerString = HackableCode::registerToLocalizedString(registerHint.reg);
+			fullRegisterString = registerString;
 		}
 
-		LocalizedLabel* registerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, registerString);
+		registerAndDataTypeString->setStringReplacementVariables({ fullRegisterString, dataTypeString });
+
+		LocalizedLabel* registerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, registerAndDataTypeString);
 		registerLabel->setTextColor(CodeHud::RegisterColor);
 
 		this->registerWindow->insert(registerLabel);
