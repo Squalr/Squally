@@ -154,8 +154,11 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 				}
 
 				// Fill in missing times. Our particular implementation expects an event for each object at each frame.
-				for (const auto& [time, value] : mainlinesByTime)
+				for (const auto& mainlineByTime : mainlinesByTime)
 				{
+					auto& time = mainlineByTime.first;
+					auto& value = mainlineByTime.second;
+
 					if (filteredKeyTimes.find(time) == filteredKeyTimes.end())
 					{
 						for (int index = int(filteredKeys.size() - 1); index >= 0; index--)

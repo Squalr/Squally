@@ -69,7 +69,7 @@ std::string ConstantFloat::getStringIdentifier()
 
 std::string ConstantFloat::getStringByLanguage(LanguageType languageType)
 {
-	std::stringstream stream = std::stringstream();
+	std::stringstream stream;
 
 	stream << std::fixed << std::setprecision(this->precision) << this->constantFloat;
 

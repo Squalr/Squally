@@ -26,7 +26,14 @@ FetchContent_Declare(
     GIT_REPOSITORY https://github.com/SFML/SFML.git
     GIT_TAG 2.5.1
 )
-FetchContent_MakeAvailable(SFML)
+FetchContent_GetProperties(SFML)
+if(NOT SFML_POPULATED)
+    FetchContent_Populate(SFML
+        SOURCE_DIR ${CMAKE_BINARY_DIR}/_deps/sfml-src
+        BINARY_DIR ${CMAKE_BINARY_DIR}/_deps/sfml-build
+    )
+endif()
+set(SFML_INCLUDE_DIRS ${CMAKE_BINARY_DIR}/_deps/sfml-src/include)
 
 # target_precompile_headers(${PROJECT_NAME} PUBLIC
   # "$<$<COMPILE_LANGUAGE:CXX>:precheader_squally.h>"
@@ -38,7 +45,7 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     target_compile_features(cocos2d PUBLIC cxx_std_20 c_std_99)
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-    target_compile_features(cocos2d PUBLIC cxx_std_17 c_std_99)
+    target_compile_features(cocos2d PUBLIC cxx_std_14 c_std_99)
 endif()
 
 # Target Propeties (PIE and edit the output directory)
@@ -52,6 +59,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 target_include_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_BINARY_DIR}/Generated
     ${CMAKE_CURRENT_SOURCE_DIR}
+    ${SFML_INCLUDE_DIRS}
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE

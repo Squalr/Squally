@@ -605,9 +605,9 @@ void GameCamera::updateCameraDebugLabels()
 		cachedCameraPosition = cameraPosition;
 	}
 
-	std::stringstream streamX = std::stringstream();
-	std::stringstream streamY = std::stringstream();
-	std::stringstream streamZoom = std::stringstream();
+	std::stringstream streamX;
+	std::stringstream streamY;
+	std::stringstream streamZoom;
 
 	streamX << std::fixed << std::setprecision(2) << cameraPosition.x;
 	streamY << std::fixed << std::setprecision(2) << cameraPosition.y;
