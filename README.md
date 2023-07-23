@@ -62,7 +62,6 @@ To do a fresh build and pull in dependencies:
 git clone git@github.com:Squalr/Squally.git
 cd Squally
 git submodule update --init --recursive .
-python dep.py init
 ```
 
 From here, simply open the Squally/ folder in VsCode and compile using one of the following:
@@ -73,7 +72,6 @@ From here, simply open the Squally/ folder in VsCode and compile using one of th
 To update dependencies later:
 ```
 git submodule update --init --recursive .
-python dep.py update
 ```
 
 Getting the Resource Folder

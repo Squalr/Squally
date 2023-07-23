@@ -51,7 +51,7 @@ HotPotato* HotPotato::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 HotPotato::HotPotato(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_ArrowDown, AbilityType::Physical, BuffData())
+	: super(caster, target, UIResources::Menus_Icons_HotPotato, AbilityType::Physical, BuffData())
 {
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = HotPotato::HealAmount;
@@ -100,7 +100,7 @@ void HotPotato::registerHackables()
 				HotPotato::HotPotatoIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_HotPotato_HotPotato::create(),
 				HackableBase::HackBarColor::Red,
-				UIResources::Menus_Icons_ArrowDown,
+				UIResources::Menus_Icons_HotPotato,
 				LazyNode<HackablePreview>::create([=](){ return HotPotatoGenericPreview::create(); }),
 				{
 					{
@@ -161,7 +161,7 @@ void HotPotato::runHotPotato()
 
 	for (int healIndex = 0; healIndex < this->healAmount; healIndex++)
 	{
-		Sprite* icon = Sprite::create(UIResources::Menus_Icons_ArrowDown);
+		Sprite* icon = Sprite::create(UIResources::Menus_Icons_HotPotato);
 
 		icon->setScale(0.5f);
 

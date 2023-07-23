@@ -936,6 +936,7 @@ namespace DecorResources
 	extern const std::string Snow_WoodDoor2;
 	extern const std::string Snow_WoodDoor3;
 	extern const std::string Snow_background;
+	extern const std::string Snow_background_4x_72res;
 	extern const std::string Snow_bauble_blue;
 	extern const std::string Snow_bauble_green;
 	extern const std::string Snow_bauble_mint;
@@ -1034,7 +1035,9 @@ namespace DecorResources
 	extern const std::string Snow_orange_streamer_01;
 	extern const std::string Snow_orange_streamer_02;
 	extern const std::string Snow_picture_01;
+	extern const std::string Snow_picture_01_4x_72res;
 	extern const std::string Snow_picture_02;
+	extern const std::string Snow_picture_02_4x_72res;
 	extern const std::string Snow_pink_01;
 	extern const std::string Snow_pink_02;
 	extern const std::string Snow_pink_03;
