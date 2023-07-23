@@ -104,10 +104,10 @@ void Bloodletting::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return BloodlettingGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_RegisterEbx::create(),
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_RegisterEbx::create(), HackableDataType::Int32,
 					},
 					{
-						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_RegisterEdx::create(),
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_RegisterEdx::create(), HackableDataType::Int32,
 					}
 				},
 				int(HackFlags::None),

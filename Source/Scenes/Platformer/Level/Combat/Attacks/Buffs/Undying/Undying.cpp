@@ -117,10 +117,10 @@ void Undying::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return UndyingGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Undying_RegisterEbx::create(),
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Undying_RegisterEbx::create(), HackableDataType::Int32
 					},
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Undying_RegisterEsi::create(),
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Undying_RegisterEsi::create(), HackableDataType::Int32
 					}
 				},
 				int(HackFlags::None),

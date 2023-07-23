@@ -111,7 +111,7 @@ void Blind::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return BlindGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_Blind_RegisterEsi::create(),
+						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_Blind_RegisterEsi::create(), HackableDataType::Int32,
 					},
 				},
 				int(HackFlags::None),

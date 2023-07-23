@@ -119,10 +119,10 @@ void Hex::registerHackables()
 				{
 					{
 						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_Hex_RegisterEbx::create()
-							->setStringReplacementVariables(ConstantFloat::create(Hex::SpeedMultiplier, 2)), true
+							->setStringReplacementVariables(ConstantFloat::create(Hex::SpeedMultiplier, 2)), HackableDataType::Float, true
 					},
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Hex_RegisterEsi::create(), true
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Hex_RegisterEsi::create(), HackableDataType::Float, true
 					}
 				},
 				int(HackFlags::None),

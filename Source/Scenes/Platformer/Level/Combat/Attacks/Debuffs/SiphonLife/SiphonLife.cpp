@@ -103,10 +103,10 @@ void SiphonLife::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return SiphonLifeGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterEdi::create(),
+						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterEdi::create(), HackableDataType::Int32,
 					},
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterEsi::create(),
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterEsi::create(), HackableDataType::Int32,
 					}
 				},
 				int(HackFlags::None),

@@ -135,9 +135,15 @@ void PivotLauncher::registerHackables()
 				UIResources::Menus_Icons_CrossHair,
 				LazyNode<HackablePreview>::create([=](){ return this->getTimerPreview(); }),
 				{
-					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterEax::create() },
-					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterXmm0::create() },
-					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterXmm1::create() },
+					{
+						HackableCode::Register::zax, Strings::Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterEax::create(), HackableDataType::Float
+					},
+					{
+						HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterXmm0::create(), HackableDataType::Float
+					},
+					{
+						HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterXmm1::create(), HackableDataType::Float
+					},
 				},
 				int(HackFlags::None),
 				12.0f,

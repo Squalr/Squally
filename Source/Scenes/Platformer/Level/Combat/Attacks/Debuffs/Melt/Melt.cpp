@@ -113,10 +113,10 @@ void Melt::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return MeltGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_Melt_RegisterEax::create()
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_Melt_RegisterEax::create(), HackableDataType::Int32
 					},
 					{
-						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_Melt_RegisterEdx::create()
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_Melt_RegisterEdx::create(), HackableDataType::Int32
 					},
 				},
 				int(HackFlags::None),

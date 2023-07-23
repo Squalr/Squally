@@ -105,7 +105,9 @@ void GhostBolt::registerHackables()
 				UIResources::Menus_Icons_GhostBolts,
 				LazyNode<HackablePreview>::create([=](){ return GhostBoltSpeedPreview::create(); }),
 				{
-					{ HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_RegisterEax::create(), true },
+					{
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_RegisterEax::create(), HackableDataType::Int32, true
+					},
 				},
 				int(HackFlags::None),
 				3.0f,

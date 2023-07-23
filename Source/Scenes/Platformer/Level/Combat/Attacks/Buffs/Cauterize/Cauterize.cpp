@@ -106,7 +106,7 @@ void Cauterize::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return CauterizeGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Abilities_Cauterize_RegisterEdi::create(), true
+						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Abilities_Cauterize_RegisterEdi::create(), HackableDataType::Int32, true
 					}
 				},
 				int(HackFlags::None),

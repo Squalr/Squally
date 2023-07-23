@@ -93,9 +93,15 @@ void FloatingCrate::registerHackables()
 				UIResources::Menus_Icons_Anvil,
 				LazyNode<HackablePreview>::create([=](){ return FloatingCrateGetDensityPreview::create(); }),
 				{
-					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterEax::create() },
-					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm0::create() },
-					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm1::create() },
+					{
+						HackableCode::Register::zax, Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterEax::create(), HackableDataType::Float
+					},
+					{
+						HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm0::create(), HackableDataType::Float
+					},
+					{
+						HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm1::create(), HackableDataType::Float
+					},
 				},
 				int(HackFlags::None),
 				8.0f,

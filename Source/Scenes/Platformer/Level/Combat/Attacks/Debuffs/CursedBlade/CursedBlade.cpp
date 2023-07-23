@@ -102,7 +102,7 @@ void CursedBlade::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return CursedBladeGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_RegisterEcx::create(), true
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_RegisterEcx::create(), HackableDataType::Int32, true
 					},
 				},
 				int(HackFlags::None),

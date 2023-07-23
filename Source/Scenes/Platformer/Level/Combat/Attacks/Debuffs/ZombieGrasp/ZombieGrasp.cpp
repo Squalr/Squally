@@ -114,10 +114,10 @@ void ZombieGrasp::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return ZombieGraspGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEdx::create(), true
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEdx::create(), HackableDataType::Int32, true
 					},
 					{
-						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEcx::create(), true
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEcx::create(), HackableDataType::Int32, true
 					}
 				},
 				int(HackFlags::None),

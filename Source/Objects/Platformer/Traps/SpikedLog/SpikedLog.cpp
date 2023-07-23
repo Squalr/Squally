@@ -93,7 +93,9 @@ void SpikedLog::registerHackables()
 				UIResources::Menus_Icons_Banner,
 				LazyNode<HackablePreview>::create([=](){ return SpikedLogSetRotationPreview::create(); }),
 				{
-					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx::create() },
+					{
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx::create(), HackableDataType::Int32
+					},
 				},
 				int(HackFlags::None),
 				16.0f,

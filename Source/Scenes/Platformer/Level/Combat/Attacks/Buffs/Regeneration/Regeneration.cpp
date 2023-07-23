@@ -103,7 +103,9 @@ void Regeneration::registerHackables()
 				UIResources::Menus_Icons_WandGlowYellow,
 				LazyNode<HackablePreview>::create([=](){ return RegenerationGenericPreview::create(); }),
 				{
-					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Abilities_Regeneration_RegisterEdi::create() }
+					{
+						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Abilities_Regeneration_RegisterEdi::create(), HackableDataType::Int32
+					}
 				},
 				int(HackFlags::None),
 				(float(Regeneration::HealTicks) * Regeneration::TimeBetweenTicks) + 0.1f,

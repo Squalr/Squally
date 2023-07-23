@@ -106,9 +106,15 @@ void ShadowBolt::registerHackables()
 				UIResources::Menus_Icons_SpellImpactPurple,
 				LazyNode<HackablePreview>::create([=](){ return ShadowBoltSpeedPreview::create(); }),
 				{
-					{ HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_RegisterEax::create() },
-					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_RegisterXmm0::create() },
-					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_RegisterXmm1::create() }
+					{
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_RegisterEax::create(), HackableDataType::Float
+					},
+					{
+						HackableCode::Register::xmm0, Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_RegisterXmm0::create(), HackableDataType::Float
+					},
+					{
+						HackableCode::Register::xmm1, Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_RegisterXmm1::create(), HackableDataType::Float
+					}
 				},
 				int(HackFlags::Shadow),
 				5.0f,

@@ -115,7 +115,7 @@ void FogOfWar::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
 				{
 					{
-						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_RegisterEdx::create()
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_RegisterEdx::create(), HackableDataType::Int32
 					},
 				},
 				int(HackFlags::None),

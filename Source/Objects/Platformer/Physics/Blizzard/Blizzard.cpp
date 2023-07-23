@@ -136,8 +136,12 @@ void Blizzard::registerHackables()
 				UIResources::Menus_Icons_Blizzard,
 				LazyNode<HackablePreview>::create([](){ return (HackablePreview*)BlizzardSetSpeedPreview::create(); }),
 				{
-					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_RegisterEax::create() },
-					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_RegisterEbx::create() },
+					{
+						HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_RegisterEax::create(), HackableDataType::Float
+					},
+					{
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_RegisterEbx::create(), HackableDataType::Float
+					},
 				},
 				int(HackFlags::Frost),
 				12.0f,

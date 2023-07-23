@@ -115,7 +115,7 @@ void RockSlide::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
 				{
 					{
-						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Abilities_RockSlide_RegisterEdi::create()
+						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Abilities_RockSlide_RegisterEdi::create(), HackableDataType::Int32
 					},
 				},
 				int(HackFlags::None),

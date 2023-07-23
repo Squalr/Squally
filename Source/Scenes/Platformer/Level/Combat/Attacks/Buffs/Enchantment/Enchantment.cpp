@@ -113,10 +113,10 @@ void Enchantment::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return EnchantmentGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEdi::create(), true
+						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEdi::create(), HackableDataType::Int32, true
 					},
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEsi::create(), true
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEsi::create(), HackableDataType::Int32, true
 					}
 				},
 				int(HackFlags::None),

@@ -113,10 +113,10 @@ void BloodBoil::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return BloodBoilGenericPreview::create(); }),
 				{ 
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_RegisterEax::create(), true
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_RegisterEax::create(), HackableDataType::Int32, true
 					},
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_RegisterEbx::create(), true
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_RegisterEbx::create(), HackableDataType::Int32, true
 					}
 				},
 				int(HackFlags::None),

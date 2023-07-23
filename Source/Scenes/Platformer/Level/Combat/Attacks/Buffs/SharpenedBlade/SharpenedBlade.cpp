@@ -113,10 +113,10 @@ void SharpenedBlade::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return SharpenedBladeGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_RegisterEax::create(),
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_RegisterEax::create(), HackableDataType::Int32
 					},
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_RegisterEbx::create(),
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_RegisterEbx::create(), HackableDataType::Int32
 					},
 				},
 				int(HackFlags::None),

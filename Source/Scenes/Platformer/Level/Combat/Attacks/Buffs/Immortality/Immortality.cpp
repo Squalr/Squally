@@ -117,7 +117,7 @@ void Immortality::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return ImmortalityGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Immortality_RegisterEsi::create(),
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Immortality_RegisterEsi::create(), HackableDataType::Int32
 					}
 				},
 				int(HackFlags::None),

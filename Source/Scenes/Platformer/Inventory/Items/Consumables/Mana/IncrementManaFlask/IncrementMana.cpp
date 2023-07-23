@@ -103,7 +103,9 @@ void IncrementMana::registerHackables()
 				UIResources::Menus_Icons_ArrowUp,
 				LazyNode<HackablePreview>::create([=](){ return IncrementManaGenericPreview::create(); }),
 				{
-					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Objects_IncrementManaFlask_IncrementMana_RegisterEdi::create() }
+					{
+						HackableCode::Register::zdi, Strings::Menus_Hacking_Objects_IncrementManaFlask_IncrementMana_RegisterEdi::create(), HackableDataType::Int32
+					}
 				},
 				int(HackFlags::None),
 				(float(IncrementMana::HackTicks) * IncrementMana::TimeBetweenTicks) + 0.1f,

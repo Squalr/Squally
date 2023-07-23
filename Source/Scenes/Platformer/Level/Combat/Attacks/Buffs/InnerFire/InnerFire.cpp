@@ -106,10 +106,10 @@ void InnerFire::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return InnerFireGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEcx::create()
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEcx::create(), HackableDataType::Int32
 					},
 					{
-						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEdx::create()
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEdx::create(), HackableDataType::Int32
 					}
 				},
 				int(HackFlags::None),

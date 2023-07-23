@@ -112,10 +112,10 @@ void BatSwarm::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_RegisterEax::create()
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_RegisterEax::create(), HackableDataType::Int32
 					},
 					{
-						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_RegisterEcx::create()
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_RegisterEcx::create(), HackableDataType::Int32
 					},
 				},
 				int(HackFlags::None),

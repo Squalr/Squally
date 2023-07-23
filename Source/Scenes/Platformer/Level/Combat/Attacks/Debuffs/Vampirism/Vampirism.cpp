@@ -102,10 +102,10 @@ void Vampirism::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return VampirismGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_RegisterEcx::create(),
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_RegisterEcx::create(), HackableDataType::Int32,
 					},
 					{
-						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_RegisterEdx::create(),
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_RegisterEdx::create(), HackableDataType::Int32,
 					},
 				},
 				int(HackFlags::None),

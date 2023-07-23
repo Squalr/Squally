@@ -111,7 +111,9 @@ void TrainingHeal::registerHackables()
 				UIResources::Menus_Icons_Heal,
 				LazyNode<HackablePreview>::create([=](){ return TrainingHealGenericPreview::create(); }),
 				{
-					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_TrainingDummy_RegisterEdi::create() }
+					{
+						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_TrainingDummy_RegisterEdi::create(), HackableDataType::Int32
+					}
 				},
 				int(HackFlags::None),
 				(float(TrainingHeal::HackTicks) * TrainingHeal::TimeBetweenTicks) + 0.1f,

@@ -136,8 +136,12 @@ void Wind::registerHackables()
 				UIResources::Menus_Icons_SpellWind,
 				LazyNode<HackablePreview>::create([](){ return (HackablePreview*)WindSetSpeedPreview::create(); }),
 				{
-					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_RegisterEax::create() },
-					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::create() },
+					{
+						HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_RegisterEax::create(), HackableDataType::Float
+					},
+					{
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::create(), HackableDataType::Float
+					},
 				},
 				int(HackFlags::Wind),
 				12.0f,

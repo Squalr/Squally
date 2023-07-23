@@ -119,7 +119,7 @@ void SpellOfBinding::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return SpellOfBindingGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_RegisterEbx::create(), true
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_RegisterEbx::create(), HackableDataType::Int32, true
 					},
 				},
 				int(HackFlags::None),

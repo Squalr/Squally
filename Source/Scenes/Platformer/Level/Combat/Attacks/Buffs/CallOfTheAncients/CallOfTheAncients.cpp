@@ -112,7 +112,7 @@ void CallOfTheAncients::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return CallOfTheAncientsGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_RegisterEdx::create()
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_RegisterEdx::create(), HackableDataType::Int32
 					}
 				},
 				int(HackFlags::None),

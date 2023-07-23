@@ -297,13 +297,13 @@ void KillingMachineDamageBehavior::onLoad()
 				LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Objects_KillingMachine_RegisterEax::create()
+						HackableCode::Register::zax, Strings::Menus_Hacking_Objects_KillingMachine_RegisterEax::create(), HackableDataType::Int32
 					},
 					{
-						HackableCode::Register::zdi, defaultDamageStr
+						HackableCode::Register::zdi, defaultDamageStr, HackableDataType::Int32
 					},
 					{
-						HackableCode::Register::zsi, critDamageStr
+						HackableCode::Register::zsi, critDamageStr, HackableDataType::Int32
 					},
 				},
 				int(HackFlags::None),

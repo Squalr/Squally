@@ -102,7 +102,7 @@ void Diseased::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return DiseasedGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_Diseased_Register::create(),
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_Diseased_Register::create(), HackableDataType::Int32,
 					},
 				},
 				int(HackFlags::None),

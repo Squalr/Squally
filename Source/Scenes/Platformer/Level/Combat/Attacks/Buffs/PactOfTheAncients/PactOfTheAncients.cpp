@@ -103,7 +103,7 @@ void PactOfTheAncients::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return PactOfTheAncientsGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_RegisterEdx::create(), true
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_RegisterEdx::create(), HackableDataType::Int32, true
 					},
 				},
 				int(HackFlags::None),

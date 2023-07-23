@@ -118,10 +118,10 @@ void ScaldingBlade::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return ScaldingBladeGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEax::create()
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEax::create(), HackableDataType::Float
 					},
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEbx::create()
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEbx::create(), HackableDataType::Float
 					}
 				},
 				int(HackFlags::None),

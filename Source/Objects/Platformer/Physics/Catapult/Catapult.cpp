@@ -124,9 +124,15 @@ void Catapult::registerHackables()
 				UIResources::Menus_Icons_Meteor,
 				LazyNode<HackablePreview>::create([=](){ return CatapultApplyPowerPreview::create(); }),
 				{
-					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Catapult_ApplyPower_RegisterEax::create() },
-					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_Catapult_ApplyPower_RegisterXmm0::create() },
-					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_Catapult_ApplyPower_RegisterXmm1::create() },
+					{
+						HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Catapult_ApplyPower_RegisterEax::create(), HackableDataType::Float
+					},
+					{
+						HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_Catapult_ApplyPower_RegisterXmm0::create(), HackableDataType::Float
+					},
+					{
+						HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_Catapult_ApplyPower_RegisterXmm1::create(), HackableDataType::Float
+					},
 				},
 				int(HackFlags::None),
 				20.0f,

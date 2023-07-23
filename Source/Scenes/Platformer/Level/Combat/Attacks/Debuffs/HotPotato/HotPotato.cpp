@@ -104,7 +104,7 @@ void HotPotato::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return HotPotatoGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_HotPotato_RegisterEsi::create(),
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_HotPotato_RegisterEsi::create(), HackableDataType::Int32,
 					},
 				},
 				int(HackFlags::None),

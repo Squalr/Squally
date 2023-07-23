@@ -114,7 +114,9 @@ void Laser::registerHackables()
 				UIResources::Menus_Icons_SpellImpactWhite,
 				LazyNode<HackablePreview>::create([=](){ return LaserCountDownPreview::create(); }),
 				{
-					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_Laser_UpdateCountDown_RegisterSt0::create() },
+					{
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_Laser_UpdateCountDown_RegisterSt0::create(), HackableDataType::Float
+					},
 				},
 				int(HackFlags::Fire),
 				20.0f,

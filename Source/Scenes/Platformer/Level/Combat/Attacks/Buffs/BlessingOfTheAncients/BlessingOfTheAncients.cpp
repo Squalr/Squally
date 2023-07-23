@@ -120,11 +120,11 @@ void BlessingOfTheAncients::registerHackables()
 				{
 					{
 						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx4::create()
-							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zcx)), true, 4
+							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zcx)), HackableDataType::Int32, true, 4
 					},
 					{
 						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx8::create()
-							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zcx)), true, 8
+							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zcx)), HackableDataType::Int32, true, 8
 					},
 				},
 				int(HackFlags::None),

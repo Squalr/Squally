@@ -103,7 +103,9 @@ void IncrementHealth::registerHackables()
 				UIResources::Menus_Icons_ArrowUp,
 				LazyNode<HackablePreview>::create([=](){ return IncrementHealthGenericPreview::create(); }),
 				{
-					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_RegisterEdi::create() }
+					{
+						HackableCode::Register::zdi, Strings::Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_RegisterEdi::create(), HackableDataType::Int32
+					}
 				},
 				int(HackFlags::None),
 				(float(IncrementHealth::HackTicks) * IncrementHealth::TimeBetweenTicks) + 0.1f,

@@ -112,11 +112,21 @@ void SpikedLogRailed::registerHackables()
 				UIResources::Menus_Icons_Banner,
 				LazyNode<HackablePreview>::create([=](){ return SpikedLogRailedSetRotationPreview::create(); }),
 				{
-					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEax::create() },
-					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEbx::create() },
-					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEcx::create() },
-					{ HackableCode::Register::zsi, Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEsi::create() },
-					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEdi::create() },
+					{
+						HackableCode::Register::zax, Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEax::create(), HackableDataType::Int32
+					},
+					{
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEbx::create(), HackableDataType::Int32
+					},
+					{
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEcx::create(), HackableDataType::Int32
+					},
+					{
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEsi::create(), HackableDataType::Int32
+					},
+					{
+						HackableCode::Register::zdi, Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEdi::create(), HackableDataType::Int32
+					},
 				},
 				int(HackFlags::None),
 				16.0f,
@@ -192,6 +202,7 @@ NO_OPTIMIZE void SpikedLogRailed::moveRailedSpikes(float dt)
 	ASM(push ZAX)
 	ASM(push ZSI)
 	ASM(push ZDI)
+
 	ASM(mov ZAX, 0)
 	ASM(mov ZSI, 1)
 	ASM(mov ZDI, -1)

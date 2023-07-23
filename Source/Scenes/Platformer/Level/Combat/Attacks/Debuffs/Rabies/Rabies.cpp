@@ -119,13 +119,13 @@ void Rabies::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return RabiesGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEax::create()
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEax::create(), HackableDataType::Int32
 					},
 					{
-						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEcx::create(), true
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEcx::create(), HackableDataType::Int32, true
 					},
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEsi::create(), true
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEsi::create(), HackableDataType::Int32, true
 					}
 				},
 				int(HackFlags::None),

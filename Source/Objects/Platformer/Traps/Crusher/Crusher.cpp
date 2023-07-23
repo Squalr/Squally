@@ -156,9 +156,15 @@ void Crusher::registerHackables()
 				UIResources::Menus_Icons_BleedingLimb,
 				LazyNode<HackablePreview>::create([=](){ return CrusherSetSpeedPreview::create(); }),
 				{
-					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEax::create() },
-					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEbx::create() },
-					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEcx::create() },
+					{
+						HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEax::create(), HackableDataType::Int32
+					},
+					{
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEbx::create(), HackableDataType::Int32
+					},
+					{
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEcx::create(), HackableDataType::Int32
+					},
 				},
 				int(HackFlags::None),
 				20.0f,

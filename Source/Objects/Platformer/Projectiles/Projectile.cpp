@@ -183,10 +183,18 @@ void Projectile::registerHackables()
 				UIResources::Menus_Icons_AxeSlash,
 				LazyNode<HackablePreview>::create([=](){ return this->createVelocityPreview(); }),
 				{
-					{ HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEax::create() },
-					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEbx::create() },
-					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEcx::create() },
-					{ HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEsi::create() }
+					{
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEax::create(), HackableDataType::Float
+					},
+					{
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEbx::create(), HackableDataType::Float
+					},
+					{
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEcx::create(), HackableDataType::Float
+					},
+					{
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEsi::create(), HackableDataType::Int32
+					}
 				},
 				int(HackFlags::Gravity),
 				3.0f,
@@ -202,10 +210,18 @@ void Projectile::registerHackables()
 				UIResources::Menus_Icons_Scale,
 				LazyNode<HackablePreview>::create([=](){ return this->createAccelerationPreview(); }),
 				{
-					{ HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_RegisterEax::create() },
-					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_RegisterEbx::create() },
-					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_RegisterEcx::create() },
-					{ HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_RegisterEsi::create() }
+					{
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_RegisterEax::create(), HackableDataType::Float
+					},
+					{
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_RegisterEbx::create(), HackableDataType::Float
+					},
+					{
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_RegisterEcx::create(), HackableDataType::Float
+					},
+					{
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_RegisterEsi::create(), HackableDataType::Int32
+					}
 				},
 				int(HackFlags::Gravity),
 				3.0f,

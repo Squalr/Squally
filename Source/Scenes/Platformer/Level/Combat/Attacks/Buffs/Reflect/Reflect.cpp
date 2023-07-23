@@ -122,10 +122,10 @@ void Reflect::registerHackables()
 							{
 								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(-Reflect::MinMultiplier))),
 								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(Reflect::MaxMultiplier)))
-							}),
+							}), HackableDataType::Int32,
 					},
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Reflect_RegisterEdi::create(),
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Reflect_RegisterEdi::create(), HackableDataType::Int32
 					}
 				},
 				int(HackFlags::None),

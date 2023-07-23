@@ -100,8 +100,12 @@ void MetalSpikes::registerHackables()
 				UIResources::Menus_Icons_Clock,
 				LazyNode<HackablePreview>::create([=](){ return MetalSpikesUpdateTimerPreview::create(); }),
 				{
-					{ HackableCode::Register::xmm2, Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2::create() },
-					{ HackableCode::Register::xmm4, Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2::create() },
+					{
+						HackableCode::Register::xmm2, Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2::create(), HackableDataType::Float
+					},
+					{
+						HackableCode::Register::xmm4, Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2::create(), HackableDataType::Float
+					},
 				},
 				int(HackFlags::None),
 				20.0f,
