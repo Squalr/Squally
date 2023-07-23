@@ -72,6 +72,9 @@ void BrokenBlade::onEnter()
 	this->spellEffect->setPositionY(this->owner->getEntityBottomPointRelative().y);
 	this->spellEffect->start();
 
+	// No PFX on broken blade for now, just hide it
+	this->spellEffect->setVisible(false);
+
 	CombatEvents::TriggerHackableCombatCue();
 }
 

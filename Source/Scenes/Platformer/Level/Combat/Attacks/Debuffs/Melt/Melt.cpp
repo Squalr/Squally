@@ -59,7 +59,9 @@ Melt::Melt(PlatformerEntity* caster, PlatformerEntity* target)
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 
-	this->spellAura->setColor(Color3B::YELLOW);
+	this->spellEffect->setStartColor(Color4F::RED);
+	this->spellEffect->setEndColor(Color4F(0.5f, 0.0f, 0.0f, 0.0f));
+	this->spellAura->setColor(Color3B::RED);
 	this->spellAura->setOpacity(0);
 
 	this->addChild(this->spellEffect);
@@ -108,7 +110,7 @@ void Melt::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Melt::HackIdentifierMelt,
 				Strings::Menus_Hacking_Abilities_Debuffs_Melt_Melt::create(),
-				HackableBase::HackBarColor::Yellow,
+				HackableBase::HackBarColor::Red,
 				UIResources::Menus_Icons_FlamingScroll,
 				LazyNode<HackablePreview>::create([=](){ return MeltGenericPreview::create(); }),
 				{
