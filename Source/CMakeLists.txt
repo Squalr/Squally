@@ -24,16 +24,18 @@ set(BUILD_SHARED_LIBS OFF)
 FetchContent_Declare(
     SFML
     GIT_REPOSITORY https://github.com/SFML/SFML.git
-    GIT_TAG 2.5.1
+    GIT_TAG 2.6.0
 )
 FetchContent_GetProperties(SFML)
 if(NOT SFML_POPULATED)
-    FetchContent_Populate(SFML
-        SOURCE_DIR ${CMAKE_BINARY_DIR}/_deps/sfml-src
-        BINARY_DIR ${CMAKE_BINARY_DIR}/_deps/sfml-build
-    )
+    FetchContent_Populate(SFML)
+    set(SFML_BUILD_AUDIO ON)
+    set(SFML_BUILD_GRAPHICS OFF)
+    set(SFML_BUILD_WINDOW OFF)
+    set(SFML_BUILD_NETWORK OFF)
+    add_subdirectory(${sfml_SOURCE_DIR} ${sfml_BINARY_DIR} EXCLUDE_FROM_ALL)
 endif()
-set(SFML_INCLUDE_DIRS ${CMAKE_BINARY_DIR}/_deps/sfml-src/include)
+
 
 # target_precompile_headers(${PROJECT_NAME} PUBLIC
   # "$<$<COMPILE_LANGUAGE:CXX>:precheader_squally.h>"
@@ -45,7 +47,7 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     target_compile_features(cocos2d PUBLIC cxx_std_20 c_std_99)
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-    target_compile_features(cocos2d PUBLIC cxx_std_14 c_std_99)
+    target_compile_features(cocos2d PUBLIC cxx_std_17 c_std_99)
 endif()
 
 # Target Propeties (PIE and edit the output directory)
@@ -75,6 +77,11 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     spriter2dx::spriter2dx
     SteamWorks::API
     breakpad::client
+    
+    # sfml-graphics
+    # sfml-audio
+    # sfml-window
+    # sfml-system
 
     # platform dependencies
     $<$<PLATFORM_ID:Windows>:iphlpapi>
@@ -83,6 +90,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 target_compile_definitions(${PROJECT_NAME} PRIVATE
     $<$<PLATFORM_ID:Windows>:UNICODE>
     $<$<PLATFORM_ID:Windows>:_UNICODE>
+    SFML_STATIC
 )
 
 # Platform specific target options

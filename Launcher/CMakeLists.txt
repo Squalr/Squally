@@ -2,8 +2,17 @@ cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 
 # Find platform specific dependencies
 if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-    find_package(PkgConfig)
-    pkg_check_modules(GTKMM gtkmm-3.0)
+    FetchContent_Declare(gtkmm
+        GIT_REPOSITORY https://github.com/GNOME/gtkmm/
+        GIT_TAG        4.11.3
+    )
+    FetchContent_GetProperties(gtkmm)
+    if(NOT gtkmm_POPULATED)
+        FetchContent_Populate(gtkmm)
+        add_subdirectory(${gtkmm_SOURCE_DIR} ${gtkmm_BINARY_DIR})
+    endif()
+    set(GTKMM_INCLUDE_DIRS ${gtkmm_SOURCE_DIR})
+
     set(LAUNCHER_ADDITIONAL_LIBS
         ${GTKMM_LIBRARIES}
         pthread
