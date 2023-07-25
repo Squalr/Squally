@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="72" height="45" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="953">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="72" height="45" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="955">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -427,6 +427,12 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="781" name="water" type="object" x="-127.645" y="2563.79" width="9603.3" height="3384.42"/>
+  <object id="954" name="orc-grunt" type="entity" x="9648" y="3852" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,disarmed,ef-puzzle-A"/>
+    <property name="tag" value="hexus-orc-grunt"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="28" name="fireflies">
   <properties>

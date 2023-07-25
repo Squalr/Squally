@@ -51,7 +51,7 @@ HotPotato* HotPotato::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 HotPotato::HotPotato(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_HotPotato, AbilityType::Physical, BuffData())
+	: super(caster, target, UIResources::Menus_Icons_HotPotato, AbilityType::Fire, BuffData())
 {
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = HotPotato::HealAmount;

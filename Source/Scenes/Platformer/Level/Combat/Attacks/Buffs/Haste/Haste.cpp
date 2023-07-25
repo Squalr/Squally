@@ -119,11 +119,11 @@ void Haste::registerHackables()
 				{
 					{
 						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Haste_RegisterEsi::create()
-							->setStringReplacementVariables({ ConstantFloat::create(Haste::MinSpeed, 2), ConstantFloat::create(Haste::MaxSpeed, 1) }), HackableDataType::Int32
+							->setStringReplacementVariables({ ConstantFloat::create(Haste::MinSpeed, 2), ConstantFloat::create(Haste::MaxSpeed, 1) }), HackableDataType::Float
 					},
 					{
 						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Buffs_Haste_RegisterXmm3::create()
-							->setStringReplacementVariables(ConstantFloat::create(Haste::DefaultSpeed, 1)), HackableDataType::Int32
+							->setStringReplacementVariables(ConstantFloat::create(Haste::DefaultSpeed, 1)), HackableDataType::Float
 					}
 				},
 				int(HackFlags::None),

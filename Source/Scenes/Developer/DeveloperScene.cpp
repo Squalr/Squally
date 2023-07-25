@@ -107,7 +107,6 @@ DeveloperScene::DeveloperScene()
 		- v UR guano still cursed scrappy wasn't loaded for dialogue
 		- v UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
 		- v UR town could use another mg/fg warp. Maybe where lifstone is
-		- v EF hot potato icon should be hot potato
 		- v EF first Marcel dialogue can show empty characters
 		- v Maybe HP pots in combat should self-target initally?
 		- v Maybe interact with helper to revive after holy spellbook?
@@ -127,7 +126,6 @@ DeveloperScene::DeveloperScene()
 		- v Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)
 		- v More transmutes (perhaps custom UI to show a transmute wheel)
 			- v or just scrap transmutes, and add the ability to sell shit
-		- v Crash reports probably are broken (switch to new SendGrid)
 		- v Should add some sort of archery mini-game with jump shots or something in some town. Maybe FF.
 		- v EF Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
 		- v Hexus:

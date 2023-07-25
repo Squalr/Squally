@@ -28,7 +28,7 @@ CastHotPotato* CastHotPotato::create(float attackDuration, float recoverDuration
 }
 
 CastHotPotato::CastHotPotato(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Debuff, UIResources::Menus_Icons_ArrowDown, priority, AbilityType::Shadow, 0, 0, 5, attackDuration, recoverDuration)
+	: super(AttackType::Debuff, UIResources::Menus_Icons_HotPotato, priority, AbilityType::Fire, 0, 0, 5, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 

@@ -450,12 +450,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="727" name="orc-grunt" type="entity" x="11999.2" y="6056.74" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,disarmed,ef-puzzle-A"/>
-    <property name="tag" value="hexus-orc-grunt"/>
-   </properties>
-  </object>
   <object id="813" name="orc-warrior" type="entity" x="9157.99" y="1888.22" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
