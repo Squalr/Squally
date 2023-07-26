@@ -62,21 +62,6 @@ StatsTables::StatsTables()
 		Stats(4, 3, 1, 1, 0, 0.01f, 6697),
 		Stats(4, 3, 1, 1, 0, 0.01f, 7367),
 		Stats(4, 3, 1, 1, 0, 0.01f, 8104),
-
-		// 1.1x, no stat gain
-		Stats(4, 3, 1, 1, 0, 0.00f, 8914),
-		Stats(4, 3, 1, 1, 0, 0.00f, 9805),
-		Stats(0, 0, 0, 0, 0, 0.0f, 10786),
-		Stats(0, 0, 0, 0, 0, 0.0f, 11865),
-		Stats(0, 0, 0, 0, 0, 0.0f, 13051),
-		Stats(0, 0, 0, 0, 0, 0.0f, 14356),
-		Stats(0, 0, 0, 0, 0, 0.0f, 15792),
-		Stats(0, 0, 0, 0, 0, 0.0f, 17371),
-		Stats(0, 0, 0, 0, 0, 0.0f, 19109),
-		Stats(0, 0, 0, 0, 0, 0.0f, 21019),
-		Stats(0, 0, 0, 0, 0, 0.0f, 23121),
-		Stats(0, 0, 0, 0, 0, 0.0f, 25434),
-		Stats(0, 0, 0, 0, 0, 0.0f, 27977),
 	};
 	
 	StatsIncrements NpcStats = StatsIncrements(Stats(10, 10, 10));
@@ -202,19 +187,19 @@ StatsTables::StatsTables()
 		CV
 	************/
 
-	StatsTables::StatsTable[Abomination::MapKey] = StatsIncrements(Stats(53, 8, 116));
-	StatsTables::StatsTable[Agnes::MapKey] = StatsIncrements(Stats(135, 20, 320));
-	StatsTables::StatsTable[Barbarian::MapKey] = StatsIncrements(Stats(65, 12, 95));
+	StatsTables::StatsTable[Abomination::MapKey] = StatsIncrements(Stats(53, 8, 224));
+	StatsTables::StatsTable[Agnes::MapKey] = StatsIncrements(Stats(135, 20, 620));
+	StatsTables::StatsTable[Barbarian::MapKey] = StatsIncrements(Stats(65, 12, 185));
 	StatsTables::StatsTable[Jack::MapKey] = StatsIncrements(Stats(85, 10, 160)); 
-	StatsTables::StatsTable[ReanimatedFighter::MapKey] = StatsIncrements(Stats(68, 10, 105));
-	StatsTables::StatsTable[Reaper::MapKey] = StatsIncrements(Stats(15, 26, 125));
-	StatsTables::StatsTable[SkeletalBaron::MapKey] = StatsIncrements(Stats(84, 12, 130));
-	StatsTables::StatsTable[Thug::MapKey] = StatsIncrements(Stats(48, 4, 90));
-	StatsTables::StatsTable[VampireLord::MapKey] = StatsIncrements(Stats(77, 8, 121));
-	StatsTables::StatsTable[Vampiress::MapKey] = StatsIncrements(Stats(81, 24, 118));
-	StatsTables::StatsTable[Undead::MapKey] = StatsIncrements(Stats(49, 6, 109));
-	StatsTables::StatsTable[Werewolf::MapKey] = StatsIncrements(Stats(52, 13, 115));
-	StatsTables::StatsTable[Wraith::MapKey] = StatsIncrements(Stats(64, 22, 116));
+	StatsTables::StatsTable[ReanimatedFighter::MapKey] = StatsIncrements(Stats(68, 10, 205));
+	StatsTables::StatsTable[Reaper::MapKey] = StatsIncrements(Stats(15, 26, 225));
+	StatsTables::StatsTable[SkeletalBaron::MapKey] = StatsIncrements(Stats(84, 12, 230));
+	StatsTables::StatsTable[Thug::MapKey] = StatsIncrements(Stats(48, 4, 190));
+	StatsTables::StatsTable[VampireLord::MapKey] = StatsIncrements(Stats(77, 8, 241));
+	StatsTables::StatsTable[Vampiress::MapKey] = StatsIncrements(Stats(81, 24, 238));
+	StatsTables::StatsTable[Undead::MapKey] = StatsIncrements(Stats(49, 6, 219));
+	StatsTables::StatsTable[Werewolf::MapKey] = StatsIncrements(Stats(52, 13, 225));
+	StatsTables::StatsTable[Wraith::MapKey] = StatsIncrements(Stats(64, 22, 236));
 	
 	StatsTables::StatsTable[Atreus::MapKey] = NpcStats;
 	StatsTables::StatsTable[Knight::MapKey] = NpcStats;
@@ -239,20 +224,20 @@ StatsTables::StatsTables()
 		LC
 	************/
 	
-	StatsTables::StatsTable[Assassin::MapKey] = StatsIncrements(Stats(49, 8, 118));
-	StatsTables::StatsTable[BoneKnight::MapKey] = StatsIncrements(Stats(80, 12, 121));
-	StatsTables::StatsTable[BoneFiend::MapKey] = StatsIncrements(Stats(70, 8, 119));
-	StatsTables::StatsTable[Hunter::MapKey] = StatsIncrements(Stats(55, 14, 117));
-	StatsTables::StatsTable[KingZul::MapKey] = StatsIncrements(Stats(160, 18, 236));
-	StatsTables::StatsTable[Lazarus::MapKey] = StatsIncrements(Stats(124, 38, 214));
-	StatsTables::StatsTable[Mystic::MapKey] = StatsIncrements(Stats(72, 22, 110));
-	StatsTables::StatsTable[ReanimatedPig::MapKey] = StatsIncrements(Stats(75, 10, 105));
-	StatsTables::StatsTable[SkeletalCleaver::MapKey] = StatsIncrements(Stats(84, 8, 123));
-	StatsTables::StatsTable[SkeletalKnight::MapKey] = StatsIncrements(Stats(85, 10, 122));
-	StatsTables::StatsTable[SkeletalPriestess::MapKey] = StatsIncrements(Stats(81, 20, 125));
-	StatsTables::StatsTable[Warlock::MapKey] = StatsIncrements(Stats(62, 24, 113));
-	StatsTables::StatsTable[Zombie::MapKey] = StatsIncrements(Stats(78, 5, 110));
-	StatsTables::StatsTable[ZombieElric::MapKey] = StatsIncrements(Stats(82, 13, 140));
+	StatsTables::StatsTable[Assassin::MapKey] = StatsIncrements(Stats(49, 8, 248));
+	StatsTables::StatsTable[BoneKnight::MapKey] = StatsIncrements(Stats(80, 12, 251));
+	StatsTables::StatsTable[BoneFiend::MapKey] = StatsIncrements(Stats(70, 8, 219));
+	StatsTables::StatsTable[Hunter::MapKey] = StatsIncrements(Stats(55, 14, 217));
+	StatsTables::StatsTable[KingZul::MapKey] = StatsIncrements(Stats(160, 18, 636));
+	StatsTables::StatsTable[Lazarus::MapKey] = StatsIncrements(Stats(124, 38, 514));
+	StatsTables::StatsTable[Mystic::MapKey] = StatsIncrements(Stats(72, 22, 230));
+	StatsTables::StatsTable[ReanimatedPig::MapKey] = StatsIncrements(Stats(75, 10, 205));
+	StatsTables::StatsTable[SkeletalCleaver::MapKey] = StatsIncrements(Stats(84, 8, 223));
+	StatsTables::StatsTable[SkeletalKnight::MapKey] = StatsIncrements(Stats(85, 10, 222));
+	StatsTables::StatsTable[SkeletalPriestess::MapKey] = StatsIncrements(Stats(81, 20, 225));
+	StatsTables::StatsTable[Warlock::MapKey] = StatsIncrements(Stats(62, 24, 213));
+	StatsTables::StatsTable[Zombie::MapKey] = StatsIncrements(Stats(78, 5, 210));
+	StatsTables::StatsTable[ZombieElric::MapKey] = StatsIncrements(Stats(82, 13, 440));
 
 	StatsTables::StatsTable[Amelia::MapKey] = NpcStats;
 	StatsTables::StatsTable[Azmus::MapKey] = NpcStats;
@@ -273,18 +258,18 @@ StatsTables::StatsTables()
 		FF
 	************/
 
-	StatsTables::StatsTable[Asmodeus::MapKey] = StatsIncrements(Stats(165, 30, 315));
-	StatsTables::StatsTable[DemonArcher::MapKey] = StatsIncrements(Stats(93, 14, 133));
-	StatsTables::StatsTable[DemonDragon::MapKey] = StatsIncrements(Stats(92, 12, 131));
-	StatsTables::StatsTable[DemonGhost::MapKey] = StatsIncrements(Stats(90, 10, 129));
-	StatsTables::StatsTable[DemonGrunt::MapKey] = StatsIncrements(Stats(94, 8, 133));
-	StatsTables::StatsTable[DemonRogue::MapKey] = StatsIncrements(Stats(88, 8, 127));
-	StatsTables::StatsTable[DemonShaman::MapKey] = StatsIncrements(Stats(82, 20, 130));
-	StatsTables::StatsTable[DemonSwordsman::MapKey] = StatsIncrements(Stats(97, 8, 125));
-	StatsTables::StatsTable[DemonWarrior::MapKey] = StatsIncrements(Stats(80, 8, 136));
-	StatsTables::StatsTable[FireElemental::MapKey] = StatsIncrements(Stats(89, 8, 127));
-	StatsTables::StatsTable[FireTiger::MapKey] = StatsIncrements(Stats(91, 8, 138));
-	StatsTables::StatsTable[LavaGolem::MapKey] = StatsIncrements(Stats(87, 11, 130));
+	StatsTables::StatsTable[Asmodeus::MapKey] = StatsIncrements(Stats(165, 30, 715));
+	StatsTables::StatsTable[DemonArcher::MapKey] = StatsIncrements(Stats(93, 14, 233));
+	StatsTables::StatsTable[DemonDragon::MapKey] = StatsIncrements(Stats(92, 12, 231));
+	StatsTables::StatsTable[DemonGhost::MapKey] = StatsIncrements(Stats(90, 10, 229));
+	StatsTables::StatsTable[DemonGrunt::MapKey] = StatsIncrements(Stats(94, 8, 233));
+	StatsTables::StatsTable[DemonRogue::MapKey] = StatsIncrements(Stats(88, 8, 227));
+	StatsTables::StatsTable[DemonShaman::MapKey] = StatsIncrements(Stats(82, 20, 230));
+	StatsTables::StatsTable[DemonSwordsman::MapKey] = StatsIncrements(Stats(97, 8, 225));
+	StatsTables::StatsTable[DemonWarrior::MapKey] = StatsIncrements(Stats(80, 8, 236));
+	StatsTables::StatsTable[FireElemental::MapKey] = StatsIncrements(Stats(89, 8, 227));
+	StatsTables::StatsTable[FireTiger::MapKey] = StatsIncrements(Stats(91, 8, 238));
+	StatsTables::StatsTable[LavaGolem::MapKey] = StatsIncrements(Stats(87, 11, 230));
 
 	StatsTables::StatsTable[Ash::MapKey] = NpcStats;
 	StatsTables::StatsTable[Brine::MapKey] = NpcStats;
@@ -306,17 +291,17 @@ StatsTables::StatsTables()
 		BP
 	************/
 
-	StatsTables::StatsTable[Cryogen::MapKey] = StatsIncrements(Stats(248, 8, 420));
-	StatsTables::StatsTable[FrostFiend::MapKey] = StatsIncrements(Stats(96, 8, 136));
-	StatsTables::StatsTable[GoblinElf::MapKey] = StatsIncrements(Stats(90, 8, 130));
-	StatsTables::StatsTable[IceGolem::MapKey] = StatsIncrements(Stats(95, 8, 135));
-	StatsTables::StatsTable[PenguinGrunt::MapKey] = StatsIncrements(Stats(92, 8, 132));
-	StatsTables::StatsTable[PenguinWarrior::MapKey] = StatsIncrements(Stats(94, 8, 134));
-	StatsTables::StatsTable[Santa::MapKey] = StatsIncrements(Stats(224, 8, 392));
-	StatsTables::StatsTable[SnowFiend::MapKey] = StatsIncrements(Stats(100, 8, 140));
-	StatsTables::StatsTable[ToySoldierGoblin::MapKey] = StatsIncrements(Stats(93, 8, 133));
-	StatsTables::StatsTable[WaterElemental::MapKey] = StatsIncrements(Stats(94, 8, 134));
-	StatsTables::StatsTable[Yeti::MapKey] = StatsIncrements(Stats(98, 8, 138));
+	StatsTables::StatsTable[Cryogen::MapKey] = StatsIncrements(Stats(248, 8, 820));
+	StatsTables::StatsTable[FrostFiend::MapKey] = StatsIncrements(Stats(96, 8, 336));
+	StatsTables::StatsTable[GoblinElf::MapKey] = StatsIncrements(Stats(90, 8, 330));
+	StatsTables::StatsTable[IceGolem::MapKey] = StatsIncrements(Stats(95, 8, 335));
+	StatsTables::StatsTable[PenguinGrunt::MapKey] = StatsIncrements(Stats(92, 8, 332));
+	StatsTables::StatsTable[PenguinWarrior::MapKey] = StatsIncrements(Stats(94, 8, 334));
+	StatsTables::StatsTable[Santa::MapKey] = StatsIncrements(Stats(224, 8, 892));
+	StatsTables::StatsTable[SnowFiend::MapKey] = StatsIncrements(Stats(100, 8, 340));
+	StatsTables::StatsTable[ToySoldierGoblin::MapKey] = StatsIncrements(Stats(93, 8, 333));
+	StatsTables::StatsTable[WaterElemental::MapKey] = StatsIncrements(Stats(94, 8, 334));
+	StatsTables::StatsTable[Yeti::MapKey] = StatsIncrements(Stats(98, 8, 338));
 	
 	StatsTables::StatsTable[Viking::MapKey] = NpcStats;
 	StatsTables::StatsTable[Snowman::MapKey] = NpcStats;
@@ -340,9 +325,9 @@ StatsTables::StatsTables()
 		VS
 	************/
 	
-	StatsTables::StatsTable[Exterminator::MapKey] = StatsIncrements(Stats(96, 32, 140));
-	StatsTables::StatsTable[Perceptron::MapKey] = StatsIncrements(Stats(4096, 1024, 1024));
-	StatsTables::StatsTable[VoidDemon::MapKey] = StatsIncrements(Stats(128, 64, 145));
+	StatsTables::StatsTable[Exterminator::MapKey] = StatsIncrements(Stats(96, 32, 440));
+	StatsTables::StatsTable[Perceptron::MapKey] = StatsIncrements(Stats(4096, 1024, 2048));
+	StatsTables::StatsTable[VoidDemon::MapKey] = StatsIncrements(Stats(128, 64, 445));
 	
 	StatsTables::StatsTable[Boron::MapKey] = NpcStats;
 	StatsTables::StatsTable[Radon::MapKey] = NpcStats;

@@ -114,7 +114,7 @@ void Manifest::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return ManifestGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_Manifest_RegisterEax::create(), true
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_Manifest_RegisterEax::create(), HackableDataType::Int32, true
 					},
 				},
 			int(HackFlags::None),

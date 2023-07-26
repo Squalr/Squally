@@ -119,7 +119,7 @@ void Fortitude::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return FortitudeGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Fortitude_RegisterEax::create()
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Fortitude_RegisterEax::create(), HackableDataType::Int32
 					}
 				},
 				int(HackFlags::None),

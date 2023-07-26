@@ -122,7 +122,7 @@ void Inversion::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return InversionGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_Inversion_RegisterEax::create(),
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_Inversion_RegisterEax::create(), HackableDataType::Int32
 					},
 				},
 				int(HackFlags::None),

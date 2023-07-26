@@ -133,7 +133,7 @@ void LavaAxe::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
 				{
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Abilities_LavaAxe_RegisterEbx::create(), true
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Abilities_LavaAxe_RegisterEbx::create(), HackableDataType::Int32, true
 					},
 				},
 				int(HackFlags::None),

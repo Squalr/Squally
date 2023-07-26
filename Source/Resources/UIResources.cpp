@@ -283,6 +283,7 @@ const std::string UIResources::Menus_Icons_HeartPurple = "Private/UI/Menus/Icons
 const std::string UIResources::Menus_Icons_HoneyComb = "Private/UI/Menus/Icons/HoneyComb.png";
 const std::string UIResources::Menus_Icons_HookShot = "Private/UI/Menus/Icons/HookShot.png";
 const std::string UIResources::Menus_Icons_Horn = "Private/UI/Menus/Icons/Horn.png";
+const std::string UIResources::Menus_Icons_HotPotato = "Private/UI/Menus/Icons/HotPotato.png";
 const std::string UIResources::Menus_Icons_HourGlass = "Private/UI/Menus/Icons/HourGlass.png";
 const std::string UIResources::Menus_Icons_HourGlass2 = "Private/UI/Menus/Icons/HourGlass2.png";
 const std::string UIResources::Menus_Icons_Hourglass3 = "Private/UI/Menus/Icons/Hourglass3.png";

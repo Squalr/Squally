@@ -98,8 +98,12 @@ void WoodenSpikes::registerHackables()
 				UIResources::Menus_Icons_Clock,
 				LazyNode<HackablePreview>::create([=](){ return WoodenSpikesUpdateTimerPreview::create(); }),
 				{
-					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0::create() },
-					{ HackableCode::Register::st0, Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0::create() },
+					{
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0::create(), HackableDataType::Float
+					},
+					{
+						HackableCode::Register::st0, Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0::create(), HackableDataType::Float
+					},
 				},
 				int(HackFlags::None),
 				20.0f,

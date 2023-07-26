@@ -121,7 +121,7 @@ void Parry::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return ParryGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_Parry_RegisterEax::create()
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_Parry_RegisterEax::create(), HackableDataType::Int32
 					},
 				},
 				int(HackFlags::None),

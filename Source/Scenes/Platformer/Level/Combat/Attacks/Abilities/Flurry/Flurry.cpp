@@ -90,7 +90,9 @@ void Flurry::registerHackables()
 				UIResources::Menus_Icons_SwordSlash,
 				nullptr,
 				{
-					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_TrainingDummy_RegisterEdi::create() }
+					{
+						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_TrainingDummy_RegisterEdi::create(), HackableDataType::Int32
+					}
 				},
 				int(HackFlags::None),
 				8.0f,

@@ -119,10 +119,10 @@ void ShieldWall::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return ShieldWallGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_ShieldWall_RegisterEax::create(), true
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_ShieldWall_RegisterEax::create(), HackableDataType::Int32, true
 					},
 					{
-						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_ShieldWall_RegisterEcx::create(), true
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_ShieldWall_RegisterEcx::create(), HackableDataType::Int32, true
 					}
 				},
 				int(HackFlags::None),

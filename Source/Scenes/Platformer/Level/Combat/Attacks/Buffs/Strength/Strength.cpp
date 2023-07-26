@@ -114,7 +114,7 @@ void Strength::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return StrengthGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_Strength_RegisterEcx::create()
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_Strength_RegisterEcx::create(), HackableDataType::Int32
 					}
 				},
 				int(HackFlags::None),

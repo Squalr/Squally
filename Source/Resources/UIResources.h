@@ -284,6 +284,7 @@ namespace UIResources
 	extern const std::string Menus_Icons_HoneyComb;
 	extern const std::string Menus_Icons_HookShot;
 	extern const std::string Menus_Icons_Horn;
+	extern const std::string Menus_Icons_HotPotato;
 	extern const std::string Menus_Icons_HourGlass;
 	extern const std::string Menus_Icons_HourGlass2;
 	extern const std::string Menus_Icons_Hourglass3;

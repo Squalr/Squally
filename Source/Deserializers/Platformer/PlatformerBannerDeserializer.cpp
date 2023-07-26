@@ -52,7 +52,7 @@ PlatformerBannerDeserializer::PlatformerBannerDeserializer() : super()
 
 	// LC
 	this->deserializers["lambda-crypts"] = [=]() { return Strings::Platformer_MapNames_LambdaCrypts_LambdaCrypts::create(); };
-	this->deserializers["grave-flower"] = [=]() { return Strings::Platformer_MapNames_LambdaCrypts_GraveFlower::create(); };
+	this->deserializers["ravens-rest"] = [=]() { return Strings::Platformer_MapNames_LambdaCrypts_RavensRest::create(); };
 	this->deserializers["valley-ash"] = [=]() { return Strings::Platformer_MapNames_LambdaCrypts_ValleyOfAsh::create(); };
 
 	// FF

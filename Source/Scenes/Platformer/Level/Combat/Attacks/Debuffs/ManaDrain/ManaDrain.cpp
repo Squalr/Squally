@@ -106,13 +106,13 @@ void ManaDrain::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return ManaDrainGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEcx::create(),
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEcx::create(), HackableDataType::Int32,
 					},
 					{
-						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEdx::create(),
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEdx::create(), HackableDataType::Int32,
 					},
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEsi::create(),
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEsi::create(), HackableDataType::Int32,
 					}
 				},
 				int(HackFlags::None),

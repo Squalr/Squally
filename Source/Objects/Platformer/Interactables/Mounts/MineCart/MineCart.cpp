@@ -143,7 +143,9 @@ void MineCart::registerHackables()
 				UIResources::Menus_Icons_GearBroken,
 				LazyNode<HackablePreview>::create([=](){ return MineCartPreview::create(); }),
 				{
-					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_MineCart_IsMoving_RegisterEax::create() },
+					{
+						HackableCode::Register::zax, Strings::Menus_Hacking_Objects_MineCart_IsMoving_RegisterEax::create(), HackableDataType::Bool
+					},
 				},
 				int(HackFlags::None),
 				2.5f,

@@ -102,7 +102,7 @@ void HealthLink::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return HealthLinkGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Buffs_HealthLink_RegisterEdi::create(),
+						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Buffs_HealthLink_RegisterEdi::create(), HackableDataType::Int32
 					},
 				},
 				int(HackFlags::None),

@@ -89,7 +89,9 @@ void SquallySwimHackBehavior::registerHackables()
 				UIResources::Menus_Icons_Bubbles,
 				LazyNode<HackablePreview>::create([=](){ return (HackablePreview*)EntityPreview::create(this->squally); }),
 				{
-					{ HackableCode::Register::zax, Strings::Menus_Hacking_ClippyHelp_Abilities_IsSwimming_RegisterEax::create() },
+					{
+						HackableCode::Register::zax, Strings::Menus_Hacking_ClippyHelp_Abilities_IsSwimming_RegisterEax::create(), HackableDataType::Bool
+					},
 				},
 				int(HackFlags::Water),
 				1.0f,

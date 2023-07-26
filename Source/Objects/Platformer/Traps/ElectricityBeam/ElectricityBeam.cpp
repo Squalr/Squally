@@ -166,7 +166,9 @@ void ElectricityBeam::registerHackables()
 				UIResources::Menus_Icons_Lightning,
 				LazyNode<HackablePreview>::create([=](){ return ElectricityBeamCountDownPreview::create(); }),
 				{
-					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_RegisterSt0::create(), true },
+					{
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_RegisterSt0::create(), HackableDataType::Float, true
+					},
 				},
 				int(HackFlags::Lightning),
 				20.0f,

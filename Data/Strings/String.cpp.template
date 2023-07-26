@@ -1,26 +1,8 @@
 
-	LocalizedString* {{ClassName}}::create()
-	{
-		LocalizedString* instance = new {{ClassName}}();
-
-		instance->autorelease();
-
-		return instance;
-	}
-	
-	LocalizedString* {{ClassName}}::clone()
-	{
-		LocalizedString* clonedString = {{ClassName}}::create();
-		
-		this->copyAttributesTo(clonedString);
-		
-		return clonedString;
-	}
-
+	LocalizedString* {{ClassName}}::create() { LocalizedString* instance = new {{ClassName}}(); instance->autorelease(); return instance; }
+	LocalizedString* {{ClassName}}::clone() { LocalizedString* clonedString = {{ClassName}}::create(); this->copyAttributesTo(clonedString); return clonedString; }
 	{{ClassName}}::{{ClassName}}() : LocalizedString() { }
-
 	std::string {{ClassName}}::getStringIdentifier() { return "{{ClassName}}"; }
-
 	std::string {{ClassName}}::getStringByLanguage(LanguageType languageType)
 	{
 		switch (languageType)

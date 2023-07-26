@@ -91,8 +91,12 @@ void LavaFlow::registerHackables()
 				UIResources::Menus_Icons_Fire,
 				LazyNode<HackablePreview>::create([=](){ return LavaFlowGenericPreview::create(); }),
 				{
-					{ HackableCode::Register::xmm2, Strings::TODO::create() },
-					{ HackableCode::Register::xmm4, Strings::TODO::create() },
+					{
+						HackableCode::Register::xmm2, Strings::TODO::create(), HackableDataType::Int32
+					},
+					{
+						HackableCode::Register::xmm4, Strings::TODO::create(), HackableDataType::Int32
+					},
 				},
 				int(HackFlags::Fire),
 				20.0f,

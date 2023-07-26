@@ -102,7 +102,7 @@ void BrittleBones::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return BrittleBonesGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_BrittleBones_Register::create(),
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_BrittleBones_Register::create(), HackableDataType::Int32,
 					},
 				},
 				int(HackFlags::None),

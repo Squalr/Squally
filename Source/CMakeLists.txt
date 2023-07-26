@@ -24,9 +24,18 @@ set(BUILD_SHARED_LIBS OFF)
 FetchContent_Declare(
     SFML
     GIT_REPOSITORY https://github.com/SFML/SFML.git
-    GIT_TAG 2.5.1
+    GIT_TAG 2.6.0
 )
-FetchContent_MakeAvailable(SFML)
+FetchContent_GetProperties(SFML)
+if(NOT SFML_POPULATED)
+    FetchContent_Populate(SFML)
+    set(SFML_BUILD_AUDIO ON)
+    set(SFML_BUILD_GRAPHICS OFF)
+    set(SFML_BUILD_WINDOW OFF)
+    set(SFML_BUILD_NETWORK OFF)
+    add_subdirectory(${sfml_SOURCE_DIR} ${sfml_BINARY_DIR} EXCLUDE_FROM_ALL)
+endif()
+
 
 # target_precompile_headers(${PROJECT_NAME} PUBLIC
   # "$<$<COMPILE_LANGUAGE:CXX>:precheader_squally.h>"
@@ -52,6 +61,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 target_include_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_BINARY_DIR}/Generated
     ${CMAKE_CURRENT_SOURCE_DIR}
+    ${SFML_INCLUDE_DIRS}
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
@@ -67,6 +77,11 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     spriter2dx::spriter2dx
     SteamWorks::API
     breakpad::client
+    
+    # sfml-graphics
+    # sfml-audio
+    # sfml-window
+    # sfml-system
 
     # platform dependencies
     $<$<PLATFORM_ID:Windows>:iphlpapi>
@@ -75,6 +90,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 target_compile_definitions(${PROJECT_NAME} PRIVATE
     $<$<PLATFORM_ID:Windows>:UNICODE>
     $<$<PLATFORM_ID:Windows>:_UNICODE>
+    SFML_STATIC
 )
 
 # Platform specific target options

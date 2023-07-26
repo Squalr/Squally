@@ -121,11 +121,11 @@ void Enrage::registerHackables()
 				{
 					{
 						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Enrage_RegisterEsi::create()
-							->setStringReplacementVariables({ ConstantFloat::create(Enrage::MinSpeed, 1), ConstantFloat::create(Enrage::MaxSpeed, 1) })
+							->setStringReplacementVariables({ ConstantFloat::create(Enrage::MinSpeed, 1), ConstantFloat::create(Enrage::MaxSpeed, 1) }), HackableDataType::Int32
 					},
 					{
 						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Buffs_Enrage_RegisterXmm3::create()
-							->setStringReplacementVariables(ConstantFloat::create(Enrage::DefaultSpeed, 1))
+							->setStringReplacementVariables(ConstantFloat::create(Enrage::DefaultSpeed, 1)), HackableDataType::Int32
 					}
 				},
 				int(HackFlags::None),

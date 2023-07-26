@@ -55,6 +55,21 @@ Squally is comprised of several subrepos, including:
 - Breakpad / AFNetworking
 - SquallyResources*
 
+**Linux Release**
+These steps are only for compiling Squally specifically for RELEASING to Steam. Linux is agonizing torture, but the steps are as follows:
+
+install podman (apt-get or whatever)
+run `podman pull registry.gitlab.steamos.cloud/steamrt/sniper/sdk`
+cd into `Squally`
+modify `./proj.linux/LoadSteamRuntime.sh` to point to your Squally directory. Then pick which directory to mount it to in the Steam Runtime.
+Run `./proj.linux/LoadSteamRuntime.sh`
+cd into the mounted Squally directory
+run `mkdir build`
+run `cd build`
+run `cmake ..`
+run `cd ..`
+run `cmake --build ./build`
+
 **Important:** We do not have the legal rights to distribute the art/sound in Squally. To get a copy of the `Resources/Private` folder, copy it from a purchased copy of the game. See the section below for details.
 
 To do a fresh build and pull in dependencies:
@@ -62,7 +77,6 @@ To do a fresh build and pull in dependencies:
 git clone git@github.com:Squalr/Squally.git
 cd Squally
 git submodule update --init --recursive .
-python dep.py init
 ```
 
 From here, simply open the Squally/ folder in VsCode and compile using one of the following:
@@ -73,7 +87,6 @@ From here, simply open the Squally/ folder in VsCode and compile using one of th
 To update dependencies later:
 ```
 git submodule update --init --recursive .
-python dep.py update
 ```
 
 Getting the Resource Folder

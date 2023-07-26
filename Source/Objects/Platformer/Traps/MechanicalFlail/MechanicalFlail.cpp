@@ -116,8 +116,12 @@ void MechanicalFlail::registerHackables()
 				UIResources::Menus_Icons_CrossHair,
 				LazyNode<HackablePreview>::create([=](){ return MechanicalFlailSetAnglePreview::create(); }),
 				{
-					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEax::create() },
-					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEbx::create() }
+					{
+						HackableCode::Register::zax, Strings::Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEax::create(), HackableDataType::Int32
+					},
+					{
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEbx::create(), HackableDataType::Int32
+					},
 				},
 				int(HackFlags::None),
 				20.0f,

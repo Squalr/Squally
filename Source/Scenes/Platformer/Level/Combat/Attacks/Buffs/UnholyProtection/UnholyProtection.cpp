@@ -118,7 +118,7 @@ void UnholyProtection::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return UnholyProtectionGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_RegisterEax::create()
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_RegisterEax::create(), HackableDataType::Int32
 					},
 				},
 				int(HackFlags::None),

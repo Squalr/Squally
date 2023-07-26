@@ -175,6 +175,13 @@ class HackablePreview;
 template <class T> class LazyNode;
 class LocalizedString;
 
+enum class HackableDataType
+{
+	Bool,
+	Int32,
+	Float,
+};
+
 class HackableCode : public HackableBase
 {
 public:
@@ -200,15 +207,16 @@ public:
 	{
 		Register reg = Register::zax;
 		LocalizedString* hint = nullptr;
+		HackableDataType hackableDataType = HackableDataType::Int32;
 		bool isPointer = false;
 		int pointerOffset = 0;
 
-		RegisterHintInfo(Register reg = Register::zax, LocalizedString* hint = nullptr, bool isPointer = false, int pointerOffset = 0)
-			: reg(reg), hint(hint), isPointer(isPointer), pointerOffset(pointerOffset) { }
+		RegisterHintInfo(Register reg, LocalizedString* hint, HackableDataType hackableDataType, bool isPointer = false, int pointerOffset = 0)
+			: reg(reg), hint(hint), hackableDataType(hackableDataType), isPointer(isPointer), pointerOffset(pointerOffset) { }
 
 		RegisterHintInfo clone() const
 		{
-			return RegisterHintInfo(reg, (hint == nullptr ? nullptr : hint->clone()), isPointer, pointerOffset);
+			return RegisterHintInfo(reg, (hint == nullptr ? nullptr : hint->clone()), hackableDataType, isPointer, pointerOffset);
 		}
 	};
 

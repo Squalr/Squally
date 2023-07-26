@@ -104,7 +104,7 @@ void Enflame::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return EnflameGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEax::create(),
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEax::create(), HackableDataType::Int32,
 					},
 				},
 				int(HackFlags::None),

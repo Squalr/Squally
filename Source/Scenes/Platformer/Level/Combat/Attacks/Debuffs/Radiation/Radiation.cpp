@@ -100,10 +100,10 @@ void Radiation::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return RadiationGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_Radiation_RegisterEdi::create(),
+						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_Radiation_RegisterEdi::create(), HackableDataType::Int32
 					},
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Radiation_RegisterEsi::create(),
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Radiation_RegisterEsi::create(), HackableDataType::Int32
 					}
 				},
 				int(HackFlags::None),

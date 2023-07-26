@@ -126,13 +126,13 @@ void StoneSkin::registerHackables()
 							{
 								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(-StoneSkin::MaxMultiplier))),
 								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(StoneSkin::MaxMultiplier))),
-							})
+							}), HackableDataType::Int32
 					},
 					{
-						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEcx::create()
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEcx::create(), HackableDataType::Int32
 					},
 					{
-						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEdx::create()
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEdx::create(), HackableDataType::Int32
 					},
 				},
 				int(HackFlags::None),

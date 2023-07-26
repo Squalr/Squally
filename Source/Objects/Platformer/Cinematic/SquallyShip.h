@@ -63,7 +63,7 @@ private:
 	Sound* crashSound = nullptr;
 	WorldSound* fireSound = nullptr;
 
-	Vec2 originalFollowSpeed;
+	cocos2d::Vec2 originalFollowSpeed;
 
 	static const float InteractCooldown;
 	static const cocos2d::Vec2 LaunchVelocity;

@@ -114,10 +114,10 @@ void SeekingBlade::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return SeekingBladeGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_RegisterEax::create()
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_RegisterEax::create(), HackableDataType::Int32
 					},
 					{
-						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_RegisterEcx::create()
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_RegisterEcx::create(), HackableDataType::Int32
 					},
 				},
 				int(HackFlags::None),

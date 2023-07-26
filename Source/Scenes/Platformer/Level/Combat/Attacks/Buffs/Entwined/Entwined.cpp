@@ -102,7 +102,7 @@ void Entwined::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return EntwinedGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Buffs_Entwined_RegisterEdi::create(),
+						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Buffs_Entwined_RegisterEdi::create(), HackableDataType::Int32
 					},
 				},
 				int(HackFlags::None),

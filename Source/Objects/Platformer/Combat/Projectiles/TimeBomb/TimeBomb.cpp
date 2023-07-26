@@ -164,7 +164,9 @@ void TimeBomb::registerHackables()
 				UIResources::Menus_Icons_Clock,
 				LazyNode<HackablePreview>::create([=](){ return TimeBombTickPreview::create(); }),
 				{
-					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Abilities_TimeBomb_RegisterEcx::create() },
+					{
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Abilities_TimeBomb_RegisterEcx::create(), HackableDataType::Int32
+					},
 				},
 				int(HackFlags::None),
 				TimeBomb::HackDuration,

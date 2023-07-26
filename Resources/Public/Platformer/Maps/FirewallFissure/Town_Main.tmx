@@ -599,12 +599,6 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="31" name="rain">
-  <properties>
-   <property name="type" value="weather"/>
-   <property name="weather" value="rain"/>
-  </properties>
- </objectgroup>
  <objectgroup id="32" name="decor +8">
   <properties>
    <property name="depth" type="float" value="512"/>

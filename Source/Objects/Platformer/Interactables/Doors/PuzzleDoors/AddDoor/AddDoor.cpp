@@ -69,7 +69,9 @@ void AddDoor::registerHackables()
 				UIResources::Menus_Icons_Health,
 				LazyNode<HackablePreview>::create([=](){ return AddDoorPreview::create(); }),
 				{
-					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_RegisterEcx::create() },
+					{
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_RegisterEcx::create(), HackableDataType::Int32
+					},
 				},
 				int(HackFlags::None),
 				14.0f,

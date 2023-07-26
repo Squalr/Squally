@@ -101,7 +101,7 @@ void Fear::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return FearGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Fear_RegisterEsi::create(),
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Fear_RegisterEsi::create(), HackableDataType::Int32,
 					},
 				},
 				int(HackFlags::None),

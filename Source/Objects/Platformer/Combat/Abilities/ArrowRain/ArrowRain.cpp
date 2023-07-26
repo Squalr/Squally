@@ -118,7 +118,7 @@ void ArrowRain::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_RegisterEax::create()
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_RegisterEax::create(), HackableDataType::Int32
 					},
 				},
 				int(HackFlags::None),

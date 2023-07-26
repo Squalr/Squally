@@ -123,16 +123,16 @@ void Daze::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return DazeGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_Daze_RegisterEax::create()
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_Daze_RegisterEax::create(), HackableDataType::Int32
 					},
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_Daze_RegisterEbx::create()
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_Daze_RegisterEbx::create(), HackableDataType::Int32
 					},
 					{
-						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_Daze_RegisterEdi::create()
+						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_Daze_RegisterEdi::create(), HackableDataType::Int32
 					},
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Daze_RegisterEsi::create()
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Daze_RegisterEsi::create(), HackableDataType::Int32
 					},
 				},
 				int(HackFlags::None),

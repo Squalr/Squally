@@ -72,6 +72,9 @@ void BrokenBlade::onEnter()
 	this->spellEffect->setPositionY(this->owner->getEntityBottomPointRelative().y);
 	this->spellEffect->start();
 
+	// No PFX on broken blade for now, just hide it
+	this->spellEffect->setVisible(false);
+
 	CombatEvents::TriggerHackableCombatCue();
 }
 
@@ -101,10 +104,10 @@ void BrokenBlade::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return BrokenBladeGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_BrokenBlade_RegisterEax::create(),
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_BrokenBlade_RegisterEax::create(), HackableDataType::Int32,
 					},
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_BrokenBlade_RegisterEbx::create(),
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_BrokenBlade_RegisterEbx::create(), HackableDataType::Int32,
 					},
 				},
 				int(HackFlags::None),

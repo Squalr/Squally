@@ -59,6 +59,8 @@ BloodBoil::BloodBoil(PlatformerEntity* caster, PlatformerEntity* target)
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 
+	this->spellEffect->setStartColor(Color4F::RED);
+	this->spellEffect->setEndColor(Color4F(0.5f, 0.0f, 0.0f, 0.0f));
 	this->spellAura->setColor(Color3B::RED);
 	this->spellAura->setOpacity(0);
 
@@ -113,10 +115,10 @@ void BloodBoil::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return BloodBoilGenericPreview::create(); }),
 				{ 
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_RegisterEax::create(), true
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_RegisterEax::create(), HackableDataType::Int32, true
 					},
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_RegisterEbx::create(), true
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_RegisterEbx::create(), HackableDataType::Int32, true
 					}
 				},
 				int(HackFlags::None),

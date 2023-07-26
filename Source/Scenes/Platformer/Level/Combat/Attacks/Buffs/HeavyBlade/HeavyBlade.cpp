@@ -117,7 +117,7 @@ void HeavyBlade::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return HeavyBladeGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_RegisterEcx::create()
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_RegisterEcx::create(), HackableDataType::Int32
 					}
 				},
 				int(HackFlags::None),

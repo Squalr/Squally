@@ -14,8 +14,10 @@
 #endif
 
 // Required by `getauxval()` on Linux.
+#if ASMJIT_ARCH_ARM
 #if defined(__linux__)
   #include <sys/auxv.h>
+#endif
 #endif
 
 //! Required to detect CPU and features on Apple platforms.

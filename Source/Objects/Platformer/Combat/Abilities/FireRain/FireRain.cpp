@@ -114,10 +114,10 @@ void FireRain::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
 				{
 					{
-						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Abilities_FireRain_RegisterXmm3::create()
+						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Abilities_FireRain_RegisterXmm3::create(), HackableDataType::Float
 					},
 					{
-						HackableCode::Register::xmm4, Strings::Menus_Hacking_Abilities_Abilities_FireRain_RegisterXmm4::create()
+						HackableCode::Register::xmm4, Strings::Menus_Hacking_Abilities_Abilities_FireRain_RegisterXmm4::create(), HackableDataType::Float
 					},
 				},
 				int(HackFlags::None),

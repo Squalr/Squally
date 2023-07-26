@@ -105,7 +105,9 @@ void Rejuvination::registerHackables()
 				UIResources::Menus_Icons_MoonShine,
 				LazyNode<HackablePreview>::create([=](){ return RejuvinationGenericPreview::create(); }),
 				{
-					{ HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Abilities_Rejuvination_RegisterEdx::create() }
+					{
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Abilities_Rejuvination_RegisterEdx::create(), HackableDataType::Int32
+					}
 				},
 				int(HackFlags::None),
 				(float(Rejuvination::HealTicks) * Rejuvination::TimeBetweenTicks) + 0.1f,
