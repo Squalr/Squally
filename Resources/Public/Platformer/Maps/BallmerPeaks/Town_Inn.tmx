@@ -91,7 +91,7 @@
   <object id="694" name="portal" type="object" x="401.862" y="1848.71" width="237.527" height="375.411">
    <properties>
     <property name="map" value="BallmerPeaks/Town_Main"/>
-    <property name="transition" value="inn"/>
+    <property name="transition" value="town_inn_out"/>
    </properties>
   </object>
   <object id="794" name="portal" type="object" x="3202.21" y="1842.53" width="335.878" height="375.411">
@@ -188,7 +188,7 @@
   </object>
   <object id="824" name="spawn-wood-door" type="object" x="461.648" y="2093.2" width="128" height="128">
    <properties>
-    <property name="transition" value="inn"/>
+    <property name="transition" value="town_inn"/>
    </properties>
   </object>
   <object id="836" name="spawn" type="object" x="1214.91" y="434.424" width="128" height="128">
