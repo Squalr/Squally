@@ -27,7 +27,7 @@ Issues |
 [Easy](https://github.com/Squalr/Squally/labels/good%20first%20issue) |
 [Intermediate](https://github.com/Squalr/Squally/labels/good%20first%20issue%20%28intermediate%29) |
 
-To edit maps, download [Tiled](https://www.mapeditor.org/). Maps are kept in Resources/Platformer/Maps/*.tmx.
+To edit maps, download [Tiled](https://www.mapeditor.org/). Maps are kept in Resources/Public/Platformer/Maps/*.tmx.
 
 Compiling Squally
 ------------
@@ -53,7 +53,7 @@ Squally is comprised of several subrepos, including:
 - Cocos2d-x
 - Spriter2d-x / SpriterPlusPlus
 - Breakpad / AFNetworking
-- SquallyResources*
+- SquallyResources* (Not public, copy this from Steam library)
 
 **Linux Release**
 These steps are only for compiling Squally specifically for RELEASING to Steam. Linux is agonizing torture, but the steps are as follows:
@@ -70,7 +70,7 @@ run `cmake ..`
 run `cd ..`
 run `cmake --build ./build`
 
-**Important:** We do not have the legal rights to distribute the art/sound in Squally. To get a copy of the `Resources/Private` folder, copy it from a purchased copy of the game. See the section below for details.
+**Important:** We do not have the legal rights to distribute the art/sound in Squally. To get a copy of the `Squally/Resources/Private` folder, copy it from a purchased copy of the game. See the section below for details.
 
 To do a fresh build and pull in dependencies:
 ```
@@ -91,24 +91,11 @@ git submodule update --init --recursive .
 
 Getting the Resource Folder
 ------------
-We could not include the `Resources/Private` folder in this repository, because a lot of the art in this game comes from asset stores. This means we have non-exclusive rights to the art, and cannot redistribute it for free. This means the Resources must be copied from a legally purchased copy of the game.
+We could not include the `Squally/Resources/Private` folder in this repository, because a lot of the art in this game comes from asset stores. This means we have non-exclusive rights to the art, and cannot redistribute it for free. This means the Resources must be copied from a legally purchased copy of the game.
 
-The `Resources/Private` folder in the Steam copy of Squally will correspond to the master branch of this repository.
+The `Squally/Resources/Private` folder in the Steam copy of Squally will correspond to the master branch of this repository.
 
-To gain access to the `Resources/Private` folder being used in develop branch, do the following:
-- Open Steam
-- Right click on Squally and click Properties
-- Go to the BETAS tab
-- Opt into the 'resources' beta
-- Switch to the Local Files tab
-- Click 'browse Local files'
-- Copy the `Private` folder into `Squally/Resources` in the git repository you created.
-- Important: Revert back to NONE or alpha version of squally -- the 'resources' beta will not launch. Also, if Steam is not updating the files, try restarting Steam.
-
-![Squally resource beta](https://i.imgur.com/012eDxg.png)
 ![Squally resource folder](https://i.imgur.com/5PaDZiG.png)
-
-For those that contribute significantly to the project, we can give you access to the private `Resources/Private` Github repository. We're doing this sparringly because there are limted seats on Github.
 
 Additional learning resources
 ------------
