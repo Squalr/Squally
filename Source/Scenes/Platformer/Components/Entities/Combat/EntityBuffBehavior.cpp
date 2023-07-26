@@ -4,6 +4,8 @@
 #include <iterator>
 #include <set>
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -45,6 +47,16 @@ EntityBuffBehavior::~EntityBuffBehavior()
 
 void EntityBuffBehavior::onLoad()
 {
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventBuffRemoved, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::BuffRemovedArgs* args = static_cast<CombatEvents::BuffRemovedArgs*>(eventCustom->getData());
+
+		if (args != nullptr && std::find(this->buffs.begin(), this->buffs.end(), args->buff) != this->buffs.end())
+		{
+			this->buffsToRemove.push_back(args->buff);
+		}
+	}));
+
 	this->entity->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
 	{
 		if (!value.asBool())
@@ -54,6 +66,19 @@ void EntityBuffBehavior::onLoad()
 	});
 	
 	this->setPosition(this->entity->getEntityCenterPoint());
+	this->scheduleUpdate();
+}
+
+void EntityBuffBehavior::update(float dt)
+{
+	super::update(dt);
+
+	for (Buff* next : this->buffsToRemove)
+	{
+		this->removeBuff(next);
+	}
+
+	this->buffsToRemove.clear();
 }
 
 void EntityBuffBehavior::onDisable()
@@ -93,7 +118,6 @@ void EntityBuffBehavior::applyBuff(Buff* buff, bool checkAlive)
 		this->removeBuffsById(buff->getBuffData().uniqueId);
 	}
 	
-	buff->setRemoveBuffCallback([=]() { this->removeBuff(buff); });
 	this->buffs.push_back(buff);
 	this->buffNode->addChild(buff);
 

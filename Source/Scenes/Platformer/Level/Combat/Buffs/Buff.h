@@ -83,13 +83,13 @@ private:
 	typedef SmartNode super;
 	friend class TimelineEntry;
 
-	std::function<void()> removeBuffCallback = nullptr;
 	cocos2d::Node* iconContainer = nullptr;
 	cocos2d::Sprite* buffGlow = nullptr;
 	cocos2d::Sprite* buffIcon = nullptr;
 	
 	bool isBuffIconPresent = false;
 	bool wasRemoved = false;
+	bool isBuffRemovalDisabled = false;
 	float elapsedTime = 0.0f;
 	float asyncElapsedTime = 0.0f;
 	void unregisterHackables();

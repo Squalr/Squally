@@ -121,7 +121,8 @@ void Fear::registerHackables()
 							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Fear_CommentHint::create())
 						})
 					),
-				}
+				},
+				true
 			)
 		},
 	};

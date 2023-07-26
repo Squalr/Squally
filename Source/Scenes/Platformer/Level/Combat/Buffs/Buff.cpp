@@ -218,7 +218,7 @@ void Buff::onTimelineReset(CombatEvents::TimelineResetArgs* timelineReset)
 
 void Buff::toggleCanRemoveBuff(bool canRemove)
 {
-	this->wasRemoved = !canRemove;
+	this->isBuffRemovalDisabled = !canRemove;
 }
 
 void Buff::unregisterHackables()
@@ -239,26 +239,16 @@ Buff::BuffData Buff::getBuffData()
 	return this->buffData;
 }
 
-void Buff::setRemoveBuffCallback(std::function<void()> removeBuffCallback)
-{
-	this->removeBuffCallback = removeBuffCallback;
-}
-
 bool Buff::removeBuff()
 {
-	if (this->wasRemoved)
+	if (this->wasRemoved || this->isBuffRemovalDisabled)
 	{
 		return false;
 	}
 	
 	this->wasRemoved = true;
-	
-	CombatEvents::TriggerBuffRemoved(CombatEvents::BuffRemovedArgs(this->owner, this));
 
-	if (this->removeBuffCallback != nullptr)
-	{
-		this->removeBuffCallback();
-	}
+	CombatEvents::TriggerBuffRemoved(CombatEvents::BuffRemovedArgs(this->owner, this));
 
 	return true;
 }

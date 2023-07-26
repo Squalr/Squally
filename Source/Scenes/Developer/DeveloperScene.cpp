@@ -107,7 +107,10 @@ DeveloperScene::DeveloperScene()
 		- v UR guano still cursed scrappy wasn't loaded for dialogue
 		- v UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
 		- v UR town could use another mg/fg warp. Maybe where lifstone is
+		- v UR post Medua dialogue is strange if never talked to Poseidon. Scrappy wouldn't know about mirror.
+		- v UR no throw anim on minotaurs (rare, but can happen if SHR 2 with copper sword)
 		- v EF first Marcel dialogue can show empty characters
+		- v EF disable torch throw collision for ~1s on throw
 		- v Maybe HP pots in combat should self-target initally?
 		- v Maybe interact with helper to revive after holy spellbook?
 		- v Can probably use Silver for more craft recipes

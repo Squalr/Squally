@@ -49,6 +49,7 @@ protected:
 	virtual ~EntityBuffBehavior();
 
 	void onLoad() override;
+	void update(float dt) override;
 	void onDisable() override;
 
 private:
@@ -59,4 +60,5 @@ private:
 	cocos2d::Node* buffNode = nullptr;
 	PlatformerEntity* entity = nullptr;
 	std::vector<Buff*> buffs;
+	std::vector<Buff*> buffsToRemove;
 };

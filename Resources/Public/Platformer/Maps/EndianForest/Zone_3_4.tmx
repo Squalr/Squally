@@ -72,15 +72,15 @@
   <object id="744" name="dark-grass" type="terrain" x="1618.3" y="3068.27">
    <polygon points="-1618.41,-858.315 -1623.12,-418.438 -547.133,-353.445 298.162,-268.979 852.222,16.9679 913.432,18.9216 946.17,-320.208 923.422,-696.152 107.632,-883.086"/>
   </object>
-  <object id="775" name="dark-grass" type="terrain" x="4060" y="2738.84">
-   <polygon points="-1133.45,-1811.74 -1151.88,-270.84 -1137.14,532.492 -1114.51,563.865 1468,564.97 1513.19,519.988 1514.27,-1822.02"/>
+  <object id="775" name="dark-grass" type="terrain" x="4255.28" y="2738.84">
+   <polygon points="-1325.61,-1811.74 -1347.16,-270.84 -1329.92,532.492 -1303.46,563.865 1360.81,568.243 1413.66,523.261 1464.9,167.175 2067.06,91.8239 2127.69,37.2801 2126.99,-1822.02"/>
   </object>
   <object id="833" name="dark-grass" type="terrain" x="-60" y="3588" width="7719.88" height="968"/>
   <object id="834" name="dark-grass" type="terrain" x="8244" y="3576" width="1660" height="988"/>
-  <object id="892" name="dark-grass" type="terrain" x="7102" y="2762">
+  <object id="892" name="dark-grass" type="terrain" x="7911.58" y="2774.12">
    <polygon points="-1133.45,-1811.74 -1159.37,-575.996 -1147.18,329.198 -937.014,349.433 -687.106,329.851 -670.81,-569.012 -679.063,-1815.35"/>
   </object>
-  <object id="895" name="dark-grass" type="terrain" x="8048" y="2772">
+  <object id="895" name="dark-grass" type="terrain" x="8857.58" y="2784.12">
    <polygon points="-1133.45,-1811.74 -1159.37,-575.996 -1147.18,329.198 -937.014,349.433 -687.106,329.851 -670.81,-569.012 -679.063,-1815.35"/>
   </object>
  </objectgroup>
@@ -88,7 +88,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="484" name="Forest/Flower10" type="decor" x="6684.77" y="3469.83" width="199" height="133"/>
+  <object id="484" name="Forest/Flower10" type="decor" x="7172.77" y="3467.5" width="199" height="133"/>
   <object id="500" name="Forest/Flower10" type="decor" x="1379.89" y="2071.9" width="199" height="133"/>
   <object id="768" name="Forest/Flower11" type="decor" x="9479.33" y="3468.91" width="92" height="116"/>
   <object id="769" name="Forest/Flower11" type="decor" x="2018.97" y="3484.49" width="92" height="116"/>
@@ -100,7 +100,7 @@
   <object id="863" name="Generic/Arrow3" type="decor" x="3369.34" y="3548.59" width="58" height="51"/>
   <object id="864" name="Generic/Arrow3" type="decor" x="2869.34" y="3552.59" width="58" height="51"/>
   <object id="865" name="Generic/Skull1" type="decor" x="2619" y="3558" width="66" height="44"/>
-  <object id="866" name="Generic/Skull1" type="decor" x="6101.67" y="3559.33" width="66" height="44"/>
+  <object id="866" name="Generic/Skull1" type="decor" x="6916.34" y="3566" width="66" height="44"/>
  </objectgroup>
  <objectgroup id="57" name="objects back">
   <properties>
@@ -194,19 +194,19 @@
   <object id="815" name="metal-spikes" type="object" x="4749.7" y="3510" width="256" height="84"/>
   <object id="816" name="metal-spikes" type="object" x="5010.3" y="3510" width="256" height="84"/>
   <object id="817" name="metal-spikes" type="object" x="5270.45" y="3510" width="256" height="84"/>
-  <object id="818" name="wind" type="object" x="5574" y="2634" width="380" height="480">
+  <object id="818" name="wind" type="object" x="6383.58" y="2646.12" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="819" name="wind" type="object" x="5574" y="2152" width="380" height="480">
+  <object id="819" name="wind" type="object" x="6383.58" y="2164.12" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="820" name="wind" type="object" x="5574" y="1676" width="380" height="480">
+  <object id="820" name="wind" type="object" x="6383.58" y="1688.12" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
@@ -219,19 +219,19 @@
     <property name="transition" value="down"/>
    </properties>
   </object>
-  <object id="829" name="edge-portal" type="object" x="5424" y="1471.55" width="640" height="200">
+  <object id="829" name="edge-portal" type="object" x="6233.58" y="1483.67" width="640" height="200">
    <properties>
     <property name="direction" value="up"/>
     <property name="map" value="EndianForest/Zone_3_6"/>
     <property name="transition" value="up-left"/>
    </properties>
   </object>
-  <object id="830" name="spawn" type="object" x="5688.44" y="3454.87" width="128" height="128">
+  <object id="830" name="spawn" type="object" x="6503.11" y="3461.54" width="128" height="128">
    <properties>
     <property name="transition" value="down-left"/>
    </properties>
   </object>
-  <object id="831" name="edge-portal" type="object" x="6320" y="1471.55" width="640" height="200">
+  <object id="831" name="edge-portal" type="object" x="7129.58" y="1483.67" width="640" height="200">
    <properties>
     <property name="direction" value="up"/>
     <property name="map" value="EndianForest/Zone_3_6"/>
@@ -250,7 +250,7 @@
     <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="882" name="life-stone" type="object" x="7063" y="3165.17" width="146" height="423">
+  <object id="882" name="life-stone" type="object" x="5965.67" y="3161.17" width="146" height="423">
    <properties>
     <property name="transition" value="lifestone-spawn"/>
    </properties>
@@ -271,13 +271,13 @@
   <object id="839" name="Generic/Arrow3" type="decor" x="8509.91" y="3532.5" width="58" height="51"/>
   <object id="840" name="Generic/Arrow3" type="decor" x="8323.92" y="3535.33" width="58" height="51"/>
   <object id="841" name="Generic/Wheel1" type="decor" x="9345.83" y="3505.83" width="135" height="79"/>
-  <object id="842" name="Generic/Sword1" type="decor" x="5910.83" y="3450.84" width="92" height="149"/>
-  <object id="843" name="Generic/Arrow1" type="decor" x="5713.5" y="3548.09" width="54" height="53"/>
-  <object id="844" name="Generic/Arrow1" type="decor" x="5817.83" y="3546.59" width="54" height="53"/>
-  <object id="845" name="Generic/Arrow1" type="decor" x="5623.83" y="3548.92" width="54" height="53"/>
-  <object id="846" name="Generic/Arrow1" type="decor" x="6510.83" y="3545.5" width="54" height="53"/>
-  <object id="847" name="Generic/Arrow1" type="decor" x="6594.51" y="3544.18" width="54" height="53"/>
-  <object id="848" name="Generic/Arrow3" type="decor" x="6672.17" y="3544.84" width="58" height="51"/>
+  <object id="842" name="Generic/Sword1" type="decor" x="6725.5" y="3457.51" width="92" height="149"/>
+  <object id="843" name="Generic/Arrow1" type="decor" x="6528.17" y="3554.76" width="54" height="53"/>
+  <object id="844" name="Generic/Arrow1" type="decor" x="6632.5" y="3553.26" width="54" height="53"/>
+  <object id="845" name="Generic/Arrow1" type="decor" x="6438.5" y="3555.59" width="54" height="53"/>
+  <object id="846" name="Generic/Arrow1" type="decor" x="7325.5" y="3552.17" width="54" height="53"/>
+  <object id="847" name="Generic/Arrow1" type="decor" x="7409.18" y="3550.85" width="54" height="53"/>
+  <object id="848" name="Generic/Arrow3" type="decor" x="7486.84" y="3551.51" width="58" height="51"/>
   <object id="849" name="Generic/Arrow1" type="decor" x="1257.83" y="3547.04" width="54" height="53"/>
   <object id="850" name="Generic/Arrow1" type="decor" x="1362.16" y="3545.54" width="54" height="53"/>
   <object id="851" name="Generic/Arrow1" type="decor" x="1168.16" y="3547.87" width="54" height="53"/>
@@ -291,9 +291,9 @@
   <object id="868" name="Generic/Arrow1" type="decor" x="8827.18" y="3539.63" width="54" height="53"/>
   <object id="869" name="Generic/Arrow3" type="decor" x="8904.84" y="3540.29" width="58" height="51"/>
   <object id="870" name="Generic/Arrow1" type="decor" x="9265" y="3538.83" width="54" height="53"/>
-  <object id="888" name="Generic/Arrow1" type="decor" x="6286.33" y="3548.16" width="54" height="53"/>
-  <object id="889" name="Generic/Arrow1" type="decor" x="6204.01" y="3546.84" width="54" height="53"/>
-  <object id="890" name="Generic/Arrow3" type="decor" x="6371.67" y="3547.5" width="58" height="51"/>
+  <object id="888" name="Generic/Arrow1" type="decor" x="7101" y="3554.83" width="54" height="53"/>
+  <object id="889" name="Generic/Arrow1" type="decor" x="7018.68" y="3553.51" width="54" height="53"/>
+  <object id="890" name="Generic/Arrow3" type="decor" x="7186.34" y="3554.17" width="58" height="51"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
@@ -337,7 +337,7 @@
     <property name="transition" value="up"/>
    </properties>
   </object>
-  <object id="883" name="spawn" type="object" x="6569.29" y="1812.45" width="128" height="128">
+  <object id="883" name="spawn" type="object" x="7378.87" y="1824.57" width="128" height="128">
    <properties>
     <property name="transition" value="down-right"/>
    </properties>
@@ -347,7 +347,7 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="891" name="spawn" type="object" x="7072.36" y="3457.21" width="128" height="128">
+  <object id="891" name="spawn" type="object" x="5975.03" y="3453.21" width="128" height="128">
    <properties>
     <property name="transition" value="lifestone-spawn"/>
    </properties>
