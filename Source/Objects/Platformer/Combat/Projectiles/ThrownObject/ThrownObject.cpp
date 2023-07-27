@@ -51,11 +51,25 @@ ThrownObject::~ThrownObject()
 void ThrownObject::onEnter()
 {
 	super::onEnter();
+
+	this->scheduleUpdate();
 }
 
 void ThrownObject::initializePositions()
 {
 	super::initializePositions();
+}
+
+void ThrownObject::update(float dt)
+{
+	super::update(dt);
+
+	this->noCollideDuration -= dt;
+}
+
+bool ThrownObject::canCollide()
+{
+	return this->noCollideDuration > 0.0f;
 }
 
 void ThrownObject::setFlippedX(bool isFlipped)

@@ -49,16 +49,6 @@ FightMedusa::~FightMedusa()
 
 void FightMedusa::onLoad(QuestState questState)
 {
-	ObjectEvents::WatchForObject<Guano>(this, [=](Guano* guano)
-	{
-		this->guano = guano;
-	}, Guano::MapKey);
-
-	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
-	{
-		this->scrappy = scrappy;
-	}, Scrappy::MapKey);
-
 	ObjectEvents::WatchForObject<Medusa>(this, [=](Medusa* medusa)
 	{
 		this->medusa = medusa;
@@ -67,7 +57,18 @@ void FightMedusa::onLoad(QuestState questState)
 		{
 			this->listenForMapEventOnce(FightMedusa::MapKeyQuest, [=](ValueMap args)
 			{
-				this->runCinematicSequencePart1();
+				// Nest dependencies to ensure all relevant entities are queried
+				ObjectEvents::WatchForObject<Guano>(this, [=](Guano* guano)
+				{
+					this->guano = guano;
+
+					ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+					{
+						this->scrappy = scrappy;
+
+						this->runCinematicSequencePart1();
+					}, Scrappy::MapKey);
+				}, Guano::MapKey);
 			});
 		}
 		else
@@ -131,19 +132,40 @@ void FightMedusa::runCinematicSequencePart1()
 
 void FightMedusa::runCinematicSequencePart2()
 {
-	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_UnderflowRuins_CureTown_Scrappy_T_StillCursed::create()
-			->setStringReplacementVariables(Strings::Platformer_Entities_Names_Helpers_EndianForest_Guano::create()),
-		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true)
-		),
-		[=]()
-		{
-		},
-		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
-		true
-	));
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyMedusaMirrorHint, Value(false)).asBool())
+	{
+		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Scrappy_T_StillCursed::create()
+				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Helpers_EndianForest_Guano::create()),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->squally, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
+			true
+		));
+	}
+	else
+	{
+		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_UnderflowRuins_CureTown_Scrappy_T_StillCursedAlt::create()
+				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Helpers_EndianForest_Guano::create()),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->squally, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
+			true
+		));
+	}
 }

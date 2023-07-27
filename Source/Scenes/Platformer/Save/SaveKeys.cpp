@@ -55,6 +55,8 @@ const std::string SaveKeys::SaveKeyLevelHideMiniMap = "SAVE_KEY_HIDE_MINIMAP";
 const std::string SaveKeys::SaveKeyTalkedToAra = "SAVE_KEY_TALKED_TO_ARA";
 const std::string SaveKeys::SaveKeyArcaneHint = "SAVE_KEY_ARCANE_HINT";
 
+const std::string SaveKeys::SaveKeyMedusaMirrorHint = "SAVE_KEY_MEDUSA_HINT";
+
 const std::string SaveKeys::SaveKeyClockMinutes = "SAVE_KEY_CLOCK_SECONDS";
 const std::string SaveKeys::SaveKeyClockHours = "SAVE_KEY_CLOCK_HOURS";
 const std::string SaveKeys::SaveKeyClockTimes = "SAVE_KEY_CLOCK_TIMES";

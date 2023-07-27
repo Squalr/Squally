@@ -3,12 +3,14 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/DialogueOption.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
@@ -71,6 +73,7 @@ void PoseidonBehavior::onLoad()
 					),
 					[=]()
 					{
+						SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyMedusaMirrorHint, Value(true));
 					},
 					Voices::GetNextVoiceShort(),
 					true

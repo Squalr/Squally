@@ -43,19 +43,19 @@ WelcomeToMagesGuild::~WelcomeToMagesGuild()
 
 void WelcomeToMagesGuild::onLoad(QuestState questState)
 {
-	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
-	{
-		this->squally = squally;
-	}, Squally::MapKey);
-
 	ObjectEvents::WatchForObject<Marcel>(this, [=](Marcel* marcel)
 	{
 		this->marcel = marcel;
 
-		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
+		ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 		{
-			this->runCinematicSequence();
-		}
+			this->squally = squally;
+			
+			if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
+			{
+				this->runCinematicSequence();
+			}
+		}, Squally::MapKey);
 	}, Marcel::MapKey);
 }
 

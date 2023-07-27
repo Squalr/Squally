@@ -13,7 +13,7 @@
 using namespace cocos2d;
 
 DeveloperModeController* DeveloperModeController::Instance = nullptr;
-volatile bool DeveloperModeController::IsDeveloperBuild = false;
+volatile bool DeveloperModeController::IsDeveloperBuild = true;
 int DeveloperModeController::MaxDebugLevel = 2;
 int DeveloperModeController::CurrentDebugLevel = 0;
 

@@ -34290,6 +34290,19 @@ namespace Strings
 		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Scrappy_T_StillCursed() = default;
 	};
 
+	class Platformer_Quests_UnderflowRuins_CureTown_Scrappy_T_StillCursedAlt : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Scrappy_T_StillCursedAlt();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Scrappy_T_StillCursedAlt() = default;
+	};
+
 	class Platformer_Quests_UnderflowRuins_CureTown_Townspeople_BehindOnShipments : public LocalizedString
 	{
 	public:

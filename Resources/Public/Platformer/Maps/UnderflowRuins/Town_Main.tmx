@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="43" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="140" nextobjectid="1067">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="43" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="140" nextobjectid="1071">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -130,7 +130,7 @@
     <property name="components" value="z-fade"/>
    </properties>
   </object>
-  <object id="993" name="Ruins/Pillar1" type="decor" x="4744.83" y="72" width="369" height="978">
+  <object id="993" name="Ruins/Pillar1" type="decor" x="4788.83" y="73.3333" width="369" height="978">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
@@ -169,7 +169,7 @@
     <property name="components" value="z-fade"/>
    </properties>
   </object>
-  <object id="989" name="Ruins/Pillar1" type="decor" x="4743.83" y="99" width="369" height="978">
+  <object id="989" name="Ruins/Pillar1" type="decor" x="4787.83" y="100.333" width="369" height="978">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
@@ -208,7 +208,7 @@
     <property name="components" value="z-fade"/>
    </properties>
   </object>
-  <object id="985" name="Ruins/Pillar1" type="decor" x="4743.83" y="129.667" width="369" height="978">
+  <object id="985" name="Ruins/Pillar1" type="decor" x="4787.83" y="131" width="369" height="978">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
@@ -252,7 +252,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="958" name="Ruins/ArchDoorGray1" type="decor" x="1153.23" y="666.061" width="235" height="452"/>
-  <object id="960" name="Ruins/ArchDoorGray1" type="decor" x="4111.17" y="665.333" width="235" height="452"/>
+  <object id="960" name="Ruins/ArchDoorGray1" type="decor" x="4078.5" y="664" width="235" height="452"/>
  </objectgroup>
  <objectgroup id="112" name="terrain -4">
   <properties>
@@ -269,12 +269,13 @@
   <object id="1015" name="Generic/BlueRug" type="decor" x="1561.5" y="1105.83" width="332" height="21"/>
   <object id="1021" name="Generic/BlueRug" type="decor" x="3549.03" y="1104.32" width="332" height="21"/>
   <object id="1033" name="Generic/BlueRug" type="decor" x="2522" y="1106.83" width="332" height="21"/>
+  <object id="1068" name="Generic/BlueRug" type="decor" x="4438.67" y="1108.83" width="332" height="21"/>
   <object id="1037" name="Generic/RedRug" type="decor" x="1105" y="1104.5" width="332" height="21">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
   </object>
-  <object id="1038" name="Generic/RedRug" type="decor" x="4072.67" y="1106.83" width="332" height="21">
+  <object id="1038" name="Generic/RedRug" type="decor" x="4040" y="1105.5" width="332" height="21">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
@@ -291,7 +292,7 @@
     <property name="transition" value="smith"/>
    </properties>
   </object>
-  <object id="1030" name="portal" type="object" x="4110.27" y="740.264" width="237.527" height="375.411">
+  <object id="1030" name="portal" type="object" x="4077.6" y="738.931" width="237.527" height="375.411">
    <properties>
     <property name="map" value="UnderflowRuins/Town_Alch"/>
     <property name="transition" value="alch"/>
@@ -348,7 +349,7 @@
     <property name="transition" value="smith"/>
    </properties>
   </object>
-  <object id="1031" name="spawn" type="object" x="4165.33" y="987.33" width="128" height="128">
+  <object id="1031" name="spawn" type="object" x="4132.66" y="985.997" width="128" height="128">
    <properties>
     <property name="transition" value="alch"/>
    </properties>
@@ -359,6 +360,14 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="1-C"/>
+   </properties>
+  </object>
+  <object id="1067" name="warp" type="object" x="4475.34" y="861" width="256" height="256">
+   <properties>
+    <property name="from" value="4-D"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="1-D"/>
    </properties>
   </object>
  </objectgroup>
@@ -382,7 +391,7 @@
     <property name="components" value="z-fade"/>
    </properties>
   </object>
-  <object id="981" name="Ruins/Pillar1" type="decor" x="4745.17" y="161" width="369" height="978">
+  <object id="981" name="Ruins/Pillar1" type="decor" x="4789.17" y="162.333" width="369" height="978">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
@@ -421,7 +430,7 @@
     <property name="components" value="z-fade"/>
    </properties>
   </object>
-  <object id="977" name="Ruins/Pillar1" type="decor" x="4745.17" y="194.333" width="369" height="978">
+  <object id="977" name="Ruins/Pillar1" type="decor" x="4789.17" y="195.666" width="369" height="978">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
@@ -460,7 +469,7 @@
     <property name="components" value="z-fade"/>
    </properties>
   </object>
-  <object id="973" name="Ruins/Pillar1" type="decor" x="4746.5" y="231" width="369" height="978">
+  <object id="973" name="Ruins/Pillar1" type="decor" x="4790.5" y="232.333" width="369" height="978">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
@@ -478,7 +487,7 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1055" name="Ruins/ArchDoorGray1" type="decor" x="5174.59" y="760.485" width="235" height="452"/>
+  <object id="1055" name="Ruins/ArchDoorGray1" type="decor" x="5221.59" y="762.485" width="235" height="452"/>
  </objectgroup>
  <objectgroup id="102" name="terrain -1">
   <properties>
@@ -492,7 +501,7 @@
    <property name="depth" type="float" value="-32"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1053" name="ruins-gray-thick" type="terrain" x="5121.1" y="1225.67" width="353.81" height="280">
+  <object id="1053" name="ruins-gray-thick" type="terrain" x="5121.1" y="1225.67" width="421.81" height="280">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -518,7 +527,7 @@
     <property name="components" value="z-fade"/>
    </properties>
   </object>
-  <object id="962" name="Ruins/Pillar1" type="decor" x="4747.5" y="269" width="369" height="978">
+  <object id="962" name="Ruins/Pillar1" type="decor" x="4791.5" y="270.333" width="369" height="978">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
@@ -535,6 +544,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1032" name="Generic/BlueRug" type="decor" x="2521.33" y="1238.17" width="332" height="21"/>
+  <object id="1070" name="Generic/BlueRug" type="decor" x="4438" y="1240.17" width="332" height="21"/>
   <object id="1057" name="Generic/RedRug" type="decor" x="5131" y="1240.5" width="332" height="21">
    <properties>
     <property name="components" value="z-fade"/>
@@ -567,6 +577,14 @@
     <property name="to" value="4-C"/>
    </properties>
   </object>
+  <object id="1069" name="warp" type="object" x="4474.67" y="994" width="256" height="256">
+   <properties>
+    <property name="from" value="1-D"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="4-D"/>
+   </properties>
+  </object>
   <object id="1050" name="trigger" type="object" x="899" y="-192.53" width="146" height="1445.06">
    <properties>
     <property name="quest" value="arrive-in-athens"/>
@@ -594,7 +612,7 @@
     <property name="tag" value="town-exit"/>
    </properties>
   </object>
-  <object id="1065" name="life-stone" type="object" x="4496.7" y="827.894" width="146" height="423">
+  <object id="1065" name="life-stone" type="object" x="3274.03" y="831.894" width="146" height="423">
    <properties>
     <property name="transition" value="lifestone-spawn"/>
    </properties>
@@ -636,7 +654,7 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="1066" name="spawn" type="object" x="4505.7" y="1117.82" width="128" height="128">
+  <object id="1066" name="spawn" type="object" x="3283.03" y="1121.82" width="128" height="128">
    <properties>
     <property name="transition" value="lifestone-spawn"/>
    </properties>
