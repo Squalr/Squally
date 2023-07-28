@@ -143,6 +143,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[IOUDrop5::MapKey] = [=](ValueMap properties) { return (GameObject*)IOUDrop5::create(properties); };
 	this->deserializers[IOUDrop10::MapKey] = [=](ValueMap properties) { return (GameObject*)IOUDrop10::create(properties); };
 	this->deserializers[IOUDrop25::MapKey] = [=](ValueMap properties) { return (GameObject*)IOUDrop25::create(properties); };
+	this->deserializers[HackableWarp::MapKey] = [=](ValueMap properties) { return (GameObject*)HackableWarp::create(properties); };
 	this->deserializers[HeavenHug::MapKey] = [=](ValueMap properties) { return (GameObject*)HeavenHug::create(properties); };
 	this->deserializers[HellGate::MapKey] = [=](ValueMap properties) { return (GameObject*)HellGate::create(properties); };
 	this->deserializers[HelpTotemAttacking::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemAttacking::create(properties); };

@@ -11,6 +11,7 @@
 #include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
+#include "Engine/Localization/ConcatString.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
