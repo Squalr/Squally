@@ -9,10 +9,10 @@
 
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Input/ClickableHackNode.h"
 #include "Engine/Hackables/HackActivatedAbility.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
-#include "Engine/Hackables/HackButton.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Particles/SmartParticles.h"
@@ -37,7 +37,7 @@ HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 	this->uiElementsButton = Node::create();
 	this->uiElementsRain = Node::create();
 	this->uiElementsProgressBars = Node::create();
-	this->hackButton = LazyNode<HackButton>::create(CC_CALLBACK_0(HackableObject::buildHackButton, this));
+	this->hackButton = LazyNode<ClickableHackNode>::create(CC_CALLBACK_0(HackableObject::buildHackButton, this));
 	this->clippyMap = std::map<std::string, std::function<Clippy*()>>();
 	this->hackParticlesNode = Node::create();
 	this->enableHackerModeEvents = true;
@@ -507,9 +507,9 @@ void HackableObject::onDespawn()
 	this->unregisterAllHackables();
 }
 
-HackButton* HackableObject::buildHackButton()
+ClickableHackNode* HackableObject::buildHackButton()
 {
-	HackButton* instance = HackButton::create();
+	ClickableHackNode* instance = ClickableHackNode::create(UIResources::Menus_Buttons_HackButton, UIResources::Menus_Buttons_HackButtonHover);
 
 	instance->setVisible(false);
 

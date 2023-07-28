@@ -41,7 +41,7 @@ SquallyCameraFollowBehavior::~SquallyCameraFollowBehavior()
 
 void SquallyCameraFollowBehavior::onLoad()
 {
-	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventWarpToLocationPrefix + this->squally->getUniqueIdentifier(), [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventWarpToLocationPrefix + this->squally->getUniqueIdentifier(), [=](EventCustom* eventCustom)
 	{
 		CameraTrackingData* data = GameCamera::getInstance()->getCurrentTrackingData();
 
@@ -52,7 +52,7 @@ void SquallyCameraFollowBehavior::onLoad()
 	}));
 
 	// This event fires after squally is relayered properly after loading.
-	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventSquallySpawned, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventSquallySpawned, [=](EventCustom* eventCustom)
 	{
 		CameraTrackingData* data = GameCamera::getInstance()->getCurrentTrackingData();
 

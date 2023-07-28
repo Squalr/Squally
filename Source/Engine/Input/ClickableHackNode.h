@@ -2,14 +2,14 @@
 
 #include "Engine/Input/ClickableNode.h"
 
-class HackButton : public ClickableNode
+class ClickableHackNode : public ClickableNode
 {
 public:
-	static HackButton* create();
+	static ClickableHackNode* create(std::string resource, std::string resourceSelected);
 
 protected:
-	HackButton();
-	virtual ~HackButton();
+	ClickableHackNode(std::string resource, std::string resourceSelected);
+	virtual ~ClickableHackNode();
 	
 	void initializeListeners() override;
 	virtual void addEventListener(cocos2d::EventListenerCustom* listener) override;

@@ -8,7 +8,7 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/ObjectEvents.h"
-#include "Engine/Input/ClickableNode.h"
+#include "Engine/Input/ClickableHackNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Maps/MapLayer.h"
 #include "Engine/Physics/CollisionObject.h"
@@ -46,7 +46,7 @@ HackableWarp::HackableWarp(ValueMap& properties) : super(
 	Vec2::ZERO,
 	Color3B(16, 23, 57))
 {
-	this->warpHitbox = ClickableNode::create(ObjectResources::Interactive_Help_TotemGlow, ObjectResources::Interactive_Help_TotemGlow);
+	this->warpHitbox = ClickableHackNode::create(ObjectResources::Interactive_Help_TotemGlow, ObjectResources::Interactive_Help_TotemGlow);
 
 	this->setInteractType(InteractType::None);
 

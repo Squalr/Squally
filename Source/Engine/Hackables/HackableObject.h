@@ -9,12 +9,12 @@ namespace cocos2d
 	class Sprite;
 }
 
+class ClickableHackNode;
 class Clippy;
 class HackableBase;
 class HackableCode;
 class HackActivatedAbility;
 class HackablePreview;
-class HackButton;
 template <class T> class LazyNode;
 class ProgressBar;
 class SmartParticles;
@@ -75,7 +75,7 @@ private:
 	void createHackParticles();
 	void createHackCircle();
 	void moveUIToTopLayer();
-	HackButton* buildHackButton();
+	ClickableHackNode* buildHackButton();
 
 	cocos2d::Node* hackParticlesNode = nullptr;
 	SmartParticles* hackParticles1 = nullptr;
@@ -87,7 +87,7 @@ private:
 	cocos2d::Node* uiElementsButton = nullptr;
 	cocos2d::Node* uiElementsRain = nullptr;
 	cocos2d::Node* uiElementsProgressBars = nullptr;
-	LazyNode<HackButton>* hackButton = nullptr;
+	LazyNode<ClickableHackNode>* hackButton = nullptr;
 	std::vector<cocos2d::Sprite*> timeRemainingIcons;
 	std::vector<ProgressBar*> timeRemainingBars;
 	std::map<std::string, std::function<Clippy*()>> clippyMap;

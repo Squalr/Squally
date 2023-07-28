@@ -3,7 +3,7 @@
 
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 
-class ClickableNode;
+class ClickableHackNode;
 class LocalizedString;
 
 namespace cocos2d
@@ -34,5 +34,5 @@ private:
 
 	void doRelayer();
 
-	ClickableNode* warpHitbox = nullptr;
+	ClickableHackNode* warpHitbox = nullptr;
 };

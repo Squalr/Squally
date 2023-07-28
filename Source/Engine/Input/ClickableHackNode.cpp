@@ -1,4 +1,4 @@
-#include "HackButton.h"
+#include "ClickableHackNode.h"
 
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventCustom.h"
@@ -11,24 +11,25 @@
 
 using namespace cocos2d;
 
-HackButton* HackButton::create()
+ClickableHackNode* ClickableHackNode::create(std::string resource, std::string resourceSelected)
 {
-	HackButton* instance = new HackButton();
+	ClickableHackNode* instance = new ClickableHackNode(resource, resourceSelected);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HackButton::HackButton() : ClickableNode(Sprite::create(UIResources::Menus_Buttons_HackButton), Sprite::create(UIResources::Menus_Buttons_HackButtonHover))
+ClickableHackNode::ClickableHackNode(std::string resource, std::string resourceSelected)
+	: ClickableNode(Sprite::create(resource), Sprite::create(resourceSelected))
 {
 }
 
-HackButton::~HackButton()
+ClickableHackNode::~ClickableHackNode()
 {
 }
 
-void HackButton::addEventListener(cocos2d::EventListenerCustom* listener)
+void ClickableHackNode::addEventListener(cocos2d::EventListenerCustom* listener)
 {
 	static bool isWrappingCall = false;
 
@@ -47,7 +48,7 @@ void HackButton::addEventListener(cocos2d::EventListenerCustom* listener)
 	}
 }
 
-void HackButton::initializeListeners()
+void ClickableHackNode::initializeListeners()
 {
 	super::initializeListeners();
 
