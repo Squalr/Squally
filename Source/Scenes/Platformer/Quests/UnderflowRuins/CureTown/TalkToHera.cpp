@@ -19,6 +19,7 @@
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
+#include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
@@ -69,6 +70,11 @@ void TalkToHera::onLoad(QuestState questState)
 	ObjectEvents::WatchForObject<Hera>(this, [=](Hera* hera)
 	{
 		this->hera = hera;
+		
+		this->hera->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+		{
+			interactionBehavior->getMainDialogueSet()->dockToTop();
+		});
 		
 		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
 		{

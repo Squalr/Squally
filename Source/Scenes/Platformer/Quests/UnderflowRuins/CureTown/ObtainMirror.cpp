@@ -128,7 +128,6 @@ void ObtainMirror::runCinematicSequencePt2()
 		return;
 	}
 	
-	PlatformerEvents::TriggerHideMiniMap();
 	PlatformerEvents::TriggerCinematicHijack();
 
 	this->doBehaviorAttach = true;
@@ -240,7 +239,6 @@ void ObtainMirror::runCinematicSequencePt6()
 		),
 		[=]()
 		{
-			PlatformerEvents::TriggerShowMiniMap();
 		},
 		Voices::GetNextVoiceShort(),
 		true

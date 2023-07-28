@@ -22,6 +22,7 @@
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
+#include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/DataMines/LetterForThePrincess.h"
@@ -137,6 +138,8 @@ void TalkToPrincessDawn::enqueueGeckyDialogue()
 {
 	this->gecky->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
+		interactionBehavior->getMainDialogueSet()->dockToTop();
+		
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_DataMines_RestorePower_Gecky_A_Hi::create(),
 			DialogueEvents::DialogueVisualArgs(
@@ -162,6 +165,8 @@ void TalkToPrincessDawn::runCinematicSequencePt1()
 {
 	this->princessDawn->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
+		interactionBehavior->getMainDialogueSet()->dockToTop();
+		
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_DataMines_RestorePower_PrincessDawn_A_LetterForYou::create(),
 			DialogueEvents::DialogueVisualArgs(

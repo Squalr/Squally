@@ -26,6 +26,11 @@ DialogueSet::~DialogueSet()
 {
 }
 
+void DialogueSet::dockToTop()
+{
+	this->args.dialogueDock = DialogueBox::DialogueDock::Top;
+}
+
 DialogueOption* DialogueSet::addDialogueOption(DialogueOption* dialogueOption, float priority)
 {
 	if (dialogueOption != nullptr)

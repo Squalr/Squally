@@ -49,6 +49,7 @@ MiniMap::MiniMap()
 {
 	this->contentNode = Node::create();
 	this->rootNode = Node::create();
+	this->cinematicNode = Node::create();
 	this->mapNode = Node::create();
 	this->contentNode = Node::create();
 	this->mapClip = SmartClippingNode::create(this->mapNode, MiniMap::MiniMapSize);
@@ -66,12 +67,12 @@ MiniMap::MiniMap()
 	);
 
 	this->rootNode->setOpacity(0);
-
 	this->mapNode->setScale(MiniMap::MiniMapScale);
 	
-	this->rootNode->addChild(this->background);
-	this->rootNode->addChild(this->mapClip);
-	this->rootNode->addChild(this->contentNode);
+	this->cinematicNode->addChild(this->background);
+	this->cinematicNode->addChild(this->mapClip);
+	this->cinematicNode->addChild(this->contentNode);
+	this->rootNode->addChild(this->cinematicNode);
 	this->addChild(this->rootNode);
 }
 
@@ -119,6 +120,16 @@ void MiniMap::initializeListeners()
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventHideMiniMap, [=](EventCustom* eventCustom)
 	{
 		this->hide();
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventCinematicHijack, [=](EventCustom* eventCustom)
+	{
+		this->cinematicNode->runAction(FadeTo::create(0.25f, 0));
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventCinematicRestore, [=](EventCustom* eventCustom)
+	{
+		this->cinematicNode->runAction(FadeTo::create(0.25f, 255));
 	}));
 }
 

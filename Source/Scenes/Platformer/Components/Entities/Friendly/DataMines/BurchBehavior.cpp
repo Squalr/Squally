@@ -84,6 +84,8 @@ void BurchBehavior::refreshPreText()
 {
 	this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
+		interactionBehavior->getMainDialogueSet()->dockToTop();
+		
 		if (this->dialogueOption != nullptr)
 		{
 			interactionBehavior->getMainDialogueSet()->removeDialogueOption(this->dialogueOption);

@@ -147,8 +147,6 @@ void WindSpellbook::runCinematicSequencePart1()
 		this->marcel->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(this->marcelArrive).x));
 	}
 
-	PlatformerEvents::TriggerHideMiniMap();
-	
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_T_MoreOrcs::create(),
 		DialogueEvents::DialogueVisualArgs(
@@ -270,7 +268,6 @@ void WindSpellbook::runCinematicSequencePart6()
 			// Ensure he remains hijacked so that he continue his cinematic walk
 			this->marcel->setState(StateKeys::CinematicHijacked, Value(true));
 			this->complete();
-			PlatformerEvents::TriggerShowMiniMap();
 		},
 		Voices::GetNextVoiceMedium(),
 		true

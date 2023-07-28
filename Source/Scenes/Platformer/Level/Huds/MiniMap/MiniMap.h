@@ -45,6 +45,7 @@ protected:
 	void addLayerDeserializers(std::vector<LayerDeserializer*> layerDeserializers);
 
 	cocos2d::Node* rootNode = nullptr;
+	cocos2d::Node* cinematicNode = nullptr;
 	cocos2d::DrawNode* background = nullptr;
 	cocos2d::Node* mapNode = nullptr;
 	MiniGameMap* map = nullptr;

@@ -10,8 +10,10 @@
 #include "Engine/Physics/EnginePhysicsTypes.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Events/PlatformerEvents.h"
 #include "Menus/Interact/InteractMenu.h"
 #include "Objects/Platformer/Interactables/InteractObject.h"
+#include "Objects/Platformer/MiniMap/MiniMapRelocator.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -246,7 +248,7 @@ void EntityDialogueBehavior::showOptions()
 	std::vector<LocalizedString*> options = std::vector<LocalizedString*>();
 	std::vector<std::function<bool()>> callbacks = std::vector<std::function<bool()>>();
 	
-	for (auto next : dialogueOptions)
+	for (auto& next : dialogueOptions)
 	{
 		LocalizedString* dialogueOption = std::get<0>(next)->getDialogueOption();
 

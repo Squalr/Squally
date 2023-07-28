@@ -97,7 +97,7 @@
   </object>
   <object id="1012" name="egyptian-chest" type="object" x="2194.86" y="1134.97" width="128" height="128">
    <properties>
-    <property name="reward-pool" value="ur-rare"/>
+    <property name="reward-pool" value="dm-rare"/>
    </properties>
   </object>
  </objectgroup>

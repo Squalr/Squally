@@ -11,6 +11,7 @@ public:
 	static DialogueSet* create(DialogueEvents::DialogueVisualArgs args);
 
 	DialogueOption* addDialogueOption(DialogueOption* dialogueOption, float priority);
+	void dockToTop();
 	void removeAllDialogueOptions();
 	void removeDialogueOption(DialogueOption* dialogueOption);
 	std::vector<std::tuple<DialogueOption*, float>> getDialogueOptions();

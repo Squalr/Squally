@@ -125,8 +125,6 @@ void TalkToGrogg::onSkipped()
 
 void TalkToGrogg::runCinematicSequencePart1()
 {
-	PlatformerEvents::TriggerHideMiniMap();
-
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_FindElriel_Grogg_A_WhoDares::create(),
 		DialogueEvents::DialogueVisualArgs(
@@ -195,7 +193,6 @@ void TalkToGrogg::runCinematicSequencePart4()
 		[=]()
 		{
 			this->complete();
-			PlatformerEvents::TriggerShowMiniMap();
 			
 			this->kingGrogg->watchForComponent<GroggOutOfCombatAttackBehavior>([&](GroggOutOfCombatAttackBehavior* combatBehavior)
 			{

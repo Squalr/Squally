@@ -20,6 +20,7 @@
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
+#include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
@@ -133,6 +134,8 @@ void TalkToAmelia::runCinematicSequence()
 	
 	this->amelia->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
+		interactionBehavior->getMainDialogueSet()->dockToTop();
+		
 		// Pre-text chain
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_A_Bitten::create()
