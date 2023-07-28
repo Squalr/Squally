@@ -18,5 +18,5 @@ platform = "osx"
 
 [[actions]]
 name = "play"
-path = "LAUNCHER"
+path = "Squally"
 platform = "linux"

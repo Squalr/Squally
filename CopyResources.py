@@ -32,20 +32,25 @@ def copyResources():
     sourcePathPrivate = join(projectRoot, "Resources/Private/")
 
     if _platform == "win32" or _platform == "win64":
-        binRoot = abspath(join(realpath(__file__), "../build/bin/"))
+        binRoots = [abspath(join(realpath(__file__), "../build/bin/"))]
     elif _platform ==  "darwin":
-        binRoot = abspath(join(realpath(__file__), "../build/bin/Squally.app/Contents/"))
+        binRoots = [abspath(join(realpath(__file__), "../build/bin/Squally.app/Contents/"))]
     elif _platform ==  "linux2":
-        binRoot = abspath(join(realpath(__file__), "../build/bin/"))
+        binRoots = [abspath(join(realpath(__file__), "../build/bin/"))]
     
     if args.release:
-        binRoot = "G://.shortcut-targets-by-id/1ekuO4zIiSeWqZxLnf3Gy7XC3RwPz6UIW/SquallyFiles/SquallyDeploy/content/"
+        binRoots = [
+            "G://.shortcut-targets-by-id/1ekuO4zIiSeWqZxLnf3Gy7XC3RwPz6UIW/SquallyFiles/SquallyDeploy/content/MacOS/Squally.app/Contents/",
+            "G://.shortcut-targets-by-id/1ekuO4zIiSeWqZxLnf3Gy7XC3RwPz6UIW/SquallyFiles/SquallyDeploy/content/Linux/",
+            "G://.shortcut-targets-by-id/1ekuO4zIiSeWqZxLnf3Gy7XC3RwPz6UIW/SquallyFiles/SquallyDeploy/content/Windows/",
+        ]
     
-    destPathPublic = join(binRoot, "Resources/Public/")
-    destPathPrivate = join(binRoot, "Resources/Private/")
-    
-    doSync(sourcePathPublic, destPathPublic);
-    doSync(sourcePathPrivate, destPathPrivate);
+    for binRoot in binRoots:
+        destPathPublic = join(binRoot, "Resources/Public/")
+        destPathPrivate = join(binRoot, "Resources/Private/")
+        
+        doSync(sourcePathPublic, destPathPublic);
+        doSync(sourcePathPrivate, destPathPrivate);
 
 def doSync(source, dest):
     print("SYNCING: " + source + " => " + dest)
