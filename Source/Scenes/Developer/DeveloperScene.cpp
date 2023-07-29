@@ -91,7 +91,6 @@ DeveloperScene::DeveloperScene()
 		- v FF give demon grunt (scalding blade user) an add potion?
 		- v FF/DM(?) overworld archer attack SetPosition doesn't actually do anything as far as I can tell (see Demon Archer)
 		- v CV Mabel should look at Perceptron the entire patrol, or cower until he is gone
-		- v CV smelting pot broken in haunted map? seems weird. Actually I think a bug on deactivated behavior.
 		- v quick swap FX
 		- v quick warp FX
 		- v Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="115" nextobjectid="847">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="115" nextobjectid="847">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -91,7 +91,7 @@
   </object>
   <object id="840" name="chest" type="object" x="951.152" y="868.667" width="128" height="128">
    <properties>
-    <property name="reward-pool" value="dm-generic"/>
+    <property name="reward-pool" value="dm-godiva"/>
    </properties>
   </object>
   <object id="842" name="portal" type="object" x="643.691" y="424.658" width="256" height="256">
