@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="46" nextobjectid="635">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="46" nextobjectid="636">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -142,6 +142,11 @@
   <object id="634" name="squally" type="entity" x="840" y="6734" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
+   </properties>
+  </object>
+  <object id="635" name="hackable-warp" type="object" x="1120.85" y="6578.43" width="166" height="166">
+   <properties>
+    <property name="show-help-arrow" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>

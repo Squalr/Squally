@@ -54,6 +54,7 @@ protected:
 	void onHackerModeEnable() override;
 	void onHackerModeDisable() override;
 	void onDespawn() override;
+	virtual bool forceHackParticles();
 	void rebindUIElementsTo(cocos2d::Node* newParent);
 	void repositionHackButtons();
 	virtual void registerHackables();

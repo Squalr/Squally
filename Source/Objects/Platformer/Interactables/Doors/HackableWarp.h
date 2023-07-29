@@ -4,6 +4,7 @@
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 
 class ClickableHackNode;
+class HelpArrow;
 class LocalizedString;
 
 namespace cocos2d
@@ -27,6 +28,7 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	bool forceHackParticles() override;
 	void loadMap() override;
 
 private:
@@ -34,5 +36,9 @@ private:
 
 	void doRelayer();
 
+	bool showHelpArrow = false;
 	ClickableHackNode* warpHitbox = nullptr;
+	HelpArrow* helpArrow = nullptr;
+
+	static const std::string PropertyShowHelpArrow;
 };

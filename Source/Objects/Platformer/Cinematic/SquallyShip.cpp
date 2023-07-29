@@ -11,6 +11,7 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Camera/CameraTrackingData.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
@@ -156,8 +157,10 @@ void SquallyShip::initializePositions()
 	this->fireAnimation->setPosition(Vec2(112.0f, 32.0f));
 	this->fireRingAnimation->setPosition(Vec2(0.0f, 32.0f));
 	this->thrustAnimation->setPosition(Vec2(448.0f, 52.0f));
-	this->groundFireAnimation->setPosition(Vec2(-48.0f, -48.0f));
-	this->groundFireSmallAnimation->setPosition(Vec2(80.0f, -56.0f));
+
+	const float FireOffsetY = 0.0f;
+	this->groundFireAnimation->setPosition(Vec2(-48.0f, FireOffsetY));
+	this->groundFireSmallAnimation->setPosition(Vec2(80.0f, FireOffsetY - 8.0f));
 }
 
 void SquallyShip::initializeListeners()
@@ -182,6 +185,7 @@ void SquallyShip::runShipSequence()
 	this->runAction(Sequence::create(
 		CallFunc::create([=]()
 		{
+			HackableEvents::TriggerDisallowHackerMode();
 			this->mount(this->squally);
 			this->setMountDirection(MountBase::MountDirection::Left);
 			this->faceEntityTowardsDirection();
@@ -243,43 +247,57 @@ void SquallyShip::onCrash()
 		return;
 	}
 
-	AnimationPart* mouth = this->squally->getAnimations()->getAnimationPart("mouth");
+	this->runAction(Sequence::create(
+		CallFunc::create([=]()
+		{
+			// Force hacker mode enable for cinematic
+			HackableEvents::TriggerAllowHackerMode();
+			HackableEvents::TriggerHackerModeEnable(HackToggleArgs());
+			PlatformerEvents::TriggerCinematicRestore();
+			HackableEvents::TriggerDisallowHackerMode();
+		}),
+		DelayTime::create(0.1f),
+		CallFunc::create([=]()
+		{
+			AnimationPart* mouth = this->squally->getAnimations()->getAnimationPart("mouth");
 
-	if (mouth != nullptr)
-	{
-		mouth->reattachToTimeline();
-		mouth->setOffset(Vec2::ZERO);
-	}
+			if (mouth != nullptr)
+			{
+				mouth->reattachToTimeline();
+				mouth->setOffset(Vec2::ZERO);
+			}
 
-	this->rootNode->setRotation(0.0f);
-	this->dismountAll();
-	this->hasCrashed = true;
+			this->dismountAll();
+			this->hasCrashed = true;
 
-	GameCamera::getInstance()->getCurrentTrackingData()->followSpeed = this->originalFollowSpeed;
-	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyCrashed, Value(true));
-	SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
-	SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
-	SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyPositionZ);
-	SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyLayerId);
+			GameCamera::getInstance()->getCurrentTrackingData()->followSpeed = this->originalFollowSpeed;
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyCrashed, Value(true));
+			SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
+			SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
+			SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyPositionZ);
+			SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyLayerId);
 
-	squally->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
-	{
-		healthBehavior->setHealth(1);
-	});
+			squally->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+			{
+				healthBehavior->setHealth(1);
+			});
 
-	PlatformerEvents::TriggerCinematicRestore();
+			this->rootNode->setRotation(0.0f);
+			this->ship->setVisible(false);
+			
+			this->smokeAnimation->stopAnimation();
+			this->shipFireAnimation->stopAnimation();
+			this->fireAnimation->stopAnimation();
+			this->thrustAnimation->stopAnimation();
+			this->explodeAnimation->playAnimation(FXResources::ExplosionGround_ExplosionGround_0000, 0.05f, true);
+			this->groundFireAnimation->playAnimationRepeat(FXResources::FlameBig_FlameBig_0000, 0.05f);
+			this->groundFireSmallAnimation->playAnimationRepeat(FXResources::FlameSmall_FlameSmall_0000, 0.05f);
 
-	this->ship->setVisible(false);
-	
-	this->smokeAnimation->stopAnimation();
-	this->shipFireAnimation->stopAnimation();
-	this->fireAnimation->stopAnimation();
-	this->thrustAnimation->stopAnimation();
-	this->explodeAnimation->playAnimation(FXResources::ExplosionGround_ExplosionGround_0000, 0.05f, true);
-	this->groundFireAnimation->playAnimationRepeat(FXResources::FlameBig_FlameBig_0000, 0.05f);
-	this->groundFireSmallAnimation->playAnimationRepeat(FXResources::FlameSmall_FlameSmall_0000, 0.05f);
-
-	this->thrusterSound->stop();
-	this->crashSound->play();
-	this->fireSound->play(true);
+			this->thrusterSound->stop();
+			this->crashSound->play();
+			this->fireSound->play(true);
+			HackableEvents::TriggerAllowHackerMode();
+		}),
+		nullptr
+	));
 }

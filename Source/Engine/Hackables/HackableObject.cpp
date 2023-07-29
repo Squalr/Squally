@@ -264,14 +264,16 @@ void HackableObject::updateTimeRemainingBars()
 
 void HackableObject::refreshParticleFx()
 {
-	if (this->allowFx
-		&& this->isHackable
-		&& !this->hackableList.empty()
-		&& this->trackedHackables.empty()
-		&& std::any_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableBase* hackable)
-		{
-			return (hackable->getRequiredHackFlag() & HackableObject::HackFlags) == hackable->getRequiredHackFlag();
-		}))
+	if (this->forceHackParticles() ||
+		(this->allowFx
+			&& this->isHackable
+			&& !this->hackableList.empty()
+			&& this->trackedHackables.empty()
+			&& std::any_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableBase* hackable)
+			{
+				return (hackable->getRequiredHackFlag() & HackableObject::HackFlags) == hackable->getRequiredHackFlag();
+			})
+		))
 	{
 		this->createHackParticles();
 
@@ -505,6 +507,11 @@ void HackableObject::onDespawn()
 	super::onDespawn();
 
 	this->unregisterAllHackables();
+}
+
+bool HackableObject::forceHackParticles()
+{
+	return false;
 }
 
 ClickableHackNode* HackableObject::buildHackButton()
