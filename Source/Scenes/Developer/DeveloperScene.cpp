@@ -81,9 +81,8 @@ DeveloperScene::DeveloperScene()
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
 	- General:
-		- v Homes for:
-			- Emerald necklace (DM - Krampus drop? idk)
-			- Ruby necklace (FF)
+		- v Should add some sort of archery mini-game with jump shots or something in some town. Maybe FF.
+			- v Ruby necklace as a reward
 		- v scrolling down passed end in script editor cycles back to top
 		- v FF Asmodeus crowd should animate
 		- v FF enemy shadows wrong in 1st combat map
@@ -92,7 +91,6 @@ DeveloperScene::DeveloperScene()
 		- v FF maybe move mage tower to 1_x area eh?
 		- v LC terrain connectors in 3_x maps are offset baddly (which map?)
 		- v LC blue gem map feels empty. Traps?
-		- v LC zombie grasp hint is just the answer...
 		- v LC Daze script too long / needs hint
 		- v Make LC final 4_x maps less bad.
 		- v LC change dialogue for npc outside of crypts if has key
@@ -118,7 +116,6 @@ DeveloperScene::DeveloperScene()
 		- v Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)
 		- v More transmutes (perhaps custom UI to show a transmute wheel)
 			- v or just scrap transmutes, and add the ability to sell shit
-		- v Should add some sort of archery mini-game with jump shots or something in some town. Maybe FF.
 		- v EF Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
 		- v Hexus:
 			- v Can pass after auto-victory or loss (try it in a puzzle)

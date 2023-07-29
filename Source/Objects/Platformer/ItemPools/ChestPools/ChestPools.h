@@ -7,6 +7,7 @@
 #include "Objects/Platformer/ItemPools/ChestPools/DataMines/ChestPoolDMCoal.h"
 #include "Objects/Platformer/ItemPools/ChestPools/DataMines/ChestPoolDMDiamond.h"
 #include "Objects/Platformer/ItemPools/ChestPools/DataMines/ChestPoolDMGeneric.h"
+#include "Objects/Platformer/ItemPools/ChestPools/DataMines/ChestPoolDMGodiva.h"
 #include "Objects/Platformer/ItemPools/ChestPools/DataMines/ChestPoolDMGold.h"
 #include "Objects/Platformer/ItemPools/ChestPools/DataMines/ChestPoolDMRare.h"
 #include "Objects/Platformer/ItemPools/ChestPools/EndianForest/ChestPoolEFAra.h"

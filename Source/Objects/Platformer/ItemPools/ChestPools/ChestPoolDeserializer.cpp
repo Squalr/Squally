@@ -47,6 +47,7 @@ ChestPoolDeserializer::ChestPoolDeserializer() : super(ChestPoolDeserializer::Ma
 	this->deserializers[ChestPoolDMCoal::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolDMCoal::create(properties); };
 	this->deserializers[ChestPoolDMDiamond::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolDMDiamond::create(properties); };
 	this->deserializers[ChestPoolDMGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolDMGeneric::create(properties); };
+	this->deserializers[ChestPoolDMGodiva::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolDMGodiva::create(properties); };
 	this->deserializers[ChestPoolDMGold::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolDMGold::create(properties); };
 	this->deserializers[ChestPoolDMRare::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolDMRare::create(properties); };
 
