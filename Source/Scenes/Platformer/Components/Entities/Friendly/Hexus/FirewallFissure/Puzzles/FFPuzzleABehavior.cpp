@@ -66,7 +66,7 @@ StateOverride* FFPuzzleABehavior::getStateOverride()
 		// Player's turn
 		true,
 		// Player passed
-		true,
+		false,
 		// Enemy passed
 		false,
 		// Player deck

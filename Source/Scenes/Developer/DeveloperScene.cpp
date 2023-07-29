@@ -83,6 +83,10 @@ DeveloperScene::DeveloperScene()
 	- General:
 		- v Should add some sort of archery mini-game with jump shots or something in some town. Maybe FF.
 			- v Ruby necklace as a reward
+			- v Maybe horde against:
+				- v Skeletal Warrior / Archer / Necromancer
+				- v Orc Grunt / Warrior / Swordsman 
+				- v Earth Golem
 		- v scrolling down passed end in script editor cycles back to top
 		- v FF Asmodeus crowd should animate
 		- v FF enemy shadows wrong in 1st combat map
@@ -118,10 +122,7 @@ DeveloperScene::DeveloperScene()
 			- v or just scrap transmutes, and add the ability to sell shit
 		- v EF Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
 		- v Hexus:
-			- v Can pass after auto-victory or loss (try it in a puzzle)
-			- v Can sneak in last-stand after placing your turn cards
 			- v Leave button stuck visible after losing a puzzle
-			- v Enemy should pre-calc the best play when player has passed (hard, wontfix?)
 			- v It'd be nice to get SHL from the puzzle where you learn it. I guess just tailored pools or something. May scrap this.
 		
 	- Localization / Scripting:

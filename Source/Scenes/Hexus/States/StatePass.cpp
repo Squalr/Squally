@@ -222,7 +222,10 @@ void StatePass::initializePositions()
 
 void StatePass::onPassClick(GameState* gameState)
 {
-	GameState::updateState(gameState, GameState::StateType::Pass);
+	if (gameState->stateType == GameState::StateType::Neutral)
+	{
+		GameState::updateState(gameState, GameState::StateType::Pass);
+	}
 }
 
 void StatePass::hideAndDisableAllButtons()
@@ -269,7 +272,15 @@ void StatePass::enablePassButtonInteraction(GameState* gameState)
 	this->passButton->setMouseClickCallback(CC_CALLBACK_0(StatePass::onPassClick, this, gameState));
 	this->passButton->setMouseOverCallback(CC_CALLBACK_0(StatePass::onPassMouseOver, this));
 	this->passButton->setMouseOutCallback(CC_CALLBACK_0(StatePass::onPassMouseOut, this));
-	this->passButton->enableInteraction();
+
+	if (gameState->stateType == GameState::StateType::Neutral && !gameState->playerPassed)
+	{
+		this->passButton->enableInteraction();
+	}
+	else
+	{
+		this->passButton->disableInteraction();
+	}
 }
 
 void StatePass::enableLastStandButtonInteraction(GameState* gameState)
@@ -277,7 +288,15 @@ void StatePass::enableLastStandButtonInteraction(GameState* gameState)
 	this->lastStandButton->setMouseClickCallback(CC_CALLBACK_0(StatePass::onPassClick, this, gameState));
 	this->lastStandButton->setMouseOverCallback(CC_CALLBACK_0(StatePass::onLastStandMouseOver, this));
 	this->lastStandButton->setMouseOutCallback(CC_CALLBACK_0(StatePass::onLastStandMouseOut, this));
-	this->lastStandButton->enableInteraction();
+
+	if (gameState->stateType == GameState::StateType::Neutral && !gameState->playerPassed)
+	{
+		this->lastStandButton->enableInteraction();
+	}
+	else
+	{
+		this->lastStandButton->disableInteraction();
+	}
 }
 
 void StatePass::enableClaimVictoryButtonInteraction(GameState* gameState)
@@ -285,7 +304,15 @@ void StatePass::enableClaimVictoryButtonInteraction(GameState* gameState)
 	this->claimVictoryButton->setMouseClickCallback(CC_CALLBACK_0(StatePass::onPassClick, this, gameState));
 	this->claimVictoryButton->setMouseOverCallback(CC_CALLBACK_0(StatePass::onClaimVictoryMouseOver, this));
 	this->claimVictoryButton->setMouseOutCallback(CC_CALLBACK_0(StatePass::onClaimVictoryMouseOut, this));
-	this->claimVictoryButton->enableInteraction();
+
+	if (gameState->stateType == GameState::StateType::Neutral && !gameState->playerPassed)
+	{
+		this->claimVictoryButton->enableInteraction();
+	}
+	else
+	{
+		this->claimVictoryButton->disableInteraction();
+	}
 }
 
 void StatePass::showPassButton()
@@ -410,28 +437,6 @@ void StatePass::onAfterAnyStateChange(GameState* gameState)
 
 			break;
 		}
-		case GameState::StateType::Neutral:
-		case GameState::StateType::SelectionStaged:
-		case GameState::StateType::CombineStaged:
-		{
-			if (gameState->turn == GameState::Turn::Player)
-			{
-				if (gameState->isPlayerLastStandCondition())
-				{
-					this->enableLastStandButtonInteraction(gameState);
-				}
-				else if (gameState->isPlayerClaimVictoryCondition())
-				{
-					this->enableClaimVictoryButtonInteraction(gameState);
-				}
-				else
-				{
-					this->enablePassButtonInteraction(gameState);
-				}
-			}
-
-			break;
-		}
 		default:
 		{
 			// Dynamically show the correct user button, if they have not already clicked pass
@@ -470,6 +475,22 @@ void StatePass::onAfterAnyStateChange(GameState* gameState)
 			}
 
 			break;
+		}
+	}
+
+	if (gameState->turn == GameState::Turn::Player)
+	{
+		if (gameState->isPlayerLastStandCondition())
+		{
+			this->enableLastStandButtonInteraction(gameState);
+		}
+		else if (gameState->isPlayerClaimVictoryCondition())
+		{
+			this->enableClaimVictoryButtonInteraction(gameState);
+		}
+		else
+		{
+			this->enablePassButtonInteraction(gameState);
 		}
 	}
 }

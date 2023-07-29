@@ -73,7 +73,7 @@ StateOverride* LCPuzzleBBehavior::getStateOverride()
 		// Player's turn
 		true,
 		// Player passed
-		true,
+		false,
 		// Enemy passed
 		true,
 		// Player deck
