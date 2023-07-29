@@ -6,6 +6,7 @@
 class ClickableHackNode;
 class HelpArrow;
 class LocalizedString;
+class Sound;
 
 namespace cocos2d
 {
@@ -39,6 +40,7 @@ private:
 	bool showHelpArrow = false;
 	ClickableHackNode* warpHitbox = nullptr;
 	HelpArrow* helpArrow = nullptr;
+	Sound* warpSfx = nullptr;
 
 	static const std::string PropertyShowHelpArrow;
 };

@@ -106,9 +106,6 @@ DeveloperScene::DeveloperScene()
 		- v Maybe HP pots in combat should self-target initally?
 		- v Maybe interact with helper to revive after holy spellbook?
 		- v Can probably use Silver for more craft recipes
-		- v Maybe some storyline for introducing powers
-			- v Some hack abilities like "warp to this location" could be cool. Would need to be a specific landmark available in hack mode.
-				- In fact, can use this as a way to force escaping the ship.
 		- v Could scrap hack button, and instead show [1] button keys (ideally with art), and sort them by distance to squally
 			- v could click OR press the button to activate
 		- v Wand energy bolt literally does an attack anim and nothing

@@ -16,6 +16,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableHackNode.h"
 #include "Engine/Localization/ConstantString.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/Maps/MapLayer.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/UI/Controls/HelpArrow.h"
@@ -32,6 +33,7 @@
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/ObjectResources.h"
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Strings.h"
@@ -58,7 +60,8 @@ HackableWarp::HackableWarp(ValueMap& properties) : super(
 {
 	this->warpHitbox = ClickableHackNode::create(ObjectResources::Interactive_Help_TotemGlow, ObjectResources::Interactive_Help_TotemGlow);
 	this->showHelpArrow = GameUtils::getKeyOrDefault(this->properties, HackableWarp::PropertyShowHelpArrow, Value(false)).asBool();
-	
+	this->warpSfx = Sound::create(SoundResources::Platformer_FX_Woosh_WooshFire2);
+
 	// No need to create if disabled
 	if (this->showHelpArrow)
 	{
@@ -72,6 +75,7 @@ HackableWarp::HackableWarp(ValueMap& properties) : super(
 	this->warpHitbox->disableInteraction();
 
 	this->addChild(this->warpHitbox);
+	this->addChild(this->warpSfx);
 
 	if (this->showHelpArrow)
 	{
@@ -119,6 +123,7 @@ void HackableWarp::initializeListeners()
 
 	this->warpHitbox->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
+		this->warpSfx->play();
 		this->doRelayer();
 		PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(this->squally, GameUtils::getWorldCoords3D(this), false));
 	});
