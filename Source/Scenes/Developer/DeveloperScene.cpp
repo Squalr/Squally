@@ -80,64 +80,80 @@ DeveloperScene::DeveloperScene()
 		- * Sky Tower (tri l/r/m)		=> Tiger's Bane (Special: Faster Movement)
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
-	- General:
+	- Easy wins:
+		- v LC change dialogue for npc outside of crypts if has key
+		- v FF enemy shadows wrong in 1st combat map
+
+	- Medium wins:
+		- v scrolling down passed end in script editor cycles back to top
+		- v CV some indicator of remaining souls
+		- v FF Asmodeus crowd should animate
+		- v FF give demon grunt (scalding blade user) an add potion?
+		- v FF/DM(?) overworld archer attack SetPosition doesn't actually do anything as far as I can tell (see Demon Archer)
+		- v CV Mabel should look at Perceptron the entire patrol, or cower until he is gone
+		- v CV smelting pot broken in haunted map? seems weird. Actually I think a bug on deactivated behavior.
+		- v quick swap FX
+		- v quick warp FX
+		- v Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)
+		- v Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)
+		- v LC terrain connectors in 3_x maps are offset baddly (which map?)
+		- v Maybe HP pots in combat should self-target initally?
+		- v Can probably use Silver for more craft recipes
+		- v Wand energy bolt literally does an attack anim and nothing
+		- v EF Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
+
+	- Hard wins:
+		- v maybe stat deltas on equipment in craft menu
+		- v Maybe interact with helper to revive after holy spellbook?
 		- v Should add some sort of archery mini-game with jump shots or something in some town. Maybe FF.
 			- v Ruby necklace as a reward
-			- v Maybe horde against:
+			- v Maybe horde against 3Q perspective:
 				- v Skeletal Warrior / Archer / Necromancer
 				- v Orc Grunt / Warrior / Swordsman 
 				- v Earth Golem
-		- v scrolling down passed end in script editor cycles back to top
-		- v FF Asmodeus crowd should animate
-		- v FF enemy shadows wrong in 1st combat map
-		- v FF give demon grunt (scalding blade user) an add potion?
-		- v FF/DM(?) overworld archer attack SetPosition doesn't actually do anything as far as I can tell (see Demon Archer)
 		- v FF maybe move mage tower to 1_x area eh?
-		- v LC terrain connectors in 3_x maps are offset baddly (which map?)
 		- v LC blue gem map feels empty. Traps?
 		- v LC Daze script too long / needs hint
 		- v Make LC final 4_x maps less bad.
-		- v LC change dialogue for npc outside of crypts if has key
-		- v CV some indicator of remaining souls
 		- v CV 2_x maps feels unfinished
-		- v CV Mabel should look at Perceptron the entire patrol, or cower until he is gone
-		- v CV smelting pot broken in haunted map? seems weird. Actually I think a bug on deactivated behavior.
 		- v DM show collision on ship map mini-map
 		- v DM binary puzzle area is shitty imo
 		- v UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
-		- v Maybe HP pots in combat should self-target initally?
-		- v Maybe interact with helper to revive after holy spellbook?
-		- v Can probably use Silver for more craft recipes
 		- v Could scrap hack button, and instead show [1] button keys (ideally with art), and sort them by distance to squally
 			- v could click OR press the button to activate
-		- v Wand energy bolt literally does an attack anim and nothing
-		- v quick swap FX
-		- v quick warp FX
-		- v maybe stat deltas on equipment in craft menu
 		- v Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
 			- v If we keep them -- EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
-		- v Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)
-		- v Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)
 		- v More transmutes (perhaps custom UI to show a transmute wheel)
 			- v or just scrap transmutes, and add the ability to sell shit
-		- v EF Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
-		- v Hexus:
-			- v Leave button stuck visible after losing a puzzle
-			- v It'd be nice to get SHL from the puzzle where you learn it. I guess just tailored pools or something. May scrap this.
-		
-	- Localization / Scripting:
 		- * Lexicon is largely incomplete
 			- * Fill out descriptions without samples first
-		- add examples are half broken (highlighting)
-		- push example doesn't refresh highlighting on click
+		- v Lexicon add examples are half broken (highlighting)
+		- v Lexicon push example doesn't refresh highlighting on click
 		- * Arrow keys in large scripts should auto-scroll if cursor goes out of visible text range
 		- * Multi-line comments in scripts can cause line counter to become disrupted
 		- * Should really expand scripting text editor
 			- * Support click-to-place cursor
 		- v CodeWindow::NumberColor not applied to negatives (bad token splitting)
-		- v User-made script titles can go TOFU upon language change. Wontfix? Save original language, and reset to current if the user clears the title?
-		- v If ever re-instating Arabic, Ctrl+F all "ar": "! and "ar": ". strings to find places where punctuation was messed up and fix them
-		- v If ever re-instating Arabic, probably force English for scripting. Mixing RTL and LTR language is awful. Or use Arabic romanization.
+		
+	- Asset updates:
+		- v Enemy anims for getting hit
+		- v Enemy death sounds
+		- v Enemy anims for combat begin (temporarily pausing timeline)
+		- v Enemy combat begin sounds
+		- v SFX pass
+			- v All defend variants
+		- v Unique icons for all spells
+		- v More passes on music. Probably need more overworld. Far and Away / Sunset once I get access.
+	
+	- Mini-games:
+		- v Cipher:
+			* Reinstate? What's the new play? Asm? Macro magic to avoid emulation (store state to a struct after each instruction).
+				- Probably like Hexus puzzles, with preset C++ classes rather than map-property defined.
+		- v P-Trace:
+			- Reinstate? What's the new play? Can this be that circuit game I was thinking? Maybe can flip circuit switches to incentivize using brain
+			- isometric squally, and some form of strategy element that isn't prone to trial-and-error.
+				- Another play is to make these actual "maps" that you can pass through.
+			- Could make a mini-game in towns? Inns? Where? Maybe just one machine in a zone of my choosing? (I kinda prefer DM or CV)
 	
 	- * BP Zone
 		- * Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
@@ -150,18 +166,8 @@ DeveloperScene::DeveloperScene()
 		- * Needs enemy scripting according to notes on which instructions this zone covers
 		- * Frost SpellBook (?? / ??)
 		- * BP, somewhere				=> Frost Axe unused item
-		
-	- Large asset updates:
-		- v Enemy anims for getting hit
-		- v Enemy death sounds
-		- v Enemy anims for combat begin (temporarily pausing timeline)
-		- v Enemy combat begin sounds
-		- v SFX pass
-			- v All defend variants
-		- v Unique icons for all spells
-		- v More passes on music. Probably need more overworld. Far and Away / Sunset once I get access.
 
-	- Very Low prio:
+	- Low prio:
 		- v Fix terrain connectors
 			- v Frost
 			- v Marble [Dark too]
@@ -172,18 +178,9 @@ DeveloperScene::DeveloperScene()
 			- v Tiki anims still broken (bad Spriter implementation strikes again)
 			- v Train anims broken (for same reason)
 		- v Missing squally breath bubbles
-	
-	- New Content:
-		- v A few 3Q Perspective maps
-			- Invisible helpers. Some way to pull helpers into combat
-		- v Cipher:
-			* Reinstate? What's the new play? Asm? Macro magic to avoid emulation (store state to a struct after each instruction).
-				- Probably like Hexus puzzles, with preset C++ classes rather than map-property defined.
-		- v P-Trace:
-			- Reinstate? What's the new play? Can this be that circuit game I was thinking? Maybe can flip circuit switches to incentivize using brain
-			- isometric squally, and some form of strategy element that isn't prone to trial-and-error.
-				- Another play is to make these actual "maps" that you can pass through.
-			- Could make a mini-game in towns? Inns? Where? Maybe just one machine in a zone of my choosing? (I kinda prefer DM or CV)
+		- v User-made script titles can go TOFU upon language change. Wontfix? Save original language, and reset to current if the user clears the title?
+		- v If ever re-instating Arabic, Ctrl+F all "ar": "! and "ar": ". strings to find places where punctuation was messed up and fix them
+		- v If ever re-instating Arabic, probably force English for scripting. Mixing RTL and LTR language is awful. Or use Arabic romanization.
 	*/
 
 	// CHAPTER 1 - Mov/add/sub/inc/dec/div/mul + AND Puzzle
