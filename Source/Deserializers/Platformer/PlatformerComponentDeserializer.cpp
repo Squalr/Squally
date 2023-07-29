@@ -33,6 +33,7 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[EntityFloatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)EntityFloatBehavior::create(owner); };
 	this->componentDeserializers[EntityHauntedBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)EntityHauntedBehavior::create(owner); };
 	this->componentDeserializers[EntityNoGravityBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)EntityNoGravityBehavior::create(owner); };
+	this->componentDeserializers[EntityKillableBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)EntityKillableBehavior::create(owner); };
 	this->componentDeserializers[EntityPacingBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)EntityPacingBehavior::create(owner); };
 	this->componentDeserializers[EntityPetrificationBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)EntityPetrificationBehavior::create(owner); };
 	this->componentDeserializers[EntityPickPocketBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)EntityPickPocketBehavior::create(owner); };

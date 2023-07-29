@@ -5,7 +5,9 @@
 #include "MapResources.h"
 #include <string>
 
+const std::string MapResources::BallmerPeaks_Combat_Snow = "Public/Platformer/Maps/BallmerPeaks/Combat_Snow.tmx";
 const std::string MapResources::BallmerPeaks_Town_Alch = "Public/Platformer/Maps/BallmerPeaks/Town_Alch.tmx";
+const std::string MapResources::BallmerPeaks_Town_Hall = "Public/Platformer/Maps/BallmerPeaks/Town_Hall.tmx";
 const std::string MapResources::BallmerPeaks_Town_Inn = "Public/Platformer/Maps/BallmerPeaks/Town_Inn.tmx";
 const std::string MapResources::BallmerPeaks_Town_Main = "Public/Platformer/Maps/BallmerPeaks/Town_Main.tmx";
 const std::string MapResources::BallmerPeaks_Town_Smith = "Public/Platformer/Maps/BallmerPeaks/Town_Smith.tmx";
