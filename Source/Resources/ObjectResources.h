@@ -528,6 +528,7 @@ namespace ObjectResources
 	extern const std::string Interactive_Help_QuestionMark;
 	extern const std::string Interactive_Help_QuestionMarkDisabled;
 	extern const std::string Interactive_Help_TotemGlow;
+	extern const std::string Interactive_Help_WarpShrine;
 	extern const std::string Interactive_HexusShrine_Jigsaw;
 	extern const std::string Interactive_HexusShrine_JigsawCompleted;
 	extern const std::string Interactive_HexusShrine_Shrine;

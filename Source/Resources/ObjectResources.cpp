@@ -527,6 +527,7 @@ const std::string ObjectResources::Interactive_Help_Question = "Private/Platform
 const std::string ObjectResources::Interactive_Help_QuestionMark = "Private/Platformer/Objects/Interactive/Help/QuestionMark.png";
 const std::string ObjectResources::Interactive_Help_QuestionMarkDisabled = "Private/Platformer/Objects/Interactive/Help/QuestionMarkDisabled.png";
 const std::string ObjectResources::Interactive_Help_TotemGlow = "Private/Platformer/Objects/Interactive/Help/TotemGlow.png";
+const std::string ObjectResources::Interactive_Help_WarpShrine = "Private/Platformer/Objects/Interactive/Help/WarpShrine.png";
 const std::string ObjectResources::Interactive_HexusShrine_Jigsaw = "Private/Platformer/Objects/Interactive/HexusShrine/Jigsaw.png";
 const std::string ObjectResources::Interactive_HexusShrine_JigsawCompleted = "Private/Platformer/Objects/Interactive/HexusShrine/JigsawCompleted.png";
 const std::string ObjectResources::Interactive_HexusShrine_Shrine = "Private/Platformer/Objects/Interactive/HexusShrine/Shrine.png";

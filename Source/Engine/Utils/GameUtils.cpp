@@ -382,17 +382,17 @@ CRect GameUtils::getScreenBounds(Node* node, const CSize& padding, bool checkFor
 	nodeCoords.x -= padding.width;
 	nodeCoords.y -= padding.height;
 	
-	return GameUtils::getScreenBounds(nodeCoords, node->getContentSize()*  GameUtils::getUniformScale(node) + padding*  2.0f);
+	return GameUtils::getScreenBounds(nodeCoords, node->getContentSize() *  GameUtils::getUniformScale(node) + padding*  2.0f);
 }
 
-CRect GameUtils::getScreenBounds(const Vec3& position, const CSize& size)
+CRect GameUtils::getScreenBounds(const Vec3& position, const CSize& size, Vec2 anchor)
 {
 	if (Camera::getDefaultCamera() == nullptr)
 	{
 		return CRect::ZERO;
 	}
 
-	Vec3 rightEdgeCoords = position + Vec3(size.width, size.height, 0.0f);
+	Vec3 rightEdgeCoords = position + Vec3(size.width * (1.0f - anchor.x), size.height * (1.0f - anchor.y), 0.0f);
 
 	Vec2 projectedLeftEdge = Camera::getDefaultCamera()->projectGL(position);
 	Vec2 projectedRightEdge = Camera::getDefaultCamera()->projectGL(rightEdgeCoords);

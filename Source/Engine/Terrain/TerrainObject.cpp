@@ -1074,9 +1074,11 @@ void TerrainObject::optimizationHideOffscreenTerrain()
 	static const CRect CameraRect = CRect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
 
 	this->updateCachedCoords();
-	CRect thisRect = GameUtils::getScreenBounds(this->cachedCoords - PaddingVec / 2.0f, drawRect.size + Padding / 2.0f);
+	CRect thisRect = GameUtils::getScreenBounds(this->cachedCoords, drawRect.size + Padding);
 
-	if (CameraRect.intersectsRect(thisRect))
+	// Just check horizontal component, since levels are pretty horizontal.
+	// Also vertical check math is kinda broken, so lazy fix.
+	if (CameraRect.getMaxX() >= thisRect.getMinX() && thisRect.getMaxX() >= CameraRect.getMinX())
 	{
 		this->rootNode->setVisible(true);
 	}
