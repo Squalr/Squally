@@ -84,7 +84,6 @@ DeveloperScene::DeveloperScene()
 		- v CV some indicator of remaining souls
 		- v FF Asmodeus crowd should animate
 		- v FF give demon grunt (scalding blade user) an add potion?
-		- v FF/DM(?) overworld archer attack SetPosition doesn't actually do anything as far as I can tell (see Demon Archer)
 		- v CV Mabel should look at Perceptron the entire patrol, or cower until he is gone
 		- v quick swap FX
 		- v quick warp FX

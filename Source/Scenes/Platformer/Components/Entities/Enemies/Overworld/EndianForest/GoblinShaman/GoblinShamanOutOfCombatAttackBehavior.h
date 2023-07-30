@@ -33,6 +33,7 @@ private:
 	float getOutOfCombatAttackSustain() override;
 	float getOutOfCombatAttackCooldown() override;
 	float getProjectileLifetime() override;
+	cocos2d::Vec2 getProjectileSpawnOffset() override;
 	
 	SmartAnimationSequenceNode* shadowBolt = nullptr;
 	PlatformerEnemy* goblinShaman = nullptr;

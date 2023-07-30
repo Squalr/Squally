@@ -109,6 +109,16 @@ float GoblinShamanOutOfCombatAttackBehavior::getProjectileLifetime()
 	return 3.0f;
 }
 
+Vec2 GoblinShamanOutOfCombatAttackBehavior::getProjectileSpawnOffset()
+{
+	if (this->goblinShaman != nullptr)
+	{
+		return Vec2(this->goblinShaman->isFlippedX() ? -128.0f : 128.0f, -8.0f);
+	}
+
+	return Vec2::ZERO;
+}
+
 Projectile* GoblinShamanOutOfCombatAttackBehavior::createProjectile()
 {
 	if (this->goblinShaman == nullptr || this->agroBehavior == nullptr || this->agroBehavior->getAgroTarget() == nullptr)
@@ -117,8 +127,6 @@ Projectile* GoblinShamanOutOfCombatAttackBehavior::createProjectile()
 	}
 
 	OverworldShadowBolt* projectile = OverworldShadowBolt::create();
-	
-	shadowBolt->setPosition3D(Vec3((this->goblinShaman->isFlippedX() ? -276.0f : 276.0f), 144.0f, 0.0f));
 	
 	projectile->setMovementMode(Projectile::MovementMode::RotationVelocity);
 	projectile->setProjectileRotation(this->goblinShaman->isFlippedX() ? 180.0f + -10.0f : 10.0f);

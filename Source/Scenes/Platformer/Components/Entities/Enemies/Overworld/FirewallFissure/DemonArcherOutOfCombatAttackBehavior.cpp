@@ -107,6 +107,16 @@ float DemonArcherOutOfCombatAttackBehavior::getProjectileLifetime()
 	return 3.0f;
 }
 
+Vec2 DemonArcherOutOfCombatAttackBehavior::getProjectileSpawnOffset()
+{
+	if (this->demonArcher != nullptr)
+	{
+		return Vec2(this->demonArcher->isFlippedX() ? -128.0f : 128.0f, -8.0f);
+	}
+
+	return Vec2::ZERO;
+}
+
 Projectile* DemonArcherOutOfCombatAttackBehavior::createProjectile()
 {
 	if (this->demonArcher == nullptr || this->agroBehavior == nullptr || this->agroBehavior->getAgroTarget() == nullptr)
@@ -116,7 +126,6 @@ Projectile* DemonArcherOutOfCombatAttackBehavior::createProjectile()
 
 	OverworldArrow* projectile = OverworldArrow::create(this->demonArcher, EntityResources::Enemies_FirewallFissure_DemonArcher_ARROW_2, 0.0f);
 	
-	projectile->setPosition3D(Vec3((this->demonArcher->isFlippedX() ? -276.0f : 276.0f), 144.0f, 0.0f));
 	projectile->setMovementMode(Projectile::MovementMode::Kinematic);
 
 	return projectile;

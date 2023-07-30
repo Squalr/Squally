@@ -107,6 +107,16 @@ float SkeletalArcherOutOfCombatAttackBehavior::getProjectileLifetime()
 	return 3.0f;
 }
 
+Vec2 SkeletalArcherOutOfCombatAttackBehavior::getProjectileSpawnOffset()
+{
+	if (this->skeletalArcher != nullptr)
+	{
+		return Vec2(this->skeletalArcher->isFlippedX() ? -128.0f : 128.0f, -8.0f);
+	}
+
+	return Vec2::ZERO;
+}
+
 Projectile* SkeletalArcherOutOfCombatAttackBehavior::createProjectile()
 {
 	if (this->skeletalArcher == nullptr || this->agroBehavior == nullptr || this->agroBehavior->getAgroTarget() == nullptr)
@@ -116,7 +126,6 @@ Projectile* SkeletalArcherOutOfCombatAttackBehavior::createProjectile()
 
 	OverworldArrow* projectile = OverworldArrow::create(this->skeletalArcher, EntityResources::Enemies_DataMines_SkeletalArcher_ARROW, 90.0f);
 	
-	projectile->setPosition3D(Vec3((this->skeletalArcher->isFlippedX() ? -276.0f : 276.0f), 144.0f, 0.0f));
 	projectile->setMovementMode(Projectile::MovementMode::Kinematic);
 
 	return projectile;
