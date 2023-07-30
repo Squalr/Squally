@@ -21979,6 +21979,32 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx() = default;
 	};
 
+	class Menus_Hacking_Objects_SuperiorHealthFlask_AddHealth_AddHealth : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Objects_SuperiorHealthFlask_AddHealth_AddHealth();
+		virtual ~Menus_Hacking_Objects_SuperiorHealthFlask_AddHealth_AddHealth() = default;
+	};
+
+	class Menus_Hacking_Objects_SuperiorHealthFlask_AddHealth_RegisterEdi : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Objects_SuperiorHealthFlask_AddHealth_RegisterEdi();
+		virtual ~Menus_Hacking_Objects_SuperiorHealthFlask_AddHealth_RegisterEdi() = default;
+	};
+
 	class Menus_Hacking_Objects_Wind_SetWindSpeed_CommentModify : public LocalizedString
 	{
 	public:

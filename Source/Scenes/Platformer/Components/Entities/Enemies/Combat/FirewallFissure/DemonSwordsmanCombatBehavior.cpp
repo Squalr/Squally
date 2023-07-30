@@ -7,6 +7,7 @@
 #include "Scenes/Platformer/Components/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/ScaldingBlade/CastScaldingBlade.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Abilities/BasicSlash/BasicSlash.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/SuperiorHealthFlask/SuperiorHealthFlask.h"
 
 #include "Resources/UIResources.h"
 
@@ -59,6 +60,7 @@ void DemonSwordsmanCombatBehavior::onLoad()
 
 		if (inventory != nullptr)
 		{
+			inventory->forceInsert(SuperiorHealthFlask::create());
 		}
 	});
 }

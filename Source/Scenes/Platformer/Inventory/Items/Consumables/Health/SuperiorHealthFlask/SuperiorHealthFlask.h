@@ -19,7 +19,7 @@ public:
 	const std::string& getIdentifier() override;
 
 	static const std::string SaveKey;
-	static const float HealPercentage;
+	static const int HealTicks;
 
 protected:
 	SuperiorHealthFlask();

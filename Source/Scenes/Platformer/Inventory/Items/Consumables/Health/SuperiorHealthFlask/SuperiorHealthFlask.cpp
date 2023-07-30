@@ -7,7 +7,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion/ThrowHealthPotion.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/SuperiorHealthFlask/ThrowSuperiorHealthFlask.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/ItemResources.h"
@@ -18,7 +18,7 @@
 using namespace cocos2d;
 
 const std::string SuperiorHealthFlask::SaveKey = "superior-health-flask";
-const float SuperiorHealthFlask::HealPercentage = 1.0f;
+const int SuperiorHealthFlask::HealTicks = 4;
 
 SuperiorHealthFlask* SuperiorHealthFlask::create()
 {
@@ -29,8 +29,7 @@ SuperiorHealthFlask* SuperiorHealthFlask::create()
 	return instance;
 }
 
-// Note: No rubber-banding, as these are to be considered a rare item
-SuperiorHealthFlask::SuperiorHealthFlask() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 45 }}), ItemMeta(20), true)
+SuperiorHealthFlask::SuperiorHealthFlask() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(20, RubberBanding(3, 0.15f)), true)
 {
 	this->outOfCombatSound = Sound::create(SoundResources::Platformer_FX_Potions_PotionDrink2);
 
@@ -47,7 +46,7 @@ void SuperiorHealthFlask::useOutOfCombat(PlatformerEntity* target)
 {
 	target->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{
-		healthBehavior->setHealth(healthBehavior->getHealth() + int(float(healthBehavior->getMaxHealth()) * SuperiorHealthFlask::HealPercentage));
+		healthBehavior->setHealth(healthBehavior->getHealth() + SuperiorHealthFlask::HealTicks);
 	});
 
 	this->outOfCombatSound->play();
@@ -75,8 +74,8 @@ bool SuperiorHealthFlask::canUseOnTarget(PlatformerEntity* target)
 
 LocalizedString* SuperiorHealthFlask::getDescription()
 {
-	return Strings::Items_Consumables_Health_HealthPotionDescription::create()
-		->setStringReplacementVariables(ConstantString::create(std::to_string(int(SuperiorHealthFlask::HealPercentage * 100.0f))));
+	return Strings::Items_Consumables_Health_SuperiorHealthFlaskDescription::create()
+		->setStringReplacementVariables({ ConstantString::create(std::to_string(int(SuperiorHealthFlask::HealTicks))), ConstantString::create(std::to_string(int(SuperiorHealthFlask::HealTicks))) });
 }
 
 Item* SuperiorHealthFlask::clone()
@@ -101,5 +100,5 @@ const std::string& SuperiorHealthFlask::getIdentifier()
 
 PlatformerAttack* SuperiorHealthFlask::createAssociatedAttack()
 {
-	return ThrowHealthPotion::create(PlatformerAttack::Priority::Common);
+	return ThrowSuperiorHealthFlask::create(PlatformerAttack::Priority::Common);
 }

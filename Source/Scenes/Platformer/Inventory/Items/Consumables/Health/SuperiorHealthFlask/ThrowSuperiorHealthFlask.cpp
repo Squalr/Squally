@@ -4,12 +4,13 @@
 
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Engine/Utils/GameUtils.h"
 #include "Engine/Sound/WorldSound.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Events/CombatEvents.h"
 #include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityProjectileTargetBehavior.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/SuperiorHealthFlask/AddHealth.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/SuperiorHealthFlask/SuperiorHealthFlask.h"
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -34,10 +35,8 @@ ThrowSuperiorHealthFlask::ThrowSuperiorHealthFlask(Priority priority)
 	: super(AttackType::Healing, ItemResources::Consumables_Potions_HealthFlaskSuperior, priority, AbilityType::Arcane, 10, 15, 0, 0.2f, 1.5f)
 {
 	this->throwSound = WorldSound::create(SoundResources::Platformer_Physical_Projectiles_ItemThrow1);
-	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
 
 	this->addChild(this->throwSound);
-	this->addChild(this->healSound);
 }
 
 ThrowSuperiorHealthFlask::~ThrowSuperiorHealthFlask()
@@ -57,7 +56,7 @@ LocalizedString* ThrowSuperiorHealthFlask::getString()
 LocalizedString* ThrowSuperiorHealthFlask::getDescription()
 {
 	return Strings::Items_Consumables_Health_SuperiorHealthFlaskDescription::create()
-		->setStringReplacementVariables(ConstantString::create(std::to_string(int(SuperiorHealthFlask::HealPercentage * 100.0f))));
+		->setStringReplacementVariables({ ConstantString::create(std::to_string(int(SuperiorHealthFlask::HealTicks))), ConstantString::create(std::to_string(int(SuperiorHealthFlask::HealTicks))) });
 }
 
 std::string ThrowSuperiorHealthFlask::getAttackAnimation()
@@ -72,26 +71,45 @@ void ThrowSuperiorHealthFlask::onAttackTelegraphBegin()
 	this->throwSound->play(false, this->attackDuration / 2.0f);
 }
 
+bool ThrowSuperiorHealthFlask::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
+{
+	const float WeakPercentage = 0.5f;
+
+	for (auto entity : sameTeam)
+	{
+		int health = entity->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
+		int maxHealth = entity->getRuntimeStateOrDefaultInt(StateKeys::MaxHealth, 0);
+		bool isAlive = entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true);
+
+		if (isAlive && maxHealth >= 0 && std::round(float(health) / float(maxHealth)) <= WeakPercentage)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
 void ThrowSuperiorHealthFlask::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
 	super::performAttack(owner, targets);
 
 	for (PlatformerEntity* next : targets)
 	{
-		ThrownObject* potion = ThrownObject::create(owner, next, false, this->getIconResource(), CSize(64.0f, 64.0f));
+		ThrownObject* potion = ThrownObject::create(owner, next, false, ItemResources::Consumables_Potions_HealthFlaskSuperior, CSize(64.0f, 64.0f));
 		
 		potion->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionData collisionData)
 		{
 			potion->disable(true);
-			
+
 			PlatformerEntity* entity = GameUtils::GetFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 
 			if (entity != nullptr)
 			{
-				int healing = int(std::round(float(entity->getRuntimeStateOrDefaultInt(StateKeys::MaxHealth, 0))) * SuperiorHealthFlask::HealPercentage);
-
-				this->healSound->play();
-				CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(owner, entity, healing, this->abilityType));
+				entity->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+				{
+					entityBuffBehavior->applyBuff(AddHealth::create(owner, entity));
+				});
 			}
 
 			return CollisionResult::DoNothing;
