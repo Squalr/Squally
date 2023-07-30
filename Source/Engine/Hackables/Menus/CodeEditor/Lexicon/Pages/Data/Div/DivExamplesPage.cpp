@@ -130,7 +130,7 @@ void DivExamplesPage::initializePositions()
 	super::initializePositions();
 
 	const float buttonOffset = -32.0f;
-	const float buttonSpacing = -48.0f;
+	const float buttonSpacing = -56.0f;
 
 	this->registerBlock->setPosition(Vec2(-160.0f, 160.0f));
 	this->examplesLabel->setPosition(Vec2(0.0f, super::ChapterLocation.y - 16.0f));
@@ -144,7 +144,7 @@ void DivExamplesPage::initializePositions()
 	this->divPtrLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 2.0f));
 	this->divPtrOffsetLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 3.0f));
 	this->divPtrOffsetLabel2->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 4.0f));
-	this->resetButton->setPosition(Vec2(0.0f, -336.0f));
+	this->resetButton->setPosition(Vec2(0.0f, -372.0f));
 
 	this->pointerHelpButton->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 2.0f));
 	this->offsetHelp4Button->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 3.0f));

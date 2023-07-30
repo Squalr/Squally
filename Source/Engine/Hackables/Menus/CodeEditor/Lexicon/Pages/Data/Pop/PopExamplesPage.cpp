@@ -105,7 +105,7 @@ void PopExamplesPage::initializePositions()
 	super::initializePositions();
 
 	const float buttonOffset = -32.0f;
-	const float buttonSpacing = -48.0f;
+	const float buttonSpacing = -56.0f;
 
 	this->registerBlock->setPosition(Vec2(-160.0f, 160.0f));
 	this->stackBlock->setPosition(Vec2(164.0f, -160.0f));
@@ -118,7 +118,7 @@ void PopExamplesPage::initializePositions()
 	this->popPtrOffsetLabel->setPosition(Vec2(-256.0f, buttonOffset + buttonSpacing * 4.0f));
 	this->popPtrOffsetButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 5.0f));
 
-	this->resetButton->setPosition(Vec2(0.0f, -332.0f));
+	this->resetButton->setPosition(Vec2(0.0f, -372.0f));
 
 	this->pointerHelpButton->setPosition(Vec2(-32.0f, buttonOffset + buttonSpacing * 2.5f));
 	this->offsetHelpButton->setPosition(Vec2(-32.0f, buttonOffset + buttonSpacing * 4.5f));

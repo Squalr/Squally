@@ -81,7 +81,6 @@ DeveloperScene::DeveloperScene()
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
 	- Medium wins:
-		- v scrolling down passed end in script editor cycles back to top
 		- v CV some indicator of remaining souls
 		- v FF Asmodeus crowd should animate
 		- v FF give demon grunt (scalding blade user) an add potion?
@@ -122,8 +121,6 @@ DeveloperScene::DeveloperScene()
 			- v or just scrap transmutes, and add the ability to sell shit
 		- * Lexicon is largely incomplete
 			- * Fill out descriptions without samples first
-		- v Lexicon add examples are half broken (highlighting)
-		- v Lexicon push example doesn't refresh highlighting on click
 		- * Arrow keys in large scripts should auto-scroll if cursor goes out of visible text range
 		- * Multi-line comments in scripts can cause line counter to become disrupted
 		- * Should really expand scripting text editor
