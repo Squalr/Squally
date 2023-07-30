@@ -59,6 +59,9 @@ CursedBlade::CursedBlade(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 
+	this->spellEffect->setStartColor(Color4F::PURPLE);
+	this->spellEffect->setEndColor(Color4F(0.5f, 0.0f, 0.5f, 0.0f));
+
 	this->addChild(this->spellEffect);
 }
 

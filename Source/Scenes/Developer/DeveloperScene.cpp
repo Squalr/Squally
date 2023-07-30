@@ -92,7 +92,7 @@ DeveloperScene::DeveloperScene()
 		- v Maybe HP pots in combat should self-target initally?
 		- v Can probably use Silver for more craft recipes
 		- v Wand energy bolt literally does an attack anim and nothing
-		- v EF Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
+		- v (wontfix?) EF Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
 
 	- Hard wins:
 		- v maybe stat deltas on equipment in craft menu
