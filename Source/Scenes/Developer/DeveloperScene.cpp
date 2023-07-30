@@ -80,9 +80,6 @@ DeveloperScene::DeveloperScene()
 		- * Sky Tower (tri l/r/m)		=> Tiger's Bane (Special: Faster Movement)
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
-	- Easy wins:
-		- v FF enemy shadows wrong in 1st combat map
-
 	- Medium wins:
 		- v scrolling down passed end in script editor cycles back to top
 		- v CV some indicator of remaining souls

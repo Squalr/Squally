@@ -37,27 +37,27 @@
     <property name="spawn-type" value="enemy"/>
    </properties>
   </object>
-  <object id="554" name="combat-spawn" type="object" x="1696.01" y="1581.05" width="64" height="64">
+  <object id="554" name="combat-spawn" type="object" x="1696.01" y="1563.05" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-128"/>
     <property name="spawn-order" type="int" value="0"/>
     <property name="spawn-type" value="enemy"/>
    </properties>
   </object>
-  <object id="555" name="combat-spawn" type="object" x="470.006" y="1690.61" width="64" height="64">
+  <object id="555" name="combat-spawn" type="object" x="470.006" y="1705.28" width="64" height="64">
    <properties>
     <property name="spawn-order" type="int" value="0"/>
     <property name="spawn-type" value="player"/>
    </properties>
   </object>
-  <object id="558" name="combat-spawn" type="object" x="725.61" y="1468.66" width="64" height="64">
+  <object id="558" name="combat-spawn" type="object" x="737.61" y="1463.99" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-256"/>
     <property name="spawn-order" type="int" value="1"/>
     <property name="spawn-type" value="player"/>
    </properties>
   </object>
-  <object id="559" name="combat-spawn" type="object" x="2136.28" y="1438.01" width="64" height="64">
+  <object id="559" name="combat-spawn" type="object" x="2136.46" y="1462.56" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-256"/>
     <property name="spawn-order" type="int" value="1"/>
