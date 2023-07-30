@@ -81,7 +81,6 @@ DeveloperScene::DeveloperScene()
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
 	- Easy wins:
-		- v LC change dialogue for npc outside of crypts if has key
 		- v FF enemy shadows wrong in 1st combat map
 
 	- Medium wins:
