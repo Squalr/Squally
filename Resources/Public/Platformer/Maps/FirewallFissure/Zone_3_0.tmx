@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="54" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="187" nextobjectid="1073">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="54" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="187" nextobjectid="1077">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -705,7 +705,7 @@
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="-1141.99,-3135.23 -1072.75,-2347.11 -879.616,-1409.68 645.319,-1100.18 2300.7,-1362.25 2339.22,-2407.64 2400.58,-3138.04"/>
+   <polygon points="-1141.99,-3135.23 -1072.75,-2347.11 -879.616,-1409.68 645.319,-1100.18 3140.7,-1370.25 3179.22,-2415.64 3240.58,-3146.04"/>
   </object>
  </objectgroup>
  <objectgroup id="100" name="terrain -20">
@@ -729,6 +729,8 @@
   <object id="801" name="Generic/TownFence" type="decor" x="7251.84" y="44.5909" width="538" height="948"/>
   <object id="802" name="Generic/TownFence" type="decor" x="4413.91" y="33.7683" width="538" height="948"/>
   <object id="973" name="Generic/TownFence" type="decor" x="6321.42" y="44.2232" width="538" height="948"/>
+  <object id="1075" name="Generic/TownFence" type="decor" x="7726.06" y="41.1515" width="538" height="948"/>
+  <object id="1076" name="Generic/TownFence" type="decor" x="8202.61" y="41.1515" width="538" height="948"/>
  </objectgroup>
  <objectgroup id="118" name="decor -20 fg">
   <properties>

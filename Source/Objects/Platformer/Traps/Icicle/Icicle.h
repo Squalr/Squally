@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class CollisionObject;
+class WorldSound;
 
 class Icicle : public HackableObject
 {
@@ -33,7 +34,12 @@ private:
 
 	void applyGravity(float dt);
 	bool isFalling = false;
+	bool unregisterHackables = false;
 
 	cocos2d::Sprite* sprite = nullptr;
 	CollisionObject* collision = nullptr;
+	WorldSound* rumbleSound = nullptr;
+	WorldSound* fallSound = nullptr;
+
+	static const std::string PropertyUnregisterHackables;
 };

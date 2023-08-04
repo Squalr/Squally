@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="66" height="40" tilewidth="128" tileheight="128" infinite="0" nextlayerid="92" nextobjectid="1343">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="66" height="34" tilewidth="128" tileheight="128" infinite="0" nextlayerid="92" nextobjectid="1345">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -72,11 +72,8 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="998" name="ice" type="terrain" x="1780.23" y="2855.93">
-   <polygon points="2338.24,2940.63 774.28,3146.39 130.384,2762.48 -38.4622,2182.13 39.0371,1842.78 130.48,1580.74 3366.1,1581.28 3537.01,2110.44 3549.93,2711.25 3217.75,3124.75"/>
-  </object>
   <object id="1002" name="ice" type="terrain" x="448" y="-80">
-   <polygon points="5551.03,4081.37 4361.18,4178.09 2885.38,4189.54 1772.92,4308.15 640.694,4594.85 -1117.09,4589.63 -821.759,2302.79 -643.674,1969.43 -511.161,1639.77 -159.603,1647.08 166.777,2399.81 393.382,3103.45 836.994,3788.92 1188.41,3791.32 2021.73,3741.97 3305.3,3805.72 3604.06,3606.53 3905.94,3492.89 4663.75,3486.09 5455.44,3355.61 6335.06,2976.63 6917.64,2806.17 7542.99,2464.5 8211.53,2468.06 8197.74,3646.35 7912.72,3804.89 7553.64,4088.74"/>
+   <polygon points="5551.03,4081.37 4361.18,4178.09 2885.38,4189.54 1772.92,4308.15 640.694,4594.85 -1117.09,4589.63 -925.759,2038.79 -747.674,1705.43 -615.161,1375.77 -619.556,-178.375 184.397,-392.92 998.649,-198.5 1113.72,1435.79 678.777,1999.81 569.382,2807.45 836.994,3788.92 1188.41,3791.32 1640.01,3761.01 2364.15,3772.27 3305.3,3805.72 3604.06,3606.53 3905.94,3492.89 4663.75,3486.09 5455.44,3355.61 6335.06,2976.63 6917.64,2806.17 7542.99,2464.5 8211.53,2468.06 8197.74,3646.35 7912.72,3804.89 7553.64,4088.74"/>
   </object>
  </objectgroup>
  <objectgroup id="82" name="decor -4">
@@ -129,6 +126,11 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-c"/>
     <property name="components" value="ally"/>
+   </properties>
+  </object>
+  <object id="1344" name="horse" type="entity" x="2378.42" y="3557.21" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pacing"/>
    </properties>
   </object>
  </objectgroup>
@@ -323,14 +325,11 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="942" name="ice" type="terrain" x="-698.281" y="656.728">
-   <polygon points="9242.68,4771.02 6328.05,4756.15 4910.7,3211.23 5749.17,3120.21 6607.28,3188.97 7654.47,3301.86 8150.05,3309.3 8504.35,3340.64 9215.93,3339.67"/>
-  </object>
   <object id="997" name="ice" type="terrain" x="-2420" y="-888">
-   <polygon points="5183.19,5103.02 4702.21,5441.63 3933.19,5650.36 3478.41,5807.47 2178.25,5786.62 2324.56,2688.12 2731.82,2752.09 2821.21,3064.77 3343.78,3280.16 3696.16,4674.41 4102.52,4673.14 5077.64,4684.74 5409.01,4731.77 6062.58,4717.83 6628.74,4754.68 7110.22,5202.66"/>
+   <polygon points="5447.19,5647.02 4670.21,5841.63 3941.19,5770.36 3486.41,5927.47 2314.25,6178.62 2324.56,2688.12 2731.82,2752.09 2821.21,3064.77 3343.78,3280.16 3696.16,4674.41 4102.52,4673.14 5077.64,4684.74 5409.01,4731.77 6062.58,4717.83 6644.74,4730.68 6832.57,4731.04 7503.05,4660.72 8333.79,4736.75 9430.22,4858.66 9898.67,4863.87 10279.7,4886.4 10958.6,4885.82 10956.3,6149.57 9460.77,6161.4"/>
   </object>
   <object id="1007" name="ice" type="terrain" x="6464.57" y="1086">
-   <polygon points="1355.92,1977.96 419.566,2156.39 34.0617,1823.48 -711.028,1536.23 -4273.12,1639.11 -4136.63,373.963 -1381.63,-171.163 -1016.52,-605.996 -1046.21,-1284.82 -273.881,-1121.26 -105.466,10.8414 -67.5819,471.57 -58.2494,832.159 -36.7696,917.733 340.93,918.336 780.324,1103.64 1372.73,1182.85 1661.17,1372.73 2001.97,1373.87 2081.36,1779.05 1882.49,2137.62"/>
+   <polygon points="1355.92,1977.96 419.566,2156.39 34.0617,1823.48 -711.028,1536.23 -2295.1,1581.98 -3326.1,1650.23 -3964.72,1829.91 -4191.98,1793.99 -4273.12,1639.11 -4136.63,373.963 -1381.63,-171.163 -1016.52,-605.996 -1046.21,-1284.82 -273.881,-1121.26 -105.466,10.8414 -67.5819,471.57 -58.2494,832.159 -36.7696,917.733 340.93,918.336 780.324,1103.64 1372.73,1182.85 1661.17,1372.73 2001.97,1373.87 2081.36,1779.05 1882.49,2137.62"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
@@ -458,56 +457,6 @@
   <object id="1107" name="trigger" type="object" x="4947.98" y="2691.51" width="86.573" height="1500">
    <properties>
     <property name="send-event" value="6"/>
-   </properties>
-  </object>
-  <object id="1148" name="icicle" type="object" x="4203.47" y="2645.89" width="52" height="150" rotation="359.849">
-   <properties>
-    <property name="listen-event" value="12"/>
-   </properties>
-  </object>
-  <object id="1149" name="icicle" type="object" x="4182.9" y="2649.15" width="30.5125" height="88.0169" rotation="359.972">
-   <properties>
-    <property name="listen-event" value="11"/>
-   </properties>
-  </object>
-  <object id="1150" name="icicle" type="object" x="4260.88" y="2641.5" width="52" height="150" rotation="359.849">
-   <properties>
-    <property name="listen-event" value="14"/>
-   </properties>
-  </object>
-  <object id="1151" name="icicle" type="object" x="4320.04" y="2647.66" width="30.5125" height="88.0169" rotation="359.972">
-   <properties>
-    <property name="listen-event" value="15"/>
-   </properties>
-  </object>
-  <object id="1152" name="icicle" type="object" x="4232.79" y="2647.15" width="30.5125" height="88.0169" rotation="359.972">
-   <properties>
-    <property name="listen-event" value="13"/>
-   </properties>
-  </object>
-  <object id="1153" name="trigger" type="object" x="4364.86" y="2811" width="86.573" height="1500">
-   <properties>
-    <property name="send-event" value="14"/>
-   </properties>
-  </object>
-  <object id="1154" name="trigger" type="object" x="4315.86" y="2801" width="86.573" height="1500">
-   <properties>
-    <property name="send-event" value="13"/>
-   </properties>
-  </object>
-  <object id="1155" name="trigger" type="object" x="4437.86" y="2803" width="86.573" height="1500">
-   <properties>
-    <property name="send-event" value="15"/>
-   </properties>
-  </object>
-  <object id="1156" name="trigger" type="object" x="4249.86" y="2799" width="86.573" height="1500">
-   <properties>
-    <property name="send-event" value="12"/>
-   </properties>
-  </object>
-  <object id="1157" name="trigger" type="object" x="4189.86" y="2793" width="86.573" height="1500">
-   <properties>
-    <property name="send-event" value="11"/>
    </properties>
   </object>
   <object id="1221" name="icicle" type="object" x="4574.47" y="2641.9" width="52" height="150" rotation="359.849">
@@ -713,29 +662,32 @@
   <object id="1312" name="icicle" type="object" x="6899.28" y="3239.39" width="52" height="150" rotation="359.849">
    <properties>
     <property name="listen-event" value="69"/>
+    <property name="unregister-hackables" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1313" name="trigger" type="object" x="7527.67" y="2846" width="30" height="1500">
+  <object id="1313" name="trigger" type="object" x="7907.19" y="2499.7" width="256" height="1500">
    <properties>
     <property name="send-event" value="69"/>
    </properties>
   </object>
-  <object id="1315" name="icicle" type="object" x="6932.67" y="3239.33" width="52" height="150" rotation="359.849">
+  <object id="1315" name="icicle" type="object" x="6934" y="3199.33" width="52" height="150" rotation="359.849">
    <properties>
     <property name="listen-event" value="70"/>
+    <property name="unregister-hackables" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1316" name="icicle" type="object" x="6869.67" y="3241.67" width="52" height="150" rotation="359.849">
+  <object id="1316" name="icicle" type="object" x="6869.67" y="3217.67" width="52" height="150" rotation="359.849">
    <properties>
     <property name="listen-event" value="71"/>
+    <property name="unregister-hackables" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1318" name="trigger" type="object" x="7606.33" y="2823.33" width="30" height="1500">
+  <object id="1318" name="trigger" type="object" x="7931.18" y="2498.72" width="256" height="1500">
    <properties>
     <property name="send-event" value="70"/>
    </properties>
   </object>
-  <object id="1319" name="trigger" type="object" x="7453" y="2854" width="30" height="1500">
+  <object id="1319" name="trigger" type="object" x="7885.85" y="2499.21" width="256" height="1500">
    <properties>
     <property name="send-event" value="71"/>
    </properties>
@@ -857,7 +809,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="979" name="penguin-warrior" type="entity" x="4099.93" y="3715.87" width="128" height="128">
+  <object id="979" name="penguin-warrior" type="entity" x="4261.93" y="3709.87" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="BallmerPeaks/Combat_Snow"/>
@@ -871,11 +823,6 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-b"/>
     <property name="components" value="ally"/>
-   </properties>
-  </object>
-  <object id="981" name="horse" type="entity" x="3851.52" y="3710.5" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,pacing"/>
    </properties>
   </object>
   <object id="1314" name="penguin-warrior" type="entity" x="6866.07" y="3881.86" width="128" height="128">

@@ -80,7 +80,7 @@ DeveloperScene::DeveloperScene()
 		- * Sky Tower (tri l/r/m)		=> Tiger's Bane (Special: Faster Movement)
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
-	- Medium wins:
+	- Todo:
 		- v CV Mabel should look at Perceptron the entire patrol, or cower until he is gone
 		- v quick swap VFX
 		- v quick warp VFX / change icon based on scenario
@@ -89,9 +89,6 @@ DeveloperScene::DeveloperScene()
 		- v Maybe HP pots in combat should self-target initally?
 		- v Can probably use Silver for more craft recipes
 		- v Wand energy bolt literally does an attack anim and nothing
-		- v (wontfix?) EF Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
-
-	- Hard wins:
 		- v UR gauntlet crowd should animate
 		- v FF Asmodeus crowd should animate
 		- v maybe stat deltas on equipment in craft menu
@@ -102,7 +99,6 @@ DeveloperScene::DeveloperScene()
 				- v Skeletal Warrior / Archer / Necromancer
 				- v Orc Grunt / Warrior / Swordsman 
 				- v Earth Golem
-		- v FF maybe move mage tower to 1_x area eh?
 		- v LC blue gem map feels empty. Traps?
 		- v LC Daze script too long / needs hint
 		- v Make LC final 4_x maps less bad.
@@ -123,14 +119,7 @@ DeveloperScene::DeveloperScene()
 		- * Should really expand scripting text editor
 			- * Support click-to-place cursor
 		- v CodeWindow::NumberColor not applied to negatives (bad token splitting)
-		
-	- Asset updates:
-		- v Enemy anims for getting hit
-		- v Enemy death sounds
-		- v Enemy anims for combat begin (temporarily pausing timeline)
-		- v Enemy combat begin sounds
-		- v SFX pass
-			- v All defend variants
+		- v SFX pass (All defend variants, ...)
 		- v Unique icons for all spells
 		- v More passes on music. Probably need more overworld. Far and Away / Sunset once I get access.
 	
@@ -157,17 +146,21 @@ DeveloperScene::DeveloperScene()
 		- * BP, somewhere				=> Frost Axe unused item
 
 	- Low prio:
+		- v (wontfix?) EF Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
 		- v Fix terrain connectors
 			- v Frost
 			- v Marble [Dark too]
 			- v Jungle [Dark too]
 			- v LC terrain connectors in 3_x maps are offset baddly (which map? cant repro)
-		- v Camera harsh leaving camera targets (see FF cinematic)
-		- v (Maybe) Chapter transitions can be more special 
+
+	- Never going to happen:
+		- v Enemy anims for getting hit
+		- v Enemy death sounds
+		- v Enemy anims for combat begin (temporarily pausing timeline)
+		- v Enemy combat begin sounds
 		- v Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
 			- v Tiki anims still broken (bad Spriter implementation strikes again)
 			- v Train anims broken (for same reason)
-		- v Missing squally breath bubbles
 		- v User-made script titles can go TOFU upon language change. Wontfix? Save original language, and reset to current if the user clears the title?
 		- v If ever re-instating Arabic, Ctrl+F all "ar": "! and "ar": ". strings to find places where punctuation was messed up and fix them
 		- v If ever re-instating Arabic, probably force English for scripting. Mixing RTL and LTR language is awful. Or use Arabic romanization.

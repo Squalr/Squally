@@ -10,6 +10,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
@@ -19,6 +20,7 @@
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Strings.h"
@@ -28,6 +30,7 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_APPLY_GRAVITY 1
 
 const std::string Icicle::MapKey = "icicle";
+const std::string Icicle::PropertyUnregisterHackables = "unregister-hackables";
 
 Icicle* Icicle::create(ValueMap& properties)
 {
@@ -40,17 +43,22 @@ Icicle* Icicle::create(ValueMap& properties)
 
 Icicle::Icicle(ValueMap& properties) : super(properties)
 {
+	this->unregisterHackables = GameUtils::getKeyOrDefault(this->properties, Icicle::MapKey, Value(false)).asBool();
 	CSize size = CSize(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat());
 	this->sprite = Sprite::create(ObjectResources::Traps_Icicle_Icicle);
 	this->collision = CollisionObject::create(CollisionObject::createBox(size), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, true));
+	this->rumbleSound = WorldSound::create(SoundResources::Platformer_Objects_Stalactite_RockFall1);
+	this->fallSound = WorldSound::create(SoundResources::Platformer_Objects_Stalactite_RockFall2);
 
 	CSize imageSize = this->sprite->getContentSize();
 	if (imageSize.height > 0.0f) 
 	{
 		this->sprite->setScale(size.height / imageSize.height);
 	}
-
+	
 	this->collision->addChild(this->sprite);
+	this->collision->addChild(this->rumbleSound);
+	this->collision->addChild(this->fallSound);
 	this->addChild(this->collision);
 }
 
@@ -77,8 +85,7 @@ void Icicle::initializeListeners()
 		const float RumbleTime = 0.5f;
 		const int Rumbles = int(std::round((RumbleTime - RotationSpeed) / RotationSpeed)) / 2;
 
-		// TODO: Add icicle shaking sound.
-		// this->rumbleSound->play(); 
+		this->rumbleSound->play();
 
 		this->runAction(Sequence::create(
 			EaseSineInOut::create(RotateTo::create(HalfRotationSpeed, RotationAngle)),
@@ -91,6 +98,7 @@ void Icicle::initializeListeners()
 			CallFunc::create([=]()
 			{
 				this->isFalling = true;
+				this->fallSound->play();
 			}),
 			nullptr
 		));
@@ -118,6 +126,11 @@ void Icicle::registerHackables()
 {
 	super::registerHackables();
 
+	if (this->unregisterHackables)
+	{
+		return;
+	}
+
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
@@ -125,7 +138,7 @@ void Icicle::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Icicle::MapKey,
 				Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_GetDensity::create(),
-				HackableBase::HackBarColor::Purple,
+				HackableBase::HackBarColor::Blue,
 				UIResources::Menus_Icons_Anvil,
 				LazyNode<HackablePreview>::create([=](){ return IcicleGetDensityPreview::create(); }),
 				{
@@ -161,15 +174,14 @@ HackablePreview* Icicle::createDefaultPreview()
 
 NO_OPTIMIZE void Icicle::applyGravity(float dt)
 {
-	static const float Acceleration = 1.3f;
-	static const float Speed = 768.0f;
+	static const float Speed = -768.0f;
 
 	if (!this->isFalling)
 	{
 		return;
 	}
 
-	this->setPositionY(this->getPositionY() + -pow(Speed, Acceleration) * dt);
+	this->setPositionY(this->getPositionY() + Speed * dt);
 
 	/*
 	volatile static float* freeMemoryForUser = new float[16];
