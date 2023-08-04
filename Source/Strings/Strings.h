@@ -30806,6 +30806,32 @@ namespace Strings
 		virtual ~Platformer_Quests_CastleValgrind_CureKing_Misc_M_Appreciated() = default;
 	};
 
+	class Platformer_Quests_CastleValgrind_CureKing_Misc_P_RemainingSouls : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Misc_P_RemainingSouls();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Misc_P_RemainingSouls() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Misc_Q_AllSouls : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Misc_Q_AllSouls();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Misc_Q_AllSouls() = default;
+	};
+
 	class Platformer_Quests_CastleValgrind_CureKing_Tyracius_A_WhatAreYouDoingHere : public LocalizedString
 	{
 	public:

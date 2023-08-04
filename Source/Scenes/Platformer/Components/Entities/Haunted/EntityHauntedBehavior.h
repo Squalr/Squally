@@ -11,6 +11,8 @@ class InteractObject;
 class LocalizedString;
 class PlatformerEnemy;
 class PlatformerFriendly;
+class Scrappy;
+class Squally;
 
 class EntityHauntedBehavior : public GameComponent
 {
@@ -37,6 +39,10 @@ private:
 	void unhaunt();
 	LocalizedString* getNextHauntedSpeechBubbleText();
 	LocalizedString* getNextUnhauntedSpeechBubbleText();
+	void showRemainingSoulsDialogue(int remaining);
+
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
 	
 	PlatformerEnemy* ownerAsEnemy = nullptr;
 	PlatformerFriendly* ownerAsFriendly = nullptr;

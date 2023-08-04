@@ -81,20 +81,19 @@ DeveloperScene::DeveloperScene()
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
 	- Medium wins:
-		- v FF Asmodeus crowd should animate
-		- v CV some indicator of remaining souls
 		- v CV Mabel should look at Perceptron the entire patrol, or cower until he is gone
-		- v quick swap FX
-		- v quick warp FX
+		- v quick swap VFX
+		- v quick warp VFX / change icon based on scenario
 		- v Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)
 		- v Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)
-		- v LC terrain connectors in 3_x maps are offset baddly (which map?)
 		- v Maybe HP pots in combat should self-target initally?
 		- v Can probably use Silver for more craft recipes
 		- v Wand energy bolt literally does an attack anim and nothing
 		- v (wontfix?) EF Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
 
 	- Hard wins:
+		- v UR gauntlet crowd should animate
+		- v FF Asmodeus crowd should animate
 		- v maybe stat deltas on equipment in craft menu
 		- v Maybe interact with helper to revive after holy spellbook?
 		- v Should add some sort of archery mini-game with jump shots or something in some town. Maybe FF.
@@ -162,6 +161,7 @@ DeveloperScene::DeveloperScene()
 			- v Frost
 			- v Marble [Dark too]
 			- v Jungle [Dark too]
+			- v LC terrain connectors in 3_x maps are offset baddly (which map? cant repro)
 		- v Camera harsh leaving camera targets (see FF cinematic)
 		- v (Maybe) Chapter transitions can be more special 
 		- v Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)

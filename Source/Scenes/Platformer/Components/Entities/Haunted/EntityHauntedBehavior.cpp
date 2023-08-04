@@ -12,11 +12,13 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Inventory/Inventory.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
@@ -80,6 +82,16 @@ EntityHauntedBehavior::~EntityHauntedBehavior()
 
 void EntityHauntedBehavior::onLoad()
 {
+	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	{
+		this->scrappy = scrappy;
+	}, Scrappy::MapKey);
+
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
+	{
+		this->squally = squally;
+	}, Squally::MapKey);
+
 	if (this->ownerAsFriendly != nullptr)
 	{
 		if (this->isOtherWorld)
@@ -203,6 +215,19 @@ void EntityHauntedBehavior::unhaunt()
 	}
 }
 
+void EntityHauntedBehavior::onSoulHarvested()
+{
+	int newSoulHarvestedCount = SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeySoulHarvestedCount, Value(0)).asInt() + 1;
+	SaveManager::SoftSaveProfileData(UnhauntCastle::SaveKeySoulHarvestedCount, Value(newSoulHarvestedCount));
+
+	if (newSoulHarvestedCount >= UnhauntCastle::MaxUnhauntCount)
+	{
+		Objectives::SetCurrentObjective(ObjectiveKeys::CVReturnToMabel);
+	}
+
+	this->showRemainingSoulsDialogue(UnhauntCastle::MaxUnhauntCount - newSoulHarvestedCount);
+}
+
 LocalizedString* EntityHauntedBehavior::getNextHauntedSpeechBubbleText()
 {
 	static int NextIndex = -1;
@@ -279,13 +304,42 @@ LocalizedString* EntityHauntedBehavior::getNextUnhauntedSpeechBubbleText()
 	}
 }
 
-void EntityHauntedBehavior::onSoulHarvested()
+void EntityHauntedBehavior::showRemainingSoulsDialogue(int remaining)
 {
-	int newSoulHarvestedCount = SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeySoulHarvestedCount, Value(0)).asInt() + 1;
-	SaveManager::SoftSaveProfileData(UnhauntCastle::SaveKeySoulHarvestedCount, Value(newSoulHarvestedCount));
-
-	if (newSoulHarvestedCount >= UnhauntCastle::MaxUnhauntCount)
+	if (remaining <= 0)
 	{
-		Objectives::SetCurrentObjective(ObjectiveKeys::CVReturnToMabel);
+		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_CastleValgrind_CureKing_Misc_Q_AllSouls::create()
+				->setStringReplacementVariables({ Strings::Platformer_Entities_Names_Npcs_CastleValgrind_Mabel::create() }),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->squally, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
+			true
+		));
+	}
+	else
+	{
+		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_CastleValgrind_CureKing_Misc_P_RemainingSouls::create()
+				->setStringReplacementVariables({ ConstantString::create(std::to_string(remaining)) }),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->squally, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
+			true
+		));
 	}
 }

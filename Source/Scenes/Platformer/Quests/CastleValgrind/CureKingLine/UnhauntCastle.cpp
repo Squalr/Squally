@@ -39,7 +39,7 @@ using namespace cocos2d;
 const std::string UnhauntCastle::MapKeyQuest = "unhaunt-castle";
 const std::string UnhauntCastle::SaveKeySoulHarvestedCount = "SAVE_KEY_SOUL_HARVESTED_COUNT";
 const std::string UnhauntCastle::SaveKeyPrefixUnhaunted = "SAVE_KEY_UNHAUNTED_";
-const int UnhauntCastle::MaxUnhauntCount = 5;
+const int UnhauntCastle::MaxUnhauntCount = 6;
 
 UnhauntCastle* UnhauntCastle::create(GameObject* owner, QuestLine* questLine)
 {
