@@ -78,6 +78,7 @@ void TargetSelectionMenu::initializeListeners()
 				case CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect:
 				{
 					// For now, there is no defend select menu. Just wait for this state to pass.
+					this->isActive = false;
 					break;
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
@@ -87,6 +88,7 @@ void TargetSelectionMenu::initializeListeners()
 					this->allowedSelection = AllowedSelection::None;
 					this->clearEntityClickCallbacks();
 					this->selectEntity(this->castingEntity);
+					this->isActive = false;
 
 					this->setVisible(true);
 
@@ -122,8 +124,7 @@ void TargetSelectionMenu::initializeListeners()
 					this->isActive = true;
 
 					this->switchToInputMode();
-					this->selectEntity(nullptr);
-					this->selectNext(false, false);
+					this->selectEntity(this->castingEntity);
 					
 					this->setVisible(true);
 					break;
@@ -146,19 +147,31 @@ void TargetSelectionMenu::initializeListeners()
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_A, InputEvents::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		this->switchToInputMode();
-		this->selectNext(true, true);
+		if (this->isActive && args != nullptr && !args->isHandled())
+		{
+			this->switchToInputMode();
+			this->selectNext(true, true);
+			args->handle();
+		}
 	});
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_D, InputEvents::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		this->switchToInputMode();
-		this->selectNext(false, true);
+		if (this->isActive && args != nullptr && !args->isHandled())
+		{
+			this->switchToInputMode();
+			this->selectNext(false, true);
+			args->handle();
+		}
 	});
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ENTER, InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		this->chooseCurrentTarget();
+		if (this->isActive && args != nullptr && !args->isHandled())
+		{
+			this->chooseCurrentTarget();
+			args->handle();
+		}
 	});
 }
 
