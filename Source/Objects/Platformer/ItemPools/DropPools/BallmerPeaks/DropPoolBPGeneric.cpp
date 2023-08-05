@@ -28,7 +28,7 @@ DropPoolBPGeneric* DropPoolBPGeneric::create(ValueMap& properties)
 	return instance;
 }
 
-DropPoolBPGeneric::DropPoolBPGeneric(ValueMap& properties) : super(properties, DropPoolBPGeneric::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolBPGeneric::create(properties),
+DropPoolBPGeneric::DropPoolBPGeneric(ValueMap& properties) : super(properties, DropPoolBPGeneric::PoolName, SampleMethod::Random, 1, 3, CurrencyPoolBPGeneric::create(properties),
 	{
 		CardPoolTier7::create(SampleMethod::Random, 0, 1),
 		AlchemyPoolTier7::create(SampleMethod::Random, 1, 2),

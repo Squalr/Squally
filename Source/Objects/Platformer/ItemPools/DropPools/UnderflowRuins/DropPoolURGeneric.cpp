@@ -27,7 +27,7 @@ DropPoolURGeneric* DropPoolURGeneric::create(ValueMap& properties)
 	return instance;
 }
 
-DropPoolURGeneric::DropPoolURGeneric(ValueMap& properties) : super(properties, DropPoolURGeneric::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolURGeneric::create(properties),
+DropPoolURGeneric::DropPoolURGeneric(ValueMap& properties) : super(properties, DropPoolURGeneric::PoolName, SampleMethod::Random, 1, 3, CurrencyPoolURGeneric::create(properties),
 	{
 		AlchemyPoolTier2::create(SampleMethod::Random, 1, 2),
 		SmithingPoolTier2::create(SampleMethod::Random, 1, 2),

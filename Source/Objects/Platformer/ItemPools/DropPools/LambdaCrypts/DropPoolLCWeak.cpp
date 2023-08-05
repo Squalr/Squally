@@ -25,7 +25,7 @@ DropPoolLCWeak* DropPoolLCWeak::create(ValueMap& properties)
 	return instance;
 }
 
-DropPoolLCWeak::DropPoolLCWeak(ValueMap& properties) : super(properties, DropPoolLCWeak::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolLCGeneric::create(properties),
+DropPoolLCWeak::DropPoolLCWeak(ValueMap& properties) : super(properties, DropPoolLCWeak::PoolName, SampleMethod::Random, 1, 3, CurrencyPoolLCGeneric::create(properties),
 	{
 		AlchemyPoolTier5::create(SampleMethod::Guarantee, 1, 1),
 	})

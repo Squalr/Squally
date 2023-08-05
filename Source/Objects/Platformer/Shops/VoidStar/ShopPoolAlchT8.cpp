@@ -33,6 +33,7 @@ ShopPoolAlchT8::ShopPoolAlchT8(ValueMap& properties) : super(properties, ShopPoo
 	this->addItemToPool(ItemChance::create(FrostBerries::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Snowball::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Meteorite::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(GunpowderT7::create(), ItemChance::Probability::Guaranteed));
 }
 
 ShopPoolAlchT8::~ShopPoolAlchT8()

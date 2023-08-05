@@ -27,7 +27,7 @@ DropPoolLCGeneric* DropPoolLCGeneric::create(ValueMap& properties)
 	return instance;
 }
 
-DropPoolLCGeneric::DropPoolLCGeneric(ValueMap& properties) : super(properties, DropPoolLCGeneric::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolLCGeneric::create(properties),
+DropPoolLCGeneric::DropPoolLCGeneric(ValueMap& properties) : super(properties, DropPoolLCGeneric::PoolName, SampleMethod::Random, 1, 3, CurrencyPoolLCGeneric::create(properties),
 	{
 		AlchemyPoolTier5::create(SampleMethod::Random, 1, 2),
 		SmithingPoolTier5::create(SampleMethod::Random, 1, 2),

@@ -27,7 +27,7 @@ DropPoolFFGeneric* DropPoolFFGeneric::create(ValueMap& properties)
 	return instance;
 }
 
-DropPoolFFGeneric::DropPoolFFGeneric(ValueMap& properties) : super(properties, DropPoolFFGeneric::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolFFGeneric::create(properties),
+DropPoolFFGeneric::DropPoolFFGeneric(ValueMap& properties) : super(properties, DropPoolFFGeneric::PoolName, SampleMethod::Random, 1, 3, CurrencyPoolFFGeneric::create(properties),
 	{
 		AlchemyPoolTier6::create(SampleMethod::Random, 1, 2),
 		SmithingPoolTier6::create(SampleMethod::Random, 1, 2),

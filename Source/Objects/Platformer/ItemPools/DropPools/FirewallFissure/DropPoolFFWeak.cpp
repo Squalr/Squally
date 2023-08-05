@@ -25,7 +25,7 @@ DropPoolFFWeak* DropPoolFFWeak::create(ValueMap& properties)
 	return instance;
 }
 
-DropPoolFFWeak::DropPoolFFWeak(ValueMap& properties) : super(properties, DropPoolFFWeak::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolFFGeneric::create(properties),
+DropPoolFFWeak::DropPoolFFWeak(ValueMap& properties) : super(properties, DropPoolFFWeak::PoolName, SampleMethod::Random, 1, 3, CurrencyPoolFFGeneric::create(properties),
 	{
 		AlchemyPoolTier6::create(SampleMethod::Guarantee, 1, 1),
 	})

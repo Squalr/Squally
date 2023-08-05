@@ -27,7 +27,7 @@ DropPoolEFGeneric* DropPoolEFGeneric::create(ValueMap& properties)
 	return instance;
 }
 
-DropPoolEFGeneric::DropPoolEFGeneric(ValueMap& properties) : super(properties, DropPoolEFGeneric::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolEFGeneric::create(properties),
+DropPoolEFGeneric::DropPoolEFGeneric(ValueMap& properties) : super(properties, DropPoolEFGeneric::PoolName, SampleMethod::Random, 1, 3, CurrencyPoolEFGeneric::create(properties),
 	{
 		AlchemyPoolTier1::create(SampleMethod::Random, 1, 2),
 		SmithingPoolTier1::create(SampleMethod::Random, 1, 2),

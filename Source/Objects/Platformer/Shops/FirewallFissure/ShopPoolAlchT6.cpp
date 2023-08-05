@@ -30,11 +30,13 @@ ShopPoolAlchT6::ShopPoolAlchT6(ValueMap& properties) : super(properties, ShopPoo
 	this->addItemToPool(ItemChance::create(BlackBlood::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(DemonRoot::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(PhoenixFeather::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(GunpowderT6::create(), ItemChance::Probability::Guaranteed));
 
 	// Phasing out
 	this->addItemToPool(ItemChance::create(BlackMushroom::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Mandrake::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Stinger::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(GunpowderT5::create(), ItemChance::Probability::Guaranteed));
 }
 
 ShopPoolAlchT6::~ShopPoolAlchT6()

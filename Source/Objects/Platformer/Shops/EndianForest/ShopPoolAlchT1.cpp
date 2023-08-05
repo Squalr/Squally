@@ -28,7 +28,7 @@ ShopPoolAlchT1::ShopPoolAlchT1(ValueMap& properties) : super(properties, ShopPoo
 {
 	this->addItemToPool(ItemChance::create(Clover::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Feather::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Bamboo::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(GunpowderT1::create(), ItemChance::Probability::Guaranteed));
 }
 
 ShopPoolAlchT1::~ShopPoolAlchT1()

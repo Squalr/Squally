@@ -27,7 +27,7 @@ DropPoolVSGeneric* DropPoolVSGeneric::create(ValueMap& properties)
 	return instance;
 }
 
-DropPoolVSGeneric::DropPoolVSGeneric(ValueMap& properties) : super(properties, DropPoolVSGeneric::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolVSGeneric::create(properties),
+DropPoolVSGeneric::DropPoolVSGeneric(ValueMap& properties) : super(properties, DropPoolVSGeneric::PoolName, SampleMethod::Random, 1, 3, CurrencyPoolVSGeneric::create(properties),
 	{
 		AlchemyPoolTier8::create(SampleMethod::Random, 1, 2),
 		SmithingPoolTier8::create(SampleMethod::Random, 1, 2),

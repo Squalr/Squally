@@ -29,9 +29,13 @@ AlchemyPoolTier2::AlchemyPoolTier2(SampleMethod sampleMethod, int min, int max) 
 	this->addItemToPool(ItemChance::create(Clover::create(), ItemChance::Probability::Uncommon));
 	this->addItemToPool(ItemChance::create(Feather::create(), ItemChance::Probability::Uncommon));
 
-	// Bomb
+	// Bomb phasing in
 	this->addItemToPool(ItemChance::create(WeakChitin::create(), ItemChance::Probability::Common));
-	this->addItemToPool(ItemChance::create(StrongChitin::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(GunpowderT2::create(), ItemChance::Probability::Common));
+
+	// Bomb phasing out
+	this->addItemToPool(ItemChance::create(Bamboo::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(GunpowderT1::create(), ItemChance::Probability::Rare));
 }
 
 AlchemyPoolTier2::~AlchemyPoolTier2()

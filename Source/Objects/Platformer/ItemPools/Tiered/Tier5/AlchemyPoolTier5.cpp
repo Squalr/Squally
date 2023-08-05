@@ -29,9 +29,13 @@ AlchemyPoolTier5::AlchemyPoolTier5(SampleMethod sampleMethod, int min, int max) 
 	this->addItemToPool(ItemChance::create(GoldWeed::create(), ItemChance::Probability::Uncommon));
 	this->addItemToPool(ItemChance::create(RatTail::create(), ItemChance::Probability::Uncommon));
 
-	// Bomb
+	// Bomb phasing in
 	this->addItemToPool(ItemChance::create(Stinger::create(), ItemChance::Probability::Common));
-	this->addItemToPool(ItemChance::create(PhoenixFeather::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(GunpowderT5::create(), ItemChance::Probability::Common));
+
+	// Bomb phasing out
+	this->addItemToPool(ItemChance::create(Pepper::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(GunpowderT4::create(), ItemChance::Probability::Rare));
 }
 
 AlchemyPoolTier5::~AlchemyPoolTier5()

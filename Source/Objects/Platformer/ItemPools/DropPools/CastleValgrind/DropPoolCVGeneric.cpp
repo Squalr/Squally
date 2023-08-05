@@ -27,7 +27,7 @@ DropPoolCVGeneric* DropPoolCVGeneric::create(ValueMap& properties)
 	return instance;
 }
 
-DropPoolCVGeneric::DropPoolCVGeneric(ValueMap& properties) : super(properties, DropPoolCVGeneric::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolCVGeneric::create(properties),
+DropPoolCVGeneric::DropPoolCVGeneric(ValueMap& properties) : super(properties, DropPoolCVGeneric::PoolName, SampleMethod::Random, 1, 3, CurrencyPoolCVGeneric::create(properties),
 	{
 		AlchemyPoolTier4::create(SampleMethod::Random, 1, 2),
 		SmithingPoolTier4::create(SampleMethod::Random, 1, 2),

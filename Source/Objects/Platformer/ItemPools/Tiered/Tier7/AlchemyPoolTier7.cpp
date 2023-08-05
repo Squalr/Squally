@@ -28,8 +28,13 @@ AlchemyPoolTier7::AlchemyPoolTier7(SampleMethod sampleMethod, int min, int max) 
 	this->addItemToPool(ItemChance::create(BlackBlood::create(), ItemChance::Probability::Uncommon));
 	this->addItemToPool(ItemChance::create(DemonRoot::create(), ItemChance::Probability::Uncommon));
 
-	// Bomb
+	// Bomb phasing in
 	this->addItemToPool(ItemChance::create(Meteorite::create(), ItemChance::Probability::Common));
+	this->addItemToPool(ItemChance::create(GunpowderT7::create(), ItemChance::Probability::Common));
+
+	// Bomb phasing out
+	this->addItemToPool(ItemChance::create(PhoenixFeather::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(GunpowderT6::create(), ItemChance::Probability::Rare));
 }
 
 AlchemyPoolTier7::~AlchemyPoolTier7()

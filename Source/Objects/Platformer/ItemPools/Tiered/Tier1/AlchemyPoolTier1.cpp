@@ -25,9 +25,9 @@ AlchemyPoolTier1::AlchemyPoolTier1(SampleMethod sampleMethod, int min, int max) 
 	this->addItemToPool(ItemChance::create(Honey::create(), ItemChance::Probability::Rare));
 	this->addItemToPool(ItemChance::create(Acorn::create(), ItemChance::Probability::Rare));
 
-	// Bomb
+	// Bomb phasing in
 	this->addItemToPool(ItemChance::create(Bamboo::create(), ItemChance::Probability::Common));
-	this->addItemToPool(ItemChance::create(WeakChitin::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(GunpowderT1::create(), ItemChance::Probability::Common));
 }
 
 AlchemyPoolTier1::~AlchemyPoolTier1()

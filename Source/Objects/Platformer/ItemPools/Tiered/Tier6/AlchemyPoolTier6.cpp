@@ -29,9 +29,13 @@ AlchemyPoolTier6::AlchemyPoolTier6(SampleMethod sampleMethod, int min, int max) 
 	this->addItemToPool(ItemChance::create(BlackMushroom::create(), ItemChance::Probability::Uncommon));
 	this->addItemToPool(ItemChance::create(Mandrake::create(), ItemChance::Probability::Uncommon));
 
-	// Bomb
+	// Bomb phasing in
 	this->addItemToPool(ItemChance::create(PhoenixFeather::create(), ItemChance::Probability::Common));
-	this->addItemToPool(ItemChance::create(Meteorite::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(GunpowderT6::create(), ItemChance::Probability::Common));
+
+	// Bomb phasing out
+	this->addItemToPool(ItemChance::create(Stinger::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(GunpowderT5::create(), ItemChance::Probability::Rare));
 }
 
 AlchemyPoolTier6::~AlchemyPoolTier6()

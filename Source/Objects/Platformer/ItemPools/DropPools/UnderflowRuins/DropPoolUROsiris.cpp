@@ -27,7 +27,7 @@ DropPoolUROsiris* DropPoolUROsiris::create(ValueMap& properties)
 	return instance;
 }
 
-DropPoolUROsiris::DropPoolUROsiris(ValueMap& properties) : super(properties, DropPoolUROsiris::PoolName, SampleMethod::Unbounded, 1, 2, CurrencyPoolURGeneric::create(properties),
+DropPoolUROsiris::DropPoolUROsiris(ValueMap& properties) : super(properties, DropPoolUROsiris::PoolName, SampleMethod::Unbounded, 1, 3, CurrencyPoolURGeneric::create(properties),
 	{
 		PotionPoolTier2::create(SampleMethod::Random, 0, 1)
 	})

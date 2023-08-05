@@ -25,7 +25,7 @@ DropPoolVSWeak* DropPoolVSWeak::create(ValueMap& properties)
 	return instance;
 }
 
-DropPoolVSWeak::DropPoolVSWeak(ValueMap& properties) : super(properties, DropPoolVSWeak::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolVSGeneric::create(properties),
+DropPoolVSWeak::DropPoolVSWeak(ValueMap& properties) : super(properties, DropPoolVSWeak::PoolName, SampleMethod::Random, 1, 3, CurrencyPoolVSGeneric::create(properties),
 	{
 		AlchemyPoolTier8::create(SampleMethod::Guarantee, 1, 1),
 	})

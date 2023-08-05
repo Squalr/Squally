@@ -39,7 +39,8 @@ std::vector<std::tuple<Item*, int>> FragGrenadeRecipe::getReagentsInternal()
 	return
 	{
 		{ Sulfur::create(), 2 },
-		{ PhoenixFeather::create(), 2 },
+		{ GunpowderT6::create(), 1 },
+		{ PhoenixFeather::create(), 1 },
 		{ Coal::create(), 2 },
 	};
 }

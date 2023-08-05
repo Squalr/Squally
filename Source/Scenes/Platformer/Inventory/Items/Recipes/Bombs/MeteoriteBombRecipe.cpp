@@ -39,6 +39,7 @@ std::vector<std::tuple<Item*, int>> MeteoriteBombRecipe::getReagentsInternal()
 	return
 	{
 		{ Obsidian::create(), 2 },
+		{ GunpowderT7::create(), 1 },
 		{ Meteorite::create(), 1 },
 		{ Coal::create(), 5 },
 	};

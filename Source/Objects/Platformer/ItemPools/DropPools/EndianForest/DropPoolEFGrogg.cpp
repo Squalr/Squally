@@ -27,7 +27,7 @@ DropPoolEFGrogg* DropPoolEFGrogg::create(ValueMap& properties)
 	return instance;
 }
 
-DropPoolEFGrogg::DropPoolEFGrogg(ValueMap& properties) : super(properties, DropPoolEFGrogg::PoolName, SampleMethod::Unbounded, 1, 2, CurrencyPoolEFGeneric::create(properties),
+DropPoolEFGrogg::DropPoolEFGrogg(ValueMap& properties) : super(properties, DropPoolEFGrogg::PoolName, SampleMethod::Unbounded, 1, 3, CurrencyPoolEFGeneric::create(properties),
 	{
 		PotionPoolTier1::create(SampleMethod::Random, 0, 1)
 	})

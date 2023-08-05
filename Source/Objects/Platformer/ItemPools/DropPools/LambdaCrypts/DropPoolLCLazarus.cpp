@@ -27,7 +27,7 @@ DropPoolLCLazarus* DropPoolLCLazarus::create(ValueMap& properties)
 	return instance;
 }
 
-DropPoolLCLazarus::DropPoolLCLazarus(ValueMap& properties) : super(properties, DropPoolLCLazarus::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolLCGeneric::create(properties),
+DropPoolLCLazarus::DropPoolLCLazarus(ValueMap& properties) : super(properties, DropPoolLCLazarus::PoolName, SampleMethod::Random, 1, 3, CurrencyPoolLCGeneric::create(properties),
 	{
 		AlchemyPoolTier5::create(SampleMethod::Random, 1, 2),
 		SmithingPoolTier5::create(SampleMethod::Random, 1, 2),

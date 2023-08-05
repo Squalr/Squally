@@ -27,7 +27,7 @@ DropPoolLCElric* DropPoolLCElric::create(ValueMap& properties)
 	return instance;
 }
 
-DropPoolLCElric::DropPoolLCElric(ValueMap& properties) : super(properties, DropPoolLCElric::PoolName, SampleMethod::Unbounded, 1, 2, CurrencyPoolEFGeneric::create(properties),
+DropPoolLCElric::DropPoolLCElric(ValueMap& properties) : super(properties, DropPoolLCElric::PoolName, SampleMethod::Unbounded, 1, 3, CurrencyPoolEFGeneric::create(properties),
 	{
 		AlchemyPoolTier5::create(SampleMethod::Random, 1, 2),
 		SmithingPoolTier5::create(SampleMethod::Random, 1, 2),

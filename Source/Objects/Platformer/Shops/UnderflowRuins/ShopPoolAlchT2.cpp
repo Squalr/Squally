@@ -30,10 +30,12 @@ ShopPoolAlchT2::ShopPoolAlchT2(ValueMap& properties) : super(properties, ShopPoo
 	this->addItemToPool(ItemChance::create(Acorn::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Honey::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(WeakChitin::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(GunpowderT2::create(), ItemChance::Probability::Guaranteed));
 
 	// Phasing out
 	this->addItemToPool(ItemChance::create(Clover::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Feather::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(GunpowderT1::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Bamboo::create(), ItemChance::Probability::Guaranteed));
 }
 

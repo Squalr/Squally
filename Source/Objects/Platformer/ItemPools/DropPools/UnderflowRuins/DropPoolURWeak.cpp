@@ -25,7 +25,7 @@ DropPoolURWeak* DropPoolURWeak::create(ValueMap& properties)
 	return instance;
 }
 
-DropPoolURWeak::DropPoolURWeak(ValueMap& properties) : super(properties, DropPoolURWeak::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolURGeneric::create(properties),
+DropPoolURWeak::DropPoolURWeak(ValueMap& properties) : super(properties, DropPoolURWeak::PoolName, SampleMethod::Random, 1, 3, CurrencyPoolURGeneric::create(properties),
 	{
 		AlchemyPoolTier2::create(SampleMethod::Guarantee, 1, 1),
 	})

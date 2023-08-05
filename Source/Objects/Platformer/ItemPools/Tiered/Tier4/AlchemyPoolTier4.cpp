@@ -29,9 +29,13 @@ AlchemyPoolTier4::AlchemyPoolTier4(SampleMethod sampleMethod, int min, int max) 
 	this->addItemToPool(ItemChance::create(DarkSeed::create(), ItemChance::Probability::Uncommon));
 	this->addItemToPool(ItemChance::create(SandRoot::create(), ItemChance::Probability::Uncommon));
 
-	// Bomb
+	// Bomb phasing in
 	this->addItemToPool(ItemChance::create(Pepper::create(), ItemChance::Probability::Common));
-	this->addItemToPool(ItemChance::create(Stinger::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(GunpowderT4::create(), ItemChance::Probability::Common));
+
+	// Bomb phasing out
+	this->addItemToPool(ItemChance::create(StrongChitin::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(GunpowderT3::create(), ItemChance::Probability::Rare));
 }
 
 AlchemyPoolTier4::~AlchemyPoolTier4()
