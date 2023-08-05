@@ -81,7 +81,6 @@ DeveloperScene::DeveloperScene()
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
 	- Todo:
-		- v CV Mabel should look at Perceptron the entire patrol, or cower until he is gone
 		- v quick swap VFX
 		- v quick warp VFX / change icon based on scenario
 		- v Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)

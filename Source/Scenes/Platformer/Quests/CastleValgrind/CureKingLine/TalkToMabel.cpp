@@ -106,6 +106,7 @@ void TalkToMabel::onLoad(QuestState questState)
 
 		if (questState != QuestState::Complete)
 		{
+			this->mabel->getAnimations()->clearAnimationPriority();
 			this->mabel->getAnimations()->playAnimation("Cower", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
 		}
 
@@ -190,6 +191,9 @@ void TalkToMabel::runCinematicSequencePt1()
 	{
 		return;
 	}
+
+	this->mabel->getAnimations()->clearAnimationPriority();
+	this->mabel->getAnimations()->playAnimation("Cower", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
 
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_CastleValgrind_CureKing_Mabel_A_Ack::create(),

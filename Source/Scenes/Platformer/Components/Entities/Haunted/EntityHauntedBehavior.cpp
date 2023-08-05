@@ -310,7 +310,7 @@ void EntityHauntedBehavior::showRemainingSoulsDialogue(int remaining)
 	{
 		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_CastleValgrind_CureKing_Misc_Q_AllSouls::create()
-				->setStringReplacementVariables({ Strings::Platformer_Entities_Names_Npcs_CastleValgrind_Mabel::create() }),
+				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_CastleValgrind_Mabel::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
@@ -328,7 +328,7 @@ void EntityHauntedBehavior::showRemainingSoulsDialogue(int remaining)
 	{
 		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_CastleValgrind_CureKing_Misc_P_RemainingSouls::create()
-				->setStringReplacementVariables({ ConstantString::create(std::to_string(remaining)) }),
+				->setStringReplacementVariables(ConstantString::create(std::to_string(remaining))),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
