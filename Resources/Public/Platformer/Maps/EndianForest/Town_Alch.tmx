@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="893">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="895">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -208,6 +208,16 @@
   <object id="886" name="alchemy-lab" type="object" x="1793.68" y="670.939" width="381" height="393">
    <properties>
     <property name="recipe-pool" value="alchemy-pool-ef"/>
+   </properties>
+  </object>
+  <object id="893" name="shop-item" type="object" x="1066.56" y="720.399" width="64" height="64">
+   <properties>
+    <property name="pool" value="shop-pool-alch-t1"/>
+   </properties>
+  </object>
+  <object id="894" name="shop-item" type="object" x="1641.03" y="720.399" width="64" height="64">
+   <properties>
+    <property name="pool" value="shop-pool-alch-t1"/>
    </properties>
   </object>
  </objectgroup>
