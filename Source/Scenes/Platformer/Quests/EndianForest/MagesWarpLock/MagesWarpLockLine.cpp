@@ -4,6 +4,7 @@
 #include "Scenes/Platformer/Quests/EndianForest/MagesWarpLock/MagesWarpLock.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/FindElrielLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/TalkToElriel.h"
+#include "Scenes/Platformer/Quests/EndianForest/FindElriel/WindSpellbook.h"
 
 using namespace cocos2d;
 

@@ -86,7 +86,7 @@ DeveloperScene::DeveloperScene()
 		- v Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)
 		- v Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)
 		- v Maybe HP pots in combat should self-target initally?
-		- v Can probably use Silver for more craft recipes
+		- v Can probably use Silver for more craft recipes or bombs
 		- v Wand energy bolt literally does an attack anim and nothing
 		- v UR gauntlet crowd should animate
 		- v FF Asmodeus crowd should animate

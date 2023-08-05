@@ -5,6 +5,7 @@
 class CinematicMarker;
 class Guano;
 class Marcel;
+class QueenLiana;
 class QuestLine;
 class Squally;
 

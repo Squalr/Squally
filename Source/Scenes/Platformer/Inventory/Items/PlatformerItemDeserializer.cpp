@@ -153,6 +153,14 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[StrongChitin::SaveKey] = [=]() { return (Item*)StrongChitin::create(); };
 	this->deserializers[WeakChitin::SaveKey] = [=]() { return (Item*)WeakChitin::create(); };
 
+	this->deserializers[GunpowderT1::SaveKey] = [=]() { return (Item*)GunpowderT1::create(); };
+	this->deserializers[GunpowderT2::SaveKey] = [=]() { return (Item*)GunpowderT2::create(); };
+	this->deserializers[GunpowderT3::SaveKey] = [=]() { return (Item*)GunpowderT3::create(); };
+	this->deserializers[GunpowderT4::SaveKey] = [=]() { return (Item*)GunpowderT4::create(); };
+	this->deserializers[GunpowderT5::SaveKey] = [=]() { return (Item*)GunpowderT5::create(); };
+	this->deserializers[GunpowderT6::SaveKey] = [=]() { return (Item*)GunpowderT6::create(); };
+	this->deserializers[GunpowderT7::SaveKey] = [=]() { return (Item*)GunpowderT7::create(); };
+
 	this->deserializers[HeartOfFire::SaveKey] = [=]() { return (Item*)HeartOfFire::create(); };
 	this->deserializers[HeartOfShadow::SaveKey] = [=]() { return (Item*)HeartOfShadow::create(); };
 
