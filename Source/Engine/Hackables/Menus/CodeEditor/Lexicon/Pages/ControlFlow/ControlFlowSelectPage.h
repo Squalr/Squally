@@ -29,6 +29,19 @@ private:
 
 	cocos2d::Sprite* decorLine = nullptr;
 	LocalizedLabel* operationSelectLabel = nullptr;
+	ClickableTextNode* callOperationButton = nullptr;
+	ClickableTextNode* jnabeOperationButton = nullptr;
+	ClickableTextNode* jneOperationButton = nullptr;
+	ClickableTextNode* jngleOperationButton = nullptr;
+	ClickableTextNode* jmpOperationButton = nullptr;
+	ClickableTextNode* jnoOperationButton = nullptr;
+	ClickableTextNode* jnpOperationButton = nullptr;
+	ClickableTextNode* jnsOperationButton = nullptr;
+	ClickableTextNode* jnzOperationButton = nullptr;
+	ClickableTextNode* jzcxzOperationButton = nullptr;
+	ClickableTextNode* loopOperationButton = nullptr;
 	ClickableTextNode* nopOperationButton = nullptr;
+	ClickableTextNode* retOperationButton = nullptr;
+
 	LocalizedLabel* introText = nullptr;
 };

@@ -1,4 +1,3 @@
-
 	LocalizedString* {{ClassName}}::create() { LocalizedString* instance = new {{ClassName}}(); instance->autorelease(); return instance; }
 	LocalizedString* {{ClassName}}::clone() { LocalizedString* clonedString = {{ClassName}}::create(); this->copyAttributesTo(clonedString); return clonedString; }
 	{{ClassName}}::{{ClassName}}() : LocalizedString() { }

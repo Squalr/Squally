@@ -22,8 +22,9 @@ protected:
 	
 private:
 	typedef LexiconPage super;
+	
 	NopPage();
-	~NopPage();
+	virtual ~NopPage();
 
 	cocos2d::Sprite* decorSprite = nullptr;
 	cocos2d::Sprite* chapterSprite = nullptr;
