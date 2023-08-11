@@ -17,7 +17,19 @@
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ChapterSelectPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/ControlFlowIntroPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/ControlFlowSelectPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Call/CallPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jmp/JmpPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jnabe/JnabePage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jne/JnePage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jngle/JnglePage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jno/JnoPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jnp/JnpPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jns/JnsPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jnz/JnzPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jzcxz/JzcxzPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Loop/LoopPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Nop/NopPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Ret/RetPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/DataIntroPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/DataSelectPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/Add/AddExamplesPage.h"
@@ -41,8 +53,26 @@
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/Sub/SubExamplesPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/Sub/SubPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/IntroPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/Fabs/FabsPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/Fcmovnbe/FcmovnbePage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/Fcos/FcosPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/Fiaddp/FiaddpPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/Ficompp/FicomppPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/Fidivrp/FidivrpPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/Fild/FildPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/Fimulp/FimulpPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/Fistp/FistpPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/Fsin/FsinPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/Fisubrp/FisubrpPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/Fld1/Fld1Page.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/Fldpi/FldpiPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/Fldz/FldzPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/FloatingPointIntroPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/FloatingPointSelectPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/Frndint/FrndintPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/Fsqrt/FsqrtPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/Ftst/FtstPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/Fxch/FxchPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Vector/VectorIntroPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Vector/VectorSelectPage.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -125,7 +155,19 @@ Lexicon::Lexicon()
 	// Control flow
 	this->pages.push_back(ControlFlowIntroPage::create());
 	this->pages.push_back(ControlFlowSelectPage::create());
+	this->pages.push_back(CallPage::create());
+	this->pages.push_back(JmpPage::create());
+	this->pages.push_back(JnabePage::create());
+	this->pages.push_back(JnePage::create());
+	this->pages.push_back(JnglePage::create());
+	this->pages.push_back(JnoPage::create());
+	this->pages.push_back(JnpPage::create());
+	this->pages.push_back(JnsPage::create());
+	this->pages.push_back(JnzPage::create());
+	this->pages.push_back(JzcxzPage::create());
+	this->pages.push_back(LoopPage::create());
 	this->pages.push_back(NopPage::create());
+	this->pages.push_back(RetPage::create());
 
 	// SIMD
 	this->pages.push_back(VectorIntroPage::create());
@@ -135,7 +177,25 @@ Lexicon::Lexicon()
 	this->pages.push_back(FloatingPointIntroPage::create());
 	this->pages.push_back(FloatingPointSelectPage::create());
 
-	for (auto next : this->pages)
+	this->pages.push_back(FabsPage::create());
+	this->pages.push_back(FcmovnbePage::create());
+	this->pages.push_back(FiaddpPage::create());
+	this->pages.push_back(FicomppPage::create());
+	this->pages.push_back(FidivrpPage::create());
+	this->pages.push_back(FildPage::create());
+	this->pages.push_back(FimulpPage::create());
+	this->pages.push_back(FistpPage::create());
+	this->pages.push_back(FisubrpPage::create());
+	this->pages.push_back(Fld1Page::create());
+	this->pages.push_back(FldpiPage::create());
+	this->pages.push_back(FldzPage::create());
+	this->pages.push_back(FrndintPage::create());
+	this->pages.push_back(FcosPage::create());
+	this->pages.push_back(FsqrtPage::create());
+	this->pages.push_back(FtstPage::create());
+	this->pages.push_back(FxchPage::create());
+
+	for (LexiconPage* next : this->pages)
 	{
 		switch(next->getPageType())
 		{

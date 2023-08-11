@@ -18326,6 +18326,19 @@ namespace Strings
 		virtual ~Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcompp() = default;
 	};
 
+	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcos : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcos();
+		virtual ~Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcos() = default;
+	};
+
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fdiv : public LocalizedString
 	{
 	public:
@@ -18391,6 +18404,19 @@ namespace Strings
 		virtual ~Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fiadd() = default;
 	};
 
+	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fiaddp : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fiaddp();
+		virtual ~Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fiaddp() = default;
+	};
+
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Ficom : public LocalizedString
 	{
 	public:
@@ -18417,6 +18443,32 @@ namespace Strings
 		virtual ~Menus_Hacking_Lexicon_Instructions_FloatingPoint_Ficomp() = default;
 	};
 
+	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Ficompp : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Instructions_FloatingPoint_Ficompp();
+		virtual ~Menus_Hacking_Lexicon_Instructions_FloatingPoint_Ficompp() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fidivrp : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fidivrp();
+		virtual ~Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fidivrp() = default;
+	};
+
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fild : public LocalizedString
 	{
 	public:
@@ -18441,6 +18493,19 @@ namespace Strings
 	private:
 		Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fimul();
 		virtual ~Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fimul() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fimulp : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fimulp();
+		virtual ~Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fimulp() = default;
 	};
 
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fist : public LocalizedString
@@ -18493,6 +18558,19 @@ namespace Strings
 	private:
 		Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fisubr();
 		virtual ~Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fisubr() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fisubrp : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fisubrp();
+		virtual ~Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fisubrp() = default;
 	};
 
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fld : public LocalizedString
@@ -18662,6 +18740,19 @@ namespace Strings
 	private:
 		Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fscale();
 		virtual ~Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fscale() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fsin : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fsin();
+		virtual ~Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fsin() = default;
 	};
 
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fsqrt : public LocalizedString
@@ -20196,6 +20287,240 @@ namespace Strings
 	private:
 		Menus_Hacking_Lexicon_Pages_Data_Title();
 		virtual ~Menus_Hacking_Lexicon_Pages_Data_Title() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_FloatingPoint_Fabs_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_FloatingPoint_Fabs_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_FloatingPoint_Fabs_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_FloatingPoint_Fcmovnbe_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_FloatingPoint_Fcmovnbe_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_FloatingPoint_Fcmovnbe_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_FloatingPoint_Fcos_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_FloatingPoint_Fcos_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_FloatingPoint_Fcos_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_FloatingPoint_Fiaddp_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_FloatingPoint_Fiaddp_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_FloatingPoint_Fiaddp_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_FloatingPoint_Ficompp_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_FloatingPoint_Ficompp_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_FloatingPoint_Ficompp_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_FloatingPoint_Fidivrp_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_FloatingPoint_Fidivrp_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_FloatingPoint_Fidivrp_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_FloatingPoint_Fild_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_FloatingPoint_Fild_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_FloatingPoint_Fild_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_FloatingPoint_Fimulp_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_FloatingPoint_Fimulp_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_FloatingPoint_Fimulp_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_FloatingPoint_Fistp_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_FloatingPoint_Fistp_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_FloatingPoint_Fistp_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_FloatingPoint_Fisubrp_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_FloatingPoint_Fisubrp_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_FloatingPoint_Fisubrp_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_FloatingPoint_Fld1_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_FloatingPoint_Fld1_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_FloatingPoint_Fld1_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_FloatingPoint_Fldpi_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_FloatingPoint_Fldpi_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_FloatingPoint_Fldpi_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_FloatingPoint_Fldz_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_FloatingPoint_Fldz_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_FloatingPoint_Fldz_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_FloatingPoint_Frndint_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_FloatingPoint_Frndint_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_FloatingPoint_Frndint_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_FloatingPoint_Fsin_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_FloatingPoint_Fsin_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_FloatingPoint_Fsin_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_FloatingPoint_Fsqrt_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_FloatingPoint_Fsqrt_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_FloatingPoint_Fsqrt_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_FloatingPoint_Ftst_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_FloatingPoint_Ftst_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_FloatingPoint_Ftst_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_FloatingPoint_Fxch_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_FloatingPoint_Fxch_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_FloatingPoint_Fxch_Intro() = default;
 	};
 
 	class Menus_Hacking_Lexicon_Pages_FloatingPoint_Intro : public LocalizedString
