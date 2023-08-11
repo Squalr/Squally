@@ -9,6 +9,7 @@ namespace cocos2d
 
 class CollisionObject;
 class HackableData;
+class Lava;
 
 class RisingLava : public HackableObject
 {

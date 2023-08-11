@@ -19158,6 +19158,19 @@ namespace Strings
 		virtual ~Menus_Hacking_Lexicon_Instructions_Vector_Maxps() = default;
 	};
 
+	class Menus_Hacking_Lexicon_Instructions_Vector_Maxss : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Instructions_Vector_Maxss();
+		virtual ~Menus_Hacking_Lexicon_Instructions_Vector_Maxss() = default;
+	};
+
 	class Menus_Hacking_Lexicon_Instructions_Vector_Minps : public LocalizedString
 	{
 	public:
@@ -19169,6 +19182,19 @@ namespace Strings
 	private:
 		Menus_Hacking_Lexicon_Instructions_Vector_Minps();
 		virtual ~Menus_Hacking_Lexicon_Instructions_Vector_Minps() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Instructions_Vector_Minss : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Instructions_Vector_Minss();
+		virtual ~Menus_Hacking_Lexicon_Instructions_Vector_Minss() = default;
 	};
 
 	class Menus_Hacking_Lexicon_Instructions_Vector_Movaps : public LocalizedString
@@ -20575,6 +20601,45 @@ namespace Strings
 		virtual ~Menus_Hacking_Lexicon_Pages_Intro_Title() = default;
 	};
 
+	class Menus_Hacking_Lexicon_Pages_Vector_Addss_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_Vector_Addss_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_Vector_Addss_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_Vector_Comiss_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_Vector_Comiss_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_Vector_Comiss_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_Vector_Divss_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_Vector_Divss_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_Vector_Divss_Intro() = default;
+	};
+
 	class Menus_Hacking_Lexicon_Pages_Vector_Intro : public LocalizedString
 	{
 	public:
@@ -20586,6 +20651,71 @@ namespace Strings
 	private:
 		Menus_Hacking_Lexicon_Pages_Vector_Intro();
 		virtual ~Menus_Hacking_Lexicon_Pages_Vector_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_Vector_Maxss_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_Vector_Maxss_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_Vector_Maxss_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_Vector_Minss_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_Vector_Minss_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_Vector_Minss_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_Vector_Mulss_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_Vector_Mulss_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_Vector_Mulss_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_Vector_Sqrtss_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_Vector_Sqrtss_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_Vector_Sqrtss_Intro() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_Vector_Subss_Intro : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_Vector_Subss_Intro();
+		virtual ~Menus_Hacking_Lexicon_Pages_Vector_Subss_Intro() = default;
 	};
 
 	class Menus_Hacking_Lexicon_Pages_Vector_Title : public LocalizedString

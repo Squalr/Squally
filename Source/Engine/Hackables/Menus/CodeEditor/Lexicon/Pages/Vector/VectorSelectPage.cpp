@@ -52,6 +52,16 @@ void VectorSelectPage::initializePositions()
 	this->decorLine->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f + vOffset));
 	this->operationSelectLabel->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f + vOffset - 56.0f));
 	this->nopOperationButton->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 0.0f));
+
+	// addss
+	// subss
+	// mulss
+	// divss
+	
+	// minss
+	// maxss
+	// sqrtss
+	// comiss
 }
 
 void VectorSelectPage::initializeListeners()
