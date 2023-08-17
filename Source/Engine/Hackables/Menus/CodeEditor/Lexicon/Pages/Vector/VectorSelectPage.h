@@ -29,6 +29,13 @@ private:
 
 	cocos2d::Sprite* decorLine = nullptr;
 	LocalizedLabel* operationSelectLabel = nullptr;
-	ClickableTextNode* nopOperationButton = nullptr;
+	ClickableTextNode* addssOperationButton = nullptr;
+	ClickableTextNode* comissOperationButton = nullptr;
+	ClickableTextNode* divssOperationButton = nullptr;
+	ClickableTextNode* maxssOperationButton = nullptr;
+	ClickableTextNode* minssOperationButton = nullptr;
+	ClickableTextNode* mulssOperationButton = nullptr;
+	ClickableTextNode* sqrtssOperationButton = nullptr;
+	ClickableTextNode* subssOperationButton = nullptr;
 	LocalizedLabel* introText = nullptr;
 };

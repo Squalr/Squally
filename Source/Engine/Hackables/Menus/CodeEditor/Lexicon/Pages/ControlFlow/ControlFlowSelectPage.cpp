@@ -88,21 +88,22 @@ void ControlFlowSelectPage::initializePositions()
 
 	this->decorLine->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f + vOffset));
 	this->operationSelectLabel->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f + vOffset - 56.0f));
+	
+	this->nopOperationButton->setPosition(Vec2(-196.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 0.0f));
+	this->callOperationButton->setPosition(Vec2(-196.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 1.0f));
+	this->retOperationButton->setPosition(Vec2(-196.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 2.0f));
+	this->loopOperationButton->setPosition(Vec2(-196.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 3.0f));
 
-	this->nopOperationButton->setPosition(Vec2(-112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 0.0f));
-	this->callOperationButton->setPosition(Vec2(-112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 1.0f));
-	this->jmpOperationButton->setPosition(Vec2(-112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 2.0f));
-	this->jneOperationButton->setPosition(Vec2(-112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 3.0f));
-	this->jnoOperationButton->setPosition(Vec2(-112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 4.0f));
-	this->jnpOperationButton->setPosition(Vec2(-112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 5.0f));
-	this->jzcxzOperationButton->setPosition(Vec2(-112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 6.0f));
+	this->jmpOperationButton->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 0.0f + vSpacing / 2.0f));
+	this->jneOperationButton->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 1.0f + vSpacing / 2.0f));
+	this->jnzOperationButton->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 2.0f + vSpacing / 2.0f));
+	this->jngleOperationButton->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 3.0f + vSpacing / 2.0f));
+	this->jnabeOperationButton->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 4.0f + vSpacing / 2.0f));
 
-	this->retOperationButton->setPosition(Vec2(112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 0.0f + vSpacing / 2.0f));
-	this->jnzOperationButton->setPosition(Vec2(112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 1.0f + vSpacing / 2.0f));
-	this->jngleOperationButton->setPosition(Vec2(112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 2.0f + vSpacing / 2.0f));
-	this->jnabeOperationButton->setPosition(Vec2(112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 3.0f + vSpacing / 2.0f));
-	this->jnsOperationButton->setPosition(Vec2(112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 4.0f + vSpacing / 2.0f));
-	this->loopOperationButton->setPosition(Vec2(112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 5.0f + vSpacing / 2.0f));
+	this->jnsOperationButton->setPosition(Vec2(196.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 0.0f));
+	this->jnoOperationButton->setPosition(Vec2(196.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 1.0f));
+	this->jnpOperationButton->setPosition(Vec2(196.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 2.0f));
+	this->jzcxzOperationButton->setPosition(Vec2(196.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 3.0f));
 }
 
 void ControlFlowSelectPage::initializeListeners()

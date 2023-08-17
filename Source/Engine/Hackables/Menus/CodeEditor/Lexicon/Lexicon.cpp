@@ -73,6 +73,14 @@
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/Fsqrt/FsqrtPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/Ftst/FtstPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/Fxch/FxchPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Vector/Addss/AddssPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Vector/Comiss/ComissPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Vector/Divss/DivssPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Vector/Maxss/MaxssPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Vector/Minss/MinssPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Vector/Mulss/MulssPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Vector/Sqrtss/SqrtssPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Vector/Subss/SubssPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Vector/VectorIntroPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Vector/VectorSelectPage.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -173,6 +181,15 @@ Lexicon::Lexicon()
 	this->pages.push_back(VectorIntroPage::create());
 	this->pages.push_back(VectorSelectPage::create());
 
+	this->pages.push_back(AddssPage::create());
+	this->pages.push_back(ComissPage::create());
+	this->pages.push_back(DivssPage::create());
+	this->pages.push_back(MaxssPage::create());
+	this->pages.push_back(MinssPage::create());
+	this->pages.push_back(MulssPage::create());
+	this->pages.push_back(SqrtssPage::create());
+	this->pages.push_back(SubssPage::create());
+	
 	// FPU
 	this->pages.push_back(FloatingPointIntroPage::create());
 	this->pages.push_back(FloatingPointSelectPage::create());
