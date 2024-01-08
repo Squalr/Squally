@@ -27,4 +27,4 @@ configure_file(
 
 # Sources
 add_subdirectory(${PROJECT_SOURCE_DIR}/Source)
-add_subdirectory(${PROJECT_SOURCE_DIR}/Launcher)
+# add_subdirectory(${PROJECT_SOURCE_DIR}/Launcher)

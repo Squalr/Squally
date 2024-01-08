@@ -110,8 +110,7 @@ DeveloperScene::DeveloperScene()
 			- v If we keep them -- EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
 		- v More transmutes (perhaps custom UI to show a transmute wheel)
 			- v or just scrap transmutes, and add the ability to sell shit
-		- * Lexicon is largely incomplete
-			- * Fill out descriptions without samples first
+		- * Lexicon TODOs
 		- * Arrow keys in large scripts should auto-scroll if cursor goes out of visible text range
 		- * Multi-line comments in scripts can cause line counter to become disrupted
 		- * Should really expand scripting text editor
