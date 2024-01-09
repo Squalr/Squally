@@ -43,6 +43,9 @@ Stalactite::Stalactite(ValueMap& properties) : super(properties)
 	this->rumbleSound = WorldSound::create(SoundResources::Platformer_Objects_Stalactite_RockFall1);
 	this->fallSound = WorldSound::create(SoundResources::Platformer_Objects_Stalactite_RockFall2);
 
+	this->collision->setCascadeOpacityEnabled(true);
+	this->collision->addChild(this->sprite);
+
 	this->collision->addChild(this->sprite);
 	this->collision->addChild(this->rumbleSound);
 	this->collision->addChild(this->fallSound);

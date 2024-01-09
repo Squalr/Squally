@@ -35,6 +35,8 @@ private:
 	void applyGravity(float dt);
 	bool isFalling = false;
 	bool unregisterHackables = false;
+	bool runOnce = false;
+	bool noSound = false;
 
 	cocos2d::Sprite* sprite = nullptr;
 	CollisionObject* collision = nullptr;
@@ -42,4 +44,6 @@ private:
 	WorldSound* fallSound = nullptr;
 
 	static const std::string PropertyUnregisterHackables;
+	static const std::string PropertyRunOnce;
+	static const std::string PropertyNoSound;
 };

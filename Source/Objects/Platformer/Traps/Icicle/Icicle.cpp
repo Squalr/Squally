@@ -31,6 +31,8 @@ using namespace cocos2d;
 
 const std::string Icicle::MapKey = "icicle";
 const std::string Icicle::PropertyUnregisterHackables = "unregister-hackables";
+const std::string Icicle::PropertyRunOnce = "run-once";
+const std::string Icicle::PropertyNoSound = "no-sound";
 
 Icicle* Icicle::create(ValueMap& properties)
 {
@@ -43,12 +45,18 @@ Icicle* Icicle::create(ValueMap& properties)
 
 Icicle::Icicle(ValueMap& properties) : super(properties)
 {
-	this->unregisterHackables = GameUtils::getKeyOrDefault(this->properties, Icicle::MapKey, Value(false)).asBool();
+	this->unregisterHackables = GameUtils::getKeyOrDefault(this->properties, Icicle::PropertyUnregisterHackables, Value(false)).asBool();
+	this->runOnce = GameUtils::getKeyOrDefault(this->properties, Icicle::PropertyRunOnce, Value(false)).asBool();
+	this->noSound = GameUtils::getKeyOrDefault(this->properties, Icicle::PropertyNoSound, Value(false)).asBool();
 	CSize size = CSize(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat());
 	this->sprite = Sprite::create(ObjectResources::Traps_Icicle_Icicle);
 	this->collision = CollisionObject::create(CollisionObject::createBox(size), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, true));
-	this->rumbleSound = WorldSound::create(SoundResources::Platformer_Objects_Stalactite_RockFall1);
-	this->fallSound = WorldSound::create(SoundResources::Platformer_Objects_Stalactite_RockFall2);
+	
+	if (!this->noSound)
+	{
+		this->rumbleSound = WorldSound::create(SoundResources::Platformer_Objects_Stalactite_RockFall1);
+		this->fallSound = WorldSound::create(SoundResources::Platformer_Objects_Stalactite_RockFall2);
+	}
 
 	CSize imageSize = this->sprite->getContentSize();
 	if (imageSize.height > 0.0f) 
@@ -56,9 +64,19 @@ Icicle::Icicle(ValueMap& properties) : super(properties)
 		this->sprite->setScale(size.height / imageSize.height);
 	}
 	
+	this->collision->setCascadeOpacityEnabled(true);
 	this->collision->addChild(this->sprite);
-	this->collision->addChild(this->rumbleSound);
-	this->collision->addChild(this->fallSound);
+
+	if (!this->noSound && this->rumbleSound != nullptr)
+	{
+		this->collision->addChild(this->rumbleSound);
+	}
+
+	if (!this->noSound && this->fallSound != nullptr)
+	{
+		this->collision->addChild(this->fallSound);
+	}
+
 	this->addChild(this->collision);
 }
 
@@ -70,7 +88,14 @@ void Icicle::onEnter()
 {
 	super::onEnter();
 
-	this->scheduleUpdate();
+	if (this->collision != nullptr && this->loadObjectStateOrDefault(Icicle::PropertyRunOnce, Value(false)).asBool())
+	{
+		this->collision->setVisible(false);
+	}
+	else
+	{
+		this->scheduleUpdate();
+	}
 }
 
 void Icicle::initializeListeners()
@@ -79,13 +104,26 @@ void Icicle::initializeListeners()
 
 	this->listenForMapEventOnce(this->getListenEvent(), [=](ValueMap)
 	{
+		if (this->runOnce)
+		{
+			if (this->loadObjectStateOrDefault(Icicle::PropertyRunOnce, Value(false)).asBool())
+			{
+				return;
+			}
+
+			this->saveObjectState(Icicle::PropertyRunOnce, Value(true));
+		}
+
 		const float RotationAngle = 2.5f;
 		const float RotationSpeed = 0.05f;
 		const float HalfRotationSpeed = RotationSpeed / 2.0f;
 		const float RumbleTime = 0.5f;
 		const int Rumbles = int(std::round((RumbleTime - RotationSpeed) / RotationSpeed)) / 2;
 
-		this->rumbleSound->play();
+		if (!this->noSound && this->rumbleSound != nullptr)
+		{
+			this->rumbleSound->play();
+		}
 
 		this->runAction(Sequence::create(
 			EaseSineInOut::create(RotateTo::create(HalfRotationSpeed, RotationAngle)),
@@ -98,7 +136,11 @@ void Icicle::initializeListeners()
 			CallFunc::create([=]()
 			{
 				this->isFalling = true;
-				this->fallSound->play();
+
+				if (!this->noSound && this->fallSound != nullptr)
+				{
+					this->fallSound->play();
+				}
 			}),
 			nullptr
 		));

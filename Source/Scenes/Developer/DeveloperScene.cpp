@@ -111,6 +111,7 @@ DeveloperScene::DeveloperScene()
 		- v More transmutes (perhaps custom UI to show a transmute wheel)
 			- v or just scrap transmutes, and add the ability to sell shit
 		- * Lexicon TODOs
+		- * Present chest art fixes
 		- * Arrow keys in large scripts should auto-scroll if cursor goes out of visible text range
 		- * Multi-line comments in scripts can cause line counter to become disrupted
 		- * Should really expand scripting text editor
@@ -135,7 +136,15 @@ DeveloperScene::DeveloperScene()
 		- * 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
 		- * 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
 		- * 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
+			- Gate this by frozen water, requiring a venture into 2_x for frost book
 		- * Needs hexus battles
+		- * Needs hexus puzzles
+			- Zone 1_0
+			- Zone 1_1
+			- Town_Main
+			- Zone 2_x?
+			- Zone 3_x?
+
 		- * Tune hexus battle special cards
 		- * Needs animals
 		- * Needs enemy scripting according to notes on which instructions this zone covers
@@ -604,9 +613,9 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyFound, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGrimFound, Value(true));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(GuanoPetrified::MapKey));
+			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(GuanoPetrified::MapKey));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Gecky::MapKey));
-			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Grim::MapKey));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Grim::MapKey));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyEq, Value(5));

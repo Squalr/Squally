@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="66" height="34" tilewidth="128" tileheight="128" infinite="0" nextlayerid="92" nextobjectid="1345">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="66" height="34" tilewidth="128" tileheight="128" infinite="0" nextlayerid="92" nextobjectid="1399">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -64,7 +64,10 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1169" name="ice" type="terrain" x="6416" y="1016">
-   <polygon points="1355.92,1977.96 419.566,2156.39 34.0617,1823.48 -711.028,1536.23 -2052.21,1653.34 -3830.45,896.443 -3952.63,893.96 -3281.58,383.478 -2605.63,24.837 -2216.52,-509.996 -1789.38,-605.374 -1530.21,-1196.82 -757.881,-1033.26 -801.466,-57.1586 -977.415,777.392 -932.206,908.137 -32.7696,938.4 366.93,943.002 840.324,815.64 1432.73,634.85 1690.5,474.06 2588.88,460.048 2081.36,1779.05 1882.49,2137.62"/>
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+   <polygon points="1355.92,1977.96 419.566,2156.39 34.0617,1823.48 -2236.45,1027.76 -3671.8,1502.68 -5421.79,792.865 -5478.05,385.485 -4807,-124.997 -4131.05,-483.638 -3741.94,-1018.47 -3314.8,-1113.85 -3055.63,-1705.29 -2283.3,-1541.73 -2326.89,-565.633 -2155.32,-0.42579 -1558.19,429.925 366.93,943.002 840.324,815.64 1432.73,634.85 1690.5,474.06 2588.88,460.048 2081.36,1779.05 1882.49,2137.62"/>
   </object>
  </objectgroup>
  <objectgroup id="75" name="terrain -4">
@@ -73,7 +76,10 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1002" name="ice" type="terrain" x="448" y="-80">
-   <polygon points="5551.03,4081.37 4361.18,4178.09 2885.38,4189.54 1772.92,4308.15 640.694,4594.85 -1117.09,4589.63 -925.759,2038.79 -747.674,1705.43 -615.161,1375.77 -619.556,-178.375 184.397,-392.92 998.649,-198.5 1113.72,1435.79 678.777,1999.81 569.382,2807.45 836.994,3788.92 1188.41,3791.32 1640.01,3761.01 2364.15,3772.27 3305.3,3805.72 3604.06,3606.53 3905.94,3492.89 4663.75,3486.09 5455.44,3355.61 6335.06,2976.63 6917.64,2806.17 7542.99,2464.5 8211.53,2468.06 8197.74,3646.35 7912.72,3804.89 7553.64,4088.74"/>
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+   <polygon points="5551.03,4081.37 4361.18,4178.09 2885.38,4189.54 1772.92,4308.15 640.694,4594.85 -1117.09,4589.63 -925.759,2038.79 -747.674,1705.43 -615.161,1375.77 -619.556,-178.375 184.397,-392.92 998.649,-198.5 1113.72,1435.79 678.777,1999.81 569.382,2807.45 836.994,3788.92 1188.41,3791.32 1640.01,3761.01 2364.15,3772.27 3305.3,3805.72 3604.06,3606.53 3905.94,3492.89 4663.75,3486.09 5455.44,3355.61 6335.06,2976.63 6899.84,2785.4 7332.31,2458.57 8211.53,2468.06 8197.74,3646.35 7912.72,3804.89 7553.64,4088.74"/>
   </object>
  </objectgroup>
  <objectgroup id="82" name="decor -4">
@@ -81,17 +87,30 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1390" name="Forest/Flower10" type="decor" x="4458.51" y="3291.83" width="199" height="133"/>
+  <object id="1391" name="Forest/Flower9" type="decor" x="6194.9" y="3027.42" width="199" height="133" rotation="-22.5"/>
+  <object id="1392" name="Forest/Flower10" type="decor" x="2103.89" y="3558.74" width="199" height="133" rotation="2"/>
  </objectgroup>
  <objectgroup id="91" name="objects -6">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1170" name="edge-portal" type="object" x="8236.04" y="839.575" width="199.918" height="640.851">
+ </objectgroup>
+ <objectgroup id="90" name="player_layer -6">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="2"/>
+  </properties>
+  <object id="1163" name="warp" type="object" x="9945.55" y="1659.3" width="256" height="256">
    <properties>
-    <property name="direction" value="right"/>
-    <property name="map" value="BallmerPeaks/Zone_1_2"/>
-    <property name="transition" value="left-2"/>
+    <property name="from" value="bridge-back-C"/>
+    <property name="locked-text-key" value="closed"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-front-C"/>
+    <property name="zoom" type="float" value="1"/>
    </properties>
   </object>
  </objectgroup>
@@ -100,6 +119,24 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1394" name="hexus-shrine" type="object" x="4785.81" y="3152.92" width="155" height="260">
+   <properties>
+    <property name="entity-tag" value="hexus-penguin-grunt"/>
+   </properties>
+  </object>
+  <object id="1395" name="penguin-grunt" type="entity" x="4788.11" y="5366.89" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,disarmed,bp-puzzle-B"/>
+    <property name="tag" value="hexus-penguin-grunt"/>
+   </properties>
+  </object>
+  <object id="1396" name="edge-portal" type="object" x="8241.92" y="1746.39" width="199.918" height="640.851">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="BallmerPeaks/Zone_1_2"/>
+    <property name="transition" value="left-2"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="87" name="objects -4 fg">
   <properties>
@@ -112,7 +149,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1005" name="penguin-grunt" type="entity" x="4687.21" y="3282.22" width="128" height="128">
+  <object id="1005" name="penguin-grunt" type="entity" x="2902.26" y="3561.79" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="BallmerPeaks/Combat_Snow"/>
@@ -121,7 +158,7 @@
     <property name="drop-pool" value="bp-generic"/>
    </properties>
   </object>
-  <object id="1006" name="penguin-grunt" type="entity" x="4688.79" y="3013.78" width="128" height="128">
+  <object id="1006" name="penguin-grunt" type="entity" x="2903.84" y="3293.35" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-c"/>
@@ -131,28 +168,6 @@
   <object id="1344" name="horse" type="entity" x="2378.42" y="3557.21" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup id="90" name="player_layer -6">
-  <properties>
-   <property name="depth" type="float" value="-320"/>
-   <property name="type" value="objects"/>
-   <property name="zoom" type="float" value="2"/>
-  </properties>
-  <object id="1163" name="warp" type="object" x="6486.67" y="1674.67" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-back-C"/>
-    <property name="locked-text-key" value="closed"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-front-C"/>
-    <property name="zoom" type="float" value="1"/>
-   </properties>
-  </object>
-  <object id="1342" name="spawn" type="object" x="8050" y="1356.67" width="128" height="128">
-   <properties>
-    <property name="transition" value="right-2"/>
    </properties>
   </object>
  </objectgroup>
@@ -172,7 +187,7 @@
     <property name="zoom" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1010" name="warp" type="object" x="8167.39" y="2133.88" width="256" height="256">
+  <object id="1010" name="warp" type="object" x="9472.48" y="2236.91" width="256" height="256">
    <properties>
     <property name="from" value="bridge-back-B"/>
     <property name="locked-text-key" value="closed"/>
@@ -180,6 +195,11 @@
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-front-B"/>
     <property name="zoom" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="1397" name="spawn" type="object" x="7841.43" y="2254.22" width="128" height="128">
+   <properties>
+    <property name="transition" value="right-2"/>
    </properties>
   </object>
  </objectgroup>
@@ -193,12 +213,12 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1015" name="wood" type="terrain" x="8122.18" y="2390.65" width="347" height="356.5">
+  <object id="1015" name="wood" type="terrain" x="9427.27" y="2493.68" width="347" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1026" name="wood" type="terrain" x="6440.42" y="1933.86" width="347" height="356.5">
+  <object id="1026" name="wood" type="terrain" x="9899.3" y="1918.49" width="347" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -214,12 +234,12 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1014" name="wood" type="terrain" x="8123.74" y="2411.85" width="347" height="356.5">
+  <object id="1014" name="wood" type="terrain" x="9428.83" y="2514.88" width="347" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1025" name="wood" type="terrain" x="6441.98" y="1955.06" width="347" height="356.5">
+  <object id="1025" name="wood" type="terrain" x="9900.86" y="1939.69" width="347" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -241,12 +261,12 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1013" name="wood" type="terrain" x="8123.11" y="2433.18" width="347" height="356.5">
+  <object id="1013" name="wood" type="terrain" x="9428.2" y="2536.21" width="347" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1024" name="wood" type="terrain" x="6441.35" y="1976.39" width="347" height="356.5">
+  <object id="1024" name="wood" type="terrain" x="9900.23" y="1961.02" width="347" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -298,12 +318,12 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1012" name="wood" type="terrain" x="8122.17" y="2453.84" width="347" height="356.5">
+  <object id="1012" name="wood" type="terrain" x="9427.26" y="2556.87" width="347" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1023" name="wood" type="terrain" x="6440.41" y="1997.05" width="347" height="356.5">
+  <object id="1023" name="wood" type="terrain" x="9899.29" y="1981.68" width="347" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -326,16 +346,23 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="997" name="ice" type="terrain" x="-2420" y="-888">
-   <polygon points="5447.19,5647.02 4670.21,5841.63 3941.19,5770.36 3486.41,5927.47 2314.25,6178.62 2324.56,2688.12 2731.82,2752.09 2821.21,3064.77 3343.78,3280.16 3696.16,4674.41 4102.52,4673.14 5077.64,4684.74 5409.01,4731.77 6062.58,4717.83 6644.74,4730.68 6832.57,4731.04 7503.05,4660.72 8333.79,4736.75 9430.22,4858.66 9898.67,4863.87 10279.7,4886.4 10958.6,4885.82 10956.3,6149.57 9460.77,6161.4"/>
+   <polygon points="5447.19,5647.02 4670.21,5841.63 3941.19,5770.36 3486.41,5927.47 2314.25,6178.62 2324.56,2688.12 2731.82,2752.09 2821.21,3064.77 3343.78,3280.16 3696.16,4674.41 4102.52,4673.14 5209.18,4678.89 5409.01,4731.77 6062.58,4717.83 6644.74,4730.68 6832.57,4731.04 7503.05,4660.72 8333.79,4736.75 9430.22,4858.66 9898.67,4863.87 10279.7,4886.4 10958.6,4885.82 10956.3,6149.57 9460.77,6161.4"/>
   </object>
   <object id="1007" name="ice" type="terrain" x="6464.57" y="1086">
-   <polygon points="1355.92,1977.96 419.566,2156.39 34.0617,1823.48 -711.028,1536.23 -2295.1,1581.98 -3326.1,1650.23 -3964.72,1829.91 -4191.98,1793.99 -4273.12,1639.11 -4136.63,373.963 -1381.63,-171.163 -1016.52,-605.996 -1046.21,-1284.82 -273.881,-1121.26 -105.466,10.8414 -67.5819,471.57 -58.2494,832.159 -36.7696,917.733 340.93,918.336 780.324,1103.64 1372.73,1182.85 1661.17,1372.73 2001.97,1373.87 2081.36,1779.05 1882.49,2137.62"/>
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+   <polygon points="1355.92,1977.96 419.566,2156.39 34.0617,1823.48 -711.028,1536.23 -2295.1,1581.98 -3326.1,1650.23 -3512.05,1728.59 -3715.38,1734.42 -3770.06,1769.96 -3927.26,1812.35 -4120.02,1809.6 -4191.98,1793.99 -4273.12,1639.11 -3797.65,807.108 -2396.65,421.455 -1381.63,-171.163 -1016.52,-605.996 -496.783,108.102 -58.2494,832.159 340.93,918.336 780.324,1103.64 1372.73,1182.85 1661.17,1372.73 2001.97,1373.87 2081.36,1779.05 1882.49,2137.62"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1388" name="Forest/Flower10" type="decor" x="4000.71" y="3722.28" width="199" height="133"/>
+  <object id="1389" name="Forest/Flower9" type="decor" x="5346.46" y="3682.21" width="199" height="133" rotation="5"/>
+  <object id="1393" name="Crypts/Grave14" type="decor" x="4212.62" y="3586.28" width="156" height="259"/>
+  <object id="1398" name="Forest/Flower10" type="decor" x="7257.29" y="3865.8" width="199" height="133"/>
  </objectgroup>
  <objectgroup id="60" name="terrain +1">
   <properties>
@@ -344,10 +371,11 @@
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
+   <property name="components" value="z-fade"/>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="986" name="life-stone" type="object" x="3244.27" y="3414.92" width="146" height="423">
+  <object id="986" name="life-stone" type="object" x="2140.33" y="3368.15" width="146" height="423">
    <properties>
     <property name="transition" value="lifestone-spawn"/>
    </properties>
@@ -361,307 +389,207 @@
   </object>
   <object id="1031" name="icicle" type="object" x="5556.99" y="2630.56" width="52" height="150" rotation="359.849">
    <properties>
+    <property name="components" value="z-fade"/>
     <property name="listen-event" value="2"/>
    </properties>
   </object>
   <object id="1032" name="icicle" type="object" x="5527.25" y="2631.98" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="listen-event" value="1"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
   <object id="1033" name="icicle" type="object" x="5604.23" y="2629.67" width="52" height="150" rotation="359.849">
    <properties>
-    <property name="listen-event" value="4"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
   <object id="1034" name="icicle" type="object" x="5656.89" y="2627.99" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="listen-event" value="5"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
   <object id="1035" name="icicle" type="object" x="5570.64" y="2632.82" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="listen-event" value="3"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1043" name="trigger" type="object" x="5632.38" y="2711.66" width="30" height="1500">
-   <properties>
-    <property name="send-event" value="4"/>
-   </properties>
-  </object>
-  <object id="1044" name="trigger" type="object" x="5591.38" y="2710.66" width="30" height="1500">
-   <properties>
-    <property name="send-event" value="3"/>
-   </properties>
-  </object>
-  <object id="1045" name="trigger" type="object" x="5679.38" y="2708.66" width="30" height="1500">
-   <properties>
-    <property name="send-event" value="5"/>
-   </properties>
-  </object>
-  <object id="1046" name="trigger" type="object" x="5581.38" y="2705.66" width="30" height="1500">
+  <object id="1045" name="trigger" type="object" x="4263.04" y="2439.3" width="85.0661" height="1500">
    <properties>
     <property name="send-event" value="2"/>
    </properties>
   </object>
-  <object id="1047" name="trigger" type="object" x="5540.38" y="2713.66" width="30" height="1500">
-   <properties>
-    <property name="send-event" value="1"/>
-   </properties>
-  </object>
   <object id="1098" name="icicle" type="object" x="4981.6" y="2637.74" width="52" height="150" rotation="359.849">
    <properties>
-    <property name="listen-event" value="7"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
   <object id="1099" name="icicle" type="object" x="4950.36" y="2638.66" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="listen-event" value="6"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
   <object id="1100" name="icicle" type="object" x="5037.34" y="2635.35" width="52" height="150" rotation="359.849">
    <properties>
-    <property name="listen-event" value="9"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
   <object id="1101" name="icicle" type="object" x="5087.5" y="2637.17" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="listen-event" value="10"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
   <object id="1102" name="icicle" type="object" x="4997.25" y="2638" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="listen-event" value="8"/>
-   </properties>
-  </object>
-  <object id="1103" name="trigger" type="object" x="5122.98" y="2709.51" width="86.573" height="1500">
-   <properties>
-    <property name="send-event" value="9"/>
-   </properties>
-  </object>
-  <object id="1104" name="trigger" type="object" x="5073.98" y="2699.51" width="86.573" height="1500">
-   <properties>
-    <property name="send-event" value="8"/>
-   </properties>
-  </object>
-  <object id="1105" name="trigger" type="object" x="5195.98" y="2701.51" width="86.573" height="1500">
-   <properties>
-    <property name="send-event" value="10"/>
-   </properties>
-  </object>
-  <object id="1106" name="trigger" type="object" x="5007.98" y="2697.51" width="86.573" height="1500">
-   <properties>
-    <property name="send-event" value="7"/>
-   </properties>
-  </object>
-  <object id="1107" name="trigger" type="object" x="4947.98" y="2691.51" width="86.573" height="1500">
-   <properties>
-    <property name="send-event" value="6"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
   <object id="1221" name="icicle" type="object" x="4574.47" y="2641.9" width="52" height="150" rotation="359.849">
    <properties>
-    <property name="listen-event" value="17"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
   <object id="1222" name="icicle" type="object" x="4543.23" y="2642.82" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="listen-event" value="16"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
   <object id="1223" name="icicle" type="object" x="4619.71" y="2645.01" width="52" height="150" rotation="359.849">
    <properties>
-    <property name="listen-event" value="19"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
   <object id="1224" name="icicle" type="object" x="4680.37" y="2641.32" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="listen-event" value="20"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
   <object id="1225" name="icicle" type="object" x="4591.87" y="2636.16" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="listen-event" value="18"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
-  <object id="1226" name="trigger" type="object" x="4725.19" y="2816.01" width="86.573" height="1500">
+  <object id="1281" name="icicle" type="object" x="3825.82" y="2685.9" width="52" height="150" rotation="359.849">
    <properties>
-    <property name="send-event" value="19"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1227" name="trigger" type="object" x="4676.19" y="2806.01" width="86.573" height="1500">
+  <object id="1282" name="icicle" type="object" x="3790.83" y="2685.97" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="send-event" value="18"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
-  <object id="1228" name="trigger" type="object" x="4798.19" y="2808.01" width="86.573" height="1500">
+  <object id="1283" name="icicle" type="object" x="3879.31" y="2685.98" width="52" height="150" rotation="359.849">
    <properties>
-    <property name="send-event" value="20"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1229" name="trigger" type="object" x="4610.19" y="2804.01" width="86.573" height="1500">
+  <object id="1284" name="icicle" type="object" x="3929.25" y="2677.68" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="send-event" value="17"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
-  <object id="1230" name="trigger" type="object" x="4550.19" y="2798.01" width="86.573" height="1500">
+  <object id="1285" name="icicle" type="object" x="3844.97" y="2685.13" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="send-event" value="16"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
-  <object id="1281" name="icicle" type="object" x="3839.89" y="2662.32" width="52" height="150" rotation="359.849">
+  <object id="1291" name="icicle" type="object" x="3465.73" y="2707.45" width="52" height="150" rotation="359.849">
    <properties>
-    <property name="listen-event" value="22"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1282" name="icicle" type="object" x="3804.9" y="2663.49" width="30.5125" height="88.0169" rotation="359.972">
+  <object id="1292" name="icicle" type="object" x="3429.41" y="2712.46" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="listen-event" value="21"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1283" name="icicle" type="object" x="3893.38" y="2660.18" width="52" height="150" rotation="359.849">
+  <object id="1293" name="icicle" type="object" x="3524.81" y="2703.4" width="52" height="150" rotation="359.849">
    <properties>
-    <property name="listen-event" value="24"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
-  <object id="1284" name="icicle" type="object" x="3937.79" y="2660.74" width="30.5125" height="88.0169" rotation="359.972">
+  <object id="1294" name="icicle" type="object" x="3576.4" y="2697.24" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="listen-event" value="25"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1285" name="icicle" type="object" x="3859.04" y="2659.33" width="30.5125" height="88.0169" rotation="359.972">
+  <object id="1295" name="icicle" type="object" x="3486.72" y="2704.71" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="listen-event" value="23"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
-  <object id="1286" name="trigger" type="object" x="3985.86" y="2805.01" width="86.573" height="1500">
+  <object id="1301" name="icicle" type="object" x="2401.88" y="2896.55" width="52" height="150" rotation="359.849">
    <properties>
-    <property name="send-event" value="24"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1287" name="trigger" type="object" x="3936.86" y="2795.01" width="86.573" height="1500">
+  <object id="1302" name="icicle" type="object" x="2370.64" y="2897.47" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="send-event" value="23"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
-  <object id="1288" name="trigger" type="object" x="4058.86" y="2797.01" width="86.573" height="1500">
+  <object id="1303" name="icicle" type="object" x="2454.62" y="2896.16" width="52" height="150" rotation="359.849">
    <properties>
-    <property name="send-event" value="25"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1289" name="trigger" type="object" x="3870.86" y="2793.01" width="86.573" height="1500">
+  <object id="1304" name="icicle" type="object" x="2507.78" y="2895.97" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="send-event" value="22"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1290" name="trigger" type="object" x="3810.86" y="2787.01" width="86.573" height="1500">
+  <object id="1305" name="icicle" type="object" x="2417.53" y="2896.81" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="send-event" value="21"/>
-   </properties>
-  </object>
-  <object id="1291" name="icicle" type="object" x="3479.8" y="2673.9" width="52" height="150" rotation="359.849">
-   <properties>
-    <property name="listen-event" value="27"/>
-   </properties>
-  </object>
-  <object id="1292" name="icicle" type="object" x="3451.23" y="2674.49" width="30.5125" height="88.0169" rotation="359.972">
-   <properties>
-    <property name="listen-event" value="26"/>
-   </properties>
-  </object>
-  <object id="1293" name="icicle" type="object" x="3538.88" y="2669.85" width="52" height="150" rotation="359.849">
-   <properties>
-    <property name="listen-event" value="29"/>
-   </properties>
-  </object>
-  <object id="1294" name="icicle" type="object" x="3586.04" y="2673.66" width="30.5125" height="88.0169" rotation="359.972">
-   <properties>
-    <property name="listen-event" value="30"/>
-   </properties>
-  </object>
-  <object id="1295" name="icicle" type="object" x="3500.79" y="2671.16" width="30.5125" height="88.0169" rotation="359.972">
-   <properties>
-    <property name="listen-event" value="28"/>
-   </properties>
-  </object>
-  <object id="1296" name="trigger" type="object" x="3619.19" y="2773.01" width="86.573" height="1500">
-   <properties>
-    <property name="send-event" value="29"/>
-   </properties>
-  </object>
-  <object id="1297" name="trigger" type="object" x="3570.19" y="2763.01" width="86.573" height="1500">
-   <properties>
-    <property name="send-event" value="28"/>
-   </properties>
-  </object>
-  <object id="1298" name="trigger" type="object" x="3692.19" y="2765.01" width="86.573" height="1500">
-   <properties>
-    <property name="send-event" value="30"/>
-   </properties>
-  </object>
-  <object id="1299" name="trigger" type="object" x="3504.19" y="2761.01" width="86.573" height="1500">
-   <properties>
-    <property name="send-event" value="27"/>
-   </properties>
-  </object>
-  <object id="1300" name="trigger" type="object" x="3444.19" y="2755.01" width="86.573" height="1500">
-   <properties>
-    <property name="send-event" value="26"/>
-   </properties>
-  </object>
-  <object id="1301" name="icicle" type="object" x="2333.99" y="2699.9" width="52" height="150" rotation="359.849">
-   <properties>
-    <property name="listen-event" value="32"/>
-   </properties>
-  </object>
-  <object id="1302" name="icicle" type="object" x="2302.75" y="2700.82" width="30.5125" height="88.0169" rotation="359.972">
-   <properties>
-    <property name="listen-event" value="31"/>
-   </properties>
-  </object>
-  <object id="1303" name="icicle" type="object" x="2386.73" y="2699.51" width="52" height="150" rotation="359.849">
-   <properties>
-    <property name="listen-event" value="34"/>
-   </properties>
-  </object>
-  <object id="1304" name="icicle" type="object" x="2439.89" y="2699.32" width="30.5125" height="88.0169" rotation="359.972">
-   <properties>
-    <property name="listen-event" value="35"/>
-   </properties>
-  </object>
-  <object id="1305" name="icicle" type="object" x="2349.64" y="2700.16" width="30.5125" height="88.0169" rotation="359.972">
-   <properties>
-    <property name="listen-event" value="33"/>
-   </properties>
-  </object>
-  <object id="1306" name="trigger" type="object" x="2469.71" y="2809.34" width="86.573" height="1500">
-   <properties>
-    <property name="send-event" value="34"/>
-   </properties>
-  </object>
-  <object id="1307" name="trigger" type="object" x="2420.71" y="2799.34" width="86.573" height="1500">
-   <properties>
-    <property name="send-event" value="33"/>
-   </properties>
-  </object>
-  <object id="1308" name="trigger" type="object" x="2542.71" y="2801.34" width="86.573" height="1500">
-   <properties>
-    <property name="send-event" value="35"/>
-   </properties>
-  </object>
-  <object id="1309" name="trigger" type="object" x="2354.71" y="2797.34" width="86.573" height="1500">
-   <properties>
-    <property name="send-event" value="32"/>
-   </properties>
-  </object>
-  <object id="1310" name="trigger" type="object" x="2294.71" y="2791.34" width="86.573" height="1500">
-   <properties>
-    <property name="send-event" value="31"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
   <object id="1312" name="icicle" type="object" x="6899.28" y="3239.39" width="52" height="150" rotation="359.849">
    <properties>
     <property name="listen-event" value="69"/>
+    <property name="run-once" type="bool" value="true"/>
     <property name="unregister-hackables" type="bool" value="true"/>
    </properties>
   </object>
@@ -673,12 +601,14 @@
   <object id="1315" name="icicle" type="object" x="6934" y="3199.33" width="52" height="150" rotation="359.849">
    <properties>
     <property name="listen-event" value="70"/>
+    <property name="run-once" type="bool" value="true"/>
     <property name="unregister-hackables" type="bool" value="true"/>
    </properties>
   </object>
   <object id="1316" name="icicle" type="object" x="6869.67" y="3217.67" width="52" height="150" rotation="359.849">
    <properties>
     <property name="listen-event" value="71"/>
+    <property name="run-once" type="bool" value="true"/>
     <property name="unregister-hackables" type="bool" value="true"/>
    </properties>
   </object>
@@ -692,104 +622,347 @@
     <property name="send-event" value="71"/>
    </properties>
   </object>
-  <object id="1320" name="icicle" type="object" x="5320.09" y="2620.4" width="52" height="150" rotation="359.849">
+  <object id="1320" name="icicle" type="object" x="5377.34" y="2627.03" width="52" height="150" rotation="359.849">
    <properties>
-    <property name="listen-event" value="102"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
-  <object id="1321" name="icicle" type="object" x="5291.18" y="2621.66" width="30.5125" height="88.0169" rotation="359.972">
+  <object id="1321" name="icicle" type="object" x="5348.43" y="2628.29" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="listen-event" value="101"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
-  <object id="1322" name="icicle" type="object" x="5369.16" y="2618.35" width="52" height="150" rotation="359.849">
+  <object id="1322" name="icicle" type="object" x="5426.41" y="2624.98" width="52" height="150" rotation="359.849">
    <properties>
-    <property name="listen-event" value="103"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1323" name="icicle" type="object" x="5428.32" y="2620.16" width="30.5125" height="88.0169" rotation="359.972">
+  <object id="1323" name="icicle" type="object" x="5485.57" y="2626.79" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="listen-event" value="104"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1324" name="trigger" type="object" x="5399.81" y="2699.84" width="30" height="1500">
+  <object id="1329" name="icicle" type="object" x="5384.33" y="2615.62" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="send-event" value="104"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
-  <object id="1325" name="trigger" type="object" x="5358.81" y="2698.84" width="30" height="1500">
+  <object id="1330" name="icicle" type="object" x="2794.34" y="2817.55" width="52" height="150" rotation="359.849">
    <properties>
-    <property name="send-event" value="103"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1326" name="trigger" type="object" x="5446.81" y="2696.84" width="30" height="1500">
+  <object id="1331" name="icicle" type="object" x="2759.35" y="2818.72" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="send-event" value="105"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
-  <object id="1327" name="trigger" type="object" x="5348.81" y="2693.84" width="30" height="1500">
+  <object id="1332" name="icicle" type="object" x="2847.83" y="2815.41" width="52" height="150" rotation="359.849">
    <properties>
-    <property name="send-event" value="102"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1328" name="trigger" type="object" x="5307.81" y="2701.84" width="30" height="1500">
+  <object id="1333" name="icicle" type="object" x="2892.24" y="2815.97" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="send-event" value="101"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1329" name="icicle" type="object" x="5327.08" y="2608.99" width="30.5125" height="88.0169" rotation="359.972">
+  <object id="1334" name="icicle" type="object" x="2813.49" y="2814.56" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="listen-event" value="105"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
-  <object id="1330" name="icicle" type="object" x="2775.39" y="2662.82" width="52" height="150" rotation="359.849">
+  <object id="1345" name="icicle" type="object" x="5200.97" y="2633.26" width="52" height="150" rotation="359.849">
    <properties>
-    <property name="listen-event" value="112"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
-  <object id="1331" name="icicle" type="object" x="2740.4" y="2663.99" width="30.5125" height="88.0169" rotation="359.972">
+  <object id="1346" name="icicle" type="object" x="5172.06" y="2634.52" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="listen-event" value="111"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1332" name="icicle" type="object" x="2828.88" y="2660.68" width="52" height="150" rotation="359.849">
+  <object id="1347" name="icicle" type="object" x="5250.04" y="2631.21" width="52" height="150" rotation="359.849">
    <properties>
-    <property name="listen-event" value="114"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1333" name="icicle" type="object" x="2873.29" y="2661.24" width="30.5125" height="88.0169" rotation="359.972">
+  <object id="1348" name="icicle" type="object" x="5309.2" y="2633.02" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="listen-event" value="115"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1334" name="icicle" type="object" x="2794.54" y="2659.83" width="30.5125" height="88.0169" rotation="359.972">
+  <object id="1349" name="icicle" type="object" x="5207.96" y="2621.85" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="listen-event" value="113"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
-  <object id="1335" name="trigger" type="object" x="2921.36" y="2805.51" width="86.573" height="1500">
+  <object id="1350" name="icicle" type="object" x="4769.89" y="2644.31" width="52" height="150" rotation="359.849">
    <properties>
-    <property name="send-event" value="114"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1336" name="trigger" type="object" x="2872.36" y="2795.51" width="86.573" height="1500">
+  <object id="1351" name="icicle" type="object" x="4740.98" y="2645.57" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="send-event" value="113"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1337" name="trigger" type="object" x="2994.36" y="2797.51" width="86.573" height="1500">
+  <object id="1352" name="icicle" type="object" x="4818.96" y="2642.26" width="52" height="150" rotation="359.849">
    <properties>
-    <property name="send-event" value="115"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
-  <object id="1338" name="trigger" type="object" x="2806.36" y="2793.51" width="86.573" height="1500">
+  <object id="1353" name="icicle" type="object" x="4878.12" y="2645.18" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="send-event" value="112"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1339" name="trigger" type="object" x="2746.36" y="2787.51" width="86.573" height="1500">
+  <object id="1354" name="icicle" type="object" x="4776.88" y="2632.9" width="30.5125" height="88.0169" rotation="359.972">
    <properties>
-    <property name="send-event" value="111"/>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+   </properties>
+  </object>
+  <object id="1355" name="icicle" type="object" x="4914.55" y="2637.54" width="30.5125" height="88.0169" rotation="359.972">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1356" name="icicle" type="object" x="5116.04" y="2633.08" width="52" height="150" rotation="359.849">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1357" name="icicle" type="object" x="3641.43" y="2695.24" width="52" height="150" rotation="359.849">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+   </properties>
+  </object>
+  <object id="1358" name="icicle" type="object" x="3612.86" y="2695.83" width="30.5125" height="88.0169" rotation="359.972">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1359" name="icicle" type="object" x="3700.51" y="2691.19" width="52" height="150" rotation="359.849">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1360" name="icicle" type="object" x="3753.21" y="2688.36" width="30.5125" height="88.0169" rotation="359.972">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1361" name="icicle" type="object" x="3662.42" y="2692.5" width="30.5125" height="88.0169" rotation="359.972">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+   </properties>
+  </object>
+  <object id="1362" name="icicle" type="object" x="4361.85" y="2648.2" width="52" height="150" rotation="359.849">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+   </properties>
+  </object>
+  <object id="1363" name="icicle" type="object" x="4326.86" y="2649.37" width="30.5125" height="88.0169" rotation="359.972">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1364" name="icicle" type="object" x="4415.34" y="2646.06" width="52" height="150" rotation="359.849">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1365" name="icicle" type="object" x="4459.75" y="2646.62" width="30.5125" height="88.0169" rotation="359.972">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1366" name="icicle" type="object" x="4381" y="2645.21" width="30.5125" height="88.0169" rotation="359.972">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+   </properties>
+  </object>
+  <object id="1367" name="icicle" type="object" x="3994.33" y="2672.3" width="52" height="150" rotation="359.849">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1368" name="icicle" type="object" x="3960.22" y="2672.89" width="30.5125" height="88.0169" rotation="359.972">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+   </properties>
+  </object>
+  <object id="1369" name="icicle" type="object" x="4048.98" y="2667.14" width="52" height="150" rotation="359.849">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1370" name="icicle" type="object" x="4108" y="2661.76" width="30.5125" height="88.0169" rotation="359.972">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+   </properties>
+  </object>
+  <object id="1372" name="icicle" type="object" x="4177.47" y="2655.32" width="52" height="150" rotation="359.849">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1373" name="icicle" type="object" x="4148.9" y="2655.91" width="30.5125" height="88.0169" rotation="359.972">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1374" name="icicle" type="object" x="4236.55" y="2651.27" width="52" height="150" rotation="359.849">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1375" name="icicle" type="object" x="4283.71" y="2655.08" width="30.5125" height="88.0169" rotation="359.972">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+   </properties>
+  </object>
+  <object id="1376" name="icicle" type="object" x="4198.46" y="2652.58" width="30.5125" height="88.0169" rotation="359.972">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+   </properties>
+  </object>
+  <object id="1377" name="icicle" type="object" x="4496.63" y="2645.04" width="52" height="150" rotation="359.849">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1378" name="icicle" type="object" x="3104.1" y="2746.43" width="52" height="150" rotation="359.849">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1379" name="icicle" type="object" x="3075.53" y="2747.02" width="30.5125" height="88.0169" rotation="359.972">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1380" name="icicle" type="object" x="3168.71" y="2722.45" width="52" height="150" rotation="359.849">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1381" name="icicle" type="object" x="3215.87" y="2726.26" width="30.5125" height="88.0169" rotation="359.972">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1382" name="icicle" type="object" x="3125.09" y="2743.69" width="30.5125" height="88.0169" rotation="359.972">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+   </properties>
+  </object>
+  <object id="1383" name="icicle" type="object" x="3285.34" y="2722.04" width="52" height="150" rotation="359.849">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1384" name="icicle" type="object" x="3256.77" y="2722.63" width="30.5125" height="88.0169" rotation="359.972">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+   </properties>
+  </object>
+  <object id="1385" name="icicle" type="object" x="3344.42" y="2717.99" width="52" height="150" rotation="359.849">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+    <property name="no-sound" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1386" name="icicle" type="object" x="3391.58" y="2721.8" width="30.5125" height="88.0169" rotation="359.972">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
+   </properties>
+  </object>
+  <object id="1387" name="icicle" type="object" x="3306.33" y="2719.3" width="30.5125" height="88.0169" rotation="359.972">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="listen-event" value="2"/>
    </properties>
   </object>
  </objectgroup>
@@ -809,25 +982,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="979" name="penguin-warrior" type="entity" x="4261.93" y="3709.87" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="BallmerPeaks/Combat_Snow"/>
-    <property name="battle-tag" value="group-b"/>
-    <property name="components" value="enemy,soul,agro,melee"/>
-    <property name="drop-pool" value="bp-generic"/>
-   </properties>
-  </object>
-  <object id="980" name="penguin-warrior" type="entity" x="2828.79" y="3526.22" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-b"/>
-    <property name="components" value="ally"/>
-   </properties>
-  </object>
   <object id="1314" name="penguin-warrior" type="entity" x="6866.07" y="3881.86" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,killable,agro"/>
+    <property name="battle-map" value="BallmerPeaks/Combat_Snow"/>
+    <property name="battle-tag" value="group-dummy"/>
+    <property name="components" value="enemy,soul,agro,melee,killable"/>
+    <property name="drop-pool" value="bp-generic"/>
    </properties>
   </object>
  </objectgroup>
@@ -847,7 +1007,7 @@
     <property name="zoom" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1011" name="warp" type="object" x="8168.85" y="2205.52" width="256" height="256">
+  <object id="1011" name="warp" type="object" x="9473.94" y="2308.55" width="256" height="256">
    <properties>
     <property name="from" value="bridge-front-B"/>
     <property name="locked-text-key" value="closed"/>
@@ -867,7 +1027,7 @@
     <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
-  <object id="1162" name="warp" type="object" x="6482.18" y="1737.27" width="256" height="256">
+  <object id="1162" name="warp" type="object" x="9941.06" y="1721.9" width="256" height="256">
    <properties>
     <property name="from" value="bridge-front-C"/>
     <property name="locked-text-key" value="closed"/>

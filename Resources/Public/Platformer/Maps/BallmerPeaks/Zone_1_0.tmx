@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="55" height="26" tilewidth="128" tileheight="128" infinite="0" nextlayerid="96" nextobjectid="1205">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="82" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="96" nextobjectid="1212">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -70,7 +70,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="941" name="ice" type="terrain" x="3460" y="-1528">
-   <polygon points="5183.19,5103.02 4402.21,4729.63 3654.41,5103.47 3386.25,6090.62 3410.56,7175.73 771.591,7191.22 673.38,5905.54 257.271,4524.09 1326.11,3249.95 1465.26,2221.25 809.05,1797.55 1372.56,1464.12 1971.82,1504.09 2853.94,1940.89 3191.3,2861.01 4447.57,3709.93 4942.49,3725.47 5375.75,3834.09 5583.44,4083.61 5713.64,4256.74 5957.01,4435.77 6310.58,4657.83 7128.74,4662.68 7126.22,5178.66"/>
+   <polygon points="5183.19,5103.02 4402.21,4729.63 3654.41,5103.47 3386.25,6090.62 3410.56,7175.73 771.591,7191.22 673.38,5905.54 257.271,4524.09 1326.11,3249.95 1465.26,2221.25 809.05,1797.55 1372.56,1464.12 1971.82,1504.09 3689.21,2373.99 4064.5,2892.57 4396.14,3635.36 4952.78,3630.33 5375.75,3834.09 5583.44,4083.61 5713.64,4256.74 5957.01,4435.77 6310.58,4657.83 7287.28,4656.58 7284.76,5172.56"/>
   </object>
   <object id="1190" name="ice" type="terrain" x="1838.31" y="1597.48">
    <properties>
@@ -95,7 +95,7 @@
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1179" name="Snow/Background/Mountain2" type="decor" x="7716" y="1150" width="3144" height="1540" rotation="15">
+  <object id="1179" name="Snow/Background/Mountain2" type="decor" x="-3452.27" y="-2238.48" width="3144" height="1540" rotation="15">
    <properties>
     <property name="repeat-x" type="bool" value="false"/>
    </properties>
@@ -104,6 +104,16 @@
    <properties>
     <property name="components" value="illusion"/>
     <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
+  <object id="1207" name="Generic/TownFencePost" type="decor" x="7775.66" y="991.958" width="263" height="1118">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1209" name="Generic/TownFencePost" type="decor" x="10252.6" y="2014.17" width="263" height="1118">
+   <properties>
+    <property name="flip-x" type="bool" value="false"/>
    </properties>
   </object>
  </objectgroup>
@@ -117,6 +127,18 @@
     <property name="direction" value="right"/>
     <property name="map" value="BallmerPeaks/Town_Main"/>
     <property name="transition" value="right_top"/>
+   </properties>
+  </object>
+  <object id="1206" name="solid" type="collision" x="7885.17" y="-35.3906" width="126.878" height="2139.2">
+   <properties>
+    <property name="components" value="gull-puzzle"/>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1208" name="solid" type="collision" x="10271.9" y="991.376" width="126.878" height="2139.2">
+   <properties>
+    <property name="components" value="gull-puzzle"/>
+    <property name="mini-map-visible" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
@@ -434,7 +456,7 @@
     <property name="chest-pool" value="bp-generic"/>
    </properties>
   </object>
-  <object id="983" name="present-chest" type="object" x="4346.73" y="3660.92" width="128" height="128">
+  <object id="983" name="present-chest" type="object" x="4327.54" y="3683.94" width="128" height="128">
    <properties>
     <property name="chest-pool" value="bp-generic"/>
    </properties>
@@ -451,42 +473,7 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="1131" name="icicle" type="object" x="2851.09" y="3511.06" width="52" height="150" rotation="359.849"/>
-  <object id="1133" name="icicle" type="object" x="2819.85" y="3511.98" width="30.5125" height="88.0169" rotation="359.972"/>
-  <object id="1134" name="icicle" type="object" x="2903.83" y="3510.67" width="52" height="150" rotation="359.849"/>
-  <object id="1138" name="icicle" type="object" x="2956.99" y="3510.49" width="30.5125" height="88.0169" rotation="359.972"/>
-  <object id="1139" name="icicle" type="object" x="4887.75" y="3072.62" width="52" height="150" rotation="359.849">
-   <properties>
-    <property name="listen-event" value="2"/>
-   </properties>
-  </object>
-  <object id="1140" name="icicle" type="object" x="4856.51" y="3073.54" width="30.5125" height="88.0169" rotation="359.972">
-   <properties>
-    <property name="listen-event" value="1"/>
-   </properties>
-  </object>
-  <object id="1141" name="icicle" type="object" x="4940.49" y="3072.23" width="52" height="150" rotation="359.849">
-   <properties>
-    <property name="listen-event" value="4"/>
-   </properties>
-  </object>
-  <object id="1142" name="icicle" type="object" x="4993.65" y="3072.05" width="30.5125" height="88.0169" rotation="359.972">
-   <properties>
-    <property name="listen-event" value="5"/>
-   </properties>
-  </object>
-  <object id="1148" name="icicle" type="object" x="2866.74" y="3511.32" width="30.5125" height="88.0169" rotation="359.972"/>
-  <object id="1149" name="icicle" type="object" x="4931.08" y="3072.66" width="30.5125" height="88.0169" rotation="359.972">
-   <properties>
-    <property name="listen-event" value="3"/>
-   </properties>
-  </object>
   <object id="1150" name="snowball" type="object" x="9417.69" y="1749.35" width="682.419" height="663.462"/>
-  <object id="1177" name="trigger" type="object" x="4735.09" y="3036" width="420.573" height="1174.67">
-   <properties>
-    <property name="send-event" value="4"/>
-   </properties>
-  </object>
   <object id="1186" name="smoke" type="object" x="1328" y="2752.67" width="128" height="128"/>
   <object id="1192" name="portal" type="object" x="1256.85" y="2659.88" width="256" height="256">
    <properties>
@@ -502,12 +489,7 @@
     <property name="transition" value="bp"/>
    </properties>
   </object>
-  <object id="1196" name="cannon" type="object" x="5964" y="844" width="128" height="128"/>
-  <object id="1197" name="solid" type="collision" x="6174.56" y="-914.59" width="892.878" height="2833.18">
-   <properties>
-    <property name="mini-map-visible" type="bool" value="false"/>
-   </properties>
-  </object>
+  <object id="1196" name="cannon" type="object" x="6677.93" y="-131.124" width="128" height="128"/>
   <object id="1198" name="portal" type="object" x="7632" y="-496" width="256" height="256">
    <properties>
     <property name="map" value="VoidStar/Town_Main"/>
@@ -519,6 +501,17 @@
    <properties>
     <property name="components" value="dispel-illusion"/>
     <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
+  <object id="1210" name="hexus-shrine" type="object" x="5952.12" y="713.368" width="155" height="260">
+   <properties>
+    <property name="entity-tag" value="hexus-penguin-warrior"/>
+   </properties>
+  </object>
+  <object id="1211" name="penguin-warrior" type="entity" x="5885.93" y="5931.25" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,disarmed,bp-puzzle-A"/>
+    <property name="tag" value="hexus-penguin-warrior"/>
    </properties>
   </object>
  </objectgroup>
@@ -570,7 +563,7 @@
     <property name="components" value="ally"/>
    </properties>
   </object>
-  <object id="981" name="horse" type="entity" x="5242.73" y="3652.92" width="128" height="128">
+  <object id="981" name="horse" type="entity" x="5235.06" y="3683.62" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing"/>
    </properties>
