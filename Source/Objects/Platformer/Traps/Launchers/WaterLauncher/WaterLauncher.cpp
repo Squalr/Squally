@@ -59,7 +59,7 @@ Vec2 WaterLauncher::getProjectileSpawnPosition()
 
 Projectile* WaterLauncher::createProjectile()
 {
-	Waterball* waterball = Waterball::create(float(M_PI) / 2.0f, 256.0f);
+	Waterball* waterball = Waterball::create(180.0f, 256.0f);
 
 	return waterball;
 }

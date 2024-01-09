@@ -32,9 +32,8 @@ Waterball::Waterball(float waterballRotation, float waterballSpeed) : super(null
 	this->waterballSpeed = waterballSpeed;
 	this->waterballAnim = SmartAnimationSequenceNode::create();
 
-	this->waterballAnim->setRotation(180.0f);
 	this->setProjectileRotation(waterballRotation);
-	this->setLaunchVelocity(Vec3(this->waterballSpeed, 0.0f, 0.0f));
+	this->setLaunchVelocity(Vec3(this->waterballSpeed * std::cos(waterballRotation), this->waterballSpeed * std::sin(waterballRotation), 0.0f));
 
 	this->setMovementMode(Projectile::MovementMode::RotationVelocity);
 

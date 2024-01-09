@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="53" height="62" tilewidth="128" tileheight="128" infinite="0" nextlayerid="91" nextobjectid="1085">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="53" height="62" tilewidth="128" tileheight="128" infinite="0" nextlayerid="91" nextobjectid="1094">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -40,7 +40,7 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="601" name="Snow/Background/Mountains3" type="decor" x="-1954.54" y="3097.32" width="13333.3" height="761">
+  <object id="601" name="Snow/Background/Mountains3" type="decor" x="-2718.77" y="3861.55" width="13333.3" height="761">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -51,13 +51,13 @@
    <property name="depth" type="float" value="-1024"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="602" name="Snow/Background/Hills1" type="decor" x="-1883.17" y="3269.62" width="13257.6" height="598">
+  <object id="602" name="Snow/Background/Hills1" type="decor" x="-2663.66" y="4098.89" width="13257.6" height="598">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="2.25"/>
    </properties>
   </object>
-  <object id="942" name="Snow/Background/Hills1" type="decor" x="-1908.19" y="3520.03" width="13257.6" height="598">
+  <object id="942" name="Snow/Background/Hills1" type="decor" x="-2786.24" y="4284.26" width="13257.6" height="598">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="2.25"/>
@@ -69,7 +69,7 @@
    <property name="depth" type="float" value="-2048"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="945" name="Snow/Background/Forest3" type="decor" x="-2093.89" y="3843.06" width="13257.6" height="598">
+  <object id="945" name="Snow/Background/Forest3" type="decor" x="-2614.22" y="4444.69" width="13257.6" height="598">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="2.25"/>
@@ -153,11 +153,8 @@
   <object id="753" name="ice" type="terrain" x="-1186.38" y="4523.41">
    <polygon points="0,0 8618.33,-11.408 8618.33,787.153 18.8173,798.561"/>
   </object>
-  <object id="1066" name="ice" type="terrain" x="-1236.65" y="2430.43">
-   <polygon points="0,0 4164.29,-11.408 4164.29,787.153 9.09233,798.561"/>
-  </object>
-  <object id="1067" name="ice" type="terrain" x="3462.69" y="2404.54">
-   <polygon points="0,0 5131.09,-11.408 5131.09,787.153 11.2032,798.561"/>
+  <object id="1093" name="ice" type="terrain" x="-1410.72" y="2146.34">
+   <polygon points="0,0 9386.73,-11.408 9386.73,787.153 20.4949,798.561"/>
   </object>
  </objectgroup>
  <objectgroup id="69" name="decor -6">
@@ -165,16 +162,12 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="750" name="Snow/TownHome3" type="decor" x="5073.38" y="1272.6" width="1317" height="1120"/>
   <object id="654" name="Snow/TownAlchemy" type="decor" x="2066.63" y="2896.53" width="1725" height="1622">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="655" name="Snow/TownEquipment" type="decor" x="-188.098" y="2894.39" width="1727" height="1624"/>
-  <object id="1069" name="Snow/TownHome4" type="decor" x="1436.2" y="1312.69" width="1267" height="1120"/>
-  <object id="1070" name="Snow/TownHome2" type="decor" x="10.0354" y="1261" width="1203" height="1160"/>
-  <object id="1077" name="Snow/TownHome1" type="decor" x="3668.62" y="797.643" width="1135" height="1608"/>
   <object id="1082" name="Snow/TownHomeEmpty1" type="decor" x="4160.63" y="2900.31" width="1135" height="1608"/>
  </objectgroup>
  <objectgroup id="90" name="objects -6">
@@ -202,11 +195,6 @@
   <object id="1057" name="spawn-wood-door" type="object" x="2984.72" y="4389.7" width="128" height="128">
    <properties>
     <property name="transition" value="town_alch"/>
-   </properties>
-  </object>
-  <object id="1064" name="spawn" type="object" x="5564.52" y="2267.71" width="128" height="128">
-   <properties>
-    <property name="transition" value="town_hall_out"/>
    </properties>
   </object>
   <object id="1065" name="portal" type="object" x="5531.96" y="2070.23" width="197.742" height="326.149">
@@ -342,6 +330,12 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="935" name="frost" type="terrain" x="-565.823" y="4607.37" width="7655.42" height="2353.88"/>
+  <object id="1085" name="ice" type="terrain" x="-1236.65" y="2430.43">
+   <polygon points="0,0 4164.29,-11.408 4164.29,787.153 9.09233,798.561"/>
+  </object>
+  <object id="1086" name="ice" type="terrain" x="3462.69" y="2404.54">
+   <polygon points="0,0 4279.3,-11.408 4279.3,787.153 9.34341,798.561"/>
+  </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -352,7 +346,7 @@
     <property name="components" value="z-fade"/>
    </properties>
   </object>
-  <object id="949" name="Snow/christmas_tree_complete" type="decor" x="2821.35" y="4078.29" width="282" height="528">
+  <object id="949" name="Snow/christmas_tree_complete" type="decor" x="2396.4" y="4078.29" width="282" height="528">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
@@ -391,15 +385,19 @@
   <object id="979" name="Snow/light_02_yellow" type="decor" x="3616.17" y="2966.83" width="335" height="98"/>
   <object id="986" name="Snow/milk_for_table" type="decor" x="4283.03" y="2973.64" width="50" height="70"/>
   <object id="997" name="Snow/green_streamer_02" type="decor" x="741.33" y="3046.52" width="616" height="210"/>
-  <object id="998" name="Snow/white_02" type="decor" x="2707.28" y="4452.5" width="118" height="154"/>
-  <object id="999" name="Snow/white_03" type="decor" x="2845.28" y="4507.5" width="101" height="102"/>
-  <object id="1000" name="Snow/white_01" type="decor" x="2801.25" y="4560.16" width="60" height="46"/>
-  <object id="1001" name="Snow/white_04" type="decor" x="2992.22" y="4509.5" width="125" height="95"/>
-  <object id="1002" name="Snow/white_05" type="decor" x="2924.17" y="4541.98" width="91" height="65"/>
-  <object id="1003" name="Snow/white_06" type="decor" x="3106.77" y="4500.67" width="112" height="104"/>
-  <object id="1004" name="Snow/large_table_complete" type="decor" x="2162.95" y="4392.87" width="616" height="210"/>
+  <object id="998" name="Snow/white_02" type="decor" x="2282.33" y="4452.5" width="118" height="154"/>
+  <object id="999" name="Snow/white_03" type="decor" x="2420.33" y="4507.5" width="101" height="102"/>
+  <object id="1000" name="Snow/white_01" type="decor" x="2376.3" y="4560.16" width="60" height="46"/>
+  <object id="1001" name="Snow/white_04" type="decor" x="2567.27" y="4509.5" width="125" height="95"/>
+  <object id="1002" name="Snow/white_05" type="decor" x="2499.22" y="4541.98" width="91" height="65"/>
+  <object id="1003" name="Snow/white_06" type="decor" x="2681.82" y="4500.67" width="112" height="104"/>
+  <object id="1004" name="Snow/large_table_complete" type="decor" x="2032.3" y="3529.2" width="616" height="210"/>
   <object id="1005" name="Snow/layed_table" type="decor" x="4870.85" y="4281.82" width="616" height="326"/>
   <object id="1006" name="Snow/wine_bottle" type="decor" x="2783" y="3924.5" width="46" height="148"/>
+  <object id="1087" name="Snow/TownHome3" type="decor" x="5058.4" y="1276.34" width="1317" height="1120"/>
+  <object id="1088" name="Snow/TownHome4" type="decor" x="1436.2" y="1312.69" width="1267" height="1120"/>
+  <object id="1089" name="Snow/TownHome2" type="decor" x="10.0354" y="1261" width="1203" height="1160"/>
+  <object id="1090" name="Snow/TownHome1" type="decor" x="3668.62" y="797.643" width="1135" height="1608"/>
  </objectgroup>
  <objectgroup id="87" name="decore midground 2">
   <properties>
@@ -490,7 +488,11 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="1084" name="water-launcher" type="object" x="3387.02" y="4479.35" width="128" height="128"/>
+  <object id="1084" name="water-launcher" type="object" x="3172.16" y="4481.42" width="128" height="128">
+   <properties>
+    <property name="fixed" type="float" value="90"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -502,7 +504,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="883" name="aspen" type="entity" x="2489.68" y="4480.6" width="128" height="128">
+  <object id="883" name="aspen" type="entity" x="2755.27" y="4480.6" width="128" height="128">
    <properties>
     <property name="components" value="friendly"/>
    </properties>
@@ -541,6 +543,11 @@
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-back-B"/>
     <property name="zoom" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="1092" name="spawn" type="object" x="5566.85" y="2268.46" width="128" height="128">
+   <properties>
+    <property name="transition" value="town_hall_out"/>
    </properties>
   </object>
  </objectgroup>
