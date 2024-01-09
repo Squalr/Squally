@@ -37,7 +37,7 @@ WaterLauncher* WaterLauncher::create(ValueMap& properties)
 	return instance;
 }
 
-WaterLauncher::WaterLauncher(ValueMap& properties) : super(properties, ObjectResources::Traps_WaterLauncher_Animations, true, 2)
+WaterLauncher::WaterLauncher(ValueMap& properties) : super(properties, ObjectResources::Traps_WaterLauncher_Animations, true, 3)
 {
 }
 

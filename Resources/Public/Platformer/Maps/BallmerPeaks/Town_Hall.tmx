@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="30" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="114" nextobjectid="887">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="30" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="115" nextobjectid="894">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -44,15 +44,28 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="855" name="Snow/picture_01_4x_72res" type="decor" x="855.444" y="426.634" width="303" height="370.333"/>
-  <object id="856" name="Snow/picture_02_4x_72res" type="decor" x="2965.8" y="392.709" width="533.909" height="382.266"/>
-  <object id="860" name="Snow/large_window" type="decor" x="1428.76" y="522.874" width="388" height="270"/>
-  <object id="863" name="Snow/fire_place_piece_01" type="decor" x="2403.75" y="82.6941" width="188" height="253"/>
+  <object id="856" name="Snow/picture_02_4x_72res" type="decor" x="2970.5" y="336.371" width="533.909" height="382.266"/>
+  <object id="860" name="Snow/large_window" type="decor" x="1428.76" y="489.66" width="388" height="270"/>
+  <object id="863" name="Snow/fire_place_piece_01" type="decor" x="2403.75" y="-170" width="188" height="506">
+   <properties>
+    <property name="repeat-y" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="869" name="Snow/stocking_01" type="decor" x="2579.33" y="746.67" width="116" height="150"/>
   <object id="870" name="Snow/stocking_02" type="decor" x="2381.33" y="747.33" width="92" height="132"/>
   <object id="875" name="Snow/layed_table" type="decor" x="1322.53" y="735.804" width="616" height="326"/>
   <object id="876" name="Snow/large_table_complete" type="decor" x="2947.64" y="855.262" width="616" height="210"/>
   <object id="881" name="Snow/door_closed" type="decor" x="350" y="610.67" width="348" height="390"/>
   <object id="882" name="fireplace-fire" type="object" x="2444.9" y="864.176" width="128" height="128"/>
+ </objectgroup>
+ <objectgroup id="114" name="decor fg">
+  <object id="887" name="Snow/picture_02" type="decor" x="2767.51" y="499.108" width="169" height="121"/>
+  <object id="888" name="Snow/green_cracker" type="decor" x="3033.35" y="833.274" width="105" height="32"/>
+  <object id="889" name="Snow/green_cracker_side" type="decor" x="3214.84" y="832.732" width="87" height="38"/>
+  <object id="890" name="Snow/green_hat" type="decor" x="2499.9" y="728.953" width="58" height="123"/>
+  <object id="891" name="Snow/green_scarf" type="decor" x="2291.35" y="722.424" width="69" height="213"/>
+  <object id="892" name="Snow/milk_for_table" type="decor" x="3464.97" y="800.982" width="50" height="70"/>
+  <object id="893" name="Snow/wine_bottle" type="decor" x="3358.24" y="727.377" width="46" height="148"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -70,7 +83,7 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="879" name="terrain" type="invisible" x="-143.771" y="1063.81" width="4115.65" height="407.186"/>
+  <object id="879" name="invisible" type="terrain" x="-143.771" y="1063.81" width="4115.65" height="407.186"/>
  </objectgroup>
  <objectgroup id="113" name="terrain fg">
   <properties>
