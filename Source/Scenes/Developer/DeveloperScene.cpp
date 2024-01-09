@@ -135,6 +135,7 @@ DeveloperScene::DeveloperScene()
 		- * Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
 		- * 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
 		- * 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
+			- Connects town_main lower to town_main upper
 		- * 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
 			- Gate this by frozen water, requiring a venture into 2_x for frost book
 		- * Needs hexus battles

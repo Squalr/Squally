@@ -14,7 +14,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Objects/Platformer/Combat/Projectiles/Waterball/Waterball.h"
+#include "Objects/Platformer/Projectiles/Waterball/Waterball.h"
 #include "Objects/Platformer/Projectiles/ProjectilePool.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
@@ -59,15 +59,7 @@ Vec2 WaterLauncher::getProjectileSpawnPosition()
 
 Projectile* WaterLauncher::createProjectile()
 {
-	Waterball* waterball = Waterball::create(nullptr, nullptr);
-	
-	waterball->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionData collisionData)
-	{
-		waterball->disable(true);
-		waterball->runImpactFX();
-
-		return CollisionResult::DoNothing;
-	});
+	Waterball* waterball = Waterball::create(float(M_PI) / 2.0f, 256.0f);
 
 	return waterball;
 }

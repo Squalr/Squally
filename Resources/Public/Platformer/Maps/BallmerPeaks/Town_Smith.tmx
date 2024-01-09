@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="115" nextobjectid="819">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="115" nextobjectid="819">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -159,7 +159,7 @@
   <object id="694" name="portal" type="object" x="1809.59" y="689.741" width="237.527" height="375.411">
    <properties>
     <property name="map" value="BallmerPeaks/Town_Main"/>
-    <property name="transition" value="town_smith_out"/>
+    <property name="transition" value="town_smith"/>
    </properties>
   </object>
   <object id="795" name="shop-item" type="object" x="682.67" y="198" width="64" height="64">
@@ -223,7 +223,7 @@
   </object>
   <object id="805" name="spawn-wood-door" type="object" x="1869.38" y="934.23" width="128" height="128">
    <properties>
-    <property name="transition" value="smith"/>
+    <property name="transition" value="town_smith"/>
    </properties>
   </object>
  </objectgroup>

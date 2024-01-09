@@ -146,7 +146,7 @@
   <object id="694" name="portal" type="object" x="401.862" y="696.711" width="237.527" height="375.411">
    <properties>
     <property name="map" value="BallmerPeaks/Town_Main"/>
-    <property name="transition" value="alch"/>
+    <property name="transition" value="town_alch"/>
    </properties>
   </object>
   <object id="795" name="shop-item" type="object" x="1066.67" y="198" width="64" height="64">
@@ -212,14 +212,14 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="521.133" y="939.96" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="699.535" y="942.339" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="887" name="spawn-wood-door" type="object" x="461.648" y="941.2" width="128" height="128">
    <properties>
-    <property name="transition" value="alch"/>
+    <property name="transition" value="town_alch"/>
    </properties>
   </object>
  </objectgroup>
