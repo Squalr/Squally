@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="53" height="62" tilewidth="128" tileheight="128" infinite="0" nextlayerid="91" nextobjectid="1094">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="53" height="62" tilewidth="128" tileheight="128" infinite="0" nextlayerid="91" nextobjectid="1130">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -197,12 +197,6 @@
     <property name="transition" value="town_alch"/>
    </properties>
   </object>
-  <object id="1065" name="portal" type="object" x="5531.96" y="2070.23" width="197.742" height="326.149">
-   <properties>
-    <property name="map" value="BallmerPeaks/Town_Hall"/>
-    <property name="transition" value="town_hall"/>
-   </properties>
-  </object>
   <object id="1072" name="lantern-gate" type="object" x="1622.34" y="4197.16" width="356" height="320"/>
   <object id="1074" name="lantern-gate" type="object" x="5570.91" y="4194.63" width="356" height="320"/>
  </objectgroup>
@@ -351,49 +345,19 @@
     <property name="components" value="z-fade"/>
    </properties>
   </object>
-  <object id="951" name="Snow/boots" type="decor" x="896.929" y="4492.45" width="138" height="114"/>
+  <object id="951" name="Snow/boots" type="decor" x="1133.15" y="4493.94" width="138" height="114"/>
   <object id="952" name="Snow/green_coat" type="decor" x="1300.33" y="4365.33" width="149" height="230"/>
-  <object id="953" name="Snow/red_coat" type="decor" x="1485.5" y="4009" width="149" height="230"/>
-  <object id="954" name="Snow/purple_coat" type="decor" x="1289.5" y="4007.67" width="149" height="230"/>
-  <object id="955" name="Snow/red_chair" type="decor" x="1036.17" y="3966.33" width="223" height="362"/>
-  <object id="956" name="Snow/picture_01" type="decor" x="1840.17" y="3898.33" width="99" height="121"/>
-  <object id="957" name="Snow/picture_02" type="decor" x="2003.83" y="3899.5" width="169" height="121"/>
-  <object id="958" name="Snow/green_cracker" type="decor" x="2203.5" y="3898.17" width="105" height="32"/>
-  <object id="959" name="Snow/green_cracker_side" type="decor" x="2218.17" y="3966.67" width="87" height="38"/>
-  <object id="960" name="Snow/green_hat" type="decor" x="2423.83" y="3890.17" width="58" height="123"/>
-  <object id="961" name="Snow/green_scarf" type="decor" x="2611" y="3883.83" width="69" height="213"/>
-  <object id="962" name="Snow/green_streamer_01" type="decor" x="1721.5" y="3568.17" width="164" height="203"/>
-  <object id="963" name="Snow/green_streamer_02" type="decor" x="2042" y="3531.83" width="442" height="123"/>
-  <object id="965" name="Snow/large_table_complete" type="decor" x="917.67" y="3555.83" width="616" height="210"/>
-  <object id="966" name="Snow/large_window" type="decor" x="4892.46" y="4143.34" width="388" height="270"/>
-  <object id="967" name="Snow/layed_table" type="decor" x="96.4679" y="3346.96" width="616" height="326"/>
-  <object id="968" name="Snow/light_01_blue" type="decor" x="1985.33" y="3111.67" width="365" height="165"/>
-  <object id="969" name="Snow/light_01_multicolour" type="decor" x="2529.5" y="3117.5" width="365" height="165"/>
-  <object id="970" name="Snow/light_01_off" type="decor" x="2925.5" y="3121.5" width="365" height="165"/>
-  <object id="971" name="Snow/light_01_pink" type="decor" x="2009.5" y="2893.5" width="365" height="165"/>
-  <object id="972" name="Snow/light_01_white" type="decor" x="2512.17" y="2870.83" width="365" height="165"/>
-  <object id="973" name="Snow/light_01_yellow" type="decor" x="3002.83" y="2866.83" width="365" height="165"/>
   <object id="974" name="Snow/light_02_multicolour" type="decor" x="4093.04" y="3627.5" width="335" height="98">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
   </object>
-  <object id="975" name="Snow/light_02_multicolour" type="decor" x="2498.83" y="2698.83" width="335" height="98"/>
-  <object id="976" name="Snow/light_02_off" type="decor" x="2910.83" y="2686.83" width="335" height="98"/>
-  <object id="977" name="Snow/light_02_pink" type="decor" x="3308.17" y="2692.17" width="335" height="98"/>
-  <object id="978" name="Snow/light_02_white" type="decor" x="3622.83" y="2837.5" width="335" height="98"/>
-  <object id="979" name="Snow/light_02_yellow" type="decor" x="3616.17" y="2966.83" width="335" height="98"/>
-  <object id="986" name="Snow/milk_for_table" type="decor" x="4283.03" y="2973.64" width="50" height="70"/>
-  <object id="997" name="Snow/green_streamer_02" type="decor" x="741.33" y="3046.52" width="616" height="210"/>
-  <object id="998" name="Snow/white_02" type="decor" x="2282.33" y="4452.5" width="118" height="154"/>
+  <object id="998" name="Snow/white_02" type="decor" x="2309.08" y="4452.5" width="118" height="154"/>
   <object id="999" name="Snow/white_03" type="decor" x="2420.33" y="4507.5" width="101" height="102"/>
   <object id="1000" name="Snow/white_01" type="decor" x="2376.3" y="4560.16" width="60" height="46"/>
   <object id="1001" name="Snow/white_04" type="decor" x="2567.27" y="4509.5" width="125" height="95"/>
   <object id="1002" name="Snow/white_05" type="decor" x="2499.22" y="4541.98" width="91" height="65"/>
   <object id="1003" name="Snow/white_06" type="decor" x="2681.82" y="4500.67" width="112" height="104"/>
-  <object id="1004" name="Snow/large_table_complete" type="decor" x="2032.3" y="3529.2" width="616" height="210"/>
-  <object id="1005" name="Snow/layed_table" type="decor" x="4870.85" y="4281.82" width="616" height="326"/>
-  <object id="1006" name="Snow/wine_bottle" type="decor" x="2783" y="3924.5" width="46" height="148"/>
   <object id="1087" name="Snow/TownHome3" type="decor" x="5058.4" y="1276.34" width="1317" height="1120"/>
   <object id="1088" name="Snow/TownHome4" type="decor" x="1436.2" y="1312.69" width="1267" height="1120"/>
   <object id="1089" name="Snow/TownHome2" type="decor" x="10.0354" y="1261" width="1203" height="1160"/>
@@ -433,6 +397,31 @@
     <property name="components" value="z-fade"/>
    </properties>
   </object>
+  <object id="1095" name="Snow/red_coat" type="decor" x="3897.17" y="2163.8" width="149" height="230"/>
+  <object id="1096" name="Snow/purple_coat" type="decor" x="4144.24" y="2055.9" width="149" height="230"/>
+  <object id="1097" name="Snow/picture_01" type="decor" x="4526.65" y="1957.78" width="99" height="121"/>
+  <object id="1098" name="Snow/picture_02" type="decor" x="3062.4" y="2262.24" width="169" height="121"/>
+  <object id="1099" name="Snow/green_cracker" type="decor" x="3018.6" y="2536.14" width="105" height="32"/>
+  <object id="1100" name="Snow/green_cracker_side" type="decor" x="3252.04" y="2467.02" width="87" height="38"/>
+  <object id="1101" name="Snow/green_hat" type="decor" x="2931.95" y="2263.49" width="58" height="123"/>
+  <object id="1102" name="Snow/green_scarf" type="decor" x="2808.6" y="2246.57" width="69" height="213"/>
+  <object id="1103" name="Snow/green_streamer_01" type="decor" x="5564.69" y="1616.65" width="164" height="203"/>
+  <object id="1104" name="Snow/green_streamer_02" type="decor" x="4038.63" y="1170.64" width="442" height="123"/>
+  <object id="1105" name="Snow/large_table_complete" type="decor" x="4608.08" y="2187.35" width="616" height="210"/>
+  <object id="1107" name="Snow/light_01_blue" type="decor" x="3762.57" y="1358.64" width="365" height="165"/>
+  <object id="1108" name="Snow/light_01_multicolour" type="decor" x="4352.65" y="1366.5" width="365" height="165"/>
+  <object id="1109" name="Snow/light_01_off" type="decor" x="119.297" y="1365.5" width="365" height="165"/>
+  <object id="1110" name="Snow/light_01_pink" type="decor" x="1578.51" y="1576.31" width="365" height="165"/>
+  <object id="1111" name="Snow/light_01_white" type="decor" x="2141.93" y="1575.04" width="365" height="165"/>
+  <object id="1112" name="Snow/light_01_multicolour" type="decor" x="5815.98" y="1795.73" width="365" height="165"/>
+  <object id="1113" name="Snow/light_02_multicolour" type="decor" x="5895.65" y="1652.76" width="335" height="98" rotation="30"/>
+  <object id="1114" name="Snow/light_02_off" type="decor" x="641.115" y="1377.37" width="335" height="98"/>
+  <object id="1116" name="Snow/light_02_white" type="decor" x="4065.9" y="1648.49" width="335" height="98"/>
+  <object id="1117" name="Snow/light_02_yellow" type="decor" x="5166.69" y="1870.37" width="335" height="98" rotation="-25"/>
+  <object id="1118" name="Snow/milk_for_table" type="decor" x="3570.75" y="2323.05" width="50" height="70"/>
+  <object id="1119" name="Snow/green_streamer_02" type="decor" x="1688.9" y="1853.74" width="616" height="210" rotation="15"/>
+  <object id="1121" name="Snow/wine_bottle" type="decor" x="3464.02" y="2266.07" width="46" height="148"/>
+  <object id="1122" name="Snow/light_02_yellow" type="decor" x="5955" y="1909.04" width="335" height="98" rotation="45"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -451,7 +440,7 @@
    </properties>
   </object>
   <object id="894" name="lantern-gate" type="object" x="5571.06" y="4283.87" width="356" height="320"/>
-  <object id="913" name="life-stone" type="object" x="1197.63" y="4184.04" width="146" height="423">
+  <object id="913" name="life-stone" type="object" x="916.843" y="4185.52" width="146" height="423">
    <properties>
     <property name="transition" value="lifestone-spawn"/>
    </properties>
@@ -493,6 +482,30 @@
     <property name="fixed" type="float" value="90"/>
    </properties>
   </object>
+  <object id="1094" name="portal" type="object" x="5531.96" y="2069.23" width="197.742" height="326.149">
+   <properties>
+    <property name="map" value="BallmerPeaks/Town_Hall"/>
+    <property name="transition" value="town_hall"/>
+   </properties>
+  </object>
+  <object id="1125" name="portal" type="object" x="4130.05" y="2081.14" width="197.742" height="326.149">
+   <properties>
+    <property name="map" value="BallmerPeaks/Town_Hall"/>
+    <property name="transition" value="town_hall"/>
+   </properties>
+  </object>
+  <object id="1127" name="portal" type="object" x="1899.74" y="2101" width="197.742" height="326.149">
+   <properties>
+    <property name="map" value="BallmerPeaks/Town_Hall"/>
+    <property name="transition" value="town_hall"/>
+   </properties>
+  </object>
+  <object id="1129" name="portal" type="object" x="511.94" y="2101" width="197.742" height="326.149">
+   <properties>
+    <property name="map" value="BallmerPeaks/Town_Hall"/>
+    <property name="transition" value="town_hall"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -515,7 +528,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="941" name="spawn" type="object" x="1202.84" y="4479.79" width="128" height="128">
+  <object id="941" name="spawn" type="object" x="922.047" y="4481.27" width="128" height="128">
    <properties>
     <property name="transition" value="lifestone-spawn"/>
    </properties>
@@ -546,6 +559,21 @@
    </properties>
   </object>
   <object id="1092" name="spawn" type="object" x="5566.85" y="2268.46" width="128" height="128">
+   <properties>
+    <property name="transition" value="town_hall_out"/>
+   </properties>
+  </object>
+  <object id="1124" name="spawn" type="object" x="4164.94" y="2280.37" width="128" height="128">
+   <properties>
+    <property name="transition" value="town_hall_out"/>
+   </properties>
+  </object>
+  <object id="1126" name="spawn" type="object" x="1934.63" y="2300.23" width="128" height="128">
+   <properties>
+    <property name="transition" value="town_hall_out"/>
+   </properties>
+  </object>
+  <object id="1128" name="spawn" type="object" x="546.83" y="2300.23" width="128" height="128">
    <properties>
     <property name="transition" value="town_hall_out"/>
    </properties>

@@ -20,6 +20,7 @@
 #include "Scenes/Platformer/Terrain/FrostTerrain.h"
 #include "Scenes/Platformer/Terrain/GrassTerrain.h"
 #include "Scenes/Platformer/Terrain/IceTerrain.h"
+#include "Scenes/Platformer/Terrain/InvisibleTerrain.h"
 #include "Scenes/Platformer/Terrain/JungleTerrain.h"
 #include "Scenes/Platformer/Terrain/LavaTerrain.h"
 #include "Scenes/Platformer/Terrain/LeafTerrain.h"
@@ -81,6 +82,7 @@ PlatformerTerrainDeserializer::PlatformerTerrainDeserializer() : super(Platforme
 	this->deserializers[FrostTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)FrostTerrain::create(properties); };
 	this->deserializers[GrassTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)GrassTerrain::create(properties); };
 	this->deserializers[IceTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)IceTerrain::create(properties); };
+	this->deserializers[InvisibleTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)InvisibleTerrain::create(properties); };
 	this->deserializers[JungleTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)JungleTerrain::create(properties); };
 	this->deserializers[LavaTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)LavaTerrain::create(properties); };
 	this->deserializers[LeafTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)LeafTerrain::create(properties); };

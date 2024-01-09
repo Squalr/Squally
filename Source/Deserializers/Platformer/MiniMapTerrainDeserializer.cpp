@@ -20,6 +20,7 @@
 #include "Scenes/Platformer/Terrain/FrostTerrain.h"
 #include "Scenes/Platformer/Terrain/GrassTerrain.h"
 #include "Scenes/Platformer/Terrain/IceTerrain.h"
+#include "Scenes/Platformer/Terrain/InvisibleTerrain.h"
 #include "Scenes/Platformer/Terrain/JungleTerrain.h"
 #include "Scenes/Platformer/Terrain/LavaTerrain.h"
 #include "Scenes/Platformer/Terrain/LeafTerrain.h"
@@ -81,6 +82,7 @@ MiniMapTerrainDeserializer::MiniMapTerrainDeserializer() : super(MiniMapTerrainD
 	this->deserializers[FrostTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, FrostTerrain::MiniMapColor); };
 	this->deserializers[GrassTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, GrassTerrain::MiniMapColor); };
 	this->deserializers[IceTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, IceTerrain::MiniMapColor); };
+	this->deserializers[InvisibleTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, InvisibleTerrain::MiniMapColor); };
 	this->deserializers[JungleTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, JungleTerrain::MiniMapColor); };
 	this->deserializers[LavaTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, LavaTerrain::MiniMapColor); };
 	this->deserializers[LeafTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, LeafTerrain::MiniMapColor); };
