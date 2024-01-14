@@ -143,8 +143,23 @@ DeveloperScene::DeveloperScene()
 			- Zone 1_0
 			- Zone 1_1
 			- Town_Main
+			- Sant
 			- Zone 2_x?
 			- Zone 3_x?
+
+			Aspen		=> Town_Main
+			Bodom		=> Inn (H4)
+			Cookie		=> Sant (H6)
+			Cooper		=> Home_2 (H2)
+			Jingles		=> Sant
+			Juniper		=> Sant
+			Kringle		=> Home_1 (H3)
+			Luna		=> Alch
+			Nessie		=> Inn
+			PrincessPepper	=> Town Hall
+			Theldar		=> Smith
+			Tinsel		=> Zone 3_x (H5)
+			Ysara		=> Zone 1_x (H1)
 
 		- * Tune hexus battle special cards
 		- * Needs animals
@@ -440,6 +455,9 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Smith (BP)", MapResources::BallmerPeaks_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Town Main (BP)", MapResources::BallmerPeaks_Town_Main));
 		mapList.push_back(this->buildDebugButton("Town Hall (BP)", MapResources::BallmerPeaks_Town_Hall));
+		mapList.push_back(this->buildDebugButton("Town Home 1 (BP)", MapResources::BallmerPeaks_Town_Home1));
+		mapList.push_back(this->buildDebugButton("Town Home 2 (BP)", MapResources::BallmerPeaks_Town_Home2));
+		mapList.push_back(this->buildDebugButton("Town Home 3 (BP)", MapResources::BallmerPeaks_Town_Home3));
 		mapList.push_back(this->buildDebugButton("Zone_3_2 (BP)", MapResources::BallmerPeaks_Zone_3_2));
 		mapList.push_back(this->buildDebugButton("Zone_3_1 (BP)", MapResources::BallmerPeaks_Zone_3_1));
 		mapList.push_back(this->buildDebugButton("Zone_3_0 (BP)", MapResources::BallmerPeaks_Zone_3_0));

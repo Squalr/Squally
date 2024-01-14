@@ -8,6 +8,9 @@
 const std::string MapResources::BallmerPeaks_Combat_Snow = "Public/Platformer/Maps/BallmerPeaks/Combat_Snow.tmx";
 const std::string MapResources::BallmerPeaks_Town_Alch = "Public/Platformer/Maps/BallmerPeaks/Town_Alch.tmx";
 const std::string MapResources::BallmerPeaks_Town_Hall = "Public/Platformer/Maps/BallmerPeaks/Town_Hall.tmx";
+const std::string MapResources::BallmerPeaks_Town_Home1 = "Public/Platformer/Maps/BallmerPeaks/Town_Home1.tmx";
+const std::string MapResources::BallmerPeaks_Town_Home2 = "Public/Platformer/Maps/BallmerPeaks/Town_Home2.tmx";
+const std::string MapResources::BallmerPeaks_Town_Home3 = "Public/Platformer/Maps/BallmerPeaks/Town_Home3.tmx";
 const std::string MapResources::BallmerPeaks_Town_Inn = "Public/Platformer/Maps/BallmerPeaks/Town_Inn.tmx";
 const std::string MapResources::BallmerPeaks_Town_Main = "Public/Platformer/Maps/BallmerPeaks/Town_Main.tmx";
 const std::string MapResources::BallmerPeaks_Town_Smith = "Public/Platformer/Maps/BallmerPeaks/Town_Smith.tmx";

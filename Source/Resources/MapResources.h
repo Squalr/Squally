@@ -9,6 +9,9 @@ namespace MapResources
 	extern const std::string BallmerPeaks_Combat_Snow;
 	extern const std::string BallmerPeaks_Town_Alch;
 	extern const std::string BallmerPeaks_Town_Hall;
+	extern const std::string BallmerPeaks_Town_Home1;
+	extern const std::string BallmerPeaks_Town_Home2;
+	extern const std::string BallmerPeaks_Town_Home3;
 	extern const std::string BallmerPeaks_Town_Inn;
 	extern const std::string BallmerPeaks_Town_Main;
 	extern const std::string BallmerPeaks_Town_Smith;

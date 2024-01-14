@@ -132,13 +132,13 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="756" name="marble" type="terrain" x="-174" y="1194" width="2592" height="240.121"/>
+  <object id="756" name="marble" type="terrain" x="-174" y="1194" width="2623.6" height="240.121"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="484" name="Generic/LesserMoonDoor" type="decor" x="1854.85" y="689.287" width="310" height="492"/>
+  <object id="484" name="Generic/LesserMoonDoor" type="decor" x="1847.83" y="699.821" width="310" height="492"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -162,7 +162,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="692" name="ara" type="entity" x="1099.92" y="1064.74" width="128" height="128">
+  <object id="692" name="jingles" type="entity" x="1099.92" y="1064.74" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,bp-t4-hexus,pick-pocket"/>
     <property name="pocket-pool" value="bp-generic"/>

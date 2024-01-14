@@ -103,10 +103,10 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="692" name="mittens" type="entity" x="1236.98" y="814.705" width="128" height="128">
+  <object id="692" name="kringle" type="entity" x="1236.98" y="814.705" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,ff-t5-hexus,pacing,pick-pocket"/>
-    <property name="pocket-pool" value="ff-generic"/>
+    <property name="components" value="friendly,bp-t3-hexus,pacing,pick-pocket"/>
+    <property name="pocket-pool" value="bp-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>

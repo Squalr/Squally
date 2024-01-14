@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="19" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="114" nextobjectid="849">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="19" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="114" nextobjectid="851">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -17,7 +17,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="802" name="ship" type="terrain" x="-67.335" y="-55.09" width="2522.67" height="2482.18">
+  <object id="802" name="ship" type="terrain" x="-67.335" y="-67.1589" width="2522.67" height="1470.25">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -27,7 +27,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="770" name="Generic/ShelfBar1" type="decor" x="925.59" y="1271.75" width="1135" height="753"/>
+  <object id="770" name="Generic/Shelf1" type="decor" x="925.59" y="247.75" width="1135" height="753"/>
  </objectgroup>
  <objectgroup id="19" name="objects background">
   <properties>
@@ -39,7 +39,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="760" name="nessie" type="entity" x="1570.93" y="2007.35" width="128" height="167">
+  <object id="760" name="nessie" type="entity" x="1570.93" y="983.35" width="128" height="167">
    <properties>
     <property name="components" value="shopkeeper,face-squally"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -50,23 +50,22 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="769" name="Generic/Counter" type="decor" x="977.54" y="2054.35" width="1080" height="167"/>
-  <object id="826" name="Snow/WoodDoor1" type="decor" x="355.247" y="1847.82" width="316" height="380"/>
+  <object id="769" name="Generic/Counter" type="decor" x="977.54" y="1030.35" width="1080" height="167"/>
+  <object id="826" name="Snow/WoodDoor1" type="decor" x="355.247" y="823.82" width="316" height="380"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="803" name="wood" type="terrain" x="-128.665" y="2218.61" width="2610.3" height="245.455"/>
-  <object id="832" name="wood" type="terrain" x="-93.15" y="849.515" width="2610.3" height="345.646"/>
-  <object id="833" name="wood" type="terrain" x="-58.1197" y="-92.4245" width="2610.3" height="245.455"/>
+  <object id="803" name="wood" type="terrain" x="-128.665" y="1194.61" width="2610.3" height="245.455"/>
+  <object id="832" name="wood" type="terrain" x="-93.15" y="-174.485" width="2610.3" height="345.646"/>
  </objectgroup>
  <objectgroup id="113" name="terrain fg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="830" name="wood" type="terrain" x="-97.15" y="-67.4548" width="139.182" height="2498.18"/>
-  <object id="831" name="wood" type="terrain" x="2394.81" y="-73.6341" width="236.34" height="2488.36"/>
+  <object id="830" name="wood" type="terrain" x="-97.15" y="-256.28" width="139.182" height="1663.01"/>
+  <object id="831" name="wood" type="terrain" x="2394.81" y="-258.041" width="165.637" height="1648.77"/>
  </objectgroup>
  <objectgroup id="112" name="decor bg">
   <properties>
@@ -77,102 +76,75 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="835" name="Mines/CaveWindow2" type="decor" x="1157.26" y="321.924" width="237" height="241">
-   <properties>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="694" name="portal" type="object" x="401.862" y="1848.71" width="237.527" height="375.411">
+  <object id="694" name="portal" type="object" x="401.862" y="824.71" width="237.527" height="375.411">
    <properties>
     <property name="map" value="BallmerPeaks/Town_Main"/>
     <property name="transition" value="town_inn_out"/>
    </properties>
   </object>
-  <object id="794" name="portal" type="object" x="3202.21" y="1842.53" width="335.878" height="375.411">
-   <properties>
-    <property name="map" value="DataMines/Town_Inn_Upstairs"/>
-    <property name="transition" value="inn"/>
-   </properties>
-  </object>
-  <object id="834" name="portal" type="object" x="1144.85" y="304.758" width="256" height="256">
-   <properties>
-    <property name="map" value="DataMines/Town_Main"/>
-    <property name="transition" value="inn-top"/>
-   </properties>
-  </object>
-  <object id="837" name="chest" type="object" x="1580" y="720" width="128" height="128">
-   <properties>
-    <property name="reward-pool" value="bp-generic"/>
-   </properties>
-  </object>
-  <object id="838" name="chest" type="object" x="818" y="722" width="128" height="128">
-   <properties>
-    <property name="reward-pool" value="bp-generic"/>
-   </properties>
-  </object>
-  <object id="839" name="shop-item" type="object" x="1190.84" y="1308.42" width="64" height="64">
+  <object id="839" name="shop-item" type="object" x="1190.84" y="284.42" width="64" height="64">
    <properties>
     <property name="pool" value="shop-pool-inn-t7"/>
    </properties>
   </object>
-  <object id="840" name="shop-item" type="object" x="1484.17" y="1308.42" width="64" height="64">
+  <object id="840" name="shop-item" type="object" x="1484.17" y="284.42" width="64" height="64">
    <properties>
     <property name="pool" value="shop-pool-inn-t7"/>
    </properties>
   </object>
-  <object id="841" name="shop-item" type="object" x="1766.17" y="1308.42" width="64" height="64">
+  <object id="841" name="shop-item" type="object" x="1766.17" y="284.42" width="64" height="64">
    <properties>
     <property name="pool" value="shop-pool-inn-t7"/>
    </properties>
   </object>
-  <object id="842" name="shop-item" type="object" x="1191.7" y="1592.67" width="64" height="64">
+  <object id="842" name="shop-item" type="object" x="1191.7" y="568.67" width="64" height="64">
    <properties>
     <property name="pool" value="shop-pool-inn-t7"/>
    </properties>
   </object>
-  <object id="843" name="shop-item" type="object" x="1484.17" y="1592.67" width="64" height="64">
+  <object id="843" name="shop-item" type="object" x="1484.17" y="568.67" width="64" height="64">
    <properties>
     <property name="pool" value="shop-pool-inn-t7"/>
    </properties>
   </object>
-  <object id="844" name="shop-item" type="object" x="1766.17" y="1592.67" width="64" height="64">
+  <object id="844" name="shop-item" type="object" x="1766.17" y="568.67" width="64" height="64">
    <properties>
     <property name="pool" value="shop-pool-inn-t7"/>
    </properties>
   </object>
-  <object id="845" name="shop-pool-inn-t7" type="object" x="566.378" y="1432.37" width="64" height="64"/>
+  <object id="845" name="shop-pool-inn-t7" type="object" x="566.378" y="408.37" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="829" name="cooper" type="entity" x="2130" y="2094" width="128" height="128">
+  <object id="846" name="gecky" type="entity" x="1860.77" y="1069.75" width="128" height="128">
    <properties>
-    <property name="components" value="nessie-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="friendly,recruitable"/>
+   </properties>
+  </object>
+  <object id="847" name="guano" type="entity" x="1274.46" y="1062.29" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,recruitable"/>
+   </properties>
+  </object>
+  <object id="848" name="grim" type="entity" x="1013.79" y="1062.11" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,recruitable"/>
+   </properties>
+  </object>
+  <object id="850" name="bodom" type="entity" x="2116.01" y="1068.08" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bp-t2-hexus,pacing,pick-pocket"/>
     <property name="pocket-pool" value="bp-generic"/>
     <property name="travel-distance" type="float" value="192"/>
-   </properties>
-  </object>
-  <object id="846" name="gecky" type="entity" x="1860.77" y="2093.75" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,recruitable"/>
-   </properties>
-  </object>
-  <object id="847" name="guano" type="entity" x="1274.46" y="2086.29" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,recruitable"/>
-   </properties>
-  </object>
-  <object id="848" name="grim" type="entity" x="1013.79" y="2086.11" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,recruitable"/>
    </properties>
   </object>
  </objectgroup>
@@ -181,19 +153,14 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="784.265" y="2090.22" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="784.265" y="1066.22" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="824" name="spawn-wood-door" type="object" x="461.648" y="2093.2" width="128" height="128">
+  <object id="824" name="spawn-wood-door" type="object" x="461.648" y="1069.2" width="128" height="128">
    <properties>
     <property name="transition" value="town_inn"/>
-   </properties>
-  </object>
-  <object id="836" name="spawn" type="object" x="1214.91" y="434.424" width="128" height="128">
-   <properties>
-    <property name="transition" value="inn-top"/>
    </properties>
   </object>
  </objectgroup>

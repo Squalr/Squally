@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="30" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="115" nextobjectid="894">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="30" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="117" nextobjectid="896">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -33,6 +33,16 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup id="116" name="decor bg bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="895" name="Snow/boots" type="decor" x="2218.35" y="920.334" width="138" height="114">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="112" name="decor bg">
   <properties>
    <property name="type" value="objects"/>
@@ -51,21 +61,23 @@
     <property name="repeat-y" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="869" name="Snow/stocking_01" type="decor" x="2579.33" y="746.67" width="116" height="150"/>
-  <object id="870" name="Snow/stocking_02" type="decor" x="2381.33" y="747.33" width="92" height="132"/>
+  <object id="869" name="Snow/stocking_01" type="decor" x="2585.1" y="788.192" width="116" height="150"/>
+  <object id="870" name="Snow/stocking_02" type="decor" x="2384.79" y="791.159" width="92" height="132"/>
   <object id="875" name="Snow/layed_table" type="decor" x="1322.53" y="735.804" width="616" height="326"/>
   <object id="876" name="Snow/large_table_complete" type="decor" x="2947.64" y="855.262" width="616" height="210"/>
   <object id="881" name="Snow/door_closed" type="decor" x="350" y="610.67" width="348" height="390"/>
   <object id="882" name="fireplace-fire" type="object" x="2444.9" y="864.176" width="128" height="128"/>
  </objectgroup>
  <objectgroup id="114" name="decor fg">
-  <object id="887" name="Snow/picture_02" type="decor" x="2767.51" y="499.108" width="169" height="121"/>
-  <object id="888" name="Snow/green_cracker" type="decor" x="3033.35" y="833.274" width="105" height="32"/>
-  <object id="889" name="Snow/green_cracker_side" type="decor" x="3214.84" y="832.732" width="87" height="38"/>
-  <object id="890" name="Snow/green_hat" type="decor" x="2499.9" y="728.953" width="58" height="123"/>
-  <object id="891" name="Snow/green_scarf" type="decor" x="2291.35" y="722.424" width="69" height="213"/>
-  <object id="892" name="Snow/milk_for_table" type="decor" x="3464.97" y="800.982" width="50" height="70"/>
-  <object id="893" name="Snow/wine_bottle" type="decor" x="3358.24" y="727.377" width="46" height="148"/>
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="888" name="Snow/green_cracker" type="decor" x="3029.92" y="853.892" width="105" height="32"/>
+  <object id="889" name="Snow/green_cracker_side" type="decor" x="3390.95" y="851.633" width="87" height="38"/>
+  <object id="890" name="Snow/green_hat" type="decor" x="2503.36" y="791.237" width="58" height="123"/>
+  <object id="891" name="Snow/green_scarf" type="decor" x="2301.73" y="798.548" width="69" height="213"/>
+  <object id="892" name="Snow/milk_for_table" type="decor" x="3184.9" y="817.305" width="50" height="70"/>
+  <object id="893" name="Snow/wine_bottle" type="decor" x="3286.07" y="742.841" width="46" height="148"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -75,7 +87,7 @@
   <object id="694" name="portal" type="object" x="405.862" y="625.04" width="237.527" height="375.411">
    <properties>
     <property name="map" value="BallmerPeaks/Town_Main"/>
-    <property name="transition" value="town_hall_out"/>
+    <property name="transition" value="town_hall"/>
    </properties>
   </object>
   <object id="873" name="Snow/red_chair" type="decor" x="1957.19" y="700.858" width="223" height="362">
@@ -108,12 +120,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="1285.9" y="663.92" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="907.157" y="933.601" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="824" name="spawn-wood-door" type="object" x="462.981" y="815.53" width="128" height="128">
+  <object id="824" name="spawn-wood-door" type="object" x="447.117" y="931.524" width="128" height="128">
    <properties>
     <property name="transition" value="town_hall"/>
    </properties>

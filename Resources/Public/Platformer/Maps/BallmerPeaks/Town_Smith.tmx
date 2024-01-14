@@ -136,14 +136,13 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="807" name="ship" type="terrain" x="-49.0288" y="1064.61" width="2290.3" height="234.06"/>
-  <object id="818" name="wood" type="terrain" x="-1157.05" y="-155.709" width="2290.3" height="201.332"/>
  </objectgroup>
  <objectgroup id="113" name="terrain fg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="812" name="wood" type="terrain" x="1136" y="-152">
-   <polygon points="0,-2.90909 -0.0152873,198.979 1206.22,667.798 1214.37,-4.0303"/>
+   <polygon points="0,-2.90909 -1279.85,-4.556 -1280.83,194.868 -0.0152873,198.979 1206.22,667.798 1214.37,-4.0303"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
