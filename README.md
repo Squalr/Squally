@@ -37,7 +37,7 @@ To minimize cross-platform effort, we develop Squally using [VsCode](https://cod
 - (Mac only) CodeLLDB is recommended, as this debugger works better than the default. Just be sure to go into Debug > Breakpoints > Disable C++: on throw
 
 You will also need the following software to compile the project:
-- Cmake (The CMake Tools extension does not include the cmake binaries)
+- Cmake 3.x (The CMake Tools extension does not include the cmake binaries) - cmake-3.31.6 is known to work properly
     - Windows: Download the [installer](https://cmake.org/download/)
     - OSX: Use [Brew](https://brew.sh/) to install Cmake with the command `brew install cmake`
     - Linux: Install via the instructions [here](https://cgold.readthedocs.io/en/latest/first-step/installation.html)
