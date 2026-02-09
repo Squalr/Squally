@@ -8,7 +8,7 @@ The goal is to keep the architecture in mind and not drift into minefields.
 ----------------------
 
 ## Current Tasklist (ordered)
-(Remove as completed, add remaining concrete tasks.)
+(Remove as completed, add remaining concrete tasks. If no tasks exist, audit your work.)
 
 - Reconfirm baseline behavior with `UseNewAnimationSystem = true` and keep current Spriter runtime behavior unchanged (no transform/timeline architecture rewrite).
 - Add `SmartAnimationNode` new-mode parity in the facade layer only: `setFlippedY`, `getFlippedX/Y`, `disableRender/enableRender`, and `AnimationPlayMode` (`ReturnToIdle`, `Repeat`, `PauseOnAnimationComplete`, `Callback`).
@@ -24,7 +24,6 @@ Append important discoveries. Compact regularly.
 
 Information found in initial audit:
 - `UseNewAnimationSystem` is hardcoded `true` in `SmartAnimationNode.cpp`, so all current behavior depends on the new runtime path.
-
 Information discovered during iteration:
 - `SmartAnimationNode::playAnimation(...)` currently calls `spriterAnimation->playAnimation(...)`, but all play-mode logic immediately returns on `entity == nullptr`; callbacks/pause/return-to-idle/repeat semantics are bypassed in new mode.
 - `SmartAnimationNode::getAnimationPart(...)` and `restoreAnimationPart(...)` are legacy-only (`EntityInstance`-based), so they return `nullptr`/no-op in new mode.
