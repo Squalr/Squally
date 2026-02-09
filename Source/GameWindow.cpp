@@ -5,9 +5,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/platform/desktop/CCGLViewImpl-desktop.h"
 
-#include "Analytics/AnalyticsCategories.h"
 #include "Bootstrapper.h"
-#include "Engine/Analytics/Analytics.h"
 #include "Engine/Config/ConfigManager.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
@@ -81,14 +79,6 @@ bool GameWindow::applicationDidFinishLaunching()
 
 	// Initialize the game
 	Bootstrapper::initialize();
-
-	#ifdef _WIN32
-		Analytics::sendEvent(AnalyticsCategories::GameStart, "Windows");
-	#elif __APPLE__
-		Analytics::sendEvent(AnalyticsCategories::GameStart, "OS X");
-	#elif __linux__
-		Analytics::sendEvent(AnalyticsCategories::GameStart, "Linux");
-	#endif
 
 	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]() { return TitleScreen::getInstance(); }));
 

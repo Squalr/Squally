@@ -3,8 +3,6 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCDirector.h"
 
-#include "Analytics/AnalyticsCategories.h"
-#include "Engine/Analytics/Analytics.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -101,7 +99,6 @@ void StateGameEnd::onBackClick(GameState* gameState)
 	std::string winsKey = HexusOpponentData::winsPrefix + gameState->opponentData->enemyAnalyticsIdentifier;
 	std::string lossesKey = HexusOpponentData::lossesPrefix + gameState->opponentData->enemyAnalyticsIdentifier;
 
-	Analytics::sendEvent(AnalyticsCategories::Hexus, "game_duration", gameState->opponentData->enemyAnalyticsIdentifier, gameState->gameDurationInSeconds);
 	bool isDraw = gameState->playerLosses >= 2 && gameState->enemyLosses >= 2;
 	bool isWin = gameState->playerLosses < 2 && gameState->enemyLosses >= 2;
 
@@ -111,9 +108,6 @@ void StateGameEnd::onBackClick(GameState* gameState)
 
 		SaveManager::SaveGlobalData(lossesKey, cocos2d::Value(losses));
 
-		// Analytics for losing (as a tie)
-		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", gameState->opponentData->enemyAnalyticsIdentifier, losses);
-		
 		if (gameState->opponentData->onRoundEnd != nullptr)
 		{
 			gameState->opponentData->onRoundEnd(HexusOpponentData::Result::Draw);
@@ -126,19 +120,6 @@ void StateGameEnd::onBackClick(GameState* gameState)
 
 		SaveManager::SaveGlobalData(winsKey, cocos2d::Value(wins));
 
-		if (wins == 1 && losses == 0)
-		{
-			Analytics::sendEvent(AnalyticsCategories::Hexus, "first_game_result", gameState->opponentData->enemyAnalyticsIdentifier, 1);
-		}
-
-		if (wins == 1)
-		{
-			Analytics::sendEvent(AnalyticsCategories::Hexus, "attempts_for_first_win", gameState->opponentData->enemyAnalyticsIdentifier, losses + wins);
-		}
-
-		// Analytics for winning
-		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_wins", gameState->opponentData->enemyAnalyticsIdentifier, wins);
-
 		if (gameState->opponentData->onRoundEnd != nullptr)
 		{
 			gameState->opponentData->onRoundEnd(HexusOpponentData::Result::Win);
@@ -150,15 +131,7 @@ void StateGameEnd::onBackClick(GameState* gameState)
 		int losses = SaveManager::GetGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
 
 		SaveManager::SaveGlobalData(lossesKey, cocos2d::Value(losses));
-
-		if (wins == 0 && losses == 1)
-		{
-			Analytics::sendEvent(AnalyticsCategories::Hexus, "first_game_result", gameState->opponentData->enemyAnalyticsIdentifier, 0);
-		}
-
-		// Analytics for losing
-		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", gameState->opponentData->enemyAnalyticsIdentifier, losses);
-
+		
 		if (gameState->opponentData->onRoundEnd != nullptr)
 		{
 			gameState->opponentData->onRoundEnd(HexusOpponentData::Result::Loss);

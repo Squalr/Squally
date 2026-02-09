@@ -122,7 +122,8 @@
         "format": "cpp",
         "coroutine": "cpp",
         "any": "cpp",
-        "memory_resource": "cpp"
+        "memory_resource": "cpp",
+        "climits": "cpp"
     },
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "C_Cpp.configurationWarnings": "disabled",

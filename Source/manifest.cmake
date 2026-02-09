@@ -2,7 +2,6 @@
 cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 
 set(GAME_SOURCES
-    "${CMAKE_CURRENT_LIST_DIR}/Analytics/AnalyticsCategories.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Bootstrapper.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Deserializers/Isometric/IsometricDecorDeserializer.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Deserializers/Isometric/IsometricEntityDeserializer.cpp"
@@ -22,8 +21,6 @@ set(GAME_SOURCES
     "${CMAKE_CURRENT_LIST_DIR}/Deserializers/Platformer/PlatformerTerrainDeserializer.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Deserializers/Platformer/PlatformerTextureDeserializer.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Deserializers/WeatherDeserializer.cpp"
-    "${CMAKE_CURRENT_LIST_DIR}/Engine/Analytics/Analytics.cpp"
-    "${CMAKE_CURRENT_LIST_DIR}/Engine/Analytics/TAnalytics.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Animations/AnimationPart.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Animations/SmartAnimationNode.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Animations/SmartAnimationSequenceNode.cpp"
@@ -2927,7 +2924,6 @@ set(GAME_SOURCES
 )
 
 set(GAME_HEADERS
-    "${CMAKE_CURRENT_LIST_DIR}/Analytics/AnalyticsCategories.h"
     "${CMAKE_CURRENT_LIST_DIR}/Bootstrapper.h"
     "${CMAKE_CURRENT_LIST_DIR}/Deserializers/Isometric/IsometricDecorDeserializer.h"
     "${CMAKE_CURRENT_LIST_DIR}/Deserializers/Isometric/IsometricEntityDeserializer.h"
@@ -2947,8 +2943,6 @@ set(GAME_HEADERS
     "${CMAKE_CURRENT_LIST_DIR}/Deserializers/Platformer/PlatformerTerrainDeserializer.h"
     "${CMAKE_CURRENT_LIST_DIR}/Deserializers/Platformer/PlatformerTextureDeserializer.h"
     "${CMAKE_CURRENT_LIST_DIR}/Deserializers/WeatherDeserializer.h"
-    "${CMAKE_CURRENT_LIST_DIR}/Engine/Analytics/Analytics.h"
-    "${CMAKE_CURRENT_LIST_DIR}/Engine/Analytics/TAnalytics.h"
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Animations/AnimationPart.h"
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Animations/SmartAnimationNode.h"
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Animations/SmartAnimationSequenceNode.h"

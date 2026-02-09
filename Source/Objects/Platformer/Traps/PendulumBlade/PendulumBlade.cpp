@@ -131,6 +131,7 @@ void PendulumBlade::registerHackables()
 	};
 
 	auto swingFunc = &PendulumBlade::setSwingAngle;
+	void* ptr = (void*&)swingFunc;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, codeInfoMap);
 
 	for (HackableCode* next : hackables)

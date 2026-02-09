@@ -1,5 +1,6 @@
 #include "KillingMachineDamageBehavior.h"
 
+#include "cocos/base/ccRandom.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
@@ -300,10 +301,10 @@ void KillingMachineDamageBehavior::onLoad()
 						HackableCode::Register::zax, Strings::Menus_Hacking_Objects_KillingMachine_RegisterEax::create(), HackableDataType::Int32
 					},
 					{
-						HackableCode::Register::zdi, defaultDamageStr, HackableDataType::Int32
+						HackableCode::Register::zdi, defaultAndCritReversed ? critDamageStr : defaultDamageStr, HackableDataType::Int32
 					},
 					{
-						HackableCode::Register::zsi, critDamageStr, HackableDataType::Int32
+						HackableCode::Register::zsi, defaultAndCritReversed? defaultDamageStr : critDamageStr, HackableDataType::Int32
 					},
 				},
 				int(HackFlags::None),
@@ -480,8 +481,8 @@ NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage2()
 	ASM_MOV_REG_VAR(ZSI, KillingMachineDamageBehavior::CritDamage);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_2);
-	ASM(cmp eax, CMOVL_PROBABILITY_CONST);
-	ASM(cmovl ZDI, ZSI);
+	ASM(cmp eax, CMOVLE_PROBABILITY_CONST);
+	ASM(cmovle ZDI, ZSI);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 

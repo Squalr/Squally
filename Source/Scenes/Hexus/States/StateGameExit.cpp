@@ -3,8 +3,6 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCDirector.h"
 
-#include "Analytics/AnalyticsCategories.h"
-#include "Engine/Analytics/Analytics.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"

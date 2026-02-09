@@ -2,7 +2,6 @@
 
 #include "cocos/platform/CCFileUtils.h"
 
-#include "Engine/Analytics/Analytics.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Hackables/GlobalHackAttributeContainer.h"
@@ -18,7 +17,6 @@ void EngineBootstrapper::initialize()
 	FileUtils::getInstance()->setWritablePath(FileUtils::getInstance()->getWritablePath());
 
 	// Initialize global objects
-	Analytics::RegisterGlobalNode();
 	GlobalHackAttributeContainer::RegisterGlobalNode();
 	DeveloperModeController::RegisterGlobalNode();
 	GameCamera::RegisterGlobalNode();
@@ -30,5 +28,4 @@ void EngineBootstrapper::initialize()
 
 void EngineBootstrapper::shutDown()
 {
-	Analytics::shutDown();
 }
