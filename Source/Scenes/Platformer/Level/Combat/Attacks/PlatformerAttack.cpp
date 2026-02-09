@@ -8,6 +8,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Maps/MapLayer.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/LogUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Projectiles/Projectile.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
@@ -255,6 +256,29 @@ void PlatformerAttack::replaceAnimationPartWithProjectile(std::string animationP
 	if (weapon != nullptr)
 	{
 		weapon->replaceWithObject(projectile, 2.0f);
+	}
+	else
+	{
+		if (animationPart == "mainhand")
+		{
+			static bool hasLoggedMissingMainhand = false;
+
+			if (!hasLoggedMissingMainhand)
+			{
+				hasLoggedMissingMainhand = true;
+				LogUtils::logError("Animation verification failed: PlatformerAttack missing 'mainhand' animation part during projectile replacement");
+			}
+		}
+		else if (animationPart == "offhand")
+		{
+			static bool hasLoggedMissingOffhand = false;
+
+			if (!hasLoggedMissingOffhand)
+			{
+				hasLoggedMissingOffhand = true;
+				LogUtils::logError("Animation verification failed: PlatformerAttack missing 'offhand' animation part during projectile replacement");
+			}
+		}
 	}
 
 	ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(

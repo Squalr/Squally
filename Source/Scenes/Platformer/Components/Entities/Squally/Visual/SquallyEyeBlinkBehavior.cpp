@@ -9,6 +9,7 @@
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Engine/Utils/LogUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -79,6 +80,16 @@ void SquallyEyeBlinkBehavior::runEyeBlinkLoop()
 				leftEye->replaceSprite(spriteResource);
 			}
 		}
+		else
+		{
+			static bool hasLoggedMissingLeftEye = false;
+
+			if (!hasLoggedMissingLeftEye)
+			{
+				hasLoggedMissingLeftEye = true;
+				LogUtils::logError("Animation verification failed: Squally eye blink missing 'eye_left' animation part");
+			}
+		}
 	});
 
 	this->rightEyeController->setSpriteChangeCallback([=](const std::string& spriteResource, int index)
@@ -90,6 +101,16 @@ void SquallyEyeBlinkBehavior::runEyeBlinkLoop()
 			if (this->squally->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
 				rightEye->replaceSprite(spriteResource);
+			}
+		}
+		else
+		{
+			static bool hasLoggedMissingRightEye = false;
+
+			if (!hasLoggedMissingRightEye)
+			{
+				hasLoggedMissingRightEye = true;
+				LogUtils::logError("Animation verification failed: Squally eye blink missing 'eye_right' animation part");
 			}
 		}
 	});

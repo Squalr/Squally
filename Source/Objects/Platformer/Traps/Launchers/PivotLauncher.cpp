@@ -13,6 +13,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -46,6 +47,16 @@ PivotLauncher::PivotLauncher(ValueMap& properties, std::string animationResource
 	this->launcherAnimations = SmartAnimationNode::create(animationResource);
 	this->projectilePool = ProjectilePool::create([=](){ return this->createProjectile(); }, projectilePoolCapacity);
 	this->cannon = this->launcherAnimations->getAnimationPart(PivotLauncher::PivotBone);
+	if (this->cannon == nullptr)
+	{
+		static bool hasLoggedMissingPivotBone = false;
+
+		if (!hasLoggedMissingPivotBone)
+		{
+			hasLoggedMissingPivotBone = true;
+			LogUtils::logError("Animation verification failed: PivotLauncher missing 'pivot_bone' animation part");
+		}
+	}
 	this->targetQueryKey = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyPivotTarget, Value("")).asString();
 	this->isFixed = GameUtils::keyExists(this->properties, PivotLauncher::PropertyFixed);
 	this->is3DEnabled = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyEnable3D, Value(false)).asBool();
@@ -246,7 +257,12 @@ void PivotLauncher::faceTarget()
 		this->repositionHackButtons();
 	}
 
-	cannon->setRotation(this->currentAngle);
+	if (this->cannon == nullptr)
+	{
+		return;
+	}
+
+	this->cannon->setRotation(this->currentAngle);
 }
 
 NO_OPTIMIZE void PivotLauncher::updateShootTimer(float dt)

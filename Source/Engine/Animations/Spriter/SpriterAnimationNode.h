@@ -38,6 +38,15 @@ public:
 	const std::string& getCurrentAnimation();
 	const std::map<std::string, SpriterAnimationBone*>& getCurrentBoneMap();
 	const std::map<std::string, SpriterAnimationSprite*>& getCurrentSpriteMap();
+	bool hasAnimation(const std::string& animationName) const;
+	float getAnimationLength(const std::string& animationName) const;
+	void setFlippedY(bool isFlippedY);
+	bool getFlippedX() const;
+	bool getFlippedY() const;
+	void disableRender();
+	void enableRender();
+	void setAnimationPaused(bool isPaused);
+	bool isAnimationPaused() const;
 	void setFlippedX(bool isFlippedX);
 
 	static const std::string DefaultAnimationEntityName;
@@ -68,10 +77,13 @@ private:
 
 	void buildBones(const SpriterData& spriterData);
 	void buildSprites(const SpriterData& spriterData, const std::string& animationResource);
+	void buildAnimationLengths(const SpriterData& spriterData);
 
 	std::string currentEntityName;
 	std::string currentAnimation;
+	std::map<std::string, std::map<std::string, float>> animationLengths;
 	float previousTimelineTime = 0.0f;
 	float timelineTime = 0.0f;
 	bool isRepeating = true;
+	bool animationPaused = false;
 };

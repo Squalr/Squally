@@ -233,7 +233,7 @@ void SpriterAnimationParser::startElement(void* ctx, const char* name, const cha
 
 				SpriterAnimationParser::CurrentParse.entities.back().animations.back().timelines.back().keys.push_back(SpriterTimelineKey(
 					std::stoi(GameUtils::getKeyOrDefault(attributes, "id", Value("0")).asString()),
-					std::stoi(GameUtils::getKeyOrDefault(attributes, "spin", Value("0")).asString()),
+					std::stoi(GameUtils::getKeyOrDefault(attributes, "spin", Value("1")).asString()),
 					std::stoi(GameUtils::getKeyOrDefault(attributes, "time", Value("0")).asString()),
 					curveType,
 					std::stof(GameUtils::getKeyOrDefault(attributes, "c1", Value("0")).asString()),

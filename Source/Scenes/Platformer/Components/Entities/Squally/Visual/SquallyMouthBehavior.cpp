@@ -9,6 +9,7 @@
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Engine/Utils/LogUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -75,6 +76,16 @@ void SquallyMouthBehavior::update(float dt)
 				{
 					mouth->replaceSprite(EntityResources::Squally_MOUTH);
 				}
+				else
+				{
+					static bool hasLoggedMissingMouthPart = false;
+
+					if (!hasLoggedMissingMouthPart)
+					{
+						hasLoggedMissingMouthPart = true;
+						LogUtils::logError("Animation verification failed: Squally mouth behavior missing 'mouth' animation part");
+					}
+				}
 			}
 
 			break;
@@ -88,6 +99,16 @@ void SquallyMouthBehavior::update(float dt)
 				if (mouth != nullptr)
 				{
 					mouth->replaceSprite(EntityResources::Squally_MOUTH_SWIMMING);
+				}
+				else
+				{
+					static bool hasLoggedMissingMouthPart = false;
+
+					if (!hasLoggedMissingMouthPart)
+					{
+						hasLoggedMissingMouthPart = true;
+						LogUtils::logError("Animation verification failed: Squally mouth behavior missing 'mouth' animation part");
+					}
 				}
 			}
 			

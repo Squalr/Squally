@@ -18,6 +18,7 @@ SpriterAnimationSprite* SpriterAnimationSprite::create(std::string spriteResourc
 
 SpriterAnimationSprite::SpriterAnimationSprite(std::string spriteResource, Vec2 anchor)
 {
+	this->spriteResource = spriteResource;
 	this->sprite = Sprite::create(spriteResource);
 
 	// Not super useful since we just overwrite this during animation events
@@ -33,6 +34,27 @@ SpriterAnimationSprite::~SpriterAnimationSprite()
 void SpriterAnimationSprite::setAnchorPoint(const Vec2& anchorPoint)
 {
 	this->sprite->setAnchorPoint(anchorPoint);
+}
+
+void SpriterAnimationSprite::setSpriteResource(const std::string& spriteResource)
+{
+	if (this->sprite == nullptr || this->spriteResource == spriteResource)
+	{
+		return;
+	}
+
+	this->spriteResource = spriteResource;
+	this->sprite->initWithFile(this->spriteResource);
+}
+
+const std::string& SpriterAnimationSprite::getSpriteResource() const
+{
+	return this->spriteResource;
+}
+
+CSize SpriterAnimationSprite::getSpriteSize() const
+{
+	return this->sprite == nullptr ? CSize::ZERO : this->sprite->getContentSize();
 }
 
 void SpriterAnimationSprite::setScaleX(float scaleX)

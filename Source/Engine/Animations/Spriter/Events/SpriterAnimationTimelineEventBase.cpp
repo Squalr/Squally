@@ -35,8 +35,20 @@ void SpriterAnimationTimelineEventBase::advance(SpriterAnimationNode* animation)
 	const float previousTime = animation->getPreviousTimelineTime();
 	const float currentTime = animation->getTimelineTime();
 	const bool timeWrapped = previousTime > currentTime;
+	bool crossedKey = false;
 
-	if ((timeWrapped || previousTime <= this->keytime) && currentTime > this->keytime)
+	if (timeWrapped)
+	{
+		// Wrapped from end -> start. Fire keys crossed in both segments:
+		// (previous, animationEnd] U [0, current].
+		crossedKey = this->keytime > previousTime || this->keytime <= currentTime;
+	}
+	else
+	{
+		crossedKey = previousTime <= this->keytime && currentTime > this->keytime;
+	}
+
+	if (crossedKey)
 	{
 		this->onFire(animation);
 	}

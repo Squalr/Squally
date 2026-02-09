@@ -18,7 +18,27 @@ namespace cocos2d
 class AnimationPart : public SmartNode
 {
 public:
+	class ControlTarget
+	{
+	public:
+		virtual ~ControlTarget() = default;
+
+		virtual bool isValid() const = 0;
+		virtual void setTimelineCanUpdate(bool canUpdate) = 0;
+		virtual std::string getSpritePath() const = 0;
+		virtual void setSpritePath(const std::string& spritePath) = 0;
+		virtual cocos2d::CSize getSpriteSize() const = 0;
+		virtual float getAngleRadians() const = 0;
+		virtual void setAngleRadians(float angleRadians) = 0;
+		virtual void setOffset(const cocos2d::Vec2& offset) = 0;
+		virtual void setAlphaOverride(float alphaOverride) = 0;
+		virtual float getAlphaOverride() const = 0;
+		virtual cocos2d::Vec2 getPosition() const = 0;
+		virtual cocos2d::Vec2 getPivot() const = 0;
+	};
+
 	static AnimationPart* create(SpriterEngine::EntityInstance* entity, std::string partName);
+	static AnimationPart* create(class SpriterAnimationNode* spriterAnimation, const std::string& partName);
 
 	void removeTrackingObject(cocos2d::Node* trackedObject);
 	void addTrackingObject(cocos2d::Node* trackedObject);
@@ -42,7 +62,7 @@ public:
 
 private:
 	typedef SmartNode super;
-	AnimationPart(SpriterEngine::EntityInstance* entity, std::string partName);
+	AnimationPart(ControlTarget* controlTarget);
 	virtual ~AnimationPart();
 
 	void onEnter() override;
@@ -52,10 +72,10 @@ private:
 	void onDeveloperModeDisable() override;
 
 	std::string originalPath;
+	std::string ghostSpritePath;
 	std::vector<cocos2d::Node*> trackedObjects;
 	cocos2d::Sprite* ghostSprite = nullptr;
-	SpriterEngine::UniversalObjectInterface* spriterAnimationPart = nullptr;
-	SpriterEngine::EntityInstance* entity = nullptr;
+	ControlTarget* controlTarget = nullptr;
 	float rotation = 0.0f;
 	std::string lastKnownAnim;
 };

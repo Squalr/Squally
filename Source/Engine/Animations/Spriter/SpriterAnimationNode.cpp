@@ -34,6 +34,7 @@ SpriterAnimationNode::SpriterAnimationNode(const std::string& animationResource,
 
 	this->timeline->registerAnimationNode(this);
 
+	this->buildAnimationLengths(spriterData);
 	this->buildBones(spriterData);
 	this->buildSprites(spriterData, animationResource);
 	this->setCurrentEntity(entityName);
@@ -65,16 +66,16 @@ float SpriterAnimationNode::getTimelineTime()
 
 SpriterAnimationPart* SpriterAnimationNode::getPartByName(const std::string& name)
 {
-	// Check if part matches a bone name
-	SpriterAnimationBone* bone = this->getBoneByName(name);
+	// Prefer sprites so gameplay-facing part names resolve to renderable targets
+	// when sprite/bone names overlap (for example equipment swap parts).
+	SpriterAnimationSprite* sprite = this->getSpriteByName(name);
 
-	if (bone != nullptr)
+	if (sprite != nullptr)
 	{
-		return bone;
+		return sprite;
 	}
 
-	// Check if part matches a sprite name
-	return getSpriteByName(name);
+	return this->getBoneByName(name);
 }
 
 SpriterAnimationBone* SpriterAnimationNode::getBoneByName(const std::string& name)
@@ -99,16 +100,15 @@ SpriterAnimationSprite* SpriterAnimationNode::getSpriteByName(const std::string&
 
 SpriterAnimationPart* SpriterAnimationNode::getPartByHash(int id)
 {
-	// Check if part matches a bone id
-	SpriterAnimationBone* bone = this->getBoneByHash(id);
+	// Prefer sprite hash lookups for parity with name-based resolution.
+	SpriterAnimationSprite* sprite = this->getSpriteByHash(id);
 
-	if (bone != nullptr)
+	if (sprite != nullptr)
 	{
-		return bone;
+		return sprite;
 	}
 
-	// Check if part matches a sprite id
-	return getSpriteByHash(id);
+	return this->getBoneByHash(id);
 }
 
 SpriterAnimationBone* SpriterAnimationNode::getBoneByHash(int id)
@@ -146,6 +146,41 @@ void SpriterAnimationNode::resetAnimation()
 void SpriterAnimationNode::setFlippedX(bool isFlippedX)
 {
 	this->setScaleX(isFlippedX ? -1.0f : 1.0f);
+}
+
+void SpriterAnimationNode::setFlippedY(bool isFlippedY)
+{
+	this->setScaleY(isFlippedY ? -1.0f : 1.0f);
+}
+
+bool SpriterAnimationNode::getFlippedX() const
+{
+	return this->getScaleX() < 0.0f;
+}
+
+bool SpriterAnimationNode::getFlippedY() const
+{
+	return this->getScaleY() < 0.0f;
+}
+
+void SpriterAnimationNode::disableRender()
+{
+	this->setVisible(false);
+}
+
+void SpriterAnimationNode::enableRender()
+{
+	this->setVisible(true);
+}
+
+void SpriterAnimationNode::setAnimationPaused(bool isPaused)
+{
+	this->animationPaused = isPaused;
+}
+
+bool SpriterAnimationNode::isAnimationPaused() const
+{
+	return this->animationPaused;
 }
 
 void SpriterAnimationNode::setCurrentEntity(const std::string& currentEntityName)
@@ -207,6 +242,37 @@ const std::map<std::string, SpriterAnimationSprite*>& SpriterAnimationNode::getC
 	return this->spritesByName[this->currentEntityName];
 }
 
+bool SpriterAnimationNode::hasAnimation(const std::string& animationName) const
+{
+	auto entityIt = this->animationLengths.find(this->currentEntityName);
+
+	if (entityIt == this->animationLengths.end())
+	{
+		return false;
+	}
+
+	return entityIt->second.find(animationName) != entityIt->second.end();
+}
+
+float SpriterAnimationNode::getAnimationLength(const std::string& animationName) const
+{
+	auto entityIt = this->animationLengths.find(this->currentEntityName);
+
+	if (entityIt == this->animationLengths.end())
+	{
+		return 0.0f;
+	}
+
+	auto animationIt = entityIt->second.find(animationName);
+
+	if (animationIt == entityIt->second.end())
+	{
+		return 0.0f;
+	}
+
+	return animationIt->second;
+}
+
 void SpriterAnimationNode::buildBones(const SpriterData& spriterData)
 {
 	for (auto entity : spriterData.entities)
@@ -224,6 +290,17 @@ void SpriterAnimationNode::buildBones(const SpriterData& spriterData)
 				
 				this->addAnimationPartChild(bone);
 			}
+		}
+	}
+}
+
+void SpriterAnimationNode::buildAnimationLengths(const SpriterData& spriterData)
+{
+	for (const auto& entity : spriterData.entities)
+	{
+		for (const auto& animation : entity.animations)
+		{
+			this->animationLengths[entity.name][animation.name] = float(animation.length) / 1000.0f;
 		}
 	}
 }

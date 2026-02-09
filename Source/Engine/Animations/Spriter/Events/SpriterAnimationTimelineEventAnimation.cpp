@@ -38,7 +38,9 @@ SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation(
 	: super(timeline, float(animationKey.time), endTime, animationKey.curveType, animationKey.c1, animationKey.c2, animationKey.c3, animationKey.c4)
 {
 	this->partName = keyParent.name;
-	this->spin = animationKey.spin;
+	// We negate Spriter angles when mapping into cocos space, so spin direction
+	// must also be inverted to preserve authored rotation interpolation direction.
+	this->spin = -animationKey.spin;
 	
 	std::hash<std::string> hasher = std::hash<std::string>();
 	size_t hash = hasher(this->partName);
@@ -119,6 +121,11 @@ void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimat
 		return;
 	}
 
+	if (!object->canTimelineUpdate())
+	{
+		return;
+	}
+
 	float currentTime = animation->getTimelineTime();
 	
 	if (currentTime >= this->keytime && currentTime < this->endTime)
@@ -126,7 +133,7 @@ void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimat
 		// TODO: Use curve functions to transform the time ratio, this is linear right now
 		float timeRatio = MathUtils::clamp((currentTime - this->keytime) / (this->endTime - this->keytime), 0.0f, 1.0f);
 
-		object->setPosition(this->position + this->deltaPosition * timeRatio);
+		object->setPosition(this->position + this->deltaPosition * timeRatio + object->getAnimationOffset());
 		object->setAnchorPoint(this->anchor + this->deltaAnchor * timeRatio);
 		object->setScale(this->scale + this->deltaScale * timeRatio);
 		object->setRotation(this->rotation + this->deltaRotation * timeRatio);
@@ -136,14 +143,28 @@ void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimat
 
 void SpriterAnimationTimelineEventAnimation::onFire(SpriterAnimationNode* animation)
 {
-	SpriterAnimationPart* object = animation->getPartByHash(this->partHash);
+	SpriterAnimationPart* object = nullptr;
+
+	if (this->isBone)
+	{
+		object = animation->getBoneByHash(this->partHash);
+	}
+	else
+	{
+		object = animation->getSpriteByHash(this->partHash);
+	}
 	
 	if (object == nullptr)
 	{
 		return;
 	}
 
-	object->setPosition(this->position);
+	if (!object->canTimelineUpdate())
+	{
+		return;
+	}
+
+	object->setPosition(this->position + object->getAnimationOffset());
 	object->setAnchorPoint(this->anchor);
 	object->setScale(this->scale);
 	object->setRotation(this->rotation);
@@ -206,9 +227,30 @@ void SpriterAnimationTimelineEventAnimation::computeDeltas()
 	this->deltaScale = this->next->scale - this->scale;
 	this->deltaAlpha = this->next->alpha - this->alpha;
 
-	// https://stackoverflow.com/questions/28036652/finding-the-shortest-distance-between-two-angles/28037434
-    this->deltaRotation = std::fmod((this->next->rotation - this->rotation + 180.0f), 360.0f) - 180.0f;
-    this->deltaRotation = this->deltaRotation < -180.0f ? this->deltaRotation + 360.0f : this->deltaRotation;
+	this->deltaRotation = this->next->rotation - this->rotation;
+
+	// Mirror spriterplusplus AngleInfo::angleLinear behavior:
+	// spin == 0: hold current angle, no tween
+	// spin == 1: force clockwise interpolation
+	// spin == -1: force counter-clockwise interpolation
+	if (this->spin == 0)
+	{
+		this->deltaRotation = 0.0f;
+	}
+	else if (this->spin > 0)
+	{
+		if (this->rotation < this->next->rotation)
+		{
+			this->deltaRotation = this->next->rotation - 360.0f - this->rotation;
+		}
+	}
+	else
+	{
+		if (this->next->rotation < this->rotation)
+		{
+			this->deltaRotation = this->next->rotation + 360.0f - this->rotation;
+		}
+	}
 
 	this->hasNoAnimationChanges = this->deltaPosition == Vec2::ZERO
 		&& this->deltaAnchor == Vec2::ZERO

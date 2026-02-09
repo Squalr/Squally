@@ -10,6 +10,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -106,6 +107,16 @@ void BirdBehavior::tryNextAction()
 		if (AnimationPart* beakBone = this->entity->getAnimations()->getAnimationPart("beak_bone"))
 		{
 			beakBone->reattachToTimeline();
+		}
+		else
+		{
+			static bool hasLoggedMissingBeakBone = false;
+
+			if (!hasLoggedMissingBeakBone)
+			{
+				hasLoggedMissingBeakBone = true;
+				LogUtils::logError("Animation verification failed: BirdBehavior missing 'beak_bone' animation part");
+			}
 		}
 
 		this->entity->setState(StateKeys::CinematicHijacked, Value(true));
@@ -259,5 +270,15 @@ void BirdBehavior::moveBeak(float duration)
 			}),
 			nullptr
 		));
+	}
+	else
+	{
+		static bool hasLoggedMissingBeakBone = false;
+
+		if (!hasLoggedMissingBeakBone)
+		{
+			hasLoggedMissingBeakBone = true;
+			LogUtils::logError("Animation verification failed: BirdBehavior could not move missing 'beak_bone' animation part");
+		}
 	}
 }

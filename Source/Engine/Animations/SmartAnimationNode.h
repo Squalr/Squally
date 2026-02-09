@@ -66,9 +66,15 @@ protected:
 
 private:
 	typedef SmartNode super;
+	void schedulePlayModeCompletion(AnimationPlayMode animationPlayMode);
+	void clearPlayModeCompletion();
 
 	bool initialized = false;
 	float currentAnimationPriority = 0.0f;
+	int playModeCompletionToken = 0;
+	bool hasActivePlayMode = false;
+	AnimationPlayMode activePlayMode = AnimationPlayMode::Repeat;
+	std::function<void()> activePlayModeCallback;
 	std::map<std::string, AnimationPart*> animationParts;
 	std::string currentAnimation;
 	std::string animationResource;

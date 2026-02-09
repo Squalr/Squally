@@ -14,6 +14,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Utils/LogUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
@@ -202,6 +203,16 @@ void SquallyEquipmentVisualBehavior::updateEquipmentVisual()
 				hatAnim->restoreOffset();
 			}
 		}
+		else
+		{
+			static bool hasLoggedMissingHatPart = false;
+
+			if (!hasLoggedMissingHatPart)
+			{
+				hasLoggedMissingHatPart = true;
+				LogUtils::logError("Animation verification failed: Squally equipment missing 'hat' animation part");
+			}
+		}
 		
 		AnimationPart* offhandAnim = this->squally->getAnimations()->getAnimationPart("offhand");
 		
@@ -218,6 +229,16 @@ void SquallyEquipmentVisualBehavior::updateEquipmentVisual()
 				offhandAnim->restoreOffset();
 			}
 		}
+		else
+		{
+			static bool hasLoggedMissingOffhandPart = false;
+
+			if (!hasLoggedMissingOffhandPart)
+			{
+				hasLoggedMissingOffhandPart = true;
+				LogUtils::logError("Animation verification failed: Squally equipment missing 'offhand' animation part");
+			}
+		}
 
 		AnimationPart* mainhand = this->squally->getAnimations()->getAnimationPart("mainhand");
 		
@@ -232,6 +253,16 @@ void SquallyEquipmentVisualBehavior::updateEquipmentVisual()
 			{
 				mainhand->restoreSprite();
 				mainhand->restoreOffset();
+			}
+		}
+		else
+		{
+			static bool hasLoggedMissingMainhandPart = false;
+
+			if (!hasLoggedMissingMainhandPart)
+			{
+				hasLoggedMissingMainhandPart = true;
+				LogUtils::logError("Animation verification failed: Squally equipment missing 'mainhand' animation part");
 			}
 		}
 	});

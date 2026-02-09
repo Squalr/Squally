@@ -7,6 +7,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Physics/EnginePhysicsTypes.h"
+#include "Engine/Utils/LogUtils.h"
 #include "Events/PlatformerEvents.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
@@ -110,6 +111,28 @@ void EntityWeaponCollisionBehavior::rebuildWeaponCollision(int collisionType, bo
 	
 	AnimationPart* mainhand = this->entity->getAnimations()->getAnimationPart("mainhand");
 	AnimationPart* offhand = this->entity->getAnimations()->getAnimationPart("offhand");
+
+	if (mainhand == nullptr)
+	{
+		static bool hasLoggedMissingMainhand = false;
+
+		if (!hasLoggedMissingMainhand)
+		{
+			hasLoggedMissingMainhand = true;
+			LogUtils::logError("Animation verification failed: EntityWeaponCollisionBehavior missing 'mainhand' animation part");
+		}
+	}
+
+	if (buildOffhand && offhand == nullptr)
+	{
+		static bool hasLoggedMissingOffhand = false;
+
+		if (!hasLoggedMissingOffhand)
+		{
+			hasLoggedMissingOffhand = true;
+			LogUtils::logError("Animation verification failed: EntityWeaponCollisionBehavior missing 'offhand' animation part");
+		}
+	}
 
 	if (mainhand != nullptr)
 	{
