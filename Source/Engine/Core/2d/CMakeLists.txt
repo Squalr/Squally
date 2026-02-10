@@ -1,0 +1,72 @@
+include_directories(
+        ../External/ConvertUTF
+        ../External/poly2tri
+        ../External/poly2tri/common
+        ../External/poly2tri/sweep
+)
+
+set(COCOS_2D_HEADER
+    2d/CCLayer.h
+    2d/CCSprite.h
+    2d/CCNode.h
+    2d/CCTweenFunction.h
+    2d/CCFontAtlas.h
+    2d/CCAtlasNode.h
+    2d/CCClippingNode.h
+    2d/CCRenderTexture.h
+    2d/CCActionInterval.h
+    2d/CCTMXXMLParser.h
+    2d/CCActionInstant.h
+    2d/CCLabel.h
+    2d/CCParticleBatchNode.h
+    2d/CCActionEase.h
+    2d/CCScene.h
+    2d/CCTextFieldTTF.h
+    2d/CCFastTMXLayer.h
+    2d/CCFontAtlasCache.h
+    2d/CCFont.h
+    2d/CCParticleSystemQuad.h
+    2d/CCFastTMXTiledMap.h
+    2d/CCSpriteBatchNode.h
+    2d/CCTMXObjectGroup.h
+    2d/CCFontFreeType.h
+    2d/CCAction.h
+    2d/CCParticleSystem.h
+    2d/CCActionManager.h
+    2d/CCDrawNode.h
+    2d/CCCamera.h
+
+    )
+
+set(COCOS_2D_SRC
+
+    2d/CCAction.cpp
+    2d/CCActionEase.cpp
+    2d/CCActionInstant.cpp
+    2d/CCActionInterval.cpp
+    2d/CCActionManager.cpp
+    2d/CCAtlasNode.cpp
+    2d/CCCamera.cpp
+    2d/CCClippingNode.cpp
+    2d/CCDrawNode.cpp
+    2d/CCFastTMXLayer.cpp
+    2d/CCFastTMXTiledMap.cpp
+    2d/CCFontAtlasCache.cpp
+    2d/CCFontAtlas.cpp
+    2d/CCFont.cpp
+    2d/CCFontFreeType.cpp
+    2d/CCLabel.cpp
+    2d/CCLayer.cpp
+    2d/CCNode.cpp
+    2d/CCParticleBatchNode.cpp
+    2d/CCParticleSystem.cpp
+    2d/CCParticleSystemQuad.cpp
+    2d/CCRenderTexture.cpp
+    2d/CCScene.cpp
+    2d/CCSpriteBatchNode.cpp
+    2d/CCSprite.cpp
+    2d/CCTextFieldTTF.cpp
+    2d/CCTMXObjectGroup.cpp
+    2d/CCTMXXMLParser.cpp
+    2d/CCTweenFunction.cpp
+    )

@@ -1,7 +1,7 @@
 #include "BinderDefault.h"
 
-#include "cocos/base/ccTypes.h"
-#include "cocos/base/CCValue.h"
+#include "base/ccTypes.h"
+#include "base/CCValue.h"
 
 #include "Objects/Platformer/MiniMap/MiniMapObject.h"
 

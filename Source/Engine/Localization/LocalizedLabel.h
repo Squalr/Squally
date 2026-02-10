@@ -1,8 +1,8 @@
 #pragma once
 #include <string>
 
-#include "cocos/2d/CCLabel.h"
-#include "cocos/platform/CCCommon.h"
+#include "2d/CCLabel.h"
+#include "platform/CCCommon.h"
 
 class LocalizedString;
 

@@ -1,11 +1,11 @@
 #include "MiniGameMap.h"
 
-#include "cocos/2d/CCFastTMXLayer.h"
-#include "cocos/2d/CCFastTMXTiledMap.h"
-#include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/platform/CCFileUtils.h"
+#include "2d/CCFastTMXLayer.h"
+#include "2d/CCFastTMXTiledMap.h"
+#include "2d/CCSprite.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
+#include "platform/CCFileUtils.h"
 
 #include "Engine/Deserializers/LayerDeserializer.h"
 #include "Engine/Events/HackableEvents.h"

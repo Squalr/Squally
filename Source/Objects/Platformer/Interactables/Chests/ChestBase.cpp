@@ -1,7 +1,7 @@
 #include "ChestBase.h"
 
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCActionInterval.h"
+#include "2d/CCSprite.h"
 
 #include "Engine/Input/Input.h"
 #include "Engine/Inventory/MinMaxPool.h"

@@ -1,7 +1,7 @@
 #include "StateSourceCardStaged.h"
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
 
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/HexusConfig.h"

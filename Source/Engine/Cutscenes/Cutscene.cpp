@@ -1,6 +1,6 @@
 #include "Cutscene.h"
 
-#include "cocos/base/CCInputEvents.h"
+#include "base/CCInputEvents.h"
 
 #include "Engine/Cutscenes/CutsceneClip.h"
 #include "Engine/Utils/GameUtils.h"

@@ -1,6 +1,6 @@
 #include "CardPreviewComponent.h"
 
-#include "cocos/base/CCDirector.h"
+#include "base/CCDirector.h"
 
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"

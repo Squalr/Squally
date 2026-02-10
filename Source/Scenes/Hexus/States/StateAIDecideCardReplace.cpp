@@ -2,9 +2,9 @@
 
 #include <algorithm>
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/base/CCDirector.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
+#include "base/CCDirector.h"
 
 #include "Engine/Utils/GameUtils.h"
 #include "Scenes/Hexus/CardRow.h"

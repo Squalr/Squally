@@ -1,8 +1,8 @@
 #pragma once
 #include <functional>
 
-#include "cocos/math/CCGeometry.h"
-#include "cocos/math/Vec2.h"
+#include "math/CCGeometry.h"
+#include "math/Vec2.h"
 
 namespace cocos2d
 {

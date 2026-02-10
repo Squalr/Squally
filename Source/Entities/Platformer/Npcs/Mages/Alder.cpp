@@ -1,6 +1,6 @@
 #include "Alder.h"
 
-#include "cocos/math/CCGeometry.h"
+#include "math/CCGeometry.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/UIResources.h"

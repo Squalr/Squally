@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 class SaveManager
 {

@@ -1,9 +1,9 @@
 #include "OverworldArrow.h"
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionEase.h"
-#include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCValue.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionEase.h"
+#include "2d/CCSprite.h"
+#include "base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"

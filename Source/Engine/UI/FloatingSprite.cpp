@@ -1,8 +1,8 @@
 #include "FloatingSprite.h"
 
-#include "cocos/2d/CCActionEase.h"
-#include "cocos/2d/CCSprite.h"
-#include "cocos/renderer/CCTextureCache.h"
+#include "2d/CCActionEase.h"
+#include "2d/CCSprite.h"
+#include "renderer/CCTextureCache.h"
 
 using namespace cocos2d;
 

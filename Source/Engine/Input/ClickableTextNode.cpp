@@ -2,8 +2,8 @@
 
 #include <typeinfo>
 
-#include "cocos/2d/CCNode.h"
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCNode.h"
+#include "2d/CCSprite.h"
 
 #include "Engine/Localization/LocalizedLabel.h"
 

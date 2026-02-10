@@ -1,6 +1,6 @@
 #include "HelpArrow.h"
 
-#include "cocos/2d/CCActionInterval.h"
+#include "2d/CCActionInterval.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Resources/UIResources.h"

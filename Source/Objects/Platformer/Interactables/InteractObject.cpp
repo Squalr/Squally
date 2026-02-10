@@ -1,8 +1,8 @@
 #include "InteractObject.h"
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/base/CCValue.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
+#include "base/CCValue.h"
 
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/ObjectEvents.h"

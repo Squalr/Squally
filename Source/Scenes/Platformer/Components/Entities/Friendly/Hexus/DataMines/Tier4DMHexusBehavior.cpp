@@ -1,6 +1,6 @@
 #include "Tier4DMHexusBehavior.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Objects/Platformer/ItemPools/HexusPools/DataMines/HexusPoolDMGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"

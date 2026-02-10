@@ -1,8 +1,8 @@
 #pragma once
 #include <map>
 #include <string>
-#include "cocos/2d/CCNode.h"
-#include "cocos/math/CCGeometry.h"
+#include "2d/CCNode.h"
+#include "math/CCGeometry.h"
 
 namespace cocos2d
 {

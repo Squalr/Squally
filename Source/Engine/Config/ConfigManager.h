@@ -1,6 +1,6 @@
 #pragma once
-#include "cocos/base/CCValue.h"
-#include "cocos/math/CCGeometry.h"
+#include "base/CCValue.h"
+#include "math/CCGeometry.h"
 
 class ConfigManager
 {

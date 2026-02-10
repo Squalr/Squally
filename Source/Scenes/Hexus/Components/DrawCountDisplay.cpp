@@ -1,8 +1,8 @@
 #include "DrawCountDisplay.h"
 
-#include "cocos/2d/CCLayer.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/base/CCDirector.h"
+#include "2d/CCLayer.h"
+#include "2d/CCActionInterval.h"
+#include "base/CCDirector.h"
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"

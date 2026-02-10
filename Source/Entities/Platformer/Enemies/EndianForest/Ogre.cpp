@@ -1,6 +1,6 @@
 #include "Ogre.h"
 
-#include "cocos/math/CCGeometry.h"
+#include "math/CCGeometry.h"
 
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 

@@ -1,6 +1,6 @@
 #include "SpriterAnimationBone.h"
 
-#include "cocos/2d/CCDrawNode.h"
+#include "2d/CCDrawNode.h"
 
 #include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Utils/MathUtils.h"

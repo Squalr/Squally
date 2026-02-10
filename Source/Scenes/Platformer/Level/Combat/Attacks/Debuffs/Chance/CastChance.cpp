@@ -1,7 +1,7 @@
 #include "CastChance.h"
 
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCActionInterval.h"
+#include "2d/CCSprite.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Sound/WorldSound.h"

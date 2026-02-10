@@ -1,8 +1,8 @@
 #include "NavigationEvents.h"
 
-#include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventDispatcher.h"
-#include "cocos/base/CCValue.h"
+#include "base/CCDirector.h"
+#include "base/CCEventDispatcher.h"
+#include "base/CCValue.h"
 
 #include "Engine/GlobalDirector.h"
 

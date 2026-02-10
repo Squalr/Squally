@@ -1,10 +1,10 @@
 #include "FocusTakeOver.h"
 
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCLayer.h"
-#include "cocos/2d/CCNode.h"
-#include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventListenerCustom.h"
+#include "2d/CCActionInterval.h"
+#include "2d/CCLayer.h"
+#include "2d/CCNode.h"
+#include "base/CCDirector.h"
+#include "base/CCEventListenerCustom.h"
 
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Utils/GameUtils.h"

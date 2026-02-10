@@ -1,7 +1,7 @@
 #include "ScriptEntry.h"
 
-#include "cocos/2d/CCLayer.h"
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCLayer.h"
+#include "2d/CCSprite.h"
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"

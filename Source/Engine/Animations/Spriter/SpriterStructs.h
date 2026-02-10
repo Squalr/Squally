@@ -1,8 +1,8 @@
 #pragma once
 #include <vector>
 
-#include "cocos/math/Vec2.h"
-#include "cocos/math/CCGeometry.h"
+#include "math/Vec2.h"
+#include "math/CCGeometry.h"
 
 // TODO: Variables, events, sounds
 

@@ -1,8 +1,8 @@
 #include "HelpTotem.h"
 
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCValue.h"
+#include "2d/CCActionInterval.h"
+#include "2d/CCSprite.h"
+#include "base/CCValue.h"
 
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"

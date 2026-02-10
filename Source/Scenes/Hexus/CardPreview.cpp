@@ -1,6 +1,6 @@
 #include "CardPreview.h"
 
-#include "cocos/base/CCDirector.h"
+#include "base/CCDirector.h"
 
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/ConstantString.h"

@@ -1,6 +1,6 @@
 #include "TerrainHole.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"

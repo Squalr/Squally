@@ -6,13 +6,13 @@
     #include <execution>
 #endif
 
-#include "cocos/2d/CCLayer.h"
-#include "cocos/base/CCConsole.h"
-#include "cocos/base/CCDirector.h"
-#include "cocos/renderer/CCCustomCommand.h"
-#include "cocos/renderer/CCGLProgramCache.h"
-#include "cocos/renderer/ccGLStateCache.h"
-#include "cocos/renderer/CCRenderer.h"
+#include "2d/CCLayer.h"
+#include "base/CCConsole.h"
+#include "base/CCDirector.h"
+#include "renderer/CCCustomCommand.h"
+#include "renderer/CCGLProgramCache.h"
+#include "renderer/ccGLStateCache.h"
+#include "renderer/CCRenderer.h"
 
 #include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/MathUtils.h"

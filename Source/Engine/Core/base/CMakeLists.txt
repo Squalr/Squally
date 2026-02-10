@@ -1,0 +1,77 @@
+
+if(APPLE)
+    set(COCOS_BASE_SPECIFIC_SRC
+        base/CCController-apple.mm
+        )
+elseif(LINUX)
+    set(COCOS_BASE_SPECIFIC_SRC
+        base/CCController-linux-win32.cpp
+        )
+endif()
+
+set(COCOS_BASE_HEADER
+    base/CCValue.h
+    base/utlist.h
+    base/CCData.h
+    base/ccMacros.h
+    base/CCInputEvents.h
+    base/CCConsole.h
+    base/CCController.h
+    base/base64.h
+    base/CCGameController.h
+    base/ccTypes.h
+    base/CCAsyncTaskPool.h
+    base/ccRandom.h
+    base/CCRef.h
+    base/CCProperties.h
+    base/CCVector.h
+    base/CCEventCustom.h
+    base/CCEventListenerCustom.h
+    base/CCEventDispatcher.h
+    base/uthash.h
+    base/ccUtils.h
+    base/CCEventController.h
+    base/CCRefPtr.h
+    base/CCDirector.h
+    base/ccConfig.h
+    base/ccUTF8.h
+    base/CCConfiguration.h
+    base/CCProtocols.h
+    base/CCIMEDelegate.h
+    base/CCAutoreleasePool.h
+    base/CCStencilStateManager.h
+    base/ccCArray.h
+    base/CCEventListener.h
+    base/CCScheduler.h
+    base/CCEventType.h
+    base/CCIMEDispatcher.h
+    )
+
+set(COCOS_BASE_SRC
+    base/CCAsyncTaskPool.cpp
+    base/CCAutoreleasePool.cpp
+    base/CCConfiguration.cpp
+    base/CCConsole.cpp
+    base/CCController.cpp
+    base/CCData.cpp
+    base/CCDirector.cpp
+    base/CCEventController.cpp
+    base/CCEventCustom.cpp
+    base/CCEventDispatcher.cpp
+    base/CCEventListener.cpp
+    base/CCEventListenerCustom.cpp
+    base/CCInputEvents.cpp
+    base/CCIMEDispatcher.cpp
+    base/CCProperties.cpp
+    base/CCRef.cpp
+    base/CCScheduler.cpp
+    base/CCValue.cpp
+    base/CCStencilStateManager.cpp
+    base/base64.cpp
+    base/ccCArray.cpp
+    base/ccRandom.cpp
+    base/ccTypes.cpp
+    base/ccUTF8.cpp
+    base/ccUtils.cpp
+    ${COCOS_BASE_SPECIFIC_SRC}
+    )

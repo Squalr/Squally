@@ -1,6 +1,6 @@
 #include "PlatformerCrackDeserializer.h"
 
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCSprite.h"
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/GameObject.h"

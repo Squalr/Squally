@@ -1,9 +1,9 @@
 #include "CraftingMenuBase.h"
 
-#include "cocos/2d/CCLayer.h"
-#include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCDirector.h"
-#include "cocos/base/CCInputEvents.h"
+#include "2d/CCLayer.h"
+#include "2d/CCSprite.h"
+#include "base/CCDirector.h"
+#include "base/CCInputEvents.h"
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"

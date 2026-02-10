@@ -2,7 +2,7 @@
 #include <functional>
 #include <string>
 
-#include "cocos/math/CCGeometry.h"
+#include "math/CCGeometry.h"
 
 class GridEntity;
 class MemoryGrid;

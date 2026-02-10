@@ -1,10 +1,10 @@
 #include "GameObject.h"
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/base/CCValue.h"
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
+#include "base/CCValue.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
 
 #include "Engine/Components/GameComponent.h"
 #include "Engine/Events/ObjectEvents.h"

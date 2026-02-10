@@ -1,6 +1,6 @@
 #include "PlatformerRubberbandingDeserializer.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Maps/GameObject.h"

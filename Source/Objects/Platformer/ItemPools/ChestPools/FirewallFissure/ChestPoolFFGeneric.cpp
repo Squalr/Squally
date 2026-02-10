@@ -1,6 +1,6 @@
 #include "ChestPoolFFGeneric.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Inventory/MergePool.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier6/AlchemyPoolTier6.h"

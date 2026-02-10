@@ -1,11 +1,11 @@
 #include "GameUtils.h"
 
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCCamera.h"
-#include "cocos/2d/CCClippingNode.h"
-#include "cocos/2d/CCParticleSystem.h"
-#include "cocos/2d/CCScene.h"
-#include "cocos/platform/CCFileUtils.h"
+#include "2d/CCActionInterval.h"
+#include "2d/CCCamera.h"
+#include "2d/CCClippingNode.h"
+#include "2d/CCParticleSystem.h"
+#include "2d/CCScene.h"
+#include "platform/CCFileUtils.h"
 
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/UI/UIBoundObject.h"

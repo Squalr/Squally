@@ -1,6 +1,6 @@
 #include "CardPoolTier6.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Inventory/ItemChance.h"
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCards.h"

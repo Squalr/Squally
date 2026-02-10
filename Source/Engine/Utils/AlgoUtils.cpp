@@ -2,7 +2,7 @@
 
 #include <set>
 
-#include "cocos/2d/CCDrawNode.h"
+#include "2d/CCDrawNode.h"
 
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/MPE_fastpoly2tri.h"

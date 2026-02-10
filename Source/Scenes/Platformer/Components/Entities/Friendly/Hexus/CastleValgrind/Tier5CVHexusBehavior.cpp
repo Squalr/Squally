@@ -1,6 +1,6 @@
 #include "Tier5CVHexusBehavior.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Objects/Platformer/ItemPools/HexusPools/CastleValgrind/HexusPoolCVGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"

@@ -1,6 +1,6 @@
 #include "EntityProjectileTargetBehavior.h"
 
-#include "cocos/2d/CCDrawNode.h"
+#include "2d/CCDrawNode.h"
 
 #include "Entities/Platformer/PlatformerEntity.h"
 

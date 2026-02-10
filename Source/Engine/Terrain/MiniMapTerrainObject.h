@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-#include "cocos/base/ccTypes.h"
+#include "base/ccTypes.h"
 
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Terrain/TerrainObject.h"

@@ -1,6 +1,6 @@
 #include "MetaLayerDeserializer.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Deserializers/Properties/PropertyDeserializer.h"
 #include "Engine/Maps/MapLayer.h"

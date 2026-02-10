@@ -1,8 +1,8 @@
 #include "Hud.h"
 
-#include "cocos/2d/CCCamera.h"
-#include "cocos/base/CCDirector.h"
-#include "cocos/renderer/CCRenderer.h"
+#include "2d/CCCamera.h"
+#include "base/CCDirector.h"
+#include "renderer/CCRenderer.h"
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Utils/GameUtils.h"

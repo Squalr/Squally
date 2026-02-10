@@ -1,6 +1,6 @@
 #include "RegisterMarkerEdx.h"
 
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCSprite.h"
 
 #include "Objects/Isometric/PointerTrace/MemoryGrid.h"
 #include "Scenes/PointerTrace/RegisterState.h"

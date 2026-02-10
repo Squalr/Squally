@@ -1,6 +1,6 @@
 #include "EntitySelectionBehavior.h"
 
-#include "cocos/base/CCInputEvents.h"
+#include "base/CCInputEvents.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Input/ClickableNode.h"

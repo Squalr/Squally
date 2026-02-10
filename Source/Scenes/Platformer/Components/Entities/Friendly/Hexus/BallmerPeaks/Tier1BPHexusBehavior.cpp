@@ -1,6 +1,6 @@
 #include "Tier1BPHexusBehavior.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Objects/Platformer/ItemPools/HexusPools/BallmerPeaks/HexusPoolBPGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"

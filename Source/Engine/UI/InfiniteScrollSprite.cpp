@@ -1,9 +1,9 @@
 #include "InfiniteScrollSprite.h"
 
-#include "cocos/2d/CCNode.h"
-#include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCDirector.h"
-#include "cocos/renderer/CCRenderer.h"
+#include "2d/CCNode.h"
+#include "2d/CCSprite.h"
+#include "base/CCDirector.h"
+#include "renderer/CCRenderer.h"
 
 using namespace cocos2d;
 

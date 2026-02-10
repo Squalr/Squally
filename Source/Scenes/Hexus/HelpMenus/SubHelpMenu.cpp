@@ -1,8 +1,8 @@
 #include "SubHelpMenu.h"
 
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCActionInterval.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCSprite.h"
 
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"

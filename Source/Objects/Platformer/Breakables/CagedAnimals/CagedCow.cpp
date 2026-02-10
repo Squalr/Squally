@@ -1,8 +1,8 @@
 #include "CagedCow.h"
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
+#include "2d/CCSprite.h"
 
 #include "Scenes/Platformer/Save/SaveKeys.h"
 

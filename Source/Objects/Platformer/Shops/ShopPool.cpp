@@ -1,6 +1,6 @@
 #include "ShopPool.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"

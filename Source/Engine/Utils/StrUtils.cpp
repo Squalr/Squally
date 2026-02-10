@@ -7,8 +7,8 @@
 #include <regex>
 #include <sstream>
 
-#include "cocos/base/ccUTF8.h"
-#include "cocos/base/CCConsole.h"
+#include "base/ccUTF8.h"
+#include "base/CCConsole.h"
 
 #ifndef WIN32
 extern "C"

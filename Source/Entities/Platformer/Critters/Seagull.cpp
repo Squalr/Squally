@@ -1,6 +1,6 @@
 #include "Seagull.h"
 
-#include "cocos/math/CCGeometry.h"
+#include "math/CCGeometry.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
 

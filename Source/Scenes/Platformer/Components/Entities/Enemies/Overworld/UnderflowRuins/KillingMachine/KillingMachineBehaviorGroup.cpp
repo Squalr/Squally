@@ -1,8 +1,8 @@
 #include "KillingMachineBehaviorGroup.h"
 
-#include "cocos/2d/CCActionEase.h"
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
+#include "2d/CCActionEase.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
 
 #include "Engine/Maps/GameObject.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Overworld/UnderflowRuins/KillingMachine/KillingMachineHealthBehavior.h"

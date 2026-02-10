@@ -1,6 +1,6 @@
 #include "GlobalNode.h"
 
-#include "cocos/base/CCEventListener.h"
+#include "base/CCEventListener.h"
 
 using namespace cocos2d;
 

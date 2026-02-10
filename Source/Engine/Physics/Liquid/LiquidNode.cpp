@@ -1,10 +1,10 @@
 #include "LiquidNode.h"
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCDrawNode.h"
-#include "cocos/2d/CCLayer.h"
-#include "cocos/base/CCValue.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
+#include "2d/CCDrawNode.h"
+#include "2d/CCLayer.h"
+#include "base/CCValue.h"
 
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Physics/Liquid/LiquidTop.h"

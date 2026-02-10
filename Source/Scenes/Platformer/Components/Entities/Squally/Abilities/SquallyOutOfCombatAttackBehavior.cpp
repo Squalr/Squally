@@ -1,6 +1,6 @@
 #include "SquallyOutOfCombatAttackBehavior.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Input/Input.h"
 #include "Engine/Save/SaveManager.h"

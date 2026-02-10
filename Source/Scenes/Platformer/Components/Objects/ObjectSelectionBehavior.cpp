@@ -1,7 +1,7 @@
 #include "ObjectSelectionBehavior.h"
 
-#include "cocos/base/CCInputEvents.h"
-#include "cocos/base/CCValue.h"
+#include "base/CCInputEvents.h"
+#include "base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Input/ClickableNode.h"

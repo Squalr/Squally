@@ -1,6 +1,6 @@
 #include "CameraFocus.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Utils/GameUtils.h"

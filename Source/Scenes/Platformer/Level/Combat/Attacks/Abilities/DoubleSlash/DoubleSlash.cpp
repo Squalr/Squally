@@ -1,7 +1,7 @@
 #include "DoubleSlash.h"
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
 
 #include "Events/CombatEvents.h"
 #include "Engine/Camera/GameCamera.h"

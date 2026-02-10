@@ -1,6 +1,6 @@
 #include "CursorSets.h"
 
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCSprite.h"
 
 #include "Engine/Input/Input.h"
 #include "Engine/UI/Mouse.h"

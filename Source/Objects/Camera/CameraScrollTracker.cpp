@@ -1,11 +1,11 @@
 #include "CameraScrollTracker.h"
 
-#include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCInputEvents.h"
-#include "cocos/base/CCValue.h"
+#include "2d/CCSprite.h"
+#include "base/CCDirector.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
+#include "base/CCInputEvents.h"
+#include "base/CCValue.h"
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Input/ClickableNode.h"

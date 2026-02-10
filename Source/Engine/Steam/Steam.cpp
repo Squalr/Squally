@@ -4,7 +4,7 @@
 
 #include "steam_api.h"
 
-#include "cocos/platform/CCFileUtils.h"
+#include "platform/CCFileUtils.h"
 
 #include "Engine/Utils/LogUtils.h"
 

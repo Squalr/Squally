@@ -1,6 +1,6 @@
-﻿#include "InputText.h"
+#include "InputText.h"
 
-#include "cocos/base/CCEventListenerCustom.h"
+#include "base/CCEventListenerCustom.h"
 
 #include "Engine/Events/LocalizationEvents.h"
 #include "Engine/Input/ClickableNode.h"

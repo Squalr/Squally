@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 
-#include "cocos/math/Vec2.h"
+#include "math/Vec2.h"
 
 #include "Engine/SmartNode.h"
 #include "Scenes/Hexus/Card.h"

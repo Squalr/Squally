@@ -1,5 +1,5 @@
 #pragma once
-#include "cocos/math/Mat4.h"
+#include "math/Mat4.h"
 
 #include "Engine/SmartNode.h"
 

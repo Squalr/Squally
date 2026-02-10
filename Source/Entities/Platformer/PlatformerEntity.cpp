@@ -1,11 +1,11 @@
 #include "PlatformerEntity.h"
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
+#include "2d/CCSprite.h"
+#include "base/CCDirector.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
 
 #include "Deserializers/Platformer/PlatformerEntityDeserializer.h"
 #include "Engine/Animations/AnimationPart.h"

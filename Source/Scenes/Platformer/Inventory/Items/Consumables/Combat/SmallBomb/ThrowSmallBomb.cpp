@@ -1,6 +1,6 @@
 #include "ThrowSmallBomb.h"
 
-#include "cocos/2d/CCActionInterval.h"
+#include "2d/CCActionInterval.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"

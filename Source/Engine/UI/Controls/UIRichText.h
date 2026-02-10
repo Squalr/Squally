@@ -26,7 +26,7 @@
 
 #include "Engine/UI/Controls/UIWidget.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 namespace cocos2d
 {

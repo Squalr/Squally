@@ -1,7 +1,7 @@
 #include "StateDrawInitial.h"
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
 
 #include "Engine/Utils/GameUtils.h"
 #include "Scenes/Hexus/CardRow.h"

@@ -1,7 +1,7 @@
 #include "TextPanel.h"
 
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCDrawNode.h"
+#include "2d/CCActionInterval.h"
+#include "2d/CCDrawNode.h"
 
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"

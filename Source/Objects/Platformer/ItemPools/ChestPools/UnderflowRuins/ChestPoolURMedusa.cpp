@@ -1,6 +1,6 @@
 #include "ChestPoolURMedusa.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Inventory/ItemChance.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier2/AlchemyPoolTier2.h"

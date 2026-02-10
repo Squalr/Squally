@@ -1,8 +1,8 @@
 #include "Avatars.h"
 
-#include "cocos/2d/CCClippingNode.h"
-#include "cocos/2d/CCDrawNode.h"
-#include "cocos/base/CCDirector.h"
+#include "2d/CCClippingNode.h"
+#include "2d/CCDrawNode.h"
+#include "base/CCDirector.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/UI/SmartClippingNode.h"

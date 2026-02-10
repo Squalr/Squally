@@ -1,6 +1,6 @@
 #include "ArcaneBook.h"
 
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCSprite.h"
 
 #include "Engine/Save/SaveManager.h"
 #include "Events/NotificationEvents.h"

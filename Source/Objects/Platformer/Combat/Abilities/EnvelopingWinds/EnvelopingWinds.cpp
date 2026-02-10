@@ -1,9 +1,9 @@
 #include "EnvelopingWinds.h"
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCEventListenerCustom.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
+#include "2d/CCSprite.h"
+#include "base/CCEventListenerCustom.h"
 
 #include "Engine/Particles/SmartParticles.h"
 #include "Events/CombatEvents.h"

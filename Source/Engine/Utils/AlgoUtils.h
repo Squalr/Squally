@@ -2,7 +2,7 @@
 #include <tuple>
 #include <vector>
 
-#include "cocos/math/CCGeometry.h"
+#include "math/CCGeometry.h"
 
 namespace cocos2d
 {

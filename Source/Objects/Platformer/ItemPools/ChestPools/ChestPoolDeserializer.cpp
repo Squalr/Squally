@@ -1,6 +1,6 @@
 #include "ChestPoolDeserializer.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Maps/GameObject.h"
 #include "Objects/Platformer/ItemPools/ChestPools/ChestPools.h"

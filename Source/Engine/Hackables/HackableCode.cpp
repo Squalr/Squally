@@ -1,8 +1,8 @@
 #include "HackableCode.h"
 
-#include "cocos/2d/CCActionEase.h"
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
+#include "2d/CCActionEase.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
 
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Hackables/GlobalHackAttributeContainer.h"

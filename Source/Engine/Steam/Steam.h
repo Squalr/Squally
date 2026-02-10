@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-#include "cocos/platform/CCCommon.h"
+#include "platform/CCCommon.h"
 
 class Steam
 {

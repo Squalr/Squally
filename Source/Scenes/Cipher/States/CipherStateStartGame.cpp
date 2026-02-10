@@ -1,7 +1,7 @@
 #include "CipherStateStartGame.h"
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
 
 #include "Scenes/Cipher/Components/Blocks/Special/DestinationBlock.h"
 #include "Scenes/Cipher/Components/Blocks/Special/SourceBlock.h"

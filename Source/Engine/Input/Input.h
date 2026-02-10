@@ -1,7 +1,7 @@
 #pragma once
 #include <unordered_map>
 
-#include "cocos/base/CCInputEvents.h"
+#include "base/CCInputEvents.h"
 
 #include "Engine/GlobalNode.h"
 

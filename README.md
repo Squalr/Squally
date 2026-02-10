@@ -72,22 +72,17 @@ run `cmake --build ./build`
 
 **Important:** We do not have the legal rights to distribute the art/sound in Squally. To get a copy of the `Squally/Resources/Private` folder, copy it from a purchased copy of the game. See the section below for details.
 
-To do a fresh build and pull in dependencies:
+To do a fresh build:
 ```
 git clone git@github.com:Squalr/Squally.git
 cd Squally
-git submodule update --init --recursive .
+cmake --build build/ --config RelWithDebInfo --target all --
 ```
 
 From here, simply open the Squally/ folder in VsCode and compile using one of the following:
 - OSX: Clang 7.0.x
 - Windows: MSVC (VS2019 x86)
 - Linux: GCC
-
-To update dependencies later:
-```
-git submodule update --init --recursive .
-```
 
 Getting the Resource Folder
 ------------

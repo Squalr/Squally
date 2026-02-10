@@ -1,6 +1,6 @@
 #include "HexusPoolFFGeneric.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Inventory/ItemChance.h"
 #include "Objects/Platformer/ItemPools/CurrencyPools/FirewallFissure/CurrencyPoolFFHexus.h"

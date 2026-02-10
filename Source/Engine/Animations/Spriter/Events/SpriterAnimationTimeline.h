@@ -1,7 +1,7 @@
 #pragma once
 #include <set>
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Animations/Spriter/SpriterStructs.h"
 #include "Engine/GlobalNode.h"

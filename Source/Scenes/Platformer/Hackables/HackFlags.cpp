@@ -1,6 +1,6 @@
 #include "HackFlags.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Save/SaveManager.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"

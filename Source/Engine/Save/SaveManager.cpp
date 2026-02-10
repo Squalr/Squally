@@ -1,7 +1,7 @@
 #include "SaveManager.h"
 
-#include "cocos/base/CCValue.h"
-#include "cocos/platform/CCFileUtils.h"
+#include "base/CCValue.h"
+#include "platform/CCFileUtils.h"
 
 #include "steam_api.h"
 

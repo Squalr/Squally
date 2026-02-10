@@ -1,8 +1,8 @@
 #pragma once
 #include <set>
 
-#include "cocos/2d/CCScene.h"
-#include "cocos/base/CCInputEvents.h"
+#include "2d/CCScene.h"
+#include "base/CCInputEvents.h"
 
 namespace cocos2d
 {

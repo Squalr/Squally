@@ -1,6 +1,6 @@
 #include "SpriterAnimationParser.h"
 
-#include "cocos/platform/CCFileUtils.h"
+#include "platform/CCFileUtils.h"
 
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"

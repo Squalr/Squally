@@ -1,7 +1,7 @@
 #include "HexusEvents.h"
 
-#include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventDispatcher.h"
+#include "base/CCDirector.h"
+#include "base/CCEventDispatcher.h"
 
 #include "Entities/Platformer/PlatformerEntity.h"
 

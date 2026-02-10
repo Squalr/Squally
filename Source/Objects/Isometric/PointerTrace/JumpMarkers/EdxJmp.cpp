@@ -1,10 +1,10 @@
 #include "EdxJmp.h"
 
-#include "cocos/2d/CCAction.h"
-#include "cocos/2d/CCActionEase.h"
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCAction.h"
+#include "2d/CCActionEase.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
+#include "2d/CCSprite.h"
 
 #include "Scenes/PointerTrace/RegisterState.h"
 

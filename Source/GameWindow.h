@@ -1,6 +1,6 @@
 #pragma once
 
-#include "cocos/platform/CCApplication.h"
+#include "platform/CCApplication.h"
 
 namespace cocos2d
 { 

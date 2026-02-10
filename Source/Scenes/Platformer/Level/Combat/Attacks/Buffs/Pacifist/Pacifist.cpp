@@ -1,6 +1,6 @@
 #include "Pacifist.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/State/StateKeys.h"

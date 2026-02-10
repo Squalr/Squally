@@ -1,9 +1,9 @@
 #include "DeveloperModeController.h"
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/base/CCDirector.h"
-#include "cocos/base/CCInputEvents.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
+#include "base/CCDirector.h"
+#include "base/CCInputEvents.h"
 
 #include "Engine/Events/DeveloperModeEvents.h"
 #include "Engine/GlobalDirector.h"

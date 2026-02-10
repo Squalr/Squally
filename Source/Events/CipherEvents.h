@@ -2,7 +2,7 @@
 #include <functional>
 #include <string>
 
-#include "cocos/math/Vec2.h"
+#include "math/Vec2.h"
 
 class BlockBase;
 class BoltBase;

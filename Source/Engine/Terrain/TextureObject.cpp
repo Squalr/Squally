@@ -3,14 +3,14 @@
 #include <iomanip>
 #include <sstream>
 
-#include "cocos/2d/CCClippingNode.h"
-#include "cocos/2d/CCNode.h"
-#include "cocos/2d/CCLabel.h"
-#include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCValue.h"
-#include "cocos/renderer/CCGLProgram.h"
+#include "2d/CCClippingNode.h"
+#include "2d/CCNode.h"
+#include "2d/CCLabel.h"
+#include "2d/CCSprite.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
+#include "base/CCValue.h"
+#include "renderer/CCGLProgram.h"
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Config/ConfigManager.h"

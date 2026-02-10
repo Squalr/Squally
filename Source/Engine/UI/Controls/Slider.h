@@ -1,7 +1,7 @@
 #pragma once
 #include <functional>
 
-#include "cocos/base/CCInputEvents.h"
+#include "base/CCInputEvents.h"
 
 #include "Engine/SmartNode.h"
 

@@ -1,8 +1,8 @@
 #include "SpeechBubble.h"
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCDrawNode.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
+#include "2d/CCDrawNode.h"
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/ObjectEvents.h"

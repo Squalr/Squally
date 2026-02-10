@@ -1,11 +1,11 @@
 #include "QuickPotion.h"
 
-#include "cocos/2d/CCClippingNode.h"
-#include "cocos/2d/CCDrawNode.h"
-#include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
+#include "2d/CCClippingNode.h"
+#include "2d/CCDrawNode.h"
+#include "2d/CCSprite.h"
+#include "base/CCDirector.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/SceneEvents.h"

@@ -1,8 +1,8 @@
-﻿#include "LabelStack.h"
+#include "LabelStack.h"
 
-#include "cocos/2d/CCNode.h"
-#include "cocos/2d/CCLayer.h"
-#include "cocos/base/CCEventListenerCustom.h"
+#include "2d/CCNode.h"
+#include "2d/CCLayer.h"
+#include "base/CCEventListenerCustom.h"
 
 #include "Engine/Events/LocalizationEvents.h"
 #include "Engine/Localization/Localization.h"

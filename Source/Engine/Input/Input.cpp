@@ -1,8 +1,8 @@
 #include "Input.h"
 
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCInputEvents.h"
-#include "cocos/base/CCEventListenerCustom.h"
+#include "base/CCEventCustom.h"
+#include "base/CCInputEvents.h"
+#include "base/CCEventListenerCustom.h"
 
 #include "Engine/GlobalDirector.h"
 

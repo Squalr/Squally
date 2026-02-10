@@ -1,6 +1,6 @@
 #include "HexusPoolVSGeneric.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Inventory/ItemChance.h"
 #include "Objects/Platformer/ItemPools/CurrencyPools/VoidStar/CurrencyPoolVSHexus.h"

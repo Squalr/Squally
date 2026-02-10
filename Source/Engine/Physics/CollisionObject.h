@@ -2,7 +2,7 @@
 #include <set>
 #include <string>
 
-#include "cocos/base/ccTypes.h"
+#include "base/ccTypes.h"
 
 #include "Engine/Events/CollisionMappingEvents.h"
 #include "Engine/Physics/EnginePhysicsTypes.h"

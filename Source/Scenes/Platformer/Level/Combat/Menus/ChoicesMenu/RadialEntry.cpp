@@ -1,6 +1,6 @@
 #include "RadialEntry.h"
 
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCSprite.h"
 
 #include "Engine/Input/ClickableTextNode.h"
 

@@ -1,6 +1,6 @@
 #include "ChestPoolEFEquipment.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Objects/Platformer/ItemPools/Tiered/Tier1/EquipmentPoolTier1.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"

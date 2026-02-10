@@ -1,6 +1,6 @@
 #include "HexusPoolEFGeneric.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Inventory/ItemChance.h"
 #include "Objects/Platformer/ItemPools/CurrencyPools/EndianForest/CurrencyPoolEFHexus.h"

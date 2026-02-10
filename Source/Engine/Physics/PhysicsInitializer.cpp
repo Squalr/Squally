@@ -1,7 +1,7 @@
 #include "PhysicsInitializer.h"
 
-#include "cocos/base/CCDirector.h"
-#include "cocos/base/CCValue.h"
+#include "base/CCDirector.h"
+#include "base/CCValue.h"
 
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"

@@ -1,7 +1,7 @@
 #include "RewardItem.h"
 
-#include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCValue.h"
+#include "2d/CCSprite.h"
+#include "base/CCValue.h"
 
 #include "Engine/Events/ItemEvents.h"
 #include "Engine/Events/ObjectEvents.h"

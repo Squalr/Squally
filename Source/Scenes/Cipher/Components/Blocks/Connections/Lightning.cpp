@@ -1,10 +1,10 @@
 #include "Lightning.h"
 
-#include "cocos/2d/CCSprite.h"
-#include "cocos/2d/CCAction.h"
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/base/ccRandom.h"
+#include "2d/CCSprite.h"
+#include "2d/CCAction.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
+#include "base/ccRandom.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Camera/GameCamera.h"

@@ -1,7 +1,7 @@
 #pragma once
 #include <functional>
 
-#include "cocos/2d/CCNode.h"
+#include "2d/CCNode.h"
 
 template <class T>
 class LazyNode : public cocos2d::Node

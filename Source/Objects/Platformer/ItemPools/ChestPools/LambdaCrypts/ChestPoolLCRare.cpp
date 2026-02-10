@@ -1,6 +1,6 @@
 #include "ChestPoolLCRare.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Inventory/ItemChance.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier5/AlchemyPoolTier5.h"

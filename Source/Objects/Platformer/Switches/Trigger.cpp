@@ -1,6 +1,6 @@
 #include "Trigger.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"

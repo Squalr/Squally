@@ -1,7 +1,7 @@
 #include "StateRoundStart.h"
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
 
 #include "Engine/Sound/Sound.h"
 #include "Scenes/Hexus/HexusConfig.h"
