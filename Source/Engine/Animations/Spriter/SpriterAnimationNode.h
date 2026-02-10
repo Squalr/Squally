@@ -1,5 +1,6 @@
 #pragma once
 #include "cocos/base/CCValue.h"
+#include <functional>
 
 #include "Engine/Animations/Spriter/SpriterAnimationPart.h"
 
@@ -48,6 +49,8 @@ public:
 	void setAnimationPaused(bool isPaused);
 	bool isAnimationPaused() const;
 	void setFlippedX(bool isFlippedX);
+	void setAnimationLoopCompletionCallback(const std::function<void()>& callback);
+	void clearAnimationLoopCompletionCallback();
 
 	static const std::string DefaultAnimationEntityName;
 	static const std::string DefaultAnimationName;
@@ -86,4 +89,5 @@ private:
 	float timelineTime = 0.0f;
 	bool isRepeating = true;
 	bool animationPaused = false;
+	std::function<void()> animationLoopCompletionCallback;
 };

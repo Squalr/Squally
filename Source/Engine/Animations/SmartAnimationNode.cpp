@@ -10,7 +10,6 @@ using namespace Spriter2dX;
 
 const std::string SmartAnimationNode::DefaultAnimationEntityName = "Entity";
 const std::string SmartAnimationNode::DefaultAnimationName = "Idle";
-static const char* PlayModeCompletionScheduleKey = "SmartAnimationNodePlayModeCompletion";
 
 SmartAnimationNode* SmartAnimationNode::create(std::string animationResource)
 {
@@ -346,11 +345,8 @@ void SmartAnimationNode::schedulePlayModeCompletion(AnimationPlayMode animationP
 
 	this->clearPlayModeCompletion();
 
-	const float animationLength = this->spriterAnimation->getAnimationLength(this->spriterAnimation->getCurrentAnimation());
-	const float completionDelay = animationLength > 0.0f ? animationLength : 0.0001f;
-
 	const int completionToken = ++this->playModeCompletionToken;
-	this->schedule([=](float)
+	this->spriterAnimation->setAnimationLoopCompletionCallback([=]()
 	{
 		if (this->playModeCompletionToken != completionToken)
 		{
@@ -387,19 +383,21 @@ void SmartAnimationNode::schedulePlayModeCompletion(AnimationPlayMode animationP
 			default:
 			case AnimationPlayMode::Repeat:
 			{
-				float priority = this->currentAnimationPriority;
-				this->initialized = false;
-				this->clearAnimationPriority();
-				this->playAnimation(this->getCurrentAnimation(), AnimationPlayMode::Repeat, priority);
+				// Spriter timeline playback naturally wraps. Keep repeat mode active
+				// without forcing explicit replays every cycle.
 				break;
 			}
 		}
-	}, PlayModeCompletionScheduleKey, completionDelay, 0);
+	});
 }
 
 void SmartAnimationNode::clearPlayModeCompletion()
 {
-	this->unschedule(PlayModeCompletionScheduleKey);
+	if (this->spriterAnimation != nullptr)
+	{
+		this->spriterAnimation->clearAnimationLoopCompletionCallback();
+	}
+
 	this->hasActivePlayMode = false;
 	this->activePlayModeCallback = nullptr;
 }

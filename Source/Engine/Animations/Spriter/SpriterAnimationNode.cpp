@@ -50,8 +50,18 @@ SpriterAnimationNode::~SpriterAnimationNode()
 
 void SpriterAnimationNode::advanceTimelineTime(float dt, float timelineMax)
 {
+	if (timelineMax <= 0.0f)
+	{
+		return;
+	}
+
 	this->previousTimelineTime = this->timelineTime;
 	this->timelineTime = MathUtils::wrappingNormalize(this->timelineTime + dt, 0.0f, timelineMax);
+
+	if (this->previousTimelineTime > this->timelineTime && this->animationLoopCompletionCallback != nullptr)
+	{
+		this->animationLoopCompletionCallback();
+	}
 }
 
 float SpriterAnimationNode::getPreviousTimelineTime()
@@ -181,6 +191,16 @@ void SpriterAnimationNode::setAnimationPaused(bool isPaused)
 bool SpriterAnimationNode::isAnimationPaused() const
 {
 	return this->animationPaused;
+}
+
+void SpriterAnimationNode::setAnimationLoopCompletionCallback(const std::function<void()>& callback)
+{
+	this->animationLoopCompletionCallback = callback;
+}
+
+void SpriterAnimationNode::clearAnimationLoopCompletionCallback()
+{
+	this->animationLoopCompletionCallback = nullptr;
 }
 
 void SpriterAnimationNode::setCurrentEntity(const std::string& currentEntityName)
@@ -321,7 +341,10 @@ void SpriterAnimationNode::buildSprites(const SpriterData& spriterData, const st
 			uint64_t folderFileKey = uint64_t(folder.id) << 32 | uint64_t(file.id);
 
 			folderFileIdMap[folderFileKey] = file.name;
-			anchorMap[folderFileKey] = file.anchor;
+			
+			// anchorMap[folderFileKey] = file.anchor;
+			// Match legacy spriter2dx pivot mapping into cocos anchor space.
+			anchorMap[folderFileKey] = Vec2(file.anchor.x, 1.0f - file.anchor.y);
 		}
 	}
 	
