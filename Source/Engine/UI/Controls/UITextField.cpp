@@ -25,9 +25,9 @@ THE SOFTWARE.
 
 #include "Engine/UI/Controls/UITextField.h"
 
-#include "cocos/2d/CCCamera.h"
-#include "cocos/base/ccUTF8.h"
-#include "cocos/platform/CCFileUtils.h"
+#include "2d/CCCamera.h"
+#include "base/ccUTF8.h"
+#include "platform/CCFileUtils.h"
 
 #include "Engine/Utils/StrUtils.h"
 

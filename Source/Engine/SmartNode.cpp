@@ -1,10 +1,10 @@
 #include "SmartNode.h"
 
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventDispatcher.h"
-#include "cocos/base/CCEventListener.h"
-#include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCInputEvents.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventDispatcher.h"
+#include "base/CCEventListener.h"
+#include "base/CCEventListenerCustom.h"
+#include "base/CCInputEvents.h"
 
 #include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/DeveloperModeEvents.h"

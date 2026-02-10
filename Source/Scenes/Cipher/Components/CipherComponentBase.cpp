@@ -1,7 +1,7 @@
 #include "CipherComponentBase.h"
 
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
 
 #include "Scenes/Cipher/CipherState.h"
 

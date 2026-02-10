@@ -1,8 +1,8 @@
 #pragma once
 #include <string>
 
-#include "cocos/base/CCValue.h"
-#include "cocos/math/CCGeometry.h"
+#include "base/CCValue.h"
+#include "math/CCGeometry.h"
 
 #include "Engine/Components/GameComponent.h"
 #include "Engine/SmartNode.h"

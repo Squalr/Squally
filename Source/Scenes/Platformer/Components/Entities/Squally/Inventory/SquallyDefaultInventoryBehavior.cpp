@@ -1,6 +1,6 @@
 #include "SquallyDefaultInventoryBehavior.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Inventory/CurrencyInventory.h"

@@ -1,8 +1,8 @@
 #include "CombatSpawn.h"
 
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCValue.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
+#include "base/CCValue.h"
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Utils/GameUtils.h"

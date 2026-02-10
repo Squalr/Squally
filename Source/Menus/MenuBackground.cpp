@@ -1,8 +1,8 @@
 #include "MenuBackground.h"
 
-#include "cocos/2d/CCSprite.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/base/CCDirector.h"
+#include "2d/CCSprite.h"
+#include "2d/CCActionInterval.h"
+#include "base/CCDirector.h"
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Particles/SmartParticles.h"

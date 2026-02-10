@@ -1,7 +1,7 @@
 #include "EnemyAllyVisibilityBehavior.h"
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Utils/GameUtils.h"

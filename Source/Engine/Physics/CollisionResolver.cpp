@@ -1,6 +1,6 @@
 #include "CollisionResolver.h"
 
-#include "cocos/2d/CCDrawNode.h"
+#include "2d/CCDrawNode.h"
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Physics/CollisionObject.h"

@@ -1,6 +1,6 @@
 #include "DebugDisplay.h"
 
-#include "cocos/base/CCDirector.h"
+#include "base/CCDirector.h"
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"

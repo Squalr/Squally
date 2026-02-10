@@ -1,6 +1,6 @@
 #pragma once
 #include <functional>
-#include "cocos/base/ccTypes.h"
+#include "base/ccTypes.h"
 
 #include "Engine/SmartNode.h"
 

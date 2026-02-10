@@ -1,6 +1,6 @@
-﻿#include "SqrtssPage.h"
+#include "SqrtssPage.h"
 
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCSprite.h"
 
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Vector/VectorIntroPage.h"

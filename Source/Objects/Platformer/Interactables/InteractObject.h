@@ -1,7 +1,7 @@
 #pragma once
 #include <set>
 
-#include "cocos/base/CCInputEvents.h"
+#include "base/CCInputEvents.h"
 
 #include "Engine/Hackables/HackableObject.h"
 

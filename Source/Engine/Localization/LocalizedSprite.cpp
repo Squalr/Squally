@@ -1,7 +1,7 @@
 #include "LocalizedSprite.h"
 
-#include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCEventListenerCustom.h"
+#include "2d/CCSprite.h"
+#include "base/CCEventListenerCustom.h"
 
 #include "Engine/Events/LocalizationEvents.h"
 #include "Engine/Localization/Localization.h"

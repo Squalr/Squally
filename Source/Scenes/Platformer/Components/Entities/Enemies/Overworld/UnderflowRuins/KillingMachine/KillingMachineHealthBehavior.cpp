@@ -1,10 +1,10 @@
 #include "KillingMachineHealthBehavior.h"
 
-#include "cocos/2d/CCAction.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCValue.h"
+#include "2d/CCAction.h"
+#include "2d/CCActionInterval.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
+#include "base/CCValue.h"
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/SaveEvents.h"

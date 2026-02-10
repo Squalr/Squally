@@ -4,9 +4,9 @@
 #include <iterator>
 #include <set>
 
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCValue.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
+#include "base/CCValue.h"
 
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"

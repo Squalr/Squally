@@ -1,6 +1,6 @@
 #include "SquallyHudTrackBehavior.h"
 
-#include "cocos/math/CCGeometry.h"
+#include "math/CCGeometry.h"
 
 #include "Events/PlatformerEvents.h"
 #include "Entities/Platformer/Squally/Squally.h"

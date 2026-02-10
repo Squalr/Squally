@@ -1,6 +1,6 @@
 #include "KillingMachine6.h"
 
-#include "cocos/math/CCGeometry.h"
+#include "math/CCGeometry.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Resources/EntityResources.h"

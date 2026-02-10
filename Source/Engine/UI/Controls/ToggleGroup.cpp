@@ -1,6 +1,6 @@
 #include "ToggleGroup.h"
 
-#include "cocos/base/ccMacros.h"
+#include "base/ccMacros.h"
 
 #include "Engine/UI/Controls/Checkbox.h"
 

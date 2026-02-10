@@ -1,7 +1,7 @@
 #include "HandCardCountDisplay.h"
 
-#include "cocos/2d/CCLayer.h"
-#include "cocos/base/CCDirector.h"
+#include "2d/CCLayer.h"
+#include "base/CCDirector.h"
 
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"

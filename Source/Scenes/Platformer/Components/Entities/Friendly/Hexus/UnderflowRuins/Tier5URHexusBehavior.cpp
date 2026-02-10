@@ -1,6 +1,6 @@
 #include "Tier5URHexusBehavior.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Objects/Platformer/ItemPools/HexusPools/UnderflowRuins/HexusPoolURGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"

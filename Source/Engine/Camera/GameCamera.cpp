@@ -3,14 +3,14 @@
 #include <iomanip>
 #include <sstream>
 
-#include "cocos/2d/CCCamera.h"
-#include "cocos/2d/CCDrawNode.h"
-#include "cocos/2d/CCNode.h"
-#include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCInputEvents.h"
-#include "cocos/base/CCScheduler.h"
+#include "2d/CCCamera.h"
+#include "2d/CCDrawNode.h"
+#include "2d/CCNode.h"
+#include "base/CCDirector.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
+#include "base/CCInputEvents.h"
+#include "base/CCScheduler.h"
 
 #include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/HackableEvents.h"

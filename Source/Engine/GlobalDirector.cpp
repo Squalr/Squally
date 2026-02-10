@@ -1,7 +1,7 @@
 #include "GlobalDirector.h"
 
-#include "cocos/2d/CCScene.h"
-#include "cocos/base/CCDirector.h"
+#include "2d/CCScene.h"
+#include "base/CCDirector.h"
 
 #include "Engine/Events/SaveEvents.h"
 #include "Engine/Events/SceneEvents.h"

@@ -1,8 +1,8 @@
 #include "Quests.h"
 
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCValue.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
+#include "base/CCValue.h"
 
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Quests/QuestTask.h"

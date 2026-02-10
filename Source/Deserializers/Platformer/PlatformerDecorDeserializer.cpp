@@ -1,6 +1,6 @@
 #include "PlatformerDecorDeserializer.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Utils/GameUtils.h"
 #include "Deserializers/Platformer/PlatformerComponentDeserializer.h"

@@ -1,6 +1,6 @@
 #include "Checkbox.h"
 
-#include "cocos/base/ccMacros.h"
+#include "base/ccMacros.h"
 
 #include "Engine/Input/ClickableNode.h"
 

@@ -1,7 +1,7 @@
 #include "SquallyReceiveItemBehavior.h"
 
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
 
 #include "Engine/Inventory/Currency.h"
 #include "Engine/Inventory/CurrencyInventory.h"

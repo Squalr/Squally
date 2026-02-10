@@ -1,9 +1,9 @@
-﻿#include "CodeWindow.h"
+#include "CodeWindow.h"
 
-#include "cocos/2d/CCLayer.h"
-#include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCEventDispatcher.h"
-#include "cocos/base/CCEventListenerCustom.h"
+#include "2d/CCLayer.h"
+#include "2d/CCSprite.h"
+#include "base/CCEventDispatcher.h"
+#include "base/CCEventListenerCustom.h"
 
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/UI/Controls/UIRichText.h"

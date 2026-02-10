@@ -1,6 +1,6 @@
 #include "MageCastBehavior.h"
 
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCSprite.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Entities/Platformer/PlatformerEntity.h"

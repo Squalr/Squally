@@ -1,6 +1,6 @@
 #include "ObjectLayerDeserializer.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Deserializers/Objects/ObjectDeserializer.h"
 #include "Engine/GlobalDirector.h"

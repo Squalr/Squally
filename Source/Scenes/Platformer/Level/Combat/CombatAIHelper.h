@@ -1,6 +1,6 @@
 #pragma once
 
-#include "cocos/base/ccRandom.h"
+#include "base/ccRandom.h"
 
 #include "Engine/SmartNode.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"

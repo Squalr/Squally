@@ -1,6 +1,6 @@
-﻿#include "BinarySelectPage.h"
+#include "BinarySelectPage.h"
 
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCSprite.h"
 
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/And/AndPage.h"

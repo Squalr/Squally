@@ -1,6 +1,6 @@
 #include "ThrowGreaterHealthPotion.h"
 
-#include "cocos/2d/CCActionInterval.h"
+#include "2d/CCActionInterval.h"
 
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"

@@ -1,6 +1,6 @@
 #include "Tier4LCHexusBehavior.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Objects/Platformer/ItemPools/HexusPools/LambdaCrypts/HexusPoolLCGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"

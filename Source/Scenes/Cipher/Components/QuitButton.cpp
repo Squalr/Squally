@@ -1,8 +1,8 @@
 #include "QuitButton.h"
 
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCDirector.h"
+#include "2d/CCActionInterval.h"
+#include "2d/CCSprite.h"
+#include "base/CCDirector.h"
 
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"

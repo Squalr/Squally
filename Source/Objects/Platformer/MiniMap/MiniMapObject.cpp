@@ -1,8 +1,8 @@
 #include "MiniMapObject.h"
 
-#include "cocos/2d/CCDrawNode.h"
-#include "cocos/base/ccTypes.h"
-#include "cocos/base/CCValue.h"
+#include "2d/CCDrawNode.h"
+#include "base/ccTypes.h"
+#include "base/CCValue.h"
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Utils/GameUtils.h"

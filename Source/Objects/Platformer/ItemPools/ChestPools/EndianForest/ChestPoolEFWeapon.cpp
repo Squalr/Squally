@@ -1,6 +1,6 @@
 #include "ChestPoolEFWeapon.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Inventory/ItemChance.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier1/WeaponPoolTier1.h"

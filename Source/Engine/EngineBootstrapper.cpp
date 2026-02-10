@@ -1,6 +1,6 @@
 #include "EngineBootstrapper.h"
 
-#include "cocos/platform/CCFileUtils.h"
+#include "platform/CCFileUtils.h"
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/DeveloperMode/DeveloperModeController.h"

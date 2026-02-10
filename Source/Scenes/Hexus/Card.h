@@ -1,7 +1,7 @@
 #pragma once
 
-#include "cocos/2d/CCSprite.h"
-#include "cocos/base/ccTypes.h"
+#include "2d/CCSprite.h"
+#include "base/ccTypes.h"
 
 #include "Engine/SmartNode.h"
 #include "Scenes/Hexus/CardData/CardData.h"

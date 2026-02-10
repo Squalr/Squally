@@ -1,6 +1,6 @@
 #include "MiniMapObjectDeserializer.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Deserializers/Platformer/PlatformerComponentDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"

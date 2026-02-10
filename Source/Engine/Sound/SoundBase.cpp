@@ -1,10 +1,10 @@
 #include "SoundBase.h"
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCDirector.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
+#include "base/CCDirector.h"
 
 #include <SFML/Audio.hpp>
 

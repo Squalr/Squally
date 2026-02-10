@@ -1,11 +1,11 @@
 #include "TimelineEvent.h"
 
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
+#include "2d/CCSprite.h"
 
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"

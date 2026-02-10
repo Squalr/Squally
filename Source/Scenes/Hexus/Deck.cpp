@@ -1,8 +1,8 @@
 #include "Deck.h"
 
-#include "cocos/2d/CCActionEase.h"
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
+#include "2d/CCActionEase.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/GameUtils.h"

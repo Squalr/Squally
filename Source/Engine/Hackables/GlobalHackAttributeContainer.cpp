@@ -1,8 +1,8 @@
 #include "GlobalHackAttributeContainer.h"
 
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListener.h"
-#include "cocos/base/CCEventListenerCustom.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListener.h"
+#include "base/CCEventListenerCustom.h"
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/Events/HackableEvents.h"

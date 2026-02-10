@@ -1,6 +1,6 @@
 #include "CombatUtils.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"

@@ -30,14 +30,14 @@
 #include <locale>
 #include <algorithm>
 
-#include "cocos/2d/CCLabel.h"
-#include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCEventDispatcher.h"
-#include "cocos/base/CCDirector.h"
-#include "cocos/base/ccUTF8.h"
-#include "cocos/platform/CCApplication.h"
-#include "cocos/platform/CCFileUtils.h"
-#include "cocos/platform/CCSAXParser.h"
+#include "2d/CCLabel.h"
+#include "2d/CCSprite.h"
+#include "base/CCEventDispatcher.h"
+#include "base/CCDirector.h"
+#include "base/ccUTF8.h"
+#include "platform/CCApplication.h"
+#include "platform/CCFileUtils.h"
+#include "platform/CCSAXParser.h"
 
 #include "Engine/Utils/StrUtils.h"
 

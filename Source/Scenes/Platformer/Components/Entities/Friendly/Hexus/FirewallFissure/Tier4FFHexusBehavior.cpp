@@ -1,6 +1,6 @@
 #include "Tier4FFHexusBehavior.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Objects/Platformer/ItemPools/HexusPools/FirewallFissure/HexusPoolFFGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"

@@ -1,7 +1,7 @@
 #include "MiniMapObjectBinder.h"
 
-#include "cocos/base/ccTypes.h"
-#include "cocos/base/CCValue.h"
+#include "base/ccTypes.h"
+#include "base/CCValue.h"
 
 using namespace cocos2d;
 

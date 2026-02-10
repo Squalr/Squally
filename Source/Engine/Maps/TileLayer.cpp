@@ -1,8 +1,8 @@
 #include "TileLayer.h"
 
-#include "cocos/2d/CCFastTMXLayer.h"
-#include "cocos/2d/CCFastTMXTiledMap.h"
-#include "cocos/base/CCValue.h"
+#include "2d/CCFastTMXLayer.h"
+#include "2d/CCFastTMXTiledMap.h"
+#include "base/CCValue.h"
 
 #include <tinyxml2.h>
 

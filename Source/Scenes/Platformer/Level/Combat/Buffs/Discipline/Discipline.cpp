@@ -1,8 +1,8 @@
 #include "Discipline.h"
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
+#include "2d/CCSprite.h"
 
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"

@@ -1,7 +1,7 @@
 #include "ThrowWeapon.h"
 
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/base/CCValue.h"
+#include "2d/CCActionInterval.h"
+#include "base/CCValue.h"
 
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"

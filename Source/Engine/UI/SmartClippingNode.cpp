@@ -1,7 +1,7 @@
 #include "SmartClippingNode.h"
 
-#include "cocos/2d/CCClippingNode.h"
-#include "cocos/2d/CCDrawNode.h"
+#include "2d/CCClippingNode.h"
+#include "2d/CCDrawNode.h"
 
 using namespace cocos2d;
 

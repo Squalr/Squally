@@ -1,7 +1,7 @@
 #include "BinderCollectable.h"
 
-#include "cocos/base/ccTypes.h"
-#include "cocos/base/CCValue.h"
+#include "base/ccTypes.h"
+#include "base/CCValue.h"
 
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/Collectables/Collectable.h"

@@ -1,9 +1,9 @@
 #include "KillingMachineDamageBehavior.h"
 
-#include "cocos/base/ccRandom.h"
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCValue.h"
+#include "base/ccRandom.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
+#include "base/CCValue.h"
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/SaveEvents.h"

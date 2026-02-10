@@ -1,7 +1,7 @@
 #include "CartLift.h"
 
-#include "cocos/base/CCValue.h"
-#include "cocos/2d/CCSprite.h"
+#include "base/CCValue.h"
+#include "2d/CCSprite.h"
 
 #include "Resources/ObjectResources.h"
 

@@ -1,6 +1,6 @@
 #include "SpriterAnimationSprite.h"
 
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCSprite.h"
 
 #include "Engine/Animations/Spriter/SpriterAnimationBone.h"
 #include "Engine/Utils/GameUtils.h"

@@ -1,6 +1,6 @@
 #include "WeakMindedBehavior.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Hackables/HackActivatedAbility.h"

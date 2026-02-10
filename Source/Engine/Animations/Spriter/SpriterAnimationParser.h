@@ -2,9 +2,9 @@
 #include <map>
 #include <stack>
 
-#include "cocos/base/CCValue.h"
-#include "cocos/math/Vec2.h"
-#include "cocos/platform/CCSAXParser.h"
+#include "base/CCValue.h"
+#include "math/Vec2.h"
+#include "platform/CCSAXParser.h"
 
 #include "Engine/Animations/Spriter/SpriterStructs.h"
 

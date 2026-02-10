@@ -1,6 +1,6 @@
 #include "PocketPoolEFGeneric.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Inventory/ItemChance.h"

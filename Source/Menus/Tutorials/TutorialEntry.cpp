@@ -1,8 +1,8 @@
 #include "TutorialEntry.h"
 
-#include "cocos/2d/CCLayer.h"
-#include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCDirector.h"
+#include "2d/CCLayer.h"
+#include "2d/CCSprite.h"
+#include "base/CCDirector.h"
 
 #include "Engine/Config/ConfigManager.h"
 #include "Engine/Input/ClickableTextNode.h"

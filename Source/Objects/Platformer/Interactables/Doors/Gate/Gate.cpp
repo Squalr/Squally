@@ -1,11 +1,11 @@
 #include "Gate.h"
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCActionEase.h"
-#include "cocos/2d/CCDrawNode.h"
-#include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCValue.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
+#include "2d/CCActionEase.h"
+#include "2d/CCDrawNode.h"
+#include "2d/CCSprite.h"
+#include "base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Input/ClickableNode.h"

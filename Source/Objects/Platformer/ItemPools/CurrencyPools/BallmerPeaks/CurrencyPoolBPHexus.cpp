@@ -1,6 +1,6 @@
 #include "CurrencyPoolBPHexus.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Inventory/CurrencyPool.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"

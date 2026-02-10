@@ -1,8 +1,8 @@
 #include "EntityRunBehavior.h"
 
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCValue.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
+#include "base/CCValue.h"
 
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Movement/EntityMovementBehavior.h"

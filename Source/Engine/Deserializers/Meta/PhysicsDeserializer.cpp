@@ -1,6 +1,6 @@
 #include "PhysicsDeserializer.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Physics/PhysicsInitializer.h"
 #include "Engine/Maps/GameObject.h"

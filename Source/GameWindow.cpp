@@ -2,8 +2,8 @@
 
 #include <GLFW/glfw3.h>
 
-#include "cocos/base/CCDirector.h"
-#include "cocos/platform/desktop/CCGLViewImpl-desktop.h"
+#include "base/CCDirector.h"
+#include "platform/desktop/CCGLViewImpl-desktop.h"
 
 #include "Bootstrapper.h"
 #include "Engine/Config/ConfigManager.h"

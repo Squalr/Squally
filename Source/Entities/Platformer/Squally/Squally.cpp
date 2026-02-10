@@ -1,7 +1,7 @@
 #include "Squally.h"
 
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
 
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Input/Input.h"

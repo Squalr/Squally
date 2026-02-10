@@ -1,6 +1,6 @@
 #include "OpponentRoundWinBanner.h"
 
-#include "cocos/base/CCDirector.h"
+#include "base/CCDirector.h"
 
 #include "Scenes/Hexus/GameState.h"
 #include "Scenes/Hexus/HexusConfig.h"

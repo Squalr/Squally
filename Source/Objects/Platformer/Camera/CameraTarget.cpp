@@ -1,8 +1,8 @@
 #include "CameraTarget.h"
 
-#include "cocos/2d/CCDrawNode.h"
-#include "cocos/base/CCDirector.h"
-#include "cocos/base/CCValue.h"
+#include "2d/CCDrawNode.h"
+#include "base/CCDirector.h"
+#include "base/CCValue.h"
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Utils/GameUtils.h"

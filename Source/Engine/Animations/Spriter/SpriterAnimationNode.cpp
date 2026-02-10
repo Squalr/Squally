@@ -1,7 +1,7 @@
 #include "SpriterAnimationNode.h"
 
-#include "cocos/2d/CCSprite.h"
-#include "cocos/platform/CCFileUtils.h"
+#include "2d/CCSprite.h"
+#include "platform/CCFileUtils.h"
 
 #include "Engine/Animations/Spriter/Events/SpriterAnimationTimeline.h"
 #include "Engine/Animations/Spriter/SpriterAnimationBone.h"

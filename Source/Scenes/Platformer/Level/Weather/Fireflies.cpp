@@ -1,6 +1,6 @@
 #include "Fireflies.h"
 
-#include "cocos/base/CCDirector.h"
+#include "base/CCDirector.h"
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Particles/SmartParticles.h"

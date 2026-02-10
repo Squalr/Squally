@@ -1,7 +1,7 @@
 #include "ObjectiveTrigger.h"
 
-#include "cocos/base/ccTypes.h"
-#include "cocos/base/CCValue.h"
+#include "base/ccTypes.h"
+#include "base/CCValue.h"
 
 #include "Engine/Physics/CollisionObject.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"

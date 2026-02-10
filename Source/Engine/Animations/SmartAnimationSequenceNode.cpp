@@ -1,12 +1,12 @@
 #include "SmartAnimationSequenceNode.h"
 
-#include "cocos/2d/CCSprite.h"
-#include "cocos/2d/CCAction.h"
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/renderer/CCTextureCache.h"
-#include "cocos/base/CCDirector.h"
-#include "cocos/platform/CCFileUtils.h"
+#include "2d/CCSprite.h"
+#include "2d/CCAction.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
+#include "renderer/CCTextureCache.h"
+#include "base/CCDirector.h"
+#include "platform/CCFileUtils.h"
 
 #include "Engine/Utils/StrUtils.h"
 

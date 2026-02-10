@@ -1,6 +1,6 @@
 #include "Tier2EFHexusBehavior.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Objects/Platformer/ItemPools/HexusPools/EndianForest/HexusPoolEFGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"

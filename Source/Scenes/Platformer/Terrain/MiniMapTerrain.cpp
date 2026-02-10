@@ -1,6 +1,6 @@
 #include "MiniMapTerrain.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 using namespace cocos2d;
 

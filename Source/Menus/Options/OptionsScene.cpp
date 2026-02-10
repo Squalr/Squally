@@ -1,8 +1,8 @@
 #include "OptionsScene.h"
 
-#include "cocos/2d/CCNode.h"
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
+#include "2d/CCNode.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
 
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"

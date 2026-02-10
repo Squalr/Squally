@@ -1,7 +1,7 @@
 #include "ArrowVolleyGenericPreview.h"
 
-#include "cocos/2d/CCActionEase.h"
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCActionEase.h"
+#include "2d/CCSprite.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 

@@ -1,6 +1,6 @@
 #include "SpawnPoolEF.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Objects/Platformer/Collectables/IOUDrop.h"
 #include "Objects/Platformer/Collectables/ManaOrb.h"

@@ -1,6 +1,6 @@
 #include "DensityObject.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Utils/GameUtils.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"

@@ -2,7 +2,7 @@
 
 #include <SFML/Audio.hpp>
 
-#include "cocos/platform/CCFileUtils.h"
+#include "platform/CCFileUtils.h"
 
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Events/SoundEvents.h"

@@ -1,6 +1,6 @@
 #include "Sarcophagus.h"
 
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCSprite.h"
 
 #include "Resources/ObjectResources.h"
 

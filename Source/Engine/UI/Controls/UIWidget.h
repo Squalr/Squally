@@ -25,7 +25,7 @@ THE SOFTWARE.
 
 #pragma once
 
-#include "cocos/2d/CCNode.h"
+#include "2d/CCNode.h"
 
 namespace cocos2d
 {

@@ -1,6 +1,6 @@
 #include "AgroBehavior.h"
 
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCSprite.h"
 
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"

@@ -1,9 +1,9 @@
 #include "MiniMap.h"
 
-#include "cocos/2d/CCDrawNode.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
+#include "2d/CCDrawNode.h"
+#include "2d/CCActionInterval.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
 
 #include "Deserializers/Platformer/MiniMapCollisionDeserializer.h"
 #include "Deserializers/Platformer/MiniMapObjectDeserializer.h"

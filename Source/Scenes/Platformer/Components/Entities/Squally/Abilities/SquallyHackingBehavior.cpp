@@ -1,7 +1,7 @@
 #include "SquallyHackingBehavior.h"
 
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
 
 #include "Engine/Events/HackableEvents.h"
 #include "Entities/Platformer/Squally/Squally.h"

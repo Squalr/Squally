@@ -1,6 +1,6 @@
 #include "IOUDrop10.h"
 
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCSprite.h"
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Inventory/CurrencyInventory.h"

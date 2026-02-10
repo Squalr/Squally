@@ -25,16 +25,16 @@ THE SOFTWARE.
 
 #include "Engine/UI/Controls/UIWidget.h"
 
-#include "cocos/2d/CCCamera.h"
-#include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventDispatcher.h"
-#include "cocos/base/CCInputEvents.h"
-#include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/renderer/CCGLProgram.h"
-#include "cocos/renderer/CCGLProgramState.h"
-#include "cocos/renderer/ccShaders.h"
+#include "2d/CCCamera.h"
+#include "2d/CCSprite.h"
+#include "base/CCEventCustom.h"
+#include "base/CCDirector.h"
+#include "base/CCEventDispatcher.h"
+#include "base/CCInputEvents.h"
+#include "base/CCEventListenerCustom.h"
+#include "renderer/CCGLProgram.h"
+#include "renderer/CCGLProgramState.h"
+#include "renderer/ccShaders.h"
 
 using namespace cocos2d;
 

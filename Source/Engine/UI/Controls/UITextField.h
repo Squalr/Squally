@@ -27,7 +27,7 @@ THE SOFTWARE.
 
 #include "Engine/UI/Controls/UIWidget.h"
 
-#include "cocos/2d/CCTextFieldTTF.h"
+#include "2d/CCTextFieldTTF.h"
 
 class UICCTextField: public cocos2d::TextFieldTTF, public cocos2d::TextFieldDelegate
 {

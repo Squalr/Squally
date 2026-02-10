@@ -3,7 +3,7 @@
 #include <iostream>
 #include <fstream>
 
-#include "cocos/platform/CCFileUtils.h"
+#include "platform/CCFileUtils.h"
 
 const std::string LogUtils::logFileName = "SquallyLogs.txt";
 const std::string LogUtils::errorFileName = "SquallyErrors.txt";

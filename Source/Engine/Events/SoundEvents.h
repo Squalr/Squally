@@ -3,7 +3,7 @@
 #include <functional>
 #include <string>
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 namespace sf
 {

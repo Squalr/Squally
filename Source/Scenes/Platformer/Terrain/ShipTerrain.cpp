@@ -1,6 +1,6 @@
 #include "ShipTerrain.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Scenes/Platformer/Textures/ShipTexture.h"
 

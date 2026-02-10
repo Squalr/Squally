@@ -1,6 +1,6 @@
 #include "EntitySoulBehavior.h"
 
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCSprite.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Animations/SmartAnimationSequenceNode.h"

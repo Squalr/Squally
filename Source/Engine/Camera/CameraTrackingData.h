@@ -4,7 +4,7 @@
 #include <stack>
 #include <string>
 
-#include "cocos/math/Vec2.h"
+#include "math/Vec2.h"
 
 namespace cocos2d
 {

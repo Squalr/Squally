@@ -2,8 +2,8 @@
 #include <string>
 #include <vector>
 
-#include "cocos/base/ccTypes.h"
-#include "cocos/math/Vec3.h"
+#include "base/ccTypes.h"
+#include "math/Vec3.h"
 
 class Currency;
 class CurrencyPool;

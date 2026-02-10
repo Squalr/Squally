@@ -1,7 +1,7 @@
 #include "Localization.h"
 
-#include "cocos/platform/CCApplication.h"
-#include "cocos/platform/CCFileUtils.h"
+#include "platform/CCApplication.h"
+#include "platform/CCFileUtils.h"
 
 #include "Engine/Config/ConfigManager.h"
 #include "Engine/Events/LocalizationEvents.h"

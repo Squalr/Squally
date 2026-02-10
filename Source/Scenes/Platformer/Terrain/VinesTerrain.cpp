@@ -1,6 +1,6 @@
 #include "VinesTerrain.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"

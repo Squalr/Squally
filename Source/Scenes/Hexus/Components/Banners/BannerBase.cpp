@@ -1,8 +1,8 @@
 #include "BannerBase.h"
 
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCLayer.h"
-#include "cocos/base/CCDirector.h"
+#include "2d/CCActionInterval.h"
+#include "2d/CCLayer.h"
+#include "base/CCDirector.h"
 
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Scenes/Hexus/HexusConfig.h"

@@ -1,6 +1,6 @@
 #include "DryTexture.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Resources/TextureResources.h"
 

@@ -1,6 +1,6 @@
 #include "Scrappy.h"
 
-#include "cocos/math/CCGeometry.h"
+#include "math/CCGeometry.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 

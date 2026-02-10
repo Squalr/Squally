@@ -1,6 +1,6 @@
 #include "EnemyOutOfCombatAttackBehavior.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Physics/CollisionObject.h"

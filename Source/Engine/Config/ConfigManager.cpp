@@ -1,7 +1,7 @@
 #include "ConfigManager.h"
 
-#include "cocos/platform/CCFileUtils.h"
-#include "cocos/platform/desktop/CCGLViewImpl-desktop.h"
+#include "platform/CCFileUtils.h"
+#include "platform/desktop/CCGLViewImpl-desktop.h"
 
 #include "Engine/Events/SoundEvents.h"
 #include "Engine/Utils/GameUtils.h"

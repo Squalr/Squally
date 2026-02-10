@@ -1,9 +1,9 @@
 #include "SquallyCameraFollowBehavior.h"
 
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCValue.h"
-#include "cocos/math/CCGeometry.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
+#include "base/CCValue.h"
+#include "math/CCGeometry.h"
 
 #include "Engine/Camera/CameraTrackingData.h"
 #include "Engine/Camera/GameCamera.h"

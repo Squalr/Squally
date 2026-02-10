@@ -1,8 +1,8 @@
 #include "DeveloperScene.h"
 
-#include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCValue.h"
+#include "base/CCDirector.h"
+#include "base/CCEventListenerCustom.h"
+#include "base/CCValue.h"
 
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"

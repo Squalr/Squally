@@ -1,11 +1,11 @@
 #include "FadeHud.h"
 
-#include "cocos/2d/CCActionEase.h"
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCDrawNode.h"
-#include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCDirector.h"
+#include "2d/CCActionEase.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
+#include "2d/CCDrawNode.h"
+#include "2d/CCSprite.h"
+#include "base/CCDirector.h"
 
 #include "Engine/Optimization/LazyNode.h"
 #include "Scenes/Platformer/Level/Huds/FadeHuds/NormalFadeHud.h"

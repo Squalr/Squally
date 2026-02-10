@@ -1,6 +1,6 @@
 #pragma once
-#include "cocos/2d/CCSprite.h"
-#include "cocos/base/ccTypes.h"
+#include "2d/CCSprite.h"
+#include "base/ccTypes.h"
 
 class AsciiLetter : public cocos2d::Sprite
 {

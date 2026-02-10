@@ -1,8 +1,8 @@
 #include "CardEffects.h"
 
-#include "cocos/base/CCDirector.h"
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
+#include "base/CCDirector.h"
+#include "2d/CCActionInstant.h"
+#include "2d/CCActionInterval.h"
 
 #include "Engine/Particles/SmartParticles.h"
 #include "Scenes/Hexus/HexusConfig.h"

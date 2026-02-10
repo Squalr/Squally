@@ -1,7 +1,7 @@
 #include "HelpMenu.h"
 
-#include "cocos/2d/CCLayer.h"
-#include "cocos/base/CCDirector.h"
+#include "2d/CCLayer.h"
+#include "base/CCDirector.h"
 
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"

@@ -1,6 +1,6 @@
 #include "ChestPoolBPRare.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Inventory/ItemChance.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier7/AlchemyPoolTier7.h"

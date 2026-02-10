@@ -1,7 +1,7 @@
 #include "ProgressBar.h"
 
-#include "cocos/2d/CCClippingNode.h"
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCClippingNode.h"
+#include "2d/CCSprite.h"
 
 #include "Engine/Utils/MathUtils.h"
 

@@ -1,6 +1,6 @@
 #include "Slider.h"
 
-#include "cocos/2d/CCSprite.h"
+#include "2d/CCSprite.h"
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/UI/Controls/ProgressBar.h"

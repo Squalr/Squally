@@ -1,7 +1,7 @@
 #include "SquallyStaticHelpBehavior.h"
 
-#include "cocos/base/CCValue.h"
-#include "cocos/math/CCGeometry.h"
+#include "base/CCValue.h"
+#include "math/CCGeometry.h"
 
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"

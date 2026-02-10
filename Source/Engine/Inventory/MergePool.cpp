@@ -1,6 +1,6 @@
 #include "MergePool.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Inventory/CurrencyPool.h"
 #include "Engine/Inventory/ItemChance.h"

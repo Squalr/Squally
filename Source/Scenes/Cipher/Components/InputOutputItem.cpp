@@ -1,9 +1,9 @@
 #include "InputOutputItem.h"
 
-#include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCDirector.h"
+#include "2d/CCSprite.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
+#include "base/CCDirector.h"
 
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"

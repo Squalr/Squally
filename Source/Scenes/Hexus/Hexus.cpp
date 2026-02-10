@@ -1,10 +1,10 @@
 #include "Hexus.h"
 
-#include "cocos/2d/CCLayer.h"
-#include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCInputEvents.h"
+#include "2d/CCLayer.h"
+#include "base/CCDirector.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
+#include "base/CCInputEvents.h"
 
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/ObjectEvents.h"

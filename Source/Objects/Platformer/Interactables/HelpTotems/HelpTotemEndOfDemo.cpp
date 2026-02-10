@@ -1,6 +1,6 @@
 #include "HelpTotemEndOfDemo.h"
 
-#include "cocos/base/CCValue.h"
+#include "base/CCValue.h"
 
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
