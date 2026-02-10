@@ -61,7 +61,7 @@ const std::string& SerpentWandPlans::getIconResource()
 
 std::string SerpentWandPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Special_TaserRod;
+	return ItemResources::Equipment_Weapons_Special_SerpentWand;
 }
 
 const std::string& SerpentWandPlans::getIdentifier()

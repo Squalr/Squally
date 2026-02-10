@@ -23,7 +23,7 @@
     "ru": "%s1% шанс НЕ загружать критический урон удара (%s2% критический шанс попадания), основываясь на результате сравнения выше.",
     "sv": "%s1% chans att INTE ladda den kritiska träffskadan (%s2% kritisk träffchans), baserat på resultatet av jämförelsen ovan.",
     "th": "โอกาส %s1% ที่จะไม่โหลดความเสียหายจากการโจมตีที่สําคัญ (โอกาสตีวิกฤต %s2%) โดยพิจารณาจากผลลัพธ์ของการเปรียบเทียบข้างต้น",
-    "tr": "Yukarıdaki karşılaştırmanın sonucuna göre kritik isabet hasarını yüklememe olasılığı %%s1 (%%s2 kritik isabet şansı).",
+    "tr": "Yukarıdaki karşılaştırmanın sonucuna göre kritik isabet hasarını yüklememe olasılığı %s1% (%s2% kritik isabet şansı).",
     "uk": "%s1% шанс НЕ завантажити критичне пошкодження від попадання (%s2% критичної ймовірності попадання), виходячи з результату порівняння вище.",
     "vi": "%s1% cơ hội KHÔNG tải sát thương do va chạm chí mạng (%s2% cơ hội trúng đích), dựa trên kết quả so sánh ở trên.",
     "zh-CN": "根据上述比较结果，%s1%的几率不加载暴击伤害（%s2%暴击几率）。",

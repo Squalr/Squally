@@ -23,7 +23,7 @@
     "ru": "Неправильное использование младшего 8-битного регистра",
     "sv": "Ogiltig användning av ett lågt 8-bitars register",
     "th": "การใช้การลงทะเบียน 8 บิตต่ำไม่ถูกต้อง",
-    "tr": "8 bitlik düşük bir kaydın geçersiz kullanımı",
+    "tr": "Düşük 8 bit yazmaç geçersiz",
     "uk": "Неправильне використання низького 8-бітного регістра",
     "vi": "Việc sử dụng thanh ghi 8 bit thấp không hợp lệ",
     "zh-CN": "无效使用低8位寄存器",

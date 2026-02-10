@@ -15,7 +15,7 @@
     "ja": "乱数が符号付き(負)の場合は、「瀉血コード」にジャンプします。",
     "ko": "난수가 서명(음수)된 경우 '유혈 코드'로 이동합니다.",
     "nl": "Ga naar de 'aderlatingscode' als het willekeurige nummer is ondertekend (negatief).",
-    "no": "Gå til 'blodslettingskoden' hvis det tilfeldige tallet er signert (negativt).",
+    "no": "Gå til 'årelatingskoden' hvis det tilfeldige tallet er signert (negativt).",
     "pl": "Przejdź do 'kodu upuszczania krwi', jeśli losowa liczba jest podpisana (ujemna).",
     "pt": "Salte para o 'código de sangria' se o número aleatório estiver assinado (negativo).",
     "pt-BR": "Pule para o 'código de sangria' se o número aleatório estiver assinado (negativo).",

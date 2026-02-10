@@ -9,7 +9,7 @@
     "es": "Sugerencia: Un acierto crítico solo ocurre si el número aleatorio es exactamente igual a %s1. Intente cambiar 'cmovne' a 'cmove' para cambiar a una probabilidad de golpe crítico %s2%.",
     "es-419": "Sugerencia: Un acierto crítico solo ocurre si el número aleatorio es exactamente igual a %s1. Intente cambiar 'cmovne' a 'cmove' para cambiar a una probabilidad de golpe crítico %s2%.",
     "fi": "Vihje: Kriittinen osuma tapahtuu vain, jos satunnaisluku on täsmälleen sama kuin %s1. Kokeile muuttaa 'cmovne' muotoon 'cmove' vaihtaaksesi %s2% kriittisen osuman mahdollisuudeksi.",
-    "fr": "Astuce : Un coup critique ne se produit que si le nombre aléatoire est exactement égal à %s1. Essayez de remplacer 'cmovne' par 'cmove' pour passer à %s2% critical hit chance.",
+    "fr": "Astuce : Un coup critique ne se produit que si le nombre aléatoire est exactement égal à %s1. Essayez de remplacer 'cmovne' par 'cmove' pour passer à %s2% de chance de coup critique.",
     "hu": "Tipp: Kritikus lekérés csak akkor fordul elő, ha a véletlen szám pontosan egyenlő %s1-gyel. Próbálja meg a 'cmovne' szót 'cmove' értékre változtatni, hogy %s2% kritikus találati esélyre váltson.",
     "it": "Suggerimento: un hit critico si verifica solo se il numero casuale è esattamente uguale a %s1. Prova a cambiare 'cmovne' in 'cmove' per passare a una probabilità di successo critico %s2%.",
     "ja": "ヒント: クリティカル ヒットは、乱数が %s1 と正確に等しい場合にのみ発生します。'cmovne' を 'cmove' に変更して 、クリティカルヒット率を %s2% に変更してみてください。",

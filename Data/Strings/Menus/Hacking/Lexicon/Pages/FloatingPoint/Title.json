@@ -1,6 +1,6 @@
 {
     "ar": "النقطة العائمة",
-    "bg": "С плаваща запетая",
+    "bg": "Плаваща запетая",
     "cs": "Plovoucí bod",
     "da": "Floating-point",
     "de": "Gleitkomma",
@@ -16,16 +16,16 @@
     "ko": "부동 소수점",
     "nl": "Floating-point",
     "no": "Flytende punkt",
-    "pl": "Pływający punkt",
+    "pl": "Zmiennoprzecinkowe",
     "pt": "Ponto flutuante",
     "pt-BR": "Ponto flutuante",
-    "ro": "Punctul de plutire",
+    "ro": "Virgulă mobilă",
     "ru": "Плавающая запятая",
     "sv": "Flytpunkt",
     "th": "จุดลอยตัว",
     "tr": "Kayan nokta",
-    "uk": "Плаваючою точкою",
-    "vi": "Điểm nổi",
+    "uk": "Плаваюча кома",
+    "vi": "Dấu phẩy động",
     "zh-CN": "浮点",
     "zh-TW": "浮點"
 }

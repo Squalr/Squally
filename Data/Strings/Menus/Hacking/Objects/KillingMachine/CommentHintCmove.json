@@ -9,7 +9,7 @@
     "es": "Sugerencia: Un acierto crítico solo ocurre si el número aleatorio es exactamente igual a %s1. Intente cambiar 'cmove' a 'cmovne' para cambiar a una probabilidad de aciertos críticos %s2%.",
     "es-419": "Sugerencia: Un acierto crítico solo ocurre si el número aleatorio es exactamente igual a %s1. Intente cambiar 'cmove' a 'cmovne' para cambiar a una probabilidad de aciertos críticos %s2%.",
     "fi": "Vihje: Kriittinen osuma tapahtuu vain, jos satunnaisluku on täsmälleen sama kuin %s1. Kokeile muuttaa 'cmove' arvoksi 'cmovne' vaihtaaksesi %s2% kriittisen osuman mahdollisuuteen.",
-    "fr": "Astuce : Un coup critique ne se produit que si le nombre aléatoire est exactement égal à %s1. Essayez de remplacer 'cmove' par 'cmovne' pour passer à %s2% critical hit chance.",
+    "fr": "Astuce : Un coup critique ne se produit que si le nombre aléatoire est exactement égal à %s1. Essayez de remplacer 'cmove' par 'cmovne' pour passer à %s2% de chance de coup critique.",
     "hu": "Tipp: Kritikus lekérés csak akkor fordul elő, ha a véletlen szám pontosan egyenlő %s1-gyel. Próbálja meg a 'cmove' szót 'cmovne' értékre változtatni, hogy %s2% kritikus találati esélyre váltson.",
     "it": "Suggerimento: un hit critico si verifica solo se il numero casuale è esattamente uguale a %s1. Prova a cambiare 'cmove' in 'cmovne' per passare a una probabilità di successo critico %s2%.",
     "ja": "ヒント: クリティカル ヒットは、乱数が %s1 と正確に等しい場合にのみ発生します。'cmove' を 'cmovne' に変更して 、クリティカルヒット率を %s2% に変更してみてください。",
@@ -25,7 +25,7 @@
     "th": "คําแนะนํา: คริติคอลฮิตจะเกิดขึ้นก็ต่อเมื่อตัวเลขสุ่มเท่ากับ %s1 ทุกประการ ลองเปลี่ยน 'cmove' เป็น 'cmovne' เพื่อเปลี่ยนเป็น %s2% critical hit chance",
     "tr": "İpucu: Kritik isabet yalnızca rasgele sayı tam olarak %s1'e eşitse gerçekleşir. %s2% kritik isabet şansına geçmek için 'cmove'u 'cmovne' olarak değiştirmeyi deneyin.",
     "uk": "Підказка: Критичне попадання відбувається тільки в тому випадку, якщо випадкове число точно дорівнює %s1. Спробуйте змінити 'cmove' на 'cmovne', щоб змінити на %s2% шансів критичного попадання.",
-    "vi": "Gợi ý: Một cú đánh tới hạn chỉ xảy ra nếu số ngẫu nhiên chính xác bằng %s1. Hãy thử thay đổi 'cmove' thành 'cmovne' để thay đổi thành %s2% critical hit chance.",
+    "vi": "Gợi ý: Một cú đánh tới hạn chỉ xảy ra nếu số ngẫu nhiên chính xác bằng %s1. Hãy thử thay đổi 'cmove' thành 'cmovne' để đổi thành %s2% tỉ lệ chí mạng.",
     "zh-CN": "提示：仅当随机数正好等于 %s1 时，才会发生暴击。尝试将“cmove”更改为“cmovne”以更改为%s2%暴击几率。",
     "zh-TW": "提示：僅當隨機數正好等於 %s1 時，才會發生暴擊。嘗試將「cmove」更改為「cmovne」 以更改為%s2%暴擊幾率。"
 }
