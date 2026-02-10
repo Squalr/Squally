@@ -1,6 +1,8 @@
 # Agentic Current Task (Readonly)
 Our current task is to re-translate all strings in the game, as these were done with primitive tools that are frequently filled with translation errors.
 
+The point is not to try and translate these out of context, nor use an API or script to translate. Instead, the goal is to build context such that the LLM agent knows how to translate each string in the game.
+
 Builds can be validates with:
 "C:\Program Files\CMake\bin\cmake.EXE" --build c:/Projects/Squally/build --config RelWithDebInfo --target all --
 
