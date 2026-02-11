@@ -1,5 +1,5 @@
 {
-    "ar": "هذا صحيح ، ٪ s1. نحن نطلب التضحية القصوى.",
+    "ar": "هذا صحيح، %s1. نحن نطلب التضحية القصوى.",
     "bg": "Вярно е, %s1. Ние искаме най-голямата жертва.",
     "cs": "Je pravda, %s1. Žádáme o nejvyšší oběť.",
     "da": "Det er sandt, %s1. Vi beder om det ultimative offer.",
@@ -22,7 +22,7 @@
     "ro": "Este adevărat, %s1. Cerem sacrificiul suprem.",
     "ru": "Это правда, %s1. Мы просим о высшей жертве.",
     "sv": "Det är sant, %s1. Vi ber om det ultimata offret.",
-    "th": "มันเป็นความจริง% s1 เรากําลังขอความเสียสละอย่างสูงสุด",
+    "th": "มันเป็นความจริง %s1 เรากำลังขอการเสียสละสูงสุด",
     "tr": "Bu doğru, %s1. Nihai fedakarlığı istiyoruz.",
     "uk": "Це правда, %s1. Ми просимо найвищої жертви.",
     "vi": "Đó là sự thật, %s1. Chúng tôi đang cầu xin sự hy sinh cuối cùng.",

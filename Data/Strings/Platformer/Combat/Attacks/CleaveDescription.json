@@ -23,7 +23,7 @@
     "ru": "Поражает все цели на %s1% урона от оружия.",
     "sv": "Träffar alla mål för %s1% av vapenskador.",
     "th": "โจมตีเป้าหมายทั้งหมด %s1% ของความเสียหายอาวุธ",
-    "tr": "Silah hasarının %%s1'i için tüm hedefleri vurur.",
+    "tr": "Silah hasarının %s1'i için tüm hedefleri vurur.",
     "uk": "Б'є всі цілі за %s1% від шкоди зброї.",
     "vi": "Số lượt truy cập tất cả các mục tiêu cho %s1% thiệt hại vũ khí.",
     "zh-CN": "击中所有目标，造成%s1%的武器伤害。",

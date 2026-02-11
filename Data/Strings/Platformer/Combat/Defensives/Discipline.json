@@ -1,5 +1,5 @@
 {
-    "ar": "أدب",
+    "ar": "انضباط",
     "bg": "Дисциплина",
     "cs": "Kázeň",
     "da": "Disciplin",
@@ -13,7 +13,7 @@
     "hu": "Fegyelem",
     "it": "Disciplina",
     "ja": "躾",
-    "ko": "징계",
+    "ko": "규율",
     "nl": "Discipline",
     "no": "Disiplin",
     "pl": "Dyscyplina",
@@ -24,8 +24,8 @@
     "sv": "Disciplin",
     "th": "วินัย",
     "tr": "Disiplin",
-    "uk": "Дисципліни",
+    "uk": "Дисципліна",
     "vi": "Kỷ luật",
-    "zh-CN": "学科",
-    "zh-TW": "學科"
+    "zh-CN": "纪律",
+    "zh-TW": "紀律"
 }

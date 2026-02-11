@@ -9,10 +9,10 @@
     "es": "rsi: %s1",
     "es-419": "rsi: %s1",
     "fi": "rsi: %s1",
-    "fr": "rsi : %s1",
+    "fr": "rsi: %s1",
     "hu": "rsi: %s1",
     "it": "rsi: %s1",
-    "ja": "rsi %s1",
+    "ja": "rsi: %s1",
     "ko": "rsi: %s1",
     "nl": "rsi: %s1",
     "no": "rsi: %s1",
@@ -26,6 +26,6 @@
     "tr": "rsi: %s1",
     "uk": "rsi: %s1",
     "vi": "rsi: %s1",
-    "zh-CN": "rsi： %s1",
-    "zh-TW": "rsi： %s1"
+    "zh-CN": "rsi: %s1",
+    "zh-TW": "rsi: %s1"
 }

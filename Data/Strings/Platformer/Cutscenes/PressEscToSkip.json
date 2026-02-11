@@ -1,10 +1,10 @@
 {
-    "ar": "اضغط على الهروب للتخطي",
-    "bg": "Натиснете бягство, за да прескочите",
+    "ar": "اضغط esc للتخطي",
+    "bg": "Натиснете esc, за да прескочите",
     "cs": "Stisknutím klávesy escape přeskočíte",
     "da": "Tryk på esc for at springe over",
     "de": "Drücken Sie zum Überspringen esc",
-    "el": "Πατήστε διαφυγή για να παραλείψετε",
+    "el": "Πατήστε esc για παράλειψη",
     "en": "Press esc to skip",
     "es": "Presiona esc para saltar",
     "es-419": "Presiona esc para saltar",
@@ -22,10 +22,10 @@
     "ro": "Apăsați esc pentru a sări peste",
     "ru": "Нажмите esc, чтобы пропустить",
     "sv": "Tryck på esc för att hoppa över",
-    "th": "กดหลบหนีเพื่อข้าม",
+    "th": "กด esc เพื่อข้าม",
     "tr": "Atlamak için esc tuşuna basın.",
-    "uk": "Натисніть клавішу Втеча щоб пропустити",
-    "vi": "Nhấn thoát để bỏ qua",
-    "zh-CN": "按逃生跳过",
-    "zh-TW": "按逃生跳過"
+    "uk": "Натисніть esc, щоб пропустити",
+    "vi": "Nhấn esc để bỏ qua",
+    "zh-CN": "按 esc 跳过",
+    "zh-TW": "按 esc 跳過"
 }

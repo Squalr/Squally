@@ -13,7 +13,7 @@
     "hu": "Segfault!",
     "it": "Segfault!",
     "ja": "Segfault!",
-    "ko": "세그 폴트",
+    "ko": "Segfault!",
     "nl": "Segfault!",
     "no": "Segfault!",
     "pl": "Segfault!",
@@ -25,7 +25,7 @@
     "th": "Segfault!",
     "tr": "Segfault!",
     "uk": "Segfault!",
-    "vi": "Phân đoạn",
-    "zh-CN": "段错误",
-    "zh-TW": "段錯誤"
+    "vi": "Segfault!",
+    "zh-CN": "Segfault!",
+    "zh-TW": "Segfault!"
 }

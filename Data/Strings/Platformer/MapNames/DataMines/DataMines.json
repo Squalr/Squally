@@ -3,7 +3,7 @@
     "bg": "Мините за данни",
     "cs": "Datové doly",
     "da": "Dataminer",
-    "de": "Data Mines",
+    "de": "Datenminen",
     "el": "Νάρκες Δεδομένων",
     "en": "Data Mines",
     "es": "Minas de datos",
@@ -26,6 +26,6 @@
     "tr": "Veri Madenleri",
     "uk": "Міни даних",
     "vi": "Dữ liệu mìn",
-    "zh-CN": "数据地雷",
-    "zh-TW": "資料地雷"
+    "zh-CN": "数据矿井",
+    "zh-TW": "資料礦坑"
 }

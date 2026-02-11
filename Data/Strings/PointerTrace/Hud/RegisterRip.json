@@ -9,10 +9,10 @@
     "es": "rip: %s1",
     "es-419": "rip: %s1",
     "fi": "rip: %s1",
-    "fr": "rip : %s1",
+    "fr": "rip: %s1",
     "hu": "rip: %s1",
     "it": "rip: %s1",
-    "ja": "rip %s1",
+    "ja": "rip: %s1",
     "ko": "rip: %s1",
     "nl": "rip: %s1",
     "no": "rip: %s1",
@@ -26,6 +26,6 @@
     "tr": "rip: %s1",
     "uk": "rip: %s1",
     "vi": "rip: %s1",
-    "zh-CN": "rip： %s1",
-    "zh-TW": "rip： %s1"
+    "zh-CN": "rip: %s1",
+    "zh-TW": "rip: %s1"
 }

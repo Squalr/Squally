@@ -10,7 +10,7 @@
     "es-419": "Los pagarés se pueden cambiar por pociones, armas y otros artículos en las tiendas.",
     "fi": "IOU: t voidaan vaihtaa juomien, aseiden ja muiden tavaroiden kanssa kaupoissa.",
     "fr": "Les reconnaissances de dette peuvent être échangées contre des potions, des armes et d'autres objets dans les magasins.",
-    "hu": "Az IOU-k cserélhetők főzõkre, fegyverekre és egyéb tárgyakra az üzletekben.",
+    "hu": "Az IOU-k bájitalokra, fegyverekre és más tárgyakra válthatók be a boltokban.",
     "it": "Gli IOU possono essere scambiati con pozioni, armi e altri oggetti nei negozi.",
     "ja": "IOUは商店でポーション、武器、その他のアイテムと交換することができます。",
     "ko": "차용 증서는 상점에서 포션, 무기 및 기타 품목으로 교환 할 수 있습니다.",
@@ -25,7 +25,7 @@
     "th": "สามารถแลกเปลี่ยนทางการค้าเพื่อซื้อน้ำยาอาวุธและรายการอื่น ๆ ได้ที่ร้านค้า",
     "tr": "IOU'lar iksir, silah ve dükkanlardaki diğer eşyalarla değiştirilebilir.",
     "uk": "ВМО можна міняти на зілля, зброю та інші предмети в магазинах.",
-    "vi": "IOU có thể được trao đổi để lấy potions, vũ khí và các mặt hàng khác tại các cửa hàng.",
+    "vi": "IOU có thể được đổi lấy thuốc, vũ khí và các vật phẩm khác tại các cửa hàng.",
     "zh-CN": "欠条可以在商店兑换魔药，武器和其他物品。",
     "zh-TW": "欠條可以在商店兌換魔藥，武器和其他物品。"
 }

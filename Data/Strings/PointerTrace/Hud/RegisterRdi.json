@@ -9,10 +9,10 @@
     "es": "rdi: %s1",
     "es-419": "rdi: %s1",
     "fi": "rdi: %s1",
-    "fr": "rdi : %s1",
+    "fr": "rdi: %s1",
     "hu": "rdi: %s1",
     "it": "rdi: %s1",
-    "ja": "rdi %s1",
+    "ja": "rdi: %s1",
     "ko": "rdi: %s1",
     "nl": "rdi: %s1",
     "no": "rdi: %s1",
@@ -26,6 +26,6 @@
     "tr": "rdi: %s1",
     "uk": "rdi: %s1",
     "vi": "rdi: %s1",
-    "zh-CN": "rdi： %s1",
-    "zh-TW": "rdi： %s1"
+    "zh-CN": "rdi: %s1",
+    "zh-TW": "rdi: %s1"
 }

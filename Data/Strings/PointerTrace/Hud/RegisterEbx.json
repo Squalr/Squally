@@ -9,10 +9,10 @@
     "es": "ebx: %s1",
     "es-419": "ebx: %s1",
     "fi": "ebx: %s1",
-    "fr": "ebx : %s1",
+    "fr": "ebx: %s1",
     "hu": "ebx: %s1",
     "it": "ebx: %s1",
-    "ja": "ebx %s1",
+    "ja": "ebx: %s1",
     "ko": "ebx: %s1",
     "nl": "ebx: %s1",
     "no": "ebx: %s1",
@@ -26,6 +26,6 @@
     "tr": "ebx: %s1",
     "uk": "ebx: %s1",
     "vi": "ebx: %s1",
-    "zh-CN": "ebx： %s1",
-    "zh-TW": "ebx： %s1"
+    "zh-CN": "ebx: %s1",
+    "zh-TW": "ebx: %s1"
 }

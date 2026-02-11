@@ -9,10 +9,10 @@
     "es": "esi: %s1",
     "es-419": "esi: %s1",
     "fi": "esi: %s1",
-    "fr": "esi : %s1",
+    "fr": "esi: %s1",
     "hu": "esi: %s1",
     "it": "esi: %s1",
-    "ja": "esi %s1",
+    "ja": "esi: %s1",
     "ko": "esi: %s1",
     "nl": "esi: %s1",
     "no": "esi: %s1",
@@ -26,6 +26,6 @@
     "tr": "esi: %s1",
     "uk": "esi: %s1",
     "vi": "esi: %s1",
-    "zh-CN": "esi： %s1",
-    "zh-TW": "esi： %s1"
+    "zh-CN": "esi: %s1",
+    "zh-TW": "esi: %s1"
 }
