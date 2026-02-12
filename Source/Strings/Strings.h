@@ -8043,7 +8043,7 @@ namespace Strings
 		virtual ~Menus_Collectables_Animals_Tiger() = default;
 	};
 
-	class Menus_Collectables_Animals_Tucan : public LocalizedString
+	class Menus_Collectables_Animals_Toucan : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -8052,8 +8052,8 @@ namespace Strings
 	protected:
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 	private:
-		Menus_Collectables_Animals_Tucan();
-		virtual ~Menus_Collectables_Animals_Tucan() = default;
+		Menus_Collectables_Animals_Toucan();
+		virtual ~Menus_Collectables_Animals_Toucan() = default;
 	};
 
 	class Menus_Collectables_Animals_Turtle : public LocalizedString
@@ -8223,19 +8223,6 @@ namespace Strings
 	private:
 		Menus_Crafting_Bows();
 		virtual ~Menus_Crafting_Bows() = default;
-	};
-
-	class Menus_Crafting_Craftable : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-	private:
-		Menus_Crafting_Craftable();
-		virtual ~Menus_Crafting_Craftable() = default;
 	};
 
 	class Menus_Crafting_Crafting : public LocalizedString
@@ -27647,7 +27634,7 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Helpers_UnderflowRuins_Mummy() = default;
 	};
 
-	class Platformer_Entities_Names_Helpers_VoidStar_Robot : public LocalizedString
+	class Platformer_Entities_Names_Helpers_VoidStar_Robbie : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -27656,8 +27643,8 @@ namespace Strings
 	protected:
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 	private:
-		Platformer_Entities_Names_Helpers_VoidStar_Robot();
-		virtual ~Platformer_Entities_Names_Helpers_VoidStar_Robot() = default;
+		Platformer_Entities_Names_Helpers_VoidStar_Robbie();
+		virtual ~Platformer_Entities_Names_Helpers_VoidStar_Robbie() = default;
 	};
 
 	class Platformer_Entities_Names_Npcs_BallmerPeaks_Aspen : public LocalizedString

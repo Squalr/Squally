@@ -1,5 +1,5 @@
 {
-    "ar": "!حرية",
+    "ar": "حرية!",
     "bg": "Свобода!",
     "cs": "Svoboda!",
     "da": "Frihed!",
@@ -9,11 +9,11 @@
     "es": "¡Libertad!",
     "es-419": "¡Libertad!",
     "fi": "Vapaus!",
-    "fr": "Liberté!",
+    "fr": "Liberté !",
     "hu": "Szabadság!",
-    "it": "La libertà!",
-    "ja": "自由！",
-    "ko": "자유!",
+    "it": "Libertà!",
+    "ja": "自由だ！",
+    "ko": "자유다!",
     "nl": "Vrijheid!",
     "no": "Frihet!",
     "pl": "Wolność!",
@@ -23,11 +23,11 @@
     "ru": "Свобода!",
     "sv": "Frihet!",
     "sw": "Uhuru!",
-    "th": "เสรีภาพ!",
+    "th": "อิสรภาพ!",
     "tl": "Kalayaan!",
     "tr": "Özgürlük!",
     "uk": "Свобода!",
-    "vi": "Sự tự do!",
-    "zh-CN": "自由！",
-    "zh-TW": "自由！"
+    "vi": "Tự do!",
+    "zh-CN": "自由了！",
+    "zh-TW": "自由了！"
 }
