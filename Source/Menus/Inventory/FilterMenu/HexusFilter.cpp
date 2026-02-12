@@ -18,7 +18,7 @@ HexusFilter* HexusFilter::create()
 	return itemPreview;
 }
 
-HexusFilter::HexusFilter() : super (Strings::Menus_Inventory_Equipment::create(), UIResources::Menus_InventoryMenu_HexusIcon)
+HexusFilter::HexusFilter() : super (Strings::Menus_Inventory_Hexus::create(), UIResources::Menus_InventoryMenu_HexusIcon)
 {
 }
 

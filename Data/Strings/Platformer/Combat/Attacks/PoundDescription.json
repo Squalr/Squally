@@ -23,7 +23,7 @@
     "ru": "Атака, которая наносит %s1% от нормального урона.",
     "sv": "En attack som ger %s1% av normala skador.",
     "th": "การโจมตีที่สร้างความเสียหาย %s1% ของความเสียหายปกติ",
-    "tr": "Normal hasarın %%s1'sini sağlayan bir saldırı.",
+    "tr": "Normal hasarın %s1'sini sağlayan bir saldırı.",
     "uk": "Напад, який завдає %s1% від нормального збитку.",
     "vi": "Một cuộc tấn công mà Deals %s1% thiệt hại bình thường.",
     "zh-CN": "造成正常伤害%s1%的攻击。",

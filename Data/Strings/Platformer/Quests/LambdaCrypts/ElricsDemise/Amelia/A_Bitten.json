@@ -8,7 +8,7 @@
     "en": "%s1 was bitten by a zombie, and sent us to get help.",
     "es": "%s1 fue mordido por un zombi y nos envió a buscar ayuda.",
     "es-419": "%s1 fue mordido por un zombi y nos envió a buscar ayuda.",
-    "fi": "Zombi puri %s1: tä ja lähetti meidät hakemaan apua.",
+    "fi": "Zombi puri %s1:tä ja lähetti meidät hakemaan apua.",
     "fr": "%s1 a été mordu par un zombie et nous a envoyés chercher de l’aide.",
     "hu": "%s1-t megharapta egy zombi, és elküldött minket, hogy segítséget kérjünk.",
     "it": "%s1 è stato morso da uno zombie e ci ha mandato a chiedere aiuto.",
@@ -27,5 +27,5 @@
     "uk": "%s1 був укушений зомбі, і відправив нас на допомогу.",
     "vi": "%s1 bị một thây ma cắn, và gửi chúng tôi đến để được giúp đỡ.",
     "zh-CN": "%s1被僵尸咬了一口，派我们去寻求帮助。",
-    "zh-TW": "%s1被殭屍咬了一口，派我們去尋求説明。"
+    "zh-TW": "%s1被殭屍咬了一口，派我們去尋求幫助。"
 }

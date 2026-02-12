@@ -9,10 +9,10 @@
     "es": "edi: %s1",
     "es-419": "edi: %s1",
     "fi": "edi: %s1",
-    "fr": "edi : %s1",
+    "fr": "edi: %s1",
     "hu": "edi: %s1",
     "it": "edi: %s1",
-    "ja": "edi %s1",
+    "ja": "edi: %s1",
     "ko": "edi: %s1",
     "nl": "edi: %s1",
     "no": "edi: %s1",
@@ -26,6 +26,6 @@
     "tr": "edi: %s1",
     "uk": "edi: %s1",
     "vi": "edi: %s1",
-    "zh-CN": "edi： %s1",
-    "zh-TW": "edi： %s1"
+    "zh-CN": "edi: %s1",
+    "zh-TW": "edi: %s1"
 }

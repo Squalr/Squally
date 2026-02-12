@@ -9,10 +9,10 @@
     "es": "rsp: %s1",
     "es-419": "rsp: %s1",
     "fi": "rsp: %s1",
-    "fr": "rsp : %s1",
+    "fr": "rsp: %s1",
     "hu": "rsp: %s1",
     "it": "rsp: %s1",
-    "ja": "rsp %s1",
+    "ja": "rsp: %s1",
     "ko": "rsp: %s1",
     "nl": "rsp: %s1",
     "no": "rsp: %s1",
@@ -26,6 +26,6 @@
     "tr": "rsp: %s1",
     "uk": "rsp: %s1",
     "vi": "rsp: %s1",
-    "zh-CN": "rsp： %s1",
-    "zh-TW": "rsp： %s1"
+    "zh-CN": "rsp: %s1",
+    "zh-TW": "rsp: %s1"
 }

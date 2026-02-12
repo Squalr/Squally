@@ -20,12 +20,12 @@
     "pt": "Procure no templo por %s1.",
     "pt-BR": "Procure no templo por %s1.",
     "ro": "Căutați în templu %s1.",
-    "ru": "Обыщите храм для %s1.",
+    "ru": "Обыщите храм в поисках %s1.",
     "sv": "Sök i templet efter %s1.",
     "th": "ค้นหาวิหารสำหรับ %s1",
     "tr": "Tapınakta %s1 arayın.",
-    "uk": "Пошук у храмі для %s1.",
-    "vi": "Tìm kiếm ngôi đền cho %s1.",
-    "zh-CN": "在太阳穴中搜索%s1。",
-    "zh-TW": "在太陽穴中搜索%s1。"
+    "uk": "Огляньте храм у пошуках %s1.",
+    "vi": "Tìm kiếm %s1 trong ngôi đền.",
+    "zh-CN": "在神殿中寻找%s1。",
+    "zh-TW": "在神殿中搜尋%s1。"
 }

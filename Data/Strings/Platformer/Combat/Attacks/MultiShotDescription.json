@@ -23,7 +23,7 @@
     "ru": "Стреляет по всем мишеням, нанося %s1% урона от оружия.",
     "sv": "Skjuter alla mål, som behandlar %s1% av vapenskador.",
     "th": "ยิงเป้าหมายทั้งหมด, การจัดการ %s1% ของความเสียหายอาวุธ.",
-    "tr": "Tüm hedefleri vuruyor, silah hasarının %%s1'ini veriyor.",
+    "tr": "Tüm hedefleri vuruyor, silah hasarının %s1'ini veriyor.",
     "uk": "Стріляє всіх цілей, що займаються %s1% шкоди зброї.",
     "vi": "Bắn tất cả các mục tiêu, xử lý %s1% thiệt hại vũ khí.",
     "zh-CN": "射杀所有目标，造成%s1%的武器伤害。",

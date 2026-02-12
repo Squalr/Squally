@@ -23,7 +23,7 @@
     "ru": "Неправильное использование 64-битного регистра в 32-битном режиме",
     "sv": "Ogiltig användning av ett 64-bitars register i 32-bitars läge",
     "th": "การใช้การลงทะเบียน 64 บิตไม่ถูกต้องในโหมด 32 บิต",
-    "tr": "64 bit kaydının 32 bit modda geçersiz kullanımı",
+    "tr": "32 bit modda 64 bit yazmaç geçersiz",
     "uk": "Неправильне використання 64-бітного регістра в 32-бітному режимі",
     "vi": "Việc sử dụng thanh ghi 64 bit không hợp lệ ở chế độ 32 bit",
     "zh-CN": "在32位模式下无效使用64位寄存器",

@@ -23,7 +23,7 @@
     "ru": "Возрождает члена команды, восстанавливая их до %s1% здоровья.",
     "sv": "Återupplivar en gruppmedlem, återställa dem till %s1% hälsa.",
     "th": "ฟื้นฟูสมาชิกในทีมฟื้นฟูสุขภาพ %s1%",
-    "tr": "Bir ekip üyesini canlandırarak %%s1'ye geri döndürer.",
+    "tr": "Bir ekip üyesini canlandırarak %s1'ye geri döndürer.",
     "uk": "Відроджує член команди, відновлюючи їх на %s1% здоров'я.",
     "vi": "Hồi sinh một thành viên trong nhóm, khôi phục chúng đến %s1% sức khỏe.",
     "zh-CN": "复活团队成员，恢复他们 %s1% 的健康。",

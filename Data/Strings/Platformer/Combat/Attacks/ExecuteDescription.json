@@ -23,7 +23,7 @@
     "ru": "Атака, которая наносит %s1% урона от оружия.",
     "sv": "En attack som ger %s1% av vapenskador.",
     "th": "การโจมตีที่สร้างความเสียหายอาวุธ %s1%",
-    "tr": "Silah hasarının %%s1'sini sağlayan bir saldırı.",
+    "tr": "Silah hasarının %s1'sini sağlayan bir saldırı.",
     "uk": "Напад, який завдає %s1% шкоди зброєю.",
     "vi": "Một cuộc tấn công mà Deals %s1% của vũ khí thiệt hại.",
     "zh-CN": "攻击，造成%s1%的武器伤害。",

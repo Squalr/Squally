@@ -590,7 +590,7 @@ void MuseumGiftBehavior::setPostTextFF()
 	}
 
 	int collectedAnimalCount =
-		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalTucan, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalToucan, Value(false)).asBool() +
 		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalLizard, Value(false)).asBool() +
 		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBee, Value(false)).asBool() +
 		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalLadybug, Value(false)).asBool() +

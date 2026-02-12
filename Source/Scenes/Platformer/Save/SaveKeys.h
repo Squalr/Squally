@@ -126,7 +126,7 @@ public:
 	static const std::string SaveKeyCollectableAnimalSquid;
 	static const std::string SaveKeyCollectableAnimalSquirrel;
 	static const std::string SaveKeyCollectableAnimalTiger;
-	static const std::string SaveKeyCollectableAnimalTucan;
+	static const std::string SaveKeyCollectableAnimalToucan;
 	static const std::string SaveKeyCollectableAnimalTurtle;
 	static const std::string SaveKeyCollectableAnimalWhale;
 	static const std::string SaveKeyCollectableAnimalWolf;

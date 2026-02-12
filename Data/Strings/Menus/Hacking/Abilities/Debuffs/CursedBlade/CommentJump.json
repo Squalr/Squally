@@ -19,13 +19,13 @@
     "pl": "Wróć do etykiety 'repeat', gdy uszkodzenie wynosi >= 1,0f.",
     "pt": "Retorne ao rótulo 'repeat' enquanto o dano for >= 1.0f.",
     "pt-BR": "Retorne ao rótulo 'repeat' enquanto o dano for >= 1,0f.",
-    "ro": "Reveniți la eticheta 'repeat', în timp ce deteriorarea este > = 1,0f.",
+    "ro": "Reveniți la eticheta 'repeat', în timp ce deteriorarea este >= 1,0f.",
     "ru": "Вернитесь к метке 'repeat', пока ущерб равен >= 1.0f.",
     "sv": "Återgå till etiketten 'repeat' medan skadan är >= 1.0f.",
     "th": "กลับไปที่ฉลาก 'repeat' ในขณะที่ความเสียหายคือ >= 1.0f",
     "tr": "Hasar >= 1,0f iken 'repeat' etiketine geri dönün.",
     "uk": "Поверніться до мітки 'repeat', якщо пошкодження становлять >= 1.0f.",
-    "vi": "Quay trở lại nhãn 'repeat' trong khi thiệt hại là > = 1,0f.",
+    "vi": "Quay trở lại nhãn 'repeat' trong khi thiệt hại là >= 1,0f.",
     "zh-CN": "当伤害为 >= 1.0f 时返回 'repeat' 标签。",
     "zh-TW": "當傷害為 >= 1.0f 時返回 'repeat' 標籤。"
 }

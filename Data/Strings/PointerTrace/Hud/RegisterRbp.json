@@ -9,10 +9,10 @@
     "es": "rbp: %s1",
     "es-419": "rbp: %s1",
     "fi": "rbp: %s1",
-    "fr": "rbp : %s1",
+    "fr": "rbp: %s1",
     "hu": "rbp: %s1",
     "it": "rbp: %s1",
-    "ja": "rbp %s1",
+    "ja": "rbp: %s1",
     "ko": "rbp: %s1",
     "nl": "rbp: %s1",
     "no": "rbp: %s1",
@@ -26,6 +26,6 @@
     "tr": "rbp: %s1",
     "uk": "rbp: %s1",
     "vi": "rbp: %s1",
-    "zh-CN": "rbp： %s1",
-    "zh-TW": "rbp： %s1"
+    "zh-CN": "rbp: %s1",
+    "zh-TW": "rbp: %s1"
 }

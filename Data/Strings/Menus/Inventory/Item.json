@@ -8,7 +8,7 @@
     "en": "Item",
     "es": "Artículo",
     "es-419": "Artículo",
-    "fi": "Nimikkeen",
+    "fi": "Esine",
     "fr": "Article",
     "hu": "Cikk",
     "it": "Elemento",
@@ -20,12 +20,12 @@
     "pt": "Artigo",
     "pt-BR": "Item",
     "ro": "Element",
-    "ru": "Элемента",
+    "ru": "Предмет",
     "sv": "Objekt",
     "th": "สินค้า",
     "tr": "Öğe",
     "uk": "Елемент",
     "vi": "Mục",
     "zh-CN": "项目",
-    "zh-TW": "專案"
+    "zh-TW": "物品"
 }

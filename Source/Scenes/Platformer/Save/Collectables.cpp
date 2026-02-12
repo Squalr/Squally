@@ -91,7 +91,7 @@ void Collectables::buildAnimalData()
 	Collectables::CollectableAnimalData.push_back(CollectableData(ObjectResources::Collectables_Animals_Squid, ObjectResources::Collectables_Animals_Squid_Locked, SaveKeys::SaveKeyCollectableAnimalSquid));
 	Collectables::CollectableAnimalData.push_back(CollectableData(ObjectResources::Collectables_Animals_Squirrel, ObjectResources::Collectables_Animals_Squirrel_Locked, SaveKeys::SaveKeyCollectableAnimalSquirrel));
 	Collectables::CollectableAnimalData.push_back(CollectableData(ObjectResources::Collectables_Animals_Tiger, ObjectResources::Collectables_Animals_Tiger_Locked, SaveKeys::SaveKeyCollectableAnimalTiger));
-	Collectables::CollectableAnimalData.push_back(CollectableData(ObjectResources::Collectables_Animals_Tucan, ObjectResources::Collectables_Animals_Tucan_Locked, SaveKeys::SaveKeyCollectableAnimalTucan));
+	Collectables::CollectableAnimalData.push_back(CollectableData(ObjectResources::Collectables_Animals_Toucan, ObjectResources::Collectables_Animals_Toucan_Locked, SaveKeys::SaveKeyCollectableAnimalToucan));
 	Collectables::CollectableAnimalData.push_back(CollectableData(ObjectResources::Collectables_Animals_Turtle, ObjectResources::Collectables_Animals_Turtle_Locked, SaveKeys::SaveKeyCollectableAnimalTurtle));
 	Collectables::CollectableAnimalData.push_back(CollectableData(ObjectResources::Collectables_Animals_Whale, ObjectResources::Collectables_Animals_Whale_Locked, SaveKeys::SaveKeyCollectableAnimalWhale));
 	Collectables::CollectableAnimalData.push_back(CollectableData(ObjectResources::Collectables_Animals_Wolf, ObjectResources::Collectables_Animals_Wolf_Locked, SaveKeys::SaveKeyCollectableAnimalWolf));

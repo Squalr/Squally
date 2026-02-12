@@ -1,5 +1,5 @@
 {
-    "ar": "الغضب",
+    "ar": "غضب",
     "bg": "Ярост",
     "cs": "Zuřivost",
     "da": "Raseri",
@@ -12,8 +12,8 @@
     "fr": "Furie",
     "hu": "Düh",
     "it": "Furia",
-    "ja": "怒り",
-    "ko": "성",
+    "ja": "憤怒",
+    "ko": "분노",
     "nl": "Woede",
     "no": "Raseri",
     "pl": "Furia",
@@ -22,10 +22,10 @@
     "ro": "Furie",
     "ru": "Ярость",
     "sv": "Raseri",
-    "th": "โทสะ",
+    "th": "ความเดือดดาล",
     "tr": "Öfke",
-    "uk": "Люті",
-    "vi": "Fury",
+    "uk": "Лють",
+    "vi": "Cuồng nộ",
     "zh-CN": "愤怒",
     "zh-TW": "憤怒"
 }

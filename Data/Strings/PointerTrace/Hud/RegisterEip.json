@@ -9,10 +9,10 @@
     "es": "eip: %s1",
     "es-419": "eip: %s1",
     "fi": "eip: %s1",
-    "fr": "eip : %s1",
+    "fr": "eip: %s1",
     "hu": "eip: %s1",
     "it": "eip: %s1",
-    "ja": "eip %s1",
+    "ja": "eip: %s1",
     "ko": "eip: %s1",
     "nl": "eip: %s1",
     "no": "eip: %s1",
@@ -26,6 +26,6 @@
     "tr": "eip: %s1",
     "uk": "eip: %s1",
     "vi": "eip: %s1",
-    "zh-CN": "eip： %s1",
-    "zh-TW": "eip： %s1"
+    "zh-CN": "eip: %s1",
+    "zh-TW": "eip: %s1"
 }

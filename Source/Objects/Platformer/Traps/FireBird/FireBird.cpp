@@ -104,7 +104,7 @@ void FireBird::registerHackables()
 						HackableCode::Register::xmm2, Strings::Menus_Hacking_Objects_FireBird_UpdateTimer_RegisterXmm2::create(), HackableDataType::Float
 					},
 					{
-						HackableCode::Register::xmm4, Strings::Menus_Hacking_Objects_FireBird_UpdateTimer_RegisterXmm2::create(), HackableDataType::Float
+						HackableCode::Register::xmm4, Strings::Menus_Hacking_Objects_FireBird_UpdateTimer_RegisterXmm4::create(), HackableDataType::Float
 					},
 				},
 				int(HackFlags::None),

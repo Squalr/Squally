@@ -8,12 +8,12 @@
     "en": "Shifting right by 1 is the same as dividing by 2!",
     "es": "¡Cambiar a la derecha por 1 es lo mismo que dividir por 2!",
     "es-419": "¡Cambiar a la derecha por 1 es lo mismo que dividir por 2!",
-    "fi": "Siirtyminen oikealle 1 on sama kuin jakamalla 2!",
+    "fi": "Oikealle siirtäminen yhdellä on sama kuin jakaminen kahdella!",
     "fr": "Passer à droite par 1 est la même chose que diviser par 2!",
     "hu": "Jobbra tolatás 1-el ugyanaz, mint elosztani 2!",
     "it": "Spostarsi a destra per 1 equivale a dividere per 2!",
     "ja": "右に1でシフトすることは、2で割るのと同じです!",
-    "ko": "오른쪽으로 오른쪽으로 이동하는 것은 2로 나누는 것과 같습니다!",
+    "ko": "1비트 오른쪽 시프트는 2로 나누는 것과 같습니다!",
     "nl": "Het verschuiven van rechts door 1 is hetzelfde als delen door 2!",
     "no": "Å skifte til høyre med 1 er det samme som å dele med 2!",
     "pl": "Przesunięcie w prawo o 1 jest takie samo jak dzielenie przez 2!",
@@ -25,7 +25,7 @@
     "th": "ขวาขยับโดย 1 เป็นเช่นเดียวกับหารด้วย 2!",
     "tr": "Sağa 1 kaydırma, 2'ye bölmekle aynıdır!",
     "uk": "Зміщення права на 1 так само, як поділ на 2!",
-    "vi": "Chuyển quyền của 1 là giống như chia 2!",
+    "vi": "Dịch phải 1 bit cũng giống như chia cho 2!",
     "zh-CN": "向右移动 1 与除以 2 相同！",
     "zh-TW": "向右移動 1 與除以 2 相同!"
 }

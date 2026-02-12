@@ -164,8 +164,7 @@ void TalkToElriel::runCinematicSequencePart2()
 void TalkToElriel::runCinematicSequencePart3()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_EndianForest_FindElriel_Elriel_C_MeetMeInTown::create()
-			->setStringReplacementVariables(Strings::Platformer_MapNames_EndianForest_Elbridge::create()),
+		Strings::Platformer_Quests_EndianForest_FindElriel_Elriel_C_MeetMeInTown::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,

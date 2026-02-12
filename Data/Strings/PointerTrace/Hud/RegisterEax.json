@@ -9,10 +9,10 @@
     "es": "eax: %s1",
     "es-419": "eax: %s1",
     "fi": "eax: %s1",
-    "fr": "eax : %s1",
+    "fr": "eax: %s1",
     "hu": "eax: %s1",
     "it": "eax: %s1",
-    "ja": "eax %s1",
+    "ja": "eax: %s1",
     "ko": "eax: %s1",
     "nl": "eax: %s1",
     "no": "eax: %s1",
@@ -26,6 +26,6 @@
     "tr": "eax: %s1",
     "uk": "eax: %s1",
     "vi": "eax: %s1",
-    "zh-CN": "eax： %s1",
-    "zh-TW": "eax： %s1"
+    "zh-CN": "eax: %s1",
+    "zh-TW": "eax: %s1"
 }

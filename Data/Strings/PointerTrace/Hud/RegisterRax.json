@@ -9,10 +9,10 @@
     "es": "rax: %s1",
     "es-419": "rax: %s1",
     "fi": "rax: %s1",
-    "fr": "rax : %s1",
+    "fr": "rax: %s1",
     "hu": "rax: %s1",
     "it": "rax: %s1",
-    "ja": "rax %s1",
+    "ja": "rax: %s1",
     "ko": "rax: %s1",
     "nl": "rax: %s1",
     "no": "rax: %s1",
@@ -26,6 +26,6 @@
     "tr": "rax: %s1",
     "uk": "rax: %s1",
     "vi": "rax: %s1",
-    "zh-CN": "rax： %s1",
-    "zh-TW": "rax： %s1"
+    "zh-CN": "rax: %s1",
+    "zh-TW": "rax: %s1"
 }

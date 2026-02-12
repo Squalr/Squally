@@ -6,11 +6,11 @@
     "de": "Zurück",
     "el": "Πίσω",
     "en": "Back",
-    "es": "Espalda",
-    "es-419": "Espalda",
+    "es": "Atrás",
+    "es-419": "Atrás",
     "fi": "Takaisin",
     "fr": "Retour",
-    "hu": "Hát",
+    "hu": "Vissza",
     "it": "Indietro",
     "ja": "バック",
     "ko": "뒤로",
@@ -26,6 +26,6 @@
     "tr": "Geri",
     "uk": "Назад",
     "vi": "Trở lại",
-    "zh-CN": "背部",
-    "zh-TW": "背部"
+    "zh-CN": "返回",
+    "zh-TW": "返回"
 }

@@ -31,7 +31,7 @@ SerpentWandPlans::~SerpentWandPlans()
 
 std::vector<Item*> SerpentWandPlans::craft()
 {
-	return { TaserRod::create() };
+	return { SerpentWand::create() };
 }
 
 std::vector<std::tuple<Item*, int>> SerpentWandPlans::getReagentsInternal()
@@ -61,7 +61,7 @@ const std::string& SerpentWandPlans::getIconResource()
 
 std::string SerpentWandPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Special_TaserRod;
+	return ItemResources::Equipment_Weapons_Special_SerpentWand;
 }
 
 const std::string& SerpentWandPlans::getIdentifier()
