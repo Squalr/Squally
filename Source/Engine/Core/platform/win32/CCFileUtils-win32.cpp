@@ -38,7 +38,7 @@ THE SOFTWARE.
 #include "base/CCConsole.h"
 #include "platform/win32/CCUtils-win32.h"
 #include "platform/CCCommon.h"
-#include "tinydir/tinydir.h"
+#include "External/tinydir/tinydir.h"
 
 using namespace std;
 

@@ -40,5 +40,5 @@ Vec2 Robot::getDialogueOffset()
 
 LocalizedString* Robot::getEntityName()
 {
-	return Strings::Platformer_Entities_Names_Helpers_VoidStar_Robot::create();
+	return Strings::Platformer_Entities_Names_Helpers_VoidStar_Robbie::create();
 }

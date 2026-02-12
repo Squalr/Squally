@@ -1239,7 +1239,7 @@ std::vector<std::string> FileUtils::listFilesRecursively(const std::string& dirP
 }
 
 #else
-#include "tinydir/tinydir.h"
+#include "External/tinydir/tinydir.h"
 // default implements for unix like os
 #include <sys/types.h>
 #include <errno.h>

@@ -27,7 +27,7 @@
 #include <limits>
 #include <stdarg.h>
 
-#include "ConvertUTF.h"
+#include "External/ConvertUTF/ConvertUTF.h"
 #include "base/CCConsole.h"
 #include "base/ccUTF8.h"
 #include "platform/CCCommon.h"

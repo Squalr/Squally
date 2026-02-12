@@ -129,13 +129,15 @@ endif()
 
 #leave andatory external stuff here also
 
+set(COCOS_EXTERNAL_DIR ${CMAKE_CURRENT_LIST_DIR}/../../External)
 set(COCOS_PLATFORM_INCLUDE_PATHS
-    ${PROJECT_SOURCE_DIR}/External
-    ${PROJECT_SOURCE_DIR}/External/ConvertUTF
-    ${PROJECT_SOURCE_DIR}/External/edtaa3func
-    ${PROJECT_SOURCE_DIR}/External/poly2tri
-    ${PROJECT_SOURCE_DIR}/External/poly2tri/common
-    ${PROJECT_SOURCE_DIR}/External/poly2tri/sweep
+    ${COCOS_EXTERNAL_DIR}
+    ${COCOS_EXTERNAL_DIR}/ConvertUTF
+    ${COCOS_EXTERNAL_DIR}/edtaa3func
+    ${COCOS_EXTERNAL_DIR}/tinydir
+    ${COCOS_EXTERNAL_DIR}/poly2tri
+    ${COCOS_EXTERNAL_DIR}/poly2tri/common
+    ${COCOS_EXTERNAL_DIR}/poly2tri/sweep
     )
 
 set(COCOS_PLATFORM_HEADER
