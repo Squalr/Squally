@@ -42,7 +42,7 @@
 #include "Objects/Platformer/Breakables/CagedAnimals/CagedSquid.h"
 #include "Objects/Platformer/Breakables/CagedAnimals/CagedSquirrel.h"
 #include "Objects/Platformer/Breakables/CagedAnimals/CagedTiger.h"
-#include "Objects/Platformer/Breakables/CagedAnimals/CagedTucan.h"
+#include "Objects/Platformer/Breakables/CagedAnimals/CagedToucan.h"
 #include "Objects/Platformer/Breakables/CagedAnimals/CagedTurtle.h"
 #include "Objects/Platformer/Breakables/CagedAnimals/CagedWhale.h"
 #include "Objects/Platformer/Breakables/CagedAnimals/CagedWolf.h"

@@ -87,7 +87,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[CagedSquid::MapKey] = [=](ValueMap properties) { return (GameObject*)CagedSquid::create(properties); };
 	this->deserializers[CagedSquirrel::MapKey] = [=](ValueMap properties) { return (GameObject*)CagedSquirrel::create(properties); };
 	this->deserializers[CagedTiger::MapKey] = [=](ValueMap properties) { return (GameObject*)CagedTiger::create(properties); };
-	this->deserializers[CagedTucan::MapKey] = [=](ValueMap properties) { return (GameObject*)CagedTucan::create(properties); };
+	this->deserializers[CagedToucan::MapKey] = [=](ValueMap properties) { return (GameObject*)CagedToucan::create(properties); };
 	this->deserializers[CagedTurtle::MapKey] = [=](ValueMap properties) { return (GameObject*)CagedTurtle::create(properties); };
 	this->deserializers[CagedWhale::MapKey] = [=](ValueMap properties) { return (GameObject*)CagedWhale::create(properties); };
 	this->deserializers[CagedWolf::MapKey] = [=](ValueMap properties) { return (GameObject*)CagedWolf::create(properties); };
