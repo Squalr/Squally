@@ -7866,20 +7866,20 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "لقد مر خصمك! احرز النصر في هذه الجولة."; }		case LanguageType::BULGARIAN:				{ return "Вашият противник е пропуснал хода си! Спечелете този рунд."; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "你的对手已经弃权！赢得本轮胜利。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "你的對手已經棄權！贏得本輪勝利。"; }
-			case LanguageType::CZECH:					{ return "Váš soupeř prošel! Získejte vítězství v tomto kole."; }		case LanguageType::DANISH:					{ return "Din modstander har passeret! Gør krav på sejren i denne runde."; }
-			case LanguageType::DUTCH:					{ return "Je tegenstander heeft gepast! Claim de overwinning van deze ronde."; }		case LanguageType::FINNISH:					{ return "Vastustajasi on ohittanut! Vaatikaa tämän kierroksen voitto."; }
-			case LanguageType::FRENCH:					{ return "Votre adversaire a passé son tour ! Réclamez la victoire de ce round."; }		case LanguageType::GERMAN:					{ return "Ihr Gegner hat gepasst! Beanspruchen Sie den Sieg in dieser Runde."; }
-			case LanguageType::GREEK:					{ return "Ο αντίπαλός σας έχει περάσει! Αξιώστε τη νίκη αυτού του γύρου."; }		case LanguageType::HUNGARIAN:				{ return "Az ellenfeled feladta a kört! Szerezd meg a győzelmet ebben a körben."; }
-			case LanguageType::ITALIAN:					{ return "Il tuo avversario ha passato! Rivendica la vittoria di questo round."; }		case LanguageType::JAPANESE:				{ return "対戦相手がパスしました！このラウンドの勝利を主張しましょう。"; }
-			case LanguageType::KOREAN:					{ return "상대가 패스했습니다! 이번 라운드의 승리를 차지하세요."; }		case LanguageType::NORWEGIAN:				{ return "Motstanderen din har passert! Krev seier i denne runden."; }
-			case LanguageType::POLISH:					{ return "Twój przeciwnik spasował! Zdobądź zwycięstwo w tej rundzie."; }		case LanguageType::PORTUGUESE:				{ return "Seu oponente passou! Reivindique a vitória desta rodada."; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "Seu oponente passou! Reivindique a vitória desta rodada."; }		case LanguageType::ROMANIAN:				{ return "Adversarul tău a trecut! Reclamă victoria acestui rând."; }
-			case LanguageType::RUSSIAN:					{ return "Ваш противник пропустил ход! Заявите о победе в этом раунде."; }		case LanguageType::SPANISH:					{ return "¡Tu oponente ha pasado! Reclama la victoria de esta ronda."; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "¡Tu oponente ha pasado! Reclama la victoria de esta ronda."; }	case LanguageType::SWEDISH:					{ return "Din motståndare har passat! Kräv segern i denna runda."; }
-			case LanguageType::THAI:					{ return "คู่ต่อสู้ของคุณได้ผ่าน! อ้างสิทธิ์ชัยชนะในรอบนี้"; }		case LanguageType::TURKISH:					{ return "Rakibiniz pas geçti! Bu raundun galibiyetini talep edin."; }
-			case LanguageType::UKRAINIAN:				{ return "Ваш противник пропустив хід! Здобудьте перемогу в цьому раунді."; }		case LanguageType::VIETNAMESE:				{ return "Đối thủ của bạn đã bỏ qua! Hãy giành chiến thắng trong vòng này."; }
+			case LanguageType::ARABIC:					{ return "لقد مرر خصمك! احسم النصر في هذه الجولة."; }		case LanguageType::BULGARIAN:				{ return "Противникът ти пасува! Вземи победата в този рунд."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "你的对手已弃权！拿下这一回合的胜利。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "你的對手已棄權！拿下這一回合的勝利。"; }
+			case LanguageType::CZECH:					{ return "Tvůj soupeř přeskočil tah! Získej vítězství v tomto kole."; }		case LanguageType::DANISH:					{ return "Din modstander har passet! Tag sejren i denne runde."; }
+			case LanguageType::DUTCH:					{ return "Je tegenstander heeft gepast! Claim de overwinning in deze ronde."; }		case LanguageType::FINNISH:					{ return "Vastustajasi on passannut! Ota voitto tästä kierroksesta."; }
+			case LanguageType::FRENCH:					{ return "Votre adversaire a passé son tour ! Réclamez la victoire pour ce round."; }		case LanguageType::GERMAN:					{ return "Ihr Gegner hat gepasst! Beanspruchen Sie den Sieg in dieser Runde."; }
+			case LanguageType::GREEK:					{ return "Ο αντίπαλός σου πάσαρε! Διεκδίκησε τη νίκη σε αυτόν τον γύρο."; }		case LanguageType::HUNGARIAN:				{ return "Az ellenfeled passzolt! Szerezd meg a győzelmet ebben a körben."; }
+			case LanguageType::ITALIAN:					{ return "Il tuo avversario ha passato! Rivendica la vittoria in questo round."; }		case LanguageType::JAPANESE:				{ return "相手はパスした！このラウンドの勝利を手にしよう。"; }
+			case LanguageType::KOREAN:					{ return "상대가 패스했습니다! 이번 라운드의 승리를 가져가세요."; }		case LanguageType::NORWEGIAN:				{ return "Motstanderen din har passet! Krev seieren i denne runden."; }
+			case LanguageType::POLISH:					{ return "Twój przeciwnik spasował! Zgarnij zwycięstwo w tej rundzie."; }		case LanguageType::PORTUGUESE:				{ return "O teu oponente passou! Reivindica a vitória nesta ronda."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "Seu oponente passou! Reivindique a vitória nesta rodada."; }		case LanguageType::ROMANIAN:				{ return "Adversarul tău a pasat! Revendică victoria în această rundă."; }
+			case LanguageType::RUSSIAN:					{ return "Твой противник спасовал! Забирай победу в этом раунде."; }		case LanguageType::SPANISH:					{ return "¡Tu oponente ha pasado! Reclama la victoria en esta ronda."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "¡Tu oponente ha pasado! Reclama la victoria en esta ronda."; }	case LanguageType::SWEDISH:					{ return "Din motståndare har passat! Ta segern i den här rundan."; }
+			case LanguageType::THAI:					{ return "คู่ต่อสู้ของคุณผ่านแล้ว! คว้าชัยชนะในรอบนี้"; }		case LanguageType::TURKISH:					{ return "Rakibin pas geçti! Bu rauntta galibiyeti al."; }
+			case LanguageType::UKRAINIAN:				{ return "Твій суперник пасував! Забирай перемогу в цьому раунді."; }		case LanguageType::VIETNAMESE:				{ return "Đối thủ của bạn đã bỏ lượt! Hãy giành chiến thắng trong vòng này."; }
 			default: case LanguageType::ENGLISH:		{ return "Your opponent has passed! Claim victory this round."; }
 		}
 	}
@@ -13866,20 +13866,20 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "مفتاح الشيطان"; }		case LanguageType::BULGARIAN:				{ return "Демонски ключ"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "恶魔钥匙"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "惡魔鑰匙"; }
-			case LanguageType::CZECH:					{ return "Démonický klíč"; }		case LanguageType::DANISH:					{ return "Dæmonnøgle"; }
-			case LanguageType::DUTCH:					{ return "Demonensleutel"; }		case LanguageType::FINNISH:					{ return "Demonin avain"; }
-			case LanguageType::FRENCH:					{ return "Clé démoniaque"; }		case LanguageType::GERMAN:					{ return "Dämonenschlüssel"; }
-			case LanguageType::GREEK:					{ return "Δαιμονικό κλειδί"; }		case LanguageType::HUNGARIAN:				{ return "Démonkulcs"; }
-			case LanguageType::ITALIAN:					{ return "Chiave demoniaca"; }		case LanguageType::JAPANESE:				{ return "悪魔の鍵"; }
-			case LanguageType::KOREAN:					{ return "악마의 열쇠"; }		case LanguageType::NORWEGIAN:				{ return "Demonnøkkel"; }
-			case LanguageType::POLISH:					{ return "Demoniczny klucz"; }		case LanguageType::PORTUGUESE:				{ return "Chave demoníaca"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "Chave demoníaca"; }		case LanguageType::ROMANIAN:				{ return "Cheia demonului"; }
-			case LanguageType::RUSSIAN:					{ return "Демонический ключ"; }		case LanguageType::SPANISH:					{ return "Llave demoníaca"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "Llave demoníaca"; }	case LanguageType::SWEDISH:					{ return "Demonnyckel"; }
-			case LanguageType::THAI:					{ return "กุญแจปีศาจ"; }		case LanguageType::TURKISH:					{ return "Şeytan anahtarı"; }
-			case LanguageType::UKRAINIAN:				{ return "Демонічний ключ"; }		case LanguageType::VIETNAMESE:				{ return "Chìa khóa quỷ"; }
+			case LanguageType::ARABIC:					{ return "مفتاح الجحيم"; }		case LanguageType::BULGARIAN:				{ return "Ключ от ада"; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "地狱之钥"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "地獄之鑰"; }
+			case LanguageType::CZECH:					{ return "Klíč z pekla"; }		case LanguageType::DANISH:					{ return "Helvedesnøgle"; }
+			case LanguageType::DUTCH:					{ return "Sleutel van de Hel"; }		case LanguageType::FINNISH:					{ return "Helvetin avain"; }
+			case LanguageType::FRENCH:					{ return "Clé de l'Enfer"; }		case LanguageType::GERMAN:					{ return "Höllenschlüssel"; }
+			case LanguageType::GREEK:					{ return "Κλειδί της Κόλασης"; }		case LanguageType::HUNGARIAN:				{ return "Pokolkulcs"; }
+			case LanguageType::ITALIAN:					{ return "Chiave dell'Inferno"; }		case LanguageType::JAPANESE:				{ return "地獄の鍵"; }
+			case LanguageType::KOREAN:					{ return "지옥의 열쇠"; }		case LanguageType::NORWEGIAN:				{ return "Helvetesnøkkel"; }
+			case LanguageType::POLISH:					{ return "Klucz Piekieł"; }		case LanguageType::PORTUGUESE:				{ return "Chave do Inferno"; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "Chave do Inferno"; }		case LanguageType::ROMANIAN:				{ return "Cheia Iadului"; }
+			case LanguageType::RUSSIAN:					{ return "Ключ ада"; }		case LanguageType::SPANISH:					{ return "Llave del infierno"; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "Llave del infierno"; }	case LanguageType::SWEDISH:					{ return "Helvetesnyckel"; }
+			case LanguageType::THAI:					{ return "กุญแจนรก"; }		case LanguageType::TURKISH:					{ return "Cehennem Anahtarı"; }
+			case LanguageType::UKRAINIAN:				{ return "Ключ пекла"; }		case LanguageType::VIETNAMESE:				{ return "Chìa khóa địa ngục"; }
 			default: case LanguageType::ENGLISH:		{ return "Hell Key"; }
 		}
 	}
@@ -18391,21 +18391,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "تطبيق سرعة كرة النار"; }		case LanguageType::BULGARIAN:				{ return "Приложи скорост на огненото кълбо"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "应用火球速度"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "應用火球速度"; }
-			case LanguageType::CZECH:					{ return "Nastavit rychlost ohnivé koule"; }		case LanguageType::DANISH:					{ return "Anvend ildkuglehastighed"; }
-			case LanguageType::DUTCH:					{ return "Vuurbal snelheid toepassen"; }		case LanguageType::FINNISH:					{ return "Aseta tulipallon nopeus"; }
-			case LanguageType::FRENCH:					{ return "Appliquer la vitesse de la boule de feu"; }		case LanguageType::GERMAN:					{ return "Feuerball-Geschwindigkeit anwenden"; }
-			case LanguageType::GREEK:					{ return "Εφαρμογή ταχύτητας πυρίνης σφαίρας"; }		case LanguageType::HUNGARIAN:				{ return "Tűzgolyó sebesség alkalmazása"; }
-			case LanguageType::ITALIAN:					{ return "Applica velocità della palla di fuoco"; }		case LanguageType::JAPANESE:				{ return "ファイアボールの速度を適用"; }
-			case LanguageType::KOREAN:					{ return "파이어볼 속도 적용"; }		case LanguageType::NORWEGIAN:				{ return "Bruk ildkulehastighet"; }
-			case LanguageType::POLISH:					{ return "Zastosuj prędkość kuli ognia"; }		case LanguageType::PORTUGUESE:				{ return "Aplicar velocidade da bola de fogo"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "Aplicar velocidade da bola de fogo"; }		case LanguageType::ROMANIAN:				{ return "Aplică viteza sferei de foc"; }
-			case LanguageType::RUSSIAN:					{ return "Применить скорость огненного шара"; }		case LanguageType::SPANISH:					{ return "Aplicar velocidad de bola de fuego"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "Aplicar velocidad de bola de fuego"; }	case LanguageType::SWEDISH:					{ return "Använd eldbollens hastighet"; }
-			case LanguageType::THAI:					{ return "ปรับความเร็วลูกไฟ"; }		case LanguageType::TURKISH:					{ return "Ateş Topu Hızını Uygula"; }
-			case LanguageType::UKRAINIAN:				{ return "Застосувати швидкість вогняної кулі"; }		case LanguageType::VIETNAMESE:				{ return "Áp dụng tốc độ cầu lửa"; }
-			default: case LanguageType::ENGLISH:		{ return "Apply Fireball Speed"; }
+			case LanguageType::ARABIC:					{ return "تطبيق سرعة كرة الماء"; }		case LanguageType::BULGARIAN:				{ return "Прилагане на скоростта на водната топка"; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "应用水球速度"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "套用水球速度"; }
+			case LanguageType::CZECH:					{ return "Použít rychlost vodní koule"; }		case LanguageType::DANISH:					{ return "Anvend vandkuglens hastighed"; }
+			case LanguageType::DUTCH:					{ return "Waterbal-snelheid toepassen"; }		case LanguageType::FINNISH:					{ return "Aseta vesipallon nopeus"; }
+			case LanguageType::FRENCH:					{ return "Appliquer la vitesse de la boule d'eau"; }		case LanguageType::GERMAN:					{ return "Wasserkugel-Geschwindigkeit anwenden"; }
+			case LanguageType::GREEK:					{ return "Εφαρμογή ταχύτητας υδάτινης σφαίρας"; }		case LanguageType::HUNGARIAN:				{ return "Vízgolyó sebességének alkalmazása"; }
+			case LanguageType::ITALIAN:					{ return "Applica velocità della palla d'acqua"; }		case LanguageType::JAPANESE:				{ return "ウォーターボールの速度を適用"; }
+			case LanguageType::KOREAN:					{ return "워터볼 속도 적용"; }		case LanguageType::NORWEGIAN:				{ return "Bruk vannkulehastighet"; }
+			case LanguageType::POLISH:					{ return "Zastosuj prędkość kuli wody"; }		case LanguageType::PORTUGUESE:				{ return "Aplicar velocidade da bola de água"; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "Aplicar velocidade da bola de água"; }		case LanguageType::ROMANIAN:				{ return "Aplică viteza sferei de apă"; }
+			case LanguageType::RUSSIAN:					{ return "Применить скорость водяного шара"; }		case LanguageType::SPANISH:					{ return "Aplicar velocidad de bola de agua"; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "Aplicar velocidad de bola de agua"; }	case LanguageType::SWEDISH:					{ return "Använd vattenbollens hastighet"; }
+			case LanguageType::THAI:					{ return "ใช้ความเร็วลูกบอลน้ำ"; }		case LanguageType::TURKISH:					{ return "Su Topu Hızını Uygula"; }
+			case LanguageType::UKRAINIAN:				{ return "Застосувати швидкість водяної кулі"; }		case LanguageType::VIETNAMESE:				{ return "Áp dụng tốc độ cầu nước"; }
+			default: case LanguageType::ENGLISH:		{ return "Apply Waterball speed"; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_CommentAlterSpeed::create() { LocalizedString* instance = new Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_CommentAlterSpeed(); instance->autorelease(); return instance; }
@@ -21241,20 +21241,20 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "شفرة السمط"; }		case LanguageType::BULGARIAN:				{ return "Острие за попарване"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "烫伤刀片"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "燙傷刀片"; }
-			case LanguageType::CZECH:					{ return "Opařovací čepel"; }		case LanguageType::DANISH:					{ return "Skoldende klinge"; }
-			case LanguageType::DUTCH:					{ return "Broeiendblad"; }		case LanguageType::FINNISH:					{ return "Palava terä"; }
-			case LanguageType::FRENCH:					{ return "Lame brûlante"; }		case LanguageType::GERMAN:					{ return "Verbrühklinge"; }
-			case LanguageType::GREEK:					{ return "Λεπίδα ζεματίσματος"; }		case LanguageType::HUNGARIAN:				{ return "Forrázó penge"; }
-			case LanguageType::ITALIAN:					{ return "Lama scottante"; }		case LanguageType::JAPANESE:				{ return "やけどの刃"; }
-			case LanguageType::KOREAN:					{ return "끓는 날"; }		case LanguageType::NORWEGIAN:				{ return "Skåldende blad"; }
-			case LanguageType::POLISH:					{ return "Ostrze do oparzeń"; }		case LanguageType::PORTUGUESE:				{ return "Lâmina escaldante"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "Lâmina escaldante"; }		case LanguageType::ROMANIAN:				{ return "Lama de opărire"; }
-			case LanguageType::RUSSIAN:					{ return "Ошпаривание лезвия"; }		case LanguageType::SPANISH:					{ return "Cuchilla escaldada"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "Cuchilla escaldada"; }	case LanguageType::SWEDISH:					{ return "Skållhet blad"; }
-			case LanguageType::THAI:					{ return "ใบมีดลวก"; }		case LanguageType::TURKISH:					{ return "Haşlama Bıçağı"; }
-			case LanguageType::UKRAINIAN:				{ return "Ошпарювальний клинок"; }		case LanguageType::VIETNAMESE:				{ return "Lưỡi dao mở rộng quy mô"; }
+			case LanguageType::ARABIC:					{ return "نصل متتبع"; }		case LanguageType::BULGARIAN:				{ return "Търсещо острие"; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "追踪之刃"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "追蹤之刃"; }
+			case LanguageType::CZECH:					{ return "Naváděná čepel"; }		case LanguageType::DANISH:					{ return "Søgende klinge"; }
+			case LanguageType::DUTCH:					{ return "Zoekend lemmet"; }		case LanguageType::FINNISH:					{ return "Etsivä terä"; }
+			case LanguageType::FRENCH:					{ return "Lame traqueuse"; }		case LanguageType::GERMAN:					{ return "Suchende Klinge"; }
+			case LanguageType::GREEK:					{ return "Λεπίδα αναζήτησης"; }		case LanguageType::HUNGARIAN:				{ return "Kereső penge"; }
+			case LanguageType::ITALIAN:					{ return "Lama inseguente"; }		case LanguageType::JAPANESE:				{ return "追尾の刃"; }
+			case LanguageType::KOREAN:					{ return "추적의 검"; }		case LanguageType::NORWEGIAN:				{ return "Søkende klinge"; }
+			case LanguageType::POLISH:					{ return "Poszukujące ostrze"; }		case LanguageType::PORTUGUESE:				{ return "Lâmina rastreadora"; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "Lâmina rastreadora"; }		case LanguageType::ROMANIAN:				{ return "Lamă urmăritoare"; }
+			case LanguageType::RUSSIAN:					{ return "Ищущий клинок"; }		case LanguageType::SPANISH:					{ return "Hoja buscadora"; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "Hoja buscadora"; }	case LanguageType::SWEDISH:					{ return "Sökande klinga"; }
+			case LanguageType::THAI:					{ return "ดาบติดตาม"; }		case LanguageType::TURKISH:					{ return "Arayan Kılıç"; }
+			case LanguageType::UKRAINIAN:				{ return "Шукачий клинок"; }		case LanguageType::VIETNAMESE:				{ return "Lưỡi dao truy tìm"; }
 			default: case LanguageType::ENGLISH:		{ return "Seeking Blade"; }
 		}
 	}
@@ -24391,20 +24391,20 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return ".مقدار السد للتعامل"; }		case LanguageType::BULGARIAN:				{ return "Размерът на damage да се справят."; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "要处理的诅咒金额。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "要處理的詛咒金額。"; }
-			case LanguageType::CZECH:					{ return "Množství přehrady, kterou je třeba rozdat."; }		case LanguageType::DANISH:					{ return "Mængden af dæmning at håndtere."; }
-			case LanguageType::DUTCH:					{ return "De hoeveelheid damage om te dealen."; }		case LanguageType::FINNISH:					{ return "Käsiteltävän padon määrä."; }
-			case LanguageType::FRENCH:					{ return "Le montant du barrage à traiter."; }		case LanguageType::GERMAN:					{ return "Die Höhe des Schadens, den es zu verursachen gilt."; }
-			case LanguageType::GREEK:					{ return "Το ποσό της damage να αντιμετωπίσει."; }		case LanguageType::HUNGARIAN:				{ return "A kezelendő damage összege."; }
-			case LanguageType::ITALIAN:					{ return "La quantità di damage da affrontare."; }		case LanguageType::JAPANESE:				{ return "対処するダムの量。"; }
-			case LanguageType::KOREAN:					{ return "처리할 damage의 양입니다."; }		case LanguageType::NORWEGIAN:				{ return "Mengden damage å håndtere."; }
-			case LanguageType::POLISH:					{ return "Ilość damage do rozdania."; }		case LanguageType::PORTUGUESE:				{ return "A quantidade de amortecimento para negociar."; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "A quantidade de barragem para lidar."; }		case LanguageType::ROMANIAN:				{ return "Suma de baraj pentru a face față."; }
-			case LanguageType::RUSSIAN:					{ return "Количество проклятий, которые нужно нанести."; }		case LanguageType::SPANISH:					{ return "La cantidad de damage para tratar."; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "La cantidad de damage para tratar."; }	case LanguageType::SWEDISH:					{ return "Mängden damage att hantera."; }
-			case LanguageType::THAI:					{ return "ปริมาณของเขื่อนที่จะจัดการ"; }		case LanguageType::TURKISH:					{ return "Başa çıkılması gereken damage miktarı."; }
-			case LanguageType::UKRAINIAN:				{ return "Кількість шкоди, яку потрібно завдати."; }		case LanguageType::VIETNAMESE:				{ return "Số lượng damage để đối phó."; }
+			case LanguageType::ARABIC:					{ return "مقدار الضرر المراد إلحاقه."; }		case LanguageType::BULGARIAN:				{ return "Количеството щети за нанасяне."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "要造成的伤害量。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "要造成的傷害量。"; }
+			case LanguageType::CZECH:					{ return "Množství poškození, které se má udělit."; }		case LanguageType::DANISH:					{ return "Mængden af skade, der skal gives."; }
+			case LanguageType::DUTCH:					{ return "De hoeveelheid schade om toe te brengen."; }		case LanguageType::FINNISH:					{ return "Aiheutettavan vahingon määrä."; }
+			case LanguageType::FRENCH:					{ return "La quantité de dégâts à infliger."; }		case LanguageType::GERMAN:					{ return "Die Menge an Schaden, die verursacht werden soll."; }
+			case LanguageType::GREEK:					{ return "Η ποσότητα ζημιάς που πρέπει να προκληθεί."; }		case LanguageType::HUNGARIAN:				{ return "Az okozandó sebzés mennyisége."; }
+			case LanguageType::ITALIAN:					{ return "La quantità di danni da infliggere."; }		case LanguageType::JAPANESE:				{ return "与えるダメージ量。"; }
+			case LanguageType::KOREAN:					{ return "가할 피해량."; }		case LanguageType::NORWEGIAN:				{ return "Mengden skade som skal påføres."; }
+			case LanguageType::POLISH:					{ return "Ilość obrażeń do zadania."; }		case LanguageType::PORTUGUESE:				{ return "A quantidade de dano a causar."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "A quantidade de dano a causar."; }		case LanguageType::ROMANIAN:				{ return "Cantitatea de daune de provocat."; }
+			case LanguageType::RUSSIAN:					{ return "Количество урона, которое нужно нанести."; }		case LanguageType::SPANISH:					{ return "La cantidad de daño a infligir."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "La cantidad de daño a infligir."; }	case LanguageType::SWEDISH:					{ return "Mängden skada att orsaka."; }
+			case LanguageType::THAI:					{ return "ปริมาณความเสียหายที่จะสร้าง"; }		case LanguageType::TURKISH:					{ return "Verilecek hasar miktarı."; }
+			case LanguageType::UKRAINIAN:				{ return "Кількість шкоди, яку треба завдати."; }		case LanguageType::VIETNAMESE:				{ return "Lượng sát thương cần gây ra."; }
 			default: case LanguageType::ENGLISH:		{ return "The amount of damage to deal."; }
 		}
 	}
@@ -25091,21 +25091,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return ".قارن الضرر الحالي ب 0"; }		case LanguageType::BULGARIAN:				{ return "Сравнете текущите щети с 0."; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "如果当前伤害不为 0，则跳转到“减少伤害”代码。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "如果當前傷害不為 0，則跳轉到「減少傷害」代碼。"; }
-			case LanguageType::CZECH:					{ return "Porovnejte aktuální poškození s 0."; }		case LanguageType::DANISH:					{ return "Sammenlign aktuelle skader med 0."; }
-			case LanguageType::DUTCH:					{ return "Vergelijk de huidige schade met 0."; }		case LanguageType::FINNISH:					{ return "Vertaa nykyisiä vaurioita arvoon 0."; }
-			case LanguageType::FRENCH:					{ return "Si les dégâts actuels ne sont pas à 0, passez à « réduire les dommages »."; }		case LanguageType::GERMAN:					{ return "Vergleichen Sie den aktuellen Schaden mit 0."; }
-			case LanguageType::GREEK:					{ return "Συγκρίνετε την τρέχουσα ζημιά με το 0."; }		case LanguageType::HUNGARIAN:				{ return "Ha az aktuális sebzés nem 0, ugorjon a 'sebzés csökkentése' kódra."; }
-			case LanguageType::ITALIAN:					{ return "Se il danno attuale non è 0, passa a 'riduci danni'."; }		case LanguageType::JAPANESE:				{ return "現在のダメージを0と比較します。"; }
-			case LanguageType::KOREAN:					{ return "현재 피해량을 0과 비교합니다."; }		case LanguageType::NORWEGIAN:				{ return "Sammenlign nåværende skade med 0."; }
-			case LanguageType::POLISH:					{ return "Porównaj bieżące obrażenia z 0."; }		case LanguageType::PORTUGUESE:				{ return "Se o dano atual não for 0, salte para o código 'reduzir danos'."; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "Se o dano atual não for 0, pule para o código 'reduzir danos'."; }		case LanguageType::ROMANIAN:				{ return "Comparați daunele curente cu 0."; }
-			case LanguageType::RUSSIAN:					{ return "Если текущий урон не равен 0, перейдите к коду «уменьшить урон»."; }		case LanguageType::SPANISH:					{ return "Si el daño actual no es 0, salte a 'reducir daños'."; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "Si el daño actual no es 0, salte a 'reducir daños'."; }	case LanguageType::SWEDISH:					{ return "Jämför nuvarande skada med 0."; }
-			case LanguageType::THAI:					{ return "เปรียบเทียบความเสียหายในปัจจุบันกับ 0"; }		case LanguageType::TURKISH:					{ return "Mevcut hasarı 0 ile karşılaştırın."; }
-			case LanguageType::UKRAINIAN:				{ return "Порівняйте поточні пошкодження з 0."; }		case LanguageType::VIETNAMESE:				{ return "Nếu sát thương hiện tại không phải 0, hãy nhảy đến mã 'giảm thiệt hại'."; }
-			default: case LanguageType::ENGLISH:		{ return "If current damage is not 0, jump to 'reduce damage'."; }
+			case LanguageType::ARABIC:					{ return "إذا لم يكن الضرر الحالي 0، فاقفز إلى 'reduceDamage'."; }		case LanguageType::BULGARIAN:				{ return "Ако текущите щети не са 0, скочи към 'reduceDamage'."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "如果当前伤害不为 0，则跳转到 'reduceDamage'。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "如果目前傷害不為 0，則跳到 'reduceDamage'。"; }
+			case LanguageType::CZECH:					{ return "Pokud aktuální poškození není 0, skoč na 'reduceDamage'."; }		case LanguageType::DANISH:					{ return "Hvis den aktuelle skade ikke er 0, så hop til 'reduceDamage'."; }
+			case LanguageType::DUTCH:					{ return "Als de huidige schade niet 0 is, spring dan naar 'reduceDamage'."; }		case LanguageType::FINNISH:					{ return "Jos nykyinen vahinko ei ole 0, hyppää kohtaan 'reduceDamage'."; }
+			case LanguageType::FRENCH:					{ return "Si les dégâts actuels ne sont pas égaux à 0, sautez vers 'reduceDamage'."; }		case LanguageType::GERMAN:					{ return "Wenn der aktuelle Schaden nicht 0 ist, springe zu 'reduceDamage'."; }
+			case LanguageType::GREEK:					{ return "Αν η τρέχουσα ζημιά δεν είναι 0, πήδα στο 'reduceDamage'."; }		case LanguageType::HUNGARIAN:				{ return "Ha az aktuális sebzés nem 0, ugorj a(z) 'reduceDamage' címkére."; }
+			case LanguageType::ITALIAN:					{ return "Se il danno attuale non è 0, salta a 'reduceDamage'."; }		case LanguageType::JAPANESE:				{ return "現在のダメージが 0 でない場合は、'reduceDamage' へジャンプ。"; }
+			case LanguageType::KOREAN:					{ return "현재 피해량이 0이 아니면 'reduceDamage'로 점프하세요."; }		case LanguageType::NORWEGIAN:				{ return "Hvis nåværende skade ikke er 0, hopp til 'reduceDamage'."; }
+			case LanguageType::POLISH:					{ return "Jeśli bieżące obrażenia nie są równe 0, skocz do 'reduceDamage'."; }		case LanguageType::PORTUGUESE:				{ return "Se o dano atual não for 0, salte para 'reduceDamage'."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "Se o dano atual não for 0, pule para 'reduceDamage'."; }		case LanguageType::ROMANIAN:				{ return "Dacă daunele curente nu sunt 0, sari la 'reduceDamage'."; }
+			case LanguageType::RUSSIAN:					{ return "Если текущий урон не равен 0, прыгай к 'reduceDamage'."; }		case LanguageType::SPANISH:					{ return "Si el daño actual no es 0, salta a 'reduceDamage'."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "Si el daño actual no es 0, salta a 'reduceDamage'."; }	case LanguageType::SWEDISH:					{ return "Om nuvarande skada inte är 0, hoppa till 'reduceDamage'."; }
+			case LanguageType::THAI:					{ return "หากความเสียหายปัจจุบันไม่เท่ากับ 0 ให้กระโดดไปที่ 'reduceDamage'"; }		case LanguageType::TURKISH:					{ return "Mevcut hasar 0 değilse, 'reduceDamage' etiketine atla."; }
+			case LanguageType::UKRAINIAN:				{ return "Якщо поточна шкода не дорівнює 0, стрибай до 'reduceDamage'."; }		case LanguageType::VIETNAMESE:				{ return "Nếu sát thương hiện tại không phải 0, hãy nhảy tới 'reduceDamage'."; }
+			default: case LanguageType::ENGLISH:		{ return "If current damage is not 0, jump to 'reduceDamage'."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Abilities_Debuffs_Manifest_Manifest::create() { LocalizedString* instance = new Menus_Hacking_Abilities_Debuffs_Manifest_Manifest(); instance->autorelease(); return instance; }
@@ -28816,20 +28816,20 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "تزيد تعليمات 'inc' بمقدار واحد. هذا الرمز يشفي العدو. قم بتغييره إلى 'dec' لتقليل صحة المعارضين بدلا من ذلك!"; }		case LanguageType::BULGARIAN:				{ return "Инструкцията 'inc' нараства с единица. Този код лекува врага. Променете го на 'dec', за да намалите здравето на опонентите вместо това!"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "“inc”指令递增 1。此代码可以治愈敌人。将其更改为“dec”以降低对手的生命值！"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "“inc”指令遞增 1。此代碼可以治癒敵人。將其更改為「dec」以降低對手的生命值！"; }
-			case LanguageType::CZECH:					{ return "Instrukce 'inc' se zvyšuje o jednu. Tento kód léčí nepřítele. Změňte ji na 'dec', abyste místo toho snížili zdraví soupeře!"; }		case LanguageType::DANISH:					{ return "Instruktionen 'inc' øges med en. Denne kode helbreder fjenden. Skift det til 'dec' for at mindske modstandernes helbred i stedet!"; }
-			case LanguageType::DUTCH:					{ return "De instructie 'inc' neemt met één toe. Deze code geneest de vijand. Verander het in 'dec' om de gezondheid van de tegenstander te verminderen!"; }		case LanguageType::FINNISH:					{ return "inc-käsky kasvaa yhdellä. Tämä koodi parantaa vihollisen. Vaihda se arvoon dec heikentääksesi vastustajien terveyttä!"; }
-			case LanguageType::FRENCH:					{ return "L’instruction 'inc' s’incrémente d’une unité. Ce code guérit l’ennemi. Changez-le en 'dec' pour diminuer la santé des adversaires à la place!"; }		case LanguageType::GERMAN:					{ return "Die Anweisung 'inc' wird um eins erhöht. Dieser Code heilt den Feind. Ändern Sie es in 'dec', um stattdessen die Gesundheit des Gegners zu verringern!"; }
-			case LanguageType::GREEK:					{ return "Η εντολή 'inc' αυξάνεται κατά ένα. Αυτός ο κώδικας θεραπεύει τον εχθρό. Αλλάξτε το σε 'dec' για να μειώσετε την υγεία των αντιπάλων!"; }		case LanguageType::HUNGARIAN:				{ return "A 'inc' utasítás eggyel növekszik. Ez a kód meggyógyítja az ellenséget. Változtasd meg 'dec'-re, hogy csökkentsd az ellenfél életerejét!"; }
-			case LanguageType::ITALIAN:					{ return "L'istruzione 'inc' viene incrementata di uno. Questo codice guarisce il nemico. Cambialo in 'dec' per diminuire la salute degli avversari!"; }		case LanguageType::JAPANESE:				{ return "'inc' 命令は 1 ずつインクリメントされます。このコードは敵を癒します。'dec' に変更して、代わりに対戦相手の体力を減らしてください!"; }
-			case LanguageType::KOREAN:					{ return "'inc' 명령은 1씩 증가합니다. 이 코드는 적을 치료합니다. 대신 'dec'로 변경하여 상대의 체력을 감소시킵니다!"; }		case LanguageType::NORWEGIAN:				{ return "Instruksjonen 'inc' øker med én. Denne koden helbreder fienden. Endre det til 'dec' for å redusere motstanderens helse i stedet!"; }
-			case LanguageType::POLISH:					{ return "Instrukcja 'inc' zwiększa się o jeden. Ten kod leczy wroga. Zmień go na 'dec', aby zamiast tego zmniejszyć zdrowie przeciwnika!"; }		case LanguageType::PORTUGUESE:				{ return "A instrução 'inc' aumenta em um. Este código cura o inimigo. Mude-o para 'dec' para diminuir a saúde dos adversários!"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "A instrução 'inc' é incrementada em um. Este código cura o inimigo. Mude-o para 'dec' para diminuir a saúde dos oponentes!"; }		case LanguageType::ROMANIAN:				{ return "Instrucțiunea 'inc' crește cu unul. Acest cod vindecă inamicul. Schimbați-l la 'dec' pentru a reduce sănătatea adversarilor în loc!"; }
-			case LanguageType::RUSSIAN:					{ return "Инструкцию 'inc' увеличивается на единицу. Этот код исцеляет врага. Измените его на 'dec', чтобы вместо этого уменьшить здоровье противника!"; }		case LanguageType::SPANISH:					{ return "La instrucción 'inc' aumenta en uno. Este código cura al enemigo. ¡Cámbielo a 'dec' para disminuir la salud de los oponentes!"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "La instrucción 'inc' aumenta en uno. Este código cura al enemigo. ¡Cámbielo a 'dec' para disminuir la salud de los oponentes!"; }	case LanguageType::SWEDISH:					{ return "Instruktionen 'inc' ökar med en. Denna kod läker fienden. Ändra det till 'dec' för att minska motståndarnas hälsa istället!"; }
-			case LanguageType::THAI:					{ return "คําสั่ง 'inc' เพิ่มขึ้นทีละรายการ รหัสนี้เยียวยาศัตรู เปลี่ยนเป็น 'dec' เพื่อลดสุขภาพของฝ่ายตรงข้ามแทน!"; }		case LanguageType::TURKISH:					{ return "'inc' talimatı bir artar. Bu kod düşmanı iyileştirir. Bunun yerine rakiplerin sağlığını azaltmak için bunu 'dec' olarak değiştirin!"; }
-			case LanguageType::UKRAINIAN:				{ return "Інструкція 'inc' збільшується на одиницю. Цей код лікує ворога. Змініть його на 'dec', щоб зменшити здоров'я опонентів!"; }		case LanguageType::VIETNAMESE:				{ return "Lệnh 'inc' tăng thêm một. Mã này chữa lành kẻ thù. Thay đổi nó thành 'dec' để giảm máu của đối thủ!"; }
+			case LanguageType::ARABIC:					{ return "تعليمة 'inc' تزيد بمقدار واحد. هذا الكود يعالج العدو. غيّرها إلى 'dec' لتقليل صحة الخصم بدلًا من ذلك!"; }		case LanguageType::BULGARIAN:				{ return "Инструкцията 'inc' увеличава с едно. Този код лекува врага. Смени я на 'dec', за да намалиш здравето на противника вместо това!"; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "'inc' 指令会将数值加一。这段代码会治疗敌人。把它改成 'dec'，就能改为降低对手的生命值！"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "'inc' 指令會將數值加一。這段程式碼會治療敵人。把它改成 'dec'，就能改為降低對手的生命值！"; }
+			case LanguageType::CZECH:					{ return "Instrukce 'inc' zvyšuje hodnotu o jedna. Tento kód léčí nepřítele. Změň ji na 'dec', aby se místo toho snižovalo zdraví protivníka!"; }		case LanguageType::DANISH:					{ return "Instruktionen 'inc' øger med én. Denne kode helbreder fjenden. Skift den til 'dec' for i stedet at sænke modstanderens helbred!"; }
+			case LanguageType::DUTCH:					{ return "De instructie 'inc' verhoogt met één. Deze code geneest de vijand. Verander dit naar 'dec' om in plaats daarvan de gezondheid van de tegenstander te verlagen!"; }		case LanguageType::FINNISH:					{ return "'inc'-käsky kasvattaa yhdellä. Tämä koodi parantaa vihollista. Vaihda se arvoon 'dec', jotta vastustajan terveys vähenee sen sijaan!"; }
+			case LanguageType::FRENCH:					{ return "L'instruction 'inc' augmente de un. Ce code soigne l'ennemi. Change-la en 'dec' pour réduire la santé de l'adversaire à la place !"; }		case LanguageType::GERMAN:					{ return "Die Anweisung 'inc' erhöht um eins. Dieser Code heilt den Gegner. Ändere sie zu 'dec', um stattdessen die Gesundheit des Gegners zu verringern!"; }
+			case LanguageType::GREEK:					{ return "Η εντολή 'inc' αυξάνει κατά ένα. Αυτός ο κώδικας θεραπεύει τον εχθρό. Άλλαξέ τη σε 'dec' για να μειώνεις αντί γι' αυτό την υγεία του αντιπάλου!"; }		case LanguageType::HUNGARIAN:				{ return "Az 'inc' utasítás eggyel növel. Ez a kód gyógyítja az ellenséget. Változtasd 'dec'-re, hogy ehelyett csökkentsd az ellenfél életerejét!"; }
+			case LanguageType::ITALIAN:					{ return "L'istruzione 'inc' incrementa di uno. Questo codice cura il nemico. Cambiala in 'dec' per ridurre invece la salute dell'avversario!"; }		case LanguageType::JAPANESE:				{ return "'inc' 命令は 1 ずつ増やします。このコードは敵を回復します。代わりに相手の体力を減らすには、'dec' に変更しましょう！"; }
+			case LanguageType::KOREAN:					{ return "'inc' 명령은 1씩 증가시킵니다. 이 코드는 적을 회복시킵니다. 대신 상대의 체력을 줄이려면 'dec'로 바꾸세요!"; }		case LanguageType::NORWEGIAN:				{ return "Instruksjonen 'inc' øker med én. Denne koden helbreder fienden. Endre den til 'dec' for å redusere motstanderens helse i stedet!"; }
+			case LanguageType::POLISH:					{ return "Instrukcja 'inc' zwiększa o jeden. Ten kod leczy wroga. Zmień ją na 'dec', aby zamiast tego zmniejszać zdrowie przeciwnika!"; }		case LanguageType::PORTUGUESE:				{ return "A instrução 'inc' aumenta em um. Este código cura o inimigo. Altera-a para 'dec' para reduzir a vida do oponente em vez disso!"; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "A instrução 'inc' aumenta em um. Este código cura o inimigo. Mude para 'dec' para reduzir a vida do oponente em vez disso!"; }		case LanguageType::ROMANIAN:				{ return "Instrucțiunea 'inc' crește cu unu. Acest cod vindecă inamicul. Schimb-o în 'dec' pentru a reduce în schimb sănătatea adversarului!"; }
+			case LanguageType::RUSSIAN:					{ return "Инструкция 'inc' увеличивает на единицу. Этот код лечит врага. Измени её на 'dec', чтобы вместо этого уменьшать здоровье противника!"; }		case LanguageType::SPANISH:					{ return "La instrucción 'inc' aumenta en uno. Este código cura al enemigo. Cámbiala a 'dec' para reducir en su lugar la salud del oponente!"; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "La instrucción 'inc' aumenta en uno. Este código cura al enemigo. Cámbiala a 'dec' para reducir en su lugar la salud del oponente!"; }	case LanguageType::SWEDISH:					{ return "Instruktionen 'inc' ökar med ett. Den här koden helar fienden. Ändra den till 'dec' för att i stället minska motståndarens hälsa!"; }
+			case LanguageType::THAI:					{ return "คำสั่ง 'inc' จะเพิ่มขึ้นทีละหนึ่ง โค้ดนี้รักษาศัตรู เปลี่ยนเป็น 'dec' เพื่อให้ลดพลังชีวิตของคู่ต่อสู้แทน!"; }		case LanguageType::TURKISH:					{ return "'inc' komutu değeri bir artırır. Bu kod düşmanı iyileştirir. Bunun yerine rakibin sağlığını azaltmak için bunu 'dec' olarak değiştirin!"; }
+			case LanguageType::UKRAINIAN:				{ return "Інструкція 'inc' збільшує на одиницю. Цей код лікує ворога. Змініть її на 'dec', щоб натомість зменшувати здоров'я суперника!"; }		case LanguageType::VIETNAMESE:				{ return "Lệnh 'inc' tăng thêm một đơn vị. Mã này hồi máu cho kẻ địch. Hãy đổi thành 'dec' để thay vào đó giảm máu đối thủ!"; }
 			default: case LanguageType::ENGLISH:		{ return "The 'inc' instruction increments by one. This code heals the enemy. Change it to 'dec' to decrease the opponent's health instead!"; }
 		}
 	}
@@ -38566,20 +38566,20 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "تشير الأقواس المعقوفة إلى أن %s1 هو مؤشر إلى متغير. هذا يعني أن %s1 يتتبع موقع متغير. بدلًا من السحب إلى السجل، تُسحب البيانات إلى الذاكرة."; }		case LanguageType::BULGARIAN:				{ return "Скобите показват, че %s1 е указател към променлива. Това означава, че %s1 следи местоположението на променлива. Вместо да се извлича в регистъра, данните се извличат в паметта."; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "大括号表示 %s1 是指向变量的指针。这意味着 %s1 正在跟踪变量的位置。数据不是 pop 到寄存器中，而是 pop 到内存中。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "大括號表示 %s1 是指向變數的指標。這表示 %s1 正在追蹤變數的位置。資料不是 pop 到暫存器，而是 pop 到記憶體中。"; }
-			case LanguageType::CZECH:					{ return "Složené závorky označují, že %s1 je ukazatel na proměnnou. To znamená, že %s1 sleduje umístění proměnné. Místo vložení do registru se data vloží do paměti."; }		case LanguageType::DANISH:					{ return "Klammerne angiver, at %s1 er en peger til en variabel. Det betyder, at %s1 sporer placeringen af en variabel. I stedet for at poppe ind i registret poppes data ind i hukommelsen."; }
+			case LanguageType::ARABIC:					{ return "تشير الأقواس المعقوفة إلى أن %s1 هو مؤشر إلى متغير. هذا يعني أن %s1 يتتبع موقع متغير. بدلًا من pop إلى السجل، يتم pop للبيانات إلى الذاكرة."; }		case LanguageType::BULGARIAN:				{ return "Скобите показват, че %s1 е указател към променлива. Това означава, че %s1 следи местоположението на променлива. Вместо pop в регистъра, данните се pop-ват в паметта."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "大括号表示 %s1 是指向变量的指针。这意味着 %s1 正在跟踪变量的位置。数据不是 pop 到寄存器，而是 pop 到内存。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "大括號表示 %s1 是指向變數的指標。這表示 %s1 正在追蹤變數的位置。資料不是 pop 到暫存器，而是 pop 到記憶體。"; }
+			case LanguageType::CZECH:					{ return "Složené závorky označují, že %s1 je ukazatel na proměnnou. To znamená, že %s1 sleduje umístění proměnné. Místo popnutí do registru se data popnou do paměti."; }		case LanguageType::DANISH:					{ return "Klammerne angiver, at %s1 er en peger til en variabel. Det betyder, at %s1 sporer placeringen af en variabel. I stedet for at poppe til registret poppes data til hukommelsen."; }
 			case LanguageType::DUTCH:					{ return "De accolades geven aan dat %s1 een pointer naar een variabele is. Dit betekent dat %s1 de locatie van een variabele volgt. In plaats van naar het register te poppen, worden de gegevens naar het geheugen gepopt."; }		case LanguageType::FINNISH:					{ return "Aaltosulkeet osoittavat, että %s1 on osoitin muuttujaan. Tämä tarkoittaa, että %s1 seuraa muuttujan sijaintia. Sen sijaan, että data popattaisiin rekisteriin, se popataan muistiin."; }
-			case LanguageType::FRENCH:					{ return "Les accolades indiquent que %s1 est un pointeur vers une variable. Cela signifie que %s1 suit l'emplacement d'une variable. Au lieu d'être dépilées dans le registre, les données sont dépilées en mémoire."; }		case LanguageType::GERMAN:					{ return "Die geschweiften Klammern zeigen an, dass %s1 ein Zeiger auf eine Variable ist. Das bedeutet, dass %s1 die Position einer Variable verfolgt. Statt in das Register zu poppen, werden die Daten in den Speicher gepoppt."; }
-			case LanguageType::GREEK:					{ return "Οι αγκύλες δείχνουν ότι το %s1 είναι δείκτης σε μια μεταβλητή. Αυτό σημαίνει ότι το %s1 παρακολουθεί τη θέση μιας μεταβλητής. Αντί να γίνει pop στον καταχωρητή, τα δεδομένα γίνονται pop στη μνήμη."; }		case LanguageType::HUNGARIAN:				{ return "A kapcsos zárójelek jelzik, hogy a(z) %s1 egy változóra mutató mutató. Ez azt jelenti, hogy a(z) %s1 egy változó helyét követi. Ahelyett, hogy a regiszterbe kerülne kiemelésre, az adat a memóriába kerül kiemelésre."; }
+			case LanguageType::FRENCH:					{ return "Les accolades indiquent que %s1 est un pointeur vers une variable. Cela signifie que %s1 suit l'emplacement d'une variable. Au lieu de faire un pop dans le registre, les données sont pop en mémoire."; }		case LanguageType::GERMAN:					{ return "Die geschweiften Klammern zeigen an, dass %s1 ein Zeiger auf eine Variable ist. Das bedeutet, dass %s1 die Position einer Variable verfolgt. Statt in das Register zu poppen, werden die Daten in den Speicher gepoppt."; }
+			case LanguageType::GREEK:					{ return "Οι αγκύλες δείχνουν ότι το %s1 είναι δείκτης σε μια μεταβλητή. Αυτό σημαίνει ότι το %s1 παρακολουθεί τη θέση μιας μεταβλητής. Αντί για pop στον καταχωρητή, τα δεδομένα γίνονται pop στη μνήμη."; }		case LanguageType::HUNGARIAN:				{ return "A kapcsos zárójelek jelzik, hogy a(z) %s1 egy változóra mutató mutató. Ez azt jelenti, hogy a(z) %s1 követi egy változó helyét. Ahelyett, hogy a regiszterbe kerülne pop, az adat a memóriába kerül pop."; }
 			case LanguageType::ITALIAN:					{ return "Le parentesi graffe indicano che %s1 è un puntatore a una variabile. Questo significa che %s1 sta tracciando la posizione di una variabile. Invece di fare pop nel registro, i dati fanno pop in memoria."; }		case LanguageType::JAPANESE:				{ return "波括弧は、%s1 が変数へのポインターであることを示します。これは、%s1 が変数の位置を追跡していることを意味します。レジスターへ pop する代わりに、データはメモリへ pop されます。"; }
 			case LanguageType::KOREAN:					{ return "중괄호는 %s1이 변수에 대한 포인터임을 나타냅니다. 이는 %s1이 변수의 위치를 추적하고 있다는 뜻입니다. 레지스터로 pop하는 대신, 데이터는 메모리로 pop됩니다."; }		case LanguageType::NORWEGIAN:				{ return "Klammene viser at %s1 er en peker til en variabel. Dette betyr at %s1 sporer plasseringen til en variabel. I stedet for å poppe inn i registeret, poppes data inn i minnet."; }
-			case LanguageType::POLISH:					{ return "Nawiasy klamrowe wskazują, że %s1 jest wskaźnikiem do zmiennej. Oznacza to, że %s1 śledzi położenie zmiennej. Zamiast wykonywać pop do rejestru, dane są zdejmowane ze stosu do pamięci."; }		case LanguageType::PORTUGUESE:				{ return "As chavetas indicam que %s1 é um ponteiro para uma variável. Isto significa que %s1 está a acompanhar a localização de uma variável. Em vez de fazer pop para o registo, os dados fazem pop para a memória."; }
+			case LanguageType::POLISH:					{ return "Nawiasy klamrowe wskazują, że %s1 jest wskaźnikiem do zmiennej. Oznacza to, że %s1 śledzi położenie zmiennej. Zamiast wykonywać pop do rejestru, dane są popowane do pamięci."; }		case LanguageType::PORTUGUESE:				{ return "As chavetas indicam que %s1 é um ponteiro para uma variável. Isto significa que %s1 está a acompanhar a localização de uma variável. Em vez de fazer pop para o registo, os dados fazem pop para a memória."; }
 			case LanguageType::PORTUGUESE_BRAZIL:		{ return "As chaves indicam que %s1 é um ponteiro para uma variável. Isso significa que %s1 está rastreando a localização de uma variável. Em vez de fazer pop para o registrador, os dados fazem pop para a memória."; }		case LanguageType::ROMANIAN:				{ return "Acoladele indică faptul că %s1 este un pointer către o variabilă. Asta înseamnă că %s1 urmărește locația unei variabile. În loc să facă pop în registru, datele fac pop în memorie."; }
-			case LanguageType::RUSSIAN:					{ return "Фигурные скобки указывают, что %s1 — это указатель на переменную. Это означает, что %s1 отслеживает расположение переменной. Вместо извлечения в регистр данные извлекаются в память."; }		case LanguageType::SPANISH:					{ return "Las llaves indican que %s1 es un puntero a una variable. Esto significa que %s1 está rastreando la ubicación de una variable. En lugar de hacer pop en el registro, los datos hacen pop en la memoria."; }
+			case LanguageType::RUSSIAN:					{ return "Фигурные скобки указывают, что %s1 — это указатель на переменную. Это означает, что %s1 отслеживает расположение переменной. Вместо pop в регистр данные pop-ятся в память."; }		case LanguageType::SPANISH:					{ return "Las llaves indican que %s1 es un puntero a una variable. Esto significa que %s1 está rastreando la ubicación de una variable. En lugar de hacer pop en el registro, los datos hacen pop en la memoria."; }
 			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "Las llaves indican que %s1 es un puntero a una variable. Esto significa que %s1 está rastreando la ubicación de una variable. En lugar de hacer pop en el registro, los datos hacen pop en la memoria."; }	case LanguageType::SWEDISH:					{ return "Klamrarna visar att %s1 är en pekare till en variabel. Det betyder att %s1 spårar platsen för en variabel. I stället för att poppas till registret poppas data till minnet."; }
-			case LanguageType::THAI:					{ return "วงเล็บปีกกาแสดงว่า %s1 เป็นพอยน์เตอร์ไปยังตัวแปร ซึ่งหมายความว่า %s1 กำลังติดตามตำแหน่งของตัวแปร แทนที่จะ pop เข้ารีจิสเตอร์ ข้อมูลจะถูก pop เข้าไปในหน่วยความจำ"; }		case LanguageType::TURKISH:					{ return "Küme parantezleri, %s1'in bir değişkene işaretçi olduğunu gösterir. Bu, %s1'in bir değişkenin konumunu izlediği anlamına gelir. Yazmaca poplamak yerine, veri belleğe poplanır."; }
-			case LanguageType::UKRAINIAN:				{ return "Фігурні дужки вказують, що %s1 є вказівником на змінну. Це означає, що %s1 відстежує розташування змінної. Замість виймання в регістр дані виймаються в пам'ять."; }		case LanguageType::VIETNAMESE:				{ return "Dấu ngoặc nhọn cho biết %s1 là một con trỏ tới biến. Điều này có nghĩa là %s1 đang theo dõi vị trí của một biến. Thay vì pop vào thanh ghi, dữ liệu được pop vào bộ nhớ."; }
+			case LanguageType::THAI:					{ return "วงเล็บปีกกาแสดงว่า %s1 เป็นพอยน์เตอร์ไปยังตัวแปร ซึ่งหมายความว่า %s1 กำลังติดตามตำแหน่งของตัวแปร แทนที่จะ pop เข้ารีจิสเตอร์ ข้อมูลจะถูก pop เข้าไปในหน่วยความจำ"; }		case LanguageType::TURKISH:					{ return "Süslü parantezler, %s1'in bir değişkene işaretçi olduğunu gösterir. Bu, %s1'in bir değişkenin konumunu izlediği anlamına gelir. Yazmaca poplamak yerine, veri belleğe poplanır."; }
+			case LanguageType::UKRAINIAN:				{ return "Фігурні дужки вказують, що %s1 є вказівником на змінну. Це означає, що %s1 відстежує розташування змінної. Замість pop у регістр, дані pop-яться в пам'ять."; }		case LanguageType::VIETNAMESE:				{ return "Dấu ngoặc nhọn cho biết %s1 là một con trỏ tới biến. Điều này có nghĩa là %s1 đang theo dõi vị trí của một biến. Thay vì pop vào thanh ghi, dữ liệu được pop vào bộ nhớ."; }
 			default: case LanguageType::ENGLISH:		{ return "The braces indicate that %s1 is a pointer to a variable. This means that %s1 is tracking the location of a variable. Instead of popping into the register, the data is popped into memory."; }
 		}
 	}
@@ -38616,20 +38616,20 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "تشير الأقواس المعقوفة إلى أن %s1 هو مؤشر إلى متغير. هذا يعني أن %s1 يتتبع موقع متغير. بدلًا من push إلى السجل، يتم push للبيانات إلى المكدس."; }		case LanguageType::BULGARIAN:				{ return "Скобите показват, че %s1 е указател към променлива. Това означава, че %s1 следи местоположението на променлива. Вместо да се push-ва в регистъра, данните се push-ват в стека."; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "大括号表示 %s1 是指向变量的指针。这意味着 %s1 正在跟踪变量的位置。数据不是 push 到寄存器，而是 push 到栈上。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "大括號表示 %s1 是指向變數的指標。這表示 %s1 正在追蹤變數的位置。資料不是 push 到暫存器，而是 push 到堆疊上。"; }
-			case LanguageType::CZECH:					{ return "Složené závorky označují, že %s1 je ukazatel na proměnnou. To znamená, že %s1 sleduje umístění proměnné. Místo pushnutí do registru se data pushnou na zásobník."; }		case LanguageType::DANISH:					{ return "Klammerne angiver, at %s1 er en peger til en variabel. Det betyder, at %s1 sporer placeringen af en variabel. I stedet for at pushe til registret pushes data på stakken."; }
-			case LanguageType::DUTCH:					{ return "De accolades geven aan dat %s1 een pointer naar een variabele is. Dit betekent dat %s1 de locatie van een variabele volgt. In plaats van het register te pushen, worden de gegevens op de stack gepusht."; }		case LanguageType::FINNISH:					{ return "Aaltosulkeet osoittavat, että %s1 on osoitin muuttujaan. Tämä tarkoittaa, että %s1 seuraa muuttujan sijaintia. Sen sijaan, että rekisteri pushataan, data pushataan pinolle."; }
-			case LanguageType::FRENCH:					{ return "Les accolades indiquent que %s1 est un pointeur vers une variable. Cela signifie que %s1 suit l'emplacement d'une variable. Au lieu de faire un push vers le registre, les données sont pushées sur la pile."; }		case LanguageType::GERMAN:					{ return "Die geschweiften Klammern zeigen an, dass %s1 ein Zeiger auf eine Variable ist. Das bedeutet, dass %s1 die Position einer Variable verfolgt. Statt in das Register zu pushen, werden die Daten auf den Stack gepusht."; }
-			case LanguageType::GREEK:					{ return "Οι αγκύλες δείχνουν ότι το %s1 είναι δείκτης σε μια μεταβλητή. Αυτό σημαίνει ότι το %s1 παρακολουθεί τη θέση μιας μεταβλητής. Αντί για push στον καταχωρητή, τα δεδομένα γίνονται push στη στοίβα."; }		case LanguageType::HUNGARIAN:				{ return "A kapcsos zárójelek azt jelzik, hogy a(z) %s1 egy változóra mutató mutató. Ez azt jelenti, hogy a(z) %s1 követi egy változó helyét. Ahelyett, hogy a regisztert pusholnánk, az adat a verembe kerül pusholásra."; }
-			case LanguageType::ITALIAN:					{ return "Le parentesi graffe indicano che %s1 è un puntatore a una variabile. Questo significa che %s1 sta tracciando la posizione di una variabile. Invece di fare push sul registro, i dati vengono pushati nello stack."; }		case LanguageType::JAPANESE:				{ return "波括弧は、%s1 が変数へのポインターであることを示します。これは、%s1 が変数の位置を追跡していることを意味します。レジスターを push する代わりに、データはスタックへ push されます。"; }
+			case LanguageType::ARABIC:					{ return "تشير الأقواس المعقوفة إلى أن %s1 هو مؤشر إلى متغير. هذا يعني أن %s1 يتتبع موقع متغير. بدلًا من push إلى السجل، يتم push للبيانات إلى المكدس."; }		case LanguageType::BULGARIAN:				{ return "Скобите показват, че %s1 е указател към променлива. Това означава, че %s1 следи местоположението на променлива. Вместо push в регистъра, данните се push-ват в стека."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "大括号表示 %s1 是指向变量的指针。这意味着 %s1 正在跟踪变量的位置。不是 push 寄存器，而是把数据 push 到栈上。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "大括號表示 %s1 是指向變數的指標。這表示 %s1 正在追蹤變數的位置。不是 push 暫存器，而是把資料 push 到堆疊上。"; }
+			case LanguageType::CZECH:					{ return "Složené závorky označují, že %s1 je ukazatel na proměnnou. To znamená, že %s1 sleduje umístění proměnné. Místo pushnutí do registru se data pushnou na zásobník."; }		case LanguageType::DANISH:					{ return "Klammerne angiver, at %s1 er en peger til en variabel. Det betyder, at %s1 sporer placeringen af en variabel. I stedet for at pushe registret pushes data på stakken."; }
+			case LanguageType::DUTCH:					{ return "De accolades geven aan dat %s1 een pointer naar een variabele is. Dit betekent dat %s1 de locatie van een variabele volgt. In plaats van het register te pushen, worden de gegevens op de stack gepusht."; }		case LanguageType::FINNISH:					{ return "Aaltosulkeet osoittavat, että %s1 on osoitin muuttujaan. Tämä tarkoittaa, että %s1 seuraa muuttujan sijaintia. Sen sijaan, että rekisteri pushattaisiin, data pushataan pinolle."; }
+			case LanguageType::FRENCH:					{ return "Les accolades indiquent que %s1 est un pointeur vers une variable. Cela signifie que %s1 suit l'emplacement d'une variable. Au lieu de push le registre, les données sont push sur la pile."; }		case LanguageType::GERMAN:					{ return "Die geschweiften Klammern zeigen an, dass %s1 ein Zeiger auf eine Variable ist. Das bedeutet, dass %s1 die Position einer Variable verfolgt. Statt das Register zu pushen, werden die Daten auf den Stack gepusht."; }
+			case LanguageType::GREEK:					{ return "Οι αγκύλες δείχνουν ότι το %s1 είναι δείκτης σε μια μεταβλητή. Αυτό σημαίνει ότι το %s1 παρακολουθεί τη θέση μιας μεταβλητής. Αντί για push στον καταχωρητή, τα δεδομένα γίνονται push στη στοίβα."; }		case LanguageType::HUNGARIAN:				{ return "A kapcsos zárójelek jelzik, hogy a(z) %s1 egy változóra mutató mutató. Ez azt jelenti, hogy a(z) %s1 követi egy változó helyét. A regiszter pusholása helyett az adat kerül pusholásra a verembe."; }
+			case LanguageType::ITALIAN:					{ return "Le parentesi graffe indicano che %s1 è un puntatore a una variabile. Questo significa che %s1 sta tracciando la posizione di una variabile. Invece di fare push sul registro, i dati vengono pushati sullo stack."; }		case LanguageType::JAPANESE:				{ return "波括弧は、%s1 が変数へのポインターであることを示します。これは、%s1 が変数の位置を追跡していることを意味します。レジスターを push する代わりに、データはスタックへ push されます。"; }
 			case LanguageType::KOREAN:					{ return "중괄호는 %s1이 변수에 대한 포인터임을 나타냅니다. 이는 %s1이 변수의 위치를 추적하고 있다는 뜻입니다. 레지스터를 push하는 대신, 데이터는 스택으로 push됩니다."; }		case LanguageType::NORWEGIAN:				{ return "Klammene viser at %s1 er en peker til en variabel. Dette betyr at %s1 sporer plasseringen til en variabel. I stedet for å pushe registeret, pushes data på stakken."; }
-			case LanguageType::POLISH:					{ return "Nawiasy klamrowe wskazują, że %s1 jest wskaźnikiem do zmiennej. Oznacza to, że %s1 śledzi położenie zmiennej. Zamiast wykonywać push na rejestrze, dane są pushowane na stos."; }		case LanguageType::PORTUGUESE:				{ return "As chavetas indicam que %s1 é um ponteiro para uma variável. Isto significa que %s1 está a acompanhar a localização de uma variável. Em vez de fazer push ao registo, os dados são colocados na pilha."; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "As chaves indicam que %s1 é um ponteiro para uma variável. Isso significa que %s1 está rastreando a localização de uma variável. Em vez de fazer push no registrador, os dados são enviados para a pilha."; }		case LanguageType::ROMANIAN:				{ return "Acoladele indică faptul că %s1 este un pointer către o variabilă. Asta înseamnă că %s1 urmărește locația unei variabile. În loc să faci push în registru, datele sunt puse pe stivă."; }
-			case LanguageType::RUSSIAN:					{ return "Фигурные скобки указывают, что %s1 — это указатель на переменную. Это означает, что %s1 отслеживает расположение переменной. Вместо push в регистр данные push-ятся в стек."; }		case LanguageType::SPANISH:					{ return "Las llaves indican que %s1 es un puntero a una variable. Esto significa que %s1 está rastreando la ubicación de una variable. En lugar de hacer push al registro, los datos se hacen push a la pila."; }
+			case LanguageType::POLISH:					{ return "Nawiasy klamrowe wskazują, że %s1 jest wskaźnikiem do zmiennej. Oznacza to, że %s1 śledzi położenie zmiennej. Zamiast wykonywać push rejestru, dane są pushowane na stos."; }		case LanguageType::PORTUGUESE:				{ return "As chavetas indicam que %s1 é um ponteiro para uma variável. Isto significa que %s1 está a acompanhar a localização de uma variável. Em vez de fazer push ao registo, os dados são push para a pilha."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "As chaves indicam que %s1 é um ponteiro para uma variável. Isso significa que %s1 está rastreando a localização de uma variável. Em vez de fazer push no registrador, os dados são push para a pilha."; }		case LanguageType::ROMANIAN:				{ return "Acoladele indică faptul că %s1 este un pointer către o variabilă. Asta înseamnă că %s1 urmărește locația unei variabile. În loc să faci push registrului, datele sunt puse prin push pe stivă."; }
+			case LanguageType::RUSSIAN:					{ return "Фигурные скобки указывают, что %s1 — это указатель на переменную. Это означает, что %s1 отслеживает расположение переменной. Вместо push регистра данные push-ятся в стек."; }		case LanguageType::SPANISH:					{ return "Las llaves indican que %s1 es un puntero a una variable. Esto significa que %s1 está rastreando la ubicación de una variable. En lugar de hacer push al registro, los datos se hacen push a la pila."; }
 			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "Las llaves indican que %s1 es un puntero a una variable. Esto significa que %s1 está rastreando la ubicación de una variable. En lugar de hacer push al registro, los datos se hacen push a la pila."; }	case LanguageType::SWEDISH:					{ return "Klamrarna visar att %s1 är en pekare till en variabel. Det betyder att %s1 spårar platsen för en variabel. I stället för att pusha registret pushas data till stacken."; }
-			case LanguageType::THAI:					{ return "วงเล็บปีกกาแสดงว่า %s1 เป็นพอยน์เตอร์ไปยังตัวแปร ซึ่งหมายความว่า %s1 กำลังติดตามตำแหน่งของตัวแปร แทนที่จะ push ไปที่รีจิสเตอร์ ข้อมูลจะถูก push ลงสแตก"; }		case LanguageType::TURKISH:					{ return "Süslü parantezler, %s1'in bir değişkene işaretçi olduğunu gösterir. Bu, %s1'in bir değişkenin konumunu izlediği anlamına gelir. Yazmaca push etmek yerine, veri yığına push edilir."; }
-			case LanguageType::UKRAINIAN:				{ return "Фігурні дужки вказують, що %s1 є вказівником на змінну. Це означає, що %s1 відстежує розташування змінної. Замість push у регістр, дані push-яться у стек."; }		case LanguageType::VIETNAMESE:				{ return "Dấu ngoặc nhọn cho biết %s1 là một con trỏ tới biến. Điều này có nghĩa là %s1 đang theo dõi vị trí của một biến. Thay vì push vào thanh ghi, dữ liệu được push lên ngăn xếp."; }
+			case LanguageType::THAI:					{ return "วงเล็บปีกกาแสดงว่า %s1 เป็นพอยน์เตอร์ไปยังตัวแปร ซึ่งหมายความว่า %s1 กำลังติดตามตำแหน่งของตัวแปร แทนที่จะ push รีจิสเตอร์ ข้อมูลจะถูก push ลงสแตก"; }		case LanguageType::TURKISH:					{ return "Süslü parantezler, %s1'in bir değişkene işaretçi olduğunu gösterir. Bu, %s1'in bir değişkenin konumunu izlediği anlamına gelir. Yazmacı push etmek yerine, veri yığına push edilir."; }
+			case LanguageType::UKRAINIAN:				{ return "Фігурні дужки вказують, що %s1 є вказівником на змінну. Це означає, що %s1 відстежує розташування змінної. Замість push регістру, дані push-яться у стек."; }		case LanguageType::VIETNAMESE:				{ return "Dấu ngoặc nhọn cho biết %s1 là một con trỏ tới biến. Điều này có nghĩa là %s1 đang theo dõi vị trí của một biến. Thay vì push thanh ghi, dữ liệu được push lên ngăn xếp."; }
 			default: case LanguageType::ENGLISH:		{ return "The braces indicate that %s1 is a pointer to a variable. This means that %s1 is tracking the location of a variable. Instead of pushing the register, the data is pushed onto the stack."; }
 		}
 	}
@@ -41908,106 +41908,6 @@ namespace Strings
 			default: case LanguageType::ENGLISH:		{ return "Update Laser Count Down"; }
 		}
 	}
-	LocalizedString* Menus_Hacking_Objects_MayanDoor_Combination1::create() { LocalizedString* instance = new Menus_Hacking_Objects_MayanDoor_Combination1(); instance->autorelease(); return instance; }
-	LocalizedString* Menus_Hacking_Objects_MayanDoor_Combination1::clone() { LocalizedString* clonedString = Menus_Hacking_Objects_MayanDoor_Combination1::create(); this->copyAttributesTo(clonedString); return clonedString; }
-	Menus_Hacking_Objects_MayanDoor_Combination1::Menus_Hacking_Objects_MayanDoor_Combination1() : LocalizedString() { }
-	std::string Menus_Hacking_Objects_MayanDoor_Combination1::getStringIdentifier() { return "Menus_Hacking_Objects_MayanDoor_Combination1"; }
-	std::string Menus_Hacking_Objects_MayanDoor_Combination1::getStringByLanguage(LanguageType languageType)
-	{
-		switch (languageType)
-		{
-			case LanguageType::ARABIC:					{ return "المجموعة الأولى"; }		case LanguageType::BULGARIAN:				{ return "Първа комбинация"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "第一次组合"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "第一次組合"; }
-			case LanguageType::CZECH:					{ return "První kombinace"; }		case LanguageType::DANISH:					{ return "Første kombination"; }
-			case LanguageType::DUTCH:					{ return "Eerste combinatie"; }		case LanguageType::FINNISH:					{ return "Ensimmäinen yhdistelmä"; }
-			case LanguageType::FRENCH:					{ return "Première combinaison"; }		case LanguageType::GERMAN:					{ return "Erste Kombination"; }
-			case LanguageType::GREEK:					{ return "Πρώτος συνδυασμός"; }		case LanguageType::HUNGARIAN:				{ return "Első kombináció"; }
-			case LanguageType::ITALIAN:					{ return "Prima combinazione"; }		case LanguageType::JAPANESE:				{ return "最初の組み合わせ"; }
-			case LanguageType::KOREAN:					{ return "첫 번째 조합"; }		case LanguageType::NORWEGIAN:				{ return "Første kombinasjon"; }
-			case LanguageType::POLISH:					{ return "Pierwsza kombinacja"; }		case LanguageType::PORTUGUESE:				{ return "Primeira combinação"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "Primeira combinação"; }		case LanguageType::ROMANIAN:				{ return "Prima combinație"; }
-			case LanguageType::RUSSIAN:					{ return "Первая комбинация"; }		case LanguageType::SPANISH:					{ return "Primera combinación"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "Primera combinación"; }	case LanguageType::SWEDISH:					{ return "Första kombinationen"; }
-			case LanguageType::THAI:					{ return "ชุดแรก"; }		case LanguageType::TURKISH:					{ return "İlk kombinasyon"; }
-			case LanguageType::UKRAINIAN:				{ return "Перше поєднання"; }		case LanguageType::VIETNAMESE:				{ return "Sự kết hợp đầu tiên"; }
-			default: case LanguageType::ENGLISH:		{ return "First combination"; }
-		}
-	}
-	LocalizedString* Menus_Hacking_Objects_MayanDoor_Combination2::create() { LocalizedString* instance = new Menus_Hacking_Objects_MayanDoor_Combination2(); instance->autorelease(); return instance; }
-	LocalizedString* Menus_Hacking_Objects_MayanDoor_Combination2::clone() { LocalizedString* clonedString = Menus_Hacking_Objects_MayanDoor_Combination2::create(); this->copyAttributesTo(clonedString); return clonedString; }
-	Menus_Hacking_Objects_MayanDoor_Combination2::Menus_Hacking_Objects_MayanDoor_Combination2() : LocalizedString() { }
-	std::string Menus_Hacking_Objects_MayanDoor_Combination2::getStringIdentifier() { return "Menus_Hacking_Objects_MayanDoor_Combination2"; }
-	std::string Menus_Hacking_Objects_MayanDoor_Combination2::getStringByLanguage(LanguageType languageType)
-	{
-		switch (languageType)
-		{
-			case LanguageType::ARABIC:					{ return "المجموعة الثانية"; }		case LanguageType::BULGARIAN:				{ return "Втора комбинация"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "第二组合"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "第二組合"; }
-			case LanguageType::CZECH:					{ return "Druhá kombinace"; }		case LanguageType::DANISH:					{ return "Anden kombination"; }
-			case LanguageType::DUTCH:					{ return "Tweede combinatie"; }		case LanguageType::FINNISH:					{ return "Toinen yhdistelmä"; }
-			case LanguageType::FRENCH:					{ return "Deuxième combinaison"; }		case LanguageType::GERMAN:					{ return "Zweite Kombination"; }
-			case LanguageType::GREEK:					{ return "Δεύτερος συνδυασμός"; }		case LanguageType::HUNGARIAN:				{ return "Második kombináció"; }
-			case LanguageType::ITALIAN:					{ return "Seconda combinazione"; }		case LanguageType::JAPANESE:				{ return "2番目の組み合わせ"; }
-			case LanguageType::KOREAN:					{ return "두 번째 조합"; }		case LanguageType::NORWEGIAN:				{ return "Andre kombinasjon"; }
-			case LanguageType::POLISH:					{ return "Druga kombinacja"; }		case LanguageType::PORTUGUESE:				{ return "Segunda combinação"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "Segunda combinação"; }		case LanguageType::ROMANIAN:				{ return "A doua combinație"; }
-			case LanguageType::RUSSIAN:					{ return "Вторая комбинация"; }		case LanguageType::SPANISH:					{ return "Segunda combinación"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "Segunda combinación"; }	case LanguageType::SWEDISH:					{ return "Andra kombinationen"; }
-			case LanguageType::THAI:					{ return "ชุดที่สอง"; }		case LanguageType::TURKISH:					{ return "İkinci kombinasyon"; }
-			case LanguageType::UKRAINIAN:				{ return "Друга комбінація"; }		case LanguageType::VIETNAMESE:				{ return "Sự kết hợp thứ hai"; }
-			default: case LanguageType::ENGLISH:		{ return "Second combination"; }
-		}
-	}
-	LocalizedString* Menus_Hacking_Objects_MayanDoor_Combination3::create() { LocalizedString* instance = new Menus_Hacking_Objects_MayanDoor_Combination3(); instance->autorelease(); return instance; }
-	LocalizedString* Menus_Hacking_Objects_MayanDoor_Combination3::clone() { LocalizedString* clonedString = Menus_Hacking_Objects_MayanDoor_Combination3::create(); this->copyAttributesTo(clonedString); return clonedString; }
-	Menus_Hacking_Objects_MayanDoor_Combination3::Menus_Hacking_Objects_MayanDoor_Combination3() : LocalizedString() { }
-	std::string Menus_Hacking_Objects_MayanDoor_Combination3::getStringIdentifier() { return "Menus_Hacking_Objects_MayanDoor_Combination3"; }
-	std::string Menus_Hacking_Objects_MayanDoor_Combination3::getStringByLanguage(LanguageType languageType)
-	{
-		switch (languageType)
-		{
-			case LanguageType::ARABIC:					{ return "المجموعة الثالثة"; }		case LanguageType::BULGARIAN:				{ return "Трета комбинация"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "第三组合"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "第三組合"; }
-			case LanguageType::CZECH:					{ return "Třetí kombinace"; }		case LanguageType::DANISH:					{ return "Tredje kombination"; }
-			case LanguageType::DUTCH:					{ return "Derde combinatie"; }		case LanguageType::FINNISH:					{ return "Kolmas yhdistelmä"; }
-			case LanguageType::FRENCH:					{ return "Troisième combinaison"; }		case LanguageType::GERMAN:					{ return "Dritte Kombination"; }
-			case LanguageType::GREEK:					{ return "Τρίτος συνδυασμός"; }		case LanguageType::HUNGARIAN:				{ return "Harmadik kombináció"; }
-			case LanguageType::ITALIAN:					{ return "Terza combinazione"; }		case LanguageType::JAPANESE:				{ return "3番目の組み合わせ"; }
-			case LanguageType::KOREAN:					{ return "세 번째 조합"; }		case LanguageType::NORWEGIAN:				{ return "Tredje kombinasjon"; }
-			case LanguageType::POLISH:					{ return "Trzecia kombinacja"; }		case LanguageType::PORTUGUESE:				{ return "Terceira combinação"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "Terceira combinação"; }		case LanguageType::ROMANIAN:				{ return "A treia combinație"; }
-			case LanguageType::RUSSIAN:					{ return "Третья комбинация"; }		case LanguageType::SPANISH:					{ return "Tercera combinación"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "Tercera combinación"; }	case LanguageType::SWEDISH:					{ return "Tredje kombinationen"; }
-			case LanguageType::THAI:					{ return "ชุดที่สาม"; }		case LanguageType::TURKISH:					{ return "Üçüncü kombinasyon"; }
-			case LanguageType::UKRAINIAN:				{ return "Третя комбінація"; }		case LanguageType::VIETNAMESE:				{ return "Sự kết hợp thứ ba"; }
-			default: case LanguageType::ENGLISH:		{ return "Third combination"; }
-		}
-	}
-	LocalizedString* Menus_Hacking_Objects_MayanDoor_RegisterEbx::create() { LocalizedString* instance = new Menus_Hacking_Objects_MayanDoor_RegisterEbx(); instance->autorelease(); return instance; }
-	LocalizedString* Menus_Hacking_Objects_MayanDoor_RegisterEbx::clone() { LocalizedString* clonedString = Menus_Hacking_Objects_MayanDoor_RegisterEbx::create(); this->copyAttributesTo(clonedString); return clonedString; }
-	Menus_Hacking_Objects_MayanDoor_RegisterEbx::Menus_Hacking_Objects_MayanDoor_RegisterEbx() : LocalizedString() { }
-	std::string Menus_Hacking_Objects_MayanDoor_RegisterEbx::getStringIdentifier() { return "Menus_Hacking_Objects_MayanDoor_RegisterEbx"; }
-	std::string Menus_Hacking_Objects_MayanDoor_RegisterEbx::getStringByLanguage(LanguageType languageType)
-	{
-		switch (languageType)
-		{
-			case LanguageType::ARABIC:					{ return ".رقم الجمع لمحاولة المقبل"; }		case LanguageType::BULGARIAN:				{ return "Комбинираният номер, който трябва да опитате следващия."; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "下一步尝试的组合号。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "下一步嘗試的組合號。"; }
-			case LanguageType::CZECH:					{ return "Číslo kombinace pro další pokus."; }		case LanguageType::DANISH:					{ return "Kombinationsnummeret, der skal testes næste."; }
-			case LanguageType::DUTCH:					{ return "Het combinatienummer om het volgende te proberen."; }		case LanguageType::FINNISH:					{ return "Yhdistelmänumero seuraavan yrittämiseksi."; }
-			case LanguageType::FRENCH:					{ return "Le numéro de combinaison à essayer ensuite."; }		case LanguageType::GERMAN:					{ return "Die Kombinationsnummer, die als nächstes versucht werden soll."; }
-			case LanguageType::GREEK:					{ return "Ο αριθμός συνδυασμού για να δοκιμάσετε το επόμενο."; }		case LanguageType::HUNGARIAN:				{ return "A kombinációs szám a következő kipróbálásához."; }
-			case LanguageType::ITALIAN:					{ return "Il numero di combinazione da provare dopo."; }		case LanguageType::JAPANESE:				{ return "次に試す組み合わせ番号。"; }
-			case LanguageType::KOREAN:					{ return "다음에 시도 할 조합 번호입니다."; }		case LanguageType::NORWEGIAN:				{ return "Kombinasjonsnummeret du vil prøve neste."; }
-			case LanguageType::POLISH:					{ return "Numer kombinacji, aby spróbować dalej."; }		case LanguageType::PORTUGUESE:				{ return "O número da combinação para tentar a seguir."; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "O número da combinação para tentar a seguir."; }		case LanguageType::ROMANIAN:				{ return "Numărul de combinație pentru a încerca în continuare."; }
-			case LanguageType::RUSSIAN:					{ return "Комбинационный номер, чтобы попробовать следующий."; }		case LanguageType::SPANISH:					{ return "El número de combinación para probar a continuación."; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "El número de combinación para probar a continuación."; }	case LanguageType::SWEDISH:					{ return "Kombinationsnumret för att prova nästa."; }
-			case LanguageType::THAI:					{ return "หมายเลขชุดค่าผสมที่จะลองต่อไป"; }		case LanguageType::TURKISH:					{ return "Sonraki denemek için kombinasyon numarası."; }
-			case LanguageType::UKRAINIAN:				{ return "Номер комбінації, який слід спробувати далі."; }		case LanguageType::VIETNAMESE:				{ return "Số kết hợp để thử tiếp theo."; }
-			default: case LanguageType::ENGLISH:		{ return "The combination number to try next."; }
-		}
-	}
 	LocalizedString* Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEax::create() { LocalizedString* instance = new Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEax(); instance->autorelease(); return instance; }
 	LocalizedString* Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEax::clone() { LocalizedString* clonedString = Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEax::create(); this->copyAttributesTo(clonedString); return clonedString; }
 	Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEax::Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEax() : LocalizedString() { }
@@ -42416,21 +42316,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "الزاوية التي سوف يتأرجح البندول"; }		case LanguageType::BULGARIAN:				{ return "Ъгълът, до който махалото ще се люлее"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "钟摆摆动的角度"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "鐘擺擺動的角度"; }
-			case LanguageType::CZECH:					{ return "Úhel, kterým se kyvadlo bude otáčet"; }		case LanguageType::DANISH:					{ return "Den vinkel, som pendulet vil svinge på"; }
-			case LanguageType::DUTCH:					{ return "De hoek waaronder de slinger zal schommelen"; }		case LanguageType::FINNISH:					{ return "Kulma, johon heiluri heiluu"; }
-			case LanguageType::FRENCH:					{ return "L'angle auquel pendule le pendule"; }		case LanguageType::GERMAN:					{ return "Der Winkel, um den das Pendel schwingt"; }
-			case LanguageType::GREEK:					{ return "Η γωνία με την οποία το εκκρεμές θα ταλαντεύεται"; }		case LanguageType::HUNGARIAN:				{ return "A szög, amelyre az inga leng"; }
-			case LanguageType::ITALIAN:					{ return "L'angolo a cui il pendolo oscillerà"; }		case LanguageType::JAPANESE:				{ return "振り子が振れる角度"; }
-			case LanguageType::KOREAN:					{ return "진자가 스윙 할 각도"; }		case LanguageType::NORWEGIAN:				{ return "Vinkelen som pendulen vil svinge på"; }
-			case LanguageType::POLISH:					{ return "Kąt wychylenia wahadła"; }		case LanguageType::PORTUGUESE:				{ return "O ângulo para o qual o pêndulo vai balançar"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "O ângulo para o qual o pêndulo vai balançar"; }		case LanguageType::ROMANIAN:				{ return "Unghiul la care pendulul se va schimba"; }
-			case LanguageType::RUSSIAN:					{ return "Угол, на который будет качаться маятник"; }		case LanguageType::SPANISH:					{ return "El ángulo al que oscilará el péndulo."; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "El ángulo al que oscilará el péndulo."; }	case LanguageType::SWEDISH:					{ return "Vinkeln som pendeln kommer att svänga"; }
-			case LanguageType::THAI:					{ return "มุมที่ลูกตุ้มจะแกว่ง"; }		case LanguageType::TURKISH:					{ return "Sarkacın sallanacağı açı"; }
-			case LanguageType::UKRAINIAN:				{ return "Кут нахилу маятника"; }		case LanguageType::VIETNAMESE:				{ return "Góc mà con lắc sẽ lắc"; }
-			default: case LanguageType::ENGLISH:		{ return "The angle to which the pendulum will swing"; }
+			case LanguageType::ARABIC:					{ return "الزاوية التي سيصوّب نحوها قاذف المحور"; }		case LanguageType::BULGARIAN:				{ return "Ъгълът, към който ще се прицели пусковата установка"; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "Pivot 发射器将要瞄准的角度"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "Pivot 發射器將要瞄準的角度"; }
+			case LanguageType::CZECH:					{ return "Úhel, na který bude mířit pivot launcher"; }		case LanguageType::DANISH:					{ return "Den vinkel, som pivot launcher vil sigte mod"; }
+			case LanguageType::DUTCH:					{ return "De hoek waarheen de pivot launcher zal richten"; }		case LanguageType::FINNISH:					{ return "Kulma, johon pivot launcher tähtää"; }
+			case LanguageType::FRENCH:					{ return "L'angle vers lequel le lanceur pivot visera"; }		case LanguageType::GERMAN:					{ return "Der Winkel, auf den der Pivot-Launcher zielt"; }
+			case LanguageType::GREEK:					{ return "Η γωνία προς την οποία θα στοχεύσει ο εκτοξευτής pivot"; }		case LanguageType::HUNGARIAN:				{ return "A szög, amelyre a pivot launcher célozni fog"; }
+			case LanguageType::ITALIAN:					{ return "L'angolo verso cui il lanciatore pivot mirerà"; }		case LanguageType::JAPANESE:				{ return "ピボットランチャーが狙う角度"; }
+			case LanguageType::KOREAN:					{ return "피벗 런처가 조준할 각도"; }		case LanguageType::NORWEGIAN:				{ return "Vinkelen som pivot launcher vil sikte mot"; }
+			case LanguageType::POLISH:					{ return "Kąt, pod którym pivot launcher będzie celować"; }		case LanguageType::PORTUGUESE:				{ return "O ângulo para o qual o lançador pivot vai apontar"; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "O ângulo para o qual o lançador pivot vai mirar"; }		case LanguageType::ROMANIAN:				{ return "Unghiul către care va ținti lansatorul pivot"; }
+			case LanguageType::RUSSIAN:					{ return "Угол, в который будет целиться pivot launcher"; }		case LanguageType::SPANISH:					{ return "El ángulo hacia el que apuntará el lanzador pivot"; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "El ángulo hacia el que apuntará el lanzador pivot"; }	case LanguageType::SWEDISH:					{ return "Vinkeln som pivot launcher kommer att sikta mot"; }
+			case LanguageType::THAI:					{ return "มุมที่ตัวยิงพิวอตจะเล็งไป"; }		case LanguageType::TURKISH:					{ return "Pivot fırlatıcının nişan alacağı açı"; }
+			case LanguageType::UKRAINIAN:				{ return "Кут, у який буде цілитися pivot launcher"; }		case LanguageType::VIETNAMESE:				{ return "Góc mà bệ phóng pivot sẽ ngắm tới"; }
+			default: case LanguageType::ENGLISH:		{ return "The angle to which the pivot launcher will aim"; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_RegisterEbx::create() { LocalizedString* instance = new Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_RegisterEbx(); instance->autorelease(); return instance; }
