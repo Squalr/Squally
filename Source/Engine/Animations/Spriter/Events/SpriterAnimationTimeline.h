@@ -37,7 +37,7 @@ private:
 	// Animation nodes that will be updated every update tick
 	std::set<SpriterAnimationNode*> registeredAnimationNodes;
 	
-	// Responsible for reparenting, curve sampling, bone heirarchy, and z-sorting -- Keyed by: Entity => Animation Name => { Mainline Events }
+	// Responsible for reparenting, curve sampling, bone hierarchy, and z-sorting -- Keyed by: Entity => Animation Name => { Mainline Events }
 	std::map<std::string, std::map<std::string, std::vector<SpriterAnimationTimelineEventMainline*>>> mainlineEvents;
 
 	// Responsible for object position/scale, and curve sampling overrides -- Keyed by: Entity => Animation Name => { Animation Events }

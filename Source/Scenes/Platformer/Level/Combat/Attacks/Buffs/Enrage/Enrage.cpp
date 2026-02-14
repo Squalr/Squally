@@ -40,7 +40,7 @@ using namespace cocos2d;
 
 const std::string Enrage::EnrageIdentifier = "enrage";
 
-/// TODO: Perahps this skill should be a % chance to ignore interrupt, lasting a long time. Idk.
+/// TODO: Perhaps this skill should be a % chance to ignore interrupt, lasting a long time. Idk.
 
 // Note: UI sets precision on these to 1 digit
 const float Enrage::MinSpeed = -1.0f;

@@ -172,7 +172,7 @@ void StagingHelperText::updateSelectionStatus(GameState* gameState)
 			case CardData::CardType::Special_PEEK:
 			case CardData::CardType::Special_POP:
 			{
-				// TODO: This is new -- these should just be a confirm/deny useage message since they have no targets
+				// TODO: This is new -- these should just be a confirm/deny usage message since they have no targets
 				// this->selectionLabel->setLocalizedString(Strings::Hexus_Actions_ChooseRow::create());
 				break;
 			}

@@ -53,7 +53,7 @@ void MapLinkBehavior::onLoad()
 		}
 		else if (this->ownerAsChest->isOpen())
 		{
-			// Update map link save data if already open (backwards compatability)
+			// Update map link save data if already open (backwards compatibility)
 			SaveManager::SoftSaveProfileData(this->mapLinkSaveKey, Value(true));
 		}
 		else
@@ -75,7 +75,7 @@ void MapLinkBehavior::onLoad()
 		}
 		else if (!this->ownerAsEntity->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 		{
-			// Update map link save data if already open (backwards compatability)
+			// Update map link save data if already dead (backwards compatibility)
 			SaveManager::SoftSaveProfileData(this->mapLinkSaveKey, Value(true));
 		}
 		else

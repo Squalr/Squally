@@ -182,7 +182,7 @@
   <object id="663" name="caged-killer-whale" type="object" x="2492.82" y="2468.44" width="196" height="112"/>
   <object id="664" name="caged-horse" type="object" x="2494.81" y="2355.7" width="196" height="112"/>
   <object id="665" name="caged-hippo" type="object" x="2496.44" y="2239.26" width="196" height="112"/>
-  <object id="666" name="caged-tucan" type="object" x="4033.87" y="2702.3" width="196" height="112"/>
+  <object id="666" name="caged-toucan" type="object" x="4033.87" y="2702.3" width="196" height="112"/>
   <object id="667" name="caged-tiger" type="object" x="4033.57" y="2584.88" width="196" height="112"/>
   <object id="668" name="caged-squirrel" type="object" x="4035.2" y="2468.44" width="196" height="112"/>
   <object id="669" name="caged-squid" type="object" x="4037.19" y="2355.7" width="196" height="112"/>

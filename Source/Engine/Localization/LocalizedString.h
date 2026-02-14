@@ -36,7 +36,7 @@ protected:
 
 private:
 	typedef SmartNode super;
-	friend class TypeWriterEffect; // I dont care if this is bad practice
+	friend class TypeWriterEffect; // I don't care if this is bad practice
 
 	void doStringUpdate();
 };

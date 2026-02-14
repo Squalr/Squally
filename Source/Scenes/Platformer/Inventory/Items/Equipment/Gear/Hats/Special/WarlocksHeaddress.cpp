@@ -10,7 +10,8 @@
 
 using namespace cocos2d;
 
-const std::string WarlocksHeaddress::SaveKey = "warlocks-headress";
+const std::string WarlocksHeaddress::SaveKey = "warlocks-headdress";
+const std::string WarlocksHeaddress::LegacySaveKey = "warlocks-headress";
 
 WarlocksHeaddress* WarlocksHeaddress::create()
 {

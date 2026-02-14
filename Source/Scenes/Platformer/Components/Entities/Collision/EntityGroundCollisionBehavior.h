@@ -14,8 +14,8 @@ public:
 	CollisionObject* getGroundCollision();
 	void onCollideWithGround();
 	bool isOnGround();
-	bool isStandingOn(CollisionObject* collisonObject);
-	bool isStandingOnSomethingOtherThan(CollisionObject* collisonObject);
+	bool isStandingOn(CollisionObject* collisionObject);
+	bool isStandingOnSomethingOtherThan(CollisionObject* collisionObject);
 	
 	cocos2d::Vec2 defaultPosition;
 

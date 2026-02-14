@@ -549,7 +549,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				}
 				else
 				{
-					// TODO: Failure sound for unsucessful kill attempt
+					// TODO: Failure sound for unsuccessful kill attempt
 				}
 			}
 
@@ -764,7 +764,7 @@ bool StatePlayCard::tryAbsorb(GameState* gameState, CardRow* cardRow)
 		return false;
 	}
 
-	// Feels better to just absorb everything. If we decide to only aborb enemy attacks, then uncomment.
+	// Feels better to just absorb everything. If we decide to only absorb enemy attacks, then uncomment.
 	/*
 	if (cardRow->isPlayerRow() && gameState->turn == GameState::Turn::Player)
 	{

@@ -57,7 +57,7 @@ TileLayer::TileLayer(cocos_experimental::TMXLayer* initTileLayer) : MapLayer(ini
 				}
 			}
 
-			// Keep the tile layer around, just dont add it as a child since we dont need it as such
+			// Keep the tile layer around, just don't add it as a child since we don't need it as such
 			this->tileLayer->retain();
 		}
 		else

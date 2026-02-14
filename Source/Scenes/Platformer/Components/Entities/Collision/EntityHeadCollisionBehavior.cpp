@@ -60,14 +60,14 @@ void EntityHeadCollisionBehavior::onDisable()
 	}
 }
 
-bool EntityHeadCollisionBehavior::hasHeadCollisionWith(CollisionObject* collisonObject)
+bool EntityHeadCollisionBehavior::hasHeadCollisionWith(CollisionObject* collisionObject)
 {
 	if (this->headCollision == nullptr)
 	{
 		return false;
 	}
 
-	Node* currentCollisionGroup = collisonObject->getParent();
+	Node* currentCollisionGroup = collisionObject->getParent();
 
 	for (CollisionObject* next : this->headCollision->getCurrentCollisions())
 	{

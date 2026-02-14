@@ -103,7 +103,7 @@ bool SpriterAnimationTimelineEventAnimation::canAdvance()
 	return true;
 }
 
-void SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation::advance(SpriterAnimationNode* animation)
+void SpriterAnimationTimelineEventAnimation::advance(SpriterAnimationNode* animation)
 {
 	super::advance(animation);
 
@@ -154,11 +154,11 @@ void SpriterAnimationTimelineEventAnimation::cascade(SpriterAnimationTimelineEve
 {
 	// This method applies a few magic tricks with a lot of nuance. First, it reparents itself to the parent timeline event.
 	// This allows us to use GameUtils methods to convert our relative position/scale/rotation etc to absolute.
-	// We are careful not to call setScale on ourself though. Mixing rotations and scales in the node heirarchy can cause skewing.
+	// We are careful not to call setScale on ourself though. Mixing rotations and scales in the node hierarchy can cause skewing.
 	// Instead, we use the parent scale to adjust the position we set, and propagate it manually.
-	// All of this allows us to maintain a boneless heirarchy, which allows us to Z-Sort sprites and maintain compliance with Spriter.
-	// Ex) A bone with two sprites, z depth 1 and 3. A sibling bone with a sprite of z depth 2. In a heirarchical structure, this would
-	// be a z-order conflict! The sprite of depth 2 would either need to be above or below those of depth 1 and 3. It could not be inbetween.
+	// All of this allows us to maintain a boneless hierarchy, which allows us to Z-Sort sprites and maintain compliance with Spriter.
+	// Ex) A bone with two sprites, z depth 1 and 3. A sibling bone with a sprite of z depth 2. In a hierarchical structure, this would
+	// be a z-order conflict! The sprite of depth 2 would either need to be above or below those of depth 1 and 3. It could not be in between.
 	// This solves that.
 
 	const Vec2& parentScale = (parent == nullptr ? Vec2::ONE : parent->scale);

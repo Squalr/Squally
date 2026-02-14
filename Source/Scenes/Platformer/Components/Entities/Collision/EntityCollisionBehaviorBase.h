@@ -22,8 +22,8 @@ public:
 	void setVelocity(cocos2d::Vec2 velocity);
 	bool hasLeftWallCollision();
 	bool hasRightWallCollision();
-	bool hasLeftWallCollisionWith(CollisionObject* collisonObject);
-	bool hasRightWallCollisionWith(CollisionObject* collisonObject);
+	bool hasLeftWallCollisionWith(CollisionObject* collisionObject);
+	bool hasRightWallCollisionWith(CollisionObject* collisionObject);
 	bool isOnGround();
 	
 	CollisionObject* entityCollision = nullptr;

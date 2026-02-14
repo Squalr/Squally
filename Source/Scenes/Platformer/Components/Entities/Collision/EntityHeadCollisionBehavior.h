@@ -10,7 +10,7 @@ class EntityHeadCollisionBehavior : public GameComponent
 public:
 	static EntityHeadCollisionBehavior* create(GameObject* owner);
 
-	bool hasHeadCollisionWith(CollisionObject* collisonObject);
+	bool hasHeadCollisionWith(CollisionObject* collisionObject);
 	
 	CollisionObject* headCollision = nullptr;
 
