@@ -159,7 +159,7 @@ void PuzzleDoorBase::onEnter()
 			{
 				if (!this->isUnlocked)
 				{
-					// Increment counter (not on first run tho)
+					// Increment counter (not on first run though)
 					if (firstRun)
 					{
 						firstRun = false;

@@ -168,12 +168,12 @@ DeveloperScene::DeveloperScene()
 		- * BP, somewhere				=> Frost Axe unused item
 
 	- Low prio:
-		- v (wontfix?) EF Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
+		- v (won't fix?) EF Quest to temporarily grant before EF boss? never made sense that we could reflect that fire-ball...
 		- v Fix terrain connectors
 			- v Frost
 			- v Marble [Dark too]
 			- v Jungle [Dark too]
-			- v LC terrain connectors in 3_x maps are offset baddly (which map? cant repro)
+			- v LC terrain connectors in 3_x maps are offset badly (which map? can't repro)
 
 	- Never going to happen:
 		- v Enemy anims for getting hit

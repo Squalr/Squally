@@ -390,7 +390,7 @@ const std::vector<std::string>& SmartAnimationSequenceNode::GetAllAnimationFiles
 	std::string extension = firstFrameResource.substr(firstFrameResource.find_last_of("."), std::string::npos);
 	std::string animationNameBase = containingFolder + extensionlessBaseName.substr(0, extensionlessBaseName.find_last_not_of("0123456789"));
 
-	// These files wont be sorted on the filesystem because strings do not sort like ints -- build an ordered map of int to string
+	// These files won't be sorted on the filesystem because strings do not sort like ints -- build an ordered map of int to string
 	std::map<int, std::string> orderedAnimationFileMap = std::map<int, std::string>();
 	std::vector<std::string> files = FileUtils::getInstance()->listFiles(containingFolder);
 

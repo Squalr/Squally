@@ -415,9 +415,9 @@ bool CollisionObject::hasCollisionType(CollisionType collisionType)
 	return (this->collisionType & int(collisionType)) != 0;
 }
 
-bool CollisionObject::hasCollisionWith(CollisionObject* collisonObject)
+bool CollisionObject::hasCollisionWith(CollisionObject* collisionObject)
 {
-	Node* currentCollisionGroup = collisonObject->getParent();
+	Node* currentCollisionGroup = collisionObject->getParent();
 
 	for (CollisionObject* next : this->getCurrentCollisions())
 	{

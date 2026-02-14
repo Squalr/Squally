@@ -51,7 +51,7 @@ EntityDialogueBehavior::EntityDialogueBehavior(GameObject* owner) : super(owner)
 	this->pretextNode = Node::create();
 	this->dialogueSetNode = Node::create();
 
-	// This is just a default. Can be overriden for specific needs
+	// This is just a default. Can be overridden for specific needs
 	this->mainDialogueSet = DialogueSet::create(DialogueEvents::DialogueVisualArgs(
 		DialogueBox::DialogueDock::Bottom,
 		DialogueBox::DialogueAlignment::Left,

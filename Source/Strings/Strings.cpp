@@ -20755,7 +20755,7 @@ namespace Strings
 			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "El daño que se está recibiendo."; }	case LanguageType::SWEDISH:					{ return "Skadan tas emot."; }
 			case LanguageType::THAI:					{ return "ความเสียหายที่ได้รับ"; }		case LanguageType::TURKISH:					{ return "Alınan hasar."; }
 			case LanguageType::UKRAINIAN:				{ return "Отриманий збиток."; }		case LanguageType::VIETNAMESE:				{ return "Thiệt hại đang nhận được."; }
-			default: case LanguageType::ENGLISH:		{ return "The damage being recieved."; }
+			default: case LanguageType::ENGLISH:		{ return "The damage being received."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Abilities_Buffs_Reflect_CommentElaborate::create() { LocalizedString* instance = new Menus_Hacking_Abilities_Buffs_Reflect_CommentElaborate(); instance->autorelease(); return instance; }

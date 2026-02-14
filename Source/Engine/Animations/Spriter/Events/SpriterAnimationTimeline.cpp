@@ -62,7 +62,7 @@ void SpriterAnimationTimeline::update(float dt)
 		// Advance animation time on the registered node
 		animationNode->advanceTimelineTime(dt, this->mainlineEvents[entityName][animationName].back()->getEndTime());
 
-		// Process all mainline events (heirarchy, z-sorting, global interpolation type)
+		// Process all mainline events (hierarchy, z-sorting, global interpolation type)
 		for (SpriterAnimationTimelineEventMainline* mainlineEvent : this->mainlineEvents[entityName][animationName])
 		{
 			mainlineEvent->advance(animationNode);

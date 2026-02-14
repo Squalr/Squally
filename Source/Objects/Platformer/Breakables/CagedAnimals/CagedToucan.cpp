@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 
-const std::string CagedToucan::MapKey = "caged-Toucan";
+const std::string CagedToucan::MapKey = "caged-toucan";
 
 CagedToucan* CagedToucan::create(ValueMap& properties)
 {

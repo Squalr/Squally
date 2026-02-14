@@ -104,7 +104,7 @@ void StateGameEnd::onBackClick(GameState* gameState)
 
 	if (isDraw)
 	{
-		int losses = SaveManager::GetGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
+		int losses = SaveManager::GetGlobalDataOrDefault(lossesKey, cocos2d::Value(0)).asInt() + 1;
 
 		SaveManager::SaveGlobalData(lossesKey, cocos2d::Value(losses));
 
@@ -116,7 +116,6 @@ void StateGameEnd::onBackClick(GameState* gameState)
 	else if (isWin)
 	{
 		int wins = SaveManager::GetGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
-		int losses = SaveManager::GetGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt();
 
 		SaveManager::SaveGlobalData(winsKey, cocos2d::Value(wins));
 
@@ -127,8 +126,7 @@ void StateGameEnd::onBackClick(GameState* gameState)
 	}
 	else
 	{
-		int wins = SaveManager::GetGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt();
-		int losses = SaveManager::GetGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
+		int losses = SaveManager::GetGlobalDataOrDefault(lossesKey, cocos2d::Value(0)).asInt() + 1;
 
 		SaveManager::SaveGlobalData(lossesKey, cocos2d::Value(losses));
 		
