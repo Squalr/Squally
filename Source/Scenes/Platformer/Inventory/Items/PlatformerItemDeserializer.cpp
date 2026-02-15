@@ -306,6 +306,7 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[Turban::SaveKey] = [=]() { return (Item*)Turban::create(); };
 	this->deserializers[VikingHelmet::SaveKey] = [=]() { return (Item*)VikingHelmet::create(); };
 	this->deserializers[WarlocksHeaddress::SaveKey] = [=]() { return (Item*)WarlocksHeaddress::create(); };
+	this->deserializers[WarlocksHeaddress::LegacySaveKey] = [=]() { return (Item*)WarlocksHeaddress::create(); };
 	this->deserializers[WitchesHat::SaveKey] = [=]() { return (Item*)WitchesHat::create(); };
 	this->deserializers[WizardsHat::SaveKey] = [=]() { return (Item*)WizardsHat::create(); };
 	this->deserializers[WizardsHatArcane::SaveKey] = [=]() { return (Item*)WizardsHatArcane::create(); };

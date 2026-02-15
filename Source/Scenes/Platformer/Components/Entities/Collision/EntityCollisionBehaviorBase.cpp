@@ -228,11 +228,11 @@ bool EntityCollisionBehaviorBase::hasRightWallCollision()
 	return this->rightCollision == nullptr ? false : this->rightCollision->hasCollisions();
 }
 
-bool EntityCollisionBehaviorBase::hasLeftWallCollisionWith(CollisionObject* collisonObject)
+bool EntityCollisionBehaviorBase::hasLeftWallCollisionWith(CollisionObject* collisionObject)
 {
 	for (CollisionObject* next : this->leftCollision->getCurrentCollisions())
 	{
-		if (next == collisonObject)
+		if (next == collisionObject)
 		{
 			return true;
 		}
@@ -241,11 +241,11 @@ bool EntityCollisionBehaviorBase::hasLeftWallCollisionWith(CollisionObject* coll
 	return false;
 }
 
-bool EntityCollisionBehaviorBase::hasRightWallCollisionWith(CollisionObject* collisonObject)
+bool EntityCollisionBehaviorBase::hasRightWallCollisionWith(CollisionObject* collisionObject)
 {
 	for (CollisionObject* next : this->rightCollision->getCurrentCollisions())
 	{
-		if (next == collisonObject)
+		if (next == collisionObject)
 		{
 			return true;
 		}

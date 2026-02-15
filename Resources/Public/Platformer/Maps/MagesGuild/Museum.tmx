@@ -337,7 +337,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1204" name="caged-tucan" type="object" x="4211.33" y="289" width="196" height="112">
+  <object id="1204" name="caged-toucan" type="object" x="4211.33" y="289" width="196" height="112">
    <properties>
     <property name="is-museum-display" type="bool" value="true"/>
    </properties>

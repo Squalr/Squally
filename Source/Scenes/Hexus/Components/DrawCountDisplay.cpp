@@ -120,7 +120,7 @@ void DrawCountDisplay::onAnyStateChange(GameState* gameState)
 {
 	super::onAnyStateChange(gameState);
 
-	// Hide on last round -- there will be no next turn, thus draw count is irrelevent
+	// Hide on last round -- there will be no next turn, so draw count is irrelevant
 	if (gameState->stateType == GameState::StateType::CoinFlip && gameState->playerLosses >= 1 && gameState->enemyLosses >= 1)
 	{
 		this->drawCountSprite->runAction(FadeTo::create(0.25f, 0));

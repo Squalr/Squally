@@ -245,7 +245,7 @@ bool PlatformerEntity::isFlippedX()
 
 bool PlatformerEntity::isFlippedY()
 {
-	// Flipped Y actually involves in rotating the entire entity. This is to properly position collision boxes (flipping the anims wouldnt do this)
+	// Flipped Y actually involves rotating the entire entity. This is to properly position collision boxes (flipping the anims wouldn't do this)
 	// As of now, this value doesn't change at run-time, so just read it from properties.
 	return GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipY, Value(false)).asBool();
 }

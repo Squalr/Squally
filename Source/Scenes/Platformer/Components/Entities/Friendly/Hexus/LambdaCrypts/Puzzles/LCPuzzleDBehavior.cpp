@@ -59,8 +59,8 @@ std::vector<CardData*> LCPuzzleDBehavior::generateDeck()
 StateOverride* LCPuzzleDBehavior::getStateOverride()
 {
 	/*
-	- NEG to destroy their aborb card
-	- NEG to invert thier 7 to 8
+	- NEG to destroy their absorb card
+	- NEG to invert their 7 to 8
 	- MOV your 9 to their whatever
 	- SHL that row to oblivion
 	*/

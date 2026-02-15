@@ -15,6 +15,7 @@ public:
 	Recipe* getRecipe() override;
 
 	static const std::string SaveKey;
+	static const std::string LegacySaveKey;
 
 protected:
 	WarlocksHeaddress();

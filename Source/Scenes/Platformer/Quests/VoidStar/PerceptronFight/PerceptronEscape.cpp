@@ -85,7 +85,7 @@ void PerceptronEscape::onLoad(QuestState questState)
 
 void PerceptronEscape::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
-	// 1 frame delay otherwise hijack wont get picked up
+	// 1 frame delay otherwise hijack won't get picked up
 	this->defer([=]()
 	{
 		this->runCinematicSequencePt1();

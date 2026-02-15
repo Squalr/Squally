@@ -852,7 +852,7 @@ void TerrainObject::buildSegment(Node* parent, Sprite* sprite, Vec2 anchor, Vec2
 
 void TerrainObject::maskAgainstOther(TerrainObject* other)
 {
-	// Pretty sure we dont need this anymore, but leaving it here for now
+	// Pretty sure we don't need this anymore, but leaving it here for now
 	/*
 	if (this->isInactive
 		|| !this->boundsRect.intersectsRect(other->boundsRect)

@@ -70,8 +70,8 @@ void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animati
 	//           b
 	//      b         b
 	//    z1, z3      z2
-	// The first bone has sprites of z order 1 and 3, and the second has a z order of 2. These conflict in a parent heirarchy chain.
-	// The only solution that would allow for parent heirarchies is to clone the first bone, splitting it into two.
+	// The first bone has sprites of z order 1 and 3, and the second has a z order of 2. These conflict in a parent hierarchy chain.
+	// The only solution that would allow for parent hierarchies is to clone the first bone, splitting it into two.
 
 	for (const auto& part : boneMap)
 	{

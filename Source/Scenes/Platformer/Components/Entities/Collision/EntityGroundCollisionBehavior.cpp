@@ -307,21 +307,21 @@ bool EntityGroundCollisionBehavior::isOnGround()
 	return false;
 }
 
-bool EntityGroundCollisionBehavior::isStandingOn(CollisionObject* collisonObject)
+bool EntityGroundCollisionBehavior::isStandingOn(CollisionObject* collisionObject)
 {
 	if (this->groundCollision == nullptr)
 	{
 		return false;
 	}
 
-	Node* currentCollisionGroup = collisonObject->getParent();
+	Node* currentCollisionGroup = collisionObject->getParent();
 
 	for (CollisionObject* next : this->groundCollision->getCurrentCollisions())
 	{
 		if (next->hasCollisionType(CollisionType(PlatformerCollisionType::Solid))
 			|| next->hasCollisionType(CollisionType(PlatformerCollisionType::PassThrough)))
 		{
-			// Do a parent check because multiple collison objects can be nested under the same macro-object (ie terrain segments)
+			// Do a parent check because multiple collision objects can be nested under the same macro-object (ie terrain segments)
 			if (next->getParent() == currentCollisionGroup)
 			{
 				return true;
@@ -332,14 +332,14 @@ bool EntityGroundCollisionBehavior::isStandingOn(CollisionObject* collisonObject
 	return false;
 }
 
-bool EntityGroundCollisionBehavior::isStandingOnSomethingOtherThan(CollisionObject* collisonObject)
+bool EntityGroundCollisionBehavior::isStandingOnSomethingOtherThan(CollisionObject* collisionObject)
 {
 	if (this->groundCollision == nullptr)
 	{
 		return false;
 	}
 
-	Node* currentCollisionGroup = collisonObject->getParent();
+	Node* currentCollisionGroup = collisionObject->getParent();
 
 	// Greedy search for the oldest collision. This works out as being the object that is the true "ground".
 	for (CollisionObject* next : this->groundCollision->getCurrentCollisions())
@@ -349,7 +349,7 @@ bool EntityGroundCollisionBehavior::isStandingOnSomethingOtherThan(CollisionObje
 		if (next->hasCollisionType(CollisionType(PlatformerCollisionType::Solid))
 			|| next->hasCollisionType(CollisionType(PlatformerCollisionType::PassThrough)))
 		{
-			// Do a parent check because multiple collison objects can be nested under the same macro-object (ie terrain segments)
+			// Do a parent check because multiple collision objects can be nested under the same macro-object (ie terrain segments)
 			if (otherCollisionGroup != currentCollisionGroup)
 			{
 				return true;

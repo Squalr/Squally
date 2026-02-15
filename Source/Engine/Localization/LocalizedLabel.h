@@ -73,7 +73,7 @@ protected:
 
 private:
 	typedef cocos2d::Label super;
-	friend class TypeWriterEffect; // I dont care if this is bad practice
+	friend class TypeWriterEffect; // I don't care if this is bad practice
 
 	// Hide methods that we do not want available
 	using super::setString;

@@ -221,7 +221,7 @@ void Inventory::forceInsert(Item* item, bool doSave)
 
 void Inventory::forceInsert(Item* item, std::function<void(Item*)> onInsert, std::function<void(Item*)> onInsertFailed, bool doSave)
 {
-	// We still want to do unqiue checks on forced inserts, but ignore capacity checks
+	// We still want to do unique checks on forced inserts, but ignore capacity checks
 	if (item != nullptr && this->canInsertItemIfUnique(item))
 	{
 		this->itemsNode->addChild(item);
