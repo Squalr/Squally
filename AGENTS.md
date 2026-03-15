@@ -16,8 +16,7 @@ Our current task is to audit the code for logic errors, typos, or other silly mi
 
 # Notes from Owner (Readonly Section)
 [Writable List]
-- For world switching (for example title screen launching Pong), should the canonical schema-level mechanism be only state-machine/global events, or should we also support a dedicated world-transition runtime command queue? ANSWER: I mean there are probably many ways this can happen right? Like a script call to change worlds is typical. Do what a platform like Roblox would do.
-- Also, we should move all individual games into their own folders, rather than bloating `runtime_bootstrap.rs` with all of this shit, defeating single responsibility principal.
+- 
 
 ## Critical Questions and Blockers for Owner
 [Readonly line] Append difficult decisions here that the owner can come back to for providing guidance. If stuck on a problem, try to infer from the `README.md` what the owner would have wanted, and make note of it here.
