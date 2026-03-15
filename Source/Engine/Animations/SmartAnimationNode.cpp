@@ -35,7 +35,7 @@ SmartAnimationNode::SmartAnimationNode(std::string animationResource, std::strin
 	this->currentAnimationPriority = -1.0f;
 	this->entity = nullptr;
 
-	static const bool UseNewAnimationSystem = false;
+	static const bool UseNewAnimationSystem = true;
 
 	if (UseNewAnimationSystem)
 	{
