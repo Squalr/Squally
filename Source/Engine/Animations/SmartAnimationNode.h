@@ -20,6 +20,7 @@ class SmartAnimationNode : public SmartNode
 public:
 	static SmartAnimationNode* create(std::string animationResource);
 	static SmartAnimationNode* create(std::string animationResource, std::string entityName);
+	static SmartAnimationNode* create(std::string animationResource, std::string entityName, bool useNewAnimationSystem);
 
 	enum class AnimationPlayMode
 	{
@@ -50,6 +51,8 @@ public:
 	bool getFlippedY();
 	std::string getCurrentAnimation();
 	std::string getAnimationResource();
+	void refreshCurrentAnimationState();
+	void seekAnimationTimeRatio(float timeRatio);
 	void disableRender();
 	void enableRender();
 
@@ -57,7 +60,7 @@ public:
 	static const std::string DefaultAnimationName;
 
 protected:
-	SmartAnimationNode(std::string animationResource, std::string entityName);
+	SmartAnimationNode(std::string animationResource, std::string entityName, bool useNewAnimationSystem);
 	virtual ~SmartAnimationNode();
 
 	SpriterAnimationNode* spriterAnimation = nullptr;
@@ -73,4 +76,5 @@ private:
 	std::string currentAnimation;
 	std::string animationResource;
 	std::string entityName;
+	bool useNewAnimationSystem = true;
 };

@@ -19,11 +19,12 @@ SpriterAnimationSprite* SpriterAnimationSprite::create(std::string spriteResourc
 SpriterAnimationSprite::SpriterAnimationSprite(std::string spriteResource, Vec2 anchor)
 {
 	this->sprite = Sprite::create(spriteResource);
-
-	// Not super useful since we just overwrite this during animation events
-	this->sprite->setAnchorPoint(anchor);
+	this->originalSpriteResource = spriteResource;
+	this->currentSpriteResource = spriteResource;
+	this->currentAnchor = anchor;
 
 	this->addChild(this->sprite);
+	this->refreshSpriteLayout();
 }
 
 SpriterAnimationSprite::~SpriterAnimationSprite()
@@ -32,15 +33,82 @@ SpriterAnimationSprite::~SpriterAnimationSprite()
 
 void SpriterAnimationSprite::setAnchorPoint(const Vec2& anchorPoint)
 {
-	this->sprite->setAnchorPoint(anchorPoint);
+	this->currentAnchor = anchorPoint;
+	this->refreshSpriteLayout();
 }
 
 void SpriterAnimationSprite::setScaleX(float scaleX)
 {
-	this->sprite->setScaleX(scaleX);
+	super::setScaleX(scaleX);
 }
 
 void SpriterAnimationSprite::setScaleY(float scaleY)
 {
-	this->sprite->setScaleY(scaleY);
+	super::setScaleY(scaleY);
+}
+
+void SpriterAnimationSprite::setSpriteResource(const std::string& spriteResource)
+{
+	if (this->sprite == nullptr)
+	{
+		return;
+	}
+
+	this->currentSpriteResource = spriteResource;
+	this->sprite->setTexture(spriteResource);
+	this->refreshSpriteLayout();
+}
+
+void SpriterAnimationSprite::restoreSpriteResource()
+{
+	this->setSpriteResource(this->originalSpriteResource);
+}
+
+std::string SpriterAnimationSprite::getSpriteResource() const
+{
+	return this->currentSpriteResource;
+}
+
+CSize SpriterAnimationSprite::getSpriteSize() const
+{
+	return this->sprite == nullptr ? CSize::ZERO : this->sprite->getContentSize();
+}
+
+void SpriterAnimationSprite::applyAnchorPoint(const Vec2& anchorPoint)
+{
+	this->currentAnchor = anchorPoint;
+	this->refreshSpriteLayout();
+}
+
+void SpriterAnimationSprite::applyAnimationOffset(const Vec2& offset)
+{
+	this->refreshSpriteLayout();
+}
+
+bool SpriterAnimationSprite::usesCompatibilityLayout() const
+{
+	return this->currentSpriteResource != this->originalSpriteResource || this->animationOffset != Vec2::ZERO;
+}
+
+void SpriterAnimationSprite::refreshSpriteLayout()
+{
+	if (this->sprite == nullptr)
+	{
+		return;
+	}
+
+	if (this->usesCompatibilityLayout())
+	{
+		// Match Spriter2dX's outer-container pivot handling only for compatibility replacements/offsets.
+		this->sprite->setAnchorPoint(Vec2::ZERO);
+		this->setContentSize(this->sprite->getContentSize());
+		super::setAnchorPoint(this->currentAnchor);
+	}
+	else
+	{
+		this->sprite->setAnchorPoint(this->currentAnchor);
+		super::setAnchorPoint(Vec2::ZERO);
+	}
+
+	this->sprite->setPosition(this->animationOffset);
 }

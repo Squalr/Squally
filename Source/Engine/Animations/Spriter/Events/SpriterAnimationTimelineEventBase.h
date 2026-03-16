@@ -12,6 +12,7 @@ class SpriterAnimationTimelineEventBase : public SmartNode
 {
 public:
 	virtual void advance(SpriterAnimationNode* animation);
+	void fire(SpriterAnimationNode* animation) { this->onFire(animation); }
 
 	float getKeyTime();
 	float getEndTime();

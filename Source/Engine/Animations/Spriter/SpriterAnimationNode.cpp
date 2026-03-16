@@ -1,5 +1,8 @@
 #include "SpriterAnimationNode.h"
 
+#include <cmath>
+#include <limits>
+
 #include "2d/CCSprite.h"
 #include "platform/CCFileUtils.h"
 
@@ -32,6 +35,14 @@ SpriterAnimationNode::SpriterAnimationNode(const std::string& animationResource,
 	
 	const SpriterData& spriterData = SpriterAnimationParser::Parse(animationResource);
 
+	for (const SpriterEntity& entity : spriterData.entities)
+	{
+		for (const SpriterAnimation& animation : entity.animations)
+		{
+			this->animationDataByName[entity.name][animation.name] = animation;
+		}
+	}
+
 	this->timeline->registerAnimationNode(this);
 
 	this->buildBones(spriterData);
@@ -50,7 +61,35 @@ SpriterAnimationNode::~SpriterAnimationNode()
 void SpriterAnimationNode::advanceTimelineTime(float dt, float timelineMax)
 {
 	this->previousTimelineTime = this->timelineTime;
-	this->timelineTime = MathUtils::wrappingNormalize(this->timelineTime + dt, 0.0f, timelineMax);
+	this->animationCompletedThisFrame = false;
+
+	if (this->playbackPaused || timelineMax <= 0.0f)
+	{
+		return;
+	}
+
+	const float nextTime = this->timelineTime + dt;
+
+	if (this->isRepeating)
+	{
+		if (nextTime >= timelineMax)
+		{
+			this->animationCompletedThisFrame = true;
+		}
+
+		this->timelineTime = MathUtils::wrappingNormalize(nextTime, 0.0f, timelineMax);
+		return;
+	}
+
+	if (nextTime >= timelineMax)
+	{
+		this->animationCompletedThisFrame = true;
+		this->playbackPaused = true;
+		this->timelineTime = std::nextafter(timelineMax, 0.0f);
+		return;
+	}
+
+	this->timelineTime = nextTime;
 }
 
 float SpriterAnimationNode::getPreviousTimelineTime()
@@ -134,6 +173,13 @@ SpriterAnimationSprite* SpriterAnimationNode::getSpriteByHash(int id)
 void SpriterAnimationNode::playAnimation(std::string animation)
 {
 	this->currentAnimation = animation;
+
+	if (this->animationDataByName.find(this->currentEntityName) != this->animationDataByName.end()
+		&& this->animationDataByName[this->currentEntityName].find(animation) != this->animationDataByName[this->currentEntityName].end())
+	{
+		this->isRepeating = this->animationDataByName[this->currentEntityName][animation].isLooping;
+	}
+
 	this->resetAnimation();
 }
 
@@ -141,11 +187,113 @@ void SpriterAnimationNode::resetAnimation()
 {
 	this->previousTimelineTime = 0.0f;
 	this->timelineTime = 0.0f;
+	this->animationCompletedThisFrame = false;
+	this->playbackPaused = false;
+
+	if (this->timeline != nullptr)
+	{
+		this->timeline->applyCurrentAnimationState(this);
+	}
 }
 
 void SpriterAnimationNode::setFlippedX(bool isFlippedX)
 {
-	this->setScaleX(isFlippedX ? -1.0f : 1.0f);
+	if (this->flippedX == isFlippedX)
+	{
+		return;
+	}
+
+	this->flippedX = isFlippedX;
+	this->refreshCurrentEntityAnimationState();
+}
+
+void SpriterAnimationNode::setFlippedY(bool isFlippedY)
+{
+	if (this->flippedY == isFlippedY)
+	{
+		return;
+	}
+
+	this->flippedY = isFlippedY;
+	this->refreshCurrentEntityAnimationState();
+}
+
+bool SpriterAnimationNode::getFlippedX() const
+{
+	return this->flippedX;
+}
+
+bool SpriterAnimationNode::getFlippedY() const
+{
+	return this->flippedY;
+}
+
+void SpriterAnimationNode::setRepeating(bool isRepeating)
+{
+	this->isRepeating = isRepeating;
+	this->playbackPaused = false;
+}
+
+bool SpriterAnimationNode::getRepeating() const
+{
+	return this->isRepeating;
+}
+
+void SpriterAnimationNode::setPlaybackPaused(bool isPlaybackPaused)
+{
+	this->playbackPaused = isPlaybackPaused;
+}
+
+bool SpriterAnimationNode::getPlaybackPaused() const
+{
+	return this->playbackPaused;
+}
+
+void SpriterAnimationNode::setAnimationCompleteCallback(const std::function<void()>& callback)
+{
+	this->animationCompleteCallback = callback;
+}
+
+void SpriterAnimationNode::dispatchAnimationComplete()
+{
+	if (!this->animationCompletedThisFrame)
+	{
+		return;
+	}
+
+	this->animationCompletedThisFrame = false;
+
+	if (this->animationCompleteCallback != nullptr)
+	{
+		this->animationCompleteCallback();
+	}
+}
+
+void SpriterAnimationNode::seekAnimationTimeRatio(float timeRatio)
+{
+	if (this->animationDataByName.find(this->currentEntityName) == this->animationDataByName.end()
+		|| this->animationDataByName[this->currentEntityName].find(this->currentAnimation) == this->animationDataByName[this->currentEntityName].end())
+	{
+		return;
+	}
+
+	const float animationLength = this->animationDataByName[this->currentEntityName][this->currentAnimation].length / 1000.0f;
+
+	if (animationLength <= 0.0f)
+	{
+		return;
+	}
+
+	this->previousTimelineTime = this->timelineTime;
+	this->animationCompletedThisFrame = false;
+	this->timelineTime = timeRatio >= 1.0f
+		? std::nextafter(animationLength, 0.0f)
+		: animationLength * MathUtils::clamp(timeRatio, 0.0f, 1.0f);
+
+	if (this->timeline != nullptr)
+	{
+		this->timeline->applyCurrentAnimationState(this);
+	}
 }
 
 void SpriterAnimationNode::setCurrentEntity(const std::string& currentEntityName)
@@ -187,6 +335,26 @@ const std::string& SpriterAnimationNode::getCurrentAnimation()
 	return this->currentAnimation;
 }
 
+Vec2 SpriterAnimationNode::getCascadePosition() const
+{
+	return Vec2::ZERO;
+}
+
+Vec2 SpriterAnimationNode::getCascadeScale() const
+{
+	return Vec2(this->flippedX ? -1.0f : 1.0f, this->flippedY ? -1.0f : 1.0f);
+}
+
+float SpriterAnimationNode::getCascadeRotation() const
+{
+	return 0.0f;
+}
+
+float SpriterAnimationNode::getCascadeOpacityMultiplier() const
+{
+	return 1.0f;
+}
+
 const std::map<std::string, SpriterAnimationBone*>& SpriterAnimationNode::getCurrentBoneMap()
 {
 	if (this->bonesByName.find(this->currentEntityName) == this->bonesByName.end())
@@ -205,6 +373,25 @@ const std::map<std::string, SpriterAnimationSprite*>& SpriterAnimationNode::getC
 	}
 
 	return this->spritesByName[this->currentEntityName];
+}
+
+void SpriterAnimationNode::refreshCurrentEntityAnimationState()
+{
+	for (const auto& next : this->getCurrentBoneMap())
+	{
+		if (next.second != nullptr && next.second->canTimelineUpdate())
+		{
+			next.second->refreshAnimationState();
+		}
+	}
+
+	for (const auto& next : this->getCurrentSpriteMap())
+	{
+		if (next.second != nullptr && next.second->canTimelineUpdate())
+		{
+			next.second->refreshAnimationState();
+		}
+	}
 }
 
 void SpriterAnimationNode::buildBones(const SpriterData& spriterData)
@@ -279,9 +466,6 @@ void SpriterAnimationNode::buildSprites(const SpriterData& spriterData, const st
 
 					this->spritesByName[entity.name][timeline.name] = sprite;
 					this->spritesByHash[entity.name][int(hash)] = sprite;
-
-					// Erase the key to ensure we only create the sprite once
-					folderFileIdMap.erase(folderFileKey);
 				}
 			}
 		}

@@ -76,6 +76,8 @@ void SpriterAnimationTimeline::update(float dt)
 				animationEvent->advance(animationNode);
 			}
 		}
+
+		animationNode->dispatchAnimationComplete();
 	}
 }
 
@@ -89,6 +91,41 @@ void SpriterAnimationTimeline::unregisterAnimationNode(SpriterAnimationNode* ani
 	this->registeredAnimationNodes.erase(animationNode);
 }
 
+void SpriterAnimationTimeline::applyCurrentAnimationState(SpriterAnimationNode* animationNode)
+{
+	if (animationNode == nullptr)
+	{
+		return;
+	}
+
+	const std::string& entityName = animationNode->getCurrentEntityName();
+	const std::string& animationName = animationNode->getCurrentAnimation();
+
+	if (this->mainlineEvents.find(entityName) == this->mainlineEvents.end() || this->mainlineEvents[entityName].find(animationName) == this->mainlineEvents[entityName].end())
+	{
+		return;
+	}
+
+	const float currentTime = animationNode->getTimelineTime();
+
+	for (SpriterAnimationTimelineEventMainline* mainlineEvent : this->mainlineEvents[entityName][animationName])
+	{
+		if (mainlineEvent->getKeyTime() <= currentTime && currentTime < mainlineEvent->getEndTime())
+		{
+			mainlineEvent->fire(animationNode);
+			break;
+		}
+	}
+
+	for (SpriterAnimationTimelineEventAnimation* animationEvent : this->animationEvents[entityName][animationName])
+	{
+		if (animationEvent->getKeyTime() <= currentTime && currentTime < animationEvent->getEndTime())
+		{
+			animationEvent->applyCurrentState(animationNode);
+		}
+	}
+}
+
 void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 {
 	std::vector<SpriterAnimationTimelineEventMainline*> allMainlines = std::vector<SpriterAnimationTimelineEventMainline*>();
@@ -97,11 +134,19 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 	{
 		for (const SpriterAnimation& animation : entity.animations)
 		{
-			// There exists a 'key' property on bone/obj refs that maps to a timeline key at a given time.
-			// Painfully, there can be extraneous info in the timeilne that we need to ignore if it references a value that does not exist in this set.
-			// Joint key of key << 48 | timeline id << 32 | timeline time. We can get away with hashing 3 ints this way because key/timeline ID will always be small ints.
-			std::set<uint64_t> mainlineTimelineRefKeys = std::set<uint64_t>();
-			std::map<int, SpriterAnimationTimelineEventMainline*> mainlinesByTime = std::map<int, SpriterAnimationTimelineEventMainline*>();
+			std::map<int, const SpriterTimeline*> timelinesById = std::map<int, const SpriterTimeline*>();
+			std::map<int, std::map<int, const SpriterTimelineKey*>> timelineKeysById = std::map<int, std::map<int, const SpriterTimelineKey*>>();
+			std::map<std::string, std::vector<SpriterAnimationTimelineEventAnimation*>> animationEventsByPartName = std::map<std::string, std::vector<SpriterAnimationTimelineEventAnimation*>>();
+
+			for (const SpriterTimeline& timeline : animation.timelines)
+			{
+				timelinesById[timeline.id] = &timeline;
+
+				for (const SpriterTimelineKey& timelineKey : timeline.keys)
+				{
+					timelineKeysById[timeline.id][timelineKey.id] = &timelineKey;
+				}
+			}
 
 			// Parse mainline (each key is a unique event)
 			for (int index = 0; index < int(animation.mainline.keys.size()); index++)
@@ -112,99 +157,94 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 				SpriterAnimationTimelineEventMainline* mainlineEvent = SpriterAnimationTimelineEventMainline::create(this, endTime, animation, mainlineKey);
 
 				this->mainlineEvents[entity.name][animation.name].push_back(mainlineEvent);
-
-				for (const auto& boneRef : mainlineKey.boneRefs)
-				{
-					mainlineTimelineRefKeys.insert(uint64_t(boneRef.key) << 48 | uint64_t(boneRef.timeline) << 32 | uint64_t(mainlineKey.time));
-				}
-
-				for (const auto& objectRef : mainlineKey.objectRefs)
-				{
-					mainlineTimelineRefKeys.insert(uint64_t(objectRef.key) << 48 | uint64_t(objectRef.timeline) << 32 | uint64_t(mainlineKey.time));
-				}
-
-				mainlinesByTime[mainlineKey.time] = mainlineEvent;
 				
 				allMainlines.push_back(mainlineEvent);
 				this->addChild(mainlineEvent);
-			}
-			
-			// Parse animations
-			for (const auto& timeline : animation.timelines)
-			{
-				// Filter out extraneous timeline information that references non-existent keys.
-				std::vector<SpriterTimelineKey> filteredKeys = std::vector<SpriterTimelineKey>();
-				std::set<int> filteredKeyTimes = std::set<int>();
 
-				std::copy_if(timeline.keys.begin(), timeline.keys.end(), std::back_inserter(filteredKeys), [&](const SpriterTimelineKey& key)
+				auto registerSegmentAnimation = [&](int timelineId, int keyId)
 				{
-					uint64_t hashKey = uint64_t(key.id) << 48 | uint64_t(timeline.id) << 32 | uint64_t(key.time);
-					return mainlineTimelineRefKeys.find(hashKey) != mainlineTimelineRefKeys.end();
-				});
+					const auto timelineIt = timelinesById.find(timelineId);
+					const auto keyTimelineIt = timelineKeysById.find(timelineId);
 
-				// Sort by time ascending
-				std::stable_sort(filteredKeys.begin(), filteredKeys.end(),  [](const SpriterTimelineKey& a, const SpriterTimelineKey& b) -> bool
-				{ 
-					return a.time < b.time; 
-				});
+					if (timelineIt == timelinesById.end() || keyTimelineIt == timelineKeysById.end())
+					{
+						return;
+					}
 
-				for (const SpriterTimelineKey& next : filteredKeys)
+					const auto keyIt = keyTimelineIt->second.find(keyId);
+
+					if (keyIt == keyTimelineIt->second.end() || keyIt->second == nullptr)
+					{
+						return;
+					}
+
+					const SpriterTimeline& timeline = *timelineIt->second;
+					const SpriterTimelineKey& timelineKey = *keyIt->second;
+					SpriterAnimationTimelineEventAnimation* animationEvent = SpriterAnimationTimelineEventAnimation::create(this, float(mainlineKey.time), endTime, timeline, timelineKey);
+
+					mainlineEvent->registerAnimation(animationEvent);
+					animationEventsByPartName[timeline.name].push_back(animationEvent);
+					this->animationEvents[entity.name][animation.name].push_back(animationEvent);
+					this->addChild(animationEvent);
+				};
+
+				for (const SpriterBoneRef& boneRef : mainlineKey.boneRefs)
 				{
-					filteredKeyTimes.insert(next.time);
+					registerSegmentAnimation(boneRef.timeline, boneRef.key);
 				}
 
-				// Fill in missing times. Our particular implementation expects an event for each object at each frame.
-				for (const auto& mainlineByTime : mainlinesByTime)
+				for (const SpriterObjectRef& objectRef : mainlineKey.objectRefs)
 				{
-					auto& time = mainlineByTime.first;
-					auto& value = mainlineByTime.second;
+					registerSegmentAnimation(objectRef.timeline, objectRef.key);
+				}
+			}
 
-					if (filteredKeyTimes.find(time) == filteredKeyTimes.end())
+			for (auto& partEventsEntry : animationEventsByPartName)
+			{
+				std::vector<SpriterAnimationTimelineEventAnimation*>& partEvents = partEventsEntry.second;
+				const float animationLength = animation.length / 1000.0f;
+
+				for (int index = 0; index < int(partEvents.size()); index++)
+				{
+					SpriterAnimationTimelineEventAnimation* currentEvent = partEvents[index];
+					SpriterAnimationTimelineEventAnimation* nextEvent = currentEvent;
+					float sampleStartTime = currentEvent->getTimelineKeyTime();
+					float sampleEndTime = sampleStartTime;
+					bool sampleTimeWraps = false;
+
+					if (!partEvents.empty())
 					{
-						for (int index = int(filteredKeys.size() - 1); index >= 0; index--)
+						for (int offset = 1; offset < int(partEvents.size()); offset++)
 						{
-							if (filteredKeys[index].time < time)
+							SpriterAnimationTimelineEventAnimation* candidateEvent = partEvents[(index + offset) % partEvents.size()];
+
+							if (candidateEvent->getTimelineKeyId() == currentEvent->getTimelineKeyId())
 							{
-								filteredKeys.push_back(filteredKeys[index]);
-								filteredKeys.back().time = time;
-								break;
+								continue;
 							}
+
+							nextEvent = candidateEvent;
+							sampleEndTime = candidateEvent->getTimelineKeyTime();
+
+							if (animation.isLooping && sampleEndTime <= sampleStartTime)
+							{
+								sampleEndTime += animationLength;
+								sampleTimeWraps = true;
+							}
+
+							break;
+						}
+
+						if (nextEvent == currentEvent && animationLength > 0.0f)
+						{
+							sampleEndTime = animation.isLooping
+								? sampleStartTime + animationLength
+								: std::max(animationLength, sampleStartTime);
 						}
 					}
-				}
 
-				// Resort
-				std::stable_sort(filteredKeys.begin(), filteredKeys.end(),  [](const SpriterTimelineKey& a, const SpriterTimelineKey& b) -> bool
-				{ 
-					return a.time < b.time; 
-				});
-
-				std::vector<SpriterAnimationTimelineEventAnimation*> eventsToAdd = std::vector<SpriterAnimationTimelineEventAnimation*>(filteredKeys.size());
-				
-				// Parse animation keys (each key is a unique event)
-				for (int index = 0; index < int(filteredKeys.size()); index++)
-				{
-					const SpriterTimelineKey& timelineKey = filteredKeys[index];
-					float endTime = index + 1 < int(filteredKeys.size()) ? filteredKeys[index + 1].time : animation.length;
-					SpriterAnimationTimelineEventAnimation* animationTimeline = SpriterAnimationTimelineEventAnimation::create(this, endTime, timeline, timelineKey);
-
-					if (mainlinesByTime.find(timelineKey.time) != mainlinesByTime.end())
-					{
-						mainlinesByTime[timelineKey.time]->registerAnimation(animationTimeline);
-					}
-
-					eventsToAdd[index] = animationTimeline;
-
-					this->addChild(animationTimeline);
-				}
-
-				// Set up 'next' targets for added animation events
-				for (int index = 0; index < int(eventsToAdd.size()); index++)
-				{
-					int nextIndex = index + 1 < int(eventsToAdd.size()) ? index + 1 : 0;
-					eventsToAdd[index]->setNext(eventsToAdd[nextIndex]);
-
-					this->animationEvents[entity.name][animation.name].push_back(eventsToAdd[index]);
+					currentEvent->setNext(nextEvent);
+					currentEvent->setSamplingWindow(sampleStartTime, sampleEndTime, animationLength, sampleTimeWraps);
 				}
 			}
 		}

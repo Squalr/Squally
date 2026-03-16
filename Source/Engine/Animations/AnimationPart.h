@@ -7,6 +7,8 @@ namespace SpriterEngine
 	class UniversalObjectInterface;
 }
 
+class SpriterAnimationPart;
+
 namespace cocos2d
 {
 	class Sprite;
@@ -19,6 +21,7 @@ class AnimationPart : public SmartNode
 {
 public:
 	static AnimationPart* create(SpriterEngine::EntityInstance* entity, std::string partName);
+	static AnimationPart* create(SpriterAnimationPart* spriterAnimationPart);
 
 	void removeTrackingObject(cocos2d::Node* trackedObject);
 	void addTrackingObject(cocos2d::Node* trackedObject);
@@ -43,6 +46,7 @@ public:
 private:
 	typedef SmartNode super;
 	AnimationPart(SpriterEngine::EntityInstance* entity, std::string partName);
+	AnimationPart(SpriterAnimationPart* spriterAnimationPart);
 	virtual ~AnimationPart();
 
 	void onEnter() override;
@@ -54,6 +58,7 @@ private:
 	std::string originalPath;
 	std::vector<cocos2d::Node*> trackedObjects;
 	cocos2d::Sprite* ghostSprite = nullptr;
+	SpriterAnimationPart* spriterAnimationPartNew = nullptr;
 	SpriterEngine::UniversalObjectInterface* spriterAnimationPart = nullptr;
 	SpriterEngine::EntityInstance* entity = nullptr;
 	float rotation = 0.0f;
