@@ -141,6 +141,23 @@ void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animati
 
 			if (this->objectParentTable.find(objectId) != this->objectParentTable.end())
 			{
+				int parentBoneId = this->objectParentTable[objectId];
+
+				if (this->boneNameMap.find(parentBoneId) != this->boneNameMap.end())
+				{
+					const std::string& parentBoneName = this->boneNameMap[parentBoneId];
+
+					if (boneMap.find(parentBoneName) != boneMap.end())
+					{
+						SpriterAnimationBone* parentBone = boneMap.at(parentBoneName);
+
+						parentBone->addAnimationPartChild(childSprite);
+						childSprite->setLocalZOrder(zOrder);
+						childSprite->setVisible(true);
+						continue;
+					}
+				}
+
 				animation->addAnimationPartChild(childSprite);
 				childSprite->setLocalZOrder(zOrder);
 				childSprite->setVisible(true);

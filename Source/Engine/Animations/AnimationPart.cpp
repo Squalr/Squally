@@ -1,5 +1,8 @@
 #include "AnimationPart.h"
 
+#include <cmath>
+#include <map>
+
 #include <spriter2dx/AnimationNode.h>
 
 #include "2d/CCActionInstant.h"
@@ -7,6 +10,7 @@
 #include "2d/CCSprite.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Animations/Spriter/SpriterAnimationPart.h"
 #include "Engine/Utils/GameUtils.h"
 
 #include "Resources/UIResources.h"
@@ -16,6 +20,15 @@ using namespace cocos2d;
 AnimationPart* AnimationPart::create(SpriterEngine::EntityInstance* entity, std::string partName)
 {
 	AnimationPart* instance = new AnimationPart(entity, partName);
+
+	instance->autorelease();
+
+	return instance;
+}
+
+AnimationPart* AnimationPart::create(SpriterAnimationPart* spriterAnimationPart)
+{
+	AnimationPart* instance = new AnimationPart(spriterAnimationPart);
 
 	instance->autorelease();
 
@@ -52,6 +65,28 @@ AnimationPart::AnimationPart(SpriterEngine::EntityInstance* entity, std::string 
 	}
 }
 
+AnimationPart::AnimationPart(SpriterAnimationPart* spriterAnimationPart)
+{
+	this->spriterAnimationPartNew = spriterAnimationPart;
+	this->spriterAnimationPart = nullptr;
+	this->entity = nullptr;
+	this->ghostSprite = nullptr;
+	this->originalPath = this->spriterAnimationPartNew == nullptr ? "" : this->spriterAnimationPartNew->getSpriteResource();
+	this->lastKnownAnim = "";
+
+	if (!this->originalPath.empty())
+	{
+		this->ghostSprite = Sprite::create(this->originalPath);
+
+		if (this->ghostSprite != nullptr)
+		{
+			this->ghostSprite->setColor(Color3B::BLUE);
+			this->ghostSprite->setVisible(false);
+			this->addChild(this->ghostSprite);
+		}
+	}
+}
+
 AnimationPart::~AnimationPart()
 {
 }
@@ -79,6 +114,12 @@ void AnimationPart::visit(cocos2d::Renderer *renderer, const cocos2d::Mat4& pare
 
 void AnimationPart::reattachToTimeline()
 {
+	if (this->spriterAnimationPartNew != nullptr)
+	{
+		this->spriterAnimationPartNew->setTimelineCanUpdate(true);
+		return;
+	}
+
 	if (this->spriterAnimationPart == nullptr)
 	{
 		return;
@@ -89,6 +130,12 @@ void AnimationPart::reattachToTimeline()
 
 void AnimationPart::detachFromTimeline()
 {
+	if (this->spriterAnimationPartNew != nullptr)
+	{
+		this->spriterAnimationPartNew->setTimelineCanUpdate(false);
+		return;
+	}
+
 	if (this->spriterAnimationPart == nullptr)
 	{
 		return;
@@ -127,7 +174,7 @@ void AnimationPart::addTrackingObject(Node* trackedObject)
 
 void AnimationPart::replaceWithObject(Node* replacement, float disappearDuration, float fadeInDuration)
 {
-	if (replacement == nullptr || this->spriterAnimationPart == nullptr)
+	if (replacement == nullptr || (this->spriterAnimationPart == nullptr && this->spriterAnimationPartNew == nullptr))
 	{
 		return;
 	}
@@ -142,7 +189,14 @@ void AnimationPart::replaceWithObject(Node* replacement, float disappearDuration
 		CallFunc::create([=]()
 		{
 			// -1 means to use whatever value is on the timeline (no longer overriding)
-			this->spriterAnimationPart->setAlphaOverride(-1.0f);
+			if (this->spriterAnimationPartNew != nullptr)
+			{
+				this->spriterAnimationPartNew->setAlphaOverride(-1.0f);
+			}
+			else if (this->spriterAnimationPart != nullptr)
+			{
+				this->spriterAnimationPart->setAlphaOverride(-1.0f);
+			}
 		}),
 		nullptr
 	));
@@ -155,6 +209,12 @@ std::string AnimationPart::getSpriteResource()
 
 void AnimationPart::replaceSprite(std::string spriteResource)
 {
+	if (this->spriterAnimationPartNew != nullptr)
+	{
+		this->spriterAnimationPartNew->setSpriteResource(spriteResource);
+		return;
+	}
+
 	if (this->spriterAnimationPart == nullptr || this->spriterAnimationPart->getImage() == nullptr)
 	{
 		return;
@@ -165,6 +225,12 @@ void AnimationPart::replaceSprite(std::string spriteResource)
 
 void AnimationPart::restoreSprite()
 {
+	if (this->spriterAnimationPartNew != nullptr)
+	{
+		this->spriterAnimationPartNew->restoreSpriteResource();
+		return;
+	}
+
 	if (this->spriterAnimationPart == nullptr || this->spriterAnimationPart->getImage() == nullptr)
 	{
 		return;
@@ -175,6 +241,18 @@ void AnimationPart::restoreSprite()
 
 float AnimationPart::getRotationSpriter()
 {
+	if (this->spriterAnimationPartNew != nullptr)
+	{
+		float rotation = std::fmod(this->spriterAnimationPartNew->getRotation(), 360.0f);
+
+		if (rotation > 180.0f)
+		{
+			rotation -= 360.0f;
+		}
+
+		return -rotation * float(M_PI) / 180.0f;
+	}
+
 	if (this->spriterAnimationPart != nullptr)
 	{
 		return float(this->spriterAnimationPart->getAngle());
@@ -187,6 +265,12 @@ void AnimationPart::setRotationSpriter(float rotation)
 {
 	this->detachFromTimeline();
 
+	if (this->spriterAnimationPartNew != nullptr)
+	{
+		this->spriterAnimationPartNew->setRotation(-rotation * 180.0f / float(M_PI));
+		return;
+	}
+
 	if (this->spriterAnimationPart != nullptr)
 	{
 		this->spriterAnimationPart->setAngle(rotation);
@@ -197,6 +281,12 @@ void AnimationPart::setRotation(float rotation)
 {
 	this->detachFromTimeline();
 
+	if (this->spriterAnimationPartNew != nullptr)
+	{
+		this->spriterAnimationPartNew->setRotation(rotation);
+		return;
+	}
+
 	if (this->spriterAnimationPart != nullptr)
 	{
 		this->spriterAnimationPart->setAngle(-rotation / 180.0f * M_PI);
@@ -205,6 +295,14 @@ void AnimationPart::setRotation(float rotation)
 
 void AnimationPart::setOffset(Vec2 offset)
 {
+	if (this->spriterAnimationPartNew != nullptr)
+	{
+		// The new runtime already applies the legacy inner-sprite compatibility layout directly.
+		// Keep gameplay equipment offsets in their authored Cocos (x, y) order here.
+		this->spriterAnimationPartNew->setAnimationOffset(offset);
+		return;
+	}
+
 	if (this->spriterAnimationPart != nullptr)
 	{	
 		// Flipped x/y for some reason
@@ -214,6 +312,12 @@ void AnimationPart::setOffset(Vec2 offset)
 
 void AnimationPart::restoreOffset()
 {
+	if (this->spriterAnimationPartNew != nullptr)
+	{
+		this->spriterAnimationPartNew->clearAnimationOffset();
+		return;
+	}
+
 	if (this->spriterAnimationPart != nullptr)
 	{	
 		this->spriterAnimationPart->setOffset(SpriterEngine::point(0.0f, 0.0f));
@@ -222,6 +326,12 @@ void AnimationPart::restoreOffset()
 
 void AnimationPart::setOpacity(GLubyte opacity)
 {
+	if (this->spriterAnimationPartNew != nullptr)
+	{
+		this->spriterAnimationPartNew->setAlphaOverride(float(opacity) / 255.0f);
+		return;
+	}
+
 	if (this->spriterAnimationPart != nullptr)
 	{
 		this->spriterAnimationPart->setAlphaOverride((float)opacity / 255.0f);
@@ -230,6 +340,13 @@ void AnimationPart::setOpacity(GLubyte opacity)
 
 GLubyte AnimationPart::getOpacity() const
 {
+	if (this->spriterAnimationPartNew != nullptr)
+	{
+		float alphaOverride = this->spriterAnimationPartNew->getAlphaOverride();
+
+		return alphaOverride >= 0.0f ? GLubyte(alphaOverride * 255.0f) : this->spriterAnimationPartNew->getDisplayedOpacity();
+	}
+
 	if (this->spriterAnimationPart != nullptr)
 	{
 		return (GLubyte)(this->spriterAnimationPart->getAlphaOverride() * 255.0f);
@@ -240,12 +357,23 @@ GLubyte AnimationPart::getOpacity() const
 
 CSize AnimationPart::getSpriteSize()
 {
+	if (this->spriterAnimationPartNew != nullptr)
+	{
+		return this->spriterAnimationPartNew->getSpriteSize();
+	}
+
 	return this->ghostSprite == nullptr ? CSize::ZERO : this->ghostSprite->getContentSize();
 }
 
 void AnimationPart::setVisible(bool visible)
 {
 	static const float ClearOverride = -1.0f;
+
+	if (this->spriterAnimationPartNew != nullptr)
+	{
+		this->spriterAnimationPartNew->setVisible(visible);
+		return;
+	}
 
 	if (this->spriterAnimationPart != nullptr)
 	{
@@ -257,10 +385,57 @@ void AnimationPart::updateTrackedAttributes()
 {
 	if (this->ghostSprite == nullptr)
 	{
-		return;
+		if (this->spriterAnimationPartNew == nullptr)
+		{
+			return;
+		}
 	}
 
 	SmartAnimationNode* parent = dynamic_cast<SmartAnimationNode*>(this->getParent());
+
+	if (this->spriterAnimationPartNew != nullptr)
+	{
+		if (this->ghostSprite != nullptr)
+		{
+			const std::string currentSpriteResource = this->spriterAnimationPartNew->getSpriteResource();
+
+			if (!currentSpriteResource.empty() && currentSpriteResource != this->ghostSprite->getResourceName())
+			{
+				this->ghostSprite->setTexture(currentSpriteResource);
+			}
+
+			this->ghostSprite->setPosition(Vec2(this->ghostSprite->getContentSize().width / 2.0f, this->ghostSprite->getContentSize().height / 2.0f));
+
+			if (parent != nullptr)
+			{
+				this->ghostSprite->setFlippedX(parent->getFlippedX());
+
+				if (!parent->getFlippedX())
+				{
+					this->ghostSprite->setPositionX(this->ghostSprite->getPositionX() + this->ghostSprite->getContentSize().width);
+				}
+			}
+
+			const Vec3 spriteCoords = GameUtils::getWorldCoords3D(this->ghostSprite);
+			const Vec3 thisCords = GameUtils::getWorldCoords3D(this);
+			const Vec3 delta = thisCords - spriteCoords;
+			const float angle = this->spriterAnimationPartNew->getResolvedAnimationRotation();
+			const Vec2 position = this->spriterAnimationPartNew->getResolvedAnimationPosition();
+			const Vec2 anchor = this->spriterAnimationPartNew->getAnimationAnchorPoint();
+
+			super::setRotation(angle);
+			super::setPosition(position - Vec2(delta.x, delta.y));
+			super::setAnchorPoint(anchor);
+
+			this->ghostSprite->setPosition(Vec2::ZERO);
+			return;
+		}
+
+		super::setRotation(this->spriterAnimationPartNew->getResolvedAnimationRotation());
+		super::setPosition(this->spriterAnimationPartNew->getResolvedAnimationPosition());
+		return;
+	}
+
 	this->ghostSprite->setPosition(Vec2(this->ghostSprite->getContentSize().width / 2.0f, this->ghostSprite->getContentSize().height / 2.0f));
 
 	if (parent != nullptr)

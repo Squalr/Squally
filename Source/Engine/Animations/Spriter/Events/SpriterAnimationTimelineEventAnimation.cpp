@@ -13,17 +13,19 @@
 #include "Engine/Utils/MathUtils.h"
 
 #include <cmath>
+#include <limits>
 #include <math.h>
 
 using namespace cocos2d;
 
 SpriterAnimationTimelineEventAnimation* SpriterAnimationTimelineEventAnimation::create(
 	SpriterAnimationTimeline* timeline,
+	float keyTime,
 	float endTime,
 	const SpriterTimeline& keyParent,
 	const SpriterTimelineKey& animationKey)
 {
-	SpriterAnimationTimelineEventAnimation* instance = new SpriterAnimationTimelineEventAnimation(timeline, endTime, keyParent, animationKey);
+	SpriterAnimationTimelineEventAnimation* instance = new SpriterAnimationTimelineEventAnimation(timeline, keyTime, endTime, keyParent, animationKey);
 
 	instance->autorelease();
 
@@ -32,12 +34,17 @@ SpriterAnimationTimelineEventAnimation* SpriterAnimationTimelineEventAnimation::
 
 SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation(
 	SpriterAnimationTimeline* timeline,
+	float keyTime,
 	float endTime,
 	const SpriterTimeline& keyParent,
 	const SpriterTimelineKey& animationKey)
-	: super(timeline, float(animationKey.time), endTime, animationKey.curveType, animationKey.c1, animationKey.c2, animationKey.c3, animationKey.c4)
+	: super(timeline, keyTime, endTime, animationKey.curveType, animationKey.c1, animationKey.c2, animationKey.c3, animationKey.c4)
 {
 	this->partName = keyParent.name;
+	this->timelineKeyId = animationKey.id;
+	this->timelineKeyTime = float(animationKey.time) / 1000.0f;
+	this->sampleStartTime = this->timelineKeyTime;
+	this->sampleEndTime = this->timelineKeyTime;
 	this->spin = animationKey.spin;
 	
 	std::hash<std::string> hasher = std::hash<std::string>();
@@ -82,6 +89,16 @@ const std::string& SpriterAnimationTimelineEventAnimation::getPartName()
 	return this->partName;
 }
 
+int SpriterAnimationTimelineEventAnimation::getTimelineKeyId() const
+{
+	return this->timelineKeyId;
+}
+
+float SpriterAnimationTimelineEventAnimation::getTimelineKeyTime() const
+{
+	return this->timelineKeyTime;
+}
+
 SpriterAnimationTimelineEventAnimation* SpriterAnimationTimelineEventAnimation::getNext()
 {
 	return this->next;
@@ -92,15 +109,51 @@ void SpriterAnimationTimelineEventAnimation::setNext(SpriterAnimationTimelineEve
 	this->next = (next == nullptr ? this : next);
 }
 
+void SpriterAnimationTimelineEventAnimation::setSamplingWindow(float sampleStartTime, float sampleEndTime, float animationLength, bool sampleTimeWraps)
+{
+	this->sampleStartTime = sampleStartTime;
+	this->sampleEndTime = sampleEndTime;
+	this->animationLength = animationLength;
+	this->sampleTimeWraps = sampleTimeWraps;
+}
+
 bool SpriterAnimationTimelineEventAnimation::canAdvance()
 {
-	// Early exit if this animation event does not have any changes
-	if (this->isBone)
+	return true;
+}
+
+void SpriterAnimationTimelineEventAnimation::applyCurrentState(SpriterAnimationNode* animation)
+{
+	SpriterAnimationPart* object = animation->getPartByHash(this->partHash);
+
+	if (object == nullptr)
 	{
-		return false;
+		return;
 	}
 
-	return true;
+	float currentTime = animation->getTimelineTime();
+	
+	if (currentTime >= this->keytime && currentTime < this->endTime)
+	{
+		float sampleTime = currentTime;
+
+		if (this->sampleTimeWraps && sampleTime < this->sampleStartTime)
+		{
+			sampleTime += this->animationLength;
+		}
+
+		const float duration = std::max(this->sampleEndTime - this->sampleStartTime, std::numeric_limits<float>::epsilon());
+		float timeRatio = MathUtils::clamp((sampleTime - this->sampleStartTime) / duration, 0.0f, 1.0f);
+		timeRatio = this->timeline->sampleCurve(timeRatio, this->curveType, this->c1, this->c2, this->c3, this->c4);
+
+		object->applyAnimationState(
+			this->position + this->deltaPosition * timeRatio,
+			this->anchor + this->deltaAnchor * timeRatio,
+			this->scale + this->deltaScale * timeRatio,
+			this->rotation + this->deltaRotation * timeRatio,
+			GLubyte(this->alpha + this->deltaAlpha * timeRatio)
+		);
+	}
 }
 
 void SpriterAnimationTimelineEventAnimation::advance(SpriterAnimationNode* animation)
@@ -112,26 +165,7 @@ void SpriterAnimationTimelineEventAnimation::advance(SpriterAnimationNode* anima
 		return;
 	}
 
-	SpriterAnimationPart* object = animation->getSpriteByHash(this->partHash);
-
-	if (object == nullptr)
-	{
-		return;
-	}
-
-	float currentTime = animation->getTimelineTime();
-	
-	if (currentTime >= this->keytime && currentTime < this->endTime)
-	{
-		// TODO: Use curve functions to transform the time ratio, this is linear right now
-		float timeRatio = MathUtils::clamp((currentTime - this->keytime) / (this->endTime - this->keytime), 0.0f, 1.0f);
-
-		object->setPosition(this->position + this->deltaPosition * timeRatio);
-		object->setAnchorPoint(this->anchor + this->deltaAnchor * timeRatio);
-		object->setScale(this->scale + this->deltaScale * timeRatio);
-		object->setRotation(this->rotation + this->deltaRotation * timeRatio);
-		object->setOpacity(GLubyte(this->alpha + this->deltaAlpha * timeRatio));
-	}
+	this->applyCurrentState(animation);
 }
 
 void SpriterAnimationTimelineEventAnimation::onFire(SpriterAnimationNode* animation)
@@ -143,49 +177,14 @@ void SpriterAnimationTimelineEventAnimation::onFire(SpriterAnimationNode* animat
 		return;
 	}
 
-	object->setPosition(this->position);
-	object->setAnchorPoint(this->anchor);
-	object->setScale(this->scale);
-	object->setRotation(this->rotation);
-	object->setOpacity(GLubyte(this->alpha));
+	object->applyAnimationState(this->position, this->anchor, this->scale, this->rotation, GLubyte(this->alpha));
 }
 
 void SpriterAnimationTimelineEventAnimation::cascade(SpriterAnimationTimelineEventAnimation* parent)
 {
-	// This method applies a few magic tricks with a lot of nuance. First, it reparents itself to the parent timeline event.
-	// This allows us to use GameUtils methods to convert our relative position/scale/rotation etc to absolute.
-	// We are careful not to call setScale on ourself though. Mixing rotations and scales in the node hierarchy can cause skewing.
-	// Instead, we use the parent scale to adjust the position we set, and propagate it manually.
-	// All of this allows us to maintain a boneless hierarchy, which allows us to Z-Sort sprites and maintain compliance with Spriter.
-	// Ex) A bone with two sprites, z depth 1 and 3. A sibling bone with a sprite of z depth 2. In a hierarchical structure, this would
-	// be a z-order conflict! The sprite of depth 2 would either need to be above or below those of depth 1 and 3. It could not be in between.
-	// This solves that.
-
-	const Vec2& parentScale = (parent == nullptr ? Vec2::ONE : parent->scale);
-
-	if (parent != nullptr)
-	{
-		GameUtils::changeParent(this, parent, false);
-	}
-	
-	this->setPosition(this->position * parentScale);
-	this->setRotation(this->rotation);
-	this->setOpacity(GLubyte(this->alpha));
-
-	this->position = GameUtils::getWorldCoords(this, false);
-	this->rotation = MathUtils::wrappingNormalize(GameUtils::getRotation(this), 0.0f, 360.0f);
-	this->scale *= parentScale;
-	this->alpha = float(this->getDisplayedOpacity());
-	
 	for (SpriterAnimationTimelineEventAnimation* next: this->cascadeChildren)
 	{
 		next->cascade(this);
-	}
-
-	// Reset scale for bones after cascading to children.
-	if (this->isBone)
-	{
-		this->scale = Vec2::ONE;
 	}
 }
 
@@ -205,10 +204,29 @@ void SpriterAnimationTimelineEventAnimation::computeDeltas()
 	this->deltaAnchor = this->next->anchor - this->anchor;
 	this->deltaScale = this->next->scale - this->scale;
 	this->deltaAlpha = this->next->alpha - this->alpha;
+	float nextRotation = this->next->rotation;
 
-	// https://stackoverflow.com/questions/28036652/finding-the-shortest-distance-between-two-angles/28037434
-    this->deltaRotation = std::fmod((this->next->rotation - this->rotation + 180.0f), 360.0f) - 180.0f;
-    this->deltaRotation = this->deltaRotation < -180.0f ? this->deltaRotation + 360.0f : this->deltaRotation;
+	// Mirror Spriter++ AngleInfo::angleLinear() so legacy/new interpolation agree exactly.
+	if (this->spin == 0)
+	{
+		nextRotation = this->rotation;
+	}
+	else if (this->spin > 0)
+	{
+		if (this->rotation < nextRotation)
+		{
+			nextRotation -= 360.0f;
+		}
+	}
+	else
+	{
+		if (nextRotation < this->rotation)
+		{
+			nextRotation += 360.0f;
+		}
+	}
+
+	this->deltaRotation = nextRotation - this->rotation;
 
 	this->hasNoAnimationChanges = this->deltaPosition == Vec2::ZERO
 		&& this->deltaAnchor == Vec2::ZERO
