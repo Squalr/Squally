@@ -17,6 +17,7 @@ public:
 
 	void registerAnimationNode(SpriterAnimationNode* animationNode);
 	void unregisterAnimationNode(SpriterAnimationNode* animationNode);
+	void applyCurrentAnimationState(SpriterAnimationNode* animationNode);
 
 protected:
 	SpriterAnimationTimeline(const std::string& animationResource);
@@ -30,6 +31,8 @@ protected:
 	SpriterCurveType curveType;
 
 private:
+	friend class SpriterAnimationTimelineEventAnimation;
+
 	typedef SmartNode super;
 
 	void buildTimelines(const SpriterData& spriterData);
