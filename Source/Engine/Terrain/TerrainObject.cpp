@@ -10,6 +10,7 @@
 #include "base/CCEventCustom.h"
 #include "base/CCEventListenerCustom.h"
 #include "base/CCValue.h"
+#include "base/ccUtils.h"
 #include "renderer/CCGLProgram.h"
 
 #include "Engine/Camera/GameCamera.h"
@@ -78,6 +79,7 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->debugDrawNode = DeveloperModeController::IsDeveloperBuild ? DrawNode::create() : nullptr;
 	this->drawRect = CRect::ZERO;
 	this->boundsRect = CRect::ZERO;
+	this->cachedWorldBounds = CRect::ZERO;
 
 	this->rootNode->setName("rootNode");
 	this->collisionNode->setName("collisionRoot");
@@ -1048,6 +1050,8 @@ void TerrainObject::buildTerrain()
 	}
 	this->swapResourcesForHole();
 	this->isFlipped = !this->isFlipped;
+
+	this->updateCachedWorldBounds(true);
 }
 
 void TerrainObject::updateCachedCoords(bool force)
@@ -1057,6 +1061,14 @@ void TerrainObject::updateCachedCoords(bool force)
 		// Terrain doesn't move, this should never need to be updated.
 		this->cachedCoords = GameUtils::getWorldCoords3D(this, false) + Vec3(drawRect.origin.x, drawRect.origin.y, 0.0f);
 		return;
+	}
+}
+
+void TerrainObject::updateCachedWorldBounds(bool force)
+{
+	if (this->isDynamic || force || this->cachedWorldBounds.equals(CRect::ZERO))
+	{
+		this->cachedWorldBounds = cocos2d::utils::getCascadeBoundingBox(this->rootNode);
 	}
 }
 
@@ -1070,15 +1082,45 @@ void TerrainObject::optimizationHideOffscreenTerrain()
 
 	// A little padding otherwise surface textures will pop into existence, as they can hang outside terrain bounds
 	static const CSize Padding = CSize(1536.0f, 1536.0f);
-	static const Vec3 PaddingVec = Vec3(Padding.width, Padding.height, 0.0f);
-	static const CRect CameraRect = CRect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
+	static const float ScreenPaddingX = 64.0f;
+	const CRect cameraRect = CRect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
 
 	this->updateCachedCoords();
-	CRect thisRect = GameUtils::getScreenBounds(this->cachedCoords, drawRect.size + Padding);
+	this->updateCachedWorldBounds();
+
+	CRect thisRect = CRect::ZERO;
+
+	if (!this->cachedWorldBounds.equals(CRect::ZERO))
+	{
+		const float minWorldX = this->cachedWorldBounds.getMinX() - Padding.width;
+		const float maxWorldX = this->cachedWorldBounds.getMaxX() + Padding.width;
+		const float minWorldY = this->cachedWorldBounds.getMinY() - Padding.height;
+		const float maxWorldY = this->cachedWorldBounds.getMaxY() + Padding.height;
+
+		Vec2 p1 = GameUtils::getScreenCoords(Vec3(minWorldX, minWorldY, this->cachedCoords.z));
+		Vec2 p2 = GameUtils::getScreenCoords(Vec3(maxWorldX, minWorldY, this->cachedCoords.z));
+		Vec2 p3 = GameUtils::getScreenCoords(Vec3(minWorldX, maxWorldY, this->cachedCoords.z));
+		Vec2 p4 = GameUtils::getScreenCoords(Vec3(maxWorldX, maxWorldY, this->cachedCoords.z));
+
+		float minScreenX = std::min(std::min(p1.x, p2.x), std::min(p3.x, p4.x));
+		float maxScreenX = std::max(std::max(p1.x, p2.x), std::max(p3.x, p4.x));
+		float minScreenY = std::min(std::min(p1.y, p2.y), std::min(p3.y, p4.y));
+		float maxScreenY = std::max(std::max(p1.y, p2.y), std::max(p3.y, p4.y));
+
+		thisRect = CRect(Vec2(minScreenX, minScreenY), CSize(maxScreenX - minScreenX, maxScreenY - minScreenY));
+	}
+	else
+	{
+		thisRect = GameUtils::getScreenBounds(this->cachedCoords, drawRect.size + Padding);
+	}
+
+	// Keep a small constant screen-space buffer so far-depth terrain does not pop at viewport edges.
+	thisRect.origin.x -= ScreenPaddingX;
+	thisRect.size.width += ScreenPaddingX * 2.0f;
 
 	// Just check horizontal component, since levels are pretty horizontal.
 	// Also vertical check math is kinda broken, so lazy fix.
-	if (CameraRect.getMaxX() >= thisRect.getMinX() && thisRect.getMaxX() >= CameraRect.getMinX())
+	if (cameraRect.getMaxX() >= thisRect.getMinX() && thisRect.getMaxX() >= cameraRect.getMinX())
 	{
 		this->rootNode->setVisible(true);
 	}

@@ -251,10 +251,10 @@ void SquallyShip::onCrash()
 		CallFunc::create([=]()
 		{
 			// Force hacker mode enable for cinematic
-			HackableEvents::TriggerAllowHackerMode();
-			HackableEvents::TriggerHackerModeEnable(HackToggleArgs());
+			// HackableEvents::TriggerAllowHackerMode();
+			// HackableEvents::TriggerHackerModeEnable(HackToggleArgs());
 			PlatformerEvents::TriggerCinematicRestore();
-			HackableEvents::TriggerDisallowHackerMode();
+			// HackableEvents::TriggerDisallowHackerMode();
 		}),
 		DelayTime::create(0.1f),
 		CallFunc::create([=]()

@@ -197,6 +197,7 @@ private:
 		std::tuple<cocos2d::Vec2, cocos2d::Vec2>* nextSegment);
 	void buildTerrain();
 	void updateCachedCoords(bool force = false);
+	void updateCachedWorldBounds(bool force = false);
 	void optimizationHideOffscreenTerrain();
 
 	TerrainData terrainData;
@@ -211,6 +212,7 @@ private:
 
 	cocos2d::CRect drawRect;
 	cocos2d::CRect boundsRect;
+	cocos2d::CRect cachedWorldBounds;
 	cocos2d::Vec3 cachedCoords;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> collisionSegments;
