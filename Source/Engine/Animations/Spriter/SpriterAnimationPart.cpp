@@ -106,6 +106,11 @@ void SpriterAnimationPart::clearAnimationOffset()
 	this->setAnimationOffset(Vec2::ZERO);
 }
 
+Vec2 SpriterAnimationPart::getAnimationOffset() const
+{
+	return this->animationOffset;
+}
+
 void SpriterAnimationPart::setAlphaOverride(float alphaOverride)
 {
 	this->alphaOverride = alphaOverride;

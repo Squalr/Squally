@@ -39,9 +39,15 @@ AnimationPart::AnimationPart(SpriterEngine::EntityInstance* entity, std::string 
 {
 	this->entity = entity;
 	this->spriterAnimationPart = this->entity == nullptr ? nullptr : this->entity->getObjectInstance(partName);
+	this->ghostContainer = Node::create();
 	this->ghostSprite = this->spriterAnimationPart == nullptr ? nullptr : Sprite::create(this->spriterAnimationPart->getImage() == nullptr ? UIResources::EmptyImage : this->spriterAnimationPart->getImage()->path());
 	this->originalPath = "";
 	this->lastKnownAnim = "";
+
+	if (this->ghostContainer != nullptr)
+	{
+		this->addChild(this->ghostContainer);
+	}
 
 	if (this->ghostSprite != nullptr)
 	{
@@ -61,7 +67,7 @@ AnimationPart::AnimationPart(SpriterEngine::EntityInstance* entity, std::string 
 
 	if (this->ghostSprite != nullptr)
 	{
-		this->addChild(this->ghostSprite);
+		this->ghostContainer->addChild(this->ghostSprite);
 	}
 }
 
@@ -70,9 +76,15 @@ AnimationPart::AnimationPart(SpriterAnimationPart* spriterAnimationPart)
 	this->spriterAnimationPartNew = spriterAnimationPart;
 	this->spriterAnimationPart = nullptr;
 	this->entity = nullptr;
+	this->ghostContainer = Node::create();
 	this->ghostSprite = nullptr;
 	this->originalPath = this->spriterAnimationPartNew == nullptr ? "" : this->spriterAnimationPartNew->getSpriteResource();
 	this->lastKnownAnim = "";
+
+	if (this->ghostContainer != nullptr)
+	{
+		this->addChild(this->ghostContainer);
+	}
 
 	if (!this->originalPath.empty())
 	{
@@ -82,7 +94,7 @@ AnimationPart::AnimationPart(SpriterAnimationPart* spriterAnimationPart)
 		{
 			this->ghostSprite->setColor(Color3B::BLUE);
 			this->ghostSprite->setVisible(false);
-			this->addChild(this->ghostSprite);
+			this->ghostContainer->addChild(this->ghostSprite);
 		}
 	}
 }
@@ -154,7 +166,10 @@ void AnimationPart::removeTrackingObject(Node* trackedObject)
 
 	if (std::find(this->trackedObjects.begin(), this->trackedObjects.end(), trackedObject) != this->trackedObjects.end())
 	{
-		this->removeChild(trackedObject);
+		if (trackedObject->getParent() != nullptr)
+		{
+			trackedObject->removeFromParent();
+		}
 
 		this->trackedObjects.erase(std::remove(this->trackedObjects.begin(), this->trackedObjects.end(), trackedObject), this->trackedObjects.end());
 	}
@@ -167,7 +182,8 @@ void AnimationPart::addTrackingObject(Node* trackedObject)
 		return;
 	}
 
-	this->addChild(trackedObject);
+	Node* trackingParent = this->ghostContainer != nullptr ? this->ghostContainer : static_cast<Node*>(this);
+	trackingParent->addChild(trackedObject);
 
 	this->trackedObjects.push_back(trackedObject);
 }
@@ -295,6 +311,8 @@ void AnimationPart::setRotation(float rotation)
 
 void AnimationPart::setOffset(Vec2 offset)
 {
+	this->currentOffset = offset;
+
 	if (this->spriterAnimationPartNew != nullptr)
 	{
 		// The new runtime already applies the legacy inner-sprite compatibility layout directly.
@@ -312,6 +330,8 @@ void AnimationPart::setOffset(Vec2 offset)
 
 void AnimationPart::restoreOffset()
 {
+	this->currentOffset = Vec2::ZERO;
+
 	if (this->spriterAnimationPartNew != nullptr)
 	{
 		this->spriterAnimationPartNew->clearAnimationOffset();
@@ -381,6 +401,11 @@ void AnimationPart::setVisible(bool visible)
 	}
 }
 
+	Vec2 AnimationPart::getOffset() const
+	{
+		return this->currentOffset;
+	}
+
 void AnimationPart::updateTrackedAttributes()
 {
 	if (this->ghostSprite == nullptr)
@@ -395,6 +420,16 @@ void AnimationPart::updateTrackedAttributes()
 
 	if (this->spriterAnimationPartNew != nullptr)
 	{
+		const float angle = this->spriterAnimationPartNew->getResolvedAnimationRotation();
+		const Vec2 position = this->spriterAnimationPartNew->getResolvedAnimationPosition();
+		const Vec2 anchor = this->spriterAnimationPartNew->getAnimationAnchorPoint();
+		const Vec2 animationOffset = this->spriterAnimationPartNew->getAnimationOffset();
+
+		// Keep the wrapper at the part pivot in local animation space.
+		super::setRotation(angle);
+		super::setPosition(position);
+		super::setAnchorPoint(Vec2::ZERO);
+
 		if (this->ghostSprite != nullptr)
 		{
 			const std::string currentSpriteResource = this->spriterAnimationPartNew->getSpriteResource();
@@ -404,64 +439,38 @@ void AnimationPart::updateTrackedAttributes()
 				this->ghostSprite->setTexture(currentSpriteResource);
 			}
 
-			this->ghostSprite->setPosition(Vec2(this->ghostSprite->getContentSize().width / 2.0f, this->ghostSprite->getContentSize().height / 2.0f));
-
-			if (parent != nullptr)
-			{
-				this->ghostSprite->setFlippedX(parent->getFlippedX());
-
-				if (!parent->getFlippedX())
-				{
-					this->ghostSprite->setPositionX(this->ghostSprite->getPositionX() + this->ghostSprite->getContentSize().width);
-				}
-			}
-
-			const Vec3 spriteCoords = GameUtils::getWorldCoords3D(this->ghostSprite);
-			const Vec3 thisCords = GameUtils::getWorldCoords3D(this);
-			const Vec3 delta = thisCords - spriteCoords;
-			const float angle = this->spriterAnimationPartNew->getResolvedAnimationRotation();
-			const Vec2 position = this->spriterAnimationPartNew->getResolvedAnimationPosition();
-			const Vec2 anchor = this->spriterAnimationPartNew->getAnimationAnchorPoint();
-
-			super::setRotation(angle);
-			super::setPosition(position - Vec2(delta.x, delta.y));
-			super::setAnchorPoint(anchor);
-
-			this->ghostSprite->setPosition(Vec2::ZERO);
-			return;
+			this->ghostSprite->setAnchorPoint(anchor);
+			this->ghostSprite->setPosition(animationOffset);
+		}
+		else if (this->ghostContainer != nullptr)
+		{
+			this->ghostContainer->setContentSize(CSize::ZERO);
+			this->ghostContainer->setAnchorPoint(Vec2::ZERO);
+			this->ghostContainer->setPosition(Vec2::ZERO);
 		}
 
-		super::setRotation(this->spriterAnimationPartNew->getResolvedAnimationRotation());
-		super::setPosition(this->spriterAnimationPartNew->getResolvedAnimationPosition());
 		return;
 	}
-
-	this->ghostSprite->setPosition(Vec2(this->ghostSprite->getContentSize().width / 2.0f, this->ghostSprite->getContentSize().height / 2.0f));
-
-	if (parent != nullptr)
-	{
-		this->ghostSprite->setFlippedX(parent->getFlippedX());
-
-		if (!parent->getFlippedX())
-		{
-			this->ghostSprite->setPositionX(this->ghostSprite->getPositionX() + this->ghostSprite->getContentSize().width);
-		}
-	}
-
-	const Vec3 spriteCoords = GameUtils::getWorldCoords3D(this->ghostSprite);
-	const Vec3 thisCords = GameUtils::getWorldCoords3D(this);
-	const Vec3 delta = thisCords - spriteCoords;
 
 	const float angle = float(this->spriterAnimationPart->getAngle());
 	const Vec2 position = Vec2(float(this->spriterAnimationPart->getPosition().x), -float(this->spriterAnimationPart->getPosition().y));
 	const Vec2 anchor = Vec2(float(this->spriterAnimationPart->getPivot().x), float(this->spriterAnimationPart->getPivot().y));
 
-	// In order to make the game think that this AnimationPart class is the Spriter object, we need to keep certain things in sync
+	// Keep the wrapper at the part pivot in legacy animation space.
 	super::setRotation(angle * 180.0f / float(M_PI));
-	super::setPosition(position - Vec2(delta.x, delta.y));
-	super::setAnchorPoint(anchor);
+	super::setPosition(position);
+	super::setAnchorPoint(Vec2::ZERO);
+	this->ghostContainer->setContentSize(CSize::ZERO);
+	this->ghostContainer->setAnchorPoint(Vec2::ZERO);
+	this->ghostContainer->setPosition(Vec2::ZERO);
 
+	this->ghostSprite->setAnchorPoint(anchor);
 	this->ghostSprite->setPosition(Vec2::ZERO);
+
+	if (parent != nullptr)
+	{
+		this->ghostSprite->setFlippedX(parent->getFlippedX());
+	}
 }
 
 void AnimationPart::onDeveloperModeEnable(int debugLevel)

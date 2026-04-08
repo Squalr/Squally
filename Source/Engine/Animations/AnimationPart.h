@@ -11,6 +11,7 @@ class SpriterAnimationPart;
 
 namespace cocos2d
 {
+	class Node;
 	class Sprite;
 }
 
@@ -36,6 +37,7 @@ public:
 	void setRotationSpriter(float rotation);
 	void setOffset(cocos2d::Vec2 offset);
 	void restoreOffset();
+	cocos2d::Vec2 getOffset() const;
 	void setOpacity(GLubyte opacity) override;
 	void setVisible(bool visible) override;
 	void updateTrackedAttributes();
@@ -57,10 +59,12 @@ private:
 
 	std::string originalPath;
 	std::vector<cocos2d::Node*> trackedObjects;
+	cocos2d::Node* ghostContainer = nullptr;
 	cocos2d::Sprite* ghostSprite = nullptr;
 	SpriterAnimationPart* spriterAnimationPartNew = nullptr;
 	SpriterEngine::UniversalObjectInterface* spriterAnimationPart = nullptr;
 	SpriterEngine::EntityInstance* entity = nullptr;
+	cocos2d::Vec2 currentOffset = cocos2d::Vec2::ZERO;
 	float rotation = 0.0f;
 	std::string lastKnownAnim;
 };

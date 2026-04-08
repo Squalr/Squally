@@ -19,6 +19,7 @@ public:
 	virtual bool isAnimationRoot() const;
 	void setAnimationOffset(const cocos2d::Vec2& offset);
 	void clearAnimationOffset();
+	cocos2d::Vec2 getAnimationOffset() const;
 	void setAlphaOverride(float alphaOverride);
 	float getAlphaOverride() const;
 	cocos2d::Vec2 getAnimationAnchorPoint() const;
@@ -48,6 +49,7 @@ protected:
 	virtual float getCascadeRotation() const;
 	virtual float getCascadeOpacityMultiplier() const;
 	void refreshAnimationState();
+	SpriterAnimationPart* getAnimationRootPart();
 	
 	SpriterAnimationPart* parentPart = nullptr;
 	std::vector<SpriterAnimationPart*> childAnimationParts;
@@ -67,6 +69,4 @@ protected:
 	
 private:
 	typedef SmartNode super;
-
-	SpriterAnimationPart* getAnimationRootPart();
 };
