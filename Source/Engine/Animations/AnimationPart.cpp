@@ -39,10 +39,16 @@ AnimationPart::AnimationPart(SpriterEngine::EntityInstance* entity, std::string 
 {
 	this->entity = entity;
 	this->spriterAnimationPart = this->entity == nullptr ? nullptr : this->entity->getObjectInstance(partName);
+	this->trackingContainer = Node::create();
 	this->ghostContainer = Node::create();
 	this->ghostSprite = this->spriterAnimationPart == nullptr ? nullptr : Sprite::create(this->spriterAnimationPart->getImage() == nullptr ? UIResources::EmptyImage : this->spriterAnimationPart->getImage()->path());
 	this->originalPath = "";
 	this->lastKnownAnim = "";
+
+	if (this->trackingContainer != nullptr)
+	{
+		this->addChild(this->trackingContainer);
+	}
 
 	if (this->ghostContainer != nullptr)
 	{
@@ -76,10 +82,16 @@ AnimationPart::AnimationPart(SpriterAnimationPart* spriterAnimationPart)
 	this->spriterAnimationPartNew = spriterAnimationPart;
 	this->spriterAnimationPart = nullptr;
 	this->entity = nullptr;
+	this->trackingContainer = Node::create();
 	this->ghostContainer = Node::create();
 	this->ghostSprite = nullptr;
 	this->originalPath = this->spriterAnimationPartNew == nullptr ? "" : this->spriterAnimationPartNew->getSpriteResource();
 	this->lastKnownAnim = "";
+
+	if (this->trackingContainer != nullptr)
+	{
+		this->addChild(this->trackingContainer);
+	}
 
 	if (this->ghostContainer != nullptr)
 	{
@@ -182,7 +194,7 @@ void AnimationPart::addTrackingObject(Node* trackedObject)
 		return;
 	}
 
-	Node* trackingParent = this->ghostContainer != nullptr ? this->ghostContainer : static_cast<Node*>(this);
+	Node* trackingParent = this->trackingContainer != nullptr ? this->trackingContainer : static_cast<Node*>(this);
 	trackingParent->addChild(trackedObject);
 
 	this->trackedObjects.push_back(trackedObject);
@@ -430,23 +442,59 @@ void AnimationPart::updateTrackedAttributes()
 		super::setPosition(position);
 		super::setAnchorPoint(Vec2::ZERO);
 
+		if (this->trackingContainer != nullptr)
+		{
+			this->trackingContainer->setContentSize(CSize::ZERO);
+			this->trackingContainer->setAnchorPoint(Vec2::ZERO);
+			this->trackingContainer->setPosition(Vec2::ZERO);
+			this->trackingContainer->setScale(1.0f);
+		}
+
 		if (this->ghostSprite != nullptr)
 		{
 			const std::string currentSpriteResource = this->spriterAnimationPartNew->getSpriteResource();
+			const bool usesCompatibilityLayout = currentSpriteResource != this->originalPath || animationOffset != Vec2::ZERO;
+			const Vec2 resolvedScale = this->spriterAnimationPartNew->getResolvedAnimationScale();
 
 			if (!currentSpriteResource.empty() && currentSpriteResource != this->ghostSprite->getResourceName())
 			{
 				this->ghostSprite->setTexture(currentSpriteResource);
 			}
 
-			this->ghostSprite->setAnchorPoint(anchor);
-			this->ghostSprite->setPosition(animationOffset);
+			if (this->ghostContainer != nullptr)
+			{
+				this->ghostContainer->setScale(resolvedScale.x, resolvedScale.y);
+			}
+
+			if (this->ghostContainer != nullptr && usesCompatibilityLayout)
+			{
+				this->ghostContainer->setContentSize(this->ghostSprite->getContentSize());
+				this->ghostContainer->setAnchorPoint(anchor);
+				this->ghostContainer->setPosition(Vec2::ZERO);
+				this->ghostSprite->setAnchorPoint(Vec2::ZERO);
+				this->ghostSprite->setPosition(animationOffset);
+				this->ghostSprite->setFlippedX(false);
+			}
+			else
+			{
+				if (this->ghostContainer != nullptr)
+				{
+					this->ghostContainer->setContentSize(CSize::ZERO);
+					this->ghostContainer->setAnchorPoint(Vec2::ZERO);
+					this->ghostContainer->setPosition(Vec2::ZERO);
+				}
+
+				this->ghostSprite->setAnchorPoint(anchor);
+				this->ghostSprite->setPosition(animationOffset);
+				this->ghostSprite->setFlippedX(false);
+			}
 		}
 		else if (this->ghostContainer != nullptr)
 		{
 			this->ghostContainer->setContentSize(CSize::ZERO);
 			this->ghostContainer->setAnchorPoint(Vec2::ZERO);
 			this->ghostContainer->setPosition(Vec2::ZERO);
+			this->ghostContainer->setScale(1.0f);
 		}
 
 		return;
@@ -460,9 +508,17 @@ void AnimationPart::updateTrackedAttributes()
 	super::setRotation(angle * 180.0f / float(M_PI));
 	super::setPosition(position);
 	super::setAnchorPoint(Vec2::ZERO);
+	if (this->trackingContainer != nullptr)
+	{
+		this->trackingContainer->setContentSize(CSize::ZERO);
+		this->trackingContainer->setAnchorPoint(Vec2::ZERO);
+		this->trackingContainer->setPosition(Vec2::ZERO);
+		this->trackingContainer->setScale(1.0f);
+	}
 	this->ghostContainer->setContentSize(CSize::ZERO);
 	this->ghostContainer->setAnchorPoint(Vec2::ZERO);
 	this->ghostContainer->setPosition(Vec2::ZERO);
+	this->ghostContainer->setScale(1.0f);
 
 	this->ghostSprite->setAnchorPoint(anchor);
 	this->ghostSprite->setPosition(Vec2::ZERO);

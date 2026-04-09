@@ -139,8 +139,16 @@ void EntityWeaponCollisionBehavior::rebuildWeaponCollision(int collisionType, bo
 		Vec2 weaponCollisionOffsetAdjusted = this->entity->getAnimations()->getFlippedX()
 			? Vec2(-this->weaponCollisionOffset.x, this->weaponCollisionOffset.y)
 			: this->weaponCollisionOffset;
+		Vec2 trackedObjectOffsetAdjusted = this->entity->getAnimations()->usesNewAnimationSystem()
+			? mainhand->getOffset()
+			: Vec2::ZERO;
 
-		this->mainhandWeaponCollision->setPosition(weaponCollisionOffsetAdjusted);
+		if (this->entity->getAnimations()->getFlippedX())
+		{
+			trackedObjectOffsetAdjusted.x *= -1.0f;
+		}
+
+		this->mainhandWeaponCollision->setPosition(weaponCollisionOffsetAdjusted + trackedObjectOffsetAdjusted);
 		this->mainhandWeaponCollision->setPhysicsFlagEnabled(false);
 		mainhand->addTrackingObject(this->mainhandWeaponCollision);
 	}
@@ -173,8 +181,16 @@ void EntityWeaponCollisionBehavior::rebuildWeaponCollision(int collisionType, bo
 		Vec2 weaponCollisionOffsetAdjusted = this->entity->getAnimations()->getFlippedX()
 			? Vec2(-this->weaponCollisionOffset.x, this->weaponCollisionOffset.y)
 			: this->weaponCollisionOffset;
+		Vec2 trackedObjectOffsetAdjusted = this->entity->getAnimations()->usesNewAnimationSystem()
+			? offhand->getOffset()
+			: Vec2::ZERO;
 
-		this->offhandWeaponCollision->setPosition(weaponCollisionOffsetAdjusted);
+		if (this->entity->getAnimations()->getFlippedX())
+		{
+			trackedObjectOffsetAdjusted.x *= -1.0f;
+		}
+
+		this->offhandWeaponCollision->setPosition(weaponCollisionOffsetAdjusted + trackedObjectOffsetAdjusted);
 		this->offhandWeaponCollision->setPhysicsFlagEnabled(false);
 		offhand->addTrackingObject(this->offhandWeaponCollision);
 	}

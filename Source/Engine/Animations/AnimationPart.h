@@ -59,6 +59,7 @@ private:
 
 	std::string originalPath;
 	std::vector<cocos2d::Node*> trackedObjects;
+	cocos2d::Node* trackingContainer = nullptr;
 	cocos2d::Node* ghostContainer = nullptr;
 	cocos2d::Sprite* ghostSprite = nullptr;
 	SpriterAnimationPart* spriterAnimationPartNew = nullptr;

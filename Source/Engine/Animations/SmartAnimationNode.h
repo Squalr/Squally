@@ -49,6 +49,7 @@ public:
 	void setFlippedY(bool flippedY);
 	bool getFlippedX();
 	bool getFlippedY();
+	bool usesNewAnimationSystem() const;
 	std::string getCurrentAnimation();
 	std::string getAnimationResource();
 	void refreshCurrentAnimationState();

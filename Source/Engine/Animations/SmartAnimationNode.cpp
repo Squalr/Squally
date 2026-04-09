@@ -327,6 +327,11 @@ bool SmartAnimationNode::getFlippedY()
 	return this->animationNode->getFlippedY();
 }
 
+bool SmartAnimationNode::usesNewAnimationSystem() const
+{
+	return this->useNewAnimationSystem;
+}
+
 std::string SmartAnimationNode::getCurrentAnimation()
 {
 	return this->currentAnimation;
