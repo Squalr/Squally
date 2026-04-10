@@ -74,7 +74,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 
     # internal dependencies
     cocos2d::cocos2d
-    spriter2dx::spriter2dx
     SteamWorks::API
     breakpad::client
     

@@ -99,7 +99,7 @@ void SpriterAnimationSprite::refreshSpriteLayout()
 
 	if (this->usesCompatibilityLayout())
 	{
-		// Match Spriter2dX's outer-container pivot handling only for compatibility replacements/offsets.
+		// Match the legacy replacement-sprite pivot handling only for compatibility replacements/offsets.
 		this->sprite->setAnchorPoint(Vec2::ZERO);
 		this->setContentSize(this->sprite->getContentSize());
 		super::setAnchorPoint(this->currentAnchor);

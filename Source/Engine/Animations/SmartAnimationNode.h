@@ -1,17 +1,6 @@
 #pragma once
 #include "Engine/SmartNode.h"
 
-// forward declarations
-namespace Spriter2dX
-{
-	class AnimationNode;
-}
-
-namespace SpriterEngine
-{
-	class EntityInstance;
-}
-
 class AnimationPart;
 class SpriterAnimationNode;
 
@@ -20,7 +9,6 @@ class SmartAnimationNode : public SmartNode
 public:
 	static SmartAnimationNode* create(std::string animationResource);
 	static SmartAnimationNode* create(std::string animationResource, std::string entityName);
-	static SmartAnimationNode* create(std::string animationResource, std::string entityName, bool useNewAnimationSystem);
 
 	enum class AnimationPlayMode
 	{
@@ -49,7 +37,6 @@ public:
 	void setFlippedY(bool flippedY);
 	bool getFlippedX();
 	bool getFlippedY();
-	bool usesNewAnimationSystem() const;
 	std::string getCurrentAnimation();
 	std::string getAnimationResource();
 	void refreshCurrentAnimationState();
@@ -61,12 +48,10 @@ public:
 	static const std::string DefaultAnimationName;
 
 protected:
-	SmartAnimationNode(std::string animationResource, std::string entityName, bool useNewAnimationSystem);
+	SmartAnimationNode(std::string animationResource, std::string entityName);
 	virtual ~SmartAnimationNode();
 
 	SpriterAnimationNode* spriterAnimation = nullptr;
-	Spriter2dX::AnimationNode* animationNode = nullptr;
-	SpriterEngine::EntityInstance* entity = nullptr;
 
 private:
 	typedef SmartNode super;
@@ -77,5 +62,4 @@ private:
 	std::string currentAnimation;
 	std::string animationResource;
 	std::string entityName;
-	bool useNewAnimationSystem = true;
 };

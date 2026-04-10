@@ -1,12 +1,6 @@
 #pragma once
 #include "Engine/SmartNode.h"
 
-namespace SpriterEngine
-{
-	class EntityInstance;
-	class UniversalObjectInterface;
-}
-
 class SpriterAnimationPart;
 
 namespace cocos2d
@@ -21,7 +15,6 @@ namespace cocos2d
 class AnimationPart : public SmartNode
 {
 public:
-	static AnimationPart* create(SpriterEngine::EntityInstance* entity, std::string partName);
 	static AnimationPart* create(SpriterAnimationPart* spriterAnimationPart);
 
 	void removeTrackingObject(cocos2d::Node* trackedObject);
@@ -47,7 +40,6 @@ public:
 
 private:
 	typedef SmartNode super;
-	AnimationPart(SpriterEngine::EntityInstance* entity, std::string partName);
 	AnimationPart(SpriterAnimationPart* spriterAnimationPart);
 	virtual ~AnimationPart();
 
@@ -62,10 +54,6 @@ private:
 	cocos2d::Node* trackingContainer = nullptr;
 	cocos2d::Node* ghostContainer = nullptr;
 	cocos2d::Sprite* ghostSprite = nullptr;
-	SpriterAnimationPart* spriterAnimationPartNew = nullptr;
-	SpriterEngine::UniversalObjectInterface* spriterAnimationPart = nullptr;
-	SpriterEngine::EntityInstance* entity = nullptr;
+	SpriterAnimationPart* spriterAnimationPart = nullptr;
 	cocos2d::Vec2 currentOffset = cocos2d::Vec2::ZERO;
-	float rotation = 0.0f;
-	std::string lastKnownAnim;
 };
