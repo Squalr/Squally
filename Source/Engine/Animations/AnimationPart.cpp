@@ -436,6 +436,10 @@ void AnimationPart::updateTrackedAttributes()
 		const Vec2 position = this->spriterAnimationPartNew->getResolvedAnimationPosition();
 		const Vec2 anchor = this->spriterAnimationPartNew->getAnimationAnchorPoint();
 		const Vec2 animationOffset = this->spriterAnimationPartNew->getAnimationOffset();
+		const Vec2 resolvedScale = this->spriterAnimationPartNew->getResolvedAnimationScale();
+		const std::string currentSpriteResource = this->spriterAnimationPartNew->getSpriteResource();
+		const bool usesCompatibilityLayout = currentSpriteResource != this->originalPath || animationOffset != Vec2::ZERO;
+		const CSize spriteSize = this->spriterAnimationPartNew->getSpriteSize();
 
 		// Keep the wrapper at the part pivot in local animation space.
 		super::setRotation(angle);
@@ -446,16 +450,34 @@ void AnimationPart::updateTrackedAttributes()
 		{
 			this->trackingContainer->setContentSize(CSize::ZERO);
 			this->trackingContainer->setAnchorPoint(Vec2::ZERO);
-			this->trackingContainer->setPosition(Vec2::ZERO);
+			if (usesCompatibilityLayout)
+			{
+				// Tracking nodes do not inherit sprite scale in the collision system, so mirror the
+				// compatibility-layout translation explicitly instead of relying on parent scaling.
+				const Vec2 compatibilitySign(
+					resolvedScale.x < 0.0f ? -1.0f : 1.0f,
+					resolvedScale.y < 0.0f ? -1.0f : 1.0f
+				);
+				const Vec2 compatibilityOriginOffset(
+					(animationOffset.x - anchor.x * spriteSize.width) * compatibilitySign.x,
+					(animationOffset.y - anchor.y * spriteSize.height) * compatibilitySign.y
+				);
+
+				// Weapon collisions need to be pulled back from the far end of the replacement sprite
+				// toward the hilt. For Squally's weapon part, that corresponds to the sprite's
+				// longitudinal axis only; applying the full 2D translation causes sideways drift.
+				const float longitudinalOffset = animationOffset.y - (1.0f - anchor.y) * spriteSize.height;
+				this->trackingContainer->setPosition(Vec2(0.0f, longitudinalOffset * 0.5f));
+			}
+			else
+			{
+				this->trackingContainer->setPosition(Vec2::ZERO);
+			}
 			this->trackingContainer->setScale(1.0f);
 		}
 
 		if (this->ghostSprite != nullptr)
 		{
-			const std::string currentSpriteResource = this->spriterAnimationPartNew->getSpriteResource();
-			const bool usesCompatibilityLayout = currentSpriteResource != this->originalPath || animationOffset != Vec2::ZERO;
-			const Vec2 resolvedScale = this->spriterAnimationPartNew->getResolvedAnimationScale();
-
 			if (!currentSpriteResource.empty() && currentSpriteResource != this->ghostSprite->getResourceName())
 			{
 				this->ghostSprite->setTexture(currentSpriteResource);
