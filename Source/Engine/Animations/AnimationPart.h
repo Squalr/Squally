@@ -28,6 +28,8 @@ public:
 	void setRotation(float rotation) override;
 	float getRotationSpriter();
 	void setRotationSpriter(float rotation);
+	void setCompatibilityLayoutEnabled(bool enabled);
+	bool isCompatibilityLayoutEnabled() const;
 	void setOffset(cocos2d::Vec2 offset);
 	void restoreOffset();
 	cocos2d::Vec2 getOffset() const;
@@ -56,4 +58,5 @@ private:
 	cocos2d::Sprite* ghostSprite = nullptr;
 	SpriterAnimationPart* spriterAnimationPart = nullptr;
 	cocos2d::Vec2 currentOffset = cocos2d::Vec2::ZERO;
+	bool compatibilityLayoutEnabled = true;
 };

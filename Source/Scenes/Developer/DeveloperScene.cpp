@@ -53,6 +53,7 @@ DeveloperScene::DeveloperScene()
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
+		mapList.push_back(this->buildDebugButton("DBG Offset Lab", MapResources::Dev_OffsetLab));
 		mapList.push_back(this->buildDebugButton("Warp Room", MapResources::MagesGuild_Mages_Warp));
 		mapList.push_back(this->buildDebugButton("Museum", MapResources::MagesGuild_Museum));
 		mapList.push_back(this->buildDebugButton("DBG Cages", MapResources::Dev_Cages));

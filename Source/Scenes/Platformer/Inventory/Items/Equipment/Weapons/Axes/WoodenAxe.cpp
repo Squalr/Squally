@@ -77,7 +77,7 @@ CSize WoodenAxe::getWeaponCollisionSize()
 Vec2 WoodenAxe::getWeaponCollisionOffset()
 {
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
-	return Vec2(0.0f, 212.0f);
+	return Vec2(0.0f, 78.0f);
 }
 
 Vec2 WoodenAxe::getDisplayOffset()

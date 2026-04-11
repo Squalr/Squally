@@ -42,6 +42,16 @@ MithrilMace::~MithrilMace()
 {
 }
 
+Vec2 MithrilMace::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 40.0f);
+}
+
+Vec2 MithrilMace::getDisplayOffset()
+{
+	return Vec2(0.0f, -12.0f);
+}
+
 Item* MithrilMace::clone()
 {
 	return MithrilMace::create();
@@ -60,11 +70,6 @@ const std::string& MithrilMace::getIconResource()
 const std::string& MithrilMace::getIdentifier()
 {
 	return MithrilMace::SaveKey;
-}
-
-Vec2 MithrilMace::getDisplayOffset()
-{
-	return Vec2(0.0f, -24.0f);
 }
 
 Recipe* MithrilMace::getRecipe()

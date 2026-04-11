@@ -10,6 +10,7 @@
 class Bow : public Weapon
 {
 public:
+	virtual cocos2d::Vec2 getWeaponCollisionOffset() override;
 	virtual std::string getWeaponAttackSound() override;
 	virtual std::string getWeaponImpactSound() override;
 

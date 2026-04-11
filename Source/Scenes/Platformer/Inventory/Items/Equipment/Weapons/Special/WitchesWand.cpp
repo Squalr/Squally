@@ -42,6 +42,11 @@ WitchesWand::~WitchesWand()
 {
 }
 
+Vec2 WitchesWand::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 132.0f);
+}
+
 Item* WitchesWand::clone()
 {
 	return WitchesWand::create();

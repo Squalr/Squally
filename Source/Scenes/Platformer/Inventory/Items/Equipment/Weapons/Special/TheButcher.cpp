@@ -42,6 +42,16 @@ TheButcher::~TheButcher()
 {
 }
 
+Vec2 TheButcher::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 216.0f);
+}
+
+Vec2 TheButcher::getDisplayOffset()
+{
+	return Vec2(-6.0f, -22.0f);
+}
+
 Item* TheButcher::clone()
 {
 	return TheButcher::create();

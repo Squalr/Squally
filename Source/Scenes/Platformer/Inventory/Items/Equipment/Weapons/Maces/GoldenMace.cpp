@@ -42,6 +42,11 @@ GoldenMace::~GoldenMace()
 {
 }
 
+Vec2 GoldenMace::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 36.0f);
+}
+
 Item* GoldenMace::clone()
 {
 	return GoldenMace::create();

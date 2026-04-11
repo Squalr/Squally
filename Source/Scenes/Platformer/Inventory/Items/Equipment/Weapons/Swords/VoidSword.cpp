@@ -42,6 +42,16 @@ VoidSword::~VoidSword()
 {
 }
 
+Vec2 VoidSword::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 140.0f);
+}
+
+Vec2 VoidSword::getDisplayOffset()
+{
+	return Vec2(0.0f, -8.0f);
+}
+
 Item* VoidSword::clone()
 {
 	return VoidSword::create();

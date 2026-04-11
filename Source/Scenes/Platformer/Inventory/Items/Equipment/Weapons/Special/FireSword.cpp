@@ -42,6 +42,11 @@ FireSword::~FireSword()
 {
 }
 
+Vec2 FireSword::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 124.0f);
+}
+
 Item* FireSword::clone()
 {
 	return FireSword::create();

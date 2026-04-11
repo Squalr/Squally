@@ -42,6 +42,11 @@ SteelMace::~SteelMace()
 {
 }
 
+Vec2 SteelMace::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 44.0f);
+}
+
 Item* SteelMace::clone()
 {
 	return SteelMace::create();

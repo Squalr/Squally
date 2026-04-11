@@ -42,6 +42,16 @@ CopperSword::~CopperSword()
 {
 }
 
+Vec2 CopperSword::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 86.0f);
+}
+
+Vec2 CopperSword::getDisplayOffset()
+{
+	return Vec2(0.0f, -2.0f);
+}
+
 Item* CopperSword::clone()
 {
 	return CopperSword::create();

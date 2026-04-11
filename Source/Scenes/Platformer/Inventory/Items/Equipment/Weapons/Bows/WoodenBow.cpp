@@ -42,6 +42,11 @@ WoodenBow::~WoodenBow()
 {
 }
 
+Vec2 WoodenBow::getWeaponCollisionOffset()
+{
+	return Vec2(-6.0f, 0.0f);
+}
+
 Item* WoodenBow::clone()
 {
 	return WoodenBow::create();

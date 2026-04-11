@@ -7,6 +7,7 @@ class SilverWand : public Wand
 public:
 	static SilverWand* create();
 
+	cocos2d::Vec2 getWeaponCollisionOffset() override;
 	Item* clone() override;
 	LocalizedString* getString() override;
 	const std::string& getIconResource() override;

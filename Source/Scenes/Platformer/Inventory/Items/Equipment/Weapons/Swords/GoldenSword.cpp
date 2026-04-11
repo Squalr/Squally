@@ -42,6 +42,11 @@ GoldenSword::~GoldenSword()
 {
 }
 
+Vec2 GoldenSword::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 94.0f);
+}
+
 Item* GoldenSword::clone()
 {
 	return GoldenSword::create();

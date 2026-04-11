@@ -42,6 +42,11 @@ CrystalSword::~CrystalSword()
 {
 }
 
+Vec2 CrystalSword::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 86.0f);
+}
+
 Item* CrystalSword::clone()
 {
 	return CrystalSword::create();

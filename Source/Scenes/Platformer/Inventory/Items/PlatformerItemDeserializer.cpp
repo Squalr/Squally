@@ -491,6 +491,33 @@ PlatformerItemDeserializer::~PlatformerItemDeserializer()
 {
 }
 
+Item* PlatformerItemDeserializer::createItem(const std::string& itemSerializationKey) const
+{
+	auto found = this->deserializers.find(itemSerializationKey);
+
+	if (found != this->deserializers.end())
+	{
+		return found->second();
+	}
+
+	LogUtils::logError("Unknown item encountered: " + itemSerializationKey);
+
+	return nullptr;
+}
+
+std::vector<std::string> PlatformerItemDeserializer::getRegisteredItemKeys() const
+{
+	std::vector<std::string> itemKeys;
+	itemKeys.reserve(this->deserializers.size());
+
+	for (const auto& next : this->deserializers)
+	{
+		itemKeys.push_back(next.first);
+	}
+
+	return itemKeys;
+}
+
 void PlatformerItemDeserializer::initializeListeners()
 {
 	super::initializeListeners();
@@ -513,18 +540,15 @@ void PlatformerItemDeserializer::initializeListeners()
 
 void PlatformerItemDeserializer::deserialize(InventoryEvents::RequestItemDeserializationArgs args)
 {
-	std::string serializationKey = args.itemSerializationKey;
+	Item* item = this->createItem(args.itemSerializationKey);
 
-	if (args.onItemDeserializedCallback != nullptr && this->deserializers.find(serializationKey) != this->deserializers.end())
+	if (args.onItemDeserializedCallback != nullptr && item != nullptr)
 	{
-		args.onItemDeserializedCallback(this->deserializers[serializationKey]());
-	}
-	else
-	{
-		LogUtils::logError("Unknown item encountered: " + serializationKey);
+		args.onItemDeserializedCallback(item);
 	}
 }
 
 void PlatformerItemDeserializer::registerItem(const std::string& key, const std::function<Item*()>& item)
 {
+	this->deserializers[key] = item;
 }

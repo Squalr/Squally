@@ -87,6 +87,28 @@ bool SpriterAnimationPart::isAnimationRoot() const
 	return false;
 }
 
+void SpriterAnimationPart::setCompatibilityLayoutEnabled(bool enabled)
+{
+	this->compatibilityLayoutEnabled = enabled;
+	this->applyResolvedAnimationState(
+		this->resolvedAnimationPosition,
+		this->timelineAnchor,
+		this->resolvedAnimationScale,
+		this->resolvedAnimationRotation,
+		this->resolvedAnimationOpacity
+	);
+}
+
+bool SpriterAnimationPart::isCompatibilityLayoutEnabled() const
+{
+	return this->compatibilityLayoutEnabled;
+}
+
+bool SpriterAnimationPart::usesCompatibilityLayout() const
+{
+	return false;
+}
+
 void SpriterAnimationPart::setAnimationOffset(const Vec2& offset)
 {
 	this->animationOffset = offset;

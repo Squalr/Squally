@@ -42,6 +42,16 @@ Frostbane::~Frostbane()
 {
 }
 
+Vec2 Frostbane::getWeaponCollisionOffset()
+{
+	return Vec2(8.0f, 180.0f);
+}
+
+Vec2 Frostbane::getDisplayOffset()
+{
+	return Vec2(12.0f, -20.0f);
+}
+
 Item* Frostbane::clone()
 {
 	return Frostbane::create();

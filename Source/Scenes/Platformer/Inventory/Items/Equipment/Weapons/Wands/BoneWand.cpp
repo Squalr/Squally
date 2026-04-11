@@ -42,6 +42,11 @@ BoneWand::~BoneWand()
 {
 }
 
+Vec2 BoneWand::getWeaponCollisionOffset()
+{
+	return Vec2(-6.0f, 26.0f);
+}
+
 Item* BoneWand::clone()
 {
 	return BoneWand::create();

@@ -7,6 +7,7 @@ class WoodenSword : public Sword
 public:
 	static WoodenSword* create();
 
+	cocos2d::Vec2 getWeaponCollisionOffset() override;
 	std::string getWeaponImpactSound() override;
 	Item* clone() override;
 	LocalizedString* getString() override;

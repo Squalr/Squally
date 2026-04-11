@@ -17,6 +17,9 @@ public:
 	void setTimelineCanUpdate(bool canTimelineUpdate);
 	bool canTimelineUpdate() const;
 	virtual bool isAnimationRoot() const;
+	virtual void setCompatibilityLayoutEnabled(bool enabled);
+	bool isCompatibilityLayoutEnabled() const;
+	virtual bool usesCompatibilityLayout() const;
 	void setAnimationOffset(const cocos2d::Vec2& offset);
 	void clearAnimationOffset();
 	cocos2d::Vec2 getAnimationOffset() const;
@@ -66,6 +69,7 @@ protected:
 	GLubyte timelineOpacity = 255;
 	GLubyte resolvedAnimationOpacity = 255;
 	bool timelineUpdatesEnabled = true;
+	bool compatibilityLayoutEnabled = true;
 	
 private:
 	typedef SmartNode super;

@@ -42,6 +42,11 @@ VoidWand::~VoidWand()
 {
 }
 
+Vec2 VoidWand::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 60.0f);
+}
+
 Item* VoidWand::clone()
 {
 	return VoidWand::create();

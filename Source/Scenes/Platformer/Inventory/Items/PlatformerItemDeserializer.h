@@ -1,5 +1,10 @@
 #pragma once
 
+#include <functional>
+#include <map>
+#include <string>
+#include <vector>
+
 #include "Engine/Events/InventoryEvents.h"
 #include "Engine/GlobalNode.h"
 
@@ -11,6 +16,8 @@ public:
 	static PlatformerItemDeserializer* getInstance();
 	static void RegisterGlobalNode();
 
+	Item* createItem(const std::string& itemSerializationKey) const;
+	std::vector<std::string> getRegisteredItemKeys() const;
 	void deserialize(InventoryEvents::RequestItemDeserializationArgs args);
 
 protected:

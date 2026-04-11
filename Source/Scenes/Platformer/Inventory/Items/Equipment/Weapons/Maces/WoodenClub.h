@@ -7,6 +7,7 @@ class WoodenClub : public Mace
 public:
 	static WoodenClub* create();
 
+	cocos2d::Vec2 getWeaponCollisionOffset() override;
 	std::string getWeaponImpactSound() override;
 	Item* clone() override;
 	LocalizedString* getString() override;

@@ -42,6 +42,11 @@ CopperMallet::~CopperMallet()
 {
 }
 
+Vec2 CopperMallet::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 42.0f);
+}
+
 Item* CopperMallet::clone()
 {
 	return CopperMallet::create();

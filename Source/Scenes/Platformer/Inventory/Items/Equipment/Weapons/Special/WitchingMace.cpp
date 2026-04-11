@@ -42,6 +42,11 @@ WitchingMace::~WitchingMace()
 {
 }
 
+Vec2 WitchingMace::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 150.0f);
+}
+
 Item* WitchingMace::clone()
 {
 	return WitchingMace::create();
@@ -64,7 +69,7 @@ const std::string& WitchingMace::getIdentifier()
 
 Vec2 WitchingMace::getDisplayOffset()
 {
-	return Vec2(0.0f, -24.0f);
+	return Vec2(4.0f, -10.0f);
 }
 
 Recipe* WitchingMace::getRecipe()

@@ -7,6 +7,7 @@ class MithrilMace : public Mace
 public:
 	static MithrilMace* create();
 
+	cocos2d::Vec2 getWeaponCollisionOffset() override;
 	Item* clone() override;
 	LocalizedString* getString() override;
 	const std::string& getIconResource() override;

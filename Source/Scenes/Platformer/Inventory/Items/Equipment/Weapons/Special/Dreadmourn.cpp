@@ -42,6 +42,16 @@ Dreadmourn::~Dreadmourn()
 {
 }
 
+Vec2 Dreadmourn::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 98.0f);
+}
+
+Vec2 Dreadmourn::getDisplayOffset()
+{
+	return Vec2(0.0f, -6.0f);
+}
+
 Item* Dreadmourn::clone()
 {
 	return Dreadmourn::create();

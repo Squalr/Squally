@@ -71,7 +71,7 @@ CSize GoldenAxe::getWeaponCollisionSize()
 Vec2 GoldenAxe::getWeaponCollisionOffset()
 {
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
-	return Vec2(-12.0f, 212.0f);
+	return Vec2(0.0f, 120.0f);
 }
 
 Vec2 GoldenAxe::getDisplayOffset()

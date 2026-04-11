@@ -42,6 +42,11 @@ QuartzWand::~QuartzWand()
 {
 }
 
+Vec2 QuartzWand::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 40.0f);
+}
+
 Item* QuartzWand::clone()
 {
 	return QuartzWand::create();

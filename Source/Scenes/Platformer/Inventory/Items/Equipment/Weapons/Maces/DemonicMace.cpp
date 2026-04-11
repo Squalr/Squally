@@ -42,6 +42,11 @@ DemonicMace::~DemonicMace()
 {
 }
 
+Vec2 DemonicMace::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 32.0f);
+}
+
 Item* DemonicMace::clone()
 {
 	return DemonicMace::create();
@@ -64,7 +69,7 @@ const std::string& DemonicMace::getIdentifier()
 
 Vec2 DemonicMace::getDisplayOffset()
 {
-	return Vec2(0.0f, -24.0f);
+	return Vec2(0.0f, -26.0f);
 }
 
 Recipe* DemonicMace::getRecipe()

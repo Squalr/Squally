@@ -64,7 +64,12 @@ const std::string& Timmy::getIdentifier()
 
 Vec2 Timmy::getDisplayOffset()
 {
-	return Vec2(0.0f, -24.0f);
+	return Vec2(62.0f, -18.0f);
+}
+
+Vec2 Timmy::getWeaponCollisionOffset()
+{
+	return Vec2(84.0f, 326.0f);
 }
 
 Recipe* Timmy::getRecipe()

@@ -62,6 +62,16 @@ const std::string& WoodenShield::getIdentifier()
 	return WoodenShield::SaveKey;
 }
 
+cocos2d::Vec2 WoodenShield::getDisplayOffset()
+{
+	return Vec2(8.0f, -62.0f);
+}
+
+cocos2d::Vec2 WoodenShield::getOffhandOffset()
+{
+	return Vec2::ZERO;
+}
+
 Recipe* WoodenShield::getRecipe()
 {
 	return WoodenShieldPlans::create();

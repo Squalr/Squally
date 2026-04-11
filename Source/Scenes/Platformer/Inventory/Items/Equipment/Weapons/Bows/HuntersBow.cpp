@@ -42,6 +42,11 @@ HuntersBow::~HuntersBow()
 {
 }
 
+Vec2 HuntersBow::getWeaponCollisionOffset()
+{
+	return Vec2(-4.0f, 0.0f);
+}
+
 Item* HuntersBow::clone()
 {
 	return HuntersBow::create();

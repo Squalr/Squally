@@ -42,6 +42,11 @@ VoidMace::~VoidMace()
 {
 }
 
+Vec2 VoidMace::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 82.0f);
+}
+
 Item* VoidMace::clone()
 {
 	return VoidMace::create();

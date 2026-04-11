@@ -87,7 +87,7 @@ void SpriterAnimationSprite::applyAnimationOffset(const Vec2& offset)
 
 bool SpriterAnimationSprite::usesCompatibilityLayout() const
 {
-	return this->currentSpriteResource != this->originalSpriteResource || this->animationOffset != Vec2::ZERO;
+	return this->isCompatibilityLayoutEnabled() && (this->currentSpriteResource != this->originalSpriteResource || this->animationOffset != Vec2::ZERO);
 }
 
 void SpriterAnimationSprite::refreshSpriteLayout()

@@ -71,7 +71,7 @@ CSize MithrilAxe::getWeaponCollisionSize()
 Vec2 MithrilAxe::getWeaponCollisionOffset()
 {
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
-	return Vec2(-12.0f, 202.0f);
+	return Vec2(0.0f, 122.0f);
 }
 
 Vec2 MithrilAxe::getDisplayOffset()

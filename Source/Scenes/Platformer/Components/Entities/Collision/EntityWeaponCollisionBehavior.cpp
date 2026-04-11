@@ -24,6 +24,7 @@ EntityWeaponCollisionBehavior::EntityWeaponCollisionBehavior(GameObject* owner) 
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->weaponCollisionSize = EntityWeaponCollisionBehavior::DefaultWeaponSize;
+	this->offhandWeaponCollisionSize = EntityWeaponCollisionBehavior::DefaultWeaponSize;
 
 	if (this->entity == nullptr)
 	{
@@ -90,6 +91,48 @@ void EntityWeaponCollisionBehavior::disable()
 	}
 }
 
+CollisionObject* EntityWeaponCollisionBehavior::getMainhandWeaponCollision() const
+{
+	return this->mainhandWeaponCollision;
+}
+
+CollisionObject* EntityWeaponCollisionBehavior::getOffhandWeaponCollision() const
+{
+	return this->offhandWeaponCollision;
+}
+
+Vec2 EntityWeaponCollisionBehavior::getWeaponCollisionOffset() const
+{
+	return this->weaponCollisionOffset;
+}
+
+Vec2 EntityWeaponCollisionBehavior::getOffhandWeaponCollisionOffset() const
+{
+	return this->offhandWeaponCollisionOffset;
+}
+
+Vec2 EntityWeaponCollisionBehavior::getWeaponCollisionDebugOffset() const
+{
+	return this->weaponCollisionDebugOffset;
+}
+
+Vec2 EntityWeaponCollisionBehavior::getOffhandWeaponCollisionDebugOffset() const
+{
+	return this->offhandWeaponCollisionDebugOffset;
+}
+
+void EntityWeaponCollisionBehavior::setWeaponCollisionDebugOffset(Vec2 weaponCollisionDebugOffset)
+{
+	this->weaponCollisionDebugOffset = weaponCollisionDebugOffset;
+	this->refreshWeaponCollisionOffsets();
+}
+
+void EntityWeaponCollisionBehavior::setOffhandWeaponCollisionDebugOffset(Vec2 weaponCollisionDebugOffset)
+{
+	this->offhandWeaponCollisionDebugOffset = weaponCollisionDebugOffset;
+	this->refreshWeaponCollisionOffsets();
+}
+
 void EntityWeaponCollisionBehavior::setWeaponCollisionSize(CSize weaponCollisionSize)
 {
 	this->useExplicitWeaponSize = true;
@@ -99,6 +142,46 @@ void EntityWeaponCollisionBehavior::setWeaponCollisionSize(CSize weaponCollision
 void EntityWeaponCollisionBehavior::setWeaponCollisionOffset(Vec2 weaponCollisionOffset)
 {
 	this->weaponCollisionOffset = weaponCollisionOffset;
+	this->refreshWeaponCollisionOffsets();
+}
+
+void EntityWeaponCollisionBehavior::setOffhandWeaponCollisionSize(CSize weaponCollisionSize)
+{
+	this->useExplicitOffhandWeaponSize = true;
+	this->offhandWeaponCollisionSize = weaponCollisionSize;
+}
+
+void EntityWeaponCollisionBehavior::setOffhandWeaponCollisionOffset(Vec2 weaponCollisionOffset)
+{
+	this->offhandWeaponCollisionOffset = weaponCollisionOffset;
+	this->refreshWeaponCollisionOffsets();
+}
+
+void EntityWeaponCollisionBehavior::refreshWeaponCollisionOffsets()
+{
+	if (this->isInvalidated() || this->entity == nullptr || this->entity->getAnimations() == nullptr)
+	{
+		return;
+	}
+
+	const Vec2 resolvedWeaponCollisionOffset = this->weaponCollisionOffset + this->weaponCollisionDebugOffset;
+	const Vec2 resolvedOffhandWeaponCollisionOffset = this->offhandWeaponCollisionOffset + this->offhandWeaponCollisionDebugOffset;
+	const Vec2 weaponCollisionOffsetAdjusted = this->entity->getAnimations()->getFlippedX()
+		? Vec2(-resolvedWeaponCollisionOffset.x, resolvedWeaponCollisionOffset.y)
+		: resolvedWeaponCollisionOffset;
+	const Vec2 offhandWeaponCollisionOffsetAdjusted = this->entity->getAnimations()->getFlippedX()
+		? Vec2(-resolvedOffhandWeaponCollisionOffset.x, resolvedOffhandWeaponCollisionOffset.y)
+		: resolvedOffhandWeaponCollisionOffset;
+
+	if (this->mainhandWeaponCollision != nullptr)
+	{
+		this->mainhandWeaponCollision->setPosition(weaponCollisionOffsetAdjusted);
+	}
+
+	if (this->offhandWeaponCollision != nullptr)
+	{
+		this->offhandWeaponCollision->setPosition(offhandWeaponCollisionOffsetAdjusted);
+	}
 }
 
 void EntityWeaponCollisionBehavior::rebuildWeaponCollision(int collisionType, bool buildOffhand)
@@ -113,7 +196,7 @@ void EntityWeaponCollisionBehavior::rebuildWeaponCollision(int collisionType, bo
 
 	if (mainhand != nullptr)
 	{
-		CSize weaponSize = useExplicitWeaponSize ? this->weaponCollisionSize : mainhand->getSpriteSize();
+		CSize weaponSize = this->useExplicitWeaponSize ? this->weaponCollisionSize : mainhand->getSpriteSize();
 
 		if (weaponSize.width <= 0.0f || weaponSize.height <= 0.0f)
 		{
@@ -136,17 +219,13 @@ void EntityWeaponCollisionBehavior::rebuildWeaponCollision(int collisionType, bo
 			CollisionObject::Properties(false, false)
 		);
 
-		Vec2 weaponCollisionOffsetAdjusted = this->entity->getAnimations()->getFlippedX()
-			? Vec2(-this->weaponCollisionOffset.x, this->weaponCollisionOffset.y)
-			: this->weaponCollisionOffset;
-		this->mainhandWeaponCollision->setPosition(weaponCollisionOffsetAdjusted);
 		this->mainhandWeaponCollision->setPhysicsFlagEnabled(false);
 		mainhand->addTrackingObject(this->mainhandWeaponCollision);
 	}
 
 	if (offhand != nullptr && buildOffhand)
 	{
-		CSize weaponSize = useExplicitWeaponSize ? this->weaponCollisionSize : offhand->getSpriteSize();
+		CSize weaponSize = this->useExplicitOffhandWeaponSize ? this->offhandWeaponCollisionSize : offhand->getSpriteSize();
 
 		if (weaponSize.width <= 0.0f || weaponSize.height <= 0.0f)
 		{
@@ -169,11 +248,9 @@ void EntityWeaponCollisionBehavior::rebuildWeaponCollision(int collisionType, bo
 			CollisionObject::Properties(false, false)
 		);
 
-		Vec2 weaponCollisionOffsetAdjusted = this->entity->getAnimations()->getFlippedX()
-			? Vec2(-this->weaponCollisionOffset.x, this->weaponCollisionOffset.y)
-			: this->weaponCollisionOffset;
-		this->offhandWeaponCollision->setPosition(weaponCollisionOffsetAdjusted);
 		this->offhandWeaponCollision->setPhysicsFlagEnabled(false);
 		offhand->addTrackingObject(this->offhandWeaponCollision);
 	}
+
+	this->refreshWeaponCollisionOffsets();
 }

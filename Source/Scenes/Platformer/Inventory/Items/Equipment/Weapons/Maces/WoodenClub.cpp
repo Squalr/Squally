@@ -43,6 +43,11 @@ WoodenClub::~WoodenClub()
 {
 }
 
+Vec2 WoodenClub::getWeaponCollisionOffset()
+{
+	return Vec2(-2.0f, 54.0f);
+}
+
 std::string WoodenClub::getWeaponImpactSound()
 {
 	return SoundResources::Platformer_Physical_Impact_HitWood2;

@@ -213,6 +213,21 @@ void AnimationPart::setRotation(float rotation)
 	}
 }
 
+void AnimationPart::setCompatibilityLayoutEnabled(bool enabled)
+{
+	this->compatibilityLayoutEnabled = enabled;
+
+	if (this->spriterAnimationPart != nullptr)
+	{
+		this->spriterAnimationPart->setCompatibilityLayoutEnabled(enabled);
+	}
+}
+
+bool AnimationPart::isCompatibilityLayoutEnabled() const
+{
+	return this->compatibilityLayoutEnabled;
+}
+
 void AnimationPart::setOffset(Vec2 offset)
 {
 	this->currentOffset = offset;
@@ -293,7 +308,7 @@ void AnimationPart::updateTrackedAttributes()
 	const Vec2 animationOffset = this->spriterAnimationPart->getAnimationOffset();
 	const Vec2 resolvedScale = this->spriterAnimationPart->getResolvedAnimationScale();
 	const std::string currentSpriteResource = this->spriterAnimationPart->getSpriteResource();
-	const bool usesCompatibilityLayout = currentSpriteResource != this->originalPath || animationOffset != Vec2::ZERO;
+	const bool usesCompatibilityLayout = this->spriterAnimationPart->usesCompatibilityLayout();
 	const CSize spriteSize = this->spriterAnimationPart->getSpriteSize();
 
 	// Keep the wrapper at the part pivot in local animation space.
@@ -373,7 +388,7 @@ void AnimationPart::onDeveloperModeEnable(int debugLevel)
 
 	if (this->ghostSprite != nullptr)
 	{
-		this->ghostSprite->setVisible(true);
+		this->ghostSprite->setVisible(debugLevel >= 2);
 	}
 }
 

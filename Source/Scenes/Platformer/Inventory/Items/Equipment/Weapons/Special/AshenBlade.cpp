@@ -42,6 +42,11 @@ AshenBlade::~AshenBlade()
 {
 }
 
+Vec2 AshenBlade::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 74.0f);
+}
+
 Item* AshenBlade::clone()
 {
 	return AshenBlade::create();

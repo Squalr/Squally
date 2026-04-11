@@ -70,13 +70,12 @@ CSize Scythe::getWeaponCollisionSize()
 
 Vec2 Scythe::getWeaponCollisionOffset()
 {
-	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
-	return Vec2(-8.0f, 212.0f);
+	return Vec2(32.0f, 74.0f);
 }
 
 Vec2 Scythe::getDisplayOffset()
 {
-	return Vec2(0.0f, -8.0f);
+	return Vec2(32.0f, -18.0f);
 }
 
 Recipe* Scythe::getRecipe()

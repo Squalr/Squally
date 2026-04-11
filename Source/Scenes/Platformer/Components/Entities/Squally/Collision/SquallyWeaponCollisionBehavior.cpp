@@ -15,6 +15,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Offhands/Offhand.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -56,7 +57,7 @@ void SquallyWeaponCollisionBehavior::onLoad()
 {
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventEquippedItemsChanged, [=](EventCustom*)
 	{
-		this->rebuildWeaponCollision((int)PlatformerCollisionType::PlayerWeapon, false);
+		this->rebuildWeaponCollision((int)PlatformerCollisionType::PlayerWeapon, true);
 	}));
 
 	this->defer([=]()
@@ -83,6 +84,7 @@ void SquallyWeaponCollisionBehavior::onWeaponChange()
 	this->squally->getComponent<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 	{
 		Weapon* weapon = entityInventoryBehavior->getEquipmentInventory()->getWeapon();
+		Offhand* offhand = entityInventoryBehavior->getEquipmentInventory()->getOffhand();
 
 		if (weapon != nullptr)
 		{
@@ -92,14 +94,23 @@ void SquallyWeaponCollisionBehavior::onWeaponChange()
 		else
 		{
 			const CSize NoWeaponSize = CSize(64.0f, 64.0f);
-			const Vec2 NoWeaponOffset = Vec2(0.0f, 96.0f);
+			const Vec2 NoWeaponOffset = Vec2(24.0f, 0.0f);
 
 			this->setWeaponCollisionSize(NoWeaponSize);
 			this->setWeaponCollisionOffset(NoWeaponOffset);
 		}
+
+		if (offhand != nullptr)
+		{
+			this->setOffhandWeaponCollisionOffset(offhand->getOffhandOffset());
+		}
+		else
+		{
+			this->setOffhandWeaponCollisionOffset(Vec2::ZERO);
+		}
 	});
 
-	this->rebuildWeaponCollision((int)PlatformerCollisionType::PlayerWeapon, false);
+	this->rebuildWeaponCollision((int)PlatformerCollisionType::PlayerWeapon, true);
 
 	if (this->mainhandWeaponCollision != nullptr)
 	{

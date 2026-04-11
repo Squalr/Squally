@@ -42,6 +42,11 @@ BoneHammer::~BoneHammer()
 {
 }
 
+Vec2 BoneHammer::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 40.0f);
+}
+
 Item* BoneHammer::clone()
 {
 	return BoneHammer::create();

@@ -42,6 +42,11 @@ SilverWand::~SilverWand()
 {
 }
 
+Vec2 SilverWand::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 42.0f);
+}
+
 Item* SilverWand::clone()
 {
 	return SilverWand::create();

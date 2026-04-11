@@ -42,6 +42,11 @@ Bludgeon::~Bludgeon()
 {
 }
 
+Vec2 Bludgeon::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 140.0f);
+}
+
 Item* Bludgeon::clone()
 {
 	return Bludgeon::create();

@@ -42,6 +42,16 @@ MithrilSword::~MithrilSword()
 {
 }
 
+Vec2 MithrilSword::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 90.0f);
+}
+
+Vec2 MithrilSword::getDisplayOffset()
+{
+	return Vec2(0.0f, -8.0f);
+}
+
 Item* MithrilSword::clone()
 {
 	return MithrilSword::create();

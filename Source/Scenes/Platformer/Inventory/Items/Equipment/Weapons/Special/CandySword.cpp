@@ -42,6 +42,11 @@ CandySword::~CandySword()
 {
 }
 
+Vec2 CandySword::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 116.0f);
+}
+
 Item* CandySword::clone()
 {
 	return CandySword::create();

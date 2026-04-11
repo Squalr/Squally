@@ -43,6 +43,11 @@ WoodenSword::~WoodenSword()
 {
 }
 
+Vec2 WoodenSword::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 98.0f);
+}
+
 std::string WoodenSword::getWeaponImpactSound()
 {
 	return SoundResources::Platformer_Physical_Impact_HitWood1;

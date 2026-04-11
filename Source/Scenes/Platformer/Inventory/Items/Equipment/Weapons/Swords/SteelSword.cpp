@@ -42,6 +42,11 @@ SteelSword::~SteelSword()
 {
 }
 
+Vec2 SteelSword::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 84.0f);
+}
+
 Item* SteelSword::clone()
 {
 	return SteelSword::create();

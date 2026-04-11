@@ -12,6 +12,11 @@ Sword::~Sword()
 {
 }
 
+Vec2 Sword::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 98.0f);
+}
+
 std::string Sword::getWeaponAttackSound()
 {
 	return SoundResources::Platformer_Physical_Swings_SwingWeakBlade5;

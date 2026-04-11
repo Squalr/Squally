@@ -12,6 +12,11 @@ Bow::~Bow()
 {
 }
 
+Vec2 Bow::getWeaponCollisionOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
 std::string Bow::getWeaponAttackSound()
 {
 	return SoundResources::Platformer_Physical_Projectiles_Woosh4;
