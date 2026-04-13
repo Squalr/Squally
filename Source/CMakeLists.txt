@@ -75,7 +75,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     # internal dependencies
     cocos2d::cocos2d
     SteamWorks::API
-    breakpad::client
     
     # sfml-graphics
     # sfml-audio

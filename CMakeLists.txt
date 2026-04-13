@@ -84,7 +84,6 @@ find_package(SteamWorks REQUIRED)
 
 # Bundled Dependencies
 add_subdirectory(${PROJECT_SOURCE_DIR}/Source/Engine)
-add_subdirectory(${PROJECT_SOURCE_DIR}/external)
 
 # Capture configuration to header
 configure_file(
@@ -94,4 +93,3 @@ configure_file(
 
 # Sources
 add_subdirectory(${PROJECT_SOURCE_DIR}/Source)
-# add_subdirectory(${PROJECT_SOURCE_DIR}/Launcher)

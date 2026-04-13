@@ -23,51 +23,21 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#include "client/mac/handler/exception_handler.h"
-#include "client/mac/crash_generation/crash_generation_client.h"
-
-#include <memory>
 #include <string>
+#include <vector>
 
 #include "GameWindow.h"
 
-namespace
-{
-    // wrapper for crash handling logic
-    class CrashHandler
-    {
-        google_breakpad::ExceptionHandler exceptionHandler;
-        google_breakpad::CrashGenerationClient client;
-
-        // called when the game encounters an exception
-        static bool onException(void *context, int exception_type, int exception_code,
-                int exception_subcode, mach_port_t thread_name)
-        {
-            CrashHandler* handler = reinterpret_cast<CrashHandler*>(context);
-            handler->client.RequestDumpForException(exception_type, exception_code,
-                    exception_subcode, thread_name);
-            return true;
-        }
-
-    public:
-        CrashHandler(const std::string& portName)
-            : exceptionHandler(&CrashHandler::onException, this, true),
-            client(portName.c_str())
-        {
-        }
-    };
-}
-
 int main(int argc, char *argv[])
 {
-    // enable crash handling if we were provided a port name
-    std::unique_ptr<CrashHandler> handler;
-    if (argc >= 3
-        && std::string(argv[1]) == "-d"
-        && std::string(argv[2]).size() > 0)
+    std::vector<std::string> args;
+
+    for (int index = 1; index < argc; index++)
     {
-        handler.reset(new CrashHandler(argv[2]));
+        args.push_back(argv[index]);
     }
+
+    GameWindow::configureOffsetLabAutomationOptionsFromArgs(args);
 
     // run game
     GameWindow app;

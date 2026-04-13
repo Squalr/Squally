@@ -23,31 +23,33 @@
  ****************************************************************************/
 
 #include "main.h"
-#include "GameWindow.h"
 
-#include "client/windows/handler/exception_handler.h"
+#include <string>
+#include <vector>
+
+#include "GameWindow.h"
 
 namespace
 {
-    class CrashHandler
+    std::string narrowWideArg(const std::wstring& wideArg)
     {
-        google_breakpad::ExceptionHandler handler;
-
-        static bool onException(const wchar_t* dump_path, const wchar_t* minidump_id, void* context,
-                EXCEPTION_POINTERS* exinfo, MDRawAssertionInfo* assertion, bool succeeded)
+        if (wideArg.empty())
         {
-            CrashHandler* handler = reinterpret_cast<CrashHandler*>(context);
-            OutputDebugStringW(dump_path);
-            return succeeded;
+            return "";
         }
 
-    public:
-        CrashHandler(const std::wstring& pipeName)
-            : handler(L"", nullptr, &CrashHandler::onException, this,
-                google_breakpad::ExceptionHandler::HANDLER_ALL, MiniDumpNormal, pipeName.c_str(), nullptr)
+        const int requiredSize = WideCharToMultiByte(CP_UTF8, 0, wideArg.c_str(), -1, nullptr, 0, nullptr, nullptr);
+
+        if (requiredSize <= 0)
         {
+            return "";
         }
-    };
+
+        std::string result(size_t(requiredSize - 1), '\0');
+        WideCharToMultiByte(CP_UTF8, 0, wideArg.c_str(), -1, result.data(), requiredSize, nullptr, nullptr);
+
+        return result;
+    }
 }
 
 int WINAPI _tWinMain(HINSTANCE hInstance,
@@ -56,23 +58,24 @@ int WINAPI _tWinMain(HINSTANCE hInstance,
                        int       nCmdShow)
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
+    UNREFERENCED_PARAMETER(nCmdShow);
 
-    // enable crash handling if we were provided a server descriptor
-    int wargc = 0;
-    LPWSTR* wargv = nullptr;
-    std::unique_ptr<CrashHandler> handler;
-    if ((wargv = CommandLineToArgvW(lpCmdLine, &wargc)))
+    std::vector<std::string> args;
+    int argc = 0;
+    LPWSTR* argv = CommandLineToArgvW(GetCommandLineW(), &argc);
+
+    if (argv != nullptr)
     {
-        for (int i = 0; i < wargc; i++)
+        for (int index = 1; index < argc; index++)
         {
-            std::wstring arg(wargv[i]);
-            if (!arg.compare(0, 3, L"/p:") && arg.size() > 3)
-            {
-                handler.reset(new CrashHandler(arg.substr(3)));
-                break;
-            }
+            const std::wstring wideArg(argv[index]);
+            args.push_back(narrowWideArg(wideArg));
         }
+
+        LocalFree(argv);
     }
+
+    GameWindow::configureOffsetLabAutomationOptionsFromArgs(args);
 
     // run game
     GameWindow app;

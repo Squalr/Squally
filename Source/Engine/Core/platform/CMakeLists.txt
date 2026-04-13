@@ -135,9 +135,6 @@ set(COCOS_PLATFORM_INCLUDE_PATHS
     ${COCOS_EXTERNAL_DIR}/ConvertUTF
     ${COCOS_EXTERNAL_DIR}/edtaa3func
     ${COCOS_EXTERNAL_DIR}/tinydir
-    ${COCOS_EXTERNAL_DIR}/poly2tri
-    ${COCOS_EXTERNAL_DIR}/poly2tri/common
-    ${COCOS_EXTERNAL_DIR}/poly2tri/sweep
     )
 
 set(COCOS_PLATFORM_HEADER
@@ -168,9 +165,4 @@ set(COCOS_PLATFORM_SRC
     ../External/edtaa3func/edtaa3func.cpp
     ../External/ConvertUTF/ConvertUTFWrapper.cpp
     ../External/ConvertUTF/ConvertUTF.c
-    ../External/poly2tri/common/shapes.cc
-    ../External/poly2tri/sweep/advancing_front.cc
-    ../External/poly2tri/sweep/cdt.cc
-    ../External/poly2tri/sweep/sweep_context.cc
-    ../External/poly2tri/sweep/sweep.cc
     )

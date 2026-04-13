@@ -22,49 +22,21 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#include <stdlib.h>
-#include <unistd.h>
-
-#include <iostream>
-#include <memory>
-#include <sstream>
 #include <string>
+#include <vector>
 
-#include "client/linux/handler/exception_handler.h"
 #include "GameWindow.h"
-
-namespace
-{
-    class CrashHandler
-    {
-        google_breakpad::ExceptionHandler exceptionHandler;
-
-        static bool onException(const google_breakpad::MinidumpDescriptor& descriptor, void* context, bool succeeded)
-        {
-            CrashHandler* handler = reinterpret_cast<CrashHandler*>(context);
-            std::cerr << "[game] produced crash dump: " << succeeded << std::endl;
-            return succeeded;
-        }
-
-    public:
-        CrashHandler(int serverDescriptor)
-            : exceptionHandler(google_breakpad::MinidumpDescriptor(), nullptr, &CrashHandler::onException, nullptr,
-            true, serverDescriptor)
-        {
-        }
-    };
-}
 
 int main(int argc, char **argv)
 {
-    // enable crash handling if we were provided a server descriptor
-    std::unique_ptr<CrashHandler> handler;
-    if (argc >= 3
-        && std::string(argv[1]) == "-d"
-        && std::string(argv[2]).size() > 0)
+    std::vector<std::string> args;
+
+    for (int index = 1; index < argc; index++)
     {
-        handler.reset(new CrashHandler(std::stoi(argv[2])));
+        args.push_back(argv[index]);
     }
+
+    GameWindow::configureOffsetLabAutomationOptionsFromArgs(args);
 
     // run game
     GameWindow app;

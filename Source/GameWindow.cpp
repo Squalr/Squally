@@ -1,5 +1,7 @@
 #include "GameWindow.h"
 
+#include <algorithm>
+
 #include <GLFW/glfw3.h>
 
 #include "base/CCDirector.h"
@@ -18,6 +20,48 @@
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
+
+GameWindow::OffsetLabAutomationOptions GameWindow::offsetLabAutomationOptions = GameWindow::OffsetLabAutomationOptions();
+
+void GameWindow::configureOffsetLabAutomationOptionsFromArgs(const std::vector<std::string>& args)
+{
+	GameWindow::offsetLabAutomationOptions = OffsetLabAutomationOptions();
+
+	for (size_t index = 0; index < args.size(); index++)
+	{
+		const std::string& arg = args[index];
+
+		if (arg == "--offset-lab-automation")
+		{
+			GameWindow::offsetLabAutomationOptions.enabled = true;
+		}
+		else if (arg == "--offset-lab-quit")
+		{
+			GameWindow::offsetLabAutomationOptions.enabled = true;
+			GameWindow::offsetLabAutomationOptions.quitOnComplete = true;
+		}
+		else if (arg.rfind("--offset-lab-item=", 0) == 0)
+		{
+			GameWindow::offsetLabAutomationOptions.enabled = true;
+			GameWindow::offsetLabAutomationOptions.itemKey = arg.substr(std::string("--offset-lab-item=").size());
+		}
+		else if (arg == "--offset-lab-item" && index + 1 < args.size())
+		{
+			GameWindow::offsetLabAutomationOptions.enabled = true;
+			GameWindow::offsetLabAutomationOptions.itemKey = args[++index];
+		}
+	}
+}
+
+bool GameWindow::isOffsetLabAutomationEnabled()
+{
+	return GameWindow::offsetLabAutomationOptions.enabled;
+}
+
+const GameWindow::OffsetLabAutomationOptions& GameWindow::getOffsetLabAutomationOptions()
+{
+	return GameWindow::offsetLabAutomationOptions;
+}
 
 GameWindow::GameWindow()
 {

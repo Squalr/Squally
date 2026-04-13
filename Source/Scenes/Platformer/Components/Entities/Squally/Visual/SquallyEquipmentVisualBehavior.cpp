@@ -422,7 +422,7 @@ void SquallyEquipmentVisualBehavior::beginOffsetLabAutomation()
 
 		if (found != catalog.end())
 		{
-			this->debugSelectedWeaponIndex = int(std::distance(catalog.begin(), found));
+			this->debugSelectedWeaponIndex = int(found - catalog.begin());
 		}
 	}
 

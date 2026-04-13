@@ -1,8 +1,5 @@
 include_directories(
         ../External/ConvertUTF
-        ../External/poly2tri
-        ../External/poly2tri/common
-        ../External/poly2tri/sweep
 )
 
 set(COCOS_2D_HEADER
