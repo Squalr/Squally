@@ -46,7 +46,6 @@ using namespace cocos2d;
 namespace
 {
 	const std::string OffsetLabValidationItemKey = "unarmed";
-	const bool OffsetLabValidationStartsInDirectLayout = true;
 	const Vec2 OffsetLabUnarmedCollisionOffset = Vec2(24.0f, 0.0f);
 
 	std::string getOffsetLabValidationMapResource()
@@ -236,7 +235,6 @@ void SquallyEquipmentVisualBehavior::onLoad()
 			this->initializeDebugEquipment();
 			this->syncDebugSelectionToEquipment();
 			this->initializeOffsetLabValidation();
-			this->setEquipmentCompatibilityLayoutEnabled(this->debugCompatibilityLayoutEnabled);
 			this->beginOffsetLabAutomation();
 		}
 
@@ -317,7 +315,6 @@ void SquallyEquipmentVisualBehavior::initializeOffsetLabValidation()
 	this->debugOffsetTarget = this->debugSelectedSlot == DebugEquipmentSlot::Mainhand
 		? DebugOffsetTarget::WeaponCollision
 		: DebugOffsetTarget::Visual;
-	this->debugCompatibilityLayoutEnabled = !OffsetLabValidationStartsInDirectLayout;
 	this->debugHud->setVisible(false);
 	DeveloperModeEvents::TriggerDeveloperModeModeEnable(DeveloperModeEvents::DeveloperModeEnableArgs(1));
 	appendOffsetLabDebugLine("[OffsetLab][debug] init map detected savedMap=" + SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString()
@@ -433,23 +430,6 @@ void SquallyEquipmentVisualBehavior::beginOffsetLabAutomation()
 		DelayTime::create(0.25f),
 		CallFunc::create([=]()
 		{
-			this->debugCompatibilityLayoutEnabled = true;
-			this->updateEquipmentVisual();
-			this->forceAutomationPose(false);
-		}),
-		DelayTime::create(0.10f),
-		CallFunc::create([=]() { this->captureOffsetLabAutomationFrame("legacy-compat_right"); }),
-		DelayTime::create(0.10f),
-		CallFunc::create([=]()
-		{
-			this->forceAutomationPose(true);
-		}),
-		DelayTime::create(0.10f),
-		CallFunc::create([=]() { this->captureOffsetLabAutomationFrame("legacy-compat_left"); }),
-		DelayTime::create(0.10f),
-		CallFunc::create([=]()
-		{
-			this->debugCompatibilityLayoutEnabled = false;
 			this->updateEquipmentVisual();
 			this->forceAutomationPose(false);
 		}),
@@ -638,13 +618,6 @@ void SquallyEquipmentVisualBehavior::initializeDebugKeybindings()
 		this->refreshDebugHud();
 	});
 
-	bindAltKey({ InputEvents::KeyCode::KEY_C }, [=]()
-	{
-		this->debugCompatibilityLayoutEnabled = !this->debugCompatibilityLayoutEnabled;
-		this->setEquipmentCompatibilityLayoutEnabled(this->debugCompatibilityLayoutEnabled);
-		this->updateEquipmentVisual();
-	});
-
 	bindAltKey({ InputEvents::KeyCode::KEY_X }, [=]()
 	{
 		this->toggleDebugOffsetTarget();
@@ -702,7 +675,6 @@ void SquallyEquipmentVisualBehavior::refreshDebugHud()
 	std::stringstream stream;
 	stream << "Offset Lab\n";
 	stream << "Slot: " << this->getDebugSlotName(this->debugSelectedSlot) << "\n";
-	stream << "Layout: " << this->getDebugLayoutName() << "\n";
 	stream << "Edit: " << this->getDebugOffsetTargetName() << "\n";
 	stream << "Item: " << (selectedItemKey.empty() ? "<none>" : selectedItemKey);
 
@@ -719,12 +691,12 @@ void SquallyEquipmentVisualBehavior::refreshDebugHud()
 	if (this->isOffsetLabValidationMap())
 	{
 		stream << "Validation Item: " << OffsetLabValidationItemKey << " (fixed)\n";
-		stream << "Controls: Alt+C layout  Alt+X target  Alt+I/J/K/L nudge  Alt+Shift+I/J/K/L fine\n";
+		stream << "Controls: Alt+X target  Alt+I/J/K/L nudge  Alt+Shift+I/J/K/L fine\n";
 		stream << "          Alt+R reset  Alt+P export  Alt+O toggle HUD";
 	}
 	else
 	{
-		stream << "Controls: Alt+Q/E slot  Alt+[ / ] item  Alt+C layout  Alt+X target  Alt+I/J/K/L nudge\n";
+		stream << "Controls: Alt+Q/E slot  Alt+[ / ] item  Alt+X target  Alt+I/J/K/L nudge\n";
 		stream << "          Alt+Shift+I/J/K/L fine  Alt+R reset  Alt+P export  Alt+Shift+P export touched  Alt+O toggle HUD";
 	}
 
@@ -820,29 +792,6 @@ void SquallyEquipmentVisualBehavior::toggleDebugOffsetTarget()
 		? DebugOffsetTarget::WeaponCollision
 		: DebugOffsetTarget::Visual;
 	this->refreshDebugHud();
-}
-
-void SquallyEquipmentVisualBehavior::setEquipmentCompatibilityLayoutEnabled(bool enabled)
-{
-	if (this->squally == nullptr || this->squally->getAnimations() == nullptr)
-	{
-		return;
-	}
-
-	if (AnimationPart* hat = this->squally->getAnimations()->getAnimationPart("hat"))
-	{
-		hat->setCompatibilityLayoutEnabled(enabled);
-	}
-
-	if (AnimationPart* offhand = this->squally->getAnimations()->getAnimationPart("offhand"))
-	{
-		offhand->setCompatibilityLayoutEnabled(enabled);
-	}
-
-	if (AnimationPart* mainhand = this->squally->getAnimations()->getAnimationPart("mainhand"))
-	{
-		mainhand->setCompatibilityLayoutEnabled(enabled);
-	}
 }
 
 void SquallyEquipmentVisualBehavior::nudgeSelectedDebugOffset(const cocos2d::Vec2& delta)
@@ -1206,7 +1155,7 @@ cocos2d::Vec2 SquallyEquipmentVisualBehavior::getDebugWeaponCollisionOffsetForIt
 
 std::string SquallyEquipmentVisualBehavior::getDebugLayoutName() const
 {
-	return this->debugCompatibilityLayoutEnabled ? "legacy-compat" : "direct";
+	return "direct";
 }
 
 cocos2d::Vec2 SquallyEquipmentVisualBehavior::getBaseOffsetForItem(const std::string& itemKey) const
@@ -1272,7 +1221,6 @@ void SquallyEquipmentVisualBehavior::updateEquipmentVisual()
 {
 	if (DeveloperModeController::IsDeveloperBuild)
 	{
-		this->setEquipmentCompatibilityLayoutEnabled(this->debugCompatibilityLayoutEnabled);
 		this->refreshDebugHud();
 	}
 

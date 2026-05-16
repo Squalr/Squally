@@ -213,21 +213,6 @@ void AnimationPart::setRotation(float rotation)
 	}
 }
 
-void AnimationPart::setCompatibilityLayoutEnabled(bool enabled)
-{
-	this->compatibilityLayoutEnabled = enabled;
-
-	if (this->spriterAnimationPart != nullptr)
-	{
-		this->spriterAnimationPart->setCompatibilityLayoutEnabled(enabled);
-	}
-}
-
-bool AnimationPart::isCompatibilityLayoutEnabled() const
-{
-	return this->compatibilityLayoutEnabled;
-}
-
 void AnimationPart::setOffset(Vec2 offset)
 {
 	this->currentOffset = offset;
@@ -308,8 +293,6 @@ void AnimationPart::updateTrackedAttributes()
 	const Vec2 animationOffset = this->spriterAnimationPart->getAnimationOffset();
 	const Vec2 resolvedScale = this->spriterAnimationPart->getResolvedAnimationScale();
 	const std::string currentSpriteResource = this->spriterAnimationPart->getSpriteResource();
-	const bool usesCompatibilityLayout = this->spriterAnimationPart->usesCompatibilityLayout();
-	const CSize spriteSize = this->spriterAnimationPart->getSpriteSize();
 
 	// Keep the wrapper at the part pivot in local animation space.
 	super::setRotation(angle);
@@ -320,18 +303,7 @@ void AnimationPart::updateTrackedAttributes()
 	{
 		this->trackingContainer->setContentSize(CSize::ZERO);
 		this->trackingContainer->setAnchorPoint(Vec2::ZERO);
-		if (usesCompatibilityLayout)
-		{
-			// Weapon collisions need to be pulled back from the far end of the replacement sprite
-			// toward the hilt. For Squally's weapon part, that corresponds to the sprite's
-			// longitudinal axis only; applying the full 2D translation causes sideways drift.
-			const float longitudinalOffset = animationOffset.y - (1.0f - anchor.y) * spriteSize.height;
-			this->trackingContainer->setPosition(Vec2(0.0f, longitudinalOffset * 0.5f));
-		}
-		else
-		{
-			this->trackingContainer->setPosition(Vec2::ZERO);
-		}
+		this->trackingContainer->setPosition(Vec2::ZERO);
 		this->trackingContainer->setScale(1.0f);
 	}
 
@@ -343,32 +315,16 @@ void AnimationPart::updateTrackedAttributes()
 	if (this->ghostContainer != nullptr)
 	{
 		this->ghostContainer->setScale(resolvedScale.x, resolvedScale.y);
+		this->ghostContainer->setContentSize(CSize::ZERO);
+		this->ghostContainer->setAnchorPoint(Vec2::ZERO);
+		this->ghostContainer->setPosition(Vec2::ZERO);
 	}
 
-	if (this->ghostSprite != nullptr && this->ghostContainer != nullptr && usesCompatibilityLayout)
+	if (this->ghostSprite != nullptr)
 	{
-		this->ghostContainer->setContentSize(this->ghostSprite->getContentSize());
-		this->ghostContainer->setAnchorPoint(anchor);
-		this->ghostContainer->setPosition(Vec2::ZERO);
-		this->ghostSprite->setAnchorPoint(Vec2::ZERO);
+		this->ghostSprite->setAnchorPoint(anchor);
 		this->ghostSprite->setPosition(animationOffset);
 		this->ghostSprite->setFlippedX(false);
-	}
-	else
-	{
-		if (this->ghostContainer != nullptr)
-		{
-			this->ghostContainer->setContentSize(CSize::ZERO);
-			this->ghostContainer->setAnchorPoint(Vec2::ZERO);
-			this->ghostContainer->setPosition(Vec2::ZERO);
-		}
-
-		if (this->ghostSprite != nullptr)
-		{
-			this->ghostSprite->setAnchorPoint(anchor);
-			this->ghostSprite->setPosition(animationOffset);
-			this->ghostSprite->setFlippedX(false);
-		}
 	}
 
 	if (this->ghostSprite == nullptr || this->ghostContainer == nullptr)

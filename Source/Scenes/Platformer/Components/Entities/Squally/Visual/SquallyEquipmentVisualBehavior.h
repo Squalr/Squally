@@ -55,7 +55,6 @@ private:
 	std::string getOffsetLabArtifactsDirectory() const;
 	bool isOffsetLabValidationMap() const;
 	void syncDebugSelectionToEquipment();
-	void setEquipmentCompatibilityLayoutEnabled(bool enabled);
 	void cycleDebugSlot(int direction);
 	void cycleDebugItem(int direction);
 	void toggleDebugOffsetTarget();
@@ -93,7 +92,6 @@ private:
 	std::vector<std::string> debugOffhandKeys;
 	DebugEquipmentSlot debugSelectedSlot = DebugEquipmentSlot::Mainhand;
 	DebugOffsetTarget debugOffsetTarget = DebugOffsetTarget::Visual;
-	bool debugCompatibilityLayoutEnabled = true;
 	int debugSelectedWeaponIndex = 0;
 	int debugSelectedHatIndex = 0;
 	int debugSelectedOffhandIndex = 0;

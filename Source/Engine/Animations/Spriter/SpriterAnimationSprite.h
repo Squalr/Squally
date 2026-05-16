@@ -19,7 +19,6 @@ public:
 	void restoreSpriteResource() override;
 	std::string getSpriteResource() const override;
 	cocos2d::CSize getSpriteSize() const override;
-	bool usesCompatibilityLayout() const override;
 
 protected:
 	SpriterAnimationSprite(std::string spriteResource, cocos2d::Vec2 anchor);

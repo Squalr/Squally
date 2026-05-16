@@ -85,11 +85,6 @@ void SpriterAnimationSprite::applyAnimationOffset(const Vec2& offset)
 	this->refreshSpriteLayout();
 }
 
-bool SpriterAnimationSprite::usesCompatibilityLayout() const
-{
-	return this->isCompatibilityLayoutEnabled() && (this->currentSpriteResource != this->originalSpriteResource || this->animationOffset != Vec2::ZERO);
-}
-
 void SpriterAnimationSprite::refreshSpriteLayout()
 {
 	if (this->sprite == nullptr)
@@ -97,18 +92,8 @@ void SpriterAnimationSprite::refreshSpriteLayout()
 		return;
 	}
 
-	if (this->usesCompatibilityLayout())
-	{
-		// Match the legacy replacement-sprite pivot handling only for compatibility replacements/offsets.
-		this->sprite->setAnchorPoint(Vec2::ZERO);
-		this->setContentSize(this->sprite->getContentSize());
-		super::setAnchorPoint(this->currentAnchor);
-	}
-	else
-	{
-		this->sprite->setAnchorPoint(this->currentAnchor);
-		super::setAnchorPoint(Vec2::ZERO);
-	}
-
+	this->setContentSize(CSize::ZERO);
+	this->sprite->setAnchorPoint(this->currentAnchor);
+	super::setAnchorPoint(Vec2::ZERO);
 	this->sprite->setPosition(this->animationOffset);
 }
