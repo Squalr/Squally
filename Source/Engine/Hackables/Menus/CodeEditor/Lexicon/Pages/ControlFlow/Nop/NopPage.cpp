@@ -24,7 +24,7 @@ NopPage* NopPage::create()
 	return instance;
 }
 
-NopPage::NopPage() : super(NopPage::Identifier, PageType::Full)
+NopPage::NopPage() : super(NopPage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Bread);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);

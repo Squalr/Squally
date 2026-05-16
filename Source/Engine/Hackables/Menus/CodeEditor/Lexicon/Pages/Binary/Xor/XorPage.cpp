@@ -24,7 +24,7 @@ XorPage* XorPage::create()
 	return instance;
 }
 
-XorPage::XorPage() : super(XorPage::Identifier, PageType::Full)
+XorPage::XorPage() : super(XorPage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Gold);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
@@ -55,7 +55,7 @@ void XorPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->decorSprite->setPosition(Vec2(super::PageSize.width + 224.0f, -196.0f));
+	this->decorSprite->setPosition(Vec2(48.0f, -196.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
 	this->titleLabel->setPosition(super::ChapterLocation);

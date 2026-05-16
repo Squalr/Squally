@@ -13,8 +13,17 @@ class ConstantString;
 class RegisterBlock : public SmartNode
 {
 public:
-	static RegisterBlock* create();
+	enum class DisplayMode
+	{
+		Dec,
+		Hex,
+		Bin,
+	};
 
+	static RegisterBlock* create(bool useBinaryResource = false, bool force32BitRegisters = false);
+
+	void setDisplayMode(DisplayMode displayMode);
+	void setDisplayBitCount(int displayBitCount);
 	void clearHighlights();
 	void highlightEax(bool isDest);
 	void highlightEbx(bool isDest);
@@ -86,7 +95,7 @@ public:
 	unsigned long long getEipPtr(int offset);
 
 protected:
-	RegisterBlock();
+	RegisterBlock(bool useBinaryResource = false, bool force32BitRegisters = false);
 	virtual ~RegisterBlock();
 	
 	void onEnter() override;
@@ -98,6 +107,8 @@ private:
 
 	void highlightSource(cocos2d::Vec2 position);
 	void highlightDest(cocos2d::Vec2 position);
+	void refreshDisplayStrings();
+	std::string formatValue(unsigned long long value);
 
 	struct Register
 	{
@@ -177,6 +188,10 @@ private:
 	Register ebp;
 	Register esp;
 	Register eip;
+	DisplayMode displayMode = DisplayMode::Dec;
+	int displayBitCount = 0;
+	bool useBinaryResource = false;
+	bool force32BitRegisters = false;
 
 	static const float RegisterPtrSpacing;
 	static const cocos2d::Vec2 SelectorRegOffset;

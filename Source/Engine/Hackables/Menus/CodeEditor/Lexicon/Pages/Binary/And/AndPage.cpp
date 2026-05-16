@@ -24,7 +24,7 @@ AndPage* AndPage::create()
 	return instance;
 }
 
-AndPage::AndPage() : super(AndPage::Identifier, PageType::Full)
+AndPage::AndPage() : super(AndPage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Skull);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);

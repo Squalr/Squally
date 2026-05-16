@@ -155,6 +155,11 @@ LexiconPage::PageType LexiconPage::getPageType()
     return this->pageType;
 }
 
+std::string LexiconPage::getPageIdentifier()
+{
+	return this->pageIdentifier;
+}
+
 void LexiconPage::enableBack(std::string backPage, bool closeExisting)
 {
     this->backButton->setVisible(true);

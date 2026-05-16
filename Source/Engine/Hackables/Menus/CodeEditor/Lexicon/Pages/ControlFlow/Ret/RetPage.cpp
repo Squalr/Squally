@@ -24,7 +24,7 @@ RetPage* RetPage::create()
 	return instance;
 }
 
-RetPage::RetPage() : super(RetPage::Identifier, PageType::Full)
+RetPage::RetPage() : super(RetPage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Bread);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);

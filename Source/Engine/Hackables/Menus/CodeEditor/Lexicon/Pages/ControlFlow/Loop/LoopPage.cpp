@@ -24,7 +24,7 @@ LoopPage* LoopPage::create()
 	return instance;
 }
 
-LoopPage::LoopPage() : super(LoopPage::Identifier, PageType::Full)
+LoopPage::LoopPage() : super(LoopPage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Bread);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);

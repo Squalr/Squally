@@ -24,7 +24,7 @@ CallPage* CallPage::create()
 	return instance;
 }
 
-CallPage::CallPage() : super(CallPage::Identifier, PageType::Full)
+CallPage::CallPage() : super(CallPage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Bread);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);

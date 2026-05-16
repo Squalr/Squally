@@ -24,7 +24,7 @@ OrPage* OrPage::create()
 	return instance;
 }
 
-OrPage::OrPage() : super(OrPage::Identifier, PageType::Full)
+OrPage::OrPage() : super(OrPage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Chest);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
@@ -55,7 +55,7 @@ void OrPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->decorSprite->setPosition(Vec2(super::PageSize.width + 224.0f, -212.0f));
+	this->decorSprite->setPosition(Vec2(48.0f, -212.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
 	this->titleLabel->setPosition(super::ChapterLocation);

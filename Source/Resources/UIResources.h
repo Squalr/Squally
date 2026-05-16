@@ -430,6 +430,8 @@ namespace UIResources
 	extern const std::string Menus_LexiconMenu_BackButton;
 	extern const std::string Menus_LexiconMenu_BackButtonSelected;
 	extern const std::string Menus_LexiconMenu_Banner;
+	extern const std::string Menus_LexiconMenu_BinButton;
+	extern const std::string Menus_LexiconMenu_BinButtonSelected;
 	extern const std::string Menus_LexiconMenu_BookArt_Axe;
 	extern const std::string Menus_LexiconMenu_BookArt_Bag;
 	extern const std::string Menus_LexiconMenu_BookArt_Barrel;
@@ -464,12 +466,17 @@ namespace UIResources
 	extern const std::string Menus_LexiconMenu_CompileDiagram;
 	extern const std::string Menus_LexiconMenu_DarkFrame;
 	extern const std::string Menus_LexiconMenu_DataFrame;
+	extern const std::string Menus_LexiconMenu_DecButton;
+	extern const std::string Menus_LexiconMenu_DecButtonSelected;
 	extern const std::string Menus_LexiconMenu_DecorLine;
 	extern const std::string Menus_LexiconMenu_DestSelector;
+	extern const std::string Menus_LexiconMenu_DestSelectorBinary;
 	extern const std::string Menus_LexiconMenu_ExecuteButton;
 	extern const std::string Menus_LexiconMenu_ExecuteButtonSelected;
 	extern const std::string Menus_LexiconMenu_HelpButton;
 	extern const std::string Menus_LexiconMenu_HelpButtonSelected;
+	extern const std::string Menus_LexiconMenu_HexButton;
+	extern const std::string Menus_LexiconMenu_HexButtonSelected;
 	extern const std::string Menus_LexiconMenu_InstructionButton;
 	extern const std::string Menus_LexiconMenu_InstructionButtonSelected;
 	extern const std::string Menus_LexiconMenu_InstructionFrame;
@@ -480,9 +487,11 @@ namespace UIResources
 	extern const std::string Menus_LexiconMenu_LexiconFront;
 	extern const std::string Menus_LexiconMenu_MemoryBlock;
 	extern const std::string Menus_LexiconMenu_RegisterBlock;
+	extern const std::string Menus_LexiconMenu_RegisterBlockBinary;
 	extern const std::string Menus_LexiconMenu_ResetButton;
 	extern const std::string Menus_LexiconMenu_ResetButtonSelected;
 	extern const std::string Menus_LexiconMenu_SourceSelector;
+	extern const std::string Menus_LexiconMenu_SourceSelectorBinary;
 	extern const std::string Menus_LexiconMenu_StackBlock;
 	extern const std::string Menus_LexiconMenu_StackSelector;
 	extern const std::string Menus_LexiconMenu_Tabs_TabBlue;

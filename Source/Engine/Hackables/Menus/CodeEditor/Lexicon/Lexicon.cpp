@@ -2,12 +2,15 @@
 
 #include "2d/CCSprite.h"
 #include "base/CCDirector.h"
+#include "base/CCEventCustom.h"
+#include "base/CCEventListenerCustom.h"
 
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/BinaryIntroPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/BinarySelectPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/And/AndPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/BinaryExamplesPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/Bswap/BswapPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/Not/NotPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/Or/OrPage.h"
@@ -15,6 +18,7 @@
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/Shr/ShrPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/Xor/XorPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ChapterSelectPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/ControlFlowExamplesPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/ControlFlowIntroPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/ControlFlowSelectPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Call/CallPage.h"
@@ -159,6 +163,13 @@ Lexicon::Lexicon()
 	this->pages.push_back(ShrPage::create());
 	this->pages.push_back(NotPage::create());
 	this->pages.push_back(BswapPage::create());
+	this->pages.push_back(BinaryExamplesPage::create(BinaryExamplesPage::Operation::And));
+	this->pages.push_back(BinaryExamplesPage::create(BinaryExamplesPage::Operation::Or));
+	this->pages.push_back(BinaryExamplesPage::create(BinaryExamplesPage::Operation::Xor));
+	this->pages.push_back(BinaryExamplesPage::create(BinaryExamplesPage::Operation::Shl));
+	this->pages.push_back(BinaryExamplesPage::create(BinaryExamplesPage::Operation::Shr));
+	this->pages.push_back(BinaryExamplesPage::create(BinaryExamplesPage::Operation::Not));
+	this->pages.push_back(BinaryExamplesPage::create(BinaryExamplesPage::Operation::Bswap));
 
 	// Control flow
 	this->pages.push_back(ControlFlowIntroPage::create());
@@ -176,6 +187,11 @@ Lexicon::Lexicon()
 	this->pages.push_back(LoopPage::create());
 	this->pages.push_back(NopPage::create());
 	this->pages.push_back(RetPage::create());
+	this->pages.push_back(ControlFlowExamplesPage::create(ControlFlowExamplesPage::Operation::Nop));
+	this->pages.push_back(ControlFlowExamplesPage::create(ControlFlowExamplesPage::Operation::Jmp));
+	this->pages.push_back(ControlFlowExamplesPage::create(ControlFlowExamplesPage::Operation::Call));
+	this->pages.push_back(ControlFlowExamplesPage::create(ControlFlowExamplesPage::Operation::Ret));
+	this->pages.push_back(ControlFlowExamplesPage::create(ControlFlowExamplesPage::Operation::Loop));
 
 	// SIMD
 	this->pages.push_back(VectorIntroPage::create());
@@ -208,6 +224,7 @@ Lexicon::Lexicon()
 	this->pages.push_back(FldzPage::create());
 	this->pages.push_back(FrndintPage::create());
 	this->pages.push_back(FcosPage::create());
+	this->pages.push_back(FsinPage::create());
 	this->pages.push_back(FsqrtPage::create());
 	this->pages.push_back(FtstPage::create());
 	this->pages.push_back(FxchPage::create());
@@ -292,8 +309,46 @@ void Lexicon::initializeListeners()
 		
 		args->handle();
 
-		this->close();
+		this->goBack();
 	});
+
+	this->addEventListener(EventListenerCustom::create(HackableEvents::EventOpenLexiconPage, [=](EventCustom* eventCustom)
+	{
+		OpenLexiconPageArgs* args = static_cast<OpenLexiconPageArgs*>(eventCustom->getData());
+
+		if (args == nullptr)
+		{
+			return;
+		}
+
+		LexiconPage* page = this->findPage(args->pageIdentifier);
+
+		if (page == nullptr)
+		{
+			return;
+		}
+
+		switch (page->getPageType())
+		{
+			case LexiconPage::PageType::Left:
+			{
+				this->currentLeftPage = args->pageIdentifier;
+				break;
+			}
+			case LexiconPage::PageType::Right:
+			{
+				this->currentRightPage = args->pageIdentifier;
+				break;
+			}
+			case LexiconPage::PageType::Full:
+			default:
+			{
+				this->currentLeftPage = args->pageIdentifier;
+				this->currentRightPage.clear();
+				break;
+			}
+		}
+	}));
 }
 
 void Lexicon::open()
@@ -318,4 +373,156 @@ void Lexicon::close()
 void Lexicon::setCloseCallBack(std::function<void()> closeCallback)
 {
 	this->closeCallback = closeCallback;
+}
+
+void Lexicon::openPages(std::string leftPage, std::string rightPage)
+{
+	HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(leftPage));
+	HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(rightPage));
+}
+
+void Lexicon::goBack()
+{
+	if (this->isRootOpen())
+	{
+		this->close();
+	}
+	else if (this->currentLeftPage == DataIntroPage::Identifier || this->currentRightPage == DataSelectPage::Identifier)
+	{
+		this->openPages(IntroPage::Identifier, ChapterSelectPage::Identifier);
+	}
+	else if (this->currentLeftPage == BinaryIntroPage::Identifier || this->currentRightPage == BinarySelectPage::Identifier)
+	{
+		this->openPages(IntroPage::Identifier, ChapterSelectPage::Identifier);
+	}
+	else if (this->currentLeftPage == ControlFlowIntroPage::Identifier || this->currentRightPage == ControlFlowSelectPage::Identifier)
+	{
+		this->openPages(IntroPage::Identifier, ChapterSelectPage::Identifier);
+	}
+	else if (this->currentLeftPage == VectorIntroPage::Identifier || this->currentRightPage == VectorSelectPage::Identifier)
+	{
+		this->openPages(IntroPage::Identifier, ChapterSelectPage::Identifier);
+	}
+	else if (this->currentLeftPage == FloatingPointIntroPage::Identifier || this->currentRightPage == FloatingPointSelectPage::Identifier)
+	{
+		this->openPages(IntroPage::Identifier, ChapterSelectPage::Identifier);
+	}
+	else if (this->isDataPage())
+	{
+		this->openPages(DataIntroPage::Identifier, DataSelectPage::Identifier);
+	}
+	else if (this->isBinaryPage())
+	{
+		this->openPages(BinaryIntroPage::Identifier, BinarySelectPage::Identifier);
+	}
+	else if (this->isControlFlowPage())
+	{
+		this->openPages(ControlFlowIntroPage::Identifier, ControlFlowSelectPage::Identifier);
+	}
+	else if (this->isVectorPage())
+	{
+		this->openPages(VectorIntroPage::Identifier, VectorSelectPage::Identifier);
+	}
+	else if (this->isFloatingPointPage())
+	{
+		this->openPages(FloatingPointIntroPage::Identifier, FloatingPointSelectPage::Identifier);
+	}
+	else
+	{
+		this->openPages(IntroPage::Identifier, ChapterSelectPage::Identifier);
+	}
+}
+
+LexiconPage* Lexicon::findPage(std::string pageIdentifier)
+{
+	for (LexiconPage* next : this->pages)
+	{
+		if (next->getPageIdentifier() == pageIdentifier)
+		{
+			return next;
+		}
+	}
+
+	return nullptr;
+}
+
+bool Lexicon::isRootOpen()
+{
+	return this->currentLeftPage == IntroPage::Identifier && this->currentRightPage == ChapterSelectPage::Identifier;
+}
+
+bool Lexicon::isDataPage()
+{
+	return this->currentLeftPage == IncPage::Identifier || this->currentRightPage == IncExamplesPage::Identifier
+		|| this->currentLeftPage == DecPage::Identifier || this->currentRightPage == DecExamplesPage::Identifier
+		|| this->currentLeftPage == AddPage::Identifier || this->currentRightPage == AddExamplesPage::Identifier
+		|| this->currentLeftPage == SubPage::Identifier || this->currentRightPage == SubExamplesPage::Identifier
+		|| this->currentLeftPage == DivPage::Identifier || this->currentRightPage == DivExamplesPage::Identifier
+		|| this->currentLeftPage == MulPage::Identifier || this->currentRightPage == MulExamplesPage::Identifier
+		|| this->currentLeftPage == MovPage::Identifier || this->currentRightPage == MovExamplesPage::Identifier
+		|| this->currentLeftPage == PushPage::Identifier || this->currentRightPage == PushExamplesPage::Identifier
+		|| this->currentLeftPage == PopPage::Identifier || this->currentRightPage == PopExamplesPage::Identifier
+		|| this->currentLeftPage == NegPage::Identifier || this->currentRightPage == NegExamplesPage::Identifier;
+}
+
+bool Lexicon::isBinaryPage()
+{
+	return this->currentLeftPage == AndPage::Identifier || this->currentRightPage == BinaryExamplesPage::AndIdentifier
+		|| this->currentLeftPage == OrPage::Identifier || this->currentRightPage == BinaryExamplesPage::OrIdentifier
+		|| this->currentLeftPage == XorPage::Identifier || this->currentRightPage == BinaryExamplesPage::XorIdentifier
+		|| this->currentLeftPage == ShlPage::Identifier || this->currentRightPage == BinaryExamplesPage::ShlIdentifier
+		|| this->currentLeftPage == ShrPage::Identifier || this->currentRightPage == BinaryExamplesPage::ShrIdentifier
+		|| this->currentLeftPage == NotPage::Identifier || this->currentRightPage == BinaryExamplesPage::NotIdentifier
+		|| this->currentLeftPage == BswapPage::Identifier || this->currentRightPage == BinaryExamplesPage::BswapIdentifier;
+}
+
+bool Lexicon::isControlFlowPage()
+{
+	return this->currentLeftPage == NopPage::Identifier || this->currentRightPage == ControlFlowExamplesPage::NopIdentifier
+		|| this->currentLeftPage == JmpPage::Identifier || this->currentRightPage == ControlFlowExamplesPage::JmpIdentifier
+		|| this->currentLeftPage == CallPage::Identifier || this->currentRightPage == ControlFlowExamplesPage::CallIdentifier
+		|| this->currentLeftPage == RetPage::Identifier || this->currentRightPage == ControlFlowExamplesPage::RetIdentifier
+		|| this->currentLeftPage == LoopPage::Identifier || this->currentRightPage == ControlFlowExamplesPage::LoopIdentifier
+		|| this->currentLeftPage == JnabePage::Identifier
+		|| this->currentLeftPage == JnePage::Identifier
+		|| this->currentLeftPage == JnglePage::Identifier
+		|| this->currentLeftPage == JnoPage::Identifier
+		|| this->currentLeftPage == JnpPage::Identifier
+		|| this->currentLeftPage == JnsPage::Identifier
+		|| this->currentLeftPage == JnzPage::Identifier
+		|| this->currentLeftPage == JzcxzPage::Identifier;
+}
+
+bool Lexicon::isVectorPage()
+{
+	return this->currentLeftPage == AddssPage::Identifier
+		|| this->currentLeftPage == ComissPage::Identifier
+		|| this->currentLeftPage == DivssPage::Identifier
+		|| this->currentLeftPage == MaxssPage::Identifier
+		|| this->currentLeftPage == MinssPage::Identifier
+		|| this->currentLeftPage == MulssPage::Identifier
+		|| this->currentLeftPage == SqrtssPage::Identifier
+		|| this->currentLeftPage == SubssPage::Identifier;
+}
+
+bool Lexicon::isFloatingPointPage()
+{
+	return this->currentLeftPage == FabsPage::Identifier
+		|| this->currentLeftPage == FcmovnbePage::Identifier
+		|| this->currentLeftPage == FiaddpPage::Identifier
+		|| this->currentLeftPage == FicomppPage::Identifier
+		|| this->currentLeftPage == FidivrpPage::Identifier
+		|| this->currentLeftPage == FildPage::Identifier
+		|| this->currentLeftPage == FimulpPage::Identifier
+		|| this->currentLeftPage == FistpPage::Identifier
+		|| this->currentLeftPage == FisubrpPage::Identifier
+		|| this->currentLeftPage == Fld1Page::Identifier
+		|| this->currentLeftPage == FldpiPage::Identifier
+		|| this->currentLeftPage == FldzPage::Identifier
+		|| this->currentLeftPage == FrndintPage::Identifier
+		|| this->currentLeftPage == FcosPage::Identifier
+		|| this->currentLeftPage == FsinPage::Identifier
+		|| this->currentLeftPage == FsqrtPage::Identifier
+		|| this->currentLeftPage == FtstPage::Identifier
+		|| this->currentLeftPage == FxchPage::Identifier;
 }

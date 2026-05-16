@@ -1,5 +1,8 @@
 #include "RegisterBlock.h"
 
+#include <iomanip>
+#include <sstream>
+
 #include "2d/CCSprite.h"
 #include "base/CCEventCustom.h"
 #include "base/CCEventListenerCustom.h"
@@ -21,31 +24,33 @@ using namespace cocos2d;
 const float RegisterBlock::RegisterPtrSpacing  = -32.0f;
 const Vec2 RegisterBlock::SelectorRegOffset = Vec2(-20.0f, 0.0f);
 
-RegisterBlock* RegisterBlock::create()
+RegisterBlock* RegisterBlock::create(bool useBinaryResource, bool force32BitRegisters)
 {
-    RegisterBlock* instance = new RegisterBlock();
+    RegisterBlock* instance = new RegisterBlock(useBinaryResource, force32BitRegisters);
 
     instance->autorelease();
 
     return instance;
 }
 
-RegisterBlock::RegisterBlock()
+RegisterBlock::RegisterBlock(bool useBinaryResource, bool force32BitRegisters)
 {
-    this->eaxString = ConstantString::create(std::to_string(this->eax.currentValue));
-    this->ebxString = ConstantString::create(std::to_string(this->ebx.currentValue));
-    this->ecxString = ConstantString::create(std::to_string(this->ecx.currentValue));
-    this->edxString = ConstantString::create(std::to_string(this->edx.currentValue));
-    this->ediString = ConstantString::create(std::to_string(this->edi.currentValue));
-    this->esiString = ConstantString::create(std::to_string(this->esi.currentValue));
-    this->ebpString = ConstantString::create(std::to_string(this->ebp.currentValue));
-    this->espString = ConstantString::create(std::to_string(this->esp.currentValue));
-    this->eipString = ConstantString::create(std::to_string(this->eip.currentValue));
-    this->registerBlock = Sprite::create(UIResources::Menus_LexiconMenu_RegisterBlock);
+    this->useBinaryResource = useBinaryResource;
+    this->force32BitRegisters = force32BitRegisters;
+    this->eaxString = ConstantString::create(this->formatValue(this->eax.currentValue));
+    this->ebxString = ConstantString::create(this->formatValue(this->ebx.currentValue));
+    this->ecxString = ConstantString::create(this->formatValue(this->ecx.currentValue));
+    this->edxString = ConstantString::create(this->formatValue(this->edx.currentValue));
+    this->ediString = ConstantString::create(this->formatValue(this->edi.currentValue));
+    this->esiString = ConstantString::create(this->formatValue(this->esi.currentValue));
+    this->ebpString = ConstantString::create(this->formatValue(this->ebp.currentValue));
+    this->espString = ConstantString::create(this->formatValue(this->esp.currentValue));
+    this->eipString = ConstantString::create(this->formatValue(this->eip.currentValue));
+    this->registerBlock = Sprite::create(useBinaryResource ? UIResources::Menus_LexiconMenu_RegisterBlockBinary : UIResources::Menus_LexiconMenu_RegisterBlock);
     this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Hacking_Lexicon_Registers::create());
     this->memoryTitleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Hacking_Lexicon_Memory::create());
 
-    if (sizeof(void*) == 4)
+    if (force32BitRegisters || sizeof(void*) == 4)
     {
         this->eaxLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Registers_RegisterEax::create());
         this->ebxLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Registers_RegisterEbx::create());
@@ -78,8 +83,8 @@ RegisterBlock::RegisterBlock()
 	this->ebpPtrNode = Node::create();
 	this->espPtrNode = Node::create();
 	this->eipPtrNode = Node::create();
-    this->srcSelector = Sprite::create(UIResources::Menus_LexiconMenu_SourceSelector);
-    this->destSelector = Sprite::create(UIResources::Menus_LexiconMenu_DestSelector);
+    this->srcSelector = Sprite::create(useBinaryResource ? UIResources::Menus_LexiconMenu_SourceSelectorBinary : UIResources::Menus_LexiconMenu_SourceSelector);
+    this->destSelector = Sprite::create(useBinaryResource ? UIResources::Menus_LexiconMenu_DestSelectorBinary : UIResources::Menus_LexiconMenu_DestSelector);
     
     this->titleLabel->setTextColor(LexiconPage::TextColor);
     this->memoryTitleLabel->setTextColor(LexiconPage::TextColor);
@@ -119,6 +124,7 @@ RegisterBlock::RegisterBlock()
 
     this->srcSelector->setOpacity(0);
     this->destSelector->setOpacity(0);
+    this->memoryTitleLabel->setVisible(!useBinaryResource);
     
     this->addChild(this->registerBlock);
     this->addChild(this->titleLabel);
@@ -160,18 +166,19 @@ void RegisterBlock::initializePositions()
 
     const float Spacing = 28.0f;
     const float Offset = (Spacing * 8.0f) / 2.0f;
+    const float RegisterX = this->useBinaryResource ? -228.0f : -88.0f;
 
-	this->titleLabel->setPosition(Vec2(-88.0f - 12.0f, Offset + 48.0f));
+	this->titleLabel->setPosition(Vec2(RegisterX - 12.0f, Offset + 48.0f));
 	this->memoryTitleLabel->setPosition(Vec2(232.0f - 12.0f, Offset + 48.0f));
-	this->eaxLabel->setPosition(Vec2(-88.0f, Offset - Spacing * 0.0f));
-	this->ebxLabel->setPosition(Vec2(-88.0f, Offset - Spacing * 1.0f));
-	this->ecxLabel->setPosition(Vec2(-88.0f, Offset - Spacing * 2.0f));
-	this->edxLabel->setPosition(Vec2(-88.0f, Offset - Spacing * 3.0f));
-	this->ediLabel->setPosition(Vec2(-88.0f, Offset - Spacing * 4.0f));
-	this->esiLabel->setPosition(Vec2(-88.0f, Offset - Spacing * 5.0f));
-	this->ebpLabel->setPosition(Vec2(-88.0f, Offset - Spacing * 6.0f));
-	this->espLabel->setPosition(Vec2(-88.0f, Offset - Spacing * 7.0f));
-	this->eipLabel->setPosition(Vec2(-88.0f, Offset - Spacing * 8.0f));
+	this->eaxLabel->setPosition(Vec2(RegisterX, Offset - Spacing * 0.0f));
+	this->ebxLabel->setPosition(Vec2(RegisterX, Offset - Spacing * 1.0f));
+	this->ecxLabel->setPosition(Vec2(RegisterX, Offset - Spacing * 2.0f));
+	this->edxLabel->setPosition(Vec2(RegisterX, Offset - Spacing * 3.0f));
+	this->ediLabel->setPosition(Vec2(RegisterX, Offset - Spacing * 4.0f));
+	this->esiLabel->setPosition(Vec2(RegisterX, Offset - Spacing * 5.0f));
+	this->ebpLabel->setPosition(Vec2(RegisterX, Offset - Spacing * 6.0f));
+	this->espLabel->setPosition(Vec2(RegisterX, Offset - Spacing * 7.0f));
+	this->eipLabel->setPosition(Vec2(RegisterX, Offset - Spacing * 8.0f));
 
 	this->eaxPtrNode->setPosition(Vec2(208.0f, Offset - Spacing * 0.0f));
 	this->ebxPtrNode->setPosition(Vec2(208.0f, Offset - Spacing * 1.0f));
@@ -187,6 +194,90 @@ void RegisterBlock::initializePositions()
 void RegisterBlock::initializeListeners()
 {
     super::initializeListeners();
+}
+
+void RegisterBlock::setDisplayMode(DisplayMode displayMode)
+{
+    this->displayMode = displayMode;
+    this->refreshDisplayStrings();
+}
+
+void RegisterBlock::setDisplayBitCount(int displayBitCount)
+{
+    this->displayBitCount = displayBitCount;
+    this->refreshDisplayStrings();
+}
+
+void RegisterBlock::refreshDisplayStrings()
+{
+    this->eaxString->setString(this->formatValue(this->eax.currentValue));
+    this->ebxString->setString(this->formatValue(this->ebx.currentValue));
+    this->ecxString->setString(this->formatValue(this->ecx.currentValue));
+    this->edxString->setString(this->formatValue(this->edx.currentValue));
+    this->ediString->setString(this->formatValue(this->edi.currentValue));
+    this->esiString->setString(this->formatValue(this->esi.currentValue));
+    this->ebpString->setString(this->formatValue(this->ebp.currentValue));
+    this->espString->setString(this->formatValue(this->esp.currentValue));
+    this->eipString->setString(this->formatValue(this->eip.currentValue));
+
+    for (int index = 0; index < int(this->eax.currentValues.size()); index++) { this->eaxPtrStrings[index]->setString(this->formatValue(this->eax.currentValues[index])); }
+    for (int index = 0; index < int(this->ebx.currentValues.size()); index++) { this->ebxPtrStrings[index]->setString(this->formatValue(this->ebx.currentValues[index])); }
+    for (int index = 0; index < int(this->ecx.currentValues.size()); index++) { this->ecxPtrStrings[index]->setString(this->formatValue(this->ecx.currentValues[index])); }
+    for (int index = 0; index < int(this->edx.currentValues.size()); index++) { this->edxPtrStrings[index]->setString(this->formatValue(this->edx.currentValues[index])); }
+    for (int index = 0; index < int(this->edi.currentValues.size()); index++) { this->ediPtrStrings[index]->setString(this->formatValue(this->edi.currentValues[index])); }
+    for (int index = 0; index < int(this->esi.currentValues.size()); index++) { this->esiPtrStrings[index]->setString(this->formatValue(this->esi.currentValues[index])); }
+    for (int index = 0; index < int(this->ebp.currentValues.size()); index++) { this->ebpPtrStrings[index]->setString(this->formatValue(this->ebp.currentValues[index])); }
+    for (int index = 0; index < int(this->esp.currentValues.size()); index++) { this->espPtrStrings[index]->setString(this->formatValue(this->esp.currentValues[index])); }
+    for (int index = 0; index < int(this->eip.currentValues.size()); index++) { this->eipPtrStrings[index]->setString(this->formatValue(this->eip.currentValues[index])); }
+}
+
+std::string RegisterBlock::formatValue(unsigned long long value)
+{
+    switch (this->displayMode)
+    {
+        case DisplayMode::Hex:
+        {
+            std::stringstream stream;
+            int digitCount = this->displayBitCount > 0 ? (this->displayBitCount + 3) / 4 : 0;
+
+            stream << std::uppercase << std::hex;
+
+            if (digitCount > 0)
+            {
+                stream << std::setfill('0') << std::setw(digitCount);
+            }
+
+            stream << value;
+
+            return "0x" + stream.str();
+        }
+        case DisplayMode::Bin:
+        {
+            std::string binaryString;
+            int bitCount = this->displayBitCount > 0 ? this->displayBitCount : 1;
+
+            if (this->displayBitCount <= 0)
+            {
+                unsigned long long next = value;
+
+                while ((next >>= 1) != 0)
+                {
+                    bitCount++;
+                }
+            }
+
+            for (int index = bitCount - 1; index >= 0; index--)
+            {
+                binaryString += ((value >> index) & 1ULL) == 0 ? "0" : "1";
+            }
+
+            return "0b" + binaryString;
+        }
+        default:
+        {
+            return std::to_string(value);
+        }
+    }
 }
 
 void RegisterBlock::clearHighlights()
@@ -606,126 +697,126 @@ void RegisterBlock::initEip(unsigned long long eip, std::vector<unsigned long lo
 void RegisterBlock::setEaxPtr(unsigned long long value, int offset)
 {
     this->eax.currentValues[offset] = value;
-    this->eaxPtrStrings[offset]->setString(std::to_string(this->eax.currentValues[offset]));
+    this->eaxPtrStrings[offset]->setString(this->formatValue(this->eax.currentValues[offset]));
     this->eaxPtrLabels[offset]->setTextColor((this->eax.currentValues[offset] == this->eax.initialValues[offset]) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
 void RegisterBlock::setEbxPtr(unsigned long long value, int offset)
 {
     this->ebx.currentValues[offset] = value;
-    this->ebxPtrStrings[offset]->setString(std::to_string(this->ebx.currentValues[offset]));
+    this->ebxPtrStrings[offset]->setString(this->formatValue(this->ebx.currentValues[offset]));
     this->ebxPtrLabels[offset]->setTextColor((this->ebx.currentValues[offset] == this->ebx.initialValues[offset]) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
 void RegisterBlock::setEcxPtr(unsigned long long value, int offset)
 {
     this->ecx.currentValues[offset] = value;
-    this->ecxPtrStrings[offset]->setString(std::to_string(this->ecx.currentValues[offset]));
+    this->ecxPtrStrings[offset]->setString(this->formatValue(this->ecx.currentValues[offset]));
     this->ecxPtrLabels[offset]->setTextColor((this->ecx.currentValues[offset] == this->ecx.initialValues[offset]) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
 void RegisterBlock::setEdxPtr(unsigned long long value, int offset)
 {
     this->edx.currentValues[offset] = value;
-    this->edxPtrStrings[offset]->setString(std::to_string(this->edx.currentValues[offset]));
+    this->edxPtrStrings[offset]->setString(this->formatValue(this->edx.currentValues[offset]));
     this->edxPtrLabels[offset]->setTextColor((this->edx.currentValues[offset] == this->edx.initialValues[offset]) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
 void RegisterBlock::setEdiPtr(unsigned long long value, int offset)
 {
     this->edi.currentValues[offset] = value;
-    this->ediPtrStrings[offset]->setString(std::to_string(this->edi.currentValues[offset]));
+    this->ediPtrStrings[offset]->setString(this->formatValue(this->edi.currentValues[offset]));
     this->ediPtrLabels[offset]->setTextColor((this->edi.currentValues[offset] == this->edi.initialValues[offset]) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
 void RegisterBlock::setEsiPtr(unsigned long long value, int offset)
 {
     this->esi.currentValues[offset] = value;
-    this->esiPtrStrings[offset]->setString(std::to_string(this->esi.currentValues[offset]));
+    this->esiPtrStrings[offset]->setString(this->formatValue(this->esi.currentValues[offset]));
     this->esiPtrLabels[offset]->setTextColor((this->esi.currentValues[offset] == this->esi.initialValues[offset]) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
 void RegisterBlock::setEbpPtr(unsigned long long value, int offset)
 {
     this->ebp.currentValues[offset] = value;
-    this->ebpPtrStrings[offset]->setString(std::to_string(this->ebp.currentValues[offset]));
+    this->ebpPtrStrings[offset]->setString(this->formatValue(this->ebp.currentValues[offset]));
     this->ebpPtrLabels[offset]->setTextColor((this->ebp.currentValues[offset] == this->ebp.initialValues[offset]) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
 void RegisterBlock::setEspPtr(unsigned long long value, int offset)
 {
     this->esp.currentValues[offset] = value;
-    this->espPtrStrings[offset]->setString(std::to_string(this->esp.currentValues[offset]));
+    this->espPtrStrings[offset]->setString(this->formatValue(this->esp.currentValues[offset]));
     this->espPtrLabels[offset]->setTextColor((this->esp.currentValues[offset] == this->esp.initialValues[offset]) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
 void RegisterBlock::setEipPtr(unsigned long long value, int offset)
 {
     this->eip.currentValues[offset] = value;
-    this->eipPtrStrings[offset]->setString(std::to_string(this->eip.currentValues[offset]));
+    this->eipPtrStrings[offset]->setString(this->formatValue(this->eip.currentValues[offset]));
     this->eipPtrLabels[offset]->setTextColor((this->eip.currentValues[offset] == this->eip.initialValues[offset]) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
 void RegisterBlock::setEax(unsigned long long eax)
 {
     this->eax.currentValue = eax;
-    this->eaxString->setString(std::to_string(this->eax.currentValue));
+    this->eaxString->setString(this->formatValue(this->eax.currentValue));
     this->eaxLabel->setTextColor((this->eax.currentValue == this->eax.initialValue) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
 void RegisterBlock::setEbx(unsigned long long ebx)
 {
     this->ebx.currentValue = ebx;
-    this->ebxString->setString(std::to_string(this->ebx.currentValue));
+    this->ebxString->setString(this->formatValue(this->ebx.currentValue));
     this->ebxLabel->setTextColor((this->ebx.currentValue == this->ebx.initialValue) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
 void RegisterBlock::setEcx(unsigned long long ecx)
 {
     this->ecx.currentValue = ecx;
-    this->ecxString->setString(std::to_string(this->ecx.currentValue));
+    this->ecxString->setString(this->formatValue(this->ecx.currentValue));
     this->ecxLabel->setTextColor((this->ecx.currentValue == this->ecx.initialValue) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
 void RegisterBlock::setEdx(unsigned long long edx)
 {
     this->edx.currentValue = edx;
-    this->edxString->setString(std::to_string(this->edx.currentValue));
+    this->edxString->setString(this->formatValue(this->edx.currentValue));
     this->edxLabel->setTextColor((this->edx.currentValue == this->edx.initialValue) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
 void RegisterBlock::setEdi(unsigned long long edi)
 {
     this->edi.currentValue = edi;
-    this->ediString->setString(std::to_string(this->edi.currentValue));
+    this->ediString->setString(this->formatValue(this->edi.currentValue));
     this->ediLabel->setTextColor((this->edi.currentValue == this->edi.initialValue) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
 void RegisterBlock::setEsi(unsigned long long esi)
 {
     this->esi.currentValue = esi;
-    this->esiString->setString(std::to_string(this->esi.currentValue));
+    this->esiString->setString(this->formatValue(this->esi.currentValue));
     this->esiLabel->setTextColor((this->esi.currentValue == this->esi.initialValue) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
 void RegisterBlock::setEbp(unsigned long long ebp)
 {
     this->ebp.currentValue = ebp;
-    this->ebpString->setString(std::to_string(this->ebp.currentValue));
+    this->ebpString->setString(this->formatValue(this->ebp.currentValue));
     this->ebpLabel->setTextColor((this->ebp.currentValue == this->ebp.initialValue) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
 void RegisterBlock::setEsp(unsigned long long esp)
 {
     this->esp.currentValue = esp;
-    this->espString->setString(std::to_string(this->esp.currentValue));
+    this->espString->setString(this->formatValue(this->esp.currentValue));
     this->espLabel->setTextColor((this->esp.currentValue == this->esp.initialValue) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
 void RegisterBlock::setEip(unsigned long long eip)
 {
     this->eip.currentValue = eip;
-    this->eipString->setString(std::to_string(this->eip.currentValue));
+    this->eipString->setString(this->formatValue(this->eip.currentValue));
     this->eipLabel->setTextColor((this->eip.currentValue == this->eip.initialValue) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
@@ -821,7 +912,7 @@ unsigned long long RegisterBlock::getEipPtr(int offset)
 
 void RegisterBlock::addToData(unsigned long long value, int index, Node* node, std::vector<ConstantString*>* strings, std::vector<LocalizedLabel*>* labels)
 {
-    ConstantString* str = ConstantString::create(std::to_string(value));
+    ConstantString* str = ConstantString::create(this->formatValue(value));
     LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, str);
     Sprite* frame = Sprite::create(UIResources::Menus_LexiconMenu_DataFrame);
 

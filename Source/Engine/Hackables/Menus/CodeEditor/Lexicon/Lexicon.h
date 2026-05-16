@@ -30,6 +30,16 @@ protected:
 
 private:
 	typedef Hud super;
+
+	void openPages(std::string leftPage, std::string rightPage);
+	void goBack();
+	LexiconPage* findPage(std::string pageIdentifier);
+	bool isRootOpen();
+	bool isDataPage();
+	bool isBinaryPage();
+	bool isControlFlowPage();
+	bool isVectorPage();
+	bool isFloatingPointPage();
 	
 	cocos2d::Sprite* background = nullptr;
 	cocos2d::Sprite* banner = nullptr;
@@ -42,5 +52,7 @@ private:
 	cocos2d::Sprite* darkFrame = nullptr;
 
 	std::function<void()> closeCallback = nullptr;
+	std::string currentLeftPage;
+	std::string currentRightPage;
 	std::vector<LexiconPage*> pages;
 };

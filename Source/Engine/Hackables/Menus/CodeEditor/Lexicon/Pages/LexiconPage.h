@@ -23,6 +23,7 @@ public:
 	};
 
 	PageType getPageType();
+	std::string getPageIdentifier();
 
 	static const cocos2d::CSize TotalPageSize;
 	static const cocos2d::CSize PageMargin;

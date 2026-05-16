@@ -181,9 +181,6 @@ DeveloperScene::DeveloperScene()
 		- v Enemy death sounds
 		- v Enemy anims for combat begin (temporarily pausing timeline)
 		- v Enemy combat begin sounds
-		- v Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
-			- v Tiki anims still broken (bad Spriter implementation strikes again)
-			- v Train anims broken (for same reason)
 		- v User-made script titles can go TOFU upon language change. Wontfix? Save original language, and reset to current if the user clears the title?
 		- v If ever re-instating Arabic, Ctrl+F all "ar": "! and "ar": ". strings to find places where punctuation was messed up and fix them
 		- v If ever re-instating Arabic, probably force English for scripting. Mixing RTL and LTR language is awful. Or use Arabic romanization.

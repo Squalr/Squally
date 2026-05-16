@@ -24,7 +24,7 @@ BswapPage* BswapPage::create()
 	return instance;
 }
 
-BswapPage::BswapPage() : super(BswapPage::Identifier, PageType::Full)
+BswapPage::BswapPage() : super(BswapPage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Monster);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
@@ -55,7 +55,7 @@ void BswapPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->decorSprite->setPosition(Vec2(super::PageSize.width + 224.0f, -196.0f));
+	this->decorSprite->setPosition(Vec2(48.0f, -196.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
 	this->titleLabel->setPosition(super::ChapterLocation);

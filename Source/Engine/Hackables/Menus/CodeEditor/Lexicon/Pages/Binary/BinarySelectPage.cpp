@@ -4,6 +4,7 @@
 
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/And/AndPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/BinaryExamplesPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/Bswap/BswapPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/Not/NotPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/Or/OrPage.h"
@@ -35,13 +36,13 @@ BinarySelectPage::BinarySelectPage() : super(BinarySelectPage::Identifier, PageT
 	this->decorLine = Sprite::create(UIResources::Menus_LexiconMenu_DecorLine);
 
 	this->operationSelectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Menus_Hacking_Lexicon_Pages_ChapterSelect_ChooseAnOperation::create());
-	this->andOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Binary_And::create(), AndPage::Identifier);
-	this->orOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Binary_Or::create(), OrPage::Identifier);
-	this->xorOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Binary_Xor::create(), XorPage::Identifier);
-	this->shlOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Binary_Shl::create(), ShlPage::Identifier);
-	this->shrOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Binary_Shr::create(), ShrPage::Identifier);
-	this->notOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Binary_Not::create(), NotPage::Identifier);
-	this->bswapOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Binary_Bswap::create(), BswapPage::Identifier);
+	this->andOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Binary_And::create(), AndPage::Identifier, BinaryExamplesPage::AndIdentifier);
+	this->orOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Binary_Or::create(), OrPage::Identifier, BinaryExamplesPage::OrIdentifier);
+	this->xorOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Binary_Xor::create(), XorPage::Identifier, BinaryExamplesPage::XorIdentifier);
+	this->shlOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Binary_Shl::create(), ShlPage::Identifier, BinaryExamplesPage::ShlIdentifier);
+	this->shrOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Binary_Shr::create(), ShrPage::Identifier, BinaryExamplesPage::ShrIdentifier);
+	this->notOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Binary_Not::create(), NotPage::Identifier, BinaryExamplesPage::NotIdentifier);
+	this->bswapOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Binary_Bswap::create(), BswapPage::Identifier, BinaryExamplesPage::BswapIdentifier);
 
 	this->operationSelectLabel->setTextColor(super::TextColor);
 

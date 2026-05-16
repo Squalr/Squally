@@ -24,7 +24,7 @@ ShrPage* ShrPage::create()
 	return instance;
 }
 
-ShrPage::ShrPage() : super(ShrPage::Identifier, PageType::Full)
+ShrPage::ShrPage() : super(ShrPage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Sword);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
@@ -56,7 +56,7 @@ void ShrPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->decorSprite->setPosition(Vec2(super::PageSize.width + 212.0f, -192.0f));
+	this->decorSprite->setPosition(Vec2(48.0f, -192.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
 	this->titleLabel->setPosition(super::ChapterLocation);

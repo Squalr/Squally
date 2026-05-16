@@ -24,7 +24,7 @@ JmpPage* JmpPage::create()
 	return instance;
 }
 
-JmpPage::JmpPage() : super(JmpPage::Identifier, PageType::Full)
+JmpPage::JmpPage() : super(JmpPage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Bread);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);

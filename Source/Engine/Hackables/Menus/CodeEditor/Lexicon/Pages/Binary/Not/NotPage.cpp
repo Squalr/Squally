@@ -24,7 +24,7 @@ NotPage* NotPage::create()
 	return instance;
 }
 
-NotPage::NotPage() : super(NotPage::Identifier, PageType::Full)
+NotPage::NotPage() : super(NotPage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Scroll);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
@@ -55,7 +55,7 @@ void NotPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->decorSprite->setPosition(Vec2(super::PageSize.width + 224.0f, -196.0f));
+	this->decorSprite->setPosition(Vec2(48.0f, -196.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
 	this->titleLabel->setPosition(super::ChapterLocation);

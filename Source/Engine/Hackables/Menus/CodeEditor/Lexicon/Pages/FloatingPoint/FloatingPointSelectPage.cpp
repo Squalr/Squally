@@ -61,7 +61,7 @@ FloatingPointSelectPage::FloatingPointSelectPage() : super(FloatingPointSelectPa
 	this->fldpiOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fldpi::create(), FldpiPage::Identifier);
 	this->fldzOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fldz::create(), FldzPage::Identifier);
 	this->frndintOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_FloatingPoint_Frndint::create(), FrndintPage::Identifier);
-	this->fsinOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcos::create(), FcosPage::Identifier);
+	this->fsinOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fsin::create(), FsinPage::Identifier);
 	this->fsqrtPageOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fsqrt::create(), FsqrtPage::Identifier);
 	this->ftstPageOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_FloatingPoint_Ftst::create(), FtstPage::Identifier);
 	this->fxchPageOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fxch::create(), FxchPage::Identifier);
