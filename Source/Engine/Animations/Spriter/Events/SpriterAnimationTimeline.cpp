@@ -8,6 +8,9 @@
 #include "Engine/Animations/Spriter/SpriterAnimationParser.h"
 #include "Engine/GlobalDirector.h"
 
+#include <algorithm>
+#include <set>
+
 using namespace cocos2d;
 
 std::map<std::string, SpriterAnimationTimeline*> SpriterAnimationTimeline::TimelineCache = std::map<std::string, SpriterAnimationTimeline*>();
@@ -197,6 +200,60 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 				{
 					registerSegmentAnimation(objectRef.timeline, objectRef.key);
 				}
+			}
+
+			// Some Spriter exports include timeline keys that are not referenced by the
+			// mainline. They still matter for interpolation, especially duplicate-time
+			// keys used to hold a value until a reparent/z-order switch.
+			for (const SpriterTimeline& timeline : animation.timelines)
+			{
+				std::vector<SpriterAnimationTimelineEventAnimation*>& partEvents = animationEventsByPartName[timeline.name];
+
+				if (partEvents.empty())
+				{
+					continue;
+				}
+
+				std::set<int> referencedKeyIds;
+
+				for (SpriterAnimationTimelineEventAnimation* partEvent : partEvents)
+				{
+					referencedKeyIds.insert(partEvent->getTimelineKeyId());
+				}
+
+				for (const SpriterTimelineKey& timelineKey : timeline.keys)
+				{
+					if (referencedKeyIds.find(timelineKey.id) != referencedKeyIds.end())
+					{
+						continue;
+					}
+
+					SpriterAnimationTimelineEventAnimation* samplingEvent = SpriterAnimationTimelineEventAnimation::create(
+						this,
+						float(timelineKey.time),
+						float(timelineKey.time),
+						timeline,
+						timelineKey
+					);
+
+					partEvents.push_back(samplingEvent);
+					this->addChild(samplingEvent);
+				}
+
+				std::sort(partEvents.begin(), partEvents.end(), [](SpriterAnimationTimelineEventAnimation* a, SpriterAnimationTimelineEventAnimation* b)
+				{
+					if (a == nullptr || b == nullptr)
+					{
+						return a != nullptr;
+					}
+
+					if (a->getTimelineKeyTime() == b->getTimelineKeyTime())
+					{
+						return a->getTimelineKeyId() < b->getTimelineKeyId();
+					}
+
+					return a->getTimelineKeyTime() < b->getTimelineKeyTime();
+				});
 			}
 
 			for (auto& partEventsEntry : animationEventsByPartName)
