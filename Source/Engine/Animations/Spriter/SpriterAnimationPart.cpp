@@ -139,6 +139,10 @@ void SpriterAnimationPart::setSpriteResource(const std::string& spriteResource)
 {
 }
 
+void SpriterAnimationPart::setSpriteResourceOverride(const std::string& spriteResource)
+{
+}
+
 void SpriterAnimationPart::restoreSpriteResource()
 {
 }

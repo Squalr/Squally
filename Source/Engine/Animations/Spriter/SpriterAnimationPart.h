@@ -24,6 +24,7 @@ public:
 	float getAlphaOverride() const;
 	cocos2d::Vec2 getAnimationAnchorPoint() const;
 	virtual void setSpriteResource(const std::string& spriteResource);
+	virtual void setSpriteResourceOverride(const std::string& spriteResource);
 	virtual void restoreSpriteResource();
 	virtual std::string getSpriteResource() const;
 	virtual cocos2d::CSize getSpriteSize() const;

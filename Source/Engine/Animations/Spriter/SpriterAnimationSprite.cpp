@@ -20,6 +20,7 @@ SpriterAnimationSprite::SpriterAnimationSprite(std::string spriteResource, Vec2 
 {
 	this->sprite = Sprite::create(spriteResource);
 	this->originalSpriteResource = spriteResource;
+	this->timelineSpriteResource = spriteResource;
 	this->currentSpriteResource = spriteResource;
 	this->currentAnchor = anchor;
 
@@ -49,19 +50,34 @@ void SpriterAnimationSprite::setScaleY(float scaleY)
 
 void SpriterAnimationSprite::setSpriteResource(const std::string& spriteResource)
 {
-	if (this->sprite == nullptr || spriteResource.empty() || this->currentSpriteResource == spriteResource)
+	if (this->sprite == nullptr || spriteResource.empty())
 	{
 		return;
 	}
 
-	this->currentSpriteResource = spriteResource;
-	this->sprite->setTexture(spriteResource);
-	this->refreshSpriteLayout();
+	this->timelineSpriteResource = spriteResource;
+
+	if (this->overrideSpriteResource.empty())
+	{
+		this->applySpriteResource(spriteResource);
+	}
+}
+
+void SpriterAnimationSprite::setSpriteResourceOverride(const std::string& spriteResource)
+{
+	if (this->sprite == nullptr || spriteResource.empty())
+	{
+		return;
+	}
+
+	this->overrideSpriteResource = spriteResource;
+	this->applySpriteResource(spriteResource);
 }
 
 void SpriterAnimationSprite::restoreSpriteResource()
 {
-	this->setSpriteResource(this->originalSpriteResource);
+	this->overrideSpriteResource.clear();
+	this->applySpriteResource(this->timelineSpriteResource.empty() ? this->originalSpriteResource : this->timelineSpriteResource);
 }
 
 std::string SpriterAnimationSprite::getSpriteResource() const
@@ -72,6 +88,18 @@ std::string SpriterAnimationSprite::getSpriteResource() const
 CSize SpriterAnimationSprite::getSpriteSize() const
 {
 	return this->sprite == nullptr ? CSize::ZERO : this->sprite->getContentSize();
+}
+
+void SpriterAnimationSprite::applySpriteResource(const std::string& spriteResource)
+{
+	if (this->sprite == nullptr || spriteResource.empty() || this->currentSpriteResource == spriteResource)
+	{
+		return;
+	}
+
+	this->currentSpriteResource = spriteResource;
+	this->sprite->setTexture(spriteResource);
+	this->refreshSpriteLayout();
 }
 
 void SpriterAnimationSprite::applyAnchorPoint(const Vec2& anchorPoint)

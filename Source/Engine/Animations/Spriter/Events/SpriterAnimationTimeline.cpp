@@ -54,6 +54,11 @@ void SpriterAnimationTimeline::update(float dt)
 
 	for (SpriterAnimationNode* animationNode : this->registeredAnimationNodes)
 	{
+		if (animationNode == nullptr || animationNode->isPaused())
+		{
+			continue;
+		}
+
 		const std::string& entityName = animationNode->getCurrentEntityName();
 		const std::string& animationName = animationNode->getCurrentAnimation();
 

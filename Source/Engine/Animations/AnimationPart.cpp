@@ -151,6 +151,16 @@ void AnimationPart::replaceWithObject(Node* replacement, float disappearDuration
 
 std::string AnimationPart::getSpriteResource()
 {
+	if (this->spriterAnimationPart != nullptr)
+	{
+		std::string currentSpriteResource = this->spriterAnimationPart->getSpriteResource();
+
+		if (!currentSpriteResource.empty())
+		{
+			return currentSpriteResource;
+		}
+	}
+
 	return this->originalPath;
 }
 
@@ -161,7 +171,7 @@ void AnimationPart::replaceSprite(std::string spriteResource)
 		return;
 	}
 
-	this->spriterAnimationPart->setSpriteResource(spriteResource);
+	this->spriterAnimationPart->setSpriteResourceOverride(spriteResource);
 }
 
 void AnimationPart::restoreSprite()

@@ -16,6 +16,7 @@ public:
 	void setScaleY(float scaleX) override;
 	void setAnchorPoint(const cocos2d::Vec2& anchorPoint) override;
 	void setSpriteResource(const std::string& spriteResource) override;
+	void setSpriteResourceOverride(const std::string& spriteResource) override;
 	void restoreSpriteResource() override;
 	std::string getSpriteResource() const override;
 	cocos2d::CSize getSpriteSize() const override;
@@ -30,9 +31,12 @@ protected:
 private:
 	typedef SpriterAnimationPart super;
 	void refreshSpriteLayout();
+	void applySpriteResource(const std::string& spriteResource);
 
 	cocos2d::Sprite* sprite = nullptr;
 	std::string originalSpriteResource;
+	std::string timelineSpriteResource;
+	std::string overrideSpriteResource;
 	std::string currentSpriteResource;
 	cocos2d::Vec2 currentAnchor = cocos2d::Vec2::ZERO;
 };

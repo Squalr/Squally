@@ -223,7 +223,23 @@ void EntityWeaponCollisionBehavior::rebuildWeaponCollision(int collisionType, bo
 		mainhand->addTrackingObject(this->mainhandWeaponCollision);
 	}
 
-	if (offhand != nullptr && buildOffhand)
+	if (!buildOffhand || offhand == nullptr)
+	{
+		if (this->offhandWeaponCollision != nullptr)
+		{
+			if (offhand != nullptr)
+			{
+				offhand->removeTrackingObject(this->offhandWeaponCollision);
+			}
+			else if (this->offhandWeaponCollision->getParent() != nullptr)
+			{
+				this->offhandWeaponCollision->removeFromParent();
+			}
+
+			this->offhandWeaponCollision = nullptr;
+		}
+	}
+	else
 	{
 		CSize weaponSize = this->useExplicitOffhandWeaponSize ? this->offhandWeaponCollisionSize : offhand->getSpriteSize();
 
