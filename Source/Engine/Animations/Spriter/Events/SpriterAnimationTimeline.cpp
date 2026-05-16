@@ -216,7 +216,18 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 					{
 						for (int offset = 1; offset < int(partEvents.size()); offset++)
 						{
-							SpriterAnimationTimelineEventAnimation* candidateEvent = partEvents[(index + offset) % partEvents.size()];
+							int candidateIndex = index + offset;
+
+							if (animation.isLooping)
+							{
+								candidateIndex %= int(partEvents.size());
+							}
+							else if (candidateIndex >= int(partEvents.size()))
+							{
+								break;
+							}
+
+							SpriterAnimationTimelineEventAnimation* candidateEvent = partEvents[candidateIndex];
 
 							if (candidateEvent->getTimelineKeyId() == currentEvent->getTimelineKeyId())
 							{

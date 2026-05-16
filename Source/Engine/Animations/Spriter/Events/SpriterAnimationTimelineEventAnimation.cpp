@@ -68,6 +68,8 @@ SpriterAnimationTimelineEventAnimation::SpriterAnimationTimelineEventAnimation(
 		default:
 		case SpriterObjectType::Object:
 		{
+			this->folderId = animationKey.object.folderId;
+			this->fileId = animationKey.object.fileId;
 			this->position = animationKey.object.position;
 			this->anchor = animationKey.object.anchor;
 			this->scale = animationKey.object.scale;
@@ -135,6 +137,16 @@ void SpriterAnimationTimelineEventAnimation::applyCurrentState(SpriterAnimationN
 	
 	if (currentTime >= this->keytime && currentTime < this->endTime)
 	{
+		if (!this->isBone)
+		{
+			SpriterAnimationSprite* sprite = dynamic_cast<SpriterAnimationSprite*>(object);
+
+			if (sprite != nullptr)
+			{
+				sprite->setSpriteResource(animation->getSpriteResource(this->folderId, this->fileId));
+			}
+		}
+
 		float sampleTime = currentTime;
 
 		if (this->sampleTimeWraps && sampleTime < this->sampleStartTime)
@@ -175,6 +187,16 @@ void SpriterAnimationTimelineEventAnimation::onFire(SpriterAnimationNode* animat
 	if (object == nullptr)
 	{
 		return;
+	}
+
+	if (!this->isBone)
+	{
+		SpriterAnimationSprite* sprite = dynamic_cast<SpriterAnimationSprite*>(object);
+
+		if (sprite != nullptr)
+		{
+			sprite->setSpriteResource(animation->getSpriteResource(this->folderId, this->fileId));
+		}
 	}
 
 	object->applyAnimationState(this->position, this->anchor, this->scale, this->rotation, GLubyte(this->alpha));

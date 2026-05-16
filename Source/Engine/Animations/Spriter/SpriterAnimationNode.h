@@ -1,4 +1,5 @@
 #pragma once
+#include <cstdint>
 #include <functional>
 
 #include "base/CCValue.h"
@@ -34,6 +35,7 @@ public:
 	SpriterAnimationPart* getPartByHash(int id);
 	SpriterAnimationBone* getBoneByHash(int id);
 	SpriterAnimationSprite* getSpriteByHash(int id);
+	std::string getSpriteResource(int folderId, int fileId) const;
 	void playAnimation(std::string animation);
 	void resetAnimation();
 	void setCurrentEntity(const std::string& entityName);
@@ -78,6 +80,7 @@ private:
 	// Entity => Name => Sprite
 	std::map<std::string, std::map<std::string, SpriterAnimationSprite*>> spritesByName;
 	std::map<std::string, std::map<int, SpriterAnimationSprite*>> spritesByHash;
+	std::map<uint64_t, std::string> spriteResourcesByFolderFile;
 	
 	// Optimization. These point to the active map for the current entity.
 	std::map<std::string, SpriterAnimationBone*>* entityBonesByName = nullptr;

@@ -170,6 +170,14 @@ SpriterAnimationSprite* SpriterAnimationNode::getSpriteByHash(int id)
 	return nullptr;
 }
 
+std::string SpriterAnimationNode::getSpriteResource(int folderId, int fileId) const
+{
+	uint64_t folderFileKey = uint64_t(folderId) << 32 | uint64_t(fileId);
+	const auto resourceIt = this->spriteResourcesByFolderFile.find(folderFileKey);
+
+	return resourceIt == this->spriteResourcesByFolderFile.end() ? "" : resourceIt->second;
+}
+
 void SpriterAnimationNode::playAnimation(std::string animation)
 {
 	this->currentAnimation = animation;
@@ -303,6 +311,38 @@ void SpriterAnimationNode::setCurrentEntity(const std::string& currentEntityName
 	this->entityBonesByHash = nullptr;
 	this->entitySpritesByName = nullptr;
 	this->entitySpritesByHash = nullptr;
+
+	for (const auto& entityBones : this->bonesByName)
+	{
+		if (entityBones.first == this->currentEntityName)
+		{
+			continue;
+		}
+
+		for (const auto& boneEntry : entityBones.second)
+		{
+			if (boneEntry.second != nullptr)
+			{
+				boneEntry.second->setVisible(false);
+			}
+		}
+	}
+
+	for (const auto& entitySprites : this->spritesByName)
+	{
+		if (entitySprites.first == this->currentEntityName)
+		{
+			continue;
+		}
+
+		for (const auto& spriteEntry : entitySprites.second)
+		{
+			if (spriteEntry.second != nullptr)
+			{
+				spriteEntry.second->setVisible(false);
+			}
+		}
+	}
 	
 	if (this->bonesByName.find(this->currentEntityName) != this->bonesByName.end())
 	{
@@ -410,6 +450,7 @@ void SpriterAnimationNode::buildBones(const SpriterData& spriterData)
 				this->bonesByHash[entity.name][int(hash)] = bone;
 				
 				this->addAnimationPartChild(bone);
+				bone->setVisible(false);
 			}
 		}
 	}
@@ -431,6 +472,7 @@ void SpriterAnimationNode::buildSprites(const SpriterData& spriterData, const st
 			uint64_t folderFileKey = uint64_t(folder.id) << 32 | uint64_t(file.id);
 
 			folderFileIdMap[folderFileKey] = file.name;
+			this->spriteResourcesByFolderFile[folderFileKey] = containingFolder + file.name;
 			anchorMap[folderFileKey] = file.anchor;
 		}
 	}
@@ -460,6 +502,7 @@ void SpriterAnimationNode::buildSprites(const SpriterData& spriterData, const st
 					SpriterAnimationSprite* sprite = SpriterAnimationSprite::create(containingFolder + folderFileIdMap[folderFileKey], anchorMap[folderFileKey]);
 					
 					this->addAnimationPartChild(sprite);
+					sprite->setVisible(false);
 
 					std::hash<std::string> hasher = std::hash<std::string>();
 					size_t hash = hasher(timeline.name);

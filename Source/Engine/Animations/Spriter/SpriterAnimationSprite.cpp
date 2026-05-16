@@ -49,7 +49,7 @@ void SpriterAnimationSprite::setScaleY(float scaleY)
 
 void SpriterAnimationSprite::setSpriteResource(const std::string& spriteResource)
 {
-	if (this->sprite == nullptr)
+	if (this->sprite == nullptr || spriteResource.empty() || this->currentSpriteResource == spriteResource)
 	{
 		return;
 	}

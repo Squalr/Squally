@@ -306,8 +306,8 @@ bool GLViewImpl::initWithRect(const std::string& viewName, CRect rect, float fra
     
     glfwWindowHint(GLFW_SAMPLES, _glContextAttrs.multisamplingCount);
 
-    int neededWidth = rect.size.width * _frameZoomFactor;
-    int neededHeight = rect.size.height * _frameZoomFactor;
+    int neededWidth = static_cast<int>(rect.size.width * _frameZoomFactor);
+    int neededHeight = static_cast<int>(rect.size.height * _frameZoomFactor);
 
     _mainWindow = glfwCreateWindow(neededWidth, neededHeight, _viewName.c_str(), _monitor, nullptr);
 

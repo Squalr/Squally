@@ -274,7 +274,7 @@ void TMXMapInfo::startElement(void* /*ctx*/, const char *name, const char **atts
         }
 
 
-        float hexSideLength = attributeDict["hexsidelength"].asFloat();
+        int hexSideLength = attributeDict["hexsidelength"].asInt();
         tmxMapInfo->setHexSideLength(hexSideLength);
 
         CSize s;
@@ -359,7 +359,7 @@ void TMXMapInfo::startElement(void* /*ctx*/, const char *name, const char **atts
             TMXLayerInfo* layer = tmxMapInfo->getLayers().back();
             CSize layerSize = layer->_layerSize;
             uint32_t gid = static_cast<uint32_t>(attributeDict["gid"].asUnsignedInt());
-            int tilesAmount = layerSize.width*layerSize.height;
+            int tilesAmount = static_cast<int>(layerSize.width * layerSize.height);
             
             if (_xmlTileIndex < tilesAmount)
             {
@@ -456,7 +456,7 @@ void TMXMapInfo::startElement(void* /*ctx*/, const char *name, const char **atts
             
             TMXLayerInfo* layer = tmxMapInfo->getLayers().back();
             CSize layerSize = layer->_layerSize;
-            int tilesAmount = layerSize.width*layerSize.height;
+            int tilesAmount = static_cast<int>(layerSize.width * layerSize.height);
 
             uint32_t *tiles = (uint32_t*) malloc(tilesAmount*sizeof(uint32_t));
             // set all value to 0

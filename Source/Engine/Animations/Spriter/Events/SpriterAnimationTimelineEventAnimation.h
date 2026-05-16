@@ -61,6 +61,8 @@ private:
 	cocos2d::Vec2 scale = cocos2d::Vec2::ZERO;
 	float rotation = 0.0f;
 	float alpha = 0.0f;
+	int folderId = -1;
+	int fileId = -1;
 
 	cocos2d::Vec2 deltaPosition;
 	cocos2d::Vec2 deltaAnchor;

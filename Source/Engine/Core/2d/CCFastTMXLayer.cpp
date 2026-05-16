@@ -285,10 +285,10 @@ void TMXLayer::updateTiles(const CRect& culledRect)
         _indicesVertexZNumber[iter.first] = iter.second;
     }
     
-    int yBegin = std::max(0.f,visibleTiles.origin.y - tilesOverY);
-    int yEnd = std::min(_layerSize.height,visibleTiles.origin.y + visibleTiles.size.height + tilesOverY);
-    int xBegin = std::max(0.f,visibleTiles.origin.x - tilesOverX);
-    int xEnd = std::min(_layerSize.width,visibleTiles.origin.x + visibleTiles.size.width + tilesOverX);
+    int yBegin = static_cast<int>(std::max(0.f, visibleTiles.origin.y - tilesOverY));
+    int yEnd = static_cast<int>(std::min(_layerSize.height, visibleTiles.origin.y + visibleTiles.size.height + tilesOverY));
+    int xBegin = static_cast<int>(std::max(0.f, visibleTiles.origin.x - tilesOverX));
+    int xEnd = static_cast<int>(std::min(_layerSize.width, visibleTiles.origin.x + visibleTiles.size.width + tilesOverX));
     
     for (int y =  yBegin; y < yEnd; ++y)
     {
@@ -634,7 +634,7 @@ Sprite* TMXLayer::getTileAt(const Vec2& tileCoordinate)
     
     // if GID == 0, then no tile is present
     if( gid ) {
-        int index = (int) tileCoordinate.x + (int) tileCoordinate.y * _layerSize.width;
+        int index = getTileIndexByPos(static_cast<int>(tileCoordinate.x), static_cast<int>(tileCoordinate.y));
         
         auto it = _spriteContainer.find(index);
         if (it != _spriteContainer.end())
@@ -673,7 +673,7 @@ int TMXLayer::getTileGIDAt(const Vec2& tileCoordinate, TMXTileFlags* flags/* = n
     CCASSERT(tileCoordinate.x < _layerSize.width && tileCoordinate.y < _layerSize.height && tileCoordinate.x >=0 && tileCoordinate.y >=0, "TMXLayer: invalid position");
     CCASSERT(_tiles, "TMXLayer: the tiles map has been released");
     
-    int idx = static_cast<int>(((int) tileCoordinate.x + (int) tileCoordinate.y * _layerSize.width));
+    int idx = getTileIndexByPos(static_cast<int>(tileCoordinate.x), static_cast<int>(tileCoordinate.y));
     
     // Bits on the far end of the 32-bit global tile ID are used for tile flags
     int tile = _tiles[idx];
@@ -739,7 +739,7 @@ void TMXLayer::removeTileAt(const Vec2& tileCoordinate)
     
     if( gid ) {
         
-        int z = (int) tileCoordinate.x + (int) tileCoordinate.y * _layerSize.width;
+        int z = getTileIndexByPos(static_cast<int>(tileCoordinate.x), static_cast<int>(tileCoordinate.y));
         
         // remove tile from GID map
         setFlaggedTileGIDByIndex(z, 0);
@@ -860,13 +860,13 @@ void TMXLayer::setTileGID(int gid, const Vec2& tileCoordinate, TMXTileFlags flag
     // empty tile. create a new one
     else if (currentGID == 0)
     {
-        int z = (int) tileCoordinate.x + (int) tileCoordinate.y * _layerSize.width;
+        int z = getTileIndexByPos(static_cast<int>(tileCoordinate.x), static_cast<int>(tileCoordinate.y));
         setFlaggedTileGIDByIndex(z, gidAndFlags);
     }
     // modifying an existing tile with a non-empty tile
     else
     {
-        int z = (int) tileCoordinate.x + (int) tileCoordinate.y * _layerSize.width;
+        int z = getTileIndexByPos(static_cast<int>(tileCoordinate.x), static_cast<int>(tileCoordinate.y));
         auto it = _spriteContainer.find(z);
         if (it != _spriteContainer.end())
         {
