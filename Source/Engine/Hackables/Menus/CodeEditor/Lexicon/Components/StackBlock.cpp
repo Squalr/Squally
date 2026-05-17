@@ -89,7 +89,10 @@ void StackBlock::initializePositions()
 
 void StackBlock::clearHighlights()
 {
-    this->stackSelector->setOpacity(0);
+    if (this->stackSelector != nullptr)
+    {
+        this->stackSelector->setOpacity(0);
+    }
 }
 
 void StackBlock::highlightTop()

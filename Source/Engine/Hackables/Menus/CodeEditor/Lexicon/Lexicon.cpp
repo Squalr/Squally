@@ -24,6 +24,7 @@
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Call/CallPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jmp/JmpPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jnabe/JnabePage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jne/JneExamplesPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jne/JnePage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jngle/JnglePage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jno/JnoPage.h"
@@ -178,6 +179,7 @@ Lexicon::Lexicon()
 	this->pages.push_back(JmpPage::create());
 	this->pages.push_back(JnabePage::create());
 	this->pages.push_back(JnePage::create());
+	this->pages.push_back(JneExamplesPage::create());
 	this->pages.push_back(JnglePage::create());
 	this->pages.push_back(JnoPage::create());
 	this->pages.push_back(JnpPage::create());
@@ -484,7 +486,7 @@ bool Lexicon::isControlFlowPage()
 		|| this->currentLeftPage == RetPage::Identifier || this->currentRightPage == ControlFlowExamplesPage::RetIdentifier
 		|| this->currentLeftPage == LoopPage::Identifier || this->currentRightPage == ControlFlowExamplesPage::LoopIdentifier
 		|| this->currentLeftPage == JnabePage::Identifier
-		|| this->currentLeftPage == JnePage::Identifier
+		|| this->currentLeftPage == JnePage::Identifier || this->currentRightPage == JneExamplesPage::Identifier
 		|| this->currentLeftPage == JnglePage::Identifier
 		|| this->currentLeftPage == JnoPage::Identifier
 		|| this->currentLeftPage == JnpPage::Identifier

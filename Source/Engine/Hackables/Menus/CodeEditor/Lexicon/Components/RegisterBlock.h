@@ -24,6 +24,7 @@ public:
 
 	void setDisplayMode(DisplayMode displayMode);
 	void setDisplayBitCount(int displayBitCount);
+	void setMemoryTitleVisible(bool isVisible);
 	void clearHighlights();
 	void highlightEax(bool isDest);
 	void highlightEbx(bool isDest);

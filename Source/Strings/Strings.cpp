@@ -32158,6 +32158,31 @@ namespace Strings
 			default: case LanguageType::ENGLISH:		{ return "add %s1, %s2"; }
 		}
 	}
+	LocalizedString* Menus_Hacking_Lexicon_Assembly_Cmp::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Assembly_Cmp(); instance->autorelease(); return instance; }
+	LocalizedString* Menus_Hacking_Lexicon_Assembly_Cmp::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_Assembly_Cmp::create(); this->copyAttributesTo(clonedString); return clonedString; }
+	Menus_Hacking_Lexicon_Assembly_Cmp::Menus_Hacking_Lexicon_Assembly_Cmp() : LocalizedString() { }
+	std::string Menus_Hacking_Lexicon_Assembly_Cmp::getStringIdentifier() { return "Menus_Hacking_Lexicon_Assembly_Cmp"; }
+	std::string Menus_Hacking_Lexicon_Assembly_Cmp::getStringByLanguage(LanguageType languageType)
+	{
+		switch (languageType)
+		{
+			case LanguageType::ARABIC:					{ return "cmp %s1, %s2"; }		case LanguageType::BULGARIAN:				{ return "cmp %s1, %s2"; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "cmp %s1, %s2"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "cmp %s1, %s2"; }
+			case LanguageType::CZECH:					{ return "cmp %s1, %s2"; }		case LanguageType::DANISH:					{ return "cmp %s1, %s2"; }
+			case LanguageType::DUTCH:					{ return "cmp %s1, %s2"; }		case LanguageType::FINNISH:					{ return "cmp %s1, %s2"; }
+			case LanguageType::FRENCH:					{ return "cmp %s1, %s2"; }		case LanguageType::GERMAN:					{ return "cmp %s1, %s2"; }
+			case LanguageType::GREEK:					{ return "cmp %s1, %s2"; }		case LanguageType::HUNGARIAN:				{ return "cmp %s1, %s2"; }
+			case LanguageType::ITALIAN:					{ return "cmp %s1, %s2"; }		case LanguageType::JAPANESE:				{ return "cmp %s1, %s2"; }
+			case LanguageType::KOREAN:					{ return "cmp %s1, %s2"; }		case LanguageType::NORWEGIAN:				{ return "cmp %s1, %s2"; }
+			case LanguageType::POLISH:					{ return "cmp %s1, %s2"; }		case LanguageType::PORTUGUESE:				{ return "cmp %s1, %s2"; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "cmp %s1, %s2"; }		case LanguageType::ROMANIAN:				{ return "cmp %s1, %s2"; }
+			case LanguageType::RUSSIAN:					{ return "cmp %s1, %s2"; }		case LanguageType::SPANISH:					{ return "cmp %s1, %s2"; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "cmp %s1, %s2"; }	case LanguageType::SWEDISH:					{ return "cmp %s1, %s2"; }
+			case LanguageType::THAI:					{ return "cmp %s1, %s2"; }		case LanguageType::TURKISH:					{ return "cmp %s1, %s2"; }
+			case LanguageType::UKRAINIAN:				{ return "cmp %s1, %s2"; }		case LanguageType::VIETNAMESE:				{ return "cmp %s1, %s2"; }
+			default: case LanguageType::ENGLISH:		{ return "cmp %s1, %s2"; }
+		}
+	}
 	LocalizedString* Menus_Hacking_Lexicon_Assembly_Dec::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Assembly_Dec(); instance->autorelease(); return instance; }
 	LocalizedString* Menus_Hacking_Lexicon_Assembly_Dec::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_Assembly_Dec::create(); this->copyAttributesTo(clonedString); return clonedString; }
 	Menus_Hacking_Lexicon_Assembly_Dec::Menus_Hacking_Lexicon_Assembly_Dec() : LocalizedString() { }
@@ -32256,6 +32281,31 @@ namespace Strings
 			case LanguageType::THAI:					{ return "jmp %s1"; }		case LanguageType::TURKISH:					{ return "jmp %s1"; }
 			case LanguageType::UKRAINIAN:				{ return "jmp %s1"; }		case LanguageType::VIETNAMESE:				{ return "jmp %s1"; }
 			default: case LanguageType::ENGLISH:		{ return "jmp %s1"; }
+		}
+	}
+	LocalizedString* Menus_Hacking_Lexicon_Assembly_Jne::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Assembly_Jne(); instance->autorelease(); return instance; }
+	LocalizedString* Menus_Hacking_Lexicon_Assembly_Jne::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_Assembly_Jne::create(); this->copyAttributesTo(clonedString); return clonedString; }
+	Menus_Hacking_Lexicon_Assembly_Jne::Menus_Hacking_Lexicon_Assembly_Jne() : LocalizedString() { }
+	std::string Menus_Hacking_Lexicon_Assembly_Jne::getStringIdentifier() { return "Menus_Hacking_Lexicon_Assembly_Jne"; }
+	std::string Menus_Hacking_Lexicon_Assembly_Jne::getStringByLanguage(LanguageType languageType)
+	{
+		switch (languageType)
+		{
+			case LanguageType::ARABIC:					{ return "jne %s1"; }		case LanguageType::BULGARIAN:				{ return "jne %s1"; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "jne %s1"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "jne %s1"; }
+			case LanguageType::CZECH:					{ return "jne %s1"; }		case LanguageType::DANISH:					{ return "jne %s1"; }
+			case LanguageType::DUTCH:					{ return "jne %s1"; }		case LanguageType::FINNISH:					{ return "jne %s1"; }
+			case LanguageType::FRENCH:					{ return "jne %s1"; }		case LanguageType::GERMAN:					{ return "jne %s1"; }
+			case LanguageType::GREEK:					{ return "jne %s1"; }		case LanguageType::HUNGARIAN:				{ return "jne %s1"; }
+			case LanguageType::ITALIAN:					{ return "jne %s1"; }		case LanguageType::JAPANESE:				{ return "jne %s1"; }
+			case LanguageType::KOREAN:					{ return "jne %s1"; }		case LanguageType::NORWEGIAN:				{ return "jne %s1"; }
+			case LanguageType::POLISH:					{ return "jne %s1"; }		case LanguageType::PORTUGUESE:				{ return "jne %s1"; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "jne %s1"; }		case LanguageType::ROMANIAN:				{ return "jne %s1"; }
+			case LanguageType::RUSSIAN:					{ return "jne %s1"; }		case LanguageType::SPANISH:					{ return "jne %s1"; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "jne %s1"; }	case LanguageType::SWEDISH:					{ return "jne %s1"; }
+			case LanguageType::THAI:					{ return "jne %s1"; }		case LanguageType::TURKISH:					{ return "jne %s1"; }
+			case LanguageType::UKRAINIAN:				{ return "jne %s1"; }		case LanguageType::VIETNAMESE:				{ return "jne %s1"; }
+			default: case LanguageType::ENGLISH:		{ return "jne %s1"; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Assembly_Mov::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Assembly_Mov(); instance->autorelease(); return instance; }
@@ -37833,6 +37883,56 @@ namespace Strings
 			default: case LanguageType::ENGLISH:		{ return "JE/JNE are instructions that only perform a jump depending on whether the two values passed to a CMP instruction are equal."; }
 		}
 	}
+	LocalizedString* Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpNotTaken::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpNotTaken(); instance->autorelease(); return instance; }
+	LocalizedString* Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpNotTaken::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpNotTaken::create(); this->copyAttributesTo(clonedString); return clonedString; }
+	Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpNotTaken::Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpNotTaken() : LocalizedString() { }
+	std::string Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpNotTaken::getStringIdentifier() { return "Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpNotTaken"; }
+	std::string Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpNotTaken::getStringByLanguage(LanguageType languageType)
+	{
+		switch (languageType)
+		{
+			case LanguageType::ARABIC:					{ return "ZF = 1: لم يتم القفز."; }		case LanguageType::BULGARIAN:				{ return "ZF = 1: скокът не се изпълнява."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "ZF = 1：不跳转。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "ZF = 1：不跳轉。"; }
+			case LanguageType::CZECH:					{ return "ZF = 1: skok se neprovede."; }		case LanguageType::DANISH:					{ return "ZF = 1: springet udføres ikke."; }
+			case LanguageType::DUTCH:					{ return "ZF = 1: sprong niet genomen."; }		case LanguageType::FINNISH:					{ return "ZF = 1: hyppyä ei tehdä."; }
+			case LanguageType::FRENCH:					{ return "ZF = 1 : saut non pris."; }		case LanguageType::GERMAN:					{ return "ZF = 1: Sprung wird nicht ausgeführt."; }
+			case LanguageType::GREEK:					{ return "ZF = 1: το άλμα δεν εκτελείται."; }		case LanguageType::HUNGARIAN:				{ return "ZF = 1: az ugrás nem történik meg."; }
+			case LanguageType::ITALIAN:					{ return "ZF = 1: salto non eseguito."; }		case LanguageType::JAPANESE:				{ return "ZF = 1: ジャンプしない。"; }
+			case LanguageType::KOREAN:					{ return "ZF = 1: 점프하지 않음."; }		case LanguageType::NORWEGIAN:				{ return "ZF = 1: hoppet tas ikke."; }
+			case LanguageType::POLISH:					{ return "ZF = 1: skok nie zostanie wykonany."; }		case LanguageType::PORTUGUESE:				{ return "ZF = 1: salto não tomado."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "ZF = 1: salto não tomado."; }		case LanguageType::ROMANIAN:				{ return "ZF = 1: saltul nu este efectuat."; }
+			case LanguageType::RUSSIAN:					{ return "ZF = 1: переход не выполняется."; }		case LanguageType::SPANISH:					{ return "ZF = 1: no se toma el salto."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "ZF = 1: no se toma el salto."; }	case LanguageType::SWEDISH:					{ return "ZF = 1: hoppet tas inte."; }
+			case LanguageType::THAI:					{ return "ZF = 1: ไม่กระโดด"; }		case LanguageType::TURKISH:					{ return "ZF = 1: atlama yapılmaz."; }
+			case LanguageType::UKRAINIAN:				{ return "ZF = 1: перехід не виконується."; }		case LanguageType::VIETNAMESE:				{ return "ZF = 1: không nhảy."; }
+			default: case LanguageType::ENGLISH:		{ return "ZF = 1: jump not taken."; }
+		}
+	}
+	LocalizedString* Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpTaken::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpTaken(); instance->autorelease(); return instance; }
+	LocalizedString* Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpTaken::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpTaken::create(); this->copyAttributesTo(clonedString); return clonedString; }
+	Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpTaken::Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpTaken() : LocalizedString() { }
+	std::string Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpTaken::getStringIdentifier() { return "Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpTaken"; }
+	std::string Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpTaken::getStringByLanguage(LanguageType languageType)
+	{
+		switch (languageType)
+		{
+			case LanguageType::ARABIC:					{ return "ZF = 0: تم القفز."; }		case LanguageType::BULGARIAN:				{ return "ZF = 0: скокът се изпълнява."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "ZF = 0：跳转。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "ZF = 0：跳轉。"; }
+			case LanguageType::CZECH:					{ return "ZF = 0: skok se provede."; }		case LanguageType::DANISH:					{ return "ZF = 0: springet udføres."; }
+			case LanguageType::DUTCH:					{ return "ZF = 0: sprong genomen."; }		case LanguageType::FINNISH:					{ return "ZF = 0: hyppy tehdään."; }
+			case LanguageType::FRENCH:					{ return "ZF = 0 : saut pris."; }		case LanguageType::GERMAN:					{ return "ZF = 0: Sprung wird ausgeführt."; }
+			case LanguageType::GREEK:					{ return "ZF = 0: το άλμα εκτελείται."; }		case LanguageType::HUNGARIAN:				{ return "ZF = 0: az ugrás megtörténik."; }
+			case LanguageType::ITALIAN:					{ return "ZF = 0: salto eseguito."; }		case LanguageType::JAPANESE:				{ return "ZF = 0: ジャンプする。"; }
+			case LanguageType::KOREAN:					{ return "ZF = 0: 점프함."; }		case LanguageType::NORWEGIAN:				{ return "ZF = 0: hoppet tas."; }
+			case LanguageType::POLISH:					{ return "ZF = 0: skok zostanie wykonany."; }		case LanguageType::PORTUGUESE:				{ return "ZF = 0: salto tomado."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "ZF = 0: salto tomado."; }		case LanguageType::ROMANIAN:				{ return "ZF = 0: saltul este efectuat."; }
+			case LanguageType::RUSSIAN:					{ return "ZF = 0: переход выполняется."; }		case LanguageType::SPANISH:					{ return "ZF = 0: se toma el salto."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "ZF = 0: se toma el salto."; }	case LanguageType::SWEDISH:					{ return "ZF = 0: hoppet tas."; }
+			case LanguageType::THAI:					{ return "ZF = 0: กระโดด"; }		case LanguageType::TURKISH:					{ return "ZF = 0: atlama yapılır."; }
+			case LanguageType::UKRAINIAN:				{ return "ZF = 0: перехід виконується."; }		case LanguageType::VIETNAMESE:				{ return "ZF = 0: nhảy."; }
+			default: case LanguageType::ENGLISH:		{ return "ZF = 0: jump taken."; }
+		}
+	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_ControlFlow_Jngle_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_ControlFlow_Jngle_Intro(); instance->autorelease(); return instance; }
 	LocalizedString* Menus_Hacking_Lexicon_Pages_ControlFlow_Jngle_Intro::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_Pages_ControlFlow_Jngle_Intro::create(); this->copyAttributesTo(clonedString); return clonedString; }
 	Menus_Hacking_Lexicon_Pages_ControlFlow_Jngle_Intro::Menus_Hacking_Lexicon_Pages_ControlFlow_Jngle_Intro() : LocalizedString() { }
@@ -38716,21 +38816,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "TODO"; }		case LanguageType::BULGARIAN:				{ return "TODO"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "TODO"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "TODO"; }
-			case LanguageType::CZECH:					{ return "TODO"; }		case LanguageType::DANISH:					{ return "TODO"; }
-			case LanguageType::DUTCH:					{ return "TODO"; }		case LanguageType::FINNISH:					{ return "TODO"; }
-			case LanguageType::FRENCH:					{ return "TODO"; }		case LanguageType::GERMAN:					{ return "TODO"; }
-			case LanguageType::GREEK:					{ return "TODO"; }		case LanguageType::HUNGARIAN:				{ return "TODO"; }
-			case LanguageType::ITALIAN:					{ return "TODO"; }		case LanguageType::JAPANESE:				{ return "TODO"; }
-			case LanguageType::KOREAN:					{ return "TODO"; }		case LanguageType::NORWEGIAN:				{ return "TODO"; }
-			case LanguageType::POLISH:					{ return "TODO"; }		case LanguageType::PORTUGUESE:				{ return "TODO"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "TODO"; }		case LanguageType::ROMANIAN:				{ return "TODO"; }
-			case LanguageType::RUSSIAN:					{ return "TODO"; }		case LanguageType::SPANISH:					{ return "TODO"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "TODO"; }	case LanguageType::SWEDISH:					{ return "TODO"; }
-			case LanguageType::THAI:					{ return "TODO"; }		case LanguageType::TURKISH:					{ return "TODO"; }
-			case LanguageType::UKRAINIAN:				{ return "TODO"; }		case LanguageType::VIETNAMESE:				{ return "TODO"; }
-			default: case LanguageType::ENGLISH:		{ return "TODO"; }
+			case LanguageType::ARABIC:					{ return "ينسخ FCMOVNBE قيمة عائمة فقط عندما تكون المقارنة السابقة أكبر."; }		case LanguageType::BULGARIAN:				{ return "FCMOVNBE копира стойност с плаваща запетая само когато предишното сравнение е било по-голямо."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "FCMOVNBE 仅在上一次比较为更大时复制浮点值。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "FCMOVNBE 只在上一次比較為較大時複製浮點值。"; }
+			case LanguageType::CZECH:					{ return "FCMOVNBE zkopíruje hodnotu s plovoucí desetinnou čárkou jen tehdy, když předchozí porovnání bylo větší."; }		case LanguageType::DANISH:					{ return "FCMOVNBE kopierer kun en flydende kommaværdi, når den forrige sammenligning var større."; }
+			case LanguageType::DUTCH:					{ return "FCMOVNBE kopieert alleen een zwevendekommawaarde wanneer de vorige vergelijking groter was."; }		case LanguageType::FINNISH:					{ return "FCMOVNBE kopioi liukulukuarvon vain, kun edellinen vertailu oli suurempi."; }
+			case LanguageType::FRENCH:					{ return "FCMOVNBE copie une valeur à virgule flottante seulement lorsque la comparaison précédente était supérieure."; }		case LanguageType::GERMAN:					{ return "FCMOVNBE kopiert einen Gleitkommawert nur, wenn der vorherige Vergleich größer war."; }
+			case LanguageType::GREEK:					{ return "Το FCMOVNBE αντιγράφει μια τιμή κινητής υποδιαστολής μόνο όταν η προηγούμενη σύγκριση ήταν μεγαλύτερη."; }		case LanguageType::HUNGARIAN:				{ return "Az FCMOVNBE csak akkor másol lebegőpontos értéket, ha az előző összehasonlítás nagyobb eredményt adott."; }
+			case LanguageType::ITALIAN:					{ return "FCMOVNBE copia un valore in virgola mobile solo quando il confronto precedente era superiore."; }		case LanguageType::JAPANESE:				{ return "FCMOVNBE は前の比較が大きい場合にだけ浮動小数点値をコピーします。"; }
+			case LanguageType::KOREAN:					{ return "FCMOVNBE는 이전 비교가 더 컸을 때만 부동소수점 값을 복사합니다."; }		case LanguageType::NORWEGIAN:				{ return "FCMOVNBE kopierer en flyttallsverdi bare når forrige sammenligning var større."; }
+			case LanguageType::POLISH:					{ return "FCMOVNBE kopiuje wartość zmiennoprzecinkową tylko wtedy, gdy poprzednie porównanie było większe."; }		case LanguageType::PORTUGUESE:				{ return "FCMOVNBE copia um valor de ponto flutuante apenas quando a comparação anterior foi maior."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "FCMOVNBE copia um valor de ponto flutuante apenas quando a comparação anterior foi maior."; }		case LanguageType::ROMANIAN:				{ return "FCMOVNBE copiază o valoare în virgulă mobilă numai când comparația anterioară a fost mai mare."; }
+			case LanguageType::RUSSIAN:					{ return "FCMOVNBE копирует значение с плавающей точкой только когда предыдущее сравнение было больше."; }		case LanguageType::SPANISH:					{ return "FCMOVNBE copia un valor de punto flotante solo cuando la comparación anterior fue superior."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "FCMOVNBE copia un valor de punto flotante solo cuando la comparación anterior fue superior."; }	case LanguageType::SWEDISH:					{ return "FCMOVNBE kopierar ett flyttalsvärde endast när den föregående jämförelsen var större."; }
+			case LanguageType::THAI:					{ return "FCMOVNBE คัดลอกค่าทศนิยมเฉพาะเมื่อการเปรียบเทียบก่อนหน้ามากกว่า"; }		case LanguageType::TURKISH:					{ return "FCMOVNBE önceki karşılaştırma daha büyük olduğunda kayan nokta değerini kopyalar."; }
+			case LanguageType::UKRAINIAN:				{ return "FCMOVNBE копіює значення з рухомою комою лише коли попереднє порівняння було більшим."; }		case LanguageType::VIETNAMESE:				{ return "FCMOVNBE chỉ sao chép một giá trị dấu phẩy động khi phép so sánh trước đó lớn hơn."; }
+			default: case LanguageType::ENGLISH:		{ return "FCMOVNBE copies a floating-point value only when the previous comparison was above."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_FloatingPoint_Fcos_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_FloatingPoint_Fcos_Intro(); instance->autorelease(); return instance; }
@@ -38766,21 +38866,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "TODO"; }		case LanguageType::BULGARIAN:				{ return "TODO"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "TODO"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "TODO"; }
-			case LanguageType::CZECH:					{ return "TODO"; }		case LanguageType::DANISH:					{ return "TODO"; }
-			case LanguageType::DUTCH:					{ return "TODO"; }		case LanguageType::FINNISH:					{ return "TODO"; }
-			case LanguageType::FRENCH:					{ return "TODO"; }		case LanguageType::GERMAN:					{ return "TODO"; }
-			case LanguageType::GREEK:					{ return "TODO"; }		case LanguageType::HUNGARIAN:				{ return "TODO"; }
-			case LanguageType::ITALIAN:					{ return "TODO"; }		case LanguageType::JAPANESE:				{ return "TODO"; }
-			case LanguageType::KOREAN:					{ return "TODO"; }		case LanguageType::NORWEGIAN:				{ return "TODO"; }
-			case LanguageType::POLISH:					{ return "TODO"; }		case LanguageType::PORTUGUESE:				{ return "TODO"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "TODO"; }		case LanguageType::ROMANIAN:				{ return "TODO"; }
-			case LanguageType::RUSSIAN:					{ return "TODO"; }		case LanguageType::SPANISH:					{ return "TODO"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "TODO"; }	case LanguageType::SWEDISH:					{ return "TODO"; }
-			case LanguageType::THAI:					{ return "TODO"; }		case LanguageType::TURKISH:					{ return "TODO"; }
-			case LanguageType::UKRAINIAN:				{ return "TODO"; }		case LanguageType::VIETNAMESE:				{ return "TODO"; }
-			default: case LanguageType::ENGLISH:		{ return "TODO"; }
+			case LanguageType::ARABIC:					{ return "يجمع F[I]ADD[P] قيما عائمة أو صحيحة على مكدس FPU."; }		case LanguageType::BULGARIAN:				{ return "F[I]ADD[P] събира стойности с плаваща запетая или цели числа върху FPU стека."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "F[I]ADD[P] 在 FPU 栈上对浮点值或整数值执行加法。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "F[I]ADD[P] 在 FPU 堆疊上對浮點值或整數值執行加法。"; }
+			case LanguageType::CZECH:					{ return "F[I]ADD[P] sčítá hodnoty s plovoucí desetinnou čárkou nebo celá čísla na zásobníku FPU."; }		case LanguageType::DANISH:					{ return "F[I]ADD[P] lægger flydende kommaværdier eller heltal sammen på FPU-stakken."; }
+			case LanguageType::DUTCH:					{ return "F[I]ADD[P] telt zwevendekommawaarden of gehele waarden op de FPU-stack op."; }		case LanguageType::FINNISH:					{ return "F[I]ADD[P] lisää liukulukuarvoja tai kokonaislukuja FPU-pinossa."; }
+			case LanguageType::FRENCH:					{ return "F[I]ADD[P] additionne des valeurs à virgule flottante ou entières sur la pile FPU."; }		case LanguageType::GERMAN:					{ return "F[I]ADD[P] addiert Gleitkommawerte oder Ganzzahlen auf dem FPU-Stack."; }
+			case LanguageType::GREEK:					{ return "Το F[I]ADD[P] προσθέτει τιμές κινητής υποδιαστολής ή ακεραίους στη στοίβα FPU."; }		case LanguageType::HUNGARIAN:				{ return "Az F[I]ADD[P] lebegőpontos vagy egész értékeket ad össze az FPU veremben."; }
+			case LanguageType::ITALIAN:					{ return "F[I]ADD[P] somma valori in virgola mobile o interi sullo stack FPU."; }		case LanguageType::JAPANESE:				{ return "F[I]ADD[P] は FPU スタック上の浮動小数点値または整数値を加算します。"; }
+			case LanguageType::KOREAN:					{ return "F[I]ADD[P]는 FPU 스택의 부동소수점 값이나 정수 값을 더합니다."; }		case LanguageType::NORWEGIAN:				{ return "F[I]ADD[P] legger sammen flyttallsverdier eller heltall på FPU-stakken."; }
+			case LanguageType::POLISH:					{ return "F[I]ADD[P] dodaje wartości zmiennoprzecinkowe lub całkowite na stosie FPU."; }		case LanguageType::PORTUGUESE:				{ return "F[I]ADD[P] soma valores de ponto flutuante ou inteiros na pilha FPU."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "F[I]ADD[P] soma valores de ponto flutuante ou inteiros na pilha FPU."; }		case LanguageType::ROMANIAN:				{ return "F[I]ADD[P] adună valori în virgulă mobilă sau întregi pe stiva FPU."; }
+			case LanguageType::RUSSIAN:					{ return "F[I]ADD[P] складывает значения с плавающей точкой или целые числа в стеке FPU."; }		case LanguageType::SPANISH:					{ return "F[I]ADD[P] suma valores de punto flotante o enteros en la pila FPU."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "F[I]ADD[P] suma valores de punto flotante o enteros en la pila FPU."; }	case LanguageType::SWEDISH:					{ return "F[I]ADD[P] adderar flyttalsvärden eller heltal på FPU-stacken."; }
+			case LanguageType::THAI:					{ return "F[I]ADD[P] บวกค่าทศนิยมหรือจำนวนเต็มบนสแต็ก FPU"; }		case LanguageType::TURKISH:					{ return "F[I]ADD[P] FPU yığınındaki kayan nokta veya tam sayı değerlerini toplar."; }
+			case LanguageType::UKRAINIAN:				{ return "F[I]ADD[P] додає значення з рухомою комою або цілі числа у стеку FPU."; }		case LanguageType::VIETNAMESE:				{ return "F[I]ADD[P] cộng các giá trị dấu phẩy động hoặc số nguyên trên ngăn xếp FPU."; }
+			default: case LanguageType::ENGLISH:		{ return "F[I]ADD[P] adds floating-point or integer values on the FPU stack."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_FloatingPoint_Ficompp_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_FloatingPoint_Ficompp_Intro(); instance->autorelease(); return instance; }
@@ -38791,21 +38891,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "TODO"; }		case LanguageType::BULGARIAN:				{ return "TODO"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "TODO"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "TODO"; }
-			case LanguageType::CZECH:					{ return "TODO"; }		case LanguageType::DANISH:					{ return "TODO"; }
-			case LanguageType::DUTCH:					{ return "TODO"; }		case LanguageType::FINNISH:					{ return "TODO"; }
-			case LanguageType::FRENCH:					{ return "TODO"; }		case LanguageType::GERMAN:					{ return "TODO"; }
-			case LanguageType::GREEK:					{ return "TODO"; }		case LanguageType::HUNGARIAN:				{ return "TODO"; }
-			case LanguageType::ITALIAN:					{ return "TODO"; }		case LanguageType::JAPANESE:				{ return "TODO"; }
-			case LanguageType::KOREAN:					{ return "TODO"; }		case LanguageType::NORWEGIAN:				{ return "TODO"; }
-			case LanguageType::POLISH:					{ return "TODO"; }		case LanguageType::PORTUGUESE:				{ return "TODO"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "TODO"; }		case LanguageType::ROMANIAN:				{ return "TODO"; }
-			case LanguageType::RUSSIAN:					{ return "TODO"; }		case LanguageType::SPANISH:					{ return "TODO"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "TODO"; }	case LanguageType::SWEDISH:					{ return "TODO"; }
-			case LanguageType::THAI:					{ return "TODO"; }		case LanguageType::TURKISH:					{ return "TODO"; }
-			case LanguageType::UKRAINIAN:				{ return "TODO"; }		case LanguageType::VIETNAMESE:				{ return "TODO"; }
-			default: case LanguageType::ENGLISH:		{ return "TODO"; }
+			case LanguageType::ARABIC:					{ return "يقارن FICOMPP قيمة ST(0) بقيمة صحيحة، ثم يزيل إدخالين من مكدس FPU."; }		case LanguageType::BULGARIAN:				{ return "FICOMPP сравнява ST(0) с цяло число, след което премахва два записа от FPU стека."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "FICOMPP 将 ST(0) 与整数值比较，然后从 FPU 栈弹出两个条目。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "FICOMPP 將 ST(0) 與整數值比較，然後從 FPU 堆疊彈出兩個項目。"; }
+			case LanguageType::CZECH:					{ return "FICOMPP porovná ST(0) s celočíselnou hodnotou a potom odstraní dvě položky ze zásobníku FPU."; }		case LanguageType::DANISH:					{ return "FICOMPP sammenligner ST(0) med en heltalsværdi og popper derefter to FPU-stakposter."; }
+			case LanguageType::DUTCH:					{ return "FICOMPP vergelijkt ST(0) met een gehele waarde en haalt daarna twee vermeldingen van de FPU-stack."; }		case LanguageType::FINNISH:					{ return "FICOMPP vertaa ST(0):aa kokonaislukuarvoon ja poistaa sitten kaksi FPU-pinon alkiota."; }
+			case LanguageType::FRENCH:					{ return "FICOMPP compare ST(0) à une valeur entière, puis dépile deux entrées de la pile FPU."; }		case LanguageType::GERMAN:					{ return "FICOMPP vergleicht ST(0) mit einem Ganzzahlwert und entfernt danach zwei Einträge vom FPU-Stack."; }
+			case LanguageType::GREEK:					{ return "Το FICOMPP συγκρίνει το ST(0) με μια ακέραια τιμή και έπειτα αφαιρεί δύο εγγραφές από τη στοίβα FPU."; }		case LanguageType::HUNGARIAN:				{ return "A FICOMPP összehasonlítja az ST(0)-t egy egész értékkel, majd két bejegyzést levesz az FPU veremről."; }
+			case LanguageType::ITALIAN:					{ return "FICOMPP confronta ST(0) con un valore intero, poi estrae due voci dallo stack FPU."; }		case LanguageType::JAPANESE:				{ return "FICOMPP は ST(0) を整数値と比較し、その後 FPU スタックから 2 つの項目をポップします。"; }
+			case LanguageType::KOREAN:					{ return "FICOMPP는 ST(0)을 정수 값과 비교한 뒤 FPU 스택 항목 두 개를 팝합니다."; }		case LanguageType::NORWEGIAN:				{ return "FICOMPP sammenligner ST(0) med en heltallsverdi og henter deretter to oppføringer fra FPU-stakken."; }
+			case LanguageType::POLISH:					{ return "FICOMPP porównuje ST(0) z wartością całkowitą, a następnie zdejmuje dwa wpisy ze stosu FPU."; }		case LanguageType::PORTUGUESE:				{ return "FICOMPP compara ST(0) com um valor inteiro e depois remove duas entradas da pilha FPU."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "FICOMPP compara ST(0) com um valor inteiro e depois remove duas entradas da pilha FPU."; }		case LanguageType::ROMANIAN:				{ return "FICOMPP compară ST(0) cu o valoare întreagă, apoi scoate două intrări din stiva FPU."; }
+			case LanguageType::RUSSIAN:					{ return "FICOMPP сравнивает ST(0) с целым значением, затем извлекает две записи из стека FPU."; }		case LanguageType::SPANISH:					{ return "FICOMPP compara ST(0) con un valor entero y luego extrae dos entradas de la pila FPU."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "FICOMPP compara ST(0) con un valor entero y luego extrae dos entradas de la pila FPU."; }	case LanguageType::SWEDISH:					{ return "FICOMPP jämför ST(0) med ett heltalsvärde och poppar sedan två poster från FPU-stacken."; }
+			case LanguageType::THAI:					{ return "FICOMPP เปรียบเทียบ ST(0) กับค่าจำนวนเต็ม แล้วป๊อปรายการสองรายการจากสแต็ก FPU"; }		case LanguageType::TURKISH:					{ return "FICOMPP ST(0) ile bir tam sayı değerini karşılaştırır, ardından FPU yığınından iki girdi çıkarır."; }
+			case LanguageType::UKRAINIAN:				{ return "FICOMPP порівнює ST(0) з цілим значенням, а потім знімає два записи зі стеку FPU."; }		case LanguageType::VIETNAMESE:				{ return "FICOMPP so sánh ST(0) với một giá trị số nguyên, rồi pop hai mục khỏi ngăn xếp FPU."; }
+			default: case LanguageType::ENGLISH:		{ return "FICOMPP compares ST(0) with an integer value, then pops two FPU stack entries."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_FloatingPoint_Fidivrp_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_FloatingPoint_Fidivrp_Intro(); instance->autorelease(); return instance; }
@@ -38816,21 +38916,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "TODO"; }		case LanguageType::BULGARIAN:				{ return "TODO"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "TODO"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "TODO"; }
-			case LanguageType::CZECH:					{ return "TODO"; }		case LanguageType::DANISH:					{ return "TODO"; }
-			case LanguageType::DUTCH:					{ return "TODO"; }		case LanguageType::FINNISH:					{ return "TODO"; }
-			case LanguageType::FRENCH:					{ return "TODO"; }		case LanguageType::GERMAN:					{ return "TODO"; }
-			case LanguageType::GREEK:					{ return "TODO"; }		case LanguageType::HUNGARIAN:				{ return "TODO"; }
-			case LanguageType::ITALIAN:					{ return "TODO"; }		case LanguageType::JAPANESE:				{ return "TODO"; }
-			case LanguageType::KOREAN:					{ return "TODO"; }		case LanguageType::NORWEGIAN:				{ return "TODO"; }
-			case LanguageType::POLISH:					{ return "TODO"; }		case LanguageType::PORTUGUESE:				{ return "TODO"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "TODO"; }		case LanguageType::ROMANIAN:				{ return "TODO"; }
-			case LanguageType::RUSSIAN:					{ return "TODO"; }		case LanguageType::SPANISH:					{ return "TODO"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "TODO"; }	case LanguageType::SWEDISH:					{ return "TODO"; }
-			case LanguageType::THAI:					{ return "TODO"; }		case LanguageType::TURKISH:					{ return "TODO"; }
-			case LanguageType::UKRAINIAN:				{ return "TODO"; }		case LanguageType::VIETNAMESE:				{ return "TODO"; }
-			default: case LanguageType::ENGLISH:		{ return "TODO"; }
+			case LanguageType::ARABIC:					{ return "يقسم F[I]DIV[RP] قيما عائمة أو صحيحة على مكدس FPU."; }		case LanguageType::BULGARIAN:				{ return "F[I]DIV[RP] дели стойности с плаваща запетая или цели числа върху FPU стека."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "F[I]DIV[RP] 在 FPU 栈上对浮点值或整数值执行除法。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "F[I]DIV[RP] 在 FPU 堆疊上對浮點值或整數值執行除法。"; }
+			case LanguageType::CZECH:					{ return "F[I]DIV[RP] dělí hodnoty s plovoucí desetinnou čárkou nebo celá čísla na zásobníku FPU."; }		case LanguageType::DANISH:					{ return "F[I]DIV[RP] dividerer flydende kommaværdier eller heltal på FPU-stakken."; }
+			case LanguageType::DUTCH:					{ return "F[I]DIV[RP] deelt zwevendekommawaarden of gehele waarden op de FPU-stack."; }		case LanguageType::FINNISH:					{ return "F[I]DIV[RP] jakaa liukulukuarvoja tai kokonaislukuja FPU-pinossa."; }
+			case LanguageType::FRENCH:					{ return "F[I]DIV[RP] divise des valeurs à virgule flottante ou entières sur la pile FPU."; }		case LanguageType::GERMAN:					{ return "F[I]DIV[RP] dividiert Gleitkommawerte oder Ganzzahlen auf dem FPU-Stack."; }
+			case LanguageType::GREEK:					{ return "Το F[I]DIV[RP] διαιρεί τιμές κινητής υποδιαστολής ή ακεραίους στη στοίβα FPU."; }		case LanguageType::HUNGARIAN:				{ return "Az F[I]DIV[RP] lebegőpontos vagy egész értékeket oszt az FPU veremben."; }
+			case LanguageType::ITALIAN:					{ return "F[I]DIV[RP] divide valori in virgola mobile o interi sullo stack FPU."; }		case LanguageType::JAPANESE:				{ return "F[I]DIV[RP] は FPU スタック上の浮動小数点値または整数値を除算します。"; }
+			case LanguageType::KOREAN:					{ return "F[I]DIV[RP]는 FPU 스택의 부동소수점 값이나 정수 값을 나눕니다."; }		case LanguageType::NORWEGIAN:				{ return "F[I]DIV[RP] deler flyttallsverdier eller heltall på FPU-stakken."; }
+			case LanguageType::POLISH:					{ return "F[I]DIV[RP] dzieli wartości zmiennoprzecinkowe lub całkowite na stosie FPU."; }		case LanguageType::PORTUGUESE:				{ return "F[I]DIV[RP] divide valores de ponto flutuante ou inteiros na pilha FPU."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "F[I]DIV[RP] divide valores de ponto flutuante ou inteiros na pilha FPU."; }		case LanguageType::ROMANIAN:				{ return "F[I]DIV[RP] împarte valori în virgulă mobilă sau întregi pe stiva FPU."; }
+			case LanguageType::RUSSIAN:					{ return "F[I]DIV[RP] делит значения с плавающей точкой или целые числа в стеке FPU."; }		case LanguageType::SPANISH:					{ return "F[I]DIV[RP] divide valores de punto flotante o enteros en la pila FPU."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "F[I]DIV[RP] divide valores de punto flotante o enteros en la pila FPU."; }	case LanguageType::SWEDISH:					{ return "F[I]DIV[RP] dividerar flyttalsvärden eller heltal på FPU-stacken."; }
+			case LanguageType::THAI:					{ return "F[I]DIV[RP] หารค่าทศนิยมหรือจำนวนเต็มบนสแต็ก FPU"; }		case LanguageType::TURKISH:					{ return "F[I]DIV[RP] FPU yığınındaki kayan nokta veya tam sayı değerlerini böler."; }
+			case LanguageType::UKRAINIAN:				{ return "F[I]DIV[RP] ділить значення з рухомою комою або цілі числа у стеку FPU."; }		case LanguageType::VIETNAMESE:				{ return "F[I]DIV[RP] chia các giá trị dấu phẩy động hoặc số nguyên trên ngăn xếp FPU."; }
+			default: case LanguageType::ENGLISH:		{ return "F[I]DIV[RP] divides floating-point or integer values on the FPU stack."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_FloatingPoint_Fild_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_FloatingPoint_Fild_Intro(); instance->autorelease(); return instance; }
@@ -38841,21 +38941,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "TODO"; }		case LanguageType::BULGARIAN:				{ return "TODO"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "TODO"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "TODO"; }
-			case LanguageType::CZECH:					{ return "TODO"; }		case LanguageType::DANISH:					{ return "TODO"; }
-			case LanguageType::DUTCH:					{ return "TODO"; }		case LanguageType::FINNISH:					{ return "TODO"; }
-			case LanguageType::FRENCH:					{ return "TODO"; }		case LanguageType::GERMAN:					{ return "TODO"; }
-			case LanguageType::GREEK:					{ return "TODO"; }		case LanguageType::HUNGARIAN:				{ return "TODO"; }
-			case LanguageType::ITALIAN:					{ return "TODO"; }		case LanguageType::JAPANESE:				{ return "TODO"; }
-			case LanguageType::KOREAN:					{ return "TODO"; }		case LanguageType::NORWEGIAN:				{ return "TODO"; }
-			case LanguageType::POLISH:					{ return "TODO"; }		case LanguageType::PORTUGUESE:				{ return "TODO"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "TODO"; }		case LanguageType::ROMANIAN:				{ return "TODO"; }
-			case LanguageType::RUSSIAN:					{ return "TODO"; }		case LanguageType::SPANISH:					{ return "TODO"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "TODO"; }	case LanguageType::SWEDISH:					{ return "TODO"; }
-			case LanguageType::THAI:					{ return "TODO"; }		case LanguageType::TURKISH:					{ return "TODO"; }
-			case LanguageType::UKRAINIAN:				{ return "TODO"; }		case LanguageType::VIETNAMESE:				{ return "TODO"; }
-			default: case LanguageType::ENGLISH:		{ return "TODO"; }
+			case LanguageType::ARABIC:					{ return "يحمل FILD قيمة صحيحة إلى مكدس FPU كرقم عائم."; }		case LanguageType::BULGARIAN:				{ return "FILD зарежда цяло число върху FPU стека като число с плаваща запетая."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "FILD 将整数值作为浮点数加载到 FPU 栈。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "FILD 將整數值作為浮點數載入 FPU 堆疊。"; }
+			case LanguageType::CZECH:					{ return "FILD načte celé číslo na zásobník FPU jako číslo s plovoucí desetinnou čárkou."; }		case LanguageType::DANISH:					{ return "FILD indlæser et heltal på FPU-stakken som et flydende kommatal."; }
+			case LanguageType::DUTCH:					{ return "FILD laadt een gehele waarde op de FPU-stack als zwevendekommagetal."; }		case LanguageType::FINNISH:					{ return "FILD lataa kokonaislukuarvon FPU-pinoon liukulukuna."; }
+			case LanguageType::FRENCH:					{ return "FILD charge une valeur entière sur la pile FPU comme nombre à virgule flottante."; }		case LanguageType::GERMAN:					{ return "FILD lädt einen Ganzzahlwert als Gleitkommazahl auf den FPU-Stack."; }
+			case LanguageType::GREEK:					{ return "Το FILD φορτώνει μια ακέραια τιμή στη στοίβα FPU ως αριθμό κινητής υποδιαστολής."; }		case LanguageType::HUNGARIAN:				{ return "A FILD egy egész értéket lebegőpontos számként tölt be az FPU verembe."; }
+			case LanguageType::ITALIAN:					{ return "FILD carica un valore intero sullo stack FPU come numero in virgola mobile."; }		case LanguageType::JAPANESE:				{ return "FILD は整数値を浮動小数点数として FPU スタックに読み込みます。"; }
+			case LanguageType::KOREAN:					{ return "FILD는 정수 값을 부동소수점 수로 FPU 스택에 로드합니다."; }		case LanguageType::NORWEGIAN:				{ return "FILD laster en heltallsverdi på FPU-stakken som et flyttall."; }
+			case LanguageType::POLISH:					{ return "FILD ładuje wartość całkowitą na stos FPU jako liczbę zmiennoprzecinkową."; }		case LanguageType::PORTUGUESE:				{ return "FILD carrega um valor inteiro na pilha FPU como número de ponto flutuante."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "FILD carrega um valor inteiro na pilha FPU como número de ponto flutuante."; }		case LanguageType::ROMANIAN:				{ return "FILD încarcă o valoare întreagă pe stiva FPU ca număr în virgulă mobilă."; }
+			case LanguageType::RUSSIAN:					{ return "FILD загружает целое значение в стек FPU как число с плавающей точкой."; }		case LanguageType::SPANISH:					{ return "FILD carga un valor entero en la pila FPU como número de punto flotante."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "FILD carga un valor entero en la pila FPU como número de punto flotante."; }	case LanguageType::SWEDISH:					{ return "FILD laddar ett heltalsvärde på FPU-stacken som ett flyttal."; }
+			case LanguageType::THAI:					{ return "FILD โหลดค่าจำนวนเต็มลงในสแต็ก FPU เป็นเลขทศนิยม"; }		case LanguageType::TURKISH:					{ return "FILD bir tam sayı değerini FPU yığınına kayan nokta sayısı olarak yükler."; }
+			case LanguageType::UKRAINIAN:				{ return "FILD завантажує ціле значення у стек FPU як число з рухомою комою."; }		case LanguageType::VIETNAMESE:				{ return "FILD tải một giá trị số nguyên lên ngăn xếp FPU dưới dạng số dấu phẩy động."; }
+			default: case LanguageType::ENGLISH:		{ return "FILD loads an integer value onto the FPU stack as a floating-point number."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_FloatingPoint_Fimulp_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_FloatingPoint_Fimulp_Intro(); instance->autorelease(); return instance; }
@@ -38866,21 +38966,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "TODO"; }		case LanguageType::BULGARIAN:				{ return "TODO"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "TODO"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "TODO"; }
-			case LanguageType::CZECH:					{ return "TODO"; }		case LanguageType::DANISH:					{ return "TODO"; }
-			case LanguageType::DUTCH:					{ return "TODO"; }		case LanguageType::FINNISH:					{ return "TODO"; }
-			case LanguageType::FRENCH:					{ return "TODO"; }		case LanguageType::GERMAN:					{ return "TODO"; }
-			case LanguageType::GREEK:					{ return "TODO"; }		case LanguageType::HUNGARIAN:				{ return "TODO"; }
-			case LanguageType::ITALIAN:					{ return "TODO"; }		case LanguageType::JAPANESE:				{ return "TODO"; }
-			case LanguageType::KOREAN:					{ return "TODO"; }		case LanguageType::NORWEGIAN:				{ return "TODO"; }
-			case LanguageType::POLISH:					{ return "TODO"; }		case LanguageType::PORTUGUESE:				{ return "TODO"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "TODO"; }		case LanguageType::ROMANIAN:				{ return "TODO"; }
-			case LanguageType::RUSSIAN:					{ return "TODO"; }		case LanguageType::SPANISH:					{ return "TODO"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "TODO"; }	case LanguageType::SWEDISH:					{ return "TODO"; }
-			case LanguageType::THAI:					{ return "TODO"; }		case LanguageType::TURKISH:					{ return "TODO"; }
-			case LanguageType::UKRAINIAN:				{ return "TODO"; }		case LanguageType::VIETNAMESE:				{ return "TODO"; }
-			default: case LanguageType::ENGLISH:		{ return "TODO"; }
+			case LanguageType::ARABIC:					{ return "يضرب F[I]MUL[P] قيما عائمة أو صحيحة على مكدس FPU."; }		case LanguageType::BULGARIAN:				{ return "F[I]MUL[P] умножава стойности с плаваща запетая или цели числа върху FPU стека."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "F[I]MUL[P] 在 FPU 栈上对浮点值或整数值执行乘法。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "F[I]MUL[P] 在 FPU 堆疊上對浮點值或整數值執行乘法。"; }
+			case LanguageType::CZECH:					{ return "F[I]MUL[P] násobí hodnoty s plovoucí desetinnou čárkou nebo celá čísla na zásobníku FPU."; }		case LanguageType::DANISH:					{ return "F[I]MUL[P] ganger flydende kommaværdier eller heltal på FPU-stakken."; }
+			case LanguageType::DUTCH:					{ return "F[I]MUL[P] vermenigvuldigt zwevendekommawaarden of gehele waarden op de FPU-stack."; }		case LanguageType::FINNISH:					{ return "F[I]MUL[P] kertoo liukulukuarvoja tai kokonaislukuja FPU-pinossa."; }
+			case LanguageType::FRENCH:					{ return "F[I]MUL[P] multiplie des valeurs à virgule flottante ou entières sur la pile FPU."; }		case LanguageType::GERMAN:					{ return "F[I]MUL[P] multipliziert Gleitkommawerte oder Ganzzahlen auf dem FPU-Stack."; }
+			case LanguageType::GREEK:					{ return "Το F[I]MUL[P] πολλαπλασιάζει τιμές κινητής υποδιαστολής ή ακεραίους στη στοίβα FPU."; }		case LanguageType::HUNGARIAN:				{ return "Az F[I]MUL[P] lebegőpontos vagy egész értékeket szoroz az FPU veremben."; }
+			case LanguageType::ITALIAN:					{ return "F[I]MUL[P] moltiplica valori in virgola mobile o interi sullo stack FPU."; }		case LanguageType::JAPANESE:				{ return "F[I]MUL[P] は FPU スタック上の浮動小数点値または整数値を乗算します。"; }
+			case LanguageType::KOREAN:					{ return "F[I]MUL[P]는 FPU 스택의 부동소수점 값이나 정수 값을 곱합니다."; }		case LanguageType::NORWEGIAN:				{ return "F[I]MUL[P] multipliserer flyttallsverdier eller heltall på FPU-stakken."; }
+			case LanguageType::POLISH:					{ return "F[I]MUL[P] mnoży wartości zmiennoprzecinkowe lub całkowite na stosie FPU."; }		case LanguageType::PORTUGUESE:				{ return "F[I]MUL[P] multiplica valores de ponto flutuante ou inteiros na pilha FPU."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "F[I]MUL[P] multiplica valores de ponto flutuante ou inteiros na pilha FPU."; }		case LanguageType::ROMANIAN:				{ return "F[I]MUL[P] înmulțește valori în virgulă mobilă sau întregi pe stiva FPU."; }
+			case LanguageType::RUSSIAN:					{ return "F[I]MUL[P] умножает значения с плавающей точкой или целые числа в стеке FPU."; }		case LanguageType::SPANISH:					{ return "F[I]MUL[P] multiplica valores de punto flotante o enteros en la pila FPU."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "F[I]MUL[P] multiplica valores de punto flotante o enteros en la pila FPU."; }	case LanguageType::SWEDISH:					{ return "F[I]MUL[P] multiplicerar flyttalsvärden eller heltal på FPU-stacken."; }
+			case LanguageType::THAI:					{ return "F[I]MUL[P] คูณค่าทศนิยมหรือจำนวนเต็มบนสแต็ก FPU"; }		case LanguageType::TURKISH:					{ return "F[I]MUL[P] FPU yığınındaki kayan nokta veya tam sayı değerlerini çarpar."; }
+			case LanguageType::UKRAINIAN:				{ return "F[I]MUL[P] множить значення з рухомою комою або цілі числа у стеку FPU."; }		case LanguageType::VIETNAMESE:				{ return "F[I]MUL[P] nhân các giá trị dấu phẩy động hoặc số nguyên trên ngăn xếp FPU."; }
+			default: case LanguageType::ENGLISH:		{ return "F[I]MUL[P] multiplies floating-point or integer values on the FPU stack."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_FloatingPoint_Fistp_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_FloatingPoint_Fistp_Intro(); instance->autorelease(); return instance; }
@@ -38891,21 +38991,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "TODO"; }		case LanguageType::BULGARIAN:				{ return "TODO"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "TODO"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "TODO"; }
-			case LanguageType::CZECH:					{ return "TODO"; }		case LanguageType::DANISH:					{ return "TODO"; }
-			case LanguageType::DUTCH:					{ return "TODO"; }		case LanguageType::FINNISH:					{ return "TODO"; }
-			case LanguageType::FRENCH:					{ return "TODO"; }		case LanguageType::GERMAN:					{ return "TODO"; }
-			case LanguageType::GREEK:					{ return "TODO"; }		case LanguageType::HUNGARIAN:				{ return "TODO"; }
-			case LanguageType::ITALIAN:					{ return "TODO"; }		case LanguageType::JAPANESE:				{ return "TODO"; }
-			case LanguageType::KOREAN:					{ return "TODO"; }		case LanguageType::NORWEGIAN:				{ return "TODO"; }
-			case LanguageType::POLISH:					{ return "TODO"; }		case LanguageType::PORTUGUESE:				{ return "TODO"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "TODO"; }		case LanguageType::ROMANIAN:				{ return "TODO"; }
-			case LanguageType::RUSSIAN:					{ return "TODO"; }		case LanguageType::SPANISH:					{ return "TODO"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "TODO"; }	case LanguageType::SWEDISH:					{ return "TODO"; }
-			case LanguageType::THAI:					{ return "TODO"; }		case LanguageType::TURKISH:					{ return "TODO"; }
-			case LanguageType::UKRAINIAN:				{ return "TODO"; }		case LanguageType::VIETNAMESE:				{ return "TODO"; }
-			default: case LanguageType::ENGLISH:		{ return "TODO"; }
+			case LanguageType::ARABIC:					{ return "يخزن FISTP قيمة ST(0) كعدد صحيح، ثم يزيلها من مكدس FPU."; }		case LanguageType::BULGARIAN:				{ return "FISTP записва ST(0) като цяло число, след което премахва стойността от FPU стека."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "FISTP 将 ST(0) 存储为整数值，然后弹出 FPU 栈。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "FISTP 將 ST(0) 儲存為整數值，然後彈出 FPU 堆疊。"; }
+			case LanguageType::CZECH:					{ return "FISTP uloží ST(0) jako celé číslo a potom odstraní hodnotu ze zásobníku FPU."; }		case LanguageType::DANISH:					{ return "FISTP gemmer ST(0) som et heltal og popper derefter FPU-stakken."; }
+			case LanguageType::DUTCH:					{ return "FISTP slaat ST(0) op als gehele waarde en haalt daarna de FPU-stack omlaag."; }		case LanguageType::FINNISH:					{ return "FISTP tallentaa ST(0):n kokonaislukuarvona ja poistaa sitten arvon FPU-pinosta."; }
+			case LanguageType::FRENCH:					{ return "FISTP stocke ST(0) comme valeur entière, puis dépile la pile FPU."; }		case LanguageType::GERMAN:					{ return "FISTP speichert ST(0) als Ganzzahlwert und entfernt ihn dann vom FPU-Stack."; }
+			case LanguageType::GREEK:					{ return "Το FISTP αποθηκεύει το ST(0) ως ακέραια τιμή και έπειτα αφαιρεί τη στοίβα FPU."; }		case LanguageType::HUNGARIAN:				{ return "A FISTP az ST(0)-t egész értékként tárolja, majd leveszi az FPU veremről."; }
+			case LanguageType::ITALIAN:					{ return "FISTP memorizza ST(0) come valore intero, poi estrae lo stack FPU."; }		case LanguageType::JAPANESE:				{ return "FISTP は ST(0) を整数値として保存し、その後 FPU スタックをポップします。"; }
+			case LanguageType::KOREAN:					{ return "FISTP는 ST(0)을 정수 값으로 저장한 뒤 FPU 스택을 팝합니다."; }		case LanguageType::NORWEGIAN:				{ return "FISTP lagrer ST(0) som en heltallsverdi og henter deretter fra FPU-stakken."; }
+			case LanguageType::POLISH:					{ return "FISTP zapisuje ST(0) jako wartość całkowitą, a następnie zdejmuje ją ze stosu FPU."; }		case LanguageType::PORTUGUESE:				{ return "FISTP armazena ST(0) como valor inteiro e depois remove a pilha FPU."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "FISTP armazena ST(0) como valor inteiro e depois remove a pilha FPU."; }		case LanguageType::ROMANIAN:				{ return "FISTP stochează ST(0) ca valoare întreagă, apoi scoate stiva FPU."; }
+			case LanguageType::RUSSIAN:					{ return "FISTP сохраняет ST(0) как целое значение, затем извлекает его из стека FPU."; }		case LanguageType::SPANISH:					{ return "FISTP guarda ST(0) como un valor entero y luego extrae la pila FPU."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "FISTP guarda ST(0) como un valor entero y luego extrae la pila FPU."; }	case LanguageType::SWEDISH:					{ return "FISTP lagrar ST(0) som ett heltalsvärde och poppar sedan FPU-stacken."; }
+			case LanguageType::THAI:					{ return "FISTP เก็บ ST(0) เป็นค่าจำนวนเต็ม แล้วป๊อปสแต็ก FPU"; }		case LanguageType::TURKISH:					{ return "FISTP ST(0) değerini tam sayı olarak saklar, ardından FPU yığınından çıkarır."; }
+			case LanguageType::UKRAINIAN:				{ return "FISTP зберігає ST(0) як ціле значення, а потім знімає його зі стеку FPU."; }		case LanguageType::VIETNAMESE:				{ return "FISTP lưu ST(0) dưới dạng giá trị số nguyên, rồi pop ngăn xếp FPU."; }
+			default: case LanguageType::ENGLISH:		{ return "FISTP stores ST(0) as an integer value, then pops the FPU stack."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_FloatingPoint_Fisubrp_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_FloatingPoint_Fisubrp_Intro(); instance->autorelease(); return instance; }
@@ -38916,21 +39016,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "TODO"; }		case LanguageType::BULGARIAN:				{ return "TODO"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "TODO"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "TODO"; }
-			case LanguageType::CZECH:					{ return "TODO"; }		case LanguageType::DANISH:					{ return "TODO"; }
-			case LanguageType::DUTCH:					{ return "TODO"; }		case LanguageType::FINNISH:					{ return "TODO"; }
-			case LanguageType::FRENCH:					{ return "TODO"; }		case LanguageType::GERMAN:					{ return "TODO"; }
-			case LanguageType::GREEK:					{ return "TODO"; }		case LanguageType::HUNGARIAN:				{ return "TODO"; }
-			case LanguageType::ITALIAN:					{ return "TODO"; }		case LanguageType::JAPANESE:				{ return "TODO"; }
-			case LanguageType::KOREAN:					{ return "TODO"; }		case LanguageType::NORWEGIAN:				{ return "TODO"; }
-			case LanguageType::POLISH:					{ return "TODO"; }		case LanguageType::PORTUGUESE:				{ return "TODO"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "TODO"; }		case LanguageType::ROMANIAN:				{ return "TODO"; }
-			case LanguageType::RUSSIAN:					{ return "TODO"; }		case LanguageType::SPANISH:					{ return "TODO"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "TODO"; }	case LanguageType::SWEDISH:					{ return "TODO"; }
-			case LanguageType::THAI:					{ return "TODO"; }		case LanguageType::TURKISH:					{ return "TODO"; }
-			case LanguageType::UKRAINIAN:				{ return "TODO"; }		case LanguageType::VIETNAMESE:				{ return "TODO"; }
-			default: case LanguageType::ENGLISH:		{ return "TODO"; }
+			case LanguageType::ARABIC:					{ return "يطرح F[I]SUB[RP] قيما عائمة أو صحيحة على مكدس FPU."; }		case LanguageType::BULGARIAN:				{ return "F[I]SUB[RP] изважда стойности с плаваща запетая или цели числа върху FPU стека."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "F[I]SUB[RP] 在 FPU 栈上对浮点值或整数值执行减法。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "F[I]SUB[RP] 在 FPU 堆疊上對浮點值或整數值執行減法。"; }
+			case LanguageType::CZECH:					{ return "F[I]SUB[RP] odečítá hodnoty s plovoucí desetinnou čárkou nebo celá čísla na zásobníku FPU."; }		case LanguageType::DANISH:					{ return "F[I]SUB[RP] trækker flydende kommaværdier eller heltal fra på FPU-stakken."; }
+			case LanguageType::DUTCH:					{ return "F[I]SUB[RP] trekt zwevendekommawaarden of gehele waarden op de FPU-stack af."; }		case LanguageType::FINNISH:					{ return "F[I]SUB[RP] vähentää liukulukuarvoja tai kokonaislukuja FPU-pinossa."; }
+			case LanguageType::FRENCH:					{ return "F[I]SUB[RP] soustrait des valeurs à virgule flottante ou entières sur la pile FPU."; }		case LanguageType::GERMAN:					{ return "F[I]SUB[RP] subtrahiert Gleitkommawerte oder Ganzzahlen auf dem FPU-Stack."; }
+			case LanguageType::GREEK:					{ return "Το F[I]SUB[RP] αφαιρεί τιμές κινητής υποδιαστολής ή ακεραίους στη στοίβα FPU."; }		case LanguageType::HUNGARIAN:				{ return "Az F[I]SUB[RP] lebegőpontos vagy egész értékeket von ki az FPU veremben."; }
+			case LanguageType::ITALIAN:					{ return "F[I]SUB[RP] sottrae valori in virgola mobile o interi sullo stack FPU."; }		case LanguageType::JAPANESE:				{ return "F[I]SUB[RP] は FPU スタック上の浮動小数点値または整数値を減算します。"; }
+			case LanguageType::KOREAN:					{ return "F[I]SUB[RP]는 FPU 스택의 부동소수점 값이나 정수 값을 뺍니다."; }		case LanguageType::NORWEGIAN:				{ return "F[I]SUB[RP] trekker fra flyttallsverdier eller heltall på FPU-stakken."; }
+			case LanguageType::POLISH:					{ return "F[I]SUB[RP] odejmuje wartości zmiennoprzecinkowe lub całkowite na stosie FPU."; }		case LanguageType::PORTUGUESE:				{ return "F[I]SUB[RP] subtrai valores de ponto flutuante ou inteiros na pilha FPU."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "F[I]SUB[RP] subtrai valores de ponto flutuante ou inteiros na pilha FPU."; }		case LanguageType::ROMANIAN:				{ return "F[I]SUB[RP] scade valori în virgulă mobilă sau întregi pe stiva FPU."; }
+			case LanguageType::RUSSIAN:					{ return "F[I]SUB[RP] вычитает значения с плавающей точкой или целые числа в стеке FPU."; }		case LanguageType::SPANISH:					{ return "F[I]SUB[RP] resta valores de punto flotante o enteros en la pila FPU."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "F[I]SUB[RP] resta valores de punto flotante o enteros en la pila FPU."; }	case LanguageType::SWEDISH:					{ return "F[I]SUB[RP] subtraherar flyttalsvärden eller heltal på FPU-stacken."; }
+			case LanguageType::THAI:					{ return "F[I]SUB[RP] ลบค่าทศนิยมหรือจำนวนเต็มบนสแต็ก FPU"; }		case LanguageType::TURKISH:					{ return "F[I]SUB[RP] FPU yığınındaki kayan nokta veya tam sayı değerlerini çıkarır."; }
+			case LanguageType::UKRAINIAN:				{ return "F[I]SUB[RP] віднімає значення з рухомою комою або цілі числа у стеку FPU."; }		case LanguageType::VIETNAMESE:				{ return "F[I]SUB[RP] trừ các giá trị dấu phẩy động hoặc số nguyên trên ngăn xếp FPU."; }
+			default: case LanguageType::ENGLISH:		{ return "F[I]SUB[RP] subtracts floating-point or integer values on the FPU stack."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_FloatingPoint_Fld1_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_FloatingPoint_Fld1_Intro(); instance->autorelease(); return instance; }
@@ -38941,21 +39041,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "TODO"; }		case LanguageType::BULGARIAN:				{ return "TODO"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "TODO"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "TODO"; }
-			case LanguageType::CZECH:					{ return "TODO"; }		case LanguageType::DANISH:					{ return "TODO"; }
-			case LanguageType::DUTCH:					{ return "TODO"; }		case LanguageType::FINNISH:					{ return "TODO"; }
-			case LanguageType::FRENCH:					{ return "TODO"; }		case LanguageType::GERMAN:					{ return "TODO"; }
-			case LanguageType::GREEK:					{ return "TODO"; }		case LanguageType::HUNGARIAN:				{ return "TODO"; }
-			case LanguageType::ITALIAN:					{ return "TODO"; }		case LanguageType::JAPANESE:				{ return "TODO"; }
-			case LanguageType::KOREAN:					{ return "TODO"; }		case LanguageType::NORWEGIAN:				{ return "TODO"; }
-			case LanguageType::POLISH:					{ return "TODO"; }		case LanguageType::PORTUGUESE:				{ return "TODO"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "TODO"; }		case LanguageType::ROMANIAN:				{ return "TODO"; }
-			case LanguageType::RUSSIAN:					{ return "TODO"; }		case LanguageType::SPANISH:					{ return "TODO"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "TODO"; }	case LanguageType::SWEDISH:					{ return "TODO"; }
-			case LanguageType::THAI:					{ return "TODO"; }		case LanguageType::TURKISH:					{ return "TODO"; }
-			case LanguageType::UKRAINIAN:				{ return "TODO"; }		case LanguageType::VIETNAMESE:				{ return "TODO"; }
-			default: case LanguageType::ENGLISH:		{ return "TODO"; }
+			case LanguageType::ARABIC:					{ return "يحمل FLD1 الثابت 1.0 إلى مكدس FPU."; }		case LanguageType::BULGARIAN:				{ return "FLD1 зарежда константата 1.0 върху FPU стека."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "FLD1 将常量 1.0 加载到 FPU 栈。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "FLD1 將常數 1.0 載入 FPU 堆疊。"; }
+			case LanguageType::CZECH:					{ return "FLD1 načte konstantu 1.0 na zásobník FPU."; }		case LanguageType::DANISH:					{ return "FLD1 indlæser konstanten 1.0 på FPU-stakken."; }
+			case LanguageType::DUTCH:					{ return "FLD1 laadt de constante 1.0 op de FPU-stack."; }		case LanguageType::FINNISH:					{ return "FLD1 lataa vakion 1.0 FPU-pinoon."; }
+			case LanguageType::FRENCH:					{ return "FLD1 charge la constante 1.0 sur la pile FPU."; }		case LanguageType::GERMAN:					{ return "FLD1 lädt die Konstante 1.0 auf den FPU-Stack."; }
+			case LanguageType::GREEK:					{ return "Το FLD1 φορτώνει τη σταθερά 1.0 στη στοίβα FPU."; }		case LanguageType::HUNGARIAN:				{ return "A FLD1 betölti az 1.0 konstans értéket az FPU verembe."; }
+			case LanguageType::ITALIAN:					{ return "FLD1 carica la costante 1.0 sullo stack FPU."; }		case LanguageType::JAPANESE:				{ return "FLD1 は定数 1.0 を FPU スタックに読み込みます。"; }
+			case LanguageType::KOREAN:					{ return "FLD1은 상수 1.0을 FPU 스택에 로드합니다."; }		case LanguageType::NORWEGIAN:				{ return "FLD1 laster konstanten 1.0 på FPU-stakken."; }
+			case LanguageType::POLISH:					{ return "FLD1 ładuje stałą 1.0 na stos FPU."; }		case LanguageType::PORTUGUESE:				{ return "FLD1 carrega a constante 1.0 na pilha FPU."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "FLD1 carrega a constante 1.0 na pilha FPU."; }		case LanguageType::ROMANIAN:				{ return "FLD1 încarcă constanta 1.0 pe stiva FPU."; }
+			case LanguageType::RUSSIAN:					{ return "FLD1 загружает константу 1.0 в стек FPU."; }		case LanguageType::SPANISH:					{ return "FLD1 carga la constante 1.0 en la pila FPU."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "FLD1 carga la constante 1.0 en la pila FPU."; }	case LanguageType::SWEDISH:					{ return "FLD1 laddar konstanten 1.0 på FPU-stacken."; }
+			case LanguageType::THAI:					{ return "FLD1 โหลดค่าคงที่ 1.0 ลงในสแต็ก FPU"; }		case LanguageType::TURKISH:					{ return "FLD1 1.0 sabitini FPU yığınına yükler."; }
+			case LanguageType::UKRAINIAN:				{ return "FLD1 завантажує константу 1.0 у стек FPU."; }		case LanguageType::VIETNAMESE:				{ return "FLD1 tải hằng số 1.0 lên ngăn xếp FPU."; }
+			default: case LanguageType::ENGLISH:		{ return "FLD1 loads the constant 1.0 onto the FPU stack."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_FloatingPoint_Fldpi_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_FloatingPoint_Fldpi_Intro(); instance->autorelease(); return instance; }
@@ -38966,21 +39066,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "TODO"; }		case LanguageType::BULGARIAN:				{ return "TODO"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "TODO"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "TODO"; }
-			case LanguageType::CZECH:					{ return "TODO"; }		case LanguageType::DANISH:					{ return "TODO"; }
-			case LanguageType::DUTCH:					{ return "TODO"; }		case LanguageType::FINNISH:					{ return "TODO"; }
-			case LanguageType::FRENCH:					{ return "TODO"; }		case LanguageType::GERMAN:					{ return "TODO"; }
-			case LanguageType::GREEK:					{ return "TODO"; }		case LanguageType::HUNGARIAN:				{ return "TODO"; }
-			case LanguageType::ITALIAN:					{ return "TODO"; }		case LanguageType::JAPANESE:				{ return "TODO"; }
-			case LanguageType::KOREAN:					{ return "TODO"; }		case LanguageType::NORWEGIAN:				{ return "TODO"; }
-			case LanguageType::POLISH:					{ return "TODO"; }		case LanguageType::PORTUGUESE:				{ return "TODO"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "TODO"; }		case LanguageType::ROMANIAN:				{ return "TODO"; }
-			case LanguageType::RUSSIAN:					{ return "TODO"; }		case LanguageType::SPANISH:					{ return "TODO"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "TODO"; }	case LanguageType::SWEDISH:					{ return "TODO"; }
-			case LanguageType::THAI:					{ return "TODO"; }		case LanguageType::TURKISH:					{ return "TODO"; }
-			case LanguageType::UKRAINIAN:				{ return "TODO"; }		case LanguageType::VIETNAMESE:				{ return "TODO"; }
-			default: case LanguageType::ENGLISH:		{ return "TODO"; }
+			case LanguageType::ARABIC:					{ return "يحمل FLDPI الثابت pi إلى مكدس FPU."; }		case LanguageType::BULGARIAN:				{ return "FLDPI зарежда константата pi върху FPU стека."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "FLDPI 将常量 pi 加载到 FPU 栈。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "FLDPI 將常數 pi 載入 FPU 堆疊。"; }
+			case LanguageType::CZECH:					{ return "FLDPI načte konstantu pi na zásobník FPU."; }		case LanguageType::DANISH:					{ return "FLDPI indlæser konstanten pi på FPU-stakken."; }
+			case LanguageType::DUTCH:					{ return "FLDPI laadt de constante pi op de FPU-stack."; }		case LanguageType::FINNISH:					{ return "FLDPI lataa vakion pi FPU-pinoon."; }
+			case LanguageType::FRENCH:					{ return "FLDPI charge la constante pi sur la pile FPU."; }		case LanguageType::GERMAN:					{ return "FLDPI lädt die Konstante pi auf den FPU-Stack."; }
+			case LanguageType::GREEK:					{ return "Το FLDPI φορτώνει τη σταθερά pi στη στοίβα FPU."; }		case LanguageType::HUNGARIAN:				{ return "A FLDPI betölti a pi konstans értéket az FPU verembe."; }
+			case LanguageType::ITALIAN:					{ return "FLDPI carica la costante pi sullo stack FPU."; }		case LanguageType::JAPANESE:				{ return "FLDPI は定数 pi を FPU スタックに読み込みます。"; }
+			case LanguageType::KOREAN:					{ return "FLDPI는 상수 pi를 FPU 스택에 로드합니다."; }		case LanguageType::NORWEGIAN:				{ return "FLDPI laster konstanten pi på FPU-stakken."; }
+			case LanguageType::POLISH:					{ return "FLDPI ładuje stałą pi na stos FPU."; }		case LanguageType::PORTUGUESE:				{ return "FLDPI carrega a constante pi na pilha FPU."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "FLDPI carrega a constante pi na pilha FPU."; }		case LanguageType::ROMANIAN:				{ return "FLDPI încarcă constanta pi pe stiva FPU."; }
+			case LanguageType::RUSSIAN:					{ return "FLDPI загружает константу pi в стек FPU."; }		case LanguageType::SPANISH:					{ return "FLDPI carga la constante pi en la pila FPU."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "FLDPI carga la constante pi en la pila FPU."; }	case LanguageType::SWEDISH:					{ return "FLDPI laddar konstanten pi på FPU-stacken."; }
+			case LanguageType::THAI:					{ return "FLDPI โหลดค่าคงที่ pi ลงในสแต็ก FPU"; }		case LanguageType::TURKISH:					{ return "FLDPI pi sabitini FPU yığınına yükler."; }
+			case LanguageType::UKRAINIAN:				{ return "FLDPI завантажує константу pi у стек FPU."; }		case LanguageType::VIETNAMESE:				{ return "FLDPI tải hằng số pi lên ngăn xếp FPU."; }
+			default: case LanguageType::ENGLISH:		{ return "FLDPI loads the constant pi onto the FPU stack."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_FloatingPoint_Fldz_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_FloatingPoint_Fldz_Intro(); instance->autorelease(); return instance; }
@@ -38991,21 +39091,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "TODO"; }		case LanguageType::BULGARIAN:				{ return "TODO"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "TODO"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "TODO"; }
-			case LanguageType::CZECH:					{ return "TODO"; }		case LanguageType::DANISH:					{ return "TODO"; }
-			case LanguageType::DUTCH:					{ return "TODO"; }		case LanguageType::FINNISH:					{ return "TODO"; }
-			case LanguageType::FRENCH:					{ return "TODO"; }		case LanguageType::GERMAN:					{ return "TODO"; }
-			case LanguageType::GREEK:					{ return "TODO"; }		case LanguageType::HUNGARIAN:				{ return "TODO"; }
-			case LanguageType::ITALIAN:					{ return "TODO"; }		case LanguageType::JAPANESE:				{ return "TODO"; }
-			case LanguageType::KOREAN:					{ return "TODO"; }		case LanguageType::NORWEGIAN:				{ return "TODO"; }
-			case LanguageType::POLISH:					{ return "TODO"; }		case LanguageType::PORTUGUESE:				{ return "TODO"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "TODO"; }		case LanguageType::ROMANIAN:				{ return "TODO"; }
-			case LanguageType::RUSSIAN:					{ return "TODO"; }		case LanguageType::SPANISH:					{ return "TODO"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "TODO"; }	case LanguageType::SWEDISH:					{ return "TODO"; }
-			case LanguageType::THAI:					{ return "TODO"; }		case LanguageType::TURKISH:					{ return "TODO"; }
-			case LanguageType::UKRAINIAN:				{ return "TODO"; }		case LanguageType::VIETNAMESE:				{ return "TODO"; }
-			default: case LanguageType::ENGLISH:		{ return "TODO"; }
+			case LanguageType::ARABIC:					{ return "يحمل FLDZ الثابت 0.0 إلى مكدس FPU."; }		case LanguageType::BULGARIAN:				{ return "FLDZ зарежда константата 0.0 върху FPU стека."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "FLDZ 将常量 0.0 加载到 FPU 栈。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "FLDZ 將常數 0.0 載入 FPU 堆疊。"; }
+			case LanguageType::CZECH:					{ return "FLDZ načte konstantu 0.0 na zásobník FPU."; }		case LanguageType::DANISH:					{ return "FLDZ indlæser konstanten 0.0 på FPU-stakken."; }
+			case LanguageType::DUTCH:					{ return "FLDZ laadt de constante 0.0 op de FPU-stack."; }		case LanguageType::FINNISH:					{ return "FLDZ lataa vakion 0.0 FPU-pinoon."; }
+			case LanguageType::FRENCH:					{ return "FLDZ charge la constante 0.0 sur la pile FPU."; }		case LanguageType::GERMAN:					{ return "FLDZ lädt die Konstante 0.0 auf den FPU-Stack."; }
+			case LanguageType::GREEK:					{ return "Το FLDZ φορτώνει τη σταθερά 0.0 στη στοίβα FPU."; }		case LanguageType::HUNGARIAN:				{ return "A FLDZ betölti a 0.0 konstans értéket az FPU verembe."; }
+			case LanguageType::ITALIAN:					{ return "FLDZ carica la costante 0.0 sullo stack FPU."; }		case LanguageType::JAPANESE:				{ return "FLDZ は定数 0.0 を FPU スタックに読み込みます。"; }
+			case LanguageType::KOREAN:					{ return "FLDZ는 상수 0.0을 FPU 스택에 로드합니다."; }		case LanguageType::NORWEGIAN:				{ return "FLDZ laster konstanten 0.0 på FPU-stakken."; }
+			case LanguageType::POLISH:					{ return "FLDZ ładuje stałą 0.0 na stos FPU."; }		case LanguageType::PORTUGUESE:				{ return "FLDZ carrega a constante 0.0 na pilha FPU."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "FLDZ carrega a constante 0.0 na pilha FPU."; }		case LanguageType::ROMANIAN:				{ return "FLDZ încarcă constanta 0.0 pe stiva FPU."; }
+			case LanguageType::RUSSIAN:					{ return "FLDZ загружает константу 0.0 в стек FPU."; }		case LanguageType::SPANISH:					{ return "FLDZ carga la constante 0.0 en la pila FPU."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "FLDZ carga la constante 0.0 en la pila FPU."; }	case LanguageType::SWEDISH:					{ return "FLDZ laddar konstanten 0.0 på FPU-stacken."; }
+			case LanguageType::THAI:					{ return "FLDZ โหลดค่าคงที่ 0.0 ลงในสแต็ก FPU"; }		case LanguageType::TURKISH:					{ return "FLDZ 0.0 sabitini FPU yığınına yükler."; }
+			case LanguageType::UKRAINIAN:				{ return "FLDZ завантажує константу 0.0 у стек FPU."; }		case LanguageType::VIETNAMESE:				{ return "FLDZ tải hằng số 0.0 lên ngăn xếp FPU."; }
+			default: case LanguageType::ENGLISH:		{ return "FLDZ loads the constant 0.0 onto the FPU stack."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_FloatingPoint_Frndint_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_FloatingPoint_Frndint_Intro(); instance->autorelease(); return instance; }
@@ -39016,21 +39116,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "TODO"; }		case LanguageType::BULGARIAN:				{ return "TODO"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "TODO"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "TODO"; }
-			case LanguageType::CZECH:					{ return "TODO"; }		case LanguageType::DANISH:					{ return "TODO"; }
-			case LanguageType::DUTCH:					{ return "TODO"; }		case LanguageType::FINNISH:					{ return "TODO"; }
-			case LanguageType::FRENCH:					{ return "TODO"; }		case LanguageType::GERMAN:					{ return "TODO"; }
-			case LanguageType::GREEK:					{ return "TODO"; }		case LanguageType::HUNGARIAN:				{ return "TODO"; }
-			case LanguageType::ITALIAN:					{ return "TODO"; }		case LanguageType::JAPANESE:				{ return "TODO"; }
-			case LanguageType::KOREAN:					{ return "TODO"; }		case LanguageType::NORWEGIAN:				{ return "TODO"; }
-			case LanguageType::POLISH:					{ return "TODO"; }		case LanguageType::PORTUGUESE:				{ return "TODO"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "TODO"; }		case LanguageType::ROMANIAN:				{ return "TODO"; }
-			case LanguageType::RUSSIAN:					{ return "TODO"; }		case LanguageType::SPANISH:					{ return "TODO"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "TODO"; }	case LanguageType::SWEDISH:					{ return "TODO"; }
-			case LanguageType::THAI:					{ return "TODO"; }		case LanguageType::TURKISH:					{ return "TODO"; }
-			case LanguageType::UKRAINIAN:				{ return "TODO"; }		case LanguageType::VIETNAMESE:				{ return "TODO"; }
-			default: case LanguageType::ENGLISH:		{ return "TODO"; }
+			case LanguageType::ARABIC:					{ return "يقرب FRNDINT قيمة ST(0) إلى عدد صحيح باستخدام وضع التقريب الحالي."; }		case LanguageType::BULGARIAN:				{ return "FRNDINT закръгля ST(0) до цяло число според текущия режим на закръгляне."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "FRNDINT 使用当前舍入模式将 ST(0) 舍入为整数值。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "FRNDINT 使用目前的捨入模式將 ST(0) 捨入為整數值。"; }
+			case LanguageType::CZECH:					{ return "FRNDINT zaokrouhlí ST(0) na celé číslo pomocí aktuálního režimu zaokrouhlování."; }		case LanguageType::DANISH:					{ return "FRNDINT afrunder ST(0) til et heltal med den aktuelle afrundingstilstand."; }
+			case LanguageType::DUTCH:					{ return "FRNDINT rondt ST(0) af naar een geheel getal met de huidige afrondingsmodus."; }		case LanguageType::FINNISH:					{ return "FRNDINT pyöristää ST(0):n kokonaislukuarvoksi nykyisen pyöristystilan mukaan."; }
+			case LanguageType::FRENCH:					{ return "FRNDINT arrondit ST(0) en valeur entière avec le mode d arrondi actuel."; }		case LanguageType::GERMAN:					{ return "FRNDINT rundet ST(0) mit dem aktuellen Rundungsmodus auf einen Ganzzahlwert."; }
+			case LanguageType::GREEK:					{ return "Το FRNDINT στρογγυλοποιεί το ST(0) σε ακέραια τιμή με την τρέχουσα λειτουργία στρογγυλοποίησης."; }		case LanguageType::HUNGARIAN:				{ return "A FRNDINT az aktuális kerekítési móddal egész értékre kerekíti az ST(0)-t."; }
+			case LanguageType::ITALIAN:					{ return "FRNDINT arrotonda ST(0) a un valore intero usando la modalità di arrotondamento corrente."; }		case LanguageType::JAPANESE:				{ return "FRNDINT は現在の丸めモードを使って ST(0) を整数値に丸めます。"; }
+			case LanguageType::KOREAN:					{ return "FRNDINT는 현재 반올림 모드를 사용해 ST(0)을 정수 값으로 반올림합니다."; }		case LanguageType::NORWEGIAN:				{ return "FRNDINT runder ST(0) til et heltall med gjeldende avrundingsmodus."; }
+			case LanguageType::POLISH:					{ return "FRNDINT zaokrągla ST(0) do wartości całkowitej przy użyciu bieżącego trybu zaokrąglania."; }		case LanguageType::PORTUGUESE:				{ return "FRNDINT arredonda ST(0) para um valor inteiro usando o modo de arredondamento atual."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "FRNDINT arredonda ST(0) para um valor inteiro usando o modo de arredondamento atual."; }		case LanguageType::ROMANIAN:				{ return "FRNDINT rotunjește ST(0) la o valoare întreagă folosind modul curent de rotunjire."; }
+			case LanguageType::RUSSIAN:					{ return "FRNDINT округляет ST(0) до целого значения с использованием текущего режима округления."; }		case LanguageType::SPANISH:					{ return "FRNDINT redondea ST(0) a un valor entero usando el modo de redondeo actual."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "FRNDINT redondea ST(0) a un valor entero usando el modo de redondeo actual."; }	case LanguageType::SWEDISH:					{ return "FRNDINT avrundar ST(0) till ett heltal med aktuellt avrundningsläge."; }
+			case LanguageType::THAI:					{ return "FRNDINT ปัด ST(0) เป็นค่าจำนวนเต็มโดยใช้โหมดการปัดเศษปัจจุบัน"; }		case LanguageType::TURKISH:					{ return "FRNDINT geçerli yuvarlama modunu kullanarak ST(0) değerini tam sayıya yuvarlar."; }
+			case LanguageType::UKRAINIAN:				{ return "FRNDINT округлює ST(0) до цілого значення з використанням поточного режиму округлення."; }		case LanguageType::VIETNAMESE:				{ return "FRNDINT làm tròn ST(0) thành giá trị số nguyên bằng chế độ làm tròn hiện tại."; }
+			default: case LanguageType::ENGLISH:		{ return "FRNDINT rounds ST(0) to an integer value using the current rounding mode."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_FloatingPoint_Fsin_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_FloatingPoint_Fsin_Intro(); instance->autorelease(); return instance; }
@@ -39041,21 +39141,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "TODO"; }		case LanguageType::BULGARIAN:				{ return "TODO"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "TODO"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "TODO"; }
-			case LanguageType::CZECH:					{ return "TODO"; }		case LanguageType::DANISH:					{ return "TODO"; }
-			case LanguageType::DUTCH:					{ return "TODO"; }		case LanguageType::FINNISH:					{ return "TODO"; }
-			case LanguageType::FRENCH:					{ return "TODO"; }		case LanguageType::GERMAN:					{ return "TODO"; }
-			case LanguageType::GREEK:					{ return "TODO"; }		case LanguageType::HUNGARIAN:				{ return "TODO"; }
-			case LanguageType::ITALIAN:					{ return "TODO"; }		case LanguageType::JAPANESE:				{ return "TODO"; }
-			case LanguageType::KOREAN:					{ return "TODO"; }		case LanguageType::NORWEGIAN:				{ return "TODO"; }
-			case LanguageType::POLISH:					{ return "TODO"; }		case LanguageType::PORTUGUESE:				{ return "TODO"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "TODO"; }		case LanguageType::ROMANIAN:				{ return "TODO"; }
-			case LanguageType::RUSSIAN:					{ return "TODO"; }		case LanguageType::SPANISH:					{ return "TODO"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "TODO"; }	case LanguageType::SWEDISH:					{ return "TODO"; }
-			case LanguageType::THAI:					{ return "TODO"; }		case LanguageType::TURKISH:					{ return "TODO"; }
-			case LanguageType::UKRAINIAN:				{ return "TODO"; }		case LanguageType::VIETNAMESE:				{ return "TODO"; }
-			default: case LanguageType::ENGLISH:		{ return "TODO"; }
+			case LanguageType::ARABIC:					{ return "يحسب FSIN جيب ST(0)."; }		case LanguageType::BULGARIAN:				{ return "FSIN изчислява синуса на ST(0)."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "FSIN 计算 ST(0) 的正弦值。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "FSIN 計算 ST(0) 的正弦值。"; }
+			case LanguageType::CZECH:					{ return "FSIN vypočítá sinus ST(0)."; }		case LanguageType::DANISH:					{ return "FSIN beregner sinus af ST(0)."; }
+			case LanguageType::DUTCH:					{ return "FSIN berekent de sinus van ST(0)."; }		case LanguageType::FINNISH:					{ return "FSIN laskee ST(0):n sinin."; }
+			case LanguageType::FRENCH:					{ return "FSIN calcule le sinus de ST(0)."; }		case LanguageType::GERMAN:					{ return "FSIN berechnet den Sinus von ST(0)."; }
+			case LanguageType::GREEK:					{ return "Το FSIN υπολογίζει το ημίτονο του ST(0)."; }		case LanguageType::HUNGARIAN:				{ return "Az FSIN kiszámítja az ST(0) szinuszát."; }
+			case LanguageType::ITALIAN:					{ return "FSIN calcola il seno di ST(0)."; }		case LanguageType::JAPANESE:				{ return "FSIN は ST(0) のサインを計算します。"; }
+			case LanguageType::KOREAN:					{ return "FSIN은 ST(0)의 사인을 계산합니다."; }		case LanguageType::NORWEGIAN:				{ return "FSIN beregner sinus av ST(0)."; }
+			case LanguageType::POLISH:					{ return "FSIN oblicza sinus ST(0)."; }		case LanguageType::PORTUGUESE:				{ return "FSIN calcula o seno de ST(0)."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "FSIN calcula o seno de ST(0)."; }		case LanguageType::ROMANIAN:				{ return "FSIN calculează sinusul lui ST(0)."; }
+			case LanguageType::RUSSIAN:					{ return "FSIN вычисляет синус ST(0)."; }		case LanguageType::SPANISH:					{ return "FSIN calcula el seno de ST(0)."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "FSIN calcula el seno de ST(0)."; }	case LanguageType::SWEDISH:					{ return "FSIN beräknar sinus för ST(0)."; }
+			case LanguageType::THAI:					{ return "FSIN คำนวณค่าไซน์ของ ST(0)"; }		case LanguageType::TURKISH:					{ return "FSIN ST(0) değerinin sinüsünü hesaplar."; }
+			case LanguageType::UKRAINIAN:				{ return "FSIN обчислює синус ST(0)."; }		case LanguageType::VIETNAMESE:				{ return "FSIN tính sin của ST(0)."; }
+			default: case LanguageType::ENGLISH:		{ return "FSIN computes the sine of ST(0)."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_FloatingPoint_Fsqrt_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_FloatingPoint_Fsqrt_Intro(); instance->autorelease(); return instance; }
@@ -39091,21 +39191,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "TODO"; }		case LanguageType::BULGARIAN:				{ return "TODO"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "TODO"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "TODO"; }
-			case LanguageType::CZECH:					{ return "TODO"; }		case LanguageType::DANISH:					{ return "TODO"; }
-			case LanguageType::DUTCH:					{ return "TODO"; }		case LanguageType::FINNISH:					{ return "TODO"; }
-			case LanguageType::FRENCH:					{ return "TODO"; }		case LanguageType::GERMAN:					{ return "TODO"; }
-			case LanguageType::GREEK:					{ return "TODO"; }		case LanguageType::HUNGARIAN:				{ return "TODO"; }
-			case LanguageType::ITALIAN:					{ return "TODO"; }		case LanguageType::JAPANESE:				{ return "TODO"; }
-			case LanguageType::KOREAN:					{ return "TODO"; }		case LanguageType::NORWEGIAN:				{ return "TODO"; }
-			case LanguageType::POLISH:					{ return "TODO"; }		case LanguageType::PORTUGUESE:				{ return "TODO"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "TODO"; }		case LanguageType::ROMANIAN:				{ return "TODO"; }
-			case LanguageType::RUSSIAN:					{ return "TODO"; }		case LanguageType::SPANISH:					{ return "TODO"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "TODO"; }	case LanguageType::SWEDISH:					{ return "TODO"; }
-			case LanguageType::THAI:					{ return "TODO"; }		case LanguageType::TURKISH:					{ return "TODO"; }
-			case LanguageType::UKRAINIAN:				{ return "TODO"; }		case LanguageType::VIETNAMESE:				{ return "TODO"; }
-			default: case LanguageType::ENGLISH:		{ return "TODO"; }
+			case LanguageType::ARABIC:					{ return "يقارن FTST قيمة ST(0) مع 0.0 ويحدث أعلام حالة FPU."; }		case LanguageType::BULGARIAN:				{ return "FTST сравнява ST(0) с 0.0 и обновява флаговете за състояние на FPU."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "FTST 将 ST(0) 与 0.0 比较并更新 FPU 状态标志。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "FTST 將 ST(0) 與 0.0 比較並更新 FPU 狀態旗標。"; }
+			case LanguageType::CZECH:					{ return "FTST porovná ST(0) s 0.0 a aktualizuje stavové příznaky FPU."; }		case LanguageType::DANISH:					{ return "FTST sammenligner ST(0) med 0.0 og opdaterer FPU-statusflagene."; }
+			case LanguageType::DUTCH:					{ return "FTST vergelijkt ST(0) met 0.0 en werkt de FPU-statusvlaggen bij."; }		case LanguageType::FINNISH:					{ return "FTST vertaa ST(0):aa arvoon 0.0 ja päivittää FPU:n tilaliput."; }
+			case LanguageType::FRENCH:					{ return "FTST compare ST(0) à 0.0 et met à jour les indicateurs d état FPU."; }		case LanguageType::GERMAN:					{ return "FTST vergleicht ST(0) mit 0.0 und aktualisiert die FPU-Statusflags."; }
+			case LanguageType::GREEK:					{ return "Το FTST συγκρίνει το ST(0) με 0.0 και ενημερώνει τις σημαίες κατάστασης FPU."; }		case LanguageType::HUNGARIAN:				{ return "A FTST összehasonlítja az ST(0)-t 0.0-val, és frissíti az FPU állapotjelzőit."; }
+			case LanguageType::ITALIAN:					{ return "FTST confronta ST(0) con 0.0 e aggiorna i flag di stato FPU."; }		case LanguageType::JAPANESE:				{ return "FTST は ST(0) を 0.0 と比較し、FPU ステータスフラグを更新します。"; }
+			case LanguageType::KOREAN:					{ return "FTST는 ST(0)을 0.0과 비교하고 FPU 상태 플래그를 갱신합니다."; }		case LanguageType::NORWEGIAN:				{ return "FTST sammenligner ST(0) med 0.0 og oppdaterer FPU-statusflaggene."; }
+			case LanguageType::POLISH:					{ return "FTST porównuje ST(0) z 0.0 i aktualizuje flagi stanu FPU."; }		case LanguageType::PORTUGUESE:				{ return "FTST compara ST(0) com 0.0 e atualiza as flags de estado da FPU."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "FTST compara ST(0) com 0.0 e atualiza as flags de estado da FPU."; }		case LanguageType::ROMANIAN:				{ return "FTST compară ST(0) cu 0.0 și actualizează flagurile de stare FPU."; }
+			case LanguageType::RUSSIAN:					{ return "FTST сравнивает ST(0) с 0.0 и обновляет флаги состояния FPU."; }		case LanguageType::SPANISH:					{ return "FTST compara ST(0) con 0.0 y actualiza las banderas de estado de la FPU."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "FTST compara ST(0) con 0.0 y actualiza las banderas de estado de la FPU."; }	case LanguageType::SWEDISH:					{ return "FTST jämför ST(0) med 0.0 och uppdaterar FPU-statusflaggorna."; }
+			case LanguageType::THAI:					{ return "FTST เปรียบเทียบ ST(0) กับ 0.0 และอัปเดตแฟล็กสถานะ FPU"; }		case LanguageType::TURKISH:					{ return "FTST ST(0) ile 0.0 değerini karşılaştırır ve FPU durum bayraklarını günceller."; }
+			case LanguageType::UKRAINIAN:				{ return "FTST порівнює ST(0) з 0.0 і оновлює прапорці стану FPU."; }		case LanguageType::VIETNAMESE:				{ return "FTST so sánh ST(0) với 0.0 và cập nhật các cờ trạng thái FPU."; }
+			default: case LanguageType::ENGLISH:		{ return "FTST compares ST(0) with 0.0 and updates the FPU status flags."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_FloatingPoint_Fxch_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_FloatingPoint_Fxch_Intro(); instance->autorelease(); return instance; }
@@ -39116,21 +39216,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "TODO"; }		case LanguageType::BULGARIAN:				{ return "TODO"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "TODO"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "TODO"; }
-			case LanguageType::CZECH:					{ return "TODO"; }		case LanguageType::DANISH:					{ return "TODO"; }
-			case LanguageType::DUTCH:					{ return "TODO"; }		case LanguageType::FINNISH:					{ return "TODO"; }
-			case LanguageType::FRENCH:					{ return "TODO"; }		case LanguageType::GERMAN:					{ return "TODO"; }
-			case LanguageType::GREEK:					{ return "TODO"; }		case LanguageType::HUNGARIAN:				{ return "TODO"; }
-			case LanguageType::ITALIAN:					{ return "TODO"; }		case LanguageType::JAPANESE:				{ return "TODO"; }
-			case LanguageType::KOREAN:					{ return "TODO"; }		case LanguageType::NORWEGIAN:				{ return "TODO"; }
-			case LanguageType::POLISH:					{ return "TODO"; }		case LanguageType::PORTUGUESE:				{ return "TODO"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "TODO"; }		case LanguageType::ROMANIAN:				{ return "TODO"; }
-			case LanguageType::RUSSIAN:					{ return "TODO"; }		case LanguageType::SPANISH:					{ return "TODO"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "TODO"; }	case LanguageType::SWEDISH:					{ return "TODO"; }
-			case LanguageType::THAI:					{ return "TODO"; }		case LanguageType::TURKISH:					{ return "TODO"; }
-			case LanguageType::UKRAINIAN:				{ return "TODO"; }		case LanguageType::VIETNAMESE:				{ return "TODO"; }
-			default: case LanguageType::ENGLISH:		{ return "TODO"; }
+			case LanguageType::ARABIC:					{ return "يبدل FXCH قيمة ST(0) مع قيمة أخرى على مكدس FPU."; }		case LanguageType::BULGARIAN:				{ return "FXCH разменя ST(0) с друга стойност върху FPU стека."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "FXCH 将 ST(0) 与 FPU 栈上的另一个值交换。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "FXCH 將 ST(0) 與 FPU 堆疊上的另一個值交換。"; }
+			case LanguageType::CZECH:					{ return "FXCH prohodí ST(0) s jinou hodnotou na zásobníku FPU."; }		case LanguageType::DANISH:					{ return "FXCH bytter ST(0) med en anden værdi på FPU-stakken."; }
+			case LanguageType::DUTCH:					{ return "FXCH verwisselt ST(0) met een andere waarde op de FPU-stack."; }		case LanguageType::FINNISH:					{ return "FXCH vaihtaa ST(0):n toiseen arvoon FPU-pinossa."; }
+			case LanguageType::FRENCH:					{ return "FXCH échange ST(0) avec une autre valeur sur la pile FPU."; }		case LanguageType::GERMAN:					{ return "FXCH vertauscht ST(0) mit einem anderen Wert auf dem FPU-Stack."; }
+			case LanguageType::GREEK:					{ return "Το FXCH ανταλλάσσει το ST(0) με άλλη τιμή στη στοίβα FPU."; }		case LanguageType::HUNGARIAN:				{ return "Az FXCH felcseréli az ST(0)-t egy másik értékkel az FPU veremben."; }
+			case LanguageType::ITALIAN:					{ return "FXCH scambia ST(0) con un altro valore sullo stack FPU."; }		case LanguageType::JAPANESE:				{ return "FXCH は ST(0) を FPU スタック上の別の値と交換します。"; }
+			case LanguageType::KOREAN:					{ return "FXCH는 ST(0)을 FPU 스택의 다른 값과 교환합니다."; }		case LanguageType::NORWEGIAN:				{ return "FXCH bytter ST(0) med en annen verdi på FPU-stakken."; }
+			case LanguageType::POLISH:					{ return "FXCH zamienia ST(0) z inną wartością na stosie FPU."; }		case LanguageType::PORTUGUESE:				{ return "FXCH troca ST(0) com outro valor na pilha FPU."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "FXCH troca ST(0) com outro valor na pilha FPU."; }		case LanguageType::ROMANIAN:				{ return "FXCH schimbă ST(0) cu o altă valoare de pe stiva FPU."; }
+			case LanguageType::RUSSIAN:					{ return "FXCH меняет ST(0) с другим значением в стеке FPU."; }		case LanguageType::SPANISH:					{ return "FXCH intercambia ST(0) con otro valor en la pila FPU."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "FXCH intercambia ST(0) con otro valor en la pila FPU."; }	case LanguageType::SWEDISH:					{ return "FXCH byter ST(0) med ett annat värde på FPU-stacken."; }
+			case LanguageType::THAI:					{ return "FXCH สลับ ST(0) กับค่าอื่นบนสแต็ก FPU"; }		case LanguageType::TURKISH:					{ return "FXCH ST(0) değerini FPU yığınındaki başka bir değerle değiştirir."; }
+			case LanguageType::UKRAINIAN:				{ return "FXCH міняє ST(0) з іншим значенням у стеку FPU."; }		case LanguageType::VIETNAMESE:				{ return "FXCH hoán đổi ST(0) với một giá trị khác trên ngăn xếp FPU."; }
+			default: case LanguageType::ENGLISH:		{ return "FXCH swaps ST(0) with another value on the FPU stack."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_FloatingPoint_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_FloatingPoint_Intro(); instance->autorelease(); return instance; }
@@ -39241,21 +39341,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "TODO"; }		case LanguageType::BULGARIAN:				{ return "TODO"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "TODO"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "TODO"; }
-			case LanguageType::CZECH:					{ return "TODO"; }		case LanguageType::DANISH:					{ return "TODO"; }
-			case LanguageType::DUTCH:					{ return "TODO"; }		case LanguageType::FINNISH:					{ return "TODO"; }
-			case LanguageType::FRENCH:					{ return "TODO"; }		case LanguageType::GERMAN:					{ return "TODO"; }
-			case LanguageType::GREEK:					{ return "TODO"; }		case LanguageType::HUNGARIAN:				{ return "TODO"; }
-			case LanguageType::ITALIAN:					{ return "TODO"; }		case LanguageType::JAPANESE:				{ return "TODO"; }
-			case LanguageType::KOREAN:					{ return "TODO"; }		case LanguageType::NORWEGIAN:				{ return "TODO"; }
-			case LanguageType::POLISH:					{ return "TODO"; }		case LanguageType::PORTUGUESE:				{ return "TODO"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "TODO"; }		case LanguageType::ROMANIAN:				{ return "TODO"; }
-			case LanguageType::RUSSIAN:					{ return "TODO"; }		case LanguageType::SPANISH:					{ return "TODO"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "TODO"; }	case LanguageType::SWEDISH:					{ return "TODO"; }
-			case LanguageType::THAI:					{ return "TODO"; }		case LanguageType::TURKISH:					{ return "TODO"; }
-			case LanguageType::UKRAINIAN:				{ return "TODO"; }		case LanguageType::VIETNAMESE:				{ return "TODO"; }
-			default: case LanguageType::ENGLISH:		{ return "TODO"; }
+			case LanguageType::ARABIC:					{ return "يضيف ADDSS قيمة فاصلة عائمة مفردة إلى أخرى."; }		case LanguageType::BULGARIAN:				{ return "ADDSS добавя една скаларна стойност с плаваща запетая към друга."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "ADDSS 将一个标量浮点值加到另一个值上。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "ADDSS 將一個純量浮點值加到另一個值上。"; }
+			case LanguageType::CZECH:					{ return "ADDSS přičte jednu skalární hodnotu s plovoucí desetinnou čárkou k jiné."; }		case LanguageType::DANISH:					{ return "ADDSS lægger en skalar flydende kommaværdi til en anden."; }
+			case LanguageType::DUTCH:					{ return "ADDSS telt een scalaire zwevendekommawaarde op bij een andere."; }		case LanguageType::FINNISH:					{ return "ADDSS lisää yhden skalaarisen liukulukuarvon toiseen."; }
+			case LanguageType::FRENCH:					{ return "ADDSS ajoute une valeur scalaire à virgule flottante à une autre."; }		case LanguageType::GERMAN:					{ return "ADDSS addiert einen skalaren Gleitkommawert zu einem anderen."; }
+			case LanguageType::GREEK:					{ return "Το ADDSS προσθέτει μία βαθμωτή τιμή κινητής υποδιαστολής σε μια άλλη."; }		case LanguageType::HUNGARIAN:				{ return "Az ADDSS egy skaláris lebegőpontos értéket ad hozzá egy másikhoz."; }
+			case LanguageType::ITALIAN:					{ return "ADDSS aggiunge un valore scalare in virgola mobile a un altro."; }		case LanguageType::JAPANESE:				{ return "ADDSS は 1 つのスカラー浮動小数点値を別の値に加算します。"; }
+			case LanguageType::KOREAN:					{ return "ADDSS는 하나의 스칼라 부동소수점 값을 다른 값에 더합니다."; }		case LanguageType::NORWEGIAN:				{ return "ADDSS legger én skalar flyttallsverdi til en annen."; }
+			case LanguageType::POLISH:					{ return "ADDSS dodaje jedną skalarną wartość zmiennoprzecinkową do drugiej."; }		case LanguageType::PORTUGUESE:				{ return "ADDSS adiciona um valor escalar de ponto flutuante a outro."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "ADDSS adiciona um valor escalar de ponto flutuante a outro."; }		case LanguageType::ROMANIAN:				{ return "ADDSS adaugă o valoare scalară în virgulă mobilă la alta."; }
+			case LanguageType::RUSSIAN:					{ return "ADDSS прибавляет одно скалярное значение с плавающей точкой к другому."; }		case LanguageType::SPANISH:					{ return "ADDSS suma un valor escalar de punto flotante a otro."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "ADDSS suma un valor escalar de punto flotante a otro."; }	case LanguageType::SWEDISH:					{ return "ADDSS adderar ett skalärt flyttalsvärde till ett annat."; }
+			case LanguageType::THAI:					{ return "ADDSS เพิ่มค่าทศนิยมแบบสเกลาร์หนึ่งค่าให้กับอีกค่า"; }		case LanguageType::TURKISH:					{ return "ADDSS bir skaler kayan nokta değerini başka bir değere ekler."; }
+			case LanguageType::UKRAINIAN:				{ return "ADDSS додає одне скалярне значення з рухомою комою до іншого."; }		case LanguageType::VIETNAMESE:				{ return "ADDSS cộng một giá trị dấu phẩy động vô hướng vào một giá trị khác."; }
+			default: case LanguageType::ENGLISH:		{ return "ADDSS adds one scalar floating-point value to another."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_Vector_Comiss_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_Vector_Comiss_Intro(); instance->autorelease(); return instance; }
@@ -39266,21 +39366,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "TODO"; }		case LanguageType::BULGARIAN:				{ return "TODO"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "TODO"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "TODO"; }
-			case LanguageType::CZECH:					{ return "TODO"; }		case LanguageType::DANISH:					{ return "TODO"; }
-			case LanguageType::DUTCH:					{ return "TODO"; }		case LanguageType::FINNISH:					{ return "TODO"; }
-			case LanguageType::FRENCH:					{ return "TODO"; }		case LanguageType::GERMAN:					{ return "TODO"; }
-			case LanguageType::GREEK:					{ return "TODO"; }		case LanguageType::HUNGARIAN:				{ return "TODO"; }
-			case LanguageType::ITALIAN:					{ return "TODO"; }		case LanguageType::JAPANESE:				{ return "TODO"; }
-			case LanguageType::KOREAN:					{ return "TODO"; }		case LanguageType::NORWEGIAN:				{ return "TODO"; }
-			case LanguageType::POLISH:					{ return "TODO"; }		case LanguageType::PORTUGUESE:				{ return "TODO"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "TODO"; }		case LanguageType::ROMANIAN:				{ return "TODO"; }
-			case LanguageType::RUSSIAN:					{ return "TODO"; }		case LanguageType::SPANISH:					{ return "TODO"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "TODO"; }	case LanguageType::SWEDISH:					{ return "TODO"; }
-			case LanguageType::THAI:					{ return "TODO"; }		case LanguageType::TURKISH:					{ return "TODO"; }
-			case LanguageType::UKRAINIAN:				{ return "TODO"; }		case LanguageType::VIETNAMESE:				{ return "TODO"; }
-			default: case LanguageType::ENGLISH:		{ return "TODO"; }
+			case LanguageType::ARABIC:					{ return "يقارن COMISS بين قيمتين عائمتين مفردتين ويحدث أعلام المقارنة."; }		case LanguageType::BULGARIAN:				{ return "COMISS сравнява две скаларни стойности с плаваща запетая и обновява флаговете за сравнение."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "COMISS 比较两个标量浮点值并更新比较标志。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "COMISS 比較兩個純量浮點值並更新比較旗標。"; }
+			case LanguageType::CZECH:					{ return "COMISS porovná dvě skalární hodnoty s plovoucí desetinnou čárkou a aktualizuje příznaky porovnání."; }		case LanguageType::DANISH:					{ return "COMISS sammenligner to skalare flydende kommaværdier og opdaterer sammenligningsflagene."; }
+			case LanguageType::DUTCH:					{ return "COMISS vergelijkt twee scalaire zwevendekommawaarden en werkt de vergelijkingsvlaggen bij."; }		case LanguageType::FINNISH:					{ return "COMISS vertaa kahta skalaarista liukulukuarvoa ja päivittää vertailuliput."; }
+			case LanguageType::FRENCH:					{ return "COMISS compare deux valeurs scalaires à virgule flottante et met à jour les indicateurs de comparaison."; }		case LanguageType::GERMAN:					{ return "COMISS vergleicht zwei skalare Gleitkommawerte und aktualisiert die Vergleichsflags."; }
+			case LanguageType::GREEK:					{ return "Το COMISS συγκρίνει δύο βαθμωτές τιμές κινητής υποδιαστολής και ενημερώνει τις σημαίες σύγκρισης."; }		case LanguageType::HUNGARIAN:				{ return "A COMISS összehasonlít két skaláris lebegőpontos értéket, és frissíti az összehasonlítási jelzőket."; }
+			case LanguageType::ITALIAN:					{ return "COMISS confronta due valori scalari in virgola mobile e aggiorna i flag di confronto."; }		case LanguageType::JAPANESE:				{ return "COMISS は 2 つのスカラー浮動小数点値を比較し、比較フラグを更新します。"; }
+			case LanguageType::KOREAN:					{ return "COMISS는 두 스칼라 부동소수점 값을 비교하고 비교 플래그를 갱신합니다."; }		case LanguageType::NORWEGIAN:				{ return "COMISS sammenligner to skalare flyttallsverdier og oppdaterer sammenligningsflaggene."; }
+			case LanguageType::POLISH:					{ return "COMISS porównuje dwie skalarne wartości zmiennoprzecinkowe i aktualizuje flagi porównania."; }		case LanguageType::PORTUGUESE:				{ return "COMISS compara dois valores escalares de ponto flutuante e atualiza as flags de comparação."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "COMISS compara dois valores escalares de ponto flutuante e atualiza as flags de comparação."; }		case LanguageType::ROMANIAN:				{ return "COMISS compară două valori scalare în virgulă mobilă și actualizează flagurile de comparație."; }
+			case LanguageType::RUSSIAN:					{ return "COMISS сравнивает два скалярных значения с плавающей точкой и обновляет флаги сравнения."; }		case LanguageType::SPANISH:					{ return "COMISS compara dos valores escalares de punto flotante y actualiza las banderas de comparación."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "COMISS compara dos valores escalares de punto flotante y actualiza las banderas de comparación."; }	case LanguageType::SWEDISH:					{ return "COMISS jämför två skalära flyttalsvärden och uppdaterar jämförelseflaggorna."; }
+			case LanguageType::THAI:					{ return "COMISS เปรียบเทียบค่าทศนิยมแบบสเกลาร์สองค่าและอัปเดตแฟล็กการเปรียบเทียบ"; }		case LanguageType::TURKISH:					{ return "COMISS iki skaler kayan nokta değerini karşılaştırır ve karşılaştırma bayraklarını günceller."; }
+			case LanguageType::UKRAINIAN:				{ return "COMISS порівнює два скалярні значення з рухомою комою та оновлює прапорці порівняння."; }		case LanguageType::VIETNAMESE:				{ return "COMISS so sánh hai giá trị dấu phẩy động vô hướng và cập nhật các cờ so sánh."; }
+			default: case LanguageType::ENGLISH:		{ return "COMISS compares two scalar floating-point values and updates the comparison flags."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_Vector_Divss_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_Vector_Divss_Intro(); instance->autorelease(); return instance; }
@@ -39291,21 +39391,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "TODO"; }		case LanguageType::BULGARIAN:				{ return "TODO"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "TODO"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "TODO"; }
-			case LanguageType::CZECH:					{ return "TODO"; }		case LanguageType::DANISH:					{ return "TODO"; }
-			case LanguageType::DUTCH:					{ return "TODO"; }		case LanguageType::FINNISH:					{ return "TODO"; }
-			case LanguageType::FRENCH:					{ return "TODO"; }		case LanguageType::GERMAN:					{ return "TODO"; }
-			case LanguageType::GREEK:					{ return "TODO"; }		case LanguageType::HUNGARIAN:				{ return "TODO"; }
-			case LanguageType::ITALIAN:					{ return "TODO"; }		case LanguageType::JAPANESE:				{ return "TODO"; }
-			case LanguageType::KOREAN:					{ return "TODO"; }		case LanguageType::NORWEGIAN:				{ return "TODO"; }
-			case LanguageType::POLISH:					{ return "TODO"; }		case LanguageType::PORTUGUESE:				{ return "TODO"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "TODO"; }		case LanguageType::ROMANIAN:				{ return "TODO"; }
-			case LanguageType::RUSSIAN:					{ return "TODO"; }		case LanguageType::SPANISH:					{ return "TODO"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "TODO"; }	case LanguageType::SWEDISH:					{ return "TODO"; }
-			case LanguageType::THAI:					{ return "TODO"; }		case LanguageType::TURKISH:					{ return "TODO"; }
-			case LanguageType::UKRAINIAN:				{ return "TODO"; }		case LanguageType::VIETNAMESE:				{ return "TODO"; }
-			default: case LanguageType::ENGLISH:		{ return "TODO"; }
+			case LanguageType::ARABIC:					{ return "يقسم DIVSS قيمة فاصلة عائمة مفردة على أخرى."; }		case LanguageType::BULGARIAN:				{ return "DIVSS дели една скаларна стойност с плаваща запетая на друга."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "DIVSS 将一个标量浮点值除以另一个值。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "DIVSS 將一個純量浮點值除以另一個值。"; }
+			case LanguageType::CZECH:					{ return "DIVSS vydělí jednu skalární hodnotu s plovoucí desetinnou čárkou jinou."; }		case LanguageType::DANISH:					{ return "DIVSS dividerer en skalar flydende kommaværdi med en anden."; }
+			case LanguageType::DUTCH:					{ return "DIVSS deelt een scalaire zwevendekommawaarde door een andere."; }		case LanguageType::FINNISH:					{ return "DIVSS jakaa yhden skalaarisen liukulukuarvon toisella."; }
+			case LanguageType::FRENCH:					{ return "DIVSS divise une valeur scalaire à virgule flottante par une autre."; }		case LanguageType::GERMAN:					{ return "DIVSS dividiert einen skalaren Gleitkommawert durch einen anderen."; }
+			case LanguageType::GREEK:					{ return "Το DIVSS διαιρεί μία βαθμωτή τιμή κινητής υποδιαστολής με μια άλλη."; }		case LanguageType::HUNGARIAN:				{ return "A DIVSS egy skaláris lebegőpontos értéket oszt el egy másikkal."; }
+			case LanguageType::ITALIAN:					{ return "DIVSS divide un valore scalare in virgola mobile per un altro."; }		case LanguageType::JAPANESE:				{ return "DIVSS は 1 つのスカラー浮動小数点値を別の値で除算します。"; }
+			case LanguageType::KOREAN:					{ return "DIVSS는 하나의 스칼라 부동소수점 값을 다른 값으로 나눕니다."; }		case LanguageType::NORWEGIAN:				{ return "DIVSS deler én skalar flyttallsverdi på en annen."; }
+			case LanguageType::POLISH:					{ return "DIVSS dzieli jedną skalarną wartość zmiennoprzecinkową przez drugą."; }		case LanguageType::PORTUGUESE:				{ return "DIVSS divide um valor escalar de ponto flutuante por outro."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "DIVSS divide um valor escalar de ponto flutuante por outro."; }		case LanguageType::ROMANIAN:				{ return "DIVSS împarte o valoare scalară în virgulă mobilă la alta."; }
+			case LanguageType::RUSSIAN:					{ return "DIVSS делит одно скалярное значение с плавающей точкой на другое."; }		case LanguageType::SPANISH:					{ return "DIVSS divide un valor escalar de punto flotante por otro."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "DIVSS divide un valor escalar de punto flotante por otro."; }	case LanguageType::SWEDISH:					{ return "DIVSS dividerar ett skalärt flyttalsvärde med ett annat."; }
+			case LanguageType::THAI:					{ return "DIVSS หารค่าทศนิยมแบบสเกลาร์หนึ่งค่าด้วยอีกค่า"; }		case LanguageType::TURKISH:					{ return "DIVSS bir skaler kayan nokta değerini başka bir değere böler."; }
+			case LanguageType::UKRAINIAN:				{ return "DIVSS ділить одне скалярне значення з рухомою комою на інше."; }		case LanguageType::VIETNAMESE:				{ return "DIVSS chia một giá trị dấu phẩy động vô hướng cho một giá trị khác."; }
+			default: case LanguageType::ENGLISH:		{ return "DIVSS divides one scalar floating-point value by another."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_Vector_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_Vector_Intro(); instance->autorelease(); return instance; }
@@ -39341,21 +39441,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "TODO"; }		case LanguageType::BULGARIAN:				{ return "TODO"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "TODO"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "TODO"; }
-			case LanguageType::CZECH:					{ return "TODO"; }		case LanguageType::DANISH:					{ return "TODO"; }
-			case LanguageType::DUTCH:					{ return "TODO"; }		case LanguageType::FINNISH:					{ return "TODO"; }
-			case LanguageType::FRENCH:					{ return "TODO"; }		case LanguageType::GERMAN:					{ return "TODO"; }
-			case LanguageType::GREEK:					{ return "TODO"; }		case LanguageType::HUNGARIAN:				{ return "TODO"; }
-			case LanguageType::ITALIAN:					{ return "TODO"; }		case LanguageType::JAPANESE:				{ return "TODO"; }
-			case LanguageType::KOREAN:					{ return "TODO"; }		case LanguageType::NORWEGIAN:				{ return "TODO"; }
-			case LanguageType::POLISH:					{ return "TODO"; }		case LanguageType::PORTUGUESE:				{ return "TODO"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "TODO"; }		case LanguageType::ROMANIAN:				{ return "TODO"; }
-			case LanguageType::RUSSIAN:					{ return "TODO"; }		case LanguageType::SPANISH:					{ return "TODO"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "TODO"; }	case LanguageType::SWEDISH:					{ return "TODO"; }
-			case LanguageType::THAI:					{ return "TODO"; }		case LanguageType::TURKISH:					{ return "TODO"; }
-			case LanguageType::UKRAINIAN:				{ return "TODO"; }		case LanguageType::VIETNAMESE:				{ return "TODO"; }
-			default: case LanguageType::ENGLISH:		{ return "TODO"; }
+			case LanguageType::ARABIC:					{ return "يبقي MAXSS على القيمة الأكبر بين قيمتين عائمتين مفردتين."; }		case LanguageType::BULGARIAN:				{ return "MAXSS запазва по-голямата от две скаларни стойности с плаваща запетая."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "MAXSS 保留两个标量浮点值中较大的一个。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "MAXSS 保留兩個純量浮點值中較大的值。"; }
+			case LanguageType::CZECH:					{ return "MAXSS ponechá větší ze dvou skalárních hodnot s plovoucí desetinnou čárkou."; }		case LanguageType::DANISH:					{ return "MAXSS beholder den største af to skalare flydende kommaværdier."; }
+			case LanguageType::DUTCH:					{ return "MAXSS behoudt de grootste van twee scalaire zwevendekommawaarden."; }		case LanguageType::FINNISH:					{ return "MAXSS säilyttää kahdesta skalaarisesta liukulukuarvosta suuremman."; }
+			case LanguageType::FRENCH:					{ return "MAXSS conserve la plus grande de deux valeurs scalaires à virgule flottante."; }		case LanguageType::GERMAN:					{ return "MAXSS behält den größeren von zwei skalaren Gleitkommawerten."; }
+			case LanguageType::GREEK:					{ return "Το MAXSS κρατά τη μεγαλύτερη από δύο βαθμωτές τιμές κινητής υποδιαστολής."; }		case LanguageType::HUNGARIAN:				{ return "A MAXSS megtartja két skaláris lebegőpontos érték közül a nagyobbat."; }
+			case LanguageType::ITALIAN:					{ return "MAXSS mantiene il maggiore tra due valori scalari in virgola mobile."; }		case LanguageType::JAPANESE:				{ return "MAXSS は 2 つのスカラー浮動小数点値のうち大きい方を保持します。"; }
+			case LanguageType::KOREAN:					{ return "MAXSS는 두 스칼라 부동소수점 값 중 더 큰 값을 유지합니다."; }		case LanguageType::NORWEGIAN:				{ return "MAXSS beholder den største av to skalare flyttallsverdier."; }
+			case LanguageType::POLISH:					{ return "MAXSS zachowuje większą z dwóch skalarnych wartości zmiennoprzecinkowych."; }		case LanguageType::PORTUGUESE:				{ return "MAXSS mantém o maior de dois valores escalares de ponto flutuante."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "MAXSS mantém o maior de dois valores escalares de ponto flutuante."; }		case LanguageType::ROMANIAN:				{ return "MAXSS păstrează cea mai mare dintre două valori scalare în virgulă mobilă."; }
+			case LanguageType::RUSSIAN:					{ return "MAXSS оставляет большее из двух скалярных значений с плавающей точкой."; }		case LanguageType::SPANISH:					{ return "MAXSS conserva el mayor de dos valores escalares de punto flotante."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "MAXSS conserva el mayor de dos valores escalares de punto flotante."; }	case LanguageType::SWEDISH:					{ return "MAXSS behåller det största av två skalära flyttalsvärden."; }
+			case LanguageType::THAI:					{ return "MAXSS เก็บค่าที่มากกว่าระหว่างค่าทศนิยมแบบสเกลาร์สองค่า"; }		case LanguageType::TURKISH:					{ return "MAXSS iki skaler kayan nokta değerinden büyük olanı tutar."; }
+			case LanguageType::UKRAINIAN:				{ return "MAXSS залишає більше з двох скалярних значень з рухомою комою."; }		case LanguageType::VIETNAMESE:				{ return "MAXSS giữ giá trị lớn hơn trong hai giá trị dấu phẩy động vô hướng."; }
+			default: case LanguageType::ENGLISH:		{ return "MAXSS keeps the larger of two scalar floating-point values."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_Vector_Minss_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_Vector_Minss_Intro(); instance->autorelease(); return instance; }
@@ -39366,21 +39466,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "TODO"; }		case LanguageType::BULGARIAN:				{ return "TODO"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "TODO"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "TODO"; }
-			case LanguageType::CZECH:					{ return "TODO"; }		case LanguageType::DANISH:					{ return "TODO"; }
-			case LanguageType::DUTCH:					{ return "TODO"; }		case LanguageType::FINNISH:					{ return "TODO"; }
-			case LanguageType::FRENCH:					{ return "TODO"; }		case LanguageType::GERMAN:					{ return "TODO"; }
-			case LanguageType::GREEK:					{ return "TODO"; }		case LanguageType::HUNGARIAN:				{ return "TODO"; }
-			case LanguageType::ITALIAN:					{ return "TODO"; }		case LanguageType::JAPANESE:				{ return "TODO"; }
-			case LanguageType::KOREAN:					{ return "TODO"; }		case LanguageType::NORWEGIAN:				{ return "TODO"; }
-			case LanguageType::POLISH:					{ return "TODO"; }		case LanguageType::PORTUGUESE:				{ return "TODO"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "TODO"; }		case LanguageType::ROMANIAN:				{ return "TODO"; }
-			case LanguageType::RUSSIAN:					{ return "TODO"; }		case LanguageType::SPANISH:					{ return "TODO"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "TODO"; }	case LanguageType::SWEDISH:					{ return "TODO"; }
-			case LanguageType::THAI:					{ return "TODO"; }		case LanguageType::TURKISH:					{ return "TODO"; }
-			case LanguageType::UKRAINIAN:				{ return "TODO"; }		case LanguageType::VIETNAMESE:				{ return "TODO"; }
-			default: case LanguageType::ENGLISH:		{ return "TODO"; }
+			case LanguageType::ARABIC:					{ return "يبقي MINSS على القيمة الأصغر بين قيمتين عائمتين مفردتين."; }		case LanguageType::BULGARIAN:				{ return "MINSS запазва по-малката от две скаларни стойности с плаваща запетая."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "MINSS 保留两个标量浮点值中较小的一个。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "MINSS 保留兩個純量浮點值中較小的值。"; }
+			case LanguageType::CZECH:					{ return "MINSS ponechá menší ze dvou skalárních hodnot s plovoucí desetinnou čárkou."; }		case LanguageType::DANISH:					{ return "MINSS beholder den mindste af to skalare flydende kommaværdier."; }
+			case LanguageType::DUTCH:					{ return "MINSS behoudt de kleinste van twee scalaire zwevendekommawaarden."; }		case LanguageType::FINNISH:					{ return "MINSS säilyttää kahdesta skalaarisesta liukulukuarvosta pienemmän."; }
+			case LanguageType::FRENCH:					{ return "MINSS conserve la plus petite de deux valeurs scalaires à virgule flottante."; }		case LanguageType::GERMAN:					{ return "MINSS behält den kleineren von zwei skalaren Gleitkommawerten."; }
+			case LanguageType::GREEK:					{ return "Το MINSS κρατά τη μικρότερη από δύο βαθμωτές τιμές κινητής υποδιαστολής."; }		case LanguageType::HUNGARIAN:				{ return "A MINSS megtartja két skaláris lebegőpontos érték közül a kisebbet."; }
+			case LanguageType::ITALIAN:					{ return "MINSS mantiene il minore tra due valori scalari in virgola mobile."; }		case LanguageType::JAPANESE:				{ return "MINSS は 2 つのスカラー浮動小数点値のうち小さい方を保持します。"; }
+			case LanguageType::KOREAN:					{ return "MINSS는 두 스칼라 부동소수점 값 중 더 작은 값을 유지합니다."; }		case LanguageType::NORWEGIAN:				{ return "MINSS beholder den minste av to skalare flyttallsverdier."; }
+			case LanguageType::POLISH:					{ return "MINSS zachowuje mniejszą z dwóch skalarnych wartości zmiennoprzecinkowych."; }		case LanguageType::PORTUGUESE:				{ return "MINSS mantém o menor de dois valores escalares de ponto flutuante."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "MINSS mantém o menor de dois valores escalares de ponto flutuante."; }		case LanguageType::ROMANIAN:				{ return "MINSS păstrează cea mai mică dintre două valori scalare în virgulă mobilă."; }
+			case LanguageType::RUSSIAN:					{ return "MINSS оставляет меньшее из двух скалярных значений с плавающей точкой."; }		case LanguageType::SPANISH:					{ return "MINSS conserva el menor de dos valores escalares de punto flotante."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "MINSS conserva el menor de dos valores escalares de punto flotante."; }	case LanguageType::SWEDISH:					{ return "MINSS behåller det minsta av två skalära flyttalsvärden."; }
+			case LanguageType::THAI:					{ return "MINSS เก็บค่าที่น้อยกว่าระหว่างค่าทศนิยมแบบสเกลาร์สองค่า"; }		case LanguageType::TURKISH:					{ return "MINSS iki skaler kayan nokta değerinden küçük olanı tutar."; }
+			case LanguageType::UKRAINIAN:				{ return "MINSS залишає менше з двох скалярних значень з рухомою комою."; }		case LanguageType::VIETNAMESE:				{ return "MINSS giữ giá trị nhỏ hơn trong hai giá trị dấu phẩy động vô hướng."; }
+			default: case LanguageType::ENGLISH:		{ return "MINSS keeps the smaller of two scalar floating-point values."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_Vector_Mulss_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_Vector_Mulss_Intro(); instance->autorelease(); return instance; }
@@ -39391,21 +39491,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "TODO"; }		case LanguageType::BULGARIAN:				{ return "TODO"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "TODO"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "TODO"; }
-			case LanguageType::CZECH:					{ return "TODO"; }		case LanguageType::DANISH:					{ return "TODO"; }
-			case LanguageType::DUTCH:					{ return "TODO"; }		case LanguageType::FINNISH:					{ return "TODO"; }
-			case LanguageType::FRENCH:					{ return "TODO"; }		case LanguageType::GERMAN:					{ return "TODO"; }
-			case LanguageType::GREEK:					{ return "TODO"; }		case LanguageType::HUNGARIAN:				{ return "TODO"; }
-			case LanguageType::ITALIAN:					{ return "TODO"; }		case LanguageType::JAPANESE:				{ return "TODO"; }
-			case LanguageType::KOREAN:					{ return "TODO"; }		case LanguageType::NORWEGIAN:				{ return "TODO"; }
-			case LanguageType::POLISH:					{ return "TODO"; }		case LanguageType::PORTUGUESE:				{ return "TODO"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "TODO"; }		case LanguageType::ROMANIAN:				{ return "TODO"; }
-			case LanguageType::RUSSIAN:					{ return "TODO"; }		case LanguageType::SPANISH:					{ return "TODO"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "TODO"; }	case LanguageType::SWEDISH:					{ return "TODO"; }
-			case LanguageType::THAI:					{ return "TODO"; }		case LanguageType::TURKISH:					{ return "TODO"; }
-			case LanguageType::UKRAINIAN:				{ return "TODO"; }		case LanguageType::VIETNAMESE:				{ return "TODO"; }
-			default: case LanguageType::ENGLISH:		{ return "TODO"; }
+			case LanguageType::ARABIC:					{ return "يضرب MULSS قيمة فاصلة عائمة مفردة في أخرى."; }		case LanguageType::BULGARIAN:				{ return "MULSS умножава една скаларна стойност с плаваща запетая по друга."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "MULSS 将一个标量浮点值与另一个值相乘。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "MULSS 將一個純量浮點值與另一個值相乘。"; }
+			case LanguageType::CZECH:					{ return "MULSS vynásobí jednu skalární hodnotu s plovoucí desetinnou čárkou jinou."; }		case LanguageType::DANISH:					{ return "MULSS ganger en skalar flydende kommaværdi med en anden."; }
+			case LanguageType::DUTCH:					{ return "MULSS vermenigvuldigt een scalaire zwevendekommawaarde met een andere."; }		case LanguageType::FINNISH:					{ return "MULSS kertoo yhden skalaarisen liukulukuarvon toisella."; }
+			case LanguageType::FRENCH:					{ return "MULSS multiplie une valeur scalaire à virgule flottante par une autre."; }		case LanguageType::GERMAN:					{ return "MULSS multipliziert einen skalaren Gleitkommawert mit einem anderen."; }
+			case LanguageType::GREEK:					{ return "Το MULSS πολλαπλασιάζει μία βαθμωτή τιμή κινητής υποδιαστολής με μια άλλη."; }		case LanguageType::HUNGARIAN:				{ return "A MULSS egy skaláris lebegőpontos értéket szoroz meg egy másikkal."; }
+			case LanguageType::ITALIAN:					{ return "MULSS moltiplica un valore scalare in virgola mobile per un altro."; }		case LanguageType::JAPANESE:				{ return "MULSS は 1 つのスカラー浮動小数点値を別の値で乗算します。"; }
+			case LanguageType::KOREAN:					{ return "MULSS는 하나의 스칼라 부동소수점 값을 다른 값과 곱합니다."; }		case LanguageType::NORWEGIAN:				{ return "MULSS multipliserer én skalar flyttallsverdi med en annen."; }
+			case LanguageType::POLISH:					{ return "MULSS mnoży jedną skalarną wartość zmiennoprzecinkową przez drugą."; }		case LanguageType::PORTUGUESE:				{ return "MULSS multiplica um valor escalar de ponto flutuante por outro."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "MULSS multiplica um valor escalar de ponto flutuante por outro."; }		case LanguageType::ROMANIAN:				{ return "MULSS înmulțește o valoare scalară în virgulă mobilă cu alta."; }
+			case LanguageType::RUSSIAN:					{ return "MULSS умножает одно скалярное значение с плавающей точкой на другое."; }		case LanguageType::SPANISH:					{ return "MULSS multiplica un valor escalar de punto flotante por otro."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "MULSS multiplica un valor escalar de punto flotante por otro."; }	case LanguageType::SWEDISH:					{ return "MULSS multiplicerar ett skalärt flyttalsvärde med ett annat."; }
+			case LanguageType::THAI:					{ return "MULSS คูณค่าทศนิยมแบบสเกลาร์หนึ่งค่ากับอีกค่า"; }		case LanguageType::TURKISH:					{ return "MULSS bir skaler kayan nokta değerini başka bir değerle çarpar."; }
+			case LanguageType::UKRAINIAN:				{ return "MULSS множить одне скалярне значення з рухомою комою на інше."; }		case LanguageType::VIETNAMESE:				{ return "MULSS nhân một giá trị dấu phẩy động vô hướng với một giá trị khác."; }
+			default: case LanguageType::ENGLISH:		{ return "MULSS multiplies one scalar floating-point value by another."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_Vector_Sqrtss_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_Vector_Sqrtss_Intro(); instance->autorelease(); return instance; }
@@ -39416,21 +39516,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "TODO"; }		case LanguageType::BULGARIAN:				{ return "TODO"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "TODO"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "TODO"; }
-			case LanguageType::CZECH:					{ return "TODO"; }		case LanguageType::DANISH:					{ return "TODO"; }
-			case LanguageType::DUTCH:					{ return "TODO"; }		case LanguageType::FINNISH:					{ return "TODO"; }
-			case LanguageType::FRENCH:					{ return "TODO"; }		case LanguageType::GERMAN:					{ return "TODO"; }
-			case LanguageType::GREEK:					{ return "TODO"; }		case LanguageType::HUNGARIAN:				{ return "TODO"; }
-			case LanguageType::ITALIAN:					{ return "TODO"; }		case LanguageType::JAPANESE:				{ return "TODO"; }
-			case LanguageType::KOREAN:					{ return "TODO"; }		case LanguageType::NORWEGIAN:				{ return "TODO"; }
-			case LanguageType::POLISH:					{ return "TODO"; }		case LanguageType::PORTUGUESE:				{ return "TODO"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "TODO"; }		case LanguageType::ROMANIAN:				{ return "TODO"; }
-			case LanguageType::RUSSIAN:					{ return "TODO"; }		case LanguageType::SPANISH:					{ return "TODO"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "TODO"; }	case LanguageType::SWEDISH:					{ return "TODO"; }
-			case LanguageType::THAI:					{ return "TODO"; }		case LanguageType::TURKISH:					{ return "TODO"; }
-			case LanguageType::UKRAINIAN:				{ return "TODO"; }		case LanguageType::VIETNAMESE:				{ return "TODO"; }
-			default: case LanguageType::ENGLISH:		{ return "TODO"; }
+			case LanguageType::ARABIC:					{ return "يحسب SQRTSS الجذر التربيعي لقيمة فاصلة عائمة مفردة."; }		case LanguageType::BULGARIAN:				{ return "SQRTSS изчислява квадратния корен на скаларна стойност с плаваща запетая."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "SQRTSS 计算标量浮点值的平方根。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "SQRTSS 計算純量浮點值的平方根。"; }
+			case LanguageType::CZECH:					{ return "SQRTSS vypočítá druhou odmocninu skalární hodnoty s plovoucí desetinnou čárkou."; }		case LanguageType::DANISH:					{ return "SQRTSS beregner kvadratroden af en skalar flydende kommaværdi."; }
+			case LanguageType::DUTCH:					{ return "SQRTSS berekent de vierkantswortel van een scalaire zwevendekommawaarde."; }		case LanguageType::FINNISH:					{ return "SQRTSS laskee skalaarisen liukulukuarvon neliöjuuren."; }
+			case LanguageType::FRENCH:					{ return "SQRTSS calcule la racine carrée d une valeur scalaire à virgule flottante."; }		case LanguageType::GERMAN:					{ return "SQRTSS berechnet die Quadratwurzel eines skalaren Gleitkommawerts."; }
+			case LanguageType::GREEK:					{ return "Το SQRTSS υπολογίζει την τετραγωνική ρίζα μιας βαθμωτής τιμής κινητής υποδιαστολής."; }		case LanguageType::HUNGARIAN:				{ return "Az SQRTSS kiszámítja egy skaláris lebegőpontos érték négyzetgyökét."; }
+			case LanguageType::ITALIAN:					{ return "SQRTSS calcola la radice quadrata di un valore scalare in virgola mobile."; }		case LanguageType::JAPANESE:				{ return "SQRTSS はスカラー浮動小数点値の平方根を計算します。"; }
+			case LanguageType::KOREAN:					{ return "SQRTSS는 스칼라 부동소수점 값의 제곱근을 계산합니다."; }		case LanguageType::NORWEGIAN:				{ return "SQRTSS beregner kvadratroten av en skalar flyttallsverdi."; }
+			case LanguageType::POLISH:					{ return "SQRTSS oblicza pierwiastek kwadratowy skalarnej wartości zmiennoprzecinkowej."; }		case LanguageType::PORTUGUESE:				{ return "SQRTSS calcula a raiz quadrada de um valor escalar de ponto flutuante."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "SQRTSS calcula a raiz quadrada de um valor escalar de ponto flutuante."; }		case LanguageType::ROMANIAN:				{ return "SQRTSS calculează rădăcina pătrată a unei valori scalare în virgulă mobilă."; }
+			case LanguageType::RUSSIAN:					{ return "SQRTSS вычисляет квадратный корень скалярного значения с плавающей точкой."; }		case LanguageType::SPANISH:					{ return "SQRTSS calcula la raíz cuadrada de un valor escalar de punto flotante."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "SQRTSS calcula la raíz cuadrada de un valor escalar de punto flotante."; }	case LanguageType::SWEDISH:					{ return "SQRTSS beräknar kvadratroten av ett skalärt flyttalsvärde."; }
+			case LanguageType::THAI:					{ return "SQRTSS คำนวณรากที่สองของค่าทศนิยมแบบสเกลาร์"; }		case LanguageType::TURKISH:					{ return "SQRTSS bir skaler kayan nokta değerinin karekökünü hesaplar."; }
+			case LanguageType::UKRAINIAN:				{ return "SQRTSS обчислює квадратний корінь скалярного значення з рухомою комою."; }		case LanguageType::VIETNAMESE:				{ return "SQRTSS tính căn bậc hai của một giá trị dấu phẩy động vô hướng."; }
+			default: case LanguageType::ENGLISH:		{ return "SQRTSS computes the square root of a scalar floating-point value."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_Vector_Subss_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_Vector_Subss_Intro(); instance->autorelease(); return instance; }
@@ -39441,21 +39541,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "TODO"; }		case LanguageType::BULGARIAN:				{ return "TODO"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "TODO"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "TODO"; }
-			case LanguageType::CZECH:					{ return "TODO"; }		case LanguageType::DANISH:					{ return "TODO"; }
-			case LanguageType::DUTCH:					{ return "TODO"; }		case LanguageType::FINNISH:					{ return "TODO"; }
-			case LanguageType::FRENCH:					{ return "TODO"; }		case LanguageType::GERMAN:					{ return "TODO"; }
-			case LanguageType::GREEK:					{ return "TODO"; }		case LanguageType::HUNGARIAN:				{ return "TODO"; }
-			case LanguageType::ITALIAN:					{ return "TODO"; }		case LanguageType::JAPANESE:				{ return "TODO"; }
-			case LanguageType::KOREAN:					{ return "TODO"; }		case LanguageType::NORWEGIAN:				{ return "TODO"; }
-			case LanguageType::POLISH:					{ return "TODO"; }		case LanguageType::PORTUGUESE:				{ return "TODO"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "TODO"; }		case LanguageType::ROMANIAN:				{ return "TODO"; }
-			case LanguageType::RUSSIAN:					{ return "TODO"; }		case LanguageType::SPANISH:					{ return "TODO"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "TODO"; }	case LanguageType::SWEDISH:					{ return "TODO"; }
-			case LanguageType::THAI:					{ return "TODO"; }		case LanguageType::TURKISH:					{ return "TODO"; }
-			case LanguageType::UKRAINIAN:				{ return "TODO"; }		case LanguageType::VIETNAMESE:				{ return "TODO"; }
-			default: case LanguageType::ENGLISH:		{ return "TODO"; }
+			case LanguageType::ARABIC:					{ return "يطرح SUBSS قيمة فاصلة عائمة مفردة من أخرى."; }		case LanguageType::BULGARIAN:				{ return "SUBSS изважда една скаларна стойност с плаваща запетая от друга."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "SUBSS 从另一个值中减去一个标量浮点值。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "SUBSS 從另一個值中減去一個純量浮點值。"; }
+			case LanguageType::CZECH:					{ return "SUBSS odečte jednu skalární hodnotu s plovoucí desetinnou čárkou od jiné."; }		case LanguageType::DANISH:					{ return "SUBSS trækker en skalar flydende kommaværdi fra en anden."; }
+			case LanguageType::DUTCH:					{ return "SUBSS trekt een scalaire zwevendekommawaarde af van een andere."; }		case LanguageType::FINNISH:					{ return "SUBSS vähentää yhden skalaarisen liukulukuarvon toisesta."; }
+			case LanguageType::FRENCH:					{ return "SUBSS soustrait une valeur scalaire à virgule flottante d une autre."; }		case LanguageType::GERMAN:					{ return "SUBSS subtrahiert einen skalaren Gleitkommawert von einem anderen."; }
+			case LanguageType::GREEK:					{ return "Το SUBSS αφαιρεί μία βαθμωτή τιμή κινητής υποδιαστολής από μια άλλη."; }		case LanguageType::HUNGARIAN:				{ return "A SUBSS egy skaláris lebegőpontos értéket von ki egy másikból."; }
+			case LanguageType::ITALIAN:					{ return "SUBSS sottrae un valore scalare in virgola mobile da un altro."; }		case LanguageType::JAPANESE:				{ return "SUBSS は 1 つのスカラー浮動小数点値を別の値から減算します。"; }
+			case LanguageType::KOREAN:					{ return "SUBSS는 하나의 스칼라 부동소수점 값을 다른 값에서 뺍니다."; }		case LanguageType::NORWEGIAN:				{ return "SUBSS trekker én skalar flyttallsverdi fra en annen."; }
+			case LanguageType::POLISH:					{ return "SUBSS odejmuje jedną skalarną wartość zmiennoprzecinkową od drugiej."; }		case LanguageType::PORTUGUESE:				{ return "SUBSS subtrai um valor escalar de ponto flutuante de outro."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "SUBSS subtrai um valor escalar de ponto flutuante de outro."; }		case LanguageType::ROMANIAN:				{ return "SUBSS scade o valoare scalară în virgulă mobilă din alta."; }
+			case LanguageType::RUSSIAN:					{ return "SUBSS вычитает одно скалярное значение с плавающей точкой из другого."; }		case LanguageType::SPANISH:					{ return "SUBSS resta un valor escalar de punto flotante de otro."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "SUBSS resta un valor escalar de punto flotante de otro."; }	case LanguageType::SWEDISH:					{ return "SUBSS subtraherar ett skalärt flyttalsvärde från ett annat."; }
+			case LanguageType::THAI:					{ return "SUBSS ลบค่าทศนิยมแบบสเกลาร์หนึ่งค่าออกจากอีกค่า"; }		case LanguageType::TURKISH:					{ return "SUBSS bir skaler kayan nokta değerini başka bir değerden çıkarır."; }
+			case LanguageType::UKRAINIAN:				{ return "SUBSS віднімає одне скалярне значення з рухомою комою від іншого."; }		case LanguageType::VIETNAMESE:				{ return "SUBSS trừ một giá trị dấu phẩy động vô hướng khỏi một giá trị khác."; }
+			default: case LanguageType::ENGLISH:		{ return "SUBSS subtracts one scalar floating-point value from another."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_Vector_Title::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_Vector_Title(); instance->autorelease(); return instance; }
@@ -40581,6 +40681,31 @@ namespace Strings
 			case LanguageType::THAI:					{ return "รีเซ็ต"; }		case LanguageType::TURKISH:					{ return "Reset"; }
 			case LanguageType::UKRAINIAN:				{ return "Скинути"; }		case LanguageType::VIETNAMESE:				{ return "Đặt lại"; }
 			default: case LanguageType::ENGLISH:		{ return "Reset"; }
+		}
+	}
+	LocalizedString* Menus_Hacking_Lexicon_SetAndReset::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_SetAndReset(); instance->autorelease(); return instance; }
+	LocalizedString* Menus_Hacking_Lexicon_SetAndReset::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_SetAndReset::create(); this->copyAttributesTo(clonedString); return clonedString; }
+	Menus_Hacking_Lexicon_SetAndReset::Menus_Hacking_Lexicon_SetAndReset() : LocalizedString() { }
+	std::string Menus_Hacking_Lexicon_SetAndReset::getStringIdentifier() { return "Menus_Hacking_Lexicon_SetAndReset"; }
+	std::string Menus_Hacking_Lexicon_SetAndReset::getStringByLanguage(LanguageType languageType)
+	{
+		switch (languageType)
+		{
+			case LanguageType::ARABIC:					{ return "تعيين وإعادة ضبط"; }		case LanguageType::BULGARIAN:				{ return "Задай и нулирай"; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "设置并重置"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "設定並重設"; }
+			case LanguageType::CZECH:					{ return "Nastavit a resetovat"; }		case LanguageType::DANISH:					{ return "Indstil og nulstil"; }
+			case LanguageType::DUTCH:					{ return "Instellen en resetten"; }		case LanguageType::FINNISH:					{ return "Aseta ja nollaa"; }
+			case LanguageType::FRENCH:					{ return "Définir et réinitialiser"; }		case LanguageType::GERMAN:					{ return "Setzen & zurücksetzen"; }
+			case LanguageType::GREEK:					{ return "Ορισμός και επαναφορά"; }		case LanguageType::HUNGARIAN:				{ return "Beállítás és visszaállítás"; }
+			case LanguageType::ITALIAN:					{ return "Imposta e reimposta"; }		case LanguageType::JAPANESE:				{ return "設定してリセット"; }
+			case LanguageType::KOREAN:					{ return "설정 및 초기화"; }		case LanguageType::NORWEGIAN:				{ return "Sett og nullstill"; }
+			case LanguageType::POLISH:					{ return "Ustaw i zresetuj"; }		case LanguageType::PORTUGUESE:				{ return "Definir e reiniciar"; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "Definir e reiniciar"; }		case LanguageType::ROMANIAN:				{ return "Setează și resetează"; }
+			case LanguageType::RUSSIAN:					{ return "Задать и сбросить"; }		case LanguageType::SPANISH:					{ return "Fijar y reiniciar"; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "Fijar y reiniciar"; }	case LanguageType::SWEDISH:					{ return "Ställ in och återställ"; }
+			case LanguageType::THAI:					{ return "ตั้งค่าและรีเซ็ต"; }		case LanguageType::TURKISH:					{ return "Ayarla ve sıfırla"; }
+			case LanguageType::UKRAINIAN:				{ return "Задати й скинути"; }		case LanguageType::VIETNAMESE:				{ return "Đặt và đặt lại"; }
+			default: case LanguageType::ENGLISH:		{ return "Set & Reset"; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Stack::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Stack(); instance->autorelease(); return instance; }

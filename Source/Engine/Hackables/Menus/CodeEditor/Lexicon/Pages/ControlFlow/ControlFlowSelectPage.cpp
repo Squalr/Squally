@@ -6,10 +6,10 @@
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Call/CallPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/ControlFlowExamplesPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jnabe/JnabePage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jne/JneExamplesPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jne/JnePage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jngle/JnglePage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jmp/JmpPage.h"
-#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jne/JnePage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jno/JnoPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jnp/JnpPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jns/JnsPage.h"
@@ -45,7 +45,7 @@ ControlFlowSelectPage::ControlFlowSelectPage() : super(ControlFlowSelectPage::Id
 	this->operationSelectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Menus_Hacking_Lexicon_Pages_ChapterSelect_ChooseAnOperation::create());
 	this->callOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Call::create(), CallPage::Identifier, ControlFlowExamplesPage::CallIdentifier);
 	this->jnabeOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Jnabe::create(), JnabePage::Identifier);
-	this->jneOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Jne::create(), JnePage::Identifier);
+	this->jneOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Jne::create(), JnePage::Identifier, JneExamplesPage::Identifier);
 	this->jngleOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Jngle::create(), JnglePage::Identifier);
 	this->jnoOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Jno::create(), JnoPage::Identifier);
 	this->jnpOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Jnp::create(), JnpPage::Identifier);

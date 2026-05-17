@@ -31,6 +31,7 @@ ControlFlowExamplesPage::ControlFlowExamplesPage(Operation operation) : super(Co
 	this->operation = operation;
 	this->examplesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Hacking_Lexicon_Examples::create());
 	this->registerBlock = RegisterBlock::create();
+	this->registerBlock->setMemoryTitleVisible(false);
 	this->stackBlock = StackBlock::create();
 	this->resetButton = this->buildResetButton();
 	this->example0Button = this->buildExecuteButton();
@@ -74,11 +75,15 @@ void ControlFlowExamplesPage::initializePositions()
 
 	this->example0Button->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 0.0f));
 	this->example1Button->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 1.0f));
-	this->example2Button->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 2.0f));
 	this->example0Label->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 0.0f));
 	this->example1Label->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 1.0f));
-	this->example2Label->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 2.0f));
 	this->resetButton->setPosition(Vec2(0.0f, -312.0f));
+
+	if (this->getExampleCount() >= 3)
+	{
+		this->example2Button->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 2.0f));
+		this->example2Label->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 2.0f));
+	}
 }
 
 void ControlFlowExamplesPage::initializeListeners()
@@ -92,15 +97,19 @@ void ControlFlowExamplesPage::initializeListeners()
 
 	this->example0Button->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->executeExample(0); });
 	this->example1Button->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->executeExample(1); });
-	this->example2Button->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->executeExample(2); });
 
 	this->example0Button->setMouseOverCallback([=](InputEvents::MouseEventArgs*) { this->highlightExample(0); });
 	this->example1Button->setMouseOverCallback([=](InputEvents::MouseEventArgs*) { this->highlightExample(1); });
-	this->example2Button->setMouseOverCallback([=](InputEvents::MouseEventArgs*) { this->highlightExample(2); });
 
 	this->example0Button->setMouseOutCallback([=](InputEvents::MouseEventArgs*) { this->clearHighlights(); });
 	this->example1Button->setMouseOutCallback([=](InputEvents::MouseEventArgs*) { this->clearHighlights(); });
-	this->example2Button->setMouseOutCallback([=](InputEvents::MouseEventArgs*) { this->clearHighlights(); });
+
+	if (this->getExampleCount() >= 3)
+	{
+		this->example2Button->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->executeExample(2); });
+		this->example2Button->setMouseOverCallback([=](InputEvents::MouseEventArgs*) { this->highlightExample(2); });
+		this->example2Button->setMouseOutCallback([=](InputEvents::MouseEventArgs*) { this->clearHighlights(); });
+	}
 }
 
 void ControlFlowExamplesPage::resetState()
@@ -197,7 +206,11 @@ void ControlFlowExamplesPage::highlightExample(int)
 void ControlFlowExamplesPage::clearHighlights()
 {
 	this->registerBlock->clearHighlights();
-	this->stackBlock->clearHighlights();
+
+	if (this->usesStack())
+	{
+		this->stackBlock->clearHighlights();
+	}
 }
 
 void ControlFlowExamplesPage::addExampleChildren()
@@ -213,10 +226,14 @@ void ControlFlowExamplesPage::addExampleChildren()
 	this->addChild(this->resetButton);
 	this->addChild(this->example0Button);
 	this->addChild(this->example1Button);
-	this->addChild(this->example2Button);
 	this->addChild(this->example0Label);
 	this->addChild(this->example1Label);
-	this->addChild(this->example2Label);
+
+	if (this->getExampleCount() >= 3)
+	{
+		this->addChild(this->example2Button);
+		this->addChild(this->example2Label);
+	}
 }
 
 void ControlFlowExamplesPage::buildExampleLabels()
@@ -231,7 +248,6 @@ void ControlFlowExamplesPage::buildExampleLabels()
 	{
 		this->example0Label = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, ConstantString::create("ret"));
 		this->example1Label = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, ConstantString::create("ret"));
-		this->example2Label = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, ConstantString::create("ret"));
 	}
 	else
 	{
@@ -244,15 +260,24 @@ void ControlFlowExamplesPage::buildExampleLabels()
 
 	this->example0Label->setTextColor(super::TextColor);
 	this->example1Label->setTextColor(super::TextColor);
-	this->example2Label->setTextColor(super::TextColor);
 	this->example0Label->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->example1Label->setAnchorPoint(Vec2(0.0f, 0.5f));
-	this->example2Label->setAnchorPoint(Vec2(0.0f, 0.5f));
+
+	if (this->getExampleCount() >= 3)
+	{
+		this->example2Label->setTextColor(super::TextColor);
+		this->example2Label->setAnchorPoint(Vec2(0.0f, 0.5f));
+	}
 }
 
 bool ControlFlowExamplesPage::usesStack() const
 {
 	return this->operation == Operation::Call || this->operation == Operation::Ret;
+}
+
+int ControlFlowExamplesPage::getExampleCount() const
+{
+	return this->operation == Operation::Ret ? 2 : 3;
 }
 
 unsigned long long ControlFlowExamplesPage::getTarget(int exampleIndex) const

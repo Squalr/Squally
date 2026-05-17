@@ -208,6 +208,11 @@ void RegisterBlock::setDisplayBitCount(int displayBitCount)
     this->refreshDisplayStrings();
 }
 
+void RegisterBlock::setMemoryTitleVisible(bool isVisible)
+{
+    this->memoryTitleLabel->setVisible(isVisible && !this->useBinaryResource);
+}
+
 void RegisterBlock::refreshDisplayStrings()
 {
     this->eaxString->setString(this->formatValue(this->eax.currentValue));

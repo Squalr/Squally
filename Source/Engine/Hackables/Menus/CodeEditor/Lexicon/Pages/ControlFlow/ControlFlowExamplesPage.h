@@ -48,6 +48,7 @@ private:
 	void buildExampleLabels();
 
 	bool usesStack() const;
+	int getExampleCount() const;
 	unsigned long long getTarget(int exampleIndex) const;
 	unsigned long long getInstructionSize() const;
 	LocalizedString* buildInstructionString();
