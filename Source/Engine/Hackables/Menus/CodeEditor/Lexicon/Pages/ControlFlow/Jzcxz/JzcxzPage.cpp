@@ -24,7 +24,7 @@ JzcxzPage* JzcxzPage::create()
 	return instance;
 }
 
-JzcxzPage::JzcxzPage() : super(JzcxzPage::Identifier, PageType::Full)
+JzcxzPage::JzcxzPage() : super(JzcxzPage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Bread);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);

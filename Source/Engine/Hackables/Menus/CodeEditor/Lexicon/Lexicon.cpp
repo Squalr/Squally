@@ -18,13 +18,13 @@
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/Shr/ShrPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/Xor/XorPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ChapterSelectPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/ConditionalJumpExamplesPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/ControlFlowExamplesPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/ControlFlowIntroPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/ControlFlowSelectPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Call/CallPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jmp/JmpPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jnabe/JnabePage.h"
-#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jne/JneExamplesPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jne/JnePage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jngle/JnglePage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jno/JnoPage.h"
@@ -179,7 +179,6 @@ Lexicon::Lexicon()
 	this->pages.push_back(JmpPage::create());
 	this->pages.push_back(JnabePage::create());
 	this->pages.push_back(JnePage::create());
-	this->pages.push_back(JneExamplesPage::create());
 	this->pages.push_back(JnglePage::create());
 	this->pages.push_back(JnoPage::create());
 	this->pages.push_back(JnpPage::create());
@@ -194,6 +193,14 @@ Lexicon::Lexicon()
 	this->pages.push_back(ControlFlowExamplesPage::create(ControlFlowExamplesPage::Operation::Call));
 	this->pages.push_back(ControlFlowExamplesPage::create(ControlFlowExamplesPage::Operation::Ret));
 	this->pages.push_back(ControlFlowExamplesPage::create(ControlFlowExamplesPage::Operation::Loop));
+	this->pages.push_back(ConditionalJumpExamplesPage::create(ConditionalJumpExamplesPage::Operation::Jnabe));
+	this->pages.push_back(ConditionalJumpExamplesPage::create(ConditionalJumpExamplesPage::Operation::Jne));
+	this->pages.push_back(ConditionalJumpExamplesPage::create(ConditionalJumpExamplesPage::Operation::Jngle));
+	this->pages.push_back(ConditionalJumpExamplesPage::create(ConditionalJumpExamplesPage::Operation::Jno));
+	this->pages.push_back(ConditionalJumpExamplesPage::create(ConditionalJumpExamplesPage::Operation::Jnp));
+	this->pages.push_back(ConditionalJumpExamplesPage::create(ConditionalJumpExamplesPage::Operation::Jns));
+	this->pages.push_back(ConditionalJumpExamplesPage::create(ConditionalJumpExamplesPage::Operation::Jnz));
+	this->pages.push_back(ConditionalJumpExamplesPage::create(ConditionalJumpExamplesPage::Operation::Jzcxz));
 
 	// SIMD
 	this->pages.push_back(VectorIntroPage::create());
@@ -485,14 +492,14 @@ bool Lexicon::isControlFlowPage()
 		|| this->currentLeftPage == CallPage::Identifier || this->currentRightPage == ControlFlowExamplesPage::CallIdentifier
 		|| this->currentLeftPage == RetPage::Identifier || this->currentRightPage == ControlFlowExamplesPage::RetIdentifier
 		|| this->currentLeftPage == LoopPage::Identifier || this->currentRightPage == ControlFlowExamplesPage::LoopIdentifier
-		|| this->currentLeftPage == JnabePage::Identifier
-		|| this->currentLeftPage == JnePage::Identifier || this->currentRightPage == JneExamplesPage::Identifier
-		|| this->currentLeftPage == JnglePage::Identifier
-		|| this->currentLeftPage == JnoPage::Identifier
-		|| this->currentLeftPage == JnpPage::Identifier
-		|| this->currentLeftPage == JnsPage::Identifier
-		|| this->currentLeftPage == JnzPage::Identifier
-		|| this->currentLeftPage == JzcxzPage::Identifier;
+		|| this->currentLeftPage == JnabePage::Identifier || this->currentRightPage == ConditionalJumpExamplesPage::JnabeIdentifier
+		|| this->currentLeftPage == JnePage::Identifier || this->currentRightPage == ConditionalJumpExamplesPage::JneIdentifier
+		|| this->currentLeftPage == JnglePage::Identifier || this->currentRightPage == ConditionalJumpExamplesPage::JngleIdentifier
+		|| this->currentLeftPage == JnoPage::Identifier || this->currentRightPage == ConditionalJumpExamplesPage::JnoIdentifier
+		|| this->currentLeftPage == JnpPage::Identifier || this->currentRightPage == ConditionalJumpExamplesPage::JnpIdentifier
+		|| this->currentLeftPage == JnsPage::Identifier || this->currentRightPage == ConditionalJumpExamplesPage::JnsIdentifier
+		|| this->currentLeftPage == JnzPage::Identifier || this->currentRightPage == ConditionalJumpExamplesPage::JnzIdentifier
+		|| this->currentLeftPage == JzcxzPage::Identifier || this->currentRightPage == ConditionalJumpExamplesPage::JzcxzIdentifier;
 }
 
 bool Lexicon::isVectorPage()

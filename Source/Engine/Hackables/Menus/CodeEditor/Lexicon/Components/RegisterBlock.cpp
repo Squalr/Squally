@@ -208,6 +208,11 @@ void RegisterBlock::setDisplayBitCount(int displayBitCount)
     this->refreshDisplayStrings();
 }
 
+void RegisterBlock::setMemoryTitleLocalizedString(LocalizedString* title)
+{
+    this->memoryTitleLabel->setLocalizedString(title);
+}
+
 void RegisterBlock::setMemoryTitleVisible(bool isVisible)
 {
     this->memoryTitleLabel->setVisible(isVisible && !this->useBinaryResource);

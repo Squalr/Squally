@@ -32,7 +32,7 @@ ControlFlowExamplesPage::ControlFlowExamplesPage(Operation operation) : super(Co
 	this->examplesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Hacking_Lexicon_Examples::create());
 	this->registerBlock = RegisterBlock::create();
 	this->registerBlock->setMemoryTitleVisible(false);
-	this->stackBlock = StackBlock::create();
+	this->stackBlock = this->usesStack() ? StackBlock::create() : nullptr;
 	this->resetButton = this->buildResetButton();
 	this->example0Button = this->buildExecuteButton();
 	this->example1Button = this->buildExecuteButton();
@@ -70,8 +70,12 @@ void ControlFlowExamplesPage::initializePositions()
 	const float buttonSpacing = -64.0f;
 
 	this->registerBlock->setPosition(Vec2(-160.0f, 160.0f));
-	this->stackBlock->setPosition(Vec2(164.0f, -160.0f));
 	this->examplesLabel->setPosition(Vec2(0.0f, super::ChapterLocation.y - 16.0f));
+
+	if (this->stackBlock != nullptr)
+	{
+		this->stackBlock->setPosition(Vec2(164.0f, -160.0f));
+	}
 
 	this->example0Button->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 0.0f));
 	this->example1Button->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 1.0f));
@@ -114,7 +118,10 @@ void ControlFlowExamplesPage::initializeListeners()
 
 void ControlFlowExamplesPage::resetState()
 {
-	this->stackBlock->clear();
+	if (this->stackBlock != nullptr)
+	{
+		this->stackBlock->clear();
+	}
 
 	this->registerBlock->initEax(420);
 	this->registerBlock->initEbx(256);

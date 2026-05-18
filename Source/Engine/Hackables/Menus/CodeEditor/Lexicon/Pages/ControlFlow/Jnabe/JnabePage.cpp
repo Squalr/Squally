@@ -24,7 +24,7 @@ JnabePage* JnabePage::create()
 	return instance;
 }
 
-JnabePage::JnabePage() : super(JnabePage::Identifier, PageType::Full)
+JnabePage::JnabePage() : super(JnabePage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Bread);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);

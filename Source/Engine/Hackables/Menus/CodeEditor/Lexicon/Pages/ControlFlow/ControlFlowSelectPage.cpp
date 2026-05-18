@@ -4,9 +4,9 @@
 
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Call/CallPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/ConditionalJumpExamplesPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/ControlFlowExamplesPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jnabe/JnabePage.h"
-#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jne/JneExamplesPage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jne/JnePage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jngle/JnglePage.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Jmp/JmpPage.h"
@@ -44,15 +44,15 @@ ControlFlowSelectPage::ControlFlowSelectPage() : super(ControlFlowSelectPage::Id
 
 	this->operationSelectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Menus_Hacking_Lexicon_Pages_ChapterSelect_ChooseAnOperation::create());
 	this->callOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Call::create(), CallPage::Identifier, ControlFlowExamplesPage::CallIdentifier);
-	this->jnabeOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Jnabe::create(), JnabePage::Identifier);
-	this->jneOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Jne::create(), JnePage::Identifier, JneExamplesPage::Identifier);
-	this->jngleOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Jngle::create(), JnglePage::Identifier);
-	this->jnoOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Jno::create(), JnoPage::Identifier);
-	this->jnpOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Jnp::create(), JnpPage::Identifier);
+	this->jnabeOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Jnabe::create(), JnabePage::Identifier, ConditionalJumpExamplesPage::JnabeIdentifier);
+	this->jneOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Jne::create(), JnePage::Identifier, ConditionalJumpExamplesPage::JneIdentifier);
+	this->jngleOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Jngle::create(), JnglePage::Identifier, ConditionalJumpExamplesPage::JngleIdentifier);
+	this->jnoOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Jno::create(), JnoPage::Identifier, ConditionalJumpExamplesPage::JnoIdentifier);
+	this->jnpOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Jnp::create(), JnpPage::Identifier, ConditionalJumpExamplesPage::JnpIdentifier);
 	this->jmpOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Jmp::create(), JmpPage::Identifier, ControlFlowExamplesPage::JmpIdentifier);
-	this->jnsOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Jns::create(), JnsPage::Identifier);
-	this->jnzOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Jnz::create(), JnzPage::Identifier);
-	this->jzcxzOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Jzcxz::create(), JzcxzPage::Identifier);
+	this->jnsOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Jns::create(), JnsPage::Identifier, ConditionalJumpExamplesPage::JnsIdentifier);
+	this->jnzOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Jnz::create(), JnzPage::Identifier, ConditionalJumpExamplesPage::JnzIdentifier);
+	this->jzcxzOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Jzcxz::create(), JzcxzPage::Identifier, ConditionalJumpExamplesPage::JzcxzIdentifier);
 	this->loopOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Loop::create(), LoopPage::Identifier, ControlFlowExamplesPage::LoopIdentifier);
 	this->nopOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Nop::create(), NopPage::Identifier, ControlFlowExamplesPage::NopIdentifier);
 	this->retOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Ret::create(), RetPage::Identifier, ControlFlowExamplesPage::RetIdentifier);

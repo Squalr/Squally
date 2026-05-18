@@ -24,7 +24,7 @@ JnglePage* JnglePage::create()
 	return instance;
 }
 
-JnglePage::JnglePage() : super(JnglePage::Identifier, PageType::Full)
+JnglePage::JnglePage() : super(JnglePage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Bread);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);

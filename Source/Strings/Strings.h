@@ -16779,6 +16779,45 @@ namespace Strings
 		virtual ~Menus_Hacking_Lexicon_Assembly_Inc() = default;
 	};
 
+	class Menus_Hacking_Lexicon_Assembly_Jb : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Assembly_Jb();
+		virtual ~Menus_Hacking_Lexicon_Assembly_Jb() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Assembly_Jecxz : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Assembly_Jecxz();
+		virtual ~Menus_Hacking_Lexicon_Assembly_Jecxz() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Assembly_Jg : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Assembly_Jg();
+		virtual ~Menus_Hacking_Lexicon_Assembly_Jg() = default;
+	};
+
 	class Menus_Hacking_Lexicon_Assembly_Jmp : public LocalizedString
 	{
 	public:
@@ -16803,6 +16842,71 @@ namespace Strings
 	private:
 		Menus_Hacking_Lexicon_Assembly_Jne();
 		virtual ~Menus_Hacking_Lexicon_Assembly_Jne() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Assembly_Jno : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Assembly_Jno();
+		virtual ~Menus_Hacking_Lexicon_Assembly_Jno() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Assembly_Jnp : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Assembly_Jnp();
+		virtual ~Menus_Hacking_Lexicon_Assembly_Jnp() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Assembly_Jns : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Assembly_Jns();
+		virtual ~Menus_Hacking_Lexicon_Assembly_Jns() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Assembly_Jnz : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Assembly_Jnz();
+		virtual ~Menus_Hacking_Lexicon_Assembly_Jnz() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Assembly_Jrcxz : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Assembly_Jrcxz();
+		virtual ~Menus_Hacking_Lexicon_Assembly_Jrcxz() = default;
 	};
 
 	class Menus_Hacking_Lexicon_Assembly_Mov : public LocalizedString
@@ -17156,6 +17260,19 @@ namespace Strings
 		virtual ~Menus_Hacking_Lexicon_Assembly_Sub() = default;
 	};
 
+	class Menus_Hacking_Lexicon_Assembly_Test : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Assembly_Test();
+		virtual ~Menus_Hacking_Lexicon_Assembly_Test() = default;
+	};
+
 	class Menus_Hacking_Lexicon_Examples : public LocalizedString
 	{
 	public:
@@ -17180,6 +17297,19 @@ namespace Strings
 	private:
 		Menus_Hacking_Lexicon_Execute();
 		virtual ~Menus_Hacking_Lexicon_Execute() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Flags : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Flags();
+		virtual ~Menus_Hacking_Lexicon_Flags() = default;
 	};
 
 	class Menus_Hacking_Lexicon_Instructions_Binary_And : public LocalizedString
@@ -19652,6 +19782,32 @@ namespace Strings
 		virtual ~Menus_Hacking_Lexicon_Pages_ControlFlow_Call_Intro() = default;
 	};
 
+	class Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpNotTaken : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpNotTaken();
+		virtual ~Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpNotTaken() = default;
+	};
+
+	class Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpTaken : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+	private:
+		Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpTaken();
+		virtual ~Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpTaken() = default;
+	};
+
 	class Menus_Hacking_Lexicon_Pages_ControlFlow_Intro : public LocalizedString
 	{
 	public:
@@ -19702,32 +19858,6 @@ namespace Strings
 	private:
 		Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_Intro();
 		virtual ~Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_Intro() = default;
-	};
-
-	class Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpNotTaken : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-	private:
-		Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpNotTaken();
-		virtual ~Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpNotTaken() = default;
-	};
-
-	class Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpTaken : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-	private:
-		Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpTaken();
-		virtual ~Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpTaken() = default;
 	};
 
 	class Menus_Hacking_Lexicon_Pages_ControlFlow_Jngle_Intro : public LocalizedString

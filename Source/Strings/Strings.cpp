@@ -32258,6 +32258,81 @@ namespace Strings
 			default: case LanguageType::ENGLISH:		{ return "inc %s1"; }
 		}
 	}
+	LocalizedString* Menus_Hacking_Lexicon_Assembly_Jb::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Assembly_Jb(); instance->autorelease(); return instance; }
+	LocalizedString* Menus_Hacking_Lexicon_Assembly_Jb::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_Assembly_Jb::create(); this->copyAttributesTo(clonedString); return clonedString; }
+	Menus_Hacking_Lexicon_Assembly_Jb::Menus_Hacking_Lexicon_Assembly_Jb() : LocalizedString() { }
+	std::string Menus_Hacking_Lexicon_Assembly_Jb::getStringIdentifier() { return "Menus_Hacking_Lexicon_Assembly_Jb"; }
+	std::string Menus_Hacking_Lexicon_Assembly_Jb::getStringByLanguage(LanguageType languageType)
+	{
+		switch (languageType)
+		{
+			case LanguageType::ARABIC:					{ return "jb %s1"; }		case LanguageType::BULGARIAN:				{ return "jb %s1"; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "jb %s1"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "jb %s1"; }
+			case LanguageType::CZECH:					{ return "jb %s1"; }		case LanguageType::DANISH:					{ return "jb %s1"; }
+			case LanguageType::DUTCH:					{ return "jb %s1"; }		case LanguageType::FINNISH:					{ return "jb %s1"; }
+			case LanguageType::FRENCH:					{ return "jb %s1"; }		case LanguageType::GERMAN:					{ return "jb %s1"; }
+			case LanguageType::GREEK:					{ return "jb %s1"; }		case LanguageType::HUNGARIAN:				{ return "jb %s1"; }
+			case LanguageType::ITALIAN:					{ return "jb %s1"; }		case LanguageType::JAPANESE:				{ return "jb %s1"; }
+			case LanguageType::KOREAN:					{ return "jb %s1"; }		case LanguageType::NORWEGIAN:				{ return "jb %s1"; }
+			case LanguageType::POLISH:					{ return "jb %s1"; }		case LanguageType::PORTUGUESE:				{ return "jb %s1"; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "jb %s1"; }		case LanguageType::ROMANIAN:				{ return "jb %s1"; }
+			case LanguageType::RUSSIAN:					{ return "jb %s1"; }		case LanguageType::SPANISH:					{ return "jb %s1"; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "jb %s1"; }	case LanguageType::SWEDISH:					{ return "jb %s1"; }
+			case LanguageType::THAI:					{ return "jb %s1"; }		case LanguageType::TURKISH:					{ return "jb %s1"; }
+			case LanguageType::UKRAINIAN:				{ return "jb %s1"; }		case LanguageType::VIETNAMESE:				{ return "jb %s1"; }
+			default: case LanguageType::ENGLISH:		{ return "jb %s1"; }
+		}
+	}
+	LocalizedString* Menus_Hacking_Lexicon_Assembly_Jecxz::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Assembly_Jecxz(); instance->autorelease(); return instance; }
+	LocalizedString* Menus_Hacking_Lexicon_Assembly_Jecxz::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_Assembly_Jecxz::create(); this->copyAttributesTo(clonedString); return clonedString; }
+	Menus_Hacking_Lexicon_Assembly_Jecxz::Menus_Hacking_Lexicon_Assembly_Jecxz() : LocalizedString() { }
+	std::string Menus_Hacking_Lexicon_Assembly_Jecxz::getStringIdentifier() { return "Menus_Hacking_Lexicon_Assembly_Jecxz"; }
+	std::string Menus_Hacking_Lexicon_Assembly_Jecxz::getStringByLanguage(LanguageType languageType)
+	{
+		switch (languageType)
+		{
+			case LanguageType::ARABIC:					{ return "jecxz %s1"; }		case LanguageType::BULGARIAN:				{ return "jecxz %s1"; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "jecxz %s1"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "jecxz %s1"; }
+			case LanguageType::CZECH:					{ return "jecxz %s1"; }		case LanguageType::DANISH:					{ return "jecxz %s1"; }
+			case LanguageType::DUTCH:					{ return "jecxz %s1"; }		case LanguageType::FINNISH:					{ return "jecxz %s1"; }
+			case LanguageType::FRENCH:					{ return "jecxz %s1"; }		case LanguageType::GERMAN:					{ return "jecxz %s1"; }
+			case LanguageType::GREEK:					{ return "jecxz %s1"; }		case LanguageType::HUNGARIAN:				{ return "jecxz %s1"; }
+			case LanguageType::ITALIAN:					{ return "jecxz %s1"; }		case LanguageType::JAPANESE:				{ return "jecxz %s1"; }
+			case LanguageType::KOREAN:					{ return "jecxz %s1"; }		case LanguageType::NORWEGIAN:				{ return "jecxz %s1"; }
+			case LanguageType::POLISH:					{ return "jecxz %s1"; }		case LanguageType::PORTUGUESE:				{ return "jecxz %s1"; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "jecxz %s1"; }		case LanguageType::ROMANIAN:				{ return "jecxz %s1"; }
+			case LanguageType::RUSSIAN:					{ return "jecxz %s1"; }		case LanguageType::SPANISH:					{ return "jecxz %s1"; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "jecxz %s1"; }	case LanguageType::SWEDISH:					{ return "jecxz %s1"; }
+			case LanguageType::THAI:					{ return "jecxz %s1"; }		case LanguageType::TURKISH:					{ return "jecxz %s1"; }
+			case LanguageType::UKRAINIAN:				{ return "jecxz %s1"; }		case LanguageType::VIETNAMESE:				{ return "jecxz %s1"; }
+			default: case LanguageType::ENGLISH:		{ return "jecxz %s1"; }
+		}
+	}
+	LocalizedString* Menus_Hacking_Lexicon_Assembly_Jg::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Assembly_Jg(); instance->autorelease(); return instance; }
+	LocalizedString* Menus_Hacking_Lexicon_Assembly_Jg::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_Assembly_Jg::create(); this->copyAttributesTo(clonedString); return clonedString; }
+	Menus_Hacking_Lexicon_Assembly_Jg::Menus_Hacking_Lexicon_Assembly_Jg() : LocalizedString() { }
+	std::string Menus_Hacking_Lexicon_Assembly_Jg::getStringIdentifier() { return "Menus_Hacking_Lexicon_Assembly_Jg"; }
+	std::string Menus_Hacking_Lexicon_Assembly_Jg::getStringByLanguage(LanguageType languageType)
+	{
+		switch (languageType)
+		{
+			case LanguageType::ARABIC:					{ return "jg %s1"; }		case LanguageType::BULGARIAN:				{ return "jg %s1"; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "jg %s1"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "jg %s1"; }
+			case LanguageType::CZECH:					{ return "jg %s1"; }		case LanguageType::DANISH:					{ return "jg %s1"; }
+			case LanguageType::DUTCH:					{ return "jg %s1"; }		case LanguageType::FINNISH:					{ return "jg %s1"; }
+			case LanguageType::FRENCH:					{ return "jg %s1"; }		case LanguageType::GERMAN:					{ return "jg %s1"; }
+			case LanguageType::GREEK:					{ return "jg %s1"; }		case LanguageType::HUNGARIAN:				{ return "jg %s1"; }
+			case LanguageType::ITALIAN:					{ return "jg %s1"; }		case LanguageType::JAPANESE:				{ return "jg %s1"; }
+			case LanguageType::KOREAN:					{ return "jg %s1"; }		case LanguageType::NORWEGIAN:				{ return "jg %s1"; }
+			case LanguageType::POLISH:					{ return "jg %s1"; }		case LanguageType::PORTUGUESE:				{ return "jg %s1"; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "jg %s1"; }		case LanguageType::ROMANIAN:				{ return "jg %s1"; }
+			case LanguageType::RUSSIAN:					{ return "jg %s1"; }		case LanguageType::SPANISH:					{ return "jg %s1"; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "jg %s1"; }	case LanguageType::SWEDISH:					{ return "jg %s1"; }
+			case LanguageType::THAI:					{ return "jg %s1"; }		case LanguageType::TURKISH:					{ return "jg %s1"; }
+			case LanguageType::UKRAINIAN:				{ return "jg %s1"; }		case LanguageType::VIETNAMESE:				{ return "jg %s1"; }
+			default: case LanguageType::ENGLISH:		{ return "jg %s1"; }
+		}
+	}
 	LocalizedString* Menus_Hacking_Lexicon_Assembly_Jmp::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Assembly_Jmp(); instance->autorelease(); return instance; }
 	LocalizedString* Menus_Hacking_Lexicon_Assembly_Jmp::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_Assembly_Jmp::create(); this->copyAttributesTo(clonedString); return clonedString; }
 	Menus_Hacking_Lexicon_Assembly_Jmp::Menus_Hacking_Lexicon_Assembly_Jmp() : LocalizedString() { }
@@ -32306,6 +32381,131 @@ namespace Strings
 			case LanguageType::THAI:					{ return "jne %s1"; }		case LanguageType::TURKISH:					{ return "jne %s1"; }
 			case LanguageType::UKRAINIAN:				{ return "jne %s1"; }		case LanguageType::VIETNAMESE:				{ return "jne %s1"; }
 			default: case LanguageType::ENGLISH:		{ return "jne %s1"; }
+		}
+	}
+	LocalizedString* Menus_Hacking_Lexicon_Assembly_Jno::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Assembly_Jno(); instance->autorelease(); return instance; }
+	LocalizedString* Menus_Hacking_Lexicon_Assembly_Jno::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_Assembly_Jno::create(); this->copyAttributesTo(clonedString); return clonedString; }
+	Menus_Hacking_Lexicon_Assembly_Jno::Menus_Hacking_Lexicon_Assembly_Jno() : LocalizedString() { }
+	std::string Menus_Hacking_Lexicon_Assembly_Jno::getStringIdentifier() { return "Menus_Hacking_Lexicon_Assembly_Jno"; }
+	std::string Menus_Hacking_Lexicon_Assembly_Jno::getStringByLanguage(LanguageType languageType)
+	{
+		switch (languageType)
+		{
+			case LanguageType::ARABIC:					{ return "jno %s1"; }		case LanguageType::BULGARIAN:				{ return "jno %s1"; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "jno %s1"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "jno %s1"; }
+			case LanguageType::CZECH:					{ return "jno %s1"; }		case LanguageType::DANISH:					{ return "jno %s1"; }
+			case LanguageType::DUTCH:					{ return "jno %s1"; }		case LanguageType::FINNISH:					{ return "jno %s1"; }
+			case LanguageType::FRENCH:					{ return "jno %s1"; }		case LanguageType::GERMAN:					{ return "jno %s1"; }
+			case LanguageType::GREEK:					{ return "jno %s1"; }		case LanguageType::HUNGARIAN:				{ return "jno %s1"; }
+			case LanguageType::ITALIAN:					{ return "jno %s1"; }		case LanguageType::JAPANESE:				{ return "jno %s1"; }
+			case LanguageType::KOREAN:					{ return "jno %s1"; }		case LanguageType::NORWEGIAN:				{ return "jno %s1"; }
+			case LanguageType::POLISH:					{ return "jno %s1"; }		case LanguageType::PORTUGUESE:				{ return "jno %s1"; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "jno %s1"; }		case LanguageType::ROMANIAN:				{ return "jno %s1"; }
+			case LanguageType::RUSSIAN:					{ return "jno %s1"; }		case LanguageType::SPANISH:					{ return "jno %s1"; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "jno %s1"; }	case LanguageType::SWEDISH:					{ return "jno %s1"; }
+			case LanguageType::THAI:					{ return "jno %s1"; }		case LanguageType::TURKISH:					{ return "jno %s1"; }
+			case LanguageType::UKRAINIAN:				{ return "jno %s1"; }		case LanguageType::VIETNAMESE:				{ return "jno %s1"; }
+			default: case LanguageType::ENGLISH:		{ return "jno %s1"; }
+		}
+	}
+	LocalizedString* Menus_Hacking_Lexicon_Assembly_Jnp::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Assembly_Jnp(); instance->autorelease(); return instance; }
+	LocalizedString* Menus_Hacking_Lexicon_Assembly_Jnp::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_Assembly_Jnp::create(); this->copyAttributesTo(clonedString); return clonedString; }
+	Menus_Hacking_Lexicon_Assembly_Jnp::Menus_Hacking_Lexicon_Assembly_Jnp() : LocalizedString() { }
+	std::string Menus_Hacking_Lexicon_Assembly_Jnp::getStringIdentifier() { return "Menus_Hacking_Lexicon_Assembly_Jnp"; }
+	std::string Menus_Hacking_Lexicon_Assembly_Jnp::getStringByLanguage(LanguageType languageType)
+	{
+		switch (languageType)
+		{
+			case LanguageType::ARABIC:					{ return "jnp %s1"; }		case LanguageType::BULGARIAN:				{ return "jnp %s1"; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "jnp %s1"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "jnp %s1"; }
+			case LanguageType::CZECH:					{ return "jnp %s1"; }		case LanguageType::DANISH:					{ return "jnp %s1"; }
+			case LanguageType::DUTCH:					{ return "jnp %s1"; }		case LanguageType::FINNISH:					{ return "jnp %s1"; }
+			case LanguageType::FRENCH:					{ return "jnp %s1"; }		case LanguageType::GERMAN:					{ return "jnp %s1"; }
+			case LanguageType::GREEK:					{ return "jnp %s1"; }		case LanguageType::HUNGARIAN:				{ return "jnp %s1"; }
+			case LanguageType::ITALIAN:					{ return "jnp %s1"; }		case LanguageType::JAPANESE:				{ return "jnp %s1"; }
+			case LanguageType::KOREAN:					{ return "jnp %s1"; }		case LanguageType::NORWEGIAN:				{ return "jnp %s1"; }
+			case LanguageType::POLISH:					{ return "jnp %s1"; }		case LanguageType::PORTUGUESE:				{ return "jnp %s1"; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "jnp %s1"; }		case LanguageType::ROMANIAN:				{ return "jnp %s1"; }
+			case LanguageType::RUSSIAN:					{ return "jnp %s1"; }		case LanguageType::SPANISH:					{ return "jnp %s1"; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "jnp %s1"; }	case LanguageType::SWEDISH:					{ return "jnp %s1"; }
+			case LanguageType::THAI:					{ return "jnp %s1"; }		case LanguageType::TURKISH:					{ return "jnp %s1"; }
+			case LanguageType::UKRAINIAN:				{ return "jnp %s1"; }		case LanguageType::VIETNAMESE:				{ return "jnp %s1"; }
+			default: case LanguageType::ENGLISH:		{ return "jnp %s1"; }
+		}
+	}
+	LocalizedString* Menus_Hacking_Lexicon_Assembly_Jns::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Assembly_Jns(); instance->autorelease(); return instance; }
+	LocalizedString* Menus_Hacking_Lexicon_Assembly_Jns::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_Assembly_Jns::create(); this->copyAttributesTo(clonedString); return clonedString; }
+	Menus_Hacking_Lexicon_Assembly_Jns::Menus_Hacking_Lexicon_Assembly_Jns() : LocalizedString() { }
+	std::string Menus_Hacking_Lexicon_Assembly_Jns::getStringIdentifier() { return "Menus_Hacking_Lexicon_Assembly_Jns"; }
+	std::string Menus_Hacking_Lexicon_Assembly_Jns::getStringByLanguage(LanguageType languageType)
+	{
+		switch (languageType)
+		{
+			case LanguageType::ARABIC:					{ return "jns %s1"; }		case LanguageType::BULGARIAN:				{ return "jns %s1"; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "jns %s1"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "jns %s1"; }
+			case LanguageType::CZECH:					{ return "jns %s1"; }		case LanguageType::DANISH:					{ return "jns %s1"; }
+			case LanguageType::DUTCH:					{ return "jns %s1"; }		case LanguageType::FINNISH:					{ return "jns %s1"; }
+			case LanguageType::FRENCH:					{ return "jns %s1"; }		case LanguageType::GERMAN:					{ return "jns %s1"; }
+			case LanguageType::GREEK:					{ return "jns %s1"; }		case LanguageType::HUNGARIAN:				{ return "jns %s1"; }
+			case LanguageType::ITALIAN:					{ return "jns %s1"; }		case LanguageType::JAPANESE:				{ return "jns %s1"; }
+			case LanguageType::KOREAN:					{ return "jns %s1"; }		case LanguageType::NORWEGIAN:				{ return "jns %s1"; }
+			case LanguageType::POLISH:					{ return "jns %s1"; }		case LanguageType::PORTUGUESE:				{ return "jns %s1"; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "jns %s1"; }		case LanguageType::ROMANIAN:				{ return "jns %s1"; }
+			case LanguageType::RUSSIAN:					{ return "jns %s1"; }		case LanguageType::SPANISH:					{ return "jns %s1"; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "jns %s1"; }	case LanguageType::SWEDISH:					{ return "jns %s1"; }
+			case LanguageType::THAI:					{ return "jns %s1"; }		case LanguageType::TURKISH:					{ return "jns %s1"; }
+			case LanguageType::UKRAINIAN:				{ return "jns %s1"; }		case LanguageType::VIETNAMESE:				{ return "jns %s1"; }
+			default: case LanguageType::ENGLISH:		{ return "jns %s1"; }
+		}
+	}
+	LocalizedString* Menus_Hacking_Lexicon_Assembly_Jnz::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Assembly_Jnz(); instance->autorelease(); return instance; }
+	LocalizedString* Menus_Hacking_Lexicon_Assembly_Jnz::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_Assembly_Jnz::create(); this->copyAttributesTo(clonedString); return clonedString; }
+	Menus_Hacking_Lexicon_Assembly_Jnz::Menus_Hacking_Lexicon_Assembly_Jnz() : LocalizedString() { }
+	std::string Menus_Hacking_Lexicon_Assembly_Jnz::getStringIdentifier() { return "Menus_Hacking_Lexicon_Assembly_Jnz"; }
+	std::string Menus_Hacking_Lexicon_Assembly_Jnz::getStringByLanguage(LanguageType languageType)
+	{
+		switch (languageType)
+		{
+			case LanguageType::ARABIC:					{ return "jnz %s1"; }		case LanguageType::BULGARIAN:				{ return "jnz %s1"; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "jnz %s1"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "jnz %s1"; }
+			case LanguageType::CZECH:					{ return "jnz %s1"; }		case LanguageType::DANISH:					{ return "jnz %s1"; }
+			case LanguageType::DUTCH:					{ return "jnz %s1"; }		case LanguageType::FINNISH:					{ return "jnz %s1"; }
+			case LanguageType::FRENCH:					{ return "jnz %s1"; }		case LanguageType::GERMAN:					{ return "jnz %s1"; }
+			case LanguageType::GREEK:					{ return "jnz %s1"; }		case LanguageType::HUNGARIAN:				{ return "jnz %s1"; }
+			case LanguageType::ITALIAN:					{ return "jnz %s1"; }		case LanguageType::JAPANESE:				{ return "jnz %s1"; }
+			case LanguageType::KOREAN:					{ return "jnz %s1"; }		case LanguageType::NORWEGIAN:				{ return "jnz %s1"; }
+			case LanguageType::POLISH:					{ return "jnz %s1"; }		case LanguageType::PORTUGUESE:				{ return "jnz %s1"; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "jnz %s1"; }		case LanguageType::ROMANIAN:				{ return "jnz %s1"; }
+			case LanguageType::RUSSIAN:					{ return "jnz %s1"; }		case LanguageType::SPANISH:					{ return "jnz %s1"; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "jnz %s1"; }	case LanguageType::SWEDISH:					{ return "jnz %s1"; }
+			case LanguageType::THAI:					{ return "jnz %s1"; }		case LanguageType::TURKISH:					{ return "jnz %s1"; }
+			case LanguageType::UKRAINIAN:				{ return "jnz %s1"; }		case LanguageType::VIETNAMESE:				{ return "jnz %s1"; }
+			default: case LanguageType::ENGLISH:		{ return "jnz %s1"; }
+		}
+	}
+	LocalizedString* Menus_Hacking_Lexicon_Assembly_Jrcxz::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Assembly_Jrcxz(); instance->autorelease(); return instance; }
+	LocalizedString* Menus_Hacking_Lexicon_Assembly_Jrcxz::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_Assembly_Jrcxz::create(); this->copyAttributesTo(clonedString); return clonedString; }
+	Menus_Hacking_Lexicon_Assembly_Jrcxz::Menus_Hacking_Lexicon_Assembly_Jrcxz() : LocalizedString() { }
+	std::string Menus_Hacking_Lexicon_Assembly_Jrcxz::getStringIdentifier() { return "Menus_Hacking_Lexicon_Assembly_Jrcxz"; }
+	std::string Menus_Hacking_Lexicon_Assembly_Jrcxz::getStringByLanguage(LanguageType languageType)
+	{
+		switch (languageType)
+		{
+			case LanguageType::ARABIC:					{ return "jrcxz %s1"; }		case LanguageType::BULGARIAN:				{ return "jrcxz %s1"; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "jrcxz %s1"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "jrcxz %s1"; }
+			case LanguageType::CZECH:					{ return "jrcxz %s1"; }		case LanguageType::DANISH:					{ return "jrcxz %s1"; }
+			case LanguageType::DUTCH:					{ return "jrcxz %s1"; }		case LanguageType::FINNISH:					{ return "jrcxz %s1"; }
+			case LanguageType::FRENCH:					{ return "jrcxz %s1"; }		case LanguageType::GERMAN:					{ return "jrcxz %s1"; }
+			case LanguageType::GREEK:					{ return "jrcxz %s1"; }		case LanguageType::HUNGARIAN:				{ return "jrcxz %s1"; }
+			case LanguageType::ITALIAN:					{ return "jrcxz %s1"; }		case LanguageType::JAPANESE:				{ return "jrcxz %s1"; }
+			case LanguageType::KOREAN:					{ return "jrcxz %s1"; }		case LanguageType::NORWEGIAN:				{ return "jrcxz %s1"; }
+			case LanguageType::POLISH:					{ return "jrcxz %s1"; }		case LanguageType::PORTUGUESE:				{ return "jrcxz %s1"; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "jrcxz %s1"; }		case LanguageType::ROMANIAN:				{ return "jrcxz %s1"; }
+			case LanguageType::RUSSIAN:					{ return "jrcxz %s1"; }		case LanguageType::SPANISH:					{ return "jrcxz %s1"; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "jrcxz %s1"; }	case LanguageType::SWEDISH:					{ return "jrcxz %s1"; }
+			case LanguageType::THAI:					{ return "jrcxz %s1"; }		case LanguageType::TURKISH:					{ return "jrcxz %s1"; }
+			case LanguageType::UKRAINIAN:				{ return "jrcxz %s1"; }		case LanguageType::VIETNAMESE:				{ return "jrcxz %s1"; }
+			default: case LanguageType::ENGLISH:		{ return "jrcxz %s1"; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Assembly_Mov::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Assembly_Mov(); instance->autorelease(); return instance; }
@@ -32983,6 +33183,31 @@ namespace Strings
 			default: case LanguageType::ENGLISH:		{ return "sub %s1, %s2"; }
 		}
 	}
+	LocalizedString* Menus_Hacking_Lexicon_Assembly_Test::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Assembly_Test(); instance->autorelease(); return instance; }
+	LocalizedString* Menus_Hacking_Lexicon_Assembly_Test::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_Assembly_Test::create(); this->copyAttributesTo(clonedString); return clonedString; }
+	Menus_Hacking_Lexicon_Assembly_Test::Menus_Hacking_Lexicon_Assembly_Test() : LocalizedString() { }
+	std::string Menus_Hacking_Lexicon_Assembly_Test::getStringIdentifier() { return "Menus_Hacking_Lexicon_Assembly_Test"; }
+	std::string Menus_Hacking_Lexicon_Assembly_Test::getStringByLanguage(LanguageType languageType)
+	{
+		switch (languageType)
+		{
+			case LanguageType::ARABIC:					{ return "test %s1, %s2"; }		case LanguageType::BULGARIAN:				{ return "test %s1, %s2"; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "test %s1, %s2"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "test %s1, %s2"; }
+			case LanguageType::CZECH:					{ return "test %s1, %s2"; }		case LanguageType::DANISH:					{ return "test %s1, %s2"; }
+			case LanguageType::DUTCH:					{ return "test %s1, %s2"; }		case LanguageType::FINNISH:					{ return "test %s1, %s2"; }
+			case LanguageType::FRENCH:					{ return "test %s1, %s2"; }		case LanguageType::GERMAN:					{ return "test %s1, %s2"; }
+			case LanguageType::GREEK:					{ return "test %s1, %s2"; }		case LanguageType::HUNGARIAN:				{ return "test %s1, %s2"; }
+			case LanguageType::ITALIAN:					{ return "test %s1, %s2"; }		case LanguageType::JAPANESE:				{ return "test %s1, %s2"; }
+			case LanguageType::KOREAN:					{ return "test %s1, %s2"; }		case LanguageType::NORWEGIAN:				{ return "test %s1, %s2"; }
+			case LanguageType::POLISH:					{ return "test %s1, %s2"; }		case LanguageType::PORTUGUESE:				{ return "test %s1, %s2"; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "test %s1, %s2"; }		case LanguageType::ROMANIAN:				{ return "test %s1, %s2"; }
+			case LanguageType::RUSSIAN:					{ return "test %s1, %s2"; }		case LanguageType::SPANISH:					{ return "test %s1, %s2"; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "test %s1, %s2"; }	case LanguageType::SWEDISH:					{ return "test %s1, %s2"; }
+			case LanguageType::THAI:					{ return "test %s1, %s2"; }		case LanguageType::TURKISH:					{ return "test %s1, %s2"; }
+			case LanguageType::UKRAINIAN:				{ return "test %s1, %s2"; }		case LanguageType::VIETNAMESE:				{ return "test %s1, %s2"; }
+			default: case LanguageType::ENGLISH:		{ return "test %s1, %s2"; }
+		}
+	}
 	LocalizedString* Menus_Hacking_Lexicon_Examples::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Examples(); instance->autorelease(); return instance; }
 	LocalizedString* Menus_Hacking_Lexicon_Examples::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_Examples::create(); this->copyAttributesTo(clonedString); return clonedString; }
 	Menus_Hacking_Lexicon_Examples::Menus_Hacking_Lexicon_Examples() : LocalizedString() { }
@@ -33031,6 +33256,31 @@ namespace Strings
 			case LanguageType::THAI:					{ return "ปฏิบัติ"; }		case LanguageType::TURKISH:					{ return "Gerçekleştir"; }
 			case LanguageType::UKRAINIAN:				{ return "Виконати"; }		case LanguageType::VIETNAMESE:				{ return "Thực thi"; }
 			default: case LanguageType::ENGLISH:		{ return "Execute"; }
+		}
+	}
+	LocalizedString* Menus_Hacking_Lexicon_Flags::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Flags(); instance->autorelease(); return instance; }
+	LocalizedString* Menus_Hacking_Lexicon_Flags::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_Flags::create(); this->copyAttributesTo(clonedString); return clonedString; }
+	Menus_Hacking_Lexicon_Flags::Menus_Hacking_Lexicon_Flags() : LocalizedString() { }
+	std::string Menus_Hacking_Lexicon_Flags::getStringIdentifier() { return "Menus_Hacking_Lexicon_Flags"; }
+	std::string Menus_Hacking_Lexicon_Flags::getStringByLanguage(LanguageType languageType)
+	{
+		switch (languageType)
+		{
+			case LanguageType::ARABIC:					{ return "الأعلام"; }		case LanguageType::BULGARIAN:				{ return "Флагове"; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "标志位"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "旗標"; }
+			case LanguageType::CZECH:					{ return "Příznaky"; }		case LanguageType::DANISH:					{ return "Flag"; }
+			case LanguageType::DUTCH:					{ return "Vlaggen"; }		case LanguageType::FINNISH:					{ return "Liput"; }
+			case LanguageType::FRENCH:					{ return "Drapeaux"; }		case LanguageType::GERMAN:					{ return "Flags"; }
+			case LanguageType::GREEK:					{ return "Σημαίες"; }		case LanguageType::HUNGARIAN:				{ return "Jelzők"; }
+			case LanguageType::ITALIAN:					{ return "Flag"; }		case LanguageType::JAPANESE:				{ return "フラグ"; }
+			case LanguageType::KOREAN:					{ return "플래그"; }		case LanguageType::NORWEGIAN:				{ return "Flagg"; }
+			case LanguageType::POLISH:					{ return "Flagi"; }		case LanguageType::PORTUGUESE:				{ return "Flags"; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "Flags"; }		case LanguageType::ROMANIAN:				{ return "Flaguri"; }
+			case LanguageType::RUSSIAN:					{ return "Флаги"; }		case LanguageType::SPANISH:					{ return "Indicadores"; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "Indicadores"; }	case LanguageType::SWEDISH:					{ return "Flaggor"; }
+			case LanguageType::THAI:					{ return "แฟล็ก"; }		case LanguageType::TURKISH:					{ return "Bayraklar"; }
+			case LanguageType::UKRAINIAN:				{ return "Прапорці"; }		case LanguageType::VIETNAMESE:				{ return "Cờ"; }
+			default: case LanguageType::ENGLISH:		{ return "Flags"; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Instructions_Binary_And::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Instructions_Binary_And(); instance->autorelease(); return instance; }
@@ -37783,6 +38033,56 @@ namespace Strings
 			default: case LanguageType::ENGLISH:		{ return "CALL is a special instruction that works almost exactly like JMP. The difference is that CALL also pushes the address of the current instruction onto the stack. See the RET instruction for more information."; }
 		}
 	}
+	LocalizedString* Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpNotTaken::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpNotTaken(); instance->autorelease(); return instance; }
+	LocalizedString* Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpNotTaken::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpNotTaken::create(); this->copyAttributesTo(clonedString); return clonedString; }
+	Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpNotTaken::Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpNotTaken() : LocalizedString() { }
+	std::string Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpNotTaken::getStringIdentifier() { return "Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpNotTaken"; }
+	std::string Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpNotTaken::getStringByLanguage(LanguageType languageType)
+	{
+		switch (languageType)
+		{
+			case LanguageType::ARABIC:					{ return "%s1: لم يتم القفز."; }		case LanguageType::BULGARIAN:				{ return "%s1: скокът не се изпълнява."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "%s1: 不跳转。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "%s1: 不跳轉。"; }
+			case LanguageType::CZECH:					{ return "%s1: skok se neprovede."; }		case LanguageType::DANISH:					{ return "%s1: springet udføres ikke."; }
+			case LanguageType::DUTCH:					{ return "%s1: sprong niet genomen."; }		case LanguageType::FINNISH:					{ return "%s1: hyppyä ei tehdä."; }
+			case LanguageType::FRENCH:					{ return "%s1: saut non pris."; }		case LanguageType::GERMAN:					{ return "%s1: Sprung wird nicht ausgeführt."; }
+			case LanguageType::GREEK:					{ return "%s1: το άλμα δεν εκτελείται."; }		case LanguageType::HUNGARIAN:				{ return "%s1: az ugrás nem történik meg."; }
+			case LanguageType::ITALIAN:					{ return "%s1: salto non eseguito."; }		case LanguageType::JAPANESE:				{ return "%s1: ジャンプしない。"; }
+			case LanguageType::KOREAN:					{ return "%s1: 점프하지 않음."; }		case LanguageType::NORWEGIAN:				{ return "%s1: hoppet tas ikke."; }
+			case LanguageType::POLISH:					{ return "%s1: skok nie zostanie wykonany."; }		case LanguageType::PORTUGUESE:				{ return "%s1: salto não tomado."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "%s1: salto não tomado."; }		case LanguageType::ROMANIAN:				{ return "%s1: saltul nu este efectuat."; }
+			case LanguageType::RUSSIAN:					{ return "%s1: переход не выполняется."; }		case LanguageType::SPANISH:					{ return "%s1: no se toma el salto."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "%s1: no se toma el salto."; }	case LanguageType::SWEDISH:					{ return "%s1: hoppet tas inte."; }
+			case LanguageType::THAI:					{ return "%s1: ไม่กระโดด"; }		case LanguageType::TURKISH:					{ return "%s1: atlama yapılmaz."; }
+			case LanguageType::UKRAINIAN:				{ return "%s1: перехід не виконується."; }		case LanguageType::VIETNAMESE:				{ return "%s1: không nhảy."; }
+			default: case LanguageType::ENGLISH:		{ return "%s1: jump not taken."; }
+		}
+	}
+	LocalizedString* Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpTaken::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpTaken(); instance->autorelease(); return instance; }
+	LocalizedString* Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpTaken::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpTaken::create(); this->copyAttributesTo(clonedString); return clonedString; }
+	Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpTaken::Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpTaken() : LocalizedString() { }
+	std::string Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpTaken::getStringIdentifier() { return "Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpTaken"; }
+	std::string Menus_Hacking_Lexicon_Pages_ControlFlow_ConditionalJump_JumpTaken::getStringByLanguage(LanguageType languageType)
+	{
+		switch (languageType)
+		{
+			case LanguageType::ARABIC:					{ return "%s1: تم القفز."; }		case LanguageType::BULGARIAN:				{ return "%s1: скокът се изпълнява."; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "%s1: 跳转。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "%s1: 跳轉。"; }
+			case LanguageType::CZECH:					{ return "%s1: skok se provede."; }		case LanguageType::DANISH:					{ return "%s1: springet udføres."; }
+			case LanguageType::DUTCH:					{ return "%s1: sprong genomen."; }		case LanguageType::FINNISH:					{ return "%s1: hyppy tehdään."; }
+			case LanguageType::FRENCH:					{ return "%s1: saut pris."; }		case LanguageType::GERMAN:					{ return "%s1: Sprung wird ausgeführt."; }
+			case LanguageType::GREEK:					{ return "%s1: το άλμα εκτελείται."; }		case LanguageType::HUNGARIAN:				{ return "%s1: az ugrás megtörténik."; }
+			case LanguageType::ITALIAN:					{ return "%s1: salto eseguito."; }		case LanguageType::JAPANESE:				{ return "%s1: ジャンプする。"; }
+			case LanguageType::KOREAN:					{ return "%s1: 점프함."; }		case LanguageType::NORWEGIAN:				{ return "%s1: hoppet tas."; }
+			case LanguageType::POLISH:					{ return "%s1: skok zostanie wykonany."; }		case LanguageType::PORTUGUESE:				{ return "%s1: salto tomado."; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "%s1: salto tomado."; }		case LanguageType::ROMANIAN:				{ return "%s1: saltul este efectuat."; }
+			case LanguageType::RUSSIAN:					{ return "%s1: переход выполняется."; }		case LanguageType::SPANISH:					{ return "%s1: se toma el salto."; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "%s1: se toma el salto."; }	case LanguageType::SWEDISH:					{ return "%s1: hoppet tas."; }
+			case LanguageType::THAI:					{ return "%s1: กระโดด"; }		case LanguageType::TURKISH:					{ return "%s1: atlama yapılır."; }
+			case LanguageType::UKRAINIAN:				{ return "%s1: перехід виконується."; }		case LanguageType::VIETNAMESE:				{ return "%s1: nhảy."; }
+			default: case LanguageType::ENGLISH:		{ return "%s1: jump taken."; }
+		}
+	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_ControlFlow_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_ControlFlow_Intro(); instance->autorelease(); return instance; }
 	LocalizedString* Menus_Hacking_Lexicon_Pages_ControlFlow_Intro::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_Pages_ControlFlow_Intro::create(); this->copyAttributesTo(clonedString); return clonedString; }
 	Menus_Hacking_Lexicon_Pages_ControlFlow_Intro::Menus_Hacking_Lexicon_Pages_ControlFlow_Intro() : LocalizedString() { }
@@ -37881,56 +38181,6 @@ namespace Strings
 			case LanguageType::THAI:					{ return "JE/JNE เป็นคําสั่งที่ทําการกระโดดเท่านั้นขึ้นอยู่กับว่าค่าสองค่าที่ส่งผ่านไปยังคําสั่ง CMP นั้นเท่ากันหรือไม่"; }		case LanguageType::TURKISH:					{ return "JE / JNE, bir CMP talimatına iletilen iki değerin eşit olup olmadığına bağlı olarak yalnızca bir sıçrama gerçekleştiren talimatlardır."; }
 			case LanguageType::UKRAINIAN:				{ return "JE/JNE - це інструкції, які виконують лише перехід залежно від того, чи рівні два значення, передані інструкції CMP."; }		case LanguageType::VIETNAMESE:				{ return "JE / JNE là các lệnh chỉ thực hiện nhảy tùy thuộc vào việc hai giá trị được truyền đến lệnh CMP có bằng nhau hay không."; }
 			default: case LanguageType::ENGLISH:		{ return "JE/JNE are instructions that only perform a jump depending on whether the two values passed to a CMP instruction are equal."; }
-		}
-	}
-	LocalizedString* Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpNotTaken::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpNotTaken(); instance->autorelease(); return instance; }
-	LocalizedString* Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpNotTaken::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpNotTaken::create(); this->copyAttributesTo(clonedString); return clonedString; }
-	Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpNotTaken::Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpNotTaken() : LocalizedString() { }
-	std::string Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpNotTaken::getStringIdentifier() { return "Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpNotTaken"; }
-	std::string Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpNotTaken::getStringByLanguage(LanguageType languageType)
-	{
-		switch (languageType)
-		{
-			case LanguageType::ARABIC:					{ return "ZF = 1: لم يتم القفز."; }		case LanguageType::BULGARIAN:				{ return "ZF = 1: скокът не се изпълнява."; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "ZF = 1：不跳转。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "ZF = 1：不跳轉。"; }
-			case LanguageType::CZECH:					{ return "ZF = 1: skok se neprovede."; }		case LanguageType::DANISH:					{ return "ZF = 1: springet udføres ikke."; }
-			case LanguageType::DUTCH:					{ return "ZF = 1: sprong niet genomen."; }		case LanguageType::FINNISH:					{ return "ZF = 1: hyppyä ei tehdä."; }
-			case LanguageType::FRENCH:					{ return "ZF = 1 : saut non pris."; }		case LanguageType::GERMAN:					{ return "ZF = 1: Sprung wird nicht ausgeführt."; }
-			case LanguageType::GREEK:					{ return "ZF = 1: το άλμα δεν εκτελείται."; }		case LanguageType::HUNGARIAN:				{ return "ZF = 1: az ugrás nem történik meg."; }
-			case LanguageType::ITALIAN:					{ return "ZF = 1: salto non eseguito."; }		case LanguageType::JAPANESE:				{ return "ZF = 1: ジャンプしない。"; }
-			case LanguageType::KOREAN:					{ return "ZF = 1: 점프하지 않음."; }		case LanguageType::NORWEGIAN:				{ return "ZF = 1: hoppet tas ikke."; }
-			case LanguageType::POLISH:					{ return "ZF = 1: skok nie zostanie wykonany."; }		case LanguageType::PORTUGUESE:				{ return "ZF = 1: salto não tomado."; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "ZF = 1: salto não tomado."; }		case LanguageType::ROMANIAN:				{ return "ZF = 1: saltul nu este efectuat."; }
-			case LanguageType::RUSSIAN:					{ return "ZF = 1: переход не выполняется."; }		case LanguageType::SPANISH:					{ return "ZF = 1: no se toma el salto."; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "ZF = 1: no se toma el salto."; }	case LanguageType::SWEDISH:					{ return "ZF = 1: hoppet tas inte."; }
-			case LanguageType::THAI:					{ return "ZF = 1: ไม่กระโดด"; }		case LanguageType::TURKISH:					{ return "ZF = 1: atlama yapılmaz."; }
-			case LanguageType::UKRAINIAN:				{ return "ZF = 1: перехід не виконується."; }		case LanguageType::VIETNAMESE:				{ return "ZF = 1: không nhảy."; }
-			default: case LanguageType::ENGLISH:		{ return "ZF = 1: jump not taken."; }
-		}
-	}
-	LocalizedString* Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpTaken::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpTaken(); instance->autorelease(); return instance; }
-	LocalizedString* Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpTaken::clone() { LocalizedString* clonedString = Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpTaken::create(); this->copyAttributesTo(clonedString); return clonedString; }
-	Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpTaken::Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpTaken() : LocalizedString() { }
-	std::string Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpTaken::getStringIdentifier() { return "Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpTaken"; }
-	std::string Menus_Hacking_Lexicon_Pages_ControlFlow_Jne_JumpTaken::getStringByLanguage(LanguageType languageType)
-	{
-		switch (languageType)
-		{
-			case LanguageType::ARABIC:					{ return "ZF = 0: تم القفز."; }		case LanguageType::BULGARIAN:				{ return "ZF = 0: скокът се изпълнява."; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "ZF = 0：跳转。"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "ZF = 0：跳轉。"; }
-			case LanguageType::CZECH:					{ return "ZF = 0: skok se provede."; }		case LanguageType::DANISH:					{ return "ZF = 0: springet udføres."; }
-			case LanguageType::DUTCH:					{ return "ZF = 0: sprong genomen."; }		case LanguageType::FINNISH:					{ return "ZF = 0: hyppy tehdään."; }
-			case LanguageType::FRENCH:					{ return "ZF = 0 : saut pris."; }		case LanguageType::GERMAN:					{ return "ZF = 0: Sprung wird ausgeführt."; }
-			case LanguageType::GREEK:					{ return "ZF = 0: το άλμα εκτελείται."; }		case LanguageType::HUNGARIAN:				{ return "ZF = 0: az ugrás megtörténik."; }
-			case LanguageType::ITALIAN:					{ return "ZF = 0: salto eseguito."; }		case LanguageType::JAPANESE:				{ return "ZF = 0: ジャンプする。"; }
-			case LanguageType::KOREAN:					{ return "ZF = 0: 점프함."; }		case LanguageType::NORWEGIAN:				{ return "ZF = 0: hoppet tas."; }
-			case LanguageType::POLISH:					{ return "ZF = 0: skok zostanie wykonany."; }		case LanguageType::PORTUGUESE:				{ return "ZF = 0: salto tomado."; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "ZF = 0: salto tomado."; }		case LanguageType::ROMANIAN:				{ return "ZF = 0: saltul este efectuat."; }
-			case LanguageType::RUSSIAN:					{ return "ZF = 0: переход выполняется."; }		case LanguageType::SPANISH:					{ return "ZF = 0: se toma el salto."; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "ZF = 0: se toma el salto."; }	case LanguageType::SWEDISH:					{ return "ZF = 0: hoppet tas."; }
-			case LanguageType::THAI:					{ return "ZF = 0: กระโดด"; }		case LanguageType::TURKISH:					{ return "ZF = 0: atlama yapılır."; }
-			case LanguageType::UKRAINIAN:				{ return "ZF = 0: перехід виконується."; }		case LanguageType::VIETNAMESE:				{ return "ZF = 0: nhảy."; }
-			default: case LanguageType::ENGLISH:		{ return "ZF = 0: jump taken."; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Pages_ControlFlow_Jngle_Intro::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Pages_ControlFlow_Jngle_Intro(); instance->autorelease(); return instance; }
@@ -40691,21 +40941,21 @@ namespace Strings
 	{
 		switch (languageType)
 		{
-			case LanguageType::ARABIC:					{ return "تعيين وإعادة ضبط"; }		case LanguageType::BULGARIAN:				{ return "Задай и нулирай"; }
-			case LanguageType::CHINESE_SIMPLIFIED:		{ return "设置并重置"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "設定並重設"; }
-			case LanguageType::CZECH:					{ return "Nastavit a resetovat"; }		case LanguageType::DANISH:					{ return "Indstil og nulstil"; }
-			case LanguageType::DUTCH:					{ return "Instellen en resetten"; }		case LanguageType::FINNISH:					{ return "Aseta ja nollaa"; }
-			case LanguageType::FRENCH:					{ return "Définir et réinitialiser"; }		case LanguageType::GERMAN:					{ return "Setzen & zurücksetzen"; }
-			case LanguageType::GREEK:					{ return "Ορισμός και επαναφορά"; }		case LanguageType::HUNGARIAN:				{ return "Beállítás és visszaállítás"; }
-			case LanguageType::ITALIAN:					{ return "Imposta e reimposta"; }		case LanguageType::JAPANESE:				{ return "設定してリセット"; }
-			case LanguageType::KOREAN:					{ return "설정 및 초기화"; }		case LanguageType::NORWEGIAN:				{ return "Sett og nullstill"; }
-			case LanguageType::POLISH:					{ return "Ustaw i zresetuj"; }		case LanguageType::PORTUGUESE:				{ return "Definir e reiniciar"; }
-			case LanguageType::PORTUGUESE_BRAZIL:		{ return "Definir e reiniciar"; }		case LanguageType::ROMANIAN:				{ return "Setează și resetează"; }
-			case LanguageType::RUSSIAN:					{ return "Задать и сбросить"; }		case LanguageType::SPANISH:					{ return "Fijar y reiniciar"; }
-			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "Fijar y reiniciar"; }	case LanguageType::SWEDISH:					{ return "Ställ in och återställ"; }
-			case LanguageType::THAI:					{ return "ตั้งค่าและรีเซ็ต"; }		case LanguageType::TURKISH:					{ return "Ayarla ve sıfırla"; }
-			case LanguageType::UKRAINIAN:				{ return "Задати й скинути"; }		case LanguageType::VIETNAMESE:				{ return "Đặt và đặt lại"; }
-			default: case LanguageType::ENGLISH:		{ return "Set & Reset"; }
+			case LanguageType::ARABIC:					{ return "تهيئة"; }		case LanguageType::BULGARIAN:				{ return "Инициализирай"; }
+			case LanguageType::CHINESE_SIMPLIFIED:		{ return "初始化"; }		case LanguageType::CHINESE_TRADITIONAL:		{ return "初始化"; }
+			case LanguageType::CZECH:					{ return "Inicializovat"; }		case LanguageType::DANISH:					{ return "Initialiser"; }
+			case LanguageType::DUTCH:					{ return "Initialiseren"; }		case LanguageType::FINNISH:					{ return "Alusta"; }
+			case LanguageType::FRENCH:					{ return "Initialiser"; }		case LanguageType::GERMAN:					{ return "Initialisieren"; }
+			case LanguageType::GREEK:					{ return "Αρχικοποίηση"; }		case LanguageType::HUNGARIAN:				{ return "Inicializálás"; }
+			case LanguageType::ITALIAN:					{ return "Inizializza"; }		case LanguageType::JAPANESE:				{ return "初期化"; }
+			case LanguageType::KOREAN:					{ return "초기화"; }		case LanguageType::NORWEGIAN:				{ return "Initialiser"; }
+			case LanguageType::POLISH:					{ return "Inicjalizuj"; }		case LanguageType::PORTUGUESE:				{ return "Inicializar"; }
+			case LanguageType::PORTUGUESE_BRAZIL:		{ return "Inicializar"; }		case LanguageType::ROMANIAN:				{ return "Inițializează"; }
+			case LanguageType::RUSSIAN:					{ return "Инициализировать"; }		case LanguageType::SPANISH:					{ return "Inicializar"; }
+			case LanguageType::SPANISH_LATIN_AMERICAN:	{ return "Inicializar"; }	case LanguageType::SWEDISH:					{ return "Initiera"; }
+			case LanguageType::THAI:					{ return "เริ่มต้น"; }		case LanguageType::TURKISH:					{ return "Başlat"; }
+			case LanguageType::UKRAINIAN:				{ return "Ініціалізувати"; }		case LanguageType::VIETNAMESE:				{ return "Khởi tạo"; }
+			default: case LanguageType::ENGLISH:		{ return "Initialize"; }
 		}
 	}
 	LocalizedString* Menus_Hacking_Lexicon_Stack::create() { LocalizedString* instance = new Menus_Hacking_Lexicon_Stack(); instance->autorelease(); return instance; }

@@ -24,7 +24,7 @@ JnoPage* JnoPage::create()
 	return instance;
 }
 
-JnoPage::JnoPage() : super(JnoPage::Identifier, PageType::Full)
+JnoPage::JnoPage() : super(JnoPage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Bread);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);

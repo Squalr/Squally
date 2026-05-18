@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class LocalizedLabel;
+class LocalizedString;
 class ConstantString;
 
 class RegisterBlock : public SmartNode
@@ -24,6 +25,7 @@ public:
 
 	void setDisplayMode(DisplayMode displayMode);
 	void setDisplayBitCount(int displayBitCount);
+	void setMemoryTitleLocalizedString(LocalizedString* title);
 	void setMemoryTitleVisible(bool isVisible);
 	void clearHighlights();
 	void highlightEax(bool isDest);
