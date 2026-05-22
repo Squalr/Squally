@@ -164,12 +164,7 @@
   </properties>
   <object id="913" name="chest" type="object" x="5277.71" y="1315.15" width="128" height="128">
    <properties>
-    <property name="data-type" value="decimal"/>
-    <property name="inputs" value="255,252,253,0"/>
     <property name="reward-pool" value="ef-generic"/>
-    <property name="rule" value="{i}+5"/>
-    <property name="tokens" value="+,1,4,+"/>
-    <property name="tutorial" value="overflow"/>
    </properties>
   </object>
   <object id="914" name="add-door" type="object" x="7541.94" y="415.955" width="696" height="775">

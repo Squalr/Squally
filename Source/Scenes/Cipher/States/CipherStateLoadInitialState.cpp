@@ -49,6 +49,11 @@ void CipherStateLoadInitialState::onBeforeStateEnter(CipherState* cipherState)
 	
 	cipherState->loadCipherAtIndex(0);
 	this->spawnBlocks(cipherState);
+
+	if (cipherState->puzzleData == nullptr)
+	{
+		return;
+	}
 	
 	std::string displayDataType = cipherState->puzzleData->getDefaultDataType();
 

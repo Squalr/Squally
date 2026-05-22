@@ -27,9 +27,5 @@ private:
 	
 	CipherPuzzleData* cipherPuzzleData = nullptr;
 
-	static const std::string PropertyInputs;
-	static const std::string PropertyRule;
-	static const std::string PropertyTokens;
-	static const std::string PropertyDataType;
-	static const std::string PropertyTutorial;
+	static const std::string PropertyPuzzle;
 };

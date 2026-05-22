@@ -308,12 +308,7 @@
   </object>
   <object id="739" name="chest" type="object" x="3392" y="3484" width="128" height="128">
    <properties>
-    <property name="data-type" value="decimal"/>
-    <property name="inputs" value="255,252,253,0"/>
     <property name="reward-pool" value="ef-generic"/>
-    <property name="rule" value="{i}+5"/>
-    <property name="tokens" value="+,1,4,+"/>
-    <property name="tutorial" value="overflow"/>
    </properties>
   </object>
   <object id="767" name="help-totem-potions" type="object" x="972" y="1800" width="248" height="248"/>

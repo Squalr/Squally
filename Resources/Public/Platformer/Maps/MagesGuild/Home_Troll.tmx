@@ -172,14 +172,10 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="749" name="chest" type="object" x="1683.12" y="1150.24" width="128" height="128">
+  <object id="749" name="cipher-chest" type="object" x="1683.12" y="1150.24" width="128" height="128">
    <properties>
-    <property name="data-type" value="decimal"/>
-    <property name="inputs" value="m,a,g,e"/>
+    <property name="puzzle" value="ef-connect-a"/>
     <property name="reward-pool" value="ef-generic"/>
-    <property name="rule" value="{i}"/>
-    <property name="tokens" value=""/>
-    <property name="tutorial" value="connect"/>
    </properties>
   </object>
   <object id="752" name="portal" type="object" x="896.667" y="961.333" width="320" height="320">

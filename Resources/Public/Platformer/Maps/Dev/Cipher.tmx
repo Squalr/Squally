@@ -160,56 +160,8 @@
   </properties>
   <object id="656" name="cipher-chest" type="object" x="851.485" y="2687.03" width="128" height="128">
    <properties>
-    <property name="data">{
-  &quot;blocks&quot;: [
-      {
-        &quot;lines&quot;:
-        [
-          {
-            &quot;registers&quot;: [ &quot;eax&quot;, &quot;ebx&quot;, &quot;ecx&quot; ],
-            &quot;operands&quot;: [ &quot;mov&quot;, &quot;add&quot;, &quot;sub&quot; ],
-            &quot;values&quot;: [ 1, 2, 3 ]
-          },
-          {
-            &quot;registers&quot;: [ &quot;eax&quot;, &quot;ebx&quot;, &quot;ecx&quot; ],
-            &quot;operands&quot;: [ &quot;mov&quot;, &quot;add&quot;, &quot;sub&quot; ],
-            &quot;values&quot;: [ 1, 2, 3 ]
-          },
-          {
-            &quot;registers&quot;: [ &quot;eax&quot;, &quot;ebx&quot;, &quot;ecx&quot; ],
-            &quot;operands&quot;: [ &quot;mov&quot;, &quot;add&quot;, &quot;sub&quot; ],
-            &quot;values&quot;: [ 1, 2, 3 ]
-          }
-        ]
-      },
-      {
-        &quot;lines&quot;:
-        [
-          {
-            &quot;registers&quot;: [ &quot;eax&quot;, &quot;ebx&quot;, &quot;ecx&quot; ],
-            &quot;operands&quot;: [ &quot;mov&quot;, &quot;add&quot;, &quot;sub&quot; ],
-            &quot;values&quot;: [ 1, 2, 3 ]
-          },
-          {
-            &quot;registers&quot;: [ &quot;eax&quot;, &quot;ebx&quot;, &quot;ecx&quot; ],
-            &quot;operands&quot;: [ &quot;mov&quot;, &quot;add&quot;, &quot;sub&quot; ],
-            &quot;values&quot;: [ 1, 2, 3 ]
-          },
-          {
-            &quot;registers&quot;: [ &quot;eax&quot;, &quot;ebx&quot;, &quot;ecx&quot; ],
-            &quot;operands&quot;: [ &quot;mov&quot;, &quot;add&quot;, &quot;sub&quot; ],
-            &quot;values&quot;: [ 1, 2, 3 ]
-          }
-        ]
-      }
-    ]
-}</property>
-    <property name="data-type" value="decimal"/>
-    <property name="event" value="open-cipher"/>
-    <property name="registers" value="1,0,0,0,0,0,0,0"/>
-    <property name="registers-output" value="5,0,0,0,0,0,0,0"/>
+    <property name="puzzle" value="ef-connect-a"/>
     <property name="reward-pool" value="ef-generic"/>
-    <property name="tutorial" value="extra-tokens"/>
    </properties>
   </object>
  </objectgroup>

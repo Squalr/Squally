@@ -85,7 +85,7 @@ void CipherStateUnlocking::performUnlockLoop(CipherState* cipherState, std::vect
 
 	if (cipherState->inputOutputMap.empty())
 	{
-		onExecuteComplete(true);
+		onExecuteComplete(false);
 		return;
 	}
 
