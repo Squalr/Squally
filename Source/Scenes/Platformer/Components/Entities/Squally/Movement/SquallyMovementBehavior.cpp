@@ -11,6 +11,8 @@
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Events/CipherEvents.h"
+#include "Events/HexusEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Components/Entities/Movement/EntityMovementBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -115,6 +117,16 @@ void SquallyMovementBehavior::onLoad()
 		this->saveSquallyPosition();
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventOpenCipher, [=](EventCustom* eventCustom)
+	{
+		this->clearMovementInput();
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HexusEvents::EventOpenHexus, [=](EventCustom* eventCustom)
+	{
+		this->clearMovementInput();
+	}));
+
 	this->squally->watchForComponent<EntityMovementBehavior>([=](EntityMovementBehavior* entityMovementBehavior)
 	{
 		entityMovementBehavior->setMoveAcceleration(SquallyMovementBehavior::SquallyMovementAcceleration);
@@ -162,6 +174,16 @@ void SquallyMovementBehavior::onMovementChanged()
 	// We actually want to prioritize jump, instead of canceling out the inputs. This is better UX for performing a crouch jump.
 	// this->squally->setState(StateKeys::MovementY, Value((SquallyMovementBehavior::DownPressedKeys ? -1.0f : 0.0f) + (SquallyMovementBehavior::UpPressedKeys ? 1.0f : 0.0f)));
 	this->squally->setState(StateKeys::MovementY, Value((SquallyMovementBehavior::UpPressedKeys ? 1.0f : (SquallyMovementBehavior::DownPressedKeys ? -1.0f : 0.0f))));
+}
+
+void SquallyMovementBehavior::clearMovementInput()
+{
+	SquallyMovementBehavior::LeftPressedKeys = 0;
+	SquallyMovementBehavior::RightPressedKeys = 0;
+	SquallyMovementBehavior::UpPressedKeys = 0;
+	SquallyMovementBehavior::DownPressedKeys = 0;
+
+	this->onMovementChanged();
 }
 
 void SquallyMovementBehavior::disablePositionSaving()

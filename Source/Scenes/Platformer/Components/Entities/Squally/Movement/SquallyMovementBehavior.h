@@ -26,6 +26,7 @@ private:
 	typedef GameComponent super;
 
 	void onMovementChanged();
+	void clearMovementInput();
 	void saveSquallyPosition();
 	void loadSquallyPosition();
 
