@@ -25,6 +25,7 @@ public:
 
 	void setDisplayMode(DisplayMode displayMode);
 	void setDisplayBitCount(int displayBitCount);
+	void setMemoryTitleX(float x);
 	void setMemoryTitleLocalizedString(LocalizedString* title);
 	void setMemoryTitleVisible(bool isVisible);
 	void clearHighlights();
@@ -171,6 +172,9 @@ private:
 	std::vector<LocalizedLabel*> ebpPtrLabels;
 	std::vector<LocalizedLabel*> espPtrLabels;
 	std::vector<LocalizedLabel*> eipPtrLabels;
+
+	bool hasCustomMemoryTitleX = false;
+	float memoryTitleX = 0.0f;
 
 	ConstantString* eaxString = nullptr;
 	ConstantString* ebxString = nullptr;

@@ -65,6 +65,8 @@ ConditionalJumpExamplesPage::ConditionalJumpExamplesPage(Operation operation) : 
 	this->examplesLabel->setTextColor(super::TextColor);
 	this->flagLabel->setTextColor(super::TextColor);
 	this->pathLabel->setTextColor(super::TextColor);
+	this->flagLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->pathLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->registerASelector->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->registerBSelector->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->instructionPointerSelector->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -124,24 +126,27 @@ void ConditionalJumpExamplesPage::initializePositions()
 
 	const float buttonOffset = 186.0f;
 	const float buttonSpacing = -50.0f;
+	const float buttonX = 56.0f;
+	const float buttonLeftX = -20.0f;
 	const float codeTop = -50.0f;
 	const float codeSpacing = -38.0f;
 
 	this->examplesLabel->setPosition(Vec2(0.0f, super::ChapterLocation.y - 16.0f));
 	this->registerBlock->setPosition(Vec2(-148.0f, 150.0f));
+	this->registerBlock->setMemoryTitleX(buttonLeftX - this->registerBlock->getPositionX());
 	this->registerASelector->setPosition(this->usesConditionRegisterSelector() ? Vec2(-256.0f, 206.0f) : Vec2(-256.0f, 262.0f));
 	this->registerBSelector->setPosition(Vec2(-256.0f, 234.0f));
 	this->instructionPointerSelector->setPosition(Vec2(-256.0f, 38.0f));
-	this->flagLabel->setPosition(Vec2(116.0f, 274.0f));
-	this->pathLabel->setPosition(Vec2(116.0f, 240.0f));
+	this->flagLabel->setPosition(Vec2(buttonLeftX, 274.0f));
+	this->pathLabel->setPosition(Vec2(buttonLeftX, 240.0f));
 	this->codePanel->setPosition(Vec2(0.0f, -150.0f));
-	this->example0Button->setPosition(Vec2(56.0f, buttonOffset + buttonSpacing * 0.0f));
-	this->example1Button->setPosition(Vec2(56.0f, buttonOffset + buttonSpacing * 1.0f));
-	this->example2Button->setPosition(Vec2(56.0f, buttonOffset + buttonSpacing * 2.0f));
+	this->example0Button->setPosition(Vec2(buttonX, buttonOffset + buttonSpacing * 0.0f));
+	this->example1Button->setPosition(Vec2(buttonX, buttonOffset + buttonSpacing * 1.0f));
+	this->example2Button->setPosition(Vec2(buttonX, buttonOffset + buttonSpacing * 2.0f));
 	this->example0Label->setPosition(Vec2(142.0f, buttonOffset + buttonSpacing * 0.0f));
 	this->example1Label->setPosition(Vec2(142.0f, buttonOffset + buttonSpacing * 1.0f));
 	this->example2Label->setPosition(Vec2(142.0f, buttonOffset + buttonSpacing * 2.0f));
-	this->executeButton->setPosition(Vec2(56.0f, buttonOffset + buttonSpacing * 3.0f));
+	this->executeButton->setPosition(Vec2(buttonX, buttonOffset + buttonSpacing * 3.0f));
 
 	for (int index = 0; index < int(this->codeLabels.size()); index++)
 	{

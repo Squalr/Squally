@@ -165,11 +165,12 @@ void RegisterBlock::initializePositions()
 	super::initializePositions();
 
     const float Spacing = 28.0f;
-    const float Offset = (Spacing * 8.0f) / 2.0f;
-    const float RegisterX = this->useBinaryResource ? -228.0f : -88.0f;
+	const float Offset = (Spacing * 8.0f) / 2.0f;
+	const float RegisterX = this->useBinaryResource ? -228.0f : -88.0f;
+	const float MemoryTitleX = this->hasCustomMemoryTitleX ? this->memoryTitleX : 232.0f - 12.0f;
 
 	this->titleLabel->setPosition(Vec2(RegisterX - 12.0f, Offset + 48.0f));
-	this->memoryTitleLabel->setPosition(Vec2(232.0f - 12.0f, Offset + 48.0f));
+	this->memoryTitleLabel->setPosition(Vec2(MemoryTitleX, Offset + 48.0f));
 	this->eaxLabel->setPosition(Vec2(RegisterX, Offset - Spacing * 0.0f));
 	this->ebxLabel->setPosition(Vec2(RegisterX, Offset - Spacing * 1.0f));
 	this->ecxLabel->setPosition(Vec2(RegisterX, Offset - Spacing * 2.0f));
@@ -206,6 +207,17 @@ void RegisterBlock::setDisplayBitCount(int displayBitCount)
 {
     this->displayBitCount = displayBitCount;
     this->refreshDisplayStrings();
+}
+
+void RegisterBlock::setMemoryTitleX(float x)
+{
+    this->hasCustomMemoryTitleX = true;
+    this->memoryTitleX = x;
+
+    if (this->memoryTitleLabel != nullptr)
+    {
+        this->memoryTitleLabel->setPositionX(x);
+    }
 }
 
 void RegisterBlock::setMemoryTitleLocalizedString(LocalizedString* title)
